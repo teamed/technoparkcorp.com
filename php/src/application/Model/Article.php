@@ -293,7 +293,19 @@ class Model_Article {
      * @return stdObject[]
      */
     protected function _getConcepts() {
-        return false;
+        if (!$this->_xml->concepts)
+            return false;
+
+        $result = array();
+        foreach ($this->_xml->concepts->children() as $concept) {
+            $cls = new FaZend_StdObject();
+            $cls->page = (string)$concept->attributes()->name;
+            $cls->title = (string)$concept;
+            $result[] = $cls;
+        }
+
+        return $result;
+
     }
 
     /**

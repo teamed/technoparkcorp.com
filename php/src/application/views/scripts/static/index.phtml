@@ -51,7 +51,7 @@
         <div class="concepts">
         <? foreach ($this->article->concepts as $concept): ?>
             <div class="concept">
-                <a href="<?=$this->staticUrl($concept->page)?>"><?=$concept->text?></a>
+                <a href="<?=$this->staticUrl($concept->page)?>"><?=$concept->title?></a>
             </div>
         <? endforeach; ?>    
         </div>
