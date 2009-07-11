@@ -1,0 +1,136 @@
+<?xml version="1.0"?>
+<!--
+ *
+ * Copyright (c) 2008, TechnoPark Corp., Florida, USA
+ * All rights reserved. THIS IS PRIVATE SOFTWARE.
+ *
+ * Redistribution and use in source and binary forms, with or without modification, are PROHIBITED
+ * without prior written permission from the author. This product may NOT be used anywhere
+ * and on any computer except the server platform of TechnoPark Corp. located at
+ * www.technoparkcorp.com. If you received this code occacionally and without intent to use
+ * it, please report this incident to the author by email: privacy@technoparkcorp.com or
+ * by mail: 568 Ninth Street South 202 Naples, Florida 34102, the United States of America,
+ * tel. +1 (239) 243 0206, fax +1 (239) 236-0738.
+ *
+ * @author Yegor Bugaenko <egor@technoparkcorp.com>
+ * @copyright Copyright (c) TechnoPark Corp., 2001-2009
+ * @version $Id$
+ *
+-->
+
+<article>
+
+<term>schedule</term>
+
+<title>How in-time delivery is assured</title>
+<label>Time Management</label>
+<intro>Review our time management methods</intro>
+<next>process/cost</next>
+
+<description>
+	Iterative time management gives project team and our customer more
+	flexibility in plans. In the same time it gives more stability for
+	the whole project.
+</description>
+
+<keywords>
+	time management,
+	time management plan,
+	time tracking,
+	project plan,
+	network diagram,
+	schedule,
+	iteration,
+	iteration plan
+</keywords>
+
+<text>
+
+	<p>Talented and motivated engineers, programmers, designers and architects may
+	fail to complete a project and miss important milestones if they don't have a project manager
+	who manages time properly. Nowadays in the software industry this happens during the course of many projects.
+	We pay great attention to planning, monitoring, and controlling of time in our projects.</p>
+
+	<p>Right after a <a href="${url:process/cost/rom}">ROM Estimate</a> is approved and the project is started, 
+	we plan the <a href="${url:process/time/inception}">Inception Phase</a>. 
+	Usually, when the project is started, there is a lack of details about system requirements. 
+	Accurate planning can be done only after the scope definition and risk analysis are completed, that's why we need to conduct the 
+	Inception Phase before <a href="${url:process/time/schedule}">Schedule</a> development.</p>
+	
+	<p>The main goal of our Inception Phase is to create <a href="${url:process/scope/specification}">Specification</a>, 
+	identify <a href="${url:process/risks}">Risks</a>, 
+	calculate <a href="${url:process/cost/budget}">Budget</a>, and build a
+	Schedule. Sometimes, in order to define the Schedule, it's necessary to develop a baseline of key architectural software concepts
+	during the Inception Phase.</p>
+
+	<p><a href="${url:process/time/lco}">LCO Milestone</a> happens following the end of Inception Phase, when
+	the Specification is ready and a Schedule is defined. The Schedule is a one-page table that lists the
+	<a href="${url:process/time/iteration}">Iterations</a> and Milestones. 
+	As soon as the customer signs the Schedule, it obtains the status of a contractual provision
+	and can't be missed.</p>
+
+	<p align="center"><tikz>
+\begin{tikzpicture}
+	[auto, thick]
+
+	\newcommand{\thewidth}{2.2cm}
+	\newcommand{\theheight}{1cm}
+
+	\tikzstyle{iteration} = [block, 
+		text width=\thewidth, 
+		anchor=north west,
+		minimum height=\theheight]
+
+	\tikzstyle{vline} = [dashed, draw=tpcBlue]
+
+	\foreach \x/\title in {0/{Inception Phase}, 1/{Interation 2}, 2/{Interation 3}, 3/{Interation 4}, 4/{Last Iteration}} {
+		\node [iteration] (Iteration\x) at (\x*\thewidth,-\x*\theheight) {\title};
+		\draw [vline] (\x*\thewidth,\theheight) -- (\x*\thewidth,-6*\theheight);
+	}
+
+	\draw [line, triangle 60-triangle 60] (0, -6*\theheight) -- node [above, fill=white, above=-0.3cm] {project lifecycle} (5*\thewidth, -6*\theheight);
+
+	\node [fill=white, above left=of Iteration0.north] (note1) {Project start};
+	\node [fill=white, above=2cm of Iteration2, text width=4cm] (note2) {Specification, Schedule, Budget, and Risks are approved};
+	\node [fill=white, above=2cm of Iteration4, text width=4cm] (note3) {Iteration Acceptance Meeting with new Build and project tracking data};
+	\node [fill=white, below=1.3cm of Iteration4, text width=4cm] (note4) {Acceptance Statement is signed, project is closed};
+
+	\draw [-angle 90] (note1) -- (Iteration0.west);
+	\draw [-angle 90] (note2) -- (Iteration0.east);
+	\draw [-angle 90] (note3) -- (Iteration1.east);
+	\draw [-angle 90] (note3) -- (Iteration2.east);
+	\draw [-angle 90] (note3) -- (Iteration3.east);
+	\draw [-angle 90] (note4) -- (Iteration4.south east);
+
+\end{tikzpicture}
+	</tikz></p>
+
+	<p>The objective of each Iteration is to implement, test, and deliver a certain part of the product functionality.
+	Iteration normally takes 8-12 working days and starts with a fine-grained Iteration Plan, which is
+	shown to you and is used to track the progress during the project.</p>
+
+	<p>The Iteration Plan is focused on the Iteration objective as defined in the Schedule, and uses the
+	WBS and Network Diagram methods for planning.</p>
+
+	<p>By the end of each Iteration, we conduct an Iteration Acceptance Meeting, where a
+	<a href="${url:process/time/spi}">SPI</a> is presented to you in conjunction with the risk monitoring results. 
+	The project is transparently 
+	monitored and tracked with an SPI, which is based on the functional requirements and their status of completion.</p>
+
+	<p>Any changes to the Milestones will produce a new version of the Schedule, which you shall
+	sign to make it effective.</p>
+
+
+</text>
+
+<concepts>
+	<c1 name="process/time/schedule">The Schedule is a coarse-grained plan of a project</c1>
+	<c2 name="process/time/lco">Lifecycle Objectives (LCO) Milestone is when the Schedule is to be approved</c2>
+	<c3 name="process/time/inception">Inception Phase specifies Requirements, identifies Risks and builds Schedule</c3>
+	<c4 name="process/time/iteration">Iteration is the shortest time-slice in a project</c4>
+	<c5 name="process/time/spi">Schedule Performance Index (SPI) indicates project status</c5>
+</concepts>
+
+</article>
+
+

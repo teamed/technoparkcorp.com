@@ -1,0 +1,188 @@
+/* left part of site content (menu box mostly) */
+div.lft {
+    background-color: white; 
+    margin: 0 0 0 7px; 
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+}
+
+/* right part of content */
+div.rght {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    background-color: white;
+    width: 594;
+}
+
+/* stupid mechanism of correction of DIV INLINE for IE6, IE7 */
+div.divinline {
+    display:-moz-inline-stack;
+    display:inline-block;
+    _overflow:hidden;
+    zoom:1;
+    *display:inline;
+}
+
+/* menu box */
+div.lft div.menu {
+    position: relative; 
+    display: inline-block; 
+    width: 204px; 
+    vertical-align: top; 
+    margin: -18px 0px 0px -7px; 
+    line-height: 1.7em;
+}
+
+    /* menu top left corner. a small image on top of the menu box */
+    div.menu div.mtl {
+        <?=$this->squeezePNG('menu-top-left.png')?> 
+        position: absolute; 
+        left: -7px; 
+        top: 3px; 
+        z-index: 20;
+    }
+
+    /* menu top right corner */
+    div.menu div.mtr {
+        <?=$this->squeezePNG('menu-top-right.png')?> 
+        position: absolute; 
+        right: -3px; 
+        z-index: 20;
+    }
+
+    /* body of the menu */
+    div.menu ul.body {
+        background: <?=Model_Colors::GRAY?> url(<?=$this->viewFile('images/layout/menu-center.gif')?>) top left repeat-y; 
+        margin: 10px 0 0 -7px;
+        padding: 0 0 18px 0;
+    }
+
+        /* all links in left menu */
+        div.menu ul.body a {
+            text-decoration: none;
+            color: <?=Model_Colors::BLACK?>;
+            background-color: transparent;
+            display: block;
+        }
+
+        /* all LI items in the menu */
+        div.menu ul.body li {
+            list-style: none;
+        }
+
+            /* hide everything except top level */
+            div.menu ul.body li li {
+                display: none;
+            }
+
+            /* show active on all levels */
+            div.menu li.active {
+                display: block !important;
+            }
+
+                /* show active */
+                div.menu li.active ul li {
+                    display: block;
+                }
+
+                /* show active */
+                div.menu li.active li.active ul li {
+                    display: block !important;
+                }
+
+                    /* show active */
+                    div.menu li.active ul li ul li {
+                        display: none;
+                    }
+
+        /* all menu items */
+        div.menu ul.body li a.l0 {
+            border-bottom: 1px solid <?=Model_Colors::DARK_GRAY?>;
+            padding-left: 32px;
+            font-weight: bold;
+            padding-top: 3px;
+            margin: 0 3px 0 7px;
+        }
+
+            /* second-level menu items */
+            div.menu ul.body a.l1 {
+                font-size: 0.9em;
+                padding-left: 51px;
+            }
+
+                /* third-level menu items */
+                div.menu ul.body a.l2 {
+                    font-size: 0.9em;
+                    padding-left: 71px;
+                }
+
+    /* bottom of the menu box */
+    div.menu div.menubtm {
+        <?=$this->squeezePNG('menu-bottom.png')?> 
+        margin: 0px 0px 0px -7px;
+    }
+
+/* path line */    
+div.path {
+    position: relative;
+    height: 20px;
+    padding: 4px 0px 1px 226px;
+    background-color: <?=Model_Colors::GRAY?>;
+    color: <?=Model_Colors::LIGHT_GRAY?>;
+    line-height: 1.2em;
+}
+
+    /* links in path line */
+    div.path a {
+        text-decoration: none;
+        color: <?=Model_Colors::LIGHT_GRAY?>;
+        background-color: transparent;
+    }
+
+/* search input field - this span holds the content */
+div.ll form {
+    position: absolute; 
+    top: 13px; 
+    left: 543px; 
+}
+
+    /* input field for search */
+    div.ll form input.srch {
+        <?=$this->squeezePNG('search-field.png')?>
+        border: none; 
+        position: absolute;
+        font-weight: normal; 
+        width: 167px;
+        top: 0px;
+        left: 0px;
+        color: <?=Model_Colors::DARK_GRAY?>;
+    }
+
+    /* search field submit button */
+    div.ll form input.btn {
+        <?=$this->squeezePNG('search-button.png')?> 
+        cursor: pointer; 
+        border: none; 
+        position: absolute; 
+        top: 0px; 
+        left: 167px;
+   }
+
+/* wide line, at the bottom of static content */
+div.wl {
+    line-height: 1.4em; 
+    height: 20px; 
+    padding: 8px 32px 0px 31px; 
+    position: relative;
+    font-size: 0.9em; 
+    clear: both;
+    background-color: <?=Model_Colors::GRAY?>; 
+}
+
+    /* revision field in wide line */
+    div.wl span.rev {
+        position: absolute; 
+        right: 31px;
+    }

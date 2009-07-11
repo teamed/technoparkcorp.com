@@ -1,0 +1,99 @@
+<?
+    $this->includeCSS('static.css');
+    $this->includeCSS('article.css');
+?>
+
+<!-- Login line -->
+<div class="ll">
+           <span style="margin-left: 39px;">Welcome, Dear Visitor! | <a href="<?=$this->url(array(), 'panel', true)?>">thePanel 2.0</a></span>
+          <?=FaZend_Form::create('Search')->setAction($this->staticUrl('system/search'))?>
+</div>
+
+<!-- Show page path -->
+<div class="path">
+    <?=$this->navigation()->breadcrumbs()
+        ->setLinkLast(true)?>
+</div>
+
+<!-- Left vertical DIV -->
+<div class="lft divinline">
+
+    <div class="menu">
+
+        <div class="mtl"></div>
+        <div class="mtr"></div>
+
+        <?=$this->navigation()->menu()
+            ->setMaxDepth(2)
+            ->setUlClass('body')
+            ->setRenderParents(true)?>
+
+        <div class="menubtm"></div>
+    </div>
+
+<!-- end of LEFT class and start of RIGHT -->
+</div><div class="rght divinline">
+
+    <div class="article<?=!$this->article->showRightColumn ? " noRightCol" : false?>">
+        <div class="title"><?=$this->article->title?></div>
+
+        <? if ($this->article->published):?>
+            <p style="color: <?=Model_Colors::LIGHT_GRAY?>">
+                published on <?=$this->article->published?>
+            </p>
+        <? endif; ?>
+
+        <?=$this->article->text?>
+
+    </div>
+
+    <? if ($this->article->concepts): ?>
+        <div class="concepts">
+        <? foreach ($this->article->concepts as $concept): ?>
+            <div class="concept">
+                <a href="<?=$this->staticUrl($concept->page)?>"><?=$concept->text?></a>
+            </div>
+        <? endforeach; ?>    
+        </div>
+    <? endif; ?>
+
+    <? if ($this->article->showRightColumn): ?> 
+        <div class="right">
+            <div class="steps">
+
+                <?=$this->render('static/liveperson.phtml')?>
+
+                <? if ($this->article->steps): ?>
+                    <? foreach($this->article->steps as $step):?>
+                        <div class="step">
+                            <a href="<?=$this->staticUrl($step->page)?>"><?=$step->title?></a>
+                        </div>
+                    <? endforeach; ?>
+                <? endif; ?>
+            
+            </div>
+                            
+            <? if ($this->article->term):?>
+                <div class="term">
+                    Citation from our software development contract:
+                    <?=$this->article->term?>
+                </div>
+            <? endif; ?>
+
+        </div>
+    <? endif; ?>
+
+<!-- end of RIGHT -->
+</div>    
+
+<!-- wide line at the bottom of the page -->
+<div class="wl">
+    <span>
+        <script type='text/javascript' src='http://w.sharethis.com/button/sharethis.js#tabs=post%2Cemail%2Cweb&amp;charset=utf-8&amp;style=rotate&amp;publisher=bd1d09bf-bb3e-433e-aa72-29bfdfa237d9&amp;headerbg=%237d8f9b&amp;inactivebg=%235a5a5a&amp;inactivefg=%23ffffff&amp;linkfg=%230093d0'></script>
+    </span>    
+
+    <span class="rev">
+        Last update on <span style="color:<?=Model_Colors::BLUE?>"><?=$this->article->updated?></span>
+    </span>
+</div>
+

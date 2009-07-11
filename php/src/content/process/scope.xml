@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<!--
+ *
+ * Copyright (c) 2008, TechnoPark Corp., Florida, USA
+ * All rights reserved. THIS IS PRIVATE SOFTWARE.
+ *
+ * Redistribution and use in source and binary forms, with or without modification, are PROHIBITED
+ * without prior written permission from the author. This product may NOT be used anywhere
+ * and on any computer except the server platform of TechnoPark Corp. located at
+ * www.technoparkcorp.com. If you received this code occacionally and without intent to use
+ * it, please report this incident to the author by email: privacy@technoparkcorp.com or
+ * by mail: 568 Ninth Street South 202 Naples, Florida 34102, the United States of America,
+ * tel. +1 (239) 243 0206, fax +1 (239) 236-0738.
+ *
+ * @author Yegor Bugaenko <egor@technoparkcorp.com>
+ * @copyright Copyright (c) TechnoPark Corp., 2001-2009
+ * @version $Id$
+ *
+-->
+
+<article>
+
+<term>scope</term>
+
+<title>Scope Is Defined By Specifications</title>
+<label>Scope Management</label>
+<intro>Learn how we specify Requirements and define product scope</intro>
+<next>process/risk</next>
+
+<description>
+	Scope is defined by formal specifications that include functional
+	requirements, non-functional requirements, use cases, error messages, 
+	interfaces.
+</description>
+
+<keywords>
+	specification,
+	functional requirement,
+	non-functional requirement,
+	scope,
+	scope management plan,
+	vision, 
+	ROM
+	budget,
+	feature,
+	traceable, 
+	unambiguous,
+	verifiable
+</keywords>
+
+<text>
+
+	<p>Boundaries of software products are defined by a set of <a href="${url:process/scope/requirement}">Requirements</a>. 
+	The software development team designs, implements,
+	tests, and delivers these Requirements to you. 
+	A Requirement is an atomic unit of a software product from
+	the viewpoint of the user. 
+	As a rule, Requirements are always correct, unambiguous, verifiable, and traceable. 
+	Requirements are numbered and prioritized.</p>
+
+	<p>High-level user Requirements are called <a href="${url:process/scope/feature}">Features</a>. 
+	Up to 10 Features can be defined in any software project, 
+	regardless of the project size. 
+	Features are defined in the
+	<a href="${url:process/scope/vision}">Vision</a> document. 
+	The Vision is created before the 
+	project commences, and is the basis for the <a href="${url:process/cost/rom}">ROM Estimate</a>.</p>
+
+	<p>The Vision is developed right after you submit an informal request. 
+	Up to 5 hours are spent for developing the Vision by a system analyst, regardless of the project size.</p>
+
+	<p>When a ROM Estimate is approved, an Alpha-Specification is created. 
+	Upon your approval, the Alpha-Specification becomes a Beta-Specification. 
+	When the project begins and the <a href="${url:process/cost/budget}">Budget</a> is approved
+	(following a <a href="${url:process/time/lco}">LCO Milestone</a>), the Beta-Specification becomes 
+	an effective <a href="${url:process/scope/specification}">Specification</a>.</p>
+
+	<p align="center"><tikz>
+\usepgflibrary{shapes.symbols}
+\begin{tikzpicture}
+	[node distance = 2.5cm, 
+	auto, thick]
+
+	\node [cloud, draw=tpcRed, cloud ignores aspect, fill=tpcRed!40] (request) {Informal Request};
+	\node [block, text width=3cm, below of=request] (vision) {Vision};
+	\node [block, text width=3cm, below of=vision] (srs) {SRS};
+	\node [text centered, text width=3cm, below=1.5cm of srs] (scope) {Scope};
+
+	\path [line] (request) -- (vision);
+	\path [line] (vision) -- (srs);
+
+	\draw [dashed, draw=tpcBlue] (request.east) -- (vision.east) -- (srs.east) -- +(270:2cm);
+	\draw [dashed, draw=tpcBlue] (request.west) -- (vision.west) -- (srs.west) -- +(270:2cm);
+
+	\draw [line, triangle 60-triangle 60] (scope.north west) -- (scope.north east);
+
+\end{tikzpicture}
+	</tikz></p>
+	
+	<p>A fully-dressed Specification is called a <a href="${url:process/scope/srs}">SRS</a> (Software Requirements Specification) and is
+	compliant with <a href="http://standards.ieee.org/reading/ieee/std_public/description/se/830-1998_desc.html">IEEE 
+	830-1998</a> 'Recommended Practices for Software Requirements Specifications'.</p>
+
+	<p>The SRS includes a <a href="${url:process/scope/glossary}">Glossary</a>, 
+	<ahref name="http://en.wikipedia.org/wiki/Use_case">Use Cases</ahref>, 
+	Functional Requirements, and Non-Functional Requirements.</p>
+
+	<p>All Functional Requirements are then listed in a requirements attributes spreadsheet, 
+	where all necessary attributes for each Requirement are maintained.</p>
+
+	<p>Changes to the project scope can be made only by issuing new Specifications through a process called 
+	<a href="${url:process/scope/changerequest}">Change Requests</a>. 
+	Each Change Request implies that changes will be made to the Budget, 
+	<a href="${url:process/time/schedule}">Schedule</a>, and
+	<a href="${url:process/risk}">Risks</a>.</p>
+
+</text>
+
+<concepts>
+	<c3 name="process/scope/specification">Product Scope is defined by formal Specifications</c3>
+	<c4 name="process/scope/vision">System boundary is bordered by Features in the Vision</c4>
+	<c5 name="process/scope/srs">SRS is a formal standard-based Requirements definition document</c5>
+	<c7 name="process/scope/matrix">Traceability Matrix connects Requirements with design elements, Features, and other attributes</c7>
+</concepts>
+
+</article>
+
+
+

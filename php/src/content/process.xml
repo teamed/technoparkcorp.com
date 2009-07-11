@@ -1,0 +1,147 @@
+<?xml version="1.0"?>
+<!--
+ *
+ * Copyright (c) 2008, TechnoPark Corp., Florida, USA
+ * All rights reserved. THIS IS PRIVATE SOFTWARE.
+ *
+ * Redistribution and use in source and binary forms, with or without modification, are PROHIBITED
+ * without prior written permission from the author. This product may NOT be used anywhere
+ * and on any computer except the server platform of TechnoPark Corp. located at
+ * www.technoparkcorp.com. If you received this code occacionally and without intent to use
+ * it, please report this incident to the author by email: privacy@technoparkcorp.com or
+ * by mail: 568 Ninth Street South 202 Naples, Florida 34102, the United States of America,
+ * tel. +1 (239) 243 0206, fax +1 (239) 236-0738.
+ *
+ * @author Yegor Bugaenko <egor@technoparkcorp.com>
+ * @copyright Copyright (c) TechnoPark Corp., 2001-2009
+ * @version $Id$
+ *
+-->
+
+<article>
+
+<term>specification</term>
+
+<title>Iterative and incremental software development process</title>
+<label>Process</label>
+<intro>Learn about our key project management processes</intro>
+<next>process/scope</next>
+
+<description>
+	Iterative and incremental process delivers full-scale project
+	management methods and principles to your agile project, without
+	bureaucracy and burden. We make the project management 
+	simple and easy-to-use by means of our automated instant metrics.
+</description>
+
+<keywords>
+	software development process,
+	software process,
+	automated metrics,
+	software metrics,
+	schedule,
+	project cost,
+	ROM
+</keywords>
+
+<text>
+
+	<p>We implement full-scale PMBOK-inspired project management and
+	make its every last detail valuable and easy-to-understand by means
+	of instant automated metrics. Complex project management principles, 
+	documents, processes and rules are transparent for you with our
+	project management web panel.</p>
+
+	<p>Our software development lifecycle is iterative and incremental. We deliver software product
+	by independent builds at the end of each <a href="${url:process/time/iteration}">Iteration</a>. 
+	You approve <a href="${url:process/time/schedule}">Schedule</a> at the
+	<a href="${url:process/time/lco}">LCO milestone</a> in the first weeks of a project, and then track it by 
+	<a href="${url:process/time/spi}">Earned Value</a> data.</p>
+
+	<p>The diagram shows how your informal request is transferred to Deliverables, 
+	which you accept at the end of the project:</p>
+
+	<p style="text-align: center"><tikz>
+\begin{tikzpicture}
+	[node distance = 2.5cm, 
+	auto, thick]
+
+	\node [cloud, draw=tpcRed, cloud ignores aspect, fill=tpcRed!40] (request) {Informal Request};
+	\node [block, below=0.8cm of request] (vision) {Vision};
+		\node [block, right=0.8cm of vision] (rom) {ROM Estimate};
+		\node [block, below=0.5cm of rom.south east] (retainer) {Retainer};
+		\node [block, right=0.8cm of rom] (scheduleEstimate) {Schedule Estimate};
+	\node [draw=tpcBlue, dashed, fit=(vision) (rom) (retainer) (scheduleEstimate)] (inception) {};
+
+	\node [block, below=2.8cm of vision] (srs) {SRS};
+		\node [block, right=0.8cm of srs] (budget) {Budget};
+		\node [block, right=0.8cm of budget] (schedule) {Schedule};
+		\node [block, below=0.5cm of budget.south east] (risks) {Risks};
+	\node [draw=tpcBlue, dashed, fit=(srs) (budget) (risks) (schedule)] (projectBody) {};
+
+	\node [choice, text width=2cm, below=2.5cm of srs] (lco) {LCO Milestone};
+
+	\node [block, below=1.5cm of lco] (deliverables) {Deliverables};
+	\node [block, below of=deliverables] (accepted) {Accepted Specification};
+
+	\path [line] (request) -- (vision);
+	\path [line] (vision) -- node [near end] {Requirements analysis and specification} (srs);
+	\path [line] (srs) -- (lco);
+	\path [line] (lco) -- node [right, text width=6cm] {Analysis, design, programming, testing and deployment} (deliverables);
+	\path [line] (deliverables) -- node [right] {User Acceptance Testing} (accepted);
+
+\end{tikzpicture}
+	</tikz></p>
+
+	<p>We work only with fixed-price projects that are estimated in two steps: 1) 
+	<a href="${url:process/cost/rom}">ROM Estimate</a>
+	defines the range of effort and time required, 2) 
+	<a href="${url:process/cost/budget}">Budget</a> gives an exact amount of staff-hours required to complete the project.
+	Such an approach optimizes costs of both parties.</p>
+
+	<p>Software is developed according to Functional and Non-functional <a href="${url:process/scope/requirement}">Requirements</a>
+	specified in <a href="${url:process/scope/specification}">Specification</a>, in form of a 
+	<a href="${url:process/scope/srs}">SRS</a> document. Requirements are maintained in a
+	<a href="${url:process/scope/matrix}">Traceability Matrix</a>
+	that gives you and the project team the ability to bi-directionaly trace changes. 
+	We tend to be flexible, however, project Specification can only be altered through 
+	<a href="${url:process/scope/}">Change Requests</a>.</p>
+
+	<p>Our process is risk-driven, meaning that <a href="${url:process/risk/risk}">Risks</a> and 
+	<a href="${url:process/risk/strategy}">Risk Strategies</a> affect the
+	project Schedule and Specification. 
+	During the entire project lifecycle, the project team reviews the
+	<a href="${url:process/risk/risklist}">Risk List</a> containing the most critical Risks, 
+	and conducts Risk mitigation plans.</p>
+
+	<p><a href="${url:process/quality}">Quality</a> of <a href="${url:process/warranty/deliverables}">Deliverables</a> is assured by 
+	<a href="${url:process/quality/unit}">unit-testing</a>,
+	<a href="${url:process/quality/peerreview}">peer reviews</a>,
+	<a href="${url:process/quality/manual}">manual testing</a>, and
+	<a href="${url:process/quality/system}">system testing</a>.</p>
+
+	<p>Project <a href="${url:process/communication}">communications</a> are iterative and customer-focused.  They 
+	include <a href="${url:process/communication/dailyreport}">Daily Reports</a>,
+	<a href="${url:process/communication/incremental}">incremental delivery</a> of software product, 
+	regular <a href="${url:process/communication/iam}">acceptance meetings</a> with project status
+	reporting and monitoring.</p>
+
+	<p>We proactively protect <a href="${url:process/ipr}">intellectual property rights</a> of software by means of 
+	<a href="${url:process/ipr/nda}">Non-Disclosure Agreements</a> and 
+	<a href="${url:process/ipr/security}">information security</a> internal policies and rules.</p>
+
+	<p>When a project is closed, we continue to provide warranty <a href="${url:process/warranty/defectremoval}">defect removal</a> services for 
+	<a href="${url:process/warranty/deliverables}">Deliverables</a>.</p>
+
+</text>
+
+<concepts>
+	<c1 name="process/time/schedule">Schedule is the main project planning document</c1>
+	<c2 name="process/cost/budget">Budget is a final and exact estimation of project size and cost</c2>
+	<c3 name="process/scope/specification">All user and system Requirements are defined in Specification</c3>
+	<c4 name="process/quality">Quality is planned, assured and controlled during the whole lifecycle</c4>
+</concepts>
+
+</article>
+
+

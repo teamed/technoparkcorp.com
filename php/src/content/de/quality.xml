@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<!DOCTYPE tpc [
+<!ENTITY nbsp "&#160;">
+<!ENTITY uml "&#168;">
+<!ENTITY Auml "&#196;">
+<!ENTITY Euml "&#203;">
+<!ENTITY Iuml "&#207;">
+<!ENTITY Ouml "&#214;">
+<!ENTITY Uuml "&#220;">
+<!ENTITY auml "&#228;">
+<!ENTITY euml "&#235;">
+<!ENTITY iuml "&#239;">
+<!ENTITY ouml "&#246;">
+<!ENTITY uuml "&#252;">
+<!ENTITY yuml "&#255;">
+<!ENTITY amp "&#38;#38;">
+<!ENTITY szlig  "&#223;">
+]>
+
+<article>
+
+<title>Qualit&auml;t (ISO 9001 certified)</title>
+<label></label>
+<intro></intro>
+<next></next>
+
+<description>
+	Individuelle Software-Entwicklung,
+	Quality of product, quality of service, quality of code
+</description>
+
+<keywords>
+	software-entwicklung,
+	software development,
+	offshore software development,
+	outsourcing,
+	agile softwareentwicklung,
+	softwareentwicklung,
+	java softwareentwicklung
+</keywords>
+
+<text>
+
+        <p>Wir planen, gew&auml;hrleisten und kontrollieren sorgf&auml;ltig die Qualit&auml;t unserer Prozesse und Produkte. 
+        Interne Standards, Vorlagen f&uuml;r die Dokumentation, Regeln der Programmierung, des Verfahrens und der Methodik - 
+        all dies sind Qualit&auml;tsstandards (quality baseline), die wir einhalten. 
+        Bei der Entwicklung der Standards haben wir CMMI-Dev 1.2 sowie Rational Unified Process (RUP) v7.0 als Grundlage genommen. </p>
+
+        <p>Qualit&auml;tssicherung (Quality Assurance)  - das ist ein ununterbrochener Prozess, der sich durch das 
+        ganze Projekt hindurch zieht.</p>
+
+        <p>Bei der Beendigung jeder Iteration durchl&auml;uft das Projekt eine Qulit&auml;tssicherungs&uuml;berpr&uuml;fung (QA review), 
+        um die &Uuml;bereinstimmung mit den Qualit&auml;tsanforderungen festzustellen. </p>
+
+        <p>Die Qualit&auml;t der Produkte wird sichergestellt durch Modultests (unit-testing), &Uuml;berpr&uuml;fungen durch 
+        Kollegen (peer reviews) und manuelle &Uuml;berpr&uuml;fungen (manual testing). Die Testanalyse und die manuelle Pr&uuml;fung 
+        nehmen 30% der Zeit jedes Projekts in Anspruch. </p>
+
+        <table>
+        <tr>
+        	<th>Work Product</th>
+        	<th>Industry Standard used</th>
+        </tr>
+        <tr>
+        	<td>Project Lifecycle</td>
+        	<td>CMMI-Dev 1.2,<br/>
+        		PMBOK,<br/>
+        		Rational Unified Process (RUP)</td>
+        </tr>
+        <tr>
+        	<td>Quality management system</td>
+        	<td>ISO 9001:2000</td>
+        </tr>
+        <tr>
+        	<td>Software Requirements Specification (SRS)</td>
+        	<td>IEEE 830-1998</td>
+        </tr>
+        <tr>
+        	<td>Software Architecture Document (SAD)</td>
+        	<td>IEEE 1471-2000,<br/>
+        		IEEE 1016-1998</td>
+        </tr>
+        <tr>
+        	<td>Test Plan</td>
+        	<td>IEEE 829-1998</td>
+        </tr>
+        <tr>
+        	<td>Information Security</td>
+        	<td>ISO/IEC 17799-2005</td>
+        </tr>
+        <tr>
+        	<td>Size/Schedule Estimations</td>
+        	<td>COCOMO-II (ISO/IEC 20926-2003)<br/>
+        	Wideband Delphi + PERT
+        	</td>
+        </tr>
+        <tr>
+        	<td>Software code</td>
+        	<td>Sun Code Conventions for Java</td>
+        </tr>
+        </table>
+
+        <p>Sie wissen immer, was Sie von uns erwarten k&ouml;nnen, weil unser Hauptbem&uuml;hen der Planung, 
+        der Risikoanalyse und dem Anforderungsmanagement gilt.</p>
+
+</text>
+
+</article>

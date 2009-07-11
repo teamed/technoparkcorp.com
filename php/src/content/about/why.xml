@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<!--
+ *
+ * Copyright (c) 2008, TechnoPark Corp., Florida, USA
+ * All rights reserved. THIS IS PRIVATE SOFTWARE.
+ *
+ * Redistribution and use in source and binary forms, with or without modification, are PROHIBITED
+ * without prior written permission from the author. This product may NOT be used anywhere
+ * and on any computer except the server platform of TechnoPark Corp. located at
+ * www.technoparkcorp.com. If you received this code occacionally and without intent to use
+ * it, please report this incident to the author by email: privacy@technoparkcorp.com or
+ * by mail: 568 Ninth Street South 202 Naples, Florida 34102, the United States of America,
+ * tel. +1 (239) 243 0206, fax +1 (239) 236-0738.
+ *
+ * @author Yegor Bugaenko <egor@technoparkcorp.com>
+ * @copyright Copyright (c) TechnoPark Corp., 2001-2009
+ * @version $Id$
+ *
+-->
+
+<article>
+
+<title>Why customers stay with us?</title>
+<label>Why TPC?</label>
+<next>about/facts</next>
+<intro>Why TPC? Consider the advantages in this one-page overview</intro>
+
+<description>
+	TechnoPark Corp. is a custom software development general contractor, with
+	innovative full-scale project management toolkit, 
+	automated quality of process control,
+	agile best practices, 
+	and a virtual team project model.
+</description>
+
+<keywords>
+	Project Management,
+	Custom Software Development,
+	Quality Control,
+	Software Metrics,
+	risk management,
+	custom software development,
+	offshore programming,
+	outsourcing programming
+</keywords>
+
+<text>
+
+	<p>Successful selection of a reliable contractor is not a success guarantee in
+	a particular project. Even when the contractor conducts proper
+	project management you want to be an informed stakeholder
+	and want to get a clear picture of project performance.
+	Nowadays it is difficult to get such cumulative and honest picture 
+	without personal intrusion into management process, compromising and 
+	interrupting the work. On the other hand, lack or delay in such report
+	leads to missed deadlines, cost overrun and business failure.</p>
+	
+	<p>In our projects we implement full-scale project management and make its
+	every last detail valuable and easy-to-understand
+	by means of instant automated metrics. You become a real stakeholder, 
+	working together with the remote team and getting that clear picture
+	by means of instant automated metrics. Our other advantages are:</p>
+
+	${php:Sales/Bidding/TheRelevantAdvantage:GetHTMLAdvantages()}
+
+	<p>Our quality is constantly being improved and we are proud of our
+	standards and rules.</p>
+
+</text>
+
+</article>
+
+

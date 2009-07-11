@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<!--
+ *
+ * Copyright (c) 2008, TechnoPark Corp., Florida, USA
+ * All rights reserved. THIS IS PRIVATE SOFTWARE.
+ *
+ * Redistribution and use in source and binary forms, with or without modification, are PROHIBITED
+ * without prior written permission from the author. This product may NOT be used anywhere
+ * and on any computer except the server platform of TechnoPark Corp. located at
+ * www.technoparkcorp.com. If you received this code occacionally and without intent to use
+ * it, please report this incident to the author by email: privacy@technoparkcorp.com or
+ * by mail: 568 Ninth Street South 202 Naples, Florida 34102, the United States of America,
+ * tel. +1 (239) 243 0206, fax +1 (239) 236-0738.
+ *
+ * @author Yegor Bugaenko <egor@technoparkcorp.com>
+ * @copyright Copyright (c) TechnoPark Corp., 2001-2009
+ * @version $Id$
+ *
+-->
+
+<article>
+
+<term>milestone</term>
+
+<title>Smallest unit of time in schedule</title>
+<label>Iteration</label>
+<intro>Read about Iteration Plans (WBS, Gantt Chart, Network Diagram, etc.)</intro>
+<next>process/time/schedule</next>
+
+<description>
+	Iteration is a smallest unit of time planning, and constists of 
+	activities. Iteration Plan includes objective of iteration, work
+	packages from WBS, network diagram and gantt chart.
+</description>
+
+<keywords>
+	iteration plan,
+	iteration,
+	WBS,
+	work package,
+	network diagram,
+	gantt chart,
+	bar chart, 
+	iteration objective
+</keywords>
+
+<text>
+
+	<p><a href="${url:process/time/schedule}">Schedule</a> consists of Iterations. 
+	Each Iteration is a simple and atomic piece of time spent on
+	project activities by the project team.</p>
+
+	<p>The goal of Iteration is to perform all of the project disciplines and 
+	deliver the new product increment - software with new functionality. 
+	Each Iteration conducts refinement on requirements, architecture analysis and design,
+	programming, testing, and deployment. 
+	Upon conclusion, the Iteration finishes with new workable software build.</p>
+
+	<p>Normal Iteration duration is 10 working days. 
+	Sometimes we do smaller and longer Iterations.
+	Iteration starts with an Iteration Plan, which is a fine-grained plan, and includes:</p>
+	
+	<ul>
+		<li>Objective of Iteration </li>
+		<li>Work packages from Work Breakdown Structure (WBS)</li>
+		<li>Roles and responsibilities</li>
+		<li>Activity list with cost and duration estimations</li>
+		<li>Network diagram</li> 
+		<li>Bar chart (Gantt chart)</li>
+	</ul>
+
+	<p>An Iteration Plan is created by the project manager and team. 
+	The Iteration Plan is then committed by the 
+	project team - such commitment is a must for all Iterations.</p>
+
+	<p>An Iteration Acceptance Meeting finishes the Iteration and is conducted online with your participation. 
+	The key purpose of this meeting is to present you the project status and risk monitoring results.
+	Earned Value technique is used to evaluate and indicate the project status. 
+	<a href="${url:process/time/spi}">SPI</a> and <a href="${url:process/cost}">CPI</a> numbers
+	will help all parties involved to understand the actual project status.</p>
+
+	<p>During Iteration execution, the project manager sends you <a href="${url:process/communication/dailyreport}">daily reports</a> 
+	with a list of activities completed during the day.</p>
+
+</text>
+
+<concepts>
+	<c2 name="process/time/schedule"> The Schedule is a coarse-grained plan of a project and a container of Iterations.</c2>
+	<c5 name="process/time/spi">The Schedule Performance Index (SPI) derived from an Earned Value Analysis helps to track project</c5>
+</concepts>
+
+</article>
+
+

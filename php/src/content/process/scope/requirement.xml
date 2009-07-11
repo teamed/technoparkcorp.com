@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<!--
+ *
+ * Copyright (c) 2008, TechnoPark Corp., Florida, USA
+ * All rights reserved. THIS IS PRIVATE SOFTWARE.
+ *
+ * Redistribution and use in source and binary forms, with or without modification, are PROHIBITED
+ * without prior written permission from the author. This product may NOT be used anywhere
+ * and on any computer except the server platform of TechnoPark Corp. located at
+ * www.technoparkcorp.com. If you received this code occacionally and without intent to use
+ * it, please report this incident to the author by email: privacy@technoparkcorp.com or
+ * by mail: 568 Ninth Street South 202 Naples, Florida 34102, the United States of America,
+ * tel. +1 (239) 243 0206, fax +1 (239) 236-0738.
+ *
+ * @author Yegor Bugaenko <egor@technoparkcorp.com>
+ * @copyright Copyright (c) TechnoPark Corp., 2001-2009
+ * @version $Id$
+ *
+-->
+
+<article>
+
+<term>specification</term>
+
+<title>Requirement is an atomic unit of product scope</title>
+<label>Requirement</label>
+<intro>Read about Functional and Non-functional Requirements</intro>
+<next>process/scope/matrix</next>
+
+<description>
+	Single requirement (functional and non-functional) is an atomic
+	element of product scope definition.
+</description>
+
+<keywords>
+	requirement,
+	non-functional requirement,
+	functional rquirement,
+	system requirement,
+	quality requirement,
+	scalability,
+	supportability,
+	reliability,
+	specification,
+	interface,
+	error message
+</keywords>
+
+<text>
+
+	<p>A Requirement is a type of contractual clause between the user and their system.  
+	A Requirement states exactly what each user can do with the system. 
+	It is important to note that a system will not perform any functions outside of those stated in the Requirements.</p>
+
+	<p>There are Functional and Non-functional Requirements. 
+	A Functional Requirement answers the question "what should the system do", 
+	and a Non-functional Requirement provides an answer to "how will the system do this"?</p>
+
+	<p>Functional Requirements respond when the user makes a 'Request', causing the system to create a 'Reply'.  
+	A 'Request' is a formal interaction between the user and system through one of its external interfaces. 
+	A 'Reply' is the term for how the system reacts after receiving a Request from the user. 
+	Functional Requirements are supported with Non-functional
+	Requirements, which are supplementary specifications in a <a href="${url:process/scope/srs}">SRS</a>.</p>
+
+	<p>Examples of Functional Requirements and their supplementary specifications include the following:</p>
+
+	<table>
+		<tr>
+			<th style="width: 25px;">#</th>
+			<th>Requirement</th>
+			<th style="width: 100px;">Supplementary</th>
+		</tr>
+		<tr><td>R1</td><td>User can submit a Request to change the password associated with 
+		their account, the system shall generate a Reply by changing the database records 
+		for the user.</td><td>
+		Web user interface layout, Errors list</td></tr>
+
+		<tr><td>R2</td><td>Affiliate can submit a Request for an updated report, the system shall
+		generate a Reply with a sorted snapshot of all data for the last week.</td><td>
+		XML API Description, Errors list</td></tr>
+		
+		<tr><td>R3</td><td>Administrator can submit a Request for a list of accounts sorted by 
+		the date of most recent login, the system shall generate a Reply and sorts the list accordingly.</td><td>
+		Web interface layout</td></tr>
+	</table>
+
+	<p>Non-functional requirements can define the following quality characteristics of the system:</p>
+
+	<ul>
+		<li>External Interfaces and Error Codes</li>
+		<li>Interface Mock-ups and Graphics</li>
+		<li>Availability, Reliability, Performance, etc.</li>
+	</ul>
+
+	<p>Examples of Non-functional Requirements (for the classifications above) include the following:</p>
+
+	<table>
+		<tr>
+			<th>#</th>
+			<th>Definition</th>
+			<th style="width: 100px;">Class</th>
+		</tr>
+		<tr><td>IF1</td><td>System provides XML-based API as defined in the Protocol Description (Protocol-v1.5.pdf) via HTTPS socket.</td><td>External Interface</td></tr>
+
+		<tr><td>SS1</td><td>System works without crashing during 100 hours in 5 consecutive tests with an average load of 1000 concurrent users.</td><td>Reliability</td></tr>
+
+		<tr><td>SS2</td><td>System responds to any type of report request within a 500ms timeframe on the server equipment defined in SRS, and with up to 500 concurrent users, over the course of 100 minutes.</td><td>Performance</td></tr>
+	</table>
+
+	<p>Requirements are listed in the SRS, which also includes the Glossary, Use Cases, Functional Requirements,
+	and Non-Functional Requirements.</p>
+
+</text>
+
+<concepts>
+	<c2 name="process/scope/feature">Feature is a requirement at a high level</c2>
+	<c3 name="process/scope/specification">Spefication is a collection of requirements (functional and non-functional)</c3>
+	<c4 name="process/scope/vision">Vision is a high-level requirements definition document</c4>
+</concepts>
+
+</article>
+
+
+

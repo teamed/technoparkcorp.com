@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!--
+ *
+ * Copyright (c) 2008, TechnoPark Corp., Florida, USA
+ * All rights reserved. THIS IS PRIVATE SOFTWARE.
+ *
+ * Redistribution and use in source and binary forms, with or without modification, are PROHIBITED
+ * without prior written permission from the author. This product may NOT be used anywhere
+ * and on any computer except the server platform of TechnoPark Corp. located at
+ * www.technoparkcorp.com. If you received this code occacionally and without intent to use
+ * it, please report this incident to the author by email: privacy@technoparkcorp.com or
+ * by mail: 568 Ninth Street South 202 Naples, Florida 34102, the United States of America,
+ * tel. +1 (239) 243 0206, fax +1 (239) 236-0738.
+ *
+ * @author Yegor Bugaenko <egor@technoparkcorp.com>
+ * @copyright Copyright (c) TechnoPark Corp., 2001-2009
+ * @version $Id$
+ *
+-->
+
+
+<article>
+
+<charset>Windows-1251</charset>
+
+<title>Концепция Virtual Team</title>
+<label></label>
+<intro></intro>
+<next></next>
+
+<description>
+</description>
+
+<keywords>
+	удаленная разработка,
+	управление проектами,
+	проджект менеджмент,
+	Java, PHP, C++, Flex, Flash,
+	программисты,
+	Украина, Беларусь
+</keywords>
+
+<text>
+
+	<p>Мы выполняем проекты "виртуальными командами". Смысл этой концепции в том, что под каждый проект
+	мы собираем уникальную команду именно из тех специалистов, которые нужны в данном проекте. Учитывая
+	их профиль, опыт, знания и стоимость.</p>
+
+	<p>Для каждого проекта мы стараемся подобрать самых лучших специалистов, которых можем найти. Мы оплачиваем
+	Вашу работу по <a href="${url:ru/payments}">назначенной Вами цене</a>.</p>
+
+	<p>Мы хотим работать с Вами, если:</p>
+
+	<ul>
+		<li>Вы глубокий специалист в узкой области ("хороший программист на Java" - это не к нам, "SCJP J2EE+Oracle" - это к нам);</li>
+		<li>Ваша квалификация подтверждена сертификатами и Вы собираетесь увеличивать их число;</li>
+		<li>Вы более-менее свободно читаете и пишете по английски;</li>
+		<li>У вас есть не менее 10 часов в неделю свободного времени, которое Вы готовы посвящать работе в наших проектах.</li>
+	</ul>
+
+	<p>Прочтите кратко <a href="${url:ru/steps}">об основных этапах</a>, которые Вы пройдете,
+	работая в нашей виртуальной команде. Если на сайте сейчас нет Вашей вакансии - пишите
+	напрямую на <a href="${mailto:hr}">HR директора</a>.</p>
+
+</text>
+
+</article>
+
+

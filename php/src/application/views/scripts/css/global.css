@@ -1,0 +1,155 @@
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+body {
+    font: 11px Verdana;
+    line-height: 0;
+    color: <?=Model_Colors::BLACK?>;
+    background-color: <?=Model_Colors::GRAY?>;
+    margin: 5px;
+}
+
+/* global wrapper of content */
+div.wrapper {
+    clear: both;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    width: 814px;
+    padding: 0px;
+    height: 118px;
+}
+
+/* top line with links */
+div.tl {
+    margin-top: 68px;
+    <?=$this->squeezePNG('topline.png')?>
+}
+
+    div.tl a {
+        position: relative;
+        display: inline-block;
+        top: 33px;
+        margin-right: 37px; 
+    }
+
+    div.tl a.t5 {
+        <?=$this->squeezePNG('contacts.png')?>
+    }
+
+    div.tl a.t4 {
+        <?=$this->squeezePNG('innovations.png')?>
+    }
+        
+    div.tl a.t3 {
+        <?=$this->squeezePNG('stories.png')?>
+    }
+        
+    div.tl a.t2 {
+        <?=$this->squeezePNG('process.png')?>
+    }
+
+    div.tl a.t1 {
+        margin-left: 37px; 
+        <?=$this->squeezePNG('about.png')?>
+    }
+
+    div.tl div.up {
+        position: absolute; 
+        right: 38px; 
+        top: 108px; 
+        color: <?=Model_Colors::LIGHT_GRAY?>;
+    }
+
+/* bottom line with links */
+div.bl {
+    margin-left: 7px;
+    <?=$this->squeezePNG('bottomline.png')?>
+    position: relative;
+}
+
+    div.bl a {
+        position: relative;
+        display: inline;
+        top: 20px;
+        margin-right: 37px; 
+    }
+
+    div.bl a.t1 {
+        margin-left: 31px; 
+        <?=$this->squeezePNG('site-map.png')?>
+    }
+
+    div.bl a.t2 {
+        <?=$this->squeezePNG('legal-notes.png')?>
+    }
+
+    div.bl a.t3 {
+        <?=$this->squeezePNG('privacy-policy.png')?>
+    }
+
+    div.bl span.rev {
+        color: white; 
+        background-color: inherit; 
+        position: absolute; 
+        right: 30px; 
+        top: 26px;
+    }
+
+/* login line */
+div.ll {
+    position: relative;
+    font-size: 90%; 
+    line-height: 48px;
+    <?=$this->squeezePNG('loginline.png')?>
+    color: white;
+    margin-left: -7px;
+}
+
+    div.ll a {
+        text-decoration: none;
+        color: <?=Model_Colors::BLACK?>;
+    }
+
+/* top left banner with a title of our company */
+div.banner {
+    position: absolute; 
+    left:38px; 
+    top: 43px; 
+    <?=$this->squeezePNG('left.png')?>
+}
+
+/* top right logo */
+a.logo {
+    position: absolute; 
+    right: 38px; 
+    <?=$this->squeezePNG('logo.png')?>
+}
+
+/* bottom sub text */
+div.sub {
+    line-height: 1.5em; 
+    font-size: 90%; 
+    margin-left: 39px; 
+    margin-bottom: 30px; 
+    position: relative;
+}
+
+    div.sub a.iso {
+        <?=$this->squeezePNG('iso9001.png')?> 
+        position: absolute; 
+        top: 5px; 
+        right: 36px;
+    }
+
+/* holder of content, between top and bottom */
+/* static pages */
+div.contents {
+    line-height: 1.2em;
+    background-color: white;
+    margin: 0 7px 0 7px;
+}
+

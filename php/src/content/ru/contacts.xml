@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!--
+ *
+ * Copyright (c) 2008, TechnoPark Corp., Florida, USA
+ * All rights reserved. THIS IS PRIVATE SOFTWARE.
+ *
+ * Redistribution and use in source and binary forms, with or without modification, are PROHIBITED
+ * without prior written permission from the author. This product may NOT be used anywhere
+ * and on any computer except the server platform of TechnoPark Corp. located at
+ * www.technoparkcorp.com. If you received this code occacionally and without intent to use
+ * it, please report this incident to the author by email: privacy@technoparkcorp.com or
+ * by mail: 568 Ninth Street South 202 Naples, Florida 34102, the United States of America,
+ * tel. +1 (239) 243 0206, fax +1 (239) 236-0738.
+ *
+ * @author Yegor Bugaenko <egor@technoparkcorp.com>
+ * @copyright Copyright (c) TechnoPark Corp., 2001-2009
+ * @version $Id$
+ *
+-->
+
+
+<article>
+
+<charset>Windows-1251</charset>
+
+<title>Наши контакты для новых клиентов</title>
+<label></label>
+<intro></intro>
+<next></next>
+
+<description>
+	наши контакты для новых клиентов на разработку программного обеспечения (ПО) на заказ
+</description>
+
+<keywords>
+	удаленная разработка,
+	управление проектами,
+	проджект менеджмент,
+	Java, PHP, C++, Flex, Flash,
+	программисты,
+	Украина, Беларусь
+</keywords>
+
+<text>
+
+	<p>Мы говорим на русском языке. Вам стоит обратиться к нам и стать нашим клиентом, если:</p>
+
+	<ul>
+		<li><a href="${url:process/cost/budget}">Бюджет</a> Вашего проекта превышает $20,000;</li>
+
+		<li>Вам требуется высокое <a href="${url:process/quality}">качество</a> 
+		конечного продукта и получить Вы его хотите <a href="${url:process/time}">в срок</a>;</li>
+
+		<li>Вам нужна разработка продукта целиком и Вы готовы отдать 
+		эту работу целиком одной компании (мы выполняем только
+		проекты целиком и не даем людей "в аренду");</li>
+
+		<li>Вы готовы принимать <a href="${url:process/communication}">участие</a> 
+		в проекте и быть активным членом команды.</li>
+	</ul>
+
+	<p>Весь остальной сайт написан на английском языке. Если это не проблема для Вас, то Вы
+	можете узнать большее <a href="${url:about}">о нас</a>, о нашем <a href="${url:process}">процессе разработки</a>, 
+	о наших <a href="${url:stories}">успешных проектах</a> и 
+	<a href="${url:innovations}">инновациях</a>.</p>
+	
+	<p>Для ускорения
+	процесса знакомства с нами - напишите нам письмо или в правом верхнем углу воспользуйтесь
+	формой мгновенного контакта с нами. И спасибо, что посетили наш сайт. Мы старались, когда создавали его.</p>
+
+</text>
+
+</article>
+
+

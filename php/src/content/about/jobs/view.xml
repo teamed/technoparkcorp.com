@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!--
+ *
+ * Copyright (c) 2008, TechnoPark Corp., Florida, USA
+ * All rights reserved. THIS IS PRIVATE SOFTWARE.
+ *
+ * Redistribution and use in source and binary forms, with or without modification, are PROHIBITED
+ * without prior written permission from the author. This product may NOT be used anywhere
+ * and on any computer except the server platform of TechnoPark Corp. located at
+ * www.technoparkcorp.com. If you received this code occacionally and without intent to use
+ * it, please report this incident to the author by email: privacy@technoparkcorp.com or
+ * by mail: 568 Ninth Street South 202 Naples, Florida 34102, the United States of America,
+ * tel. +1 (239) 243 0206, fax +1 (239) 236-0738.
+ *
+ * @author Yegor Bugaenko <egor@technoparkcorp.com>
+ * @copyright Copyright (c) TechnoPark Corp., 2001-2009
+ * @version $Id$
+-->
+
+<article>
+
+<invisible/>
+
+<title>${php:HR/Staffing/Requisitions:PreviewRequisitionTitleHTML()}</title>
+<label>Job Position</label>
+<intro>Review our latest job positions</intro>
+<next>about/history</next>
+
+<text>
+
+	<p>TechnoPark Corp. is constantly looking for talented individuals and software teams that
+	are willing to take participation in our software development projects on a full-time or
+	part-time basis.</p>
+
+	${php:HR/Staffing/Requisitions:PreviewRequisitionHTML()}
+
+	<p>If you fill yourself capable with the listed requirements, please
+	<a href="${mailto:hr}">email us</a>. 
+	Our HR Director will get back to you with an offer.</p>
+
+</text>
+
+</article>
+
+

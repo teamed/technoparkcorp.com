@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!--
+ *
+ * Copyright (c) 2008, TechnoPark Corp., Florida, USA
+ * All rights reserved. THIS IS PRIVATE SOFTWARE.
+ *
+ * Redistribution and use in source and binary forms, with or without modification, are PROHIBITED
+ * without prior written permission from the author. This product may NOT be used anywhere
+ * and on any computer except the server platform of TechnoPark Corp. located at
+ * www.technoparkcorp.com. If you received this code occacionally and without intent to use
+ * it, please report this incident to the author by email: privacy@technoparkcorp.com or
+ * by mail: 568 Ninth Street South 202 Naples, Florida 34102, the United States of America,
+ * tel. +1 (239) 243 0206, fax +1 (239) 236-0738.
+ *
+ * @author Yegor Bugaenko <egor@technoparkcorp.com>
+ * @copyright Copyright (c) TechnoPark Corp., 2001-2009
+ * @version $Id$
+ *
+-->
+
+<article>
+
+<term>intellectualproperty</term>
+
+<title>Non-disclosure of information</title>
+<label>Non-disclosure</label>
+<intro>Read how our Non-Disclosure Agreement (NDA) protects your private information</intro>
+<next>process/ipr/law</next>
+
+<description>
+</description>
+
+<keywords>
+</keywords>
+
+<text>
+
+	<p>During the project execution our project manager, project team, executive management and
+	partners may need to have an access to the project information or information provided
+	by you for the project purposes.</p>
+
+	<p>Such information is confidential; that is stated in our software development
+	contract which is signed between us.</p>
+
+	<p>Our software development contract and Confidential Information means all proprietary information disclosed 
+	or made available by one part to the other in the course of performing hereunder, 
+	whether in written, email, instant message, orally by phone or personally, magnetic, photographic, 
+	optical or other form, and whether now existing or hereafter created, including, without 
+	limitation, all trade secrets, names and contacts of employees and partners, 
+	technology, data, computer programs, processes, methods, operational procedures, plans, 
+	strategies or results, and other information of a similar nature that is not generally disclosed by 
+	such Party to the public.</p>
+	
+	<p>Confidential Information shall not include any information which:</p>
+	
+	<ul>
+	<li>is proven by written evidence to have been in a receiving party's possession prior to disclosure by the other 
+	Party;</li>
+	<li>is received from a third party having the right to disclose such information; </li>
+	<li>is or hereafter becomes public knowledge through no act or fault of a receiving party; or </li>
+	<li>is proven by written evidence to have been independently developed by a receiving party without access to 
+	the Confidential Information of the other party.</li>
+	</ul>
+
+	<p>Non-Disclosure Agreement (NDA) is signed between our company and you in order 
+	to protect both parties against losses of such confidential information.</p>
+
+</text>
+
+<concepts>
+	<c1 name="process/ipr/nda">NDA protects us both against information disclosure</c1>
+	<c2 name="process/ipr/law">US Copyright Law guarantees your intellectual property rights</c2>
+	<c3 name="process/ipr/security">Physical and documentary means exist to protect data on servers and in offices</c3>
+</concepts>
+
+</article>
+
+

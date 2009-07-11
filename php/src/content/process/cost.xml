@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<!--
+ *
+ * Copyright (c) 2008, TechnoPark Corp., Florida, USA
+ * All rights reserved. THIS IS PRIVATE SOFTWARE.
+ *
+ * Redistribution and use in source and binary forms, with or without modification, are PROHIBITED
+ * without prior written permission from the author. This product may NOT be used anywhere
+ * and on any computer except the server platform of TechnoPark Corp. located at
+ * www.technoparkcorp.com. If you received this code occacionally and without intent to use
+ * it, please report this incident to the author by email: privacy@technoparkcorp.com or
+ * by mail: 568 Ninth Street South 202 Naples, Florida 34102, the United States of America,
+ * tel. +1 (239) 243 0206, fax +1 (239) 236-0738.
+ *
+ * @author Yegor Bugaenko <egor@technoparkcorp.com>
+ * @copyright Copyright (c) TechnoPark Corp., 2001-2009
+ * @version $Id$
+ *
+-->
+
+<article>
+
+<term>rom</term>
+
+<title>Two-step quotation process</title>
+<label>Cost Management</label>
+<intro>Read how projects are quoted, estimated, and paid</intro>
+<next>about/why</next>
+
+<description>
+	We estimate cost of a project in two steps, minimizing the
+	risk of over and under estimation. ROM estimate preceeds Budget.
+</description>
+
+<keywords>
+	cost estimate,
+	project cost,
+	project cost management plan,
+	ROM Estimate,
+	budget,
+	quoation
+</keywords>
+
+<text>
+
+	<p>We do projects in fixed-price contracts, meaning that the price is defined 
+	according to <a href="${url:process/scope}">scope</a> definition
+	and is not changed unless there are changes to <a href="${url:process/scope/specification}">Specification</a>. 
+	We take all risks of cost overrun so that you
+	pay only the price defined in project <a href="${url:process/cost/budget}">Budget</a>.</p>
+
+	<p>Our two-step quotation process has a number of important advantages:</p>
+
+	<ul>
+		<li>Final budget is optimal, without extra costs and reserves</li>
+		<li>Guarantees "win-win" outcome for you and us</li>
+		<li>Avoids cost overrun</li>
+		<li>Guarantees project success</li>
+	</ul>
+	
+	<p>We calculate and communicate all project costs in staff-hours. Actual monetary size of
+	project is a multiple of staff-hours and <a href="${url:process/cost/prices}">price per hour</a>.</p>
+
+	<p>Cost is estimated in two steps:</p>
+
+	<ol>
+		<li><a href="${url:process/cost/rom}">ROM Estimate</a> and Retainer</li>
+		<li>Budget</li>
+	</ol>
+
+	<p>The ROM Estimate is provided to you in response to your informal request 
+	and is based on the <a href="${url:process/scope/vision}">Vision</a> document.
+	ROM Estimate gives a range (low and high boundary) of the expected Budget. 
+	You approve the range
+	and the project team performs <a href="${url:process/scope/requirement}">requirements</a> gathering 
+	and analysis during the <a href="${url:process/scope/inception}">Inception Phase</a>.  
+	These steps result in the creation of a
+	<a href="${url:process/scope/srs}">SRS</a> document.</p>
+
+	<p>When the SRS is ready and you approved it, the project team estimates project Budget
+	as an exact amount of staff-hours. The Budget can only be within the range provided in ROM Estimate. 
+	Upon your approval of the Budget, the project continues.</p>
+
+	<p>If you don't approve the Budget for any reason, you pay only the Retainer, which
+	covers the efforts for Requirements gathering and Specification development.</p>
+
+	<p><a href="${url:process/cost/model}">Payments</a> are made according to Milestones defined in the
+	<a href="${url:process/time/schedule}">Schedule</a>, which is approved together with the Budget.</p>
+
+	<p>Budget covers all costs, including programming, requirements analysis, management,
+	project management, architecture and design, testing and quality assurance.</p>
+		
+</text>
+
+<concepts>
+	<c3 name="process/cost/rom">ROM Estimate is based on preliminary specification you provided</c3>
+	<c4 name="process/cost/budget">Budget is a final estimation of project size and price, no changes can be made later without your approval</c4>
+	<c5 name="process/scope/specification">Specification is the foundation of final Budget estimation</c5>
+	<c7 name="process/time/schedule">You approve Schedule together with Budget and Specification</c7>
+</concepts>
+
+</article>
+
+
+		  

@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<!--
+ *
+ * Copyright (c) 2008, TechnoPark Corp., Florida, USA
+ * All rights reserved. THIS IS PRIVATE SOFTWARE.
+ *
+ * Redistribution and use in source and binary forms, with or without modification, are PROHIBITED
+ * without prior written permission from the author. This product may NOT be used anywhere
+ * and on any computer except the server platform of TechnoPark Corp. located at
+ * www.technoparkcorp.com. If you received this code occacionally and without intent to use
+ * it, please report this incident to the author by email: privacy@technoparkcorp.com or
+ * by mail: 568 Ninth Street South 202 Naples, Florida 34102, the United States of America,
+ * tel. +1 (239) 243 0206, fax +1 (239) 236-0738.
+ *
+ * @author Yegor Bugaenko <egor@technoparkcorp.com>
+ * @copyright Copyright (c) TechnoPark Corp., 2001-2009
+ * @version $Id$
+ *
+-->
+
+<article>
+
+<title>Work Products, Artifacts, Documents, Code, etc.</title>
+<label>Deliverables</label>
+<intro>Read about project Deliverables provided during the project lifecycle</intro>
+<next>process/scope/srs</next>
+
+<description>
+</description>
+
+<keywords>
+</keywords>
+
+<term>deliverables</term>
+
+<text>
+
+	<p>Deliverables are what you pay for and what the project team produces. There
+	is nothing more important in a project than the Deliverables.</p>
+
+	<p>You receive the following:</p>
+
+	<ul>
+		<li>Commented Source Code with unit-tests;</li>
+		<li>Compiled products (executables);</li>
+		<li>Specifications in original format (<a href="${url:process/scope/srs}">SRS</a>, <a href="${url:process/scope/vision}">Vision</a>);</li>
+		<li>User manual</li>
+	</ul>
+
+	<p>Project documentation includes, but is not delivered under contract:</p>
+
+	<ul>
+		<li><a href="${url:process/time/schedule}">Schedule</a></li>
+		<li>Software Architecture Document (SAD)</li>
+		<li>Test Plan (w/ Test Cases)</li>
+		<li>Software Development Plan (SDP)</li>
+		<li><a href="${url:process/time/iteration}">Iteration</a> Plans</li>
+		<li>Meeting Protocols</li>
+		<li><a href="${url:process/scope/matrix}">Traceability Matrix</a></li>
+		<li><a href="${url:process/risk/risklist}">Risk List</a></li>
+	</ul>
+
+	<p>You have an access to all project documentation, but we are 
+	not contractually obliged to deliver it.</p>
+
+
+</text>
+
+<concepts>
+	<c1 name="process/scope/srs">SRS is the core project specification document that explains the functionality</c1>
+	<c3 name="process/time/iteration">Iterations constitute project timeline in an incremental manner</c3>
+	<c5 name="process/time/schedule">Schedule is a high-level project plan that leads to project completion</c5>
+</concepts>
+
+</article>
+
+

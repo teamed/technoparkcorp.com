@@ -1,0 +1,76 @@
+<?xml version="1.0" ?>
+<!--
+ *
+ * Copyright (c) 2008, TechnoPark Corp., Florida, USA
+ * All rights reserved. THIS IS PRIVATE SOFTWARE.
+ *
+ * Redistribution and use in source and binary forms, with or without modification, are PROHIBITED
+ * without prior written permission from the author. This product may NOT be used anywhere
+ * and on any computer except the server platform of TechnoPark Corp. located at
+ * www.technoparkcorp.com. If you received this code occacionally and without intent to use
+ * it, please report this incident to the author by email: privacy@technoparkcorp.com or
+ * by mail: 568 Ninth Street South 202 Naples, Florida 34102, the United States of America,
+ * tel. +1 (239) 243 0206, fax +1 (239) 236-0738.
+ *
+ * @author Yegor Bugaenko <egor@technoparkcorp.com>
+ * @copyright Copyright (c) TechnoPark Corp., 2001-2009
+ * @version $Id$
+ *
+-->
+
+<article>
+
+<date>9/12/08</date>
+
+<title>
+	TechnoPark Corp. Stays on Track with Continuous Integration
+</title>     
+
+<keywords>
+	continuous integration, automated building, integration,
+	continuous integration software
+</keywords>
+
+<description>
+	TechnoPark Corp. uses Apache Continuum for continuous integration of their projects
+</description>
+
+<text>
+
+	<p>Naples, FL, September 10, 2008 - TechnoPark Corp. uses one of the 
+	best available Open-Source solutions for their continuous integration needs.  Apache Continuum 
+	version 1.2 allows TechnoPark Corp. to keep an eye on the details of 
+	intricate coding within the projects TechnoPark Corp. manages.</p>
+
+	<p>Continuous integration helps TechnoPark Corp. to be more efficient 
+	with their time when it comes to coding.  When developers have an early 
+	warning system to detect faulty code, they spend less time trouble shooting 
+	and more time creating useful solutions for their clients.</p>
+
+	<p>Apache Continuum helps developers and teams to improve and maintain quality 
+	when they build their project.  Apache Continuum notifies developers when they 
+	have created incompatible code or if something they built is broken.</p>
+
+	<p>Continuous integration is an automated system that monitors code for 
+	errors.  One of the advantages of an automated system is that it requires 
+	its user to be organized.  The system uses a developer's records and 
+	processes to monitor the creation of code.  If a developer inputs the 
+	wrong information, the automated system won't work.</p>
+
+	<p>This is useful because when a developer is creating large quantities of 
+	code, they could be unaware of a small error that will disable the 
+	whole project.  Without an automated system, a project could be near 
+	completion before bugs were discovered.  With continuous integration, small 
+	errors are caught early at a point when they are easier to correct.  This 
+	also saves the time of having to hunt for tiny problems in vast amounts of code.</p>
+
+	<p>Authors Martin Fowler and Kent Beck first wrote about continuous 
+	integration for the programming community in the late 1990's.  One 
+	continuous integration provider, CruiseControl, now employs Martin Fowler 
+	through its parent company, Thoughtworks.</p>
+
+	<p>Appache Continuum can be found at 
+	<a href="http://continuum.apache.org/">http://continuum.apache.org/</a></p>
+
+</text>
+</article>

@@ -1,0 +1,104 @@
+<?xml version="1.0" ?> 
+<!-- 
+	Version tracking section:
+
+	10/03/07 Amy M. Wolfe-text edit
+
+-->
+<article>
+
+<date>08/19/06</date>
+
+<title>CISP/SDP Cerfitication in September</title>
+
+<description>Payment applications market gets new security standards compliant 
+product. Recently released TechnoPark Corp.'s mobile payment software will 
+pass Visa/MasterCard CISP/SDP Certification in September 2006.</description>
+
+<text class="html">
+
+<ul><small>
+August 20, 2006 <ahref 
+name="http://prweb.com/releases/pci_dss/TechnoPark/prweb426859.htm">
+PRWeb.com Press Release Newswire</ahref> - New PCI DSS Compliant Payment 
+Software Approaches the Market<br />
+August 20, 2006 <ahref 
+name="http://news.yahoo.com/s/prweb/20060820/bs_prweb/prweb426859">Yahoo.com 
+News</ahref> - New PCI DSS Compliant Payment Software Approaches the 
+Market<br />
+August 22, 2006 <ahref 
+name="http://www.indiaprwire.com/news/high-tech-security/20060822515-payment-
+software.htm">IndiaPRWire.com</ahref> - A copy of our press release<br />
+August 24, 2006 <ahref name="http://allpaynews.com/node/1471">AllPayNews.com
+</ahref> - Payment applications market gets new security standards compliant 
+product
+</small></ul>
+
+<p>It may seem that too much is said about online payment security; still the 
+problem is a crucial one and is being globally ventilated. How to be sure my 
+payment is secure? The question is burning for all the links of the chain: 
+payment service providers, applications developers, merchants, and cardholders. 
+</p>
+
+<p>Today, there is a unified approach to security standards. Payment Card 
+Industry Data Security Standard (PCI DSS) is a list of unified standards and 
+requirements for the industry. However, only 20% of the major industry-related 
+companies are PCI DSS compliant. This is stimulated by mid-tier merchants' and 
+service providers' ignorance of the certificate though they are the most 
+vulnerable objects of attacks. According to WordPress' report, many payment 
+industry players feel the standard is not clear or is not being applied 
+prudently to encourage complete adoption.</p>
+
+<p>Anyhow, PCI DSS must be the most comprehensive solution - and positively 
+the best at this stage.  Visa together with world's major payment systems 
+strongly encourages payment service providers, merchants and payment 
+applications developers to pass the PCI DSS compliance certification in order 
+to be able to guarantee high-level security to both their customers and 
+partners.</p>
+
+<p>Understanding the importance of security matter, TechnoPark Corp., an 
+outsourcing software development company, has released mobile payment 
+processing system which meets all the standards provided by PCI DSS. The 
+system enables users to pay for goods and services using only their mobile 
+phones, and provides a number of additional functions like statistics, 
+notifications, etc. Laboratory testing assured the product's compliance, so 
+it is about to be sent to Visa for certification.</p>
+
+<p>PCI Data security standard was developed by Visa and MasterCard and accepted 
+by other major players. It provides 12 basic standards aiming to stamp out 
+debit and credit card fraud, by introducing strict security standards for 
+handling and keeping cardholder data. The six general principles of PCI DSS 
+include the following: build and maintain a secure network, protect cardholder 
+data, maintain a vulnerability management program, implement strong access 
+control measures, regularly monitor and test networks, maintain an information 
+security policy. </p>
+
+<p>In the article devoted to data security standards Joan Herbig, President and 
+CEO of Cambia Security, a security policy enforcement provider, writes for CSO 
+Magazine: "Embracing the PCI standard may sound like a big task, and you may 
+wonder if it's even necessary for your business. However, before you fill up 
+your dance card with other priorities, consider this: As of now, there is no 
+known case of a PCI-compliant network being compromised."</p>
+
+<p>For software developers Visa/MasterCard provides the PCI DSS Compliance 
+Payment Application Certificate. Only 50 payment applications have been 
+validated by today. On the intense and constantly growing market it sounds 
+shocking. 50 is a tiny piece of all available products. </p>
+
+<p>Moreover, the up-to-date list includes only 1 payment application for 
+cellular phones - the most fast-growing industry's tenderfoot (A survey from 
+Visa USA, reported in Bank Systems &amp; Technology, shows that 61% of the 
+respondents ages 25 to 34 were interested in making purchases via their 
+cellphones). Still the adoption of PCI Data security standard may dramatically 
+intensify anti-fraud efforts. </p>
+
+<p>Thus, the major payment systems recommend choosing PCI DSS compliant 
+services and products. It must be a cue for US and European companies as well 
+as worldwide outsourcing software development firms striving to offer 
+high-quality products. In light of this, the introduction of TechnoPark Corp.'s 
+MPPS software and its compliance validation, scheduled for September 2006, is a 
+piece of important shift towards the consolidation of high standards of payment 
+card industry. </p>
+
+</text>
+</article>

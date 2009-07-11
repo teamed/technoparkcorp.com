@@ -1,0 +1,133 @@
+<?xml version="1.0" ?>
+<!--
+ *
+ * Copyright (c) 2008, TechnoPark Corp., Florida, USA
+ * All rights reserved. THIS IS PRIVATE SOFTWARE.
+ *
+ * Redistribution and use in source and binary forms, with or without modification, are PROHIBITED
+ * without prior written permission from the author. This product may NOT be used anywhere
+ * and on any computer except the server platform of TechnoPark Corp. located at
+ * www.technoparkcorp.com. If you received this code occacionally and without intent to use
+ * it, please report this incident to the author by email: privacy@technoparkcorp.com or
+ * by mail: 568 Ninth Street South 202 Naples, Florida 34102, the United States of America,
+ * tel. +1 (239) 243 0206, fax +1 (239) 236-0738.
+ *
+ * @author Yegor Bugaenko <egor@technoparkcorp.com>
+ * @copyright Copyright (c) TechnoPark Corp., 2001-2009
+ * @version $Id$
+ *
+-->
+
+<article>
+
+<date>6/18/08</date>
+
+<title>
+TechnoPark Corp. Displays the Better Business Bureau Online Seal
+</title>     
+
+<keywords>
+BBB Online Seal, privacy, software development, reliable partner in software outsourcing, certification
+</keywords>
+
+<description>
+TechnoPark Corp. announces their BBB Online Seal and discusses the company's continuing 
+strategy of using third party certification to underscore their commitment to 
+privacy standards.
+</description>
+
+<text>
+
+	<img name="/about/bbbseal1.gif" 
+		ahref="http://www.bbbonline.org/cks.asp?id=10805219819" 
+		style="float: left; padding-right: 20px;" >Click to verify BBB accreditation and to see a BBB report.</img>
+
+	<p>In an age where internet use can reveal information like IP addresses, 
+	specific preferences on a website, sites last visited, and home addresses, 
+	customers want reassurance that their information will not be used for spam 
+	or for criminal purposes.  If personal computer use causes concern, conducting 
+	business online requires even more trust.  When a client is sharing trade 
+	secrets, source code, and innovative ideas, they need to be absolutely sure their 
+	vendor is reliable.</p>
+
+	<img name="/about/bbb-certificate.jpg" 
+		style="border: solid 1px #7d8f9b; float: left; padding: 0px; 
+		margin-right: 15px; margin-top: 15px; margin-bottom: 10px">BBB Certificate</img>
+
+	<p>Continuing their effort to provide customer reassurance and quality procedures, 
+	TechnoPark Corp. (TPC) has announced that they are the proud holder of a 
+	<a href="${url:about/privacypolicy}">BBB Online Seal</a>.  The five-month long process 
+	to qualify for the seal involved three staff members from the US and the 
+	Ukraine.  In the end, TechnoPark Corp. developed a Privacy Policy that is 
+	now displayed on their website.</p>
+
+	<p>The BBB Online Seal confirms a company is an accredited business in the 
+	BBB where they are based.  The seal confirms a company has met truth in 
+	advertising guidelines, discloses information about the business and its 
+	policies, follows basic privacy and security practices, and responds appropriately 
+	to problems that arise.  The BBB was founded in 1912 and there are now 128 BBB 
+	offices in the U.S., Canada and Puerto Rico.  Customers rely on the BBB's 
+	independent judgment when they seek both vendors and business associates.</p>
+
+	<p>TechnoPark Corp. sought the BBB Online Seal because they are a custom software 
+	development company with employees and clients that live all over the world.  They 
+	specialize in project managing software development services.  During a project 
+	they do time scheduling, risk-management, quality assurance and control, staffing, 
+	scope management and communications. Their product guarantees a project will be 
+	done on deadline and under budget.</p>
+
+	<p>When working on a project, TechnoPark Corp. uses a virtual team of experts, 
+	including software architects, programmers, test analysts, testers, graphic 
+	artists, technical writers, deployment managers, system administrators, and 
+	quality and technical reviewers. Responsibilities of each team member are 
+	very specific and relevant to his or her experience, certifications and 
+	skills.  The very nature of using virtual teams requires precise security 
+	procedures.  TechnoPark Corp. uses the best people from around the world, but 
+	in order to make sure sensitive information stays safe, TPC has streamlined their 
+	security measures and has invested in independent monitors to guarantee their 
+	product.</p>
+
+	<p>Just like TechnoPark Corp., world-renowned companies like The Boston Herald, 
+	PNC Bank, and Dell, Inc all take time to go through certification with the 
+	Better Business Bureau.  In general, being associated with the Better Business 
+	Bureau means a company is willing to meet at least thirteen minimum requirements, 
+	including fulfilling licensing requirements, submitting background information, 
+	agreeing to use BBB arbitration, and maintaining clear customer service guidelines.</p>
+
+	<p>The BBB operates to create a community of trustworthy businesses, they set 
+	standards for marketplace trust and they denounce substandard marketplace behavior.</p>
+
+	<p>TechnoPark Corp. hasn't stopped their third party certifications with the BBB 
+	Online Seal.  They plan to obtain ISO 27001 certification by the end of 2008.  
+	This certification is intended to provide the foundation for a third party audit. 
+	The most international organization in the world knows the importance of being ISO 
+	27001 certified.  In 2006, the United Nations Secretariat achieved certification.</p>
+
+	<p>To ensure ISO 27001 standards, an independent certification organization 
+	evaluates a prospective company.  A six step process is common to most certifying 
+	bodies.  The certification body asks for the company to complete a questionnaire, 
+	an application for assessment is filled out, a pre-assessment visit is made 
+	to the premises, documents are reviewed in an audit, then compliance is audited, 
+	and finally there are ongoing audits to ensure that standards stay current.</p>
+
+	<p>Arthur Petrenko, TechnoPark Corp.'s Marketing Director, said, "We're proud 
+	of the BBB Online Seal.  It was a five-month long process, and it 
+	represents our quest to operate ethically and provide a safe environment for 
+	our customers.  We're also looking forward to ISO 27001 certification at the end 
+	of the year.  Our regular customers know they can rely on us, but we often 
+	spend some time convincing new clients to accept an offshore software development 
+	company.  ISO 27001 eases minds and allows us to do what we're best at, 
+	delivering software projects on time and within a reasonable budget."</p>
+
+	<p>Finally, in January 2008, TechnoPark Corp. also verified that they meet 
+	industry standards for protecting their customer's rights and their customer's 
+	personal information by qualifying for the TRUSTe seal they display on their website.  
+	In order to receive a privacy seal, TPC had to show that their customers can opt 
+	out of direct marketing and the selling of their information to third parties.  The privacy 
+	policy explains such things as why TPC collects personal information, how they use 
+	the information they collect, and how to unsubscribe from email notifications. The 
+	complete privacy policy and seal can be found at <a href="${url:about/privacypolicy}">TPC site</a>.</p>
+ 
+
+</text>
+</article>

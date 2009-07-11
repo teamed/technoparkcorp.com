@@ -1,0 +1,37 @@
+<?xml version="1.0" ?> 
+<!-- 
+	Version tracking section:
+
+	10/03/07 Amy M. Wolfe-text edit
+
+-->
+<article>
+
+<date>02/05/2003</date>
+<title>RUP-based Process: Next Step to High Quality Service</title>
+
+<description>TechnoPark Corp. introduced RUP-based software development process 
+to increase reliability and quality of processes and products.</description>
+
+<text>
+<p>This month, TechnoPark Corp. introduced RUP-based iterative software 
+development process which unites the best practices of RUP, XP and Agile 
+software development methodologies. With the introduction of this process, the 
+software project lifecycle becomes clear for the customer. The Quality Assurance 
+discipline was reestablished as the core of software development process. </p>
+
+<p><ahref name="http://en.wikipedia.org/wiki/Rup">RUP (Rational Unified Process)
+</ahref> is a software development methodology developed by Rational Software 
+Corporation of IBM. According to RUP framework, the project lifecycle is divided 
+into 4 phases: inception, elaboration, construction and transition. RUP covers 
+all aspects of software development process including requirements specification, 
+software envisioning, implementation, testing, any many others. The framework is based on 
+key principles of business-driven development.</p>
+
+<p>To learn more about the software development process in TechnoPark Corp., 
+visit our website section <ahref 
+name="http://www.tpc-software.com/?path=process">Process</ahref></p>    
+
+
+</text>
+</article>

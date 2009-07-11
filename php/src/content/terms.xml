@@ -1,0 +1,174 @@
+<?xml version="1.0"?>
+<!--
+ *
+ * Copyright (c) 2008, TechnoPark Corp., Florida, USA
+ * All rights reserved. THIS IS PRIVATE SOFTWARE.
+ *
+ * Redistribution and use in source and binary forms, with or without modification, are PROHIBITED
+ * without prior written permission from the author. This product may NOT be used anywhere
+ * and on any computer except the server platform of TechnoPark Corp. located at
+ * www.technoparkcorp.com. If you received this code occacionally and without intent to use
+ * it, please report this incident to the author by email: privacy@technoparkcorp.com or
+ * by mail: 568 Ninth Street South 202 Naples, Florida 34102, the United States of America,
+ * tel. +1 (239) 243 0206, fax +1 (239) 236-0738.
+ *
+ * @author Yegor Bugaenko <egor@technoparkcorp.com>
+ * @copyright Copyright (c) TechnoPark Corp., 2001-2009
+ * @version $Id$
+ *
+-->
+
+<terms>
+
+<invisible/>
+
+<acceptancestatement>An Acceptance Statement is a written document signed by both parties when 
+Deliverables for Effective Specification are successfully accepted by the customer. 
+Accepted Statement is attached to the accepted Specification.</acceptancestatement>
+
+<activities>Activities are units of work performed by TPC in order to create and 
+deliver Deliverables, including but not limited to project management, requirements development and 
+management, architectural analysis and design, implementation and unit testing, test planning 
+and testing, configuration management, and deployment.</activities>
+
+<arbitrator>Arbitrator is a person or organization that is responsible for settling disputes between two parties, as defined in Article XX.</arbitrator>
+
+<baseline>Baseline is an aggregate of Scope, Cost, Schedule, Risk List and Operations Plan.</baseline>
+
+<businessday>Business day is a day when both parties agree to communicate and perform work according to contract, 
+business day is defined in par.110.</businessday>
+
+<budget>Budget is the predetermined price a customer shall pay for Deliverables created according to 
+Effective Specification. The Budget is attached to the Effective Specification and is approved 
+with the Effective Specification. Budget is shown in staff-hours without specific details.</budget>
+
+<confidentialinformation>Confidential Information means any and all proprietary information disclosed 
+or made available by one party to another in the course of performing hereunder, 
+whether in written, email, instant message, orally by phone, personally, magnetic, photographic, 
+optical or other form and whether now existing or hereafter created, including, without 
+limitation, all trade secrets, names and contacts of employees and partners, 
+technology, data, computer programs, processes, methods, operational procedures, plans, 
+strategies or results, and other information of a similar nature that is not generally disclosed by 
+such party to the public. Confidential Information shall not include any information which (a) is proven 
+by written evidence to have been in a receiving party's possession prior to disclosure by the other 
+party; (b) is received from a third party having the right to disclose such information; (c) is 
+or hereafter becomes public knowledge through no act or fault of a receiving party; or (d) is 
+proven by written evidence independently developed by a receiving party without access to 
+the Confidential Information of the other party.</confidentialinformation>
+
+<cost>Cost is the sum of all Budgets for Effective Specifications and Retainers for Beta-Specifications. 
+Cost is calculated in staff-hours. Cost may also be referred to as "Cost Baseline".</cost>
+
+<defect>Defect is a non-conformance of Deliverables to Effective Specification or to the accepted Specification. 
+Defect includes detailed textual and graphical (if necessary) descriptions of non-conformance 
+that allows technical specialists to understand and reproduce the non-conformance.</defect>
+
+<deliverables>Deliverables are products, services and results developed for and/or delivered to a
+customer by TPC according to Effective Specification. Deliverables include, if not 
+explicitly specified in Effective Specification, source software code, compiled products, 
+comments to software code, and Specifications. Deliverables do not include Project Documentation.</deliverables>
+
+<eva>Earned Value Analysis (EVA) is a method used to assess the magnitude of any 
+project schedule and cost variations that occur. EV (Earned Value) is the total 
+amount of staff-hours planned for Functional Requirements that are accepted; 
+PV (Planned Value) is a total amount of staff-hours planned for Functional Requirements 
+planned to be approved to date; AC (Actual Cost) is a total amount of staff-hours 
+spent for Deliverables to date from Preliminary Specification approval, CPI equals to 
+EV divided by AC; SPI equals to EV divided by PV. Wherever referred "EVA numbers" 
+include PV, EV, AC, SPI, and CPI.</eva>
+
+<intellectualproperty>Intellectual Property is defined as any ideas, techniques, 
+methods, processes, research, developments, documents, work products or idea expressions, 
+having either patent, copyright, trade secret, mask work, or any other statutory right 
+associated therewith, which are created or generated during the performance of the Deliverables. 
+Intellectual Properties may arise under contract, or result from Confidential Information.</intellectualproperty>
+
+<ipr>IPR means Intellectual Property Right for Deliverables.</ipr>
+
+<lco>LCO Milestone (lifecycle objectives) is a Milestone defined for 
+Alpha-Specification, meaning the date when Beta-Specification should be created.</lco>
+
+<lcm>License Control Module is a software module installed into Deliverables by TPC that blocks 
+normal execution of software within 10 (ten) calendar days after a project starts. License Control 
+Module is self-removable software module that destroys itself after a license code is entered. 
+License code is provided by TPC to Customer together with IPR transferring.</lcm>
+
+<milestone>Milestone is a combination of date and time in a calendar, list of results achieved 
+by this date, acceptance criteria, and percentage of Budget to be paid by this date. If 
+time is not defined, default time should be used, which is equal to 2:00pm EST (GMT-5). 
+Milestones are attached to Specification.</milestone>
+
+<operation>Operation is an ongoing, repetitive or one-time action or piece of work that is 
+performed by the customer. Operation includes a statement of work, deadline, and acceptance 
+criteria. Operations may contain many deadlines if it is repetitive (for example, 'each Friday'). 
+Operations are attached to Effective Specification.</operation>
+
+<operationsplan>Operations Plan" is a set of Operations approved by the parties.</operationsplan>
+
+<projectmanager>Project Manager is a representative of TPC and responsible 
+for overseeing all communications and project management.</projectmanager>
+
+<quality>Quality is as a result of dividing the total number of separately identified requirements 
+in Specification that have been successfully demonstrated without Defects by the total number 
+of separately identified Requirements in Specification ("Requirements demonstration metrics" as defined 
+in IEEE Std 730-1998).</quality>
+
+<documentation>Project Documentation includes project, iteration and other plans, work 
+breakdown structures, architecture documentation, test plans, test results, defect logs, 
+user manuals, technical references, and drafts.</documentation>
+
+<requestedchanges>Requested Changes are requests from either party for changes of the
+Baseline, which should be proceed according to the contract.</requestedchanges>
+
+<retainer>Retainer is the price a customer shall pay for Beta-Specification.</retainer>
+
+<risk>Risk is an uncertain event or condition that, if it occurs, extends the Baseline. 
+Risk includes risk trigger, contingency reserve for schedule and cost, 
+contingency plan, probability, and impact on the Baseline.</risk>
+
+<risklist>Risk List is a set of Risks approved by the parties and may also be 
+referred to as "Risk Register" or "Risk Baseline".</risklist>
+
+<rom>ROM Estimate (rough-order-of-magnitude) is a preliminary estimate of Budget for Specification, 
+provided inside Preliminary Specification before Specification is created. ROM Estimate includes low 
+limit (best case) and high limit (worst case) in staff-hours.</rom>
+
+<schedule>Schedule is a set of Milestones and may also be referred to as "Schedule Baseline".</schedule>
+
+<scheduleestimate>Schedule Estimate is a preliminary estimate of total work duration for 
+Specification.  The Schedule Estimate is provided inside Preliminary Specification before the actual Specification is created. Schedule Estimate includes 
+low limit (best case) and high limit (worst case) in calendar weeks.</scheduleestimate>
+
+<scope>Scope is a set of Effective Specifications and may also be referred to as "Scope Baseline".</scope>
+
+<specification>Specification is a description of Deliverables that may include Functional 
+and Non-functional Requirements to Deliverables from user perspective ("black-box"), design constraints, 
+use-cases, Glossary, and external interfaces description (including graphical user interfaces, GUI).
+Wherever used, Specification means either one of the following: Effective Specification, Alpha-Specification 
+or Beta-Specification. Specification is also referred to as "Software Requirements Specification 
+(SRS)", "Scope Statement", or "Change Request".</specification>
+
+<preliminaryspecification>Preliminary Specification is an approved description of Specifications including 
+ROM Estimate, Retainer, Schedule Estimate, LCO Milestone, and statement of work. Preliminary 
+Specification may also be referred to as "Vision" or "Preliminary Scope Statement".</preliminaryspecification>
+
+<alphaspecification>Alpha-Specification" is a Specification which is under development by TPC and is not yet complete. </alphaspecification>
+
+<betapecification>Beta-Specification" is a Specification which is created by 
+TPC but is not yet approved by either party.</betapecification> 
+
+<effectivespecification>Effective Specification" is a Specification under which Acceptance Statement is 
+not signed and Specification is not terminated.</effectivespecification>
+
+<acceptedspecification>Accepted Specification" is a Specification which is accepted 
+by both parties with an approved Acceptance Statement.</acceptedspecification>
+
+<tbd>TBD ("to be determined") is a mark used in Specification in order to highlight places in 
+text for further development and refinement.</tbd>
+
+<warranty>Warranty is a Defect removal service provided by TPC.</warranty>
+
+
+</terms>
+
+

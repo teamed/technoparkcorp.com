@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<!--
+ *
+ * Copyright (c) 2008, TechnoPark Corp., Florida, USA
+ * All rights reserved. THIS IS PRIVATE SOFTWARE.
+ *
+ * Redistribution and use in source and binary forms, with or without modification, are PROHIBITED
+ * without prior written permission from the author. This product may NOT be used anywhere
+ * and on any computer except the server platform of TechnoPark Corp. located at
+ * www.technoparkcorp.com. If you received this code occacionally and without intent to use
+ * it, please report this incident to the author by email: privacy@technoparkcorp.com or
+ * by mail: 568 Ninth Street South 202 Naples, Florida 34102, the United States of America,
+ * tel. +1 (239) 243 0206, fax +1 (239) 236-0738.
+ *
+ * @author Yegor Bugaenko <egor@technoparkcorp.com>
+ * @copyright Copyright (c) TechnoPark Corp., 2001-2009
+ * @version $Id$
+ *
+-->
+
+<article>
+
+<term>preliminaryspecification</term>
+
+<title>Vision document is a preliminary Specification of scope</title>
+<label>Vision</label>
+<intro>Learn how high-level requirements are defined in Vision document</intro>
+<next>process/scope/feature</next>
+
+<description>
+	Vision is a preliminary scope definition document, that we create
+	before the contract is signed.
+</description>
+
+<keywords>
+	vision,
+	features,
+	project charter,
+	scope definition,
+	preliminary scope definition
+</keywords>
+
+<text>
+
+	<p>Each customer has their own understanding of task definition.  Customers also use their own format
+	for documentation. Sometimes, such documentation is properly formatted and presented, and
+	sometimes it is not. We use a uniform and standard format for the preliminary scope
+	definition. It is short, simple, and very clear - we call it the Vision.</p>
+
+	<p>The Vision document is a two page file that includes a description of the project,
+	list of <a href="${url:process/scope/feature}">Features</a>, key risks, assumptions, and architectural concepts. 
+	It is possible to present any product scope in this simple format,
+	even if the product is very large.</p>
+
+	<p>The Vision document is not a fully-dressed <a href="${url:process/scope/specification}">Specification</a> and cannot be used by 
+	developers for the purpose of programming. The Vision is used by the system analyst, project manager,
+	customer, and other stakeholders for the following reasons:</p>
+
+	<anchor name="list">
+	<ul>
+		<li>To define the boundaries of the product.</li>
+		<li>To gain an understanding of project goals.</li>
+		<li>To identify key stakeholders and their needs.</li>
+	</ul>
+	</anchor>
+
+	<p>A system analyst usually spends up to five hours developing the Vision.</p>
+
+</text>
+
+<concepts>
+	<c1 name="process/scope/feature">Feature is a top-level user requirement</c1>
+	<c3 name="process/scope/specification">Specification details Vision</c3>
+	<c5 name="process/cost/rom">ROM Estimate is based on Features</c5>
+</concepts>
+
+</article>
+
+
+

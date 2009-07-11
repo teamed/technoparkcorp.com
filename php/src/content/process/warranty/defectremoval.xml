@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!--
+ *
+ * Copyright (c) 2008, TechnoPark Corp., Florida, USA
+ * All rights reserved. THIS IS PRIVATE SOFTWARE.
+ *
+ * Redistribution and use in source and binary forms, with or without modification, are PROHIBITED
+ * without prior written permission from the author. This product may NOT be used anywhere
+ * and on any computer except the server platform of TechnoPark Corp. located at
+ * www.technoparkcorp.com. If you received this code occacionally and without intent to use
+ * it, please report this incident to the author by email: privacy@technoparkcorp.com or
+ * by mail: 568 Ninth Street South 202 Naples, Florida 34102, the United States of America,
+ * tel. +1 (239) 243 0206, fax +1 (239) 236-0738.
+ *
+ * @author Yegor Bugaenko <egor@technoparkcorp.com>
+ * @copyright Copyright (c) TechnoPark Corp., 2001-2009
+ * @version $Id$
+ *
+-->
+
+<article>
+
+<term>acceptancestatement</term>
+
+<title>Bug fixing</title>
+<label>Defect Removal Service</label>
+<intro>Learn how we provide Defect removal service after project completion</intro>
+<next>process/quality</next>
+
+<description>
+</description>
+
+<keywords>
+</keywords>
+
+<text>
+
+	<p>All software has <a href="${url:process/quality/defect}">Defects</a> due to the nature of the development process. Some defects
+	are revealed during <a href="${url:process/quality/coq}">testing</a>, some of them stay hidden until the end-users start
+	to utilize the product.</p>
+
+	<p>In our projects, we do not try to reveal all Defects, since it's impossible and such 
+	intentions will lead to <a href="${url:process/time/schedule}">Schedule</a> and 
+	<a href="${url:process/cost}">Cost</a> overrun. We try to find as many Defects as
+	possible during project lifecycle, so that the residual Defects do not block the project
+	release.</p>	
+
+	<p>All other Defects are removed during warranty defect removal period, after
+	you identify and report them.</p>
+
+	<p>We guarantee that corrective actions are initiated for reported Defects within 
+	five business days.</p>
+
+</text>
+
+<concepts>
+</concepts>
+
+</article>
+
+

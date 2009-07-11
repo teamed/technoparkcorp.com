@@ -1,0 +1,60 @@
+<?
+
+    // include global CSS from views/scripts/css
+    $this->includeCSS('global.css');
+
+    // set charset
+    $this->headMeta()->appendHttpEquiv('Content-Type', 'text/html; charset=' . $this->article->charset);
+
+    // set title
+    $this->headTitle($this->article->title, Zend_View_Helper_Placeholder_Container_Abstract::SET);
+
+    // keywords
+    $this->headMeta()->appendName('keywords', $this->article->keywords);
+
+    // description
+    $this->headMeta()->appendName('description', $this->article->description);
+
+?><?=$this->doctype()?>
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head>  
+<?=$this->headTitle()?>
+<?=$this->headMeta()?>
+<?=$this->headLink()?>
+<?=$this->headStyle()?>
+</head> 
+<body>
+
+<div class="wrapper">
+    <div class="banner"></div>
+    <a title="Home page of TechnoParkCorp.com" href="<?=$this->staticUrl('home')?>" class="logo"></a>
+
+    <div class="tl">
+        <a title="Facts, history, key achievements or TechnoPark Corp." href="<?=$this->staticUrl('about')?>" class="t1"></a>
+        <a title="Our approach to time/cost/scope and risk management" href="<?=$this->staticUrl('process')?>" class="t2"></a>
+        <a title="List of the latest projects with technical and management details" href="<?=$this->staticUrl('stories')?>" class="t3"></a>
+        <a title="Our strength is in our inventions" href="<?=$this->staticUrl('innovations')?>" class="t4"></a>
+        <a title="Email, phone, fax and online contacts" href="<?=$this->staticUrl('contacts')?>" class="t5"></a>
+    </div>
+
+    <div class="contents">
+        <?=$this->layout()->content?>
+    </div>
+
+    <div class="bl">
+        <a title="Full list of site pages in hierarchical order" href="<?=$this->staticUrl('about/sitemap')?>" class="t1"></a>
+        <a title="Legal terms of use of the site" href="<?=$this->staticUrl('about/legalnotes')?>" class="t2"></a>
+        <a title="Privacy policy for Personally Identifiable Information(PII)" href="<?=$this->staticUrl('about/privacypolicy')?>" class="t3"></a>
+    </div>
+
+    <div class="sub">
+        &copy; TechnoPark Corp., <?=date('Y')?>, <?=$this->pageLoadTime()?>
+        <a title="Read more about ISO 9001:2000 certification that was obtained by TechnoPark Corp." 
+            href="<?=$this->staticUrl('about/news/year2008/iso9001')?>" class="iso"></a>
+    </div>
+</div>
+
+<?=$this->headScript() ?>
+<?=$this->googleAnalytics(false)?>
+</body>
+</html>

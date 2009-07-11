@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<!--
+ *
+ * Copyright (c) 2008, TechnoPark Corp., Florida, USA
+ * All rights reserved. THIS IS PRIVATE SOFTWARE.
+ *
+ * Redistribution and use in source and binary forms, with or without modification, are PROHIBITED
+ * without prior written permission from the author. This product may NOT be used anywhere
+ * and on any computer except the server platform of TechnoPark Corp. located at
+ * www.technoparkcorp.com. If you received this code occacionally and without intent to use
+ * it, please report this incident to the author by email: privacy@technoparkcorp.com or
+ * by mail: 568 Ninth Street South 202 Naples, Florida 34102, the United States of America,
+ * tel. +1 (239) 243 0206, fax +1 (239) 236-0738.
+ *
+ * @author Yegor Bugaenko <egor@technoparkcorp.com>
+ * @copyright Copyright (c) TechnoPark Corp., 2001-2009
+ * @version $Id$
+ *
+-->
+
+<article>
+
+<term>warranty</term>
+
+<title>Support services when project is finished</title>
+<label>Support Service</label>
+<intro>Read how we provide support service for our products</intro>
+<next>process/quality</next>
+
+<description>
+</description>
+
+<keywords>
+</keywords>
+
+<text>
+
+	<p>This following is a list of services that we DO NOT provide, but are usually required for 
+	web projects and software systems. We recommend considering
+	other companies to get quality services of this kind:</p>
+
+	<ul>
+		<li>Server Configuration</li>
+		<li>End-user Education and Training</li>
+		<li>Network and Web Configuration</li>
+		<li>Server 24x7 Administration and Support</li>
+		<li>End-User Support</li>
+		<li>Text Writing</li>
+		<li>Search-Engine Optimization</li>
+		<li>Marketing Graphic Design</li>
+		<li>Translation</li>
+		<li>Branding, Promotion, Advertising</li>
+	</ul>
+
+	<p>We are focused on software development and can not guarantee any quality in such
+	services.</p>
+
+</text>
+
+<concepts>
+</concepts>
+
+</article>
+
+

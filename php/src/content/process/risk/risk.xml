@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<!--
+ *
+ * Copyright (c) 2008, TechnoPark Corp., Florida, USA
+ * All rights reserved. THIS IS PRIVATE SOFTWARE.
+ *
+ * Redistribution and use in source and binary forms, with or without modification, are PROHIBITED
+ * without prior written permission from the author. This product may NOT be used anywhere
+ * and on any computer except the server platform of TechnoPark Corp. located at
+ * www.technoparkcorp.com. If you received this code occacionally and without intent to use
+ * it, please report this incident to the author by email: privacy@technoparkcorp.com or
+ * by mail: 568 Ninth Street South 202 Naples, Florida 34102, the United States of America,
+ * tel. +1 (239) 243 0206, fax +1 (239) 236-0738.
+ *
+ * @author Yegor Bugaenko <egor@technoparkcorp.com>
+ * @copyright Copyright (c) TechnoPark Corp., 2001-2009
+ * @version $Id$
+ *
+-->
+
+<article>
+
+<title>Cause, risk, effect</title>
+<label>Risk</label>
+<intro>Learn what a Risk is in software development projects, and how it is defined</intro>
+<next>process/risk/risklist</next>
+
+<description>
+	A Risk in software development project is an event that may have an impact 
+	on the outcome of the project. Risk differs from problems or issues because a risk refers
+	to the future potential of loss/benefit. Problems or issues, however, are conditions or states
+	of affairs that exist in a project at present time.
+</description>
+
+<keywords>
+	risk,
+	software development risk,
+	cause-risk-effect,
+	risk identification,
+	"cause risk effect" format,
+	risk source,
+	risk effect,
+	risk cause
+</keywords>
+
+<term>risk</term>
+
+<text>
+
+	<p>A Risk in software development project is an event that may have an impact 
+	on the outcome of the project. Risk differs from problems or issues because a risk refers
+	to the future potential of loss/benefit. Problems or issues, however, are conditions or states
+	of affairs that exist in a project at present time.</p>
+
+	<p>Risks should be identified for the following reasons:</p>
+
+	<ul>
+		<li><a href="${url:process/time/schedule}">Schedule</a> can be developed more realistically based on accurate Risk planning</li>
+		<li><a href="${url:process/cost/budget}">Budget</a> is more accurate when it includes reservations for possible Risks</li>
+		<li><a href="${url:process/scope/specification}">Specification</a> is unambiguous when Risks are revealed in advance</li>
+		<li>Outcomes are more predictable if the project team is prepared to handle unexpected negative interruptions</li>
+	</ul>
+
+	<p>Risks are found and identified by the project team, project manager and you during the 
+	whole project lifecycle. Risk management is an iterative process. The sooner a Risk
+	is identified, the faster it can be managed and mitigated.</p>
+
+	<p>Major Risk identification
+	activities are performed during the <a href="${url:process/time/inception}">Inception Phase</a>. 
+	<a href="${url:process/risk/strategy}">Risk Strategies</a> 
+	and Risk response plans are baselined on a
+	<a href="${url:process/time/lco}">LCO Milestone</a> in the <a href="${url:process/risk/risklist}">Risk List</a>.</p>
+
+	<p>Risks are typically <i>sourced</i> by people, Requirements, software, hardware, and communications.
+	Mid-size software projects include hundreds of Risks.  Not all Risks are identified and managed,
+	only those that appear to be the most severe.</p>
+
+	<p>Each Risk is defined in a 'Cause-Risk-Effect' format. The cause may be the 
+	source of the Risk, the Risk is what may or may not happen, and the effect is the impact to the project
+	objectives, should the Risk actually happen.</p>
+
+	<p>Examples of Risks from typical software development projects include:</p>
+
+	<table>
+		<tr>
+			<th>#</th>
+			<th>Cause</th>
+			<th>Risk</th>
+			<th>Effect</th>
+		</tr>
+		<tr><td>RISK1</td>
+		<td>Deployment server will be purchased by the customer on 8/26</td>
+		<td>System installation and configuration may take more than 3 days</td>
+		<td>Project will be delayed</td></tr>
+
+		<tr><td>RISK2</td>
+		<td>Data provider changes API on its own schedule, without prior notification</td>
+		<td>Next change may happen before the end of project release Milestone</td>
+		<td>Integration module re-factoring will take and 40+ additional staff-hours</td></tr>
+
+		<tr><td>RISK3</td>
+		<td>System analyst doesn't have experience in medical business software</td>
+		<td>System analyst and the customer may have difficulty communicating and understanding </td>
+		<td>Inception Phase will take more than 3 weeks, the customer may become frustrated, and the project may be canceled</td></tr>
+	</table>	
+
+	<p>When Risks are identified and discussed with the project team, the project
+	is prepared to handle any negative interruptions. 
+	This decreases the probability of a Risk taking place throughout the course of the project.</p>
+
+</text>
+
+<concepts>
+	<c3 name="process/risk/risklist">Risk List is a register of all Risks in the software development project</c3>
+	<c5 name="process/risk/strategy">Risk response plans are planned for all major risks</c5>
+	<c7 name="process/cost/budget">Budget calculation is based on Risk analysis</c7>
+</concepts>
+
+</article>
+
+

@@ -1,0 +1,268 @@
+<?xml version="1.0"?>
+<!--
+ *
+ * Copyright (c) 2008, TechnoPark Corp., Florida, USA
+ * All rights reserved. THIS IS PRIVATE SOFTWARE.
+ *
+ * Redistribution and use in source and binary forms, with or without modification, are PROHIBITED
+ * without prior written permission from the author. This product may NOT be used anywhere
+ * and on any computer except the server platform of TechnoPark Corp. located at
+ * www.technoparkcorp.com. If you received this code occacionally and without intent to use
+ * it, please report this incident to the author by email: privacy@technoparkcorp.com or
+ * by mail: 568 Ninth Street South 202 Naples, Florida 34102, the United States of America,
+ * tel. +1 (239) 243 0206, fax +1 (239) 236-0738.
+ *
+ * @author Yegor Bugaenko <egor@technoparkcorp.com>
+ * @copyright Copyright (c) TechnoPark Corp., 2001-2009
+ * @version $Id$
+ *
+-->
+
+<article>
+
+<hideRightColumn />
+
+<showVoting />
+
+<date>2/3/09</date>
+
+<title>A Good Way for Non-Programmer Managers to Improve Quality-of-Code</title>
+<label>Quality of Code</label>
+<intro>Learn how we optimize and automate Quality of Code improvement in our projects</intro>
+<next>innovations/risk-game</next>
+
+<description>
+	Two most important software code metrics (Test Code Coverage and 
+	Cyclomatic Complexity), if properly calculated and delivered,
+	may resolve the problem with quality of code in distributed teams.
+</description>
+
+<keywords>
+	continuous integration,
+	continous integration,
+	continuum continuous integration,
+	benefits of continuous integration,
+	cyclomatic complexity,
+	cyclomatic code complexity,
+	code coverage,
+	quality of code,
+	automatic metrics,
+	custom software development,
+	static code analysis,
+	distributed team
+</keywords>
+
+<text>
+
+	<p>The problem explained here is very common for
+	distributed teams, where the product is created for <i>a customer</i>, not
+	for the team itself. Being a customer in such a project, 
+	how do you monitor and control the <b>quality-of-code</b>
+	without programming skills? If the answer is "I trust my programmers"
+	you may suffer from some of the following problems:</p>
+
+	<ol>
+		<li>You are afraid to change key programmers since each of 
+		them possesses some unique knowledge about your product;</li>
+
+		<li>You can only hope that your code is of good <a href="http://en.wikipedia.org/wiki/Software_quality">quality</a> because 
+		your coders say it is;</li>
+
+		<li>You can't add new features freely since the product becomes unstable after every new change;</li>
+
+		<li>You feel that if you want to get higher quality-of-code you have to change programmers.</li>
+	</ol>
+
+	<p>These problems occur in many projects where the quality-of-code is not controlled 
+	and is not managed. 
+	A common assumption is that good programmers produce good code and
+	if you want to improve the code you should hire better programmers. 
+	This assumption is wrong. Quality-of-code in your
+	product has to be controlled by you and now we will show you how to accomplish this.</p>
+
+	<h2>What are your objectives?</h2>
+
+		<p>Programmers (coders, testers, analysts) are technical specialists whose
+		motivation is based on <b>recognition</b>. Either you recognize them as "gurus" or
+		their colleagues give them respect for their knowledge or experience, it is better if they receive both. 
+		Unfortunately, in most cases money is not the first priority for them.</p>
+
+		<p>In order to earn and retain the status of "guru" a programmer has to do
+		something that no one else can do. He or she must know the tricks in your software.
+		After all, the more complex the software is the higher their salary will be.</p>
+
+		<p>However, your objectives are different. Your business value 
+		is <b>your product</b>, and you want to invest into it, not into programmers. You
+		want to control it and you want to know that the product really belongs to you,
+		not to the people who know the tricks.</p>
+
+		<p>As you see, your objectives and your coders' objectives are not aligned, in other words
+		you work against each other.</p>
+
+	<h2>Quality-of-code could be measured</h2>
+
+		<p>To align objectives and start sharing common goals, 
+		it is necessary to invent a <b>numeric metric</b> that will represent your
+		objective and at the same time will impact the programmers' motivation.
+		The higher the metric, the better the quality-of-code will be. At the same time,
+		the benefits for programmers will be higher, like salary and recognition.</p>
+
+		<p>We use two metrics: 
+		<a href="http://en.wikipedia.org/wiki/Code_coverage">Code Coverage</a> 
+		and <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity">Cyclomatic Complexity</a>.
+		Each of them are calculated automatically at each round of 
+		<a href="http://en.wikipedia.org/wiki/Continuous_Integration">continuous integration</a>.</p>
+
+		<p><b>Low cyclomatic complexity</b> tells you that the code is clear and simple
+		and could be easily understood by new programmers (This means no more "tricks"). 
+		Cyclomatic complexity is one of the most important 
+		<a href="http://en.wikipedia.org/wiki/Software_metric">software metrics</a> used in
+		<a href="http://en.wikipedia.org/wiki/Static_code_analysis">static code analysis</a>.</p>
+
+		<p><b>High code coverage</b> tells you that for each block of code there exists
+		a <a href="http://en.wikipedia.org/wiki/Unit_testing">unit test</a> that validates it.
+		The biggest benefit of unit tests is that once the code is tested it
+		stays workable when its author forgets how it works.</p>
+
+		<p>In our management panel you get a graph that indicates current value
+		of the metric and a history of change, like you see in the sample below:</p>
+
+		<p align="center"><tikz>
+\begin{tikzpicture}[font=\small]
+  		\draw [very thin, color=tpcGrey] (0,0) grid [step=0.57] (14,8);
+		\draw [-triangle 60, semithick, draw=tpcBlack] (0,0) -- coordinate (x axis mid) (14.85,0) node[right] {$t$};
+		\draw [-triangle 60, semithick, draw=tpcBlack] (0,0) -- coordinate (y axis mid) (0,8.4) node[above] {Code Coverage};
+		\draw [*-*, draw=tpcBlue, very thick, smooth, tension=0.2] plot coordinates {
+	(0, 0.00) 
+	(1, 1.0) 
+	(2, 3.93) 
+	(3, 5.29) 
+	(4, 3.97) 
+	(5, 4.77) 
+	 (6, 6.37)
+	 (7, 6.40) 
+	 (8, 6.40) 
+	 (9, 8.00) 
+	 (10, 8.00)
+	(11, 6.64) 
+	(12.39, 6.53)};
+\draw [draw=tpcRed] (12.39,8) -- (12.39,0) node [below] {today};
+\draw [draw=tpcBlack] (0.2,8) -- (-0.2,8) node [left] {78\%};
+\draw [draw=tpcBlack] (0.2,0) -- (-0.2,0) node [left] {0\%};
+\draw [draw=tpcBlack] (0,0.2) -- (0,-0.2) node [below] {02/05/08};
+\draw [draw=tpcBlack] (14,0.2) -- (14,-0.2) node [below] {02/27/09};
+\end{tikzpicture}
+		</tikz></p>
+
+		<p>This graph is available for you and your coders. It is instantly updated
+		by our software according to the source code from SVN repository.</p>
+
+	<h2>How we do this technically</h2>
+
+		<p>There are five components of the whole process: 
+		<a href="http://subversion.tigris.org">SVN</a>, 
+		<a href="http://continuum.apache.org">Continuum</a>, 
+		<a href="http://maven.apache.org">Maven2</a>,
+		Gist and thePanel. 
+		Coders as usualy commit their changes to SVN, and you monitor
+		quality-of-code in our online project management system (thePanel):</p>
+
+		<p align="center"><tikz>
+\begin{tikzpicture}
+	\tikzstyle{ln} = [draw=tpcBlue!50, line width=1mm, -triangle 60, fill=tpcBlue!50]
+	\tikzstyle{ln1} = [draw=tpcGreen, line width=0.3mm, -triangle 60, fill=tpcGreen, dashed]
+	\tikzstyle{ln2} = [draw=tpcBlue!50, very thick, -angle 60, fill=tpcBlue!50, dashed]
+	\tikzstyle{lbl} = [font=\small, fill=white, inner sep=0.5mm]
+
+	\node [inner sep=10mm] (center) {};
+	\node [storage, below=0mm of center, text width=20mm] (ci) {Continuum};
+	\node [block, left=30mm of center, text width=1cm] (svn) {SVN};
+	\node [block, right=30mm of center, text width=15mm] (panel) {thePanel};
+	\node [block, below left=30mm of center, text width=15mm] (maven) {Maven2};
+	\node [block, below=30mm of center, text width=15mm] (metrics) {metrics};
+	\node [block, below right=30mm of center, text width=10mm] (gist) {Gist};
+
+	\node [above=30mm of svn, font=\bfseries] (coder) {Coders};
+	\node [above=30mm of panel, font=\bfseries] (you) {You};
+	\node [block, above left=30mm of panel, text width=20mm] (bp) {bonuses};
+
+	\draw [ln] (coder) -- node [lbl] {commit} (svn);
+	\draw [ln] (svn) -- node [lbl] {check out} (maven);
+	\draw [ln] (maven) -- (metrics);
+	\draw [ln] (metrics) -- (gist);
+	\draw [ln] (gist) -- node [lbl] {xml} (panel);
+	\draw [ln] (panel) -- node [lbl] {weekly} (bp);
+
+	\draw [ln1] (coder) -- (bp);
+	\draw [ln1] (you) -- (panel);
+
+	\draw [ln2] (ci) -- (maven);
+	\draw [ln2] (ci) -- (metrics);
+	\draw [ln2] (ci) -- (gist);
+
+	\path [draw=tpcRed, dashed, very thick] ([yshift=-2mm]svn.south west) -- ([yshift=-2mm]panel.south east);
+\end{tikzpicture}
+		</tikz></p>
+
+		<p>The cycle is repeated every day and is initiated by Continuum,
+		an open-source continuous integration software by <a href="http://www.apache.org">Apache Group</a>:</p>
+
+		<ol>
+			<li>Coders commit changes to the SVN repository</li>
+			<li>Continuum checks out the changes and starts the builder (Maven2)</li>
+			<li>Maven2 compiles the code and runs unit tests</li>
+			<li><a href="http://www.junit.org">JUnit</a>-like framework produces a code coverage report</li>
+			<li>A language-specific tool calculates cyclomatic complexity</li>
+			<li>The transmitter (Gist) sends <a href="http://www.w3.org/XML">XML</a> report to thePanel</li>
+			<li>thePanel converts metrics into <b>bonuses</b>, for coders</li>
+			<li>You get the quality-of-code instantly</li>
+		</ol>
+
+		<p>This process is absolutely transparent for you and the coders. Everything
+		below the dotted red line in the diagram above is not visible to anyone. Coders commit changes
+		to SVN together with unit tests and get feedback in form of bonuses.
+		You monitor the values of metrics.</p>
+
+		<p>We use our own simple cyclomatic complexity calculator 
+		based on <a href="http://www.mccabe.com">Thomas McCabe's</a> principles. 
+		Code coverage is calculated by 
+			<a href="http://www.junit.org">JUnit</a>, 
+			<a href="http://www.phpunit.de">phpUnit</a> (in combination with <a href="http://www.xdebug.org">xdebug</a>),
+			<a href="http://www.nunit.org">NUnit</a> or 
+			<a href="http://cppunit.sourceforge.net">CPPUnit</a>.</p>
+	
+	<h2>What are the pros and cons?</h2>
+
+		<p>This approach aligns the objectives of you and your coders
+		and returns control of quality-of-code to your hands. You get these benefits:</p>
+
+		<ul>
+			<li>Code is always fully covered by unit tests</li>
+			<li>Code is clear and simple</li>
+			<li>No more "indispensable" programmers</li>
+			<li>The more you spend, the better the product</li>
+		</ul>
+
+		<p>Your programmers also get these benefits:</p>
+
+		<ul>
+			<li>Higher motivation because of a clear numeric objective</li>
+			<li>More confidence in code stability, less stress</li>
+		</ul>
+
+		<p>The only disadvantage we experienced after implementation
+		of this method was the necessity to spend time explaining this new approach
+		to programmers, 2-4 weeks at most.</p>
+
+		<p>We may be able to help you with your current projects.  
+		<a href="${url:contacts}">Contact us today</a> about how our 
+		innovative methods of project management can give you a new level 
+		of control over the success of your business. 
+		Talk to us to see how we can enable success in your project</p>
+
+
+</text>
+
+</article>
+
+

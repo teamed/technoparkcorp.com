@@ -1,0 +1,78 @@
+<?xml version="1.0" ?>
+<!--
+ *
+ * Copyright (c) 2008, TechnoPark Corp., Florida, USA
+ * All rights reserved. THIS IS PRIVATE SOFTWARE.
+ *
+ * Redistribution and use in source and binary forms, with or without modification, are PROHIBITED
+ * without prior written permission from the author. This product may NOT be used anywhere
+ * and on any computer except the server platform of TechnoPark Corp. located at
+ * www.technoparkcorp.com. If you received this code occacionally and without intent to use
+ * it, please report this incident to the author by email: privacy@technoparkcorp.com or
+ * by mail: 568 Ninth Street South 202 Naples, Florida 34102, the United States of America,
+ * tel. +1 (239) 243 0206, fax +1 (239) 236-0738.
+ *
+ * @author Yegor Bugaenko <egor@technoparkcorp.com>
+ * @copyright Copyright (c) TechnoPark Corp., 2001-2009
+ * @version $Id$
+ *
+-->
+
+<article>
+
+<date>10/9/08</date>
+
+<title>
+	Estimates Are More Reliable with TechnoPark Corp., new patent-pending invention
+</title>     
+
+<keywords>
+	patent, estimation, patent-pending, software size, software cost,
+	cost estimation, estimate
+</keywords>
+
+<description>
+	TechnoPark Corp. Registers a New Invention with USPTO.
+</description>
+
+<text>
+
+	<p>Naples, Florida October 7, 2008 - TechnoPark Corp. has registered 
+	an estimating method for software project completion with the 
+	United States Patent Trademark Office (<a href="http://www.uspto.gov">USPTO</a>).  
+	This invention greatly reduces the time it takes to provide an estimate to 
+	a client.  The estimates are more accurate, which in turn helps clients 
+	plan for the on-deadline completion of a project.</p>
+
+	<p>Using uniquely developed formulas, TechnoPark uses a limited number of 
+	examples in a client's code to calculate the time it will take a 
+	programmer to build a project.  By using the most complex examples of code, 
+	TechnoPark Corp.'s invention defines the amount of effort needed to 
+	complete a software product.</p>
+
+	<p>The technical explanation of the new invention deals with sets of 
+	requirements.  Based on a limited set, up to seven, the requirements, 
+	existing on the same level of abstraction, are estimated with an existing 
+	estimation approach.  The requirements, called scope champions, are chosen for 
+	their complexity and then calculated for the time it takes to complete them. </p>
+
+	<p>Until TechnoPark Corp. pioneered these formulas, programmers often had 
+	to expend a great deal of time to provide a reasonably accurate estimate.  
+	This was detrimental to client and vendor alike.  Vendors don't want 
+	to waste hours estimating when they could be working billable hours.  Clients 
+	are more satisfied when their projects are done on time and under budget.  
+	TechnoPark Corp.'s invention gives it an edge when estimates are made 
+	because customers know they can count on a well researched, proven 
+	estimating technique.</p>
+
+	<p>Arthur Petrenko, TechnoPark Corp.'s Marketing Director, says, 
+	"We have been working on new inventions like the estimation formula to benefit 
+	our clients.  In the future, we are going to continue to develop and 
+	patent our ideas and methods.  This is all part of our larger 
+	dedication to excellence and reliable business practices."</p>
+
+	<p>USPTO issued an application number for TechnoPark, 
+	<b>US12/193,010</b>, and they are excited to announce the invention.</p>
+
+</text>
+</article>

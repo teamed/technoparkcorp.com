@@ -1,0 +1,41 @@
+<? 
+
+$news = simplexml_load_file('content/'.$this->xml->front->right->news.'.xml');
+
+$newsline = $news->date . ': ' . CutLongLine($news->description, 200);
+
+?>
+
+<a href="<?=Site::BuildURL($this->xml->front->link)?>" title="<?=$this->escape($this->xml->front->hint)?>">
+    <img class="frontimg" src="<?=Site::BuildImage($this->xml->front->image)?>" 
+        alt="TechnoParkCorp.com is a Software Development General Contractor" />
+</a>
+
+<div class="cln"></div>
+
+<div class="home">
+    <table class="headers">
+        <tr>
+            <td><?=$this->escape($this->xml->front->left->title)?></td>
+            <td><?=$this->escape($this->xml->front->middle->title)?></td>
+            <td><?=$this->escape($this->xml->front->right->title)?></td>
+        </tr>
+    </table>
+    
+    <div style='background-color: #5a6870; height: 1px; width: 100%; margin-top: 4px; color: inherit;'></div>
+
+    <table class="links">
+        <tr>
+            <td>
+                <a href="<?=Site::BuildURL($this->xml->front->left->item1->attributes()->name)?>"><?=$this->escape($this->xml->front->left->item1)?></a><br/>
+                <a href="<?=Site::BuildURL($this->xml->front->left->item2->attributes()->name)?>"><?=$this->escape($this->xml->front->left->item2)?></a><br/>
+                <a href="<?=Site::BuildURL($this->xml->front->left->item3->attributes()->name)?>"><?=$this->escape($this->xml->front->left->item3)?></a><br/>
+            </td><td>
+                <a href="<?=Site::BuildURL($this->xml->front->middle->item1->attributes()->name)?>"><?=$this->escape($this->xml->front->middle->item1)?></a><br/>
+                <a href="<?=Site::BuildURL($this->xml->front->middle->item2->attributes()->name)?>"><?=$this->escape($this->xml->front->middle->item2)?></a><br/>
+                <a href="<?=Site::BuildURL($this->xml->front->middle->item3->attributes()->name)?>"><?=$this->escape($this->xml->front->middle->item3)?></a><br/>
+            </td><td style='padding-right: 10px; width: 220px;'>
+                <a href="<?=Site::BuildURL($this->xml->front->right->news)?>"><?=$this->escape($newsline)?></a>
+            </td></tr>
+    </table>
+</div>

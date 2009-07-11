@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<!--
+ *
+ * Copyright (c) 2008, TechnoPark Corp., Florida, USA
+ * All rights reserved. THIS IS PRIVATE SOFTWARE.
+ *
+ * Redistribution and use in source and binary forms, with or without modification, are PROHIBITED
+ * without prior written permission from the author. This product may NOT be used anywhere
+ * and on any computer except the server platform of TechnoPark Corp. located at
+ * www.technoparkcorp.com. If you received this code occacionally and without intent to use
+ * it, please report this incident to the author by email: privacy@technoparkcorp.com or
+ * by mail: 568 Ninth Street South 202 Naples, Florida 34102, the United States of America,
+ * tel. +1 (239) 243 0206, fax +1 (239) 236-0738.
+ *
+ * @author Yegor Bugaenko <egor@technoparkcorp.com>
+ * @copyright Copyright (c) TechnoPark Corp., 2001-2009
+ * @version $Id$
+ *
+-->
+
+<article>
+
+<term>projectmanager</term>
+
+<title>We advocate open communications</title>
+<label>Communications</label>
+<intro>Read about communications between the customer and project team</intro>
+<next>process/quality</next>
+
+<description>
+	Open communications in the project are available thanks to our
+	online management panel with instant metrics.
+</description>
+
+<keywords>
+	project communications,
+	communication management plan,
+	daily reports,
+	earned value analysis,
+	risk score
+</keywords>
+
+<text>
+
+	<p>The project team communicates with you from the first day of project execution.
+	You are involved in the development process and provide feedback on project results
+	on a daily basis.</p>
+
+	<p>The project manager sends <a href="${url:process/communication/dailyreport}">Daily Reports</a> to your 
+	with all of the latest project activities,
+	<a href="${url:process/time/spi}">Earned Value</a> analysis data, 
+	and <a href="${url:process/risk}">Risk</a> monitoring results and other project performance metrics.</p>
+
+	<p><a href="${url:process/warranty/deliverables}">Deliverables</a> are delivered in an
+	<a href="${url:process/communication/incremental}">incremental</a> manner, meaning that product functionality
+	is programmed, tested and shown to you as soon as new functional 
+	<a href="${url:process/scope/requirement}">Requirements</a> are ready.</p>
+
+	<p>By the end of each <a href="${url:process/time/iteration}">Iteration</a>, the project manager conducts an online 
+	<a href="${url:process/communication/iam}">Iteration Acceptance Meeting</a> with you and key project stakeholders. 
+	At this meeting, all project results are analyzed and evaluated.</p>
+
+	<p>The project team is <a href="${url:process/communication/available}">available</a> during 
+	normal business hours five days a week.</p>
+
+</text>
+
+<concepts>
+	<c1 name="process/communication/dailyreport">Daily Report is a central communication artifact between you and project team</c1>
+	<c2 name="process/communication/incremental">Incremental delivery guarantees your business satisfaction in early stages</c2>
+	<c3 name="process/scope/requirement">Functional Requirement is an atomic unit of product delivery</c3>
+</concepts>
+
+</article>
+
+

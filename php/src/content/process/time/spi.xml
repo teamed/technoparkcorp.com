@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<!--
+ *
+ * Copyright (c) 2008, TechnoPark Corp., Florida, USA
+ * All rights reserved. THIS IS PRIVATE SOFTWARE.
+ *
+ * Redistribution and use in source and binary forms, with or without modification, are PROHIBITED
+ * without prior written permission from the author. This product may NOT be used anywhere
+ * and on any computer except the server platform of TechnoPark Corp. located at
+ * www.technoparkcorp.com. If you received this code occacionally and without intent to use
+ * it, please report this incident to the author by email: privacy@technoparkcorp.com or
+ * by mail: 568 Ninth Street South 202 Naples, Florida 34102, the United States of America,
+ * tel. +1 (239) 243 0206, fax +1 (239) 236-0738.
+ *
+ * @author Yegor Bugaenko <egor@technoparkcorp.com>
+ * @copyright Copyright (c) TechnoPark Corp., 2001-2009
+ * @version $Id$
+ *
+-->
+
+<article>
+
+<title>Schedule performance and variance indicator</title>
+<label>SPI</label>
+<intro>Learn how to track a project with Earned Value Analysis data</intro>
+<next>process/time/iteration</next>
+
+<description>
+	Earned Value data helps us track project performance. SPI (EV/PV) is 
+	an indicator of project performance.
+</description>
+
+<keywords>
+	SPI,
+	earned value analysis,
+	earned value,
+	planned value,
+	project performance tracking,
+</keywords>
+
+<text>
+
+	<p><a href="http://en.wikipedia.org/wiki/Earned_value_management">Earned Value Analysis</a> 
+	is a method of tracking the status of a project. 
+	It is based on numeric
+	parameters and provides a transparent and un-biased snapshot of the project situation. 
+	<a href="${url:process/time/schedule}"> The Schedule</a>
+	is tracked by means of Earned Value (EV) and Planned Value (PV) parameters.</p>
+
+	<p>EV is calculated as the total amount of required planned staff-hours for those requirements that you 
+	already accepted.</p>
+
+	<p>PV is calculated as a piece of the project <a href="${url:process/cost/budget}">Budget</a>.  
+	The amount is shown in staff-hours that were planned
+	to be spent by today (staff-hours are divided evenly across the completed requirements.)</p>
+
+	<p>Consider the following example, we have 5 requirements, today is the 25th day of the project.  
+	The total Budget is 615 staff-hours, 
+	and total project duration is 40 days (this is a snapshot of requirements attributes table):</p>
+
+	<table>
+		<tr>
+			<th>#</th>
+			<th>Requirement</th>
+			<th>Size</th>
+			<th>Status</th>
+		</tr>
+		<tr><td>R1</td><td>User can manage account</td><td>145</td><td>accepted</td></tr>
+		<tr><td>R2</td><td>User can upload video</td><td>80</td><td>accepted</td></tr>
+		<tr><td>R3</td><td>Admin can manage users</td><td>120</td><td>accepted</td></tr>
+		<tr><td>R4</td><td>Admin can view reports</td><td>180</td><td>implemented</td></tr>
+		<tr><td>R5</td><td>Admin can filter users</td><td>90</td><td>specified</td></tr>
+	</table>
+
+	<p>EV is the sum of 145, 80 and 120 staff-hours (all of the requirements that are accepted so far). 
+	EV is equal to 345 staff-hours.</p>
+
+	<p>PV is the result of 25/40 days that have been put into the project (0.625), 
+	and then multiplied by 615 staff-hours. 
+	PV equals to approximately 384 staff-hours. 
+	According to the plan,
+	we have to deliver 384 accepted staff-hours to the customer on the 25th day of the project.</p>
+
+	<p>SPI is calculated as EV/PV and equals to 345/384 = 0.898. 
+	That means that the project is behind
+	schedule now and corrective actions are required.</p>
+	
+	<p>This example shows how the project can be tracked
+	without excess technical details. 
+	This information (EV, PV and SPI) is presented to you
+	at each Iteration Acceptance Meeting (by the end of each <a href="${url:process/time/iteration}">Iteration</a>)
+	and is available instantly online in our management software.</p>
+	
+	<p>The SPI should always be equal to or greater than 1.0. 
+	This is a key aspect for the project manager.
+	If an SPI is less than 1.0, the project manager immediately impelements corrective action, which could be one of the
+	following (depending on other project characteristics):</p>
+
+	<ul>
+		<li>Add more resources</li>
+		<li>Change the scope by moving requirements to the next release</li>
+		<li>Re-estimate the project and approve a new Schedule and Budget (worst variant)</li>
+	</ul>
+
+	<p>The numbers presented by an Earned Value analysis help you, the project team, and project manager
+	to stay on the same page during the course of the whole project.</p>
+
+	<p>Earned Value data is not meaningful during the <a href="${url:process/time/inception}">Inception Phase</a>, when 
+	<a href="${url:process/scope/specification}">Specification</a> is not yet approved. Following the
+	<a href="${url:process/time/lco}">LCO Milestone</a> is consensus, the project manager will start to calculate the SPI.</p>
+
+</text>
+
+<concepts>
+	<c1 name="process/time/schedule">Schedules are tracked with SPIs</c1>
+	<c2 name="process/time/iteration">Earned Value numbers are provided by the end of each Iteation</c2>
+	<c3 name="process/scope/matrix">Traceability Matrix is a basis for SPI calculation</c3>
+</concepts>
+
+</article>
+
+

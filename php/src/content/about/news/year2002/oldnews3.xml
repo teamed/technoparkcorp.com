@@ -1,0 +1,54 @@
+<?xml version="1.0" ?> 
+<!-- 
+	Version tracking section:
+
+	10/03/07 Amy M. Wolfe-text edit
+
+-->
+<article>
+
+<date>01/15/2002</date>
+
+<title>Requirements-Based Software Development Process Introduced in 
+TechnoPark Corp.</title>
+
+<description>The process of integration and documentation of a requirements-based 
+software development approach has been finished at TechnoPark Corp.
+</description>
+
+<text>
+<p>Now the company offers the new level of services to its customers.</p>
+
+<p>The final introduction of this new approach to the software development process 
+was prefaced by three months of personnel training which included tutorials and 
+practical seminars for project managers, system analysts, software 
+architects, and software developers. </p>
+
+<p>The decision to study and use requirements-based software development 
+process arose  from recognition of its importance. Requirements-based software 
+development is a guarantee that the software product will meet customer's 
+requirements when it is developed. It is based on the assumption that exact 
+requirements for the software system are not known until the system is 
+developed. That is why the company instituted iterative approach as grounds 
+for requirements-based development. </p>
+
+<p>With the introduction of this software development model, requirements 
+management and becomes one of the core disciplines in company operations. 
+Project managers, system analysts, and developers are involved in requirements 
+management and requirements change management. </p>
+
+<p>The requirements-based approach provides that all requirements must be 
+listed in specification document and approved by the customer before the start of 
+implementation. Then, during the whole software development process, a certain 
+piece of workable software is released each iteration, and this source code is 
+tied to certain requirement(s). Frequent releases and connection with certain 
+requirements assure that the software is being developed according to the customer's 
+vision.  In addition, this approach eases and clarifies Requirements Change 
+Management.</p>
+
+<p>Now, requirements-based process is already used in TechnoPark Corp. adding 
+value to the company's customers.</p>   
+
+
+</text>
+</article>

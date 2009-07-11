@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<!--
+ *
+ * Copyright (c) 2008, TechnoPark Corp., Florida, USA
+ * All rights reserved. THIS IS PRIVATE SOFTWARE.
+ *
+ * Redistribution and use in source and binary forms, with or without modification, are PROHIBITED
+ * without prior written permission from the author. This product may NOT be used anywhere
+ * and on any computer except the server platform of TechnoPark Corp. located at
+ * www.technoparkcorp.com. If you received this code occacionally and without intent to use
+ * it, please report this incident to the author by email: privacy@technoparkcorp.com or
+ * by mail: 568 Ninth Street South 202 Naples, Florida 34102, the United States of America,
+ * tel. +1 (239) 243 0206, fax +1 (239) 236-0738.
+ *
+ * @author Yegor Bugaenko <egor@technoparkcorp.com>
+ * @copyright Copyright (c) TechnoPark Corp., 2001-2009
+ * @version $Id$
+ *
+-->
+
+<article>
+
+<term>specification</term>
+
+<title>Top level user requirement</title>
+<label>Specification</label>
+<intro>Learn about our approaches to Specification development</intro>
+<next>process/scope/srs</next>
+
+<description>
+	Scope specification (either Vision or SRS) defines boundaries
+	of software development product.
+</description>
+
+<keywords>
+	specification,
+	software requirements specification,
+	SRS,
+	functional requirement,
+	non-functional requirement,
+	quality requirement
+</keywords>
+
+<text>
+
+	<p>Specifications define the boundaries of a system. 
+	A Specification is the core document in any software project,
+	and is so important that its value cannot be overestimated.</p>
+	
+	<p>The following advantages are brought to the project by a properly defined Specification:</p>
+
+	<ul>
+		<li>Your involvement is high from early Iterations</li>
+		<li><a href="${url:process/time/schedule}">Schedule</a> is accurate and the Milestones are met without delays</li>
+		<li><a href="${url:process/risk}">Risks</a> are identified and managed in advance, the project is stable</li>
+		<li><a href="${url:process/cost/budget}">Budget</a> includes only real numbers and is optimal</li>
+		<li>Team morale is high since all parties involved know the project objectives</li>
+		<li><a href="${url:process/warranty/support}">Support</a> and enhancements are easy, even if the team experiences changes</li>
+	</ul>
+
+	<p align="center"><tikz>
+\begin{tikzpicture}
+	[node distance = 2.5cm, 
+	auto, thick]
+
+	\node [cloud, draw=tpcRed, cloud ignores aspect, fill=tpcRed!40] (request) {Informal Request};
+
+	\node [block, below of=request] (preliminary) {Preliminary Specification};
+	\node [block, below of=preliminary] (alpha) {Alpha-Specification};
+	\node [block, below of=alpha] (beta) {Beta-Specification};
+	\node [choice, below of=beta, aspect=1.5, text width=3cm] (lco) {LCO Milestone};
+	\node [block, text width=5cm, below=1.8cm of lco] (effective) {Effective Specification};
+
+	\path [line] (request) -- node [right, text width=7cm] {System analysis of scope} (preliminary);
+	\path [line] (preliminary) -- node [right, text width=7cm] {Preliminary Specification and ROM Estimate are approved by Customer} (alpha);
+	\path [line] (alpha) --  node[right, text width=5cm] (comment) {There are no more comments from Customer} (beta);
+	\path [line] (beta) -- (lco);
+	\path [line] (lco) -- node[right, text width=7cm] {Specification, Budget, Schedule, and Risks are approved} (effective);
+
+	\node [draw=tpcBlue, dashed, fit=(alpha) (beta) (comment)] (group) {};
+	\node [below=0.3cm of group.south east, anchor=east] {Inception Phase};
+
+\end{tikzpicture}
+	</tikz></p>
+
+	<p>Requirements are gathered from your informal customer. 
+	A preliminary Specification, called the <a href="${url:process/scope/vision}">Vision</a>, 
+	is then created. Utilizing more defined details, an
+	Alpha-Specification is subsequently created based upon the <a href="${url:process/scope/vision}">Vision</a>. 
+	You are an active participant throughout this entire process.
+	The Alpha-Specification is created during the <a href="${url:process/time/inception}">Inception Phase</a>.</p>
+
+	<p>When the Alpha-Specification is ready and receives your approval, 
+	it becomes a Beta-Specification
+	on a <a href="${url:process/time/lco}">LCO Milestone</a>. 
+	The Beta-Specification is a paper prototype of the system, and is
+	presented in the form of a <a href="${url:process/scope/srs}">SRS</a>.</p>
+
+	<p>On the LCO Milestone, you approve the continuation of the project, 
+	and the Specification becomes effective.</p>
+
+	<p>The effective Specification is used by the project team. All
+	Requirements are <a href="${url:process/communication}">communicated</a> with you 
+	through documented changes in the effective Specification.
+	Communicating any changes ensures that you will be aware of the project status and 
+	the activities of the project team at all times.</p>
+
+	<p>The Specification can be changed at any time during project lifecycle. All changes to the
+	effective Specification are implemented as new Specifications through a process
+	called <a href="${url:process/scope/changerequest}">Change Requests</a>. <a href="${url:process/scope/changerequest}">Change Requests</a>
+	are small documents (1-2 pages) created by a system analyst in response to concerns about the project from you
+	and other stakeholders.</p>
+
+	<p>Specification is part of contractual <a href="${url:process/warranty/deliverables}">Deliverables</a>.</p>
+
+</text>
+
+<concepts>
+	<c1 name="process/time/schedule">Schedule is built after the Alpha-Specification is approved</c1>
+	<c3 name="process/cost/budget">Budget is created on the basis of the approved Specification</c3>
+	<c5 name="process/communication">Communication with you is focused on documented changes to Specification</c5>
+</concepts>
+
+</article>
+
+
+

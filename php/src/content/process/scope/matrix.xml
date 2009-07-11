@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!--
+ *
+ * Copyright (c) 2008, TechnoPark Corp., Florida, USA
+ * All rights reserved. THIS IS PRIVATE SOFTWARE.
+ *
+ * Redistribution and use in source and binary forms, with or without modification, are PROHIBITED
+ * without prior written permission from the author. This product may NOT be used anywhere
+ * and on any computer except the server platform of TechnoPark Corp. located at
+ * www.technoparkcorp.com. If you received this code occacionally and without intent to use
+ * it, please report this incident to the author by email: privacy@technoparkcorp.com or
+ * by mail: 568 Ninth Street South 202 Naples, Florida 34102, the United States of America,
+ * tel. +1 (239) 243 0206, fax +1 (239) 236-0738.
+ *
+ * @author Yegor Bugaenko <egor@technoparkcorp.com>
+ * @copyright Copyright (c) TechnoPark Corp., 2001-2009
+ * @version $Id$
+ *
+-->
+
+<article>
+
+<term>specification</term>
+
+<title>Bi-directional traceability of scope elements</title>
+<label>Traceability Matrix</label>
+<intro>Read how Requirements are traced backward and forward</intro>
+<next>process/cost/budget</next>
+
+<description>
+	All elements of all artifacts are bi-directional traceable between
+	each other.
+</description>
+
+<keywords>
+	traceability matrix,
+	bi-directional traceability,
+	traceable,
+	artifacts
+</keywords>
+
+<text>
+
+	<p>As soon as Functional <a href="${url:process/scope/requirement}">Requirements</a> are specified in the
+	<a href="${url:process/scope/srs}">SRS</a> and you approved them,
+	they are listed in a Traceability Matrix. 
+	Design Elements, <a href="${url:process/risk/risk}">Risks</a>, 
+	<a href="${url:process/scope/feature}">Features</a>, and test cases are traced to Functional
+	Requirements and vise versa.</p> 
+	
+	<p>Bi-directional traceability between key elements of project scope (artifacts) gives
+	a number of benefits to the project:</p>
+
+	<ul>
+		<li>Synchronization of different roles efforts</li>
+		<li>Supportability of the whole product</li>
+		<li>Ability to backtrack and look at features or business needs</li>
+		<li>Status reporting and analysis</li>
+	</ul>
+
+	<p>The Traceability Matrix is a very powerful instrument of <a href="${url:process/time}">time</a>, 
+	<a href="${url:process/cost}">cost</a> and <a href="${url:process/scope}">scope management</a>.</p>
+
+</text>
+
+<concepts>
+	<c1 name="process/scope/srs">SRS shows a textual presentation of requirements, while a Traceability Matrix is a numeric viewpoint</c1>
+	<c3 name="process/scope/requirement">Functional Requirements are listed and prioritized in a Traceability Matrix</c3>
+	<c5 name="process/cost/budget">Budget calculation uses numbers from the 'Size' column in a Traceability Matrix</c5>
+</concepts>
+
+</article>
+
+
+

@@ -1,0 +1,366 @@
+<?xml version="1.0"?>
+<!--
+ *
+ * Copyright (c) 2008, TechnoPark Corp., Florida, USA
+ * All rights reserved. THIS IS PRIVATE SOFTWARE.
+ *
+ * Redistribution and use in source and binary forms, with or without modification, are PROHIBITED
+ * without prior written permission from the author. This product may NOT be used anywhere
+ * and on any computer except the server platform of TechnoPark Corp. located at
+ * www.technoparkcorp.com. If you received this code occacionally and without intent to use
+ * it, please report this incident to the author by email: privacy@technoparkcorp.com or
+ * by mail: 568 Ninth Street South 202 Naples, Florida 34102, the United States of America,
+ * tel. +1 (239) 243 0206, fax +1 (239) 236-0738.
+ *
+ * @author Yegor Bugaenko <egor@technoparkcorp.com>
+ * @copyright Copyright (c) TechnoPark Corp., 2001-2009
+ * @version $Id$
+ *
+-->
+
+<article>
+
+<invisible/>
+<title>Legal Notes and Terms of Use</title>
+<label>Legal Notes</label>
+<intro>Read official legal notes about trademarks and service marks used online</intro>
+<next>about/privacypolicy</next>
+
+<keywords>
+	Legal information,
+	trademarks,
+	registered marks,
+	custom software,
+	terms of use
+</keywords>
+
+<description>
+	The trademarks used on our site are registered and respected
+	marks of their owners. Terms of use of the site are declared here.
+</description>
+
+<text>
+
+	<p>The following are terms of a legal agreement between you and TechnoPark Corp.
+	By accessing, browsing, or using this web-site, you acknowledge that you 
+	have read, understood, and agree to be bound by these terms and to 
+	comply with all applicable laws and regulations, including export and 
+	re-export control laws and regulations.</p> 
+
+	<p>If you do not agree to these 
+	terms, please do not use this web-site.</p>
+
+	<p>TechnoPark Corp. may, without notice to you, at any time revise these 
+	Legal Notes and any other information contained in this web-site by 
+	updating this posting.</p> 
+
+	<p>TechnoPark Corp. may also make improvements or 
+	changes in the products, services, or programs described in this web-site 
+	at any time without notice.</p>		   
+
+	<h1>General Notes</h1>
+
+		<p>This web-site contains proprietary notices and copyright information, 
+		the terms of which must be observed and followed. Please see the section 
+		entitled 'Trademarks' for related information.</p>
+
+		<p>This web-site and all content in this web-site may not be copied, 
+		reproduced, republished, uploaded, posted, transmitted, distributed, 
+		or used for the creation of derivative works without TechnoPark Corp.'s 
+		prior written consent, except that TechnoPark Corp. grants you 
+		non-exclusive, non-transferable, limited permission to access and display 
+		the web-pages within this web-site, solely on your computer and for 
+		your personal, non-commercial use of this web-site.</p> 
+
+		<p>This permission is 
+		conditioned on your not modifying the content displayed on this web-site, 
+		your keeping intact all copyright, trademark, and other proprietary notices, 
+		and your acceptance of any terms, conditions, and notices accompanying the 
+		content or otherwise set forth in this web-site. </p>
+
+		<p>Notwithstanding the 
+		foregoing, any software and other materials that are made available for 
+		downloading, access, or other use from this web-site with their own license 
+		terms, conditions, and notices will be governed by such terms, conditions, and notices.</p>
+
+		<p>Your failure to comply with the terms, conditions, and notices on this 
+		web-site will result in automatic termination of any rights granted to you, 
+		without prior notice, and you must immediately destroy all copies of 
+		downloaded materials in your possession or control. </p>
+
+		<p>Except for the 
+		limited permission in the preceding paragraphs, TechnoPark Corp. does not grant 
+		you any express or implied rights or licenses under any patents, trademarks, 
+		copyrights, or other proprietary or intellectual property rights. You may not 
+		mirror any of the content from this web-site on another web-site or in 
+		any other media.</p>
+
+	<h1>Disclaimers</h1>
+
+		<p>Information on this web-site is not promised or guaranteed to be correct, 
+		current, or complete, and this web-site may contain technical inaccuracies 
+		or typographical errors. TechnoPark Corp. assumes no responsibility 
+		(and expressly disclaims responsibility) for updating this web-site to 
+		keep information current or to ensure the accuracy or completeness of any 
+		posted information. </p>
+
+		<p>Accordingly, you should confirm the accuracy and completeness of all posted 
+		information before making any decision related to any services, products, 
+		or other matters described in this web-site.</p>
+
+		<p>TechnoPark Corp. provides no assurances that any reported problems will 
+		be resolved by TechnoPark Corp., even if TechnoPark Corp. elects to provide 
+		information with the goal of addressing a problem.</p>
+
+	<h1>Trademarks</h1>
+
+		<png style="float: left;">//images/logo</png>
+
+		<p>The trademark (nine-circles logo and "<b>Plan Your Success</b>" slogan) is a trademark
+		of TechnoPark Corp., registered on 4-Nov-08 in United States Patent and Trademark
+		Office (<a href="http://www.uspto.gov">USPTO</a>), 
+		<a href="http://tarr.uspto.gov/servlet/tarr?regser=serial&amp;entry=77438094">see details</a>.
+		Any oppositions you may send directly to USPTO or to <a href="${mailto:pr}">copyright</a> department
+		of TechnoPark Corp by email. You can download our logo in <a href="${def:Site::BuildImage(false, '/logo.svg')}">SVG format</a>.</p>
+
+		<p>The product names used in this website are for identification purposes only. 
+		All trademarks and registered trademarks are the property of their respective owners.</p>
+
+	<h1>Third-Parties</h1>
+
+		<p>This web-site may provide links or references to non-TechnoPark Corp. 
+		web-sites and resources. TechnoPark Corp. makes no representations, warranties, 
+		or other commitments whatsoever about any non-TechnoPark Corp. web-sites or 
+		third-party resources that may be referenced, accessible from, or linked 
+		to any TechnoPark Corp. web-site. </p>
+
+		<p>A link to a non-TechnoPark Corp. web-site does not mean that TechnoPark Corp. 
+		endorses the content or use of such web-site or its owner. </p>
+
+		<p>In addition, TechnoPark Corp. is not a party to or responsible for any 
+		transactions you may enter into with third parties, even if you learn of 
+		such parties (or use a link to such parties) from an TechnoPark Corp. 
+		web-site. </p>
+
+		<p>Accordingly, you acknowledge and agree that TechnoPark Corp. is not responsible 
+		for the availability of such external web-sites or resources, and is 
+		not responsible or liable for any content, services, products, or other 
+		materials on or available from those web-sites or resources.</p>
+
+		<p>When you access a non-TechnoPark Corp. web-site, even one that may contain the 
+		TechnoPark Corp. logo, please understand that it is independent from 
+		TechnoPark Corp., and that TechnoPark Corp. does not control the content on 
+		that web-site. </p>
+
+		<p>It is up to you to take precautions to protect yourself from viruses, worms, 
+		trojan horses, and other potentially destructive programs, and to protect your 
+		information as you deem appropriate.</p>
+
+	<h1>Linking to this web-site</h1>
+
+		<p>All links to this web-site must be approved in writing by TechnoPark Corp., 
+		except that TechnoPark Corp. consents to links in which the link and the 
+		pages that are activated by the link do not: (a) create frames around 
+		any page on this web-site or use other techniques that alter in any 
+		way the visual presentation or appearance of any content within this 
+		web-site; (b) misrepresent your relationship with TechnoPark Corp.; (c) imply 
+		that TechnoPark Corp. approves or endorses you, your web-site, or 
+		your service or product offerings; and (d) present false or misleading impressions 
+		about TechnoPark Corp. or otherwise damage the goodwill associated with the 
+		TechnoPark Corp. name or trademarks.</p> 
+
+		<p>As a further condition to being permitted to link to this web-site, you 
+		agree that TechnoPark Corp. may at any time, in its sole discretion, 
+		terminate permission to link to this web-site.</p> 
+
+		<p>In such event, you agree to immediately remove all links to this web-site 
+		and to cease using any TechnoPark Corp. trademark.</p>
+
+	<h1>Translations</h1>
+
+		<p>Certain text in this web-site may be made available in languages other than English. 
+		Text may be translated by a person or solely by computer software with no 
+		human intervention or review.</p> 
+
+		<p>These translations are provided as a convenience to you, and TechnoPark Corp. 
+		makes no representations or commitments regarding the accuracy or completeness of 
+		the translation, whether or not computer-generated or performed by a person. 
+		Please see the below Disclaimer of Warranty for additional conditions.</p>
+
+	<h1>Disclaimer of Warranty</h1>
+
+		<p>Use of this web-site is at your sole risk. All materials, information, 
+		products, software, programs, and services are provided "as is," with no warranties 
+		or guarantees whatsoever. TechnoPark Corp. expressly disclaims to the 
+		fullest extent permitted by law all express, implied, statutory, and 
+		other warranties, guarantees, or representations, including, without 
+		limitation, the warranties of merchantability, fitness for a particular purpose, 
+		and non-infringement of proprietary and intellectual property rights.</p> 
+
+		<p>Without limitation, TechnoPark Corp. makes no warranty or guarantee that 
+		this web-site will be uninterrupted, timely, secure, or error-free.</p>
+
+		<p>You understand and agree that if you download or otherwise obtain materials, 
+		information, products, software, programs, or services, you do so at 
+		your own discretion and risk and that you will be solely responsible 
+		for any damages that may result, including loss of data or damage to 
+		your computer system.</p>
+
+		<p>Some jurisdictions do not allow the exclusion of warranties, so the 
+		above exclusions may not apply to you.</p>
+
+	<h1>Limitation of Liability</h1>
+
+		<p>In no event will TechnoPark Corp. be liable to any party for any direct, 
+		indirect, incidental, special, exemplary or consequential damages of 
+		any type whatsoever related to or arising from this web-site or 
+		any use of this web-site, or of any web-site or resource linked to, 
+		referenced, or accessed through this web-site, or for the use or 
+		downloading of, or access to, any materials, information, products, 
+		or services, including, without limitation, any lost profits, business 
+		interruption, lost savings or loss of programs or other data, even if 
+		TechnoPark Corp. is expressly advised of the possibility of such damages.</p> 
+
+		<p>This exclusion and waiver of liability applies to all causes of action, 
+		whether based on contract, warranty, tort, or any other legal theories.</p>
+
+		<p>Additional or different terms, conditions, and notices may apply to 
+		specific materials, information, products, software, and services offered 
+		through this web-site.</p> 
+
+		<p>In the event of any conflict, such additional or different terms, conditions, 
+		and notices will prevail over these legal notes. please see the 
+		applicable agreement or notice.</p>
+
+</text>
+
+<images>
+	<logo>
+MB5!.1PT*&amp;@H````-24A$4@```(L```!4&quot;`,```&quot;%KS0W````&quot;7!(67,```L3
+M```+$P$`FIP8```*3VE#0U!0:&amp;]T;W-H;W`@24-#(&#039;!R;V9I;&amp;4``&#039;C:G5-G
+M5%/I%CWWWO1&quot;2XB`E$MO4A4((%)&quot;BX`4D28J(0D02H@AH=D54&lt;$1144$&amp;\B@
+MB`..CH&quot;,%5$L#(H*V`?D(:*.@Z.(BLK[X7NC:]:\]^;-_K77/N&gt;L\YVSSP?`
+M&quot;`R62#-1-8`,J4(&gt;$&gt;&quot;#Q\3&amp;X&gt;0N0($*)&#039;``$`BS9&quot;%S_2,!`/A^/#PK(L`&#039;
+MO@`!&gt;-,+&quot;`#`39O`,!R&#039;_P_J0IE&lt;`8&quot;$`&lt;!TD3A+&quot;(`4`$!ZCD*F`$!&amp;`8&quot;=
+MF&quot;93`*`$`&amp;#+8V+C`%`M`&amp;`G?^;3`(&quot;=^)E[`0!;E&quot;$5`:&quot;1`&quot;`398A$`&amp;@[
+M`*S/5HI%`%@P`!1F2\0Y`-@M`#!)5V9(`+&quot;W`,#.$`NR``@,`#!1B(4I``1[
+M`&amp;#((R-X`(29`!1&amp;\E&lt;\\2NN$.&lt;J``!XF;(\N20Y18%;&quot;&quot;UQ!U=7+AXHSDD7
+M*Q0V80)AFD`NPGF9&amp;3*!-`_@\\P``*&quot;1%1&#039;@@_/]&gt;,X.KL[.-HZV#E\MZK\&amp;
+M_R)B8N/^Y&lt;^K&lt;$```.%T?M&#039;^+&quot;^S&amp;H`[!H!M_J(E[@1H7@N@=?&gt;+9K(/0+4`
+MH.G:5_-P^&#039;X\/$6AD+G9V&gt;7DY-A*Q$);8&lt;I7??YGPE_`5_UL^7X\_/?UX+[B
+M)($R78%&#039;!/C@PLST3*4&lt;SY()A&amp;+&lt;YH]&#039;_+&lt;+__P=TR+$26*Y6&quot;H4XU$2&lt;8Y$
+MFHSS,J4BB4*2*&lt;4ETO]DXM\L^P,^WS4`L&amp;H^`7N1+:A=8P/V2R&lt;06&#039;3`XO&lt;`
+M`/*[;\&#039;4*`@#@&amp;B#X&lt;]W_^\__4&gt;@)0&quot;`9DF2&lt;0``7D0D+E3*LS_&#039;&quot;```1*&quot;!
+M*K!!&amp;_3!&amp;&quot;S`!AS!!=S!&quot;_Q@-H1&quot;),3&quot;0A!&quot;&quot;F2`&#039;&#039;)@*:R&quot;0BB&amp;S;`=*F`O
+MU$`=-,!1:(:3&lt;`XNPE6X#CUP#_IA&quot;)[!*+R!&quot;01!R`@382&#039;:B`%BBE@CC@@7
+MF87X(&lt;%(!!*+)&quot;#)B!11(DN1-4@Q4HI4(%5(&#039;?(]&lt;@(YAUQ&amp;NI$[R``R@OR&amp;
+MO$&lt;QE(&amp;R43W4#+5#N:@W&amp;H1&amp;H@O09&#039;0QFH\6H)O0&lt;K0:/8PVH&gt;?0JV@/VH\^
+M0\&lt;PP.@8!S/$;#`NQL-&quot;L3@L&quot;9-CR[$BK`RKQAJP5JP#NXGU8\^Q=P02@47`
+M&quot;38$=T(@81Y!2%A,6$[82*@@&#039;&quot;0T$=H)-PD#A%&#039;&quot;)R*3J$NT)KH1^&lt;088C(Q
+MAUA(+&quot;/6$H\3+Q![B$/$-R02B4,R)[F0`DFQI%32$M)&amp;TFY2(^DLJ9LT2!HC
+MD\G:9&amp;NR!SF4+&quot;`KR(7DG&gt;3#Y#/D&amp;^0A\EL*G6)`&lt;:3X4^(H4LIJ2AGE$.4T
+MY09EF#)!5:.:4MVHH501-8]:0JVAME*O48&gt;H$S1UFCG-@Q9)2Z6MHI73&amp;F@7
+M:/=IK^ATNA&#039;=E1Y.E]!7TLOI1^B7Z`/T=PP-AA6#QXAG*!F;&amp;`&lt;89QEW&amp;*^8
+M3*89TXL9QU0P-S&#039;KF.&gt;9#YEO55@JMBI\%9&#039;*&quot;I5*E2:5&amp;RHO5*FJIJK&gt;J@M5
+M\U7+5(^I7E-]KD95,U/CJ0G4EJM5JIU0ZU,;4V&gt;I.ZB&#039;JF&gt;H;U0_I&#039;Y9_8D&amp;
+M6&lt;-,PT]#I%&amp;@L5_CO,8@&quot;V,9LW@L(6L-JX9U@37$)K&#039;-V7QV*KN8_1V[BSVJ
+MJ:$Y0S-*,U&gt;S4O.49C\&#039;XYAQ^)QT3@GG**&gt;7\WZ*WA3O*&gt;(I&amp;Z8T3+DQ95QK
+MJI:7EEBK2*M1JT?KO3:N[:&gt;=IKU%NUG[@0Y!QTHG7&quot;=&#039;9X_.!9WG4]E3W:&lt;*
+MIQ9-/3KUKBZJ:Z4;H;M$=[]NI^Z8GKY&gt;@)Y,;Z?&gt;&gt;;WG^AQ]+_U4_6WZI_5&#039;
+M#%@&amp;LPPD!ML,SA@\Q35Q;SP=+\?;\5%#7&lt;-`0Z5AE6&amp;7X821N=$\H]5&amp;C48/
+MC&amp;G&amp;7.,DXVW&amp;;&lt;:C)@8F(29+3&gt;I-[II23;FF*:8[3#M,Q\W,S:+-UIDUFSTQ
+MUS+GF^&gt;;UYO?MV!:&gt;%HLMJBVN&amp;5)LN1:IEGNMKQNA5HY6:5855I=LT:MG:TE
+MUKNMNZ&lt;1I[E.DTZKGM9GP[#QMLFVJ;&lt;9L.78!MNNMFVV?6%G8A=GM\6NP^Z3
+MO9-]NGV-_3T&#039;#8?9#JL=6AU^&lt;[1R%#I6.MZ:SISN/WW%]);I+V=8SQ#/V#/C
+MMA/+*&lt;1IG5.;TT=G%V&gt;Y&lt;X/SB(N)2X+++I&lt;^+IL;QMW(O&gt;1*=/5Q7&gt;%ZTO6=
+MF[.;PNVHVZ_N-NYI[H?&lt;G\PTGRF&gt;63-ST,/(0^!1Y=$_&quot;Y^5,&amp;O?K&#039;Y/0T^!
+M9[7G(R]C+Y%7K=&gt;PMZ5WJO=A[Q&lt;^]CYRG^,^XSPWWC+&gt;65_,-\&quot;WR+?+3\-O
+MGE^%WT-_(_]D_WK_T0&quot;G@&quot;4!9P.)@4&amp;!6P+[^&#039;I\(;^./SK;9?:RV&gt;U!C*&quot;Y
+M015!CX*M@N7!K2%HR.R0K2&#039;WYYC.D&lt;YI#H50?NC6T`=AYF&amp;+PWX,)X6&#039;A5&gt;&amp;
+M/XYPB%@:T3&amp;7-7?1W$-SWT3Z1)9$WIMG,4\YKRU*-2H^JBYJ/-HWNC2Z/\8N
+M9EG,U5B=6$EL2QPY+BJN-FYLOM_\[?.&#039;XIWB&quot;^-[%Y@OR%UP&gt;:&#039;.PO2%IQ:I
+M+A(L.I9`3(A..)3P01`JJ!:,)?(3=R6.&quot;GG&quot;&#039;&lt;)G(B_1-M&amp;(V$-&lt;*AY.\D@J
+M37J2[)&amp;\-7DDQ3.E+.6YA&quot;&gt;ID+Q,#4S=FSJ&gt;%IIV(&amp;TR/3J],8.2D9!Q0JHA
+M39.V9^IGYF9VRZQEA;+^Q6Z+MR\&gt;E0?):[.0K`59+0JV0J;H5%HHURH&#039;LF=E
+M5V:_S8G*.9:KGBO-[&lt;RSRMN0-YSOG__M$L(2X9*VI89+5RT=6.:]K&amp;HYLCQQ
+M&gt;=L*XQ4%*X96!JP\N(JV*FW53ZOM5Y&gt;N?KTF&gt;DUK@5[!RH+!M0%KZPM5&quot;N6%
+M?&gt;O&lt;U^U=3U@O6=^U8?J&amp;G1L^%8F*KA3;%Y&lt;5?]@HW&#039;CE&amp;X=ORK^9W)2TJ:O$
+MN63/9M)FZ&gt;;&gt;+9Y;#I:JE^:7#FX-V=JT#=]6M.WU]D7;+Y?-*-N[@[9#N:._
+M/+B\9:?)SLT[/U2D5/14^E0V[M+=M6&#039;7^&amp;[1[AM[O/8T[-7;6[SW_3[)OMM5
+M`55-U6;59?M)^[/W/ZZ)JNGXEOMM7:U.;7&#039;MQP/2`_T&#039;(PZVU[G4U1W2/512
+MC]8KZT&lt;.QQ^^_IWO=RT--@U5C9S&amp;XB-P1&#039;GDZ?&lt;)W_&lt;&gt;#3K:=HQ[K.$&#039;TQ]V
+M&#039;6&lt;=+VI&quot;FO*:1IM3FOM;8ENZ3\P^T=;JWGK\1]L?#YPT/%EY2O-4R6G:Z8+3
+MDV?RSXR=E9U]?B[YW&amp;#;HK9[YV/.WVH/;^^Z$&#039;3ATD7_B^&lt;[O#O.7/*X=/*R
+MV^435[A7FJ\Z7VWJ=.H\_I/33\&gt;[G+N:KKE&lt;:[GN&gt;KVU&gt;V;WZ1N&gt;-\[=]+UY
+M\1;_UM6&gt;.3W=O?-Z;_?%]_7?%MU^&lt;B?]SLN[V7&lt;G[JV\3[Q?]$#M0=E#W8?5
+M/UO^W-COW&#039;]JP&#039;&gt;@\]&#039;&lt;1_&lt;&amp;A8//_I&#039;UCP]#!8^9C\N&amp;#8;KGC@^.3GB/W+]
+MZ?RG0\]DSR:&gt;%_ZB_LNN%Q8O?OC5Z]?.T9C1H9?REY._;7RE_&gt;K`ZQFOV\;&quot;
+MQAZ^R7@S,5[T5OOMP7?&lt;=QWOH]\/3^1\(&#039;\H_VCYL?53T*?[DQF3D_\$`YCS
+M_&amp;,S+=L````@8TA230``&gt;B4``(&quot;#``#Y_P``@.D``&#039;4P``#J8```.I@``!=O
+MDE_%1@```P!03%1%35QEB)*8(30_\/&#039;RQ,G,0*[&lt;TM;8IJVR:WA_?\GGX&gt;3E
+MEZ&quot;E7&amp;IR/T]9M;N_O^3S&gt;H6,,$%,&lt;,+EW_&#039;Y,*?98+SBG];MS^OVK]WP$)K3
+M[_C\C]#J(*&#039;64+7?____`)/0$B8R_/[\````````````````````````````
+M````````````````````````````````````````````````````````````
+M````````````````````````````````````````````````````````````
+M````````````````````````````````````````````````````````````
+M````````````````````````````````````````````````````````````
+M````````````````````````````````````````````````````````````
+M````````````````````````````````````````````````````````````
+M````````````````````````````````````````````````````````````
+M````````````````````````````````````````````````````````````
+M````````````````````````````````````````````````````````````
+M````````````````````````````````````````````````````````````
+M````````````````````````````````````````````````````````````
+M````````````````````````````````````````````````````````````
+M````````````````````````````````````````````````````````````
+M````````````````````````````````````````````````````````````
+M````````````````````.Y45J```!N))1$%4&gt;-KLFFMWHM@2AA\N*N(]]HH&amp;
+M6T+^_X]J@]&#039;$&#039;$V\@B*7^8`HMYYV$IV362M\R)(*XDOMVE5/[8WPP)&lt;YA&amp;\M
+MU]1B&quot;E#LI(Q#$&#039;LIV\B&#039;_C6U#%T#8.%L]:-MXG&lt;!S+ISDFCZ@@[PXO:OI,4L
+M_X@^+C:1&#039;P;WQW\7M,.GV?HH==[*N9&#039;4^K04]2@%Y7U3!^#YY]&#039;6J#W7`!C?
+M-DX7OM2R=Q(_[99R.W:BNR;`:S=^Q=T08&#039;07MW4&#039;5]`R_)$XU0N`:2&gt;OJ0$X
+M2=O]Y/):E-1YUP1%3]H:,Q@9J0OMRVOYD3948)/S*_NTK7IQ+&lt;.,905I%S&quot;&#039;
+M(&amp;UK7R%V+W=\)2V?S2^+1MIBUYBI*=NVE@WRA7)IO^BSS-.!E+8%X&#039;/]&gt;91*
+M&amp;TP[69NI07N1,OJ7UZ+-LMHZ\U1J!O&quot;2MI?&gt;%6)W9\;/GGL`JX3`EUN`]DO&lt;
+M-MM?I4Z/*J?X?3[49-,[Y9B7J!&quot;]-T]2+/TZ_!)A&quot;5/_Q&quot;IC-50XL_MISF&#039;A
+MW%Z1ZX8&gt;%*4DV(T*%NH^&amp;183ST&#039;=];_9^U_78OK5-BQL/SX@XYT!IBK&amp;:^#,
+MMW08E%S]6EI&gt;[&gt;C6T^.G82V:7+-=I&#039;!B19/+K+:OH^4Y!I317!W&#039;@-*40S&amp;C
+MN#&gt;BR7_97#&gt;(LVT[K(K#NP0#3P#,Q,#&lt;S:Z@97*?)*3!$7!/8BR`0C)&amp;UN;E
+MM:1+G`&quot;,4R!AC&amp;#2315XY?IU6A]&quot;(7W1/M28.#87US+*S$X/K!Q^R6@Q+J[%
+MSP6L&#039;-OZO\6[G]52S%A46.3T0IE0O?P\ZBQRXM3.B9&lt;@1_.EQRB%D\QZX*8O
+MVH)K_O&amp;7/ZU%-+/YI9]:1&#039;C404\Y9G&quot;%OE%/]L4O;0`U(7`F`AB)K&amp;\6KS&amp;/
+MVL]Q*6$AZLAFMEY:LVR]_&#039;.=7JS@1CT_WSE&amp;&gt;CD,LQ#E_$?QF&amp;X&amp;!RY.@/$?
+MM/C`_.:?9-]]`$T_$0(305BC2-MXXC-E84LU&quot;#IG&lt;]U;\Y]JN5ZNJWX9WMVL
+M7`VPUJ!**^BR#%90\R)&#039;6&lt;L?+X`&lt;@X`W:05-02[%Q\@.H!HDQT@1UB&quot;4SQVC
+MIQ/]S2T-Q,6!C&#039;RO!&quot;R76MJEEE&lt;Y\(-XG*FG1=_YZA2[$7&lt;-U,Z&#039;ZM%3!&amp;GB
+M&#039;K&quot;*&amp;5#=*)6H.,E1-1X%QW6\9I1LS.D1`8WMZ,PQNB4:H]`&#039;&amp;QFW`K!5654`
+M7HN4%X&lt;QLN,#@U4%F&quot;1&amp;YI!@IFW^/L&#039;(&amp;4NEX@,X76`95K8R.Z&lt;([-E4`&#039;;=
+M:&quot;$#=DE(4NTR8&quot;5`J2TE!N@W:TAGY=UQ&#039;4HRP(H2P*8&lt;^^][,?MPPQ2S-2?A
+M3DI&quot;X/@C6F2`*8`65N`$J:9+G&amp;3E.%L`.0U[A0_7HT8,G&gt;(=QU+*D5[.T9+A
+M7&gt;O#6NS8]W&lt;QNYMSI;?(@=WMGZ&#039;X\KQK(^G7Y=UJC`OC0Z#DKCM\K+&quot;&lt;J^7M
+MT/I`$JU5)X?&amp;U9QXR?#NX,-:W#!0QI#:&amp;DD&#039;C&#039;&gt;3LR=2SM%2^J@62PO[51E`
+M7/Y-LQ8`6BIXIQWHO*1XS3U?B\1NLXD&gt;ZJT`,+XY&gt;%]X.^9DZJ_)&quot;E(,DV)R
+MV0I@GXPB3S^+I591K7MUXX70&lt;&gt;K1NG&#039;B,=9J7$KILFM!&lt;JZC-GX=Z*ZR,\0]
+MQJ]UD(+V=!RF050%&gt;\HQ7!=/VKF\:[L5P)FJ5O053]A%SGHKEB2`\6G;=R&gt;\
+M:K#QA7J\C!4LG86=V!8?RN4&amp;IKK7/K&quot;.^:21WN#]PKW]MY;_1Q^0;B!I5;Z$
+MEJ_DEV\MF6/B]OYM+=E\_PNJ3@\[R%W=D/O,EFKG-W&lt;S&quot;UL$XW)SVE#D[.+:
+MX&gt;CA@J3\3@KE0KU&gt;NZ!?V!FF_G1HSU&amp;W.D-*5BWL/&gt;2?0VDOP*M%N&lt;/$-AAZ
+M!D-)#BOZNMD&quot;&amp;*,Q]OHP=BCTF-BHMYB*I=[&quot;:$^A=_A[3JX3#F:YA%T#S]^4
+M;L(^KS]UU4#GETUU:^+&lt;@W&lt;/WETQ9.!F&lt;V`&quot;NQWL/&#039;C&gt;-QH*HVU``501&gt;P!N
+MI:%@NI7&amp;6?OVS5\_#YOJ;5&#039;RYT#CX6YV8`7?P&amp;!DB(:5P.YE^(I&amp;ZU$(3OW@
+MI%MMM=H4_0&gt;CQ;`M2/4FZ)M5&amp;TD/6OUSM+R7(A(:WX8@^&#039;XBM&lt;Y@#CY]=#_6
+M;,TB2C+NBR&gt;*&lt;L*F&lt;BV$&gt;+MTY^_P+`0S&gt;H_V?&#039;2.%D&amp;+1G+_^&quot;#DA]D04U2!
+M4=A0KA)M`$IX8Y&#039;9$8&amp;1D!X&gt;&#039;D`3U&quot;48PGOQ3(:+&amp;E=W(.1-[?ZT-@C$+?W&#039;
+M2NR]`&amp;`J+83E`X&#039;Q/C&lt;&gt;Z?T21?QV_&gt;9_FT:K/54&#039;%#6SX`M5)K[?LL_0\AAV
+MR)($&amp;[%47(4?2]%K&amp;B4/L)2@Z71`WN_?5@92U%0[0B78@O:ZJ3Q+(&quot;ESQ:&lt;]
+ME&quot;M[L/R@N89=(*W8U;;._KL&gt;_0&gt;U?/[=T,L=?PT`I.1KCT&#039;8+%8`````245.
+%1*Y&quot;8((`
+`
+	</logo>
+</images>
+
+</article>
+
+
+
+

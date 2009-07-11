@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<!--
+ *
+ * Copyright (c) 2008, TechnoPark Corp., Florida, USA
+ * All rights reserved. THIS IS PRIVATE SOFTWARE.
+ *
+ * Redistribution and use in source and binary forms, with or without modification, are PROHIBITED
+ * without prior written permission from the author. This product may NOT be used anywhere
+ * and on any computer except the server platform of TechnoPark Corp. located at
+ * www.technoparkcorp.com. If you received this code occacionally and without intent to use
+ * it, please report this incident to the author by email: privacy@technoparkcorp.com or
+ * by mail: 568 Ninth Street South 202 Naples, Florida 34102, the United States of America,
+ * tel. +1 (239) 243 0206, fax +1 (239) 236-0738.
+ *
+ * @author Yegor Bugaenko <egor@technoparkcorp.com>
+ * @copyright Copyright (c) TechnoPark Corp., 2001-2009
+ * @version $Id$
+ *
+-->
+
+<article>
+
+<term>budget</term>
+
+<title>Exact project estimation and quotation</title>
+<label></label>
+<intro></intro>
+<next></next>
+
+<description>
+	Project budget is calculated and estimated in staff-hours. We
+	use our own patent-pending technology for budget calculation.
+</description>
+
+<keywords>
+	budget,
+	project budget,
+	software project budget,
+	software cost estimation,
+	software size,
+	estimation,
+	estimate,
+	project size
+</keywords>
+
+<text>
+
+	<p>We calculate, communicate and define the Budget in <a href="${url:process/cost/prices}">staff-hours</a>. 
+	The actual monetary size of a
+	project is a multiple of staff-hours and price per hour.</p>
+
+	<p>We use our proprietary patent-pending method (USPTO patent 12/193,010) for Budget
+	estimation and calculation.</p>
+
+	<p>The Budget covers all costs, including:</p>
+	
+	<ul>
+		<li>Programming</li>
+		<li><a href="${url:process/scope}">Requirements Development</a></li>
+		<li>Project Management</li>
+		<li>Architecture and Design</li>
+		<li><a href="${url:process/quality}">Testing</a> and Quality Assurance</li>
+		<li>Deployment</li>
+		<li><a href="${url:process/warranty/defectremoval}">Defect-removal</a></li>
+	</ul>
+
+	<p>The Budget is paid only for <a href="${url:process/warranty/deliverables}">Deliverables</a>, not for 
+	the time spent. It does not include
+	<a href="${url:process/warranty/support}">support</a> and other <a href="${url:process/warranty/support}">maintenance</a> services.</p>
+
+	<p>The Budget is calculated by the project team using Functional 
+	<a href="${url:process/scope/requirement}">Requirements</a>. Each Requirement
+	is estimated by programmers and then the total
+	project programming effort can be calculated. 
+	Efforts for other project disciplines are
+	calculated using the amount of hours for programming.</p>
+
+	<p>The Budget is changed only when changes are made to scope by <a href="${url:process/scope/changerequest}">Change Requests</a>.</p>
+
+</text>
+
+<concepts>
+	<c3 name="process/scope/specification">Specifications is the only base for Budget calculation</c3>
+	<c4 name="process/quality/coq">Cost Of Quality is what you pay for when you get a high quality product</c4>
+	<c5 name="process/warranty">Warranty is a free-of-charge service</c5>
+</concepts>
+
+</article>
+
+
