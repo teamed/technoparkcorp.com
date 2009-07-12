@@ -12,9 +12,6 @@
     // new holder of news elements
     $news = Zend_Navigation_Page::factory(array('type'=>'uri'));
 
-    // new holder of years elements
-    $years = Zend_Navigation_Page::factory(array('type'=>'uri'));
-
     foreach ($this->navigation()->findOneBy('path', $this->article->page)->getPages() as $page) {
 
         // load news article
@@ -23,26 +20,40 @@
         // save article for future use
         $page->article = $article;
 
+        if (preg_match('/year(\d+)$/', $page->path))
+            continue;
+
+        // backward chronological order
+        $page->order = 1-strtotime($article->published);
+
+        // add the article to the holder, to show later
+        $news->addPage($page);
+
+    }
+
+    // new holder of years elements
+    $years = Zend_Navigation_Page::factory(array('type'=>'uri'));
+
+    foreach ($this->navigation()->findOneBy('path', 'about/news')->getPages() as $page) {
+
+        // load news article
+        $article = Model_Article::createByLabel($page->path);
+            
+        // save article for future use
+        $page->article = $article;
+
         $matches = array();
-        if (preg_match('/year(\d+)$/', $page->path, $matches)) {
+        if (!preg_match('/year(\d+)$/', $page->path, $matches))
+            continue;
                                
-            // backward chronological order
-            $page->order = $matches[1];
+        // backward chronological order
+        $page->order = -(int)$matches[1];
 
-            // year label
-            $page->year = $matches[1];
+        // year label
+        $page->year = $matches[1];
 
-            // add the article to the holder, to show later
-            $years->addPage($page);
-
-        } else {
-
-            // backward chronological order
-            $page->order = 1-strtotime($article->published);
-
-            // add the article to the holder, to show later
-            $news->addPage($page);
-        }
+        // add the article to the holder, to show later
+        $years->addPage($page);
 
     }
 ?>
@@ -68,6 +79,6 @@
     <? endif; ?>    
 
     <? foreach ($years as $year): ?> 
-        <a href="<?=$year->href?>"><?=$year->year?></a>&#32;&#32;
+        <a title="<?=$year->title?>" href="<?=$year->href?>"><?=$year->year?></a>&#32;&#32;
     <? endforeach; ?>    
 </p>

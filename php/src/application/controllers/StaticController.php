@@ -50,6 +50,7 @@ class StaticController extends FaZend_Controller_Action {
         // change content if the PHTML script found    
         $scripts = array(
             APPLICATION_PATH . '/views/scripts/content/' => $article->page . '.phtml',
+            APPLICATION_PATH . '/views/scripts/content/' . $article->page . '/..' => '_any.phtml',
         );
 
         // try to render all scripts, one-by-one
@@ -63,7 +64,9 @@ class StaticController extends FaZend_Controller_Action {
         }
 
         // make this menu element visible, no matter what
-        $this->view->navigation()->findOneBy('path', $article->page)->visible = true;
+        $page = $this->view->navigation()->findOneBy('path', $article->page);
+        $page->visible = true;
+        $page->parent->visible = true;
 
         // parse special XML meta symbols, like ${url:about/news}
         //$this->view->content = XMLDocument::parseText($this->view->content);
