@@ -1,0 +1,38 @@
+
+<? $this->includeCSS('innovations.css');?>
+
+<?=$this->article->text?>
+
+<?
+    // new holder of articles elements
+    $articles = Zend_Navigation_Page::factory(array('type'=>'uri'));
+
+    foreach ($this->navigation()->findOneBy('path', $this->article->page)->getPages() as $page) {
+
+        // load news article
+        $article = Model_Article::createByLabel($page->path);
+            
+        // save article for future use
+        $page->article = $article;
+
+        // backward chronological order
+        $page->order = 1-strtotime($article->published);
+
+        // add the article to the holder, to show later
+        $articles->addPage($page);
+
+    }
+?>
+
+<? foreach ($articles as $page): ?>
+
+    <p class="innovation">
+        <b><a href="<?=$page->href?>">
+        <?=$page->article->title?></a></b>, 
+        <?=$page->article->description?><br/>
+        <span>published on <?=$page->article->published?></span>
+    </p>
+
+
+<? endforeach; ?>
+
