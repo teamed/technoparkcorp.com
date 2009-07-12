@@ -1,0 +1,33 @@
+<?=$this->article->text?>
+
+<?
+    // new holder of pages found
+    $found = [];
+
+    foreach ($this->navigation()->findAllBy('visible', true) as $page) {
+
+        // load news article
+        $article = Model_Article::createByLabel($page->path);
+            
+        // save article for future use
+        $page->article = $article;
+
+        // backward chronological order
+        $page->order = 1-strtotime($article->published);
+
+        // add the article to the holder, to show later
+        $found->addPage($page);
+
+    }
+?>
+
+<? foreach (array_slice($found->getPages(), 0, 20) as $page): ?>
+
+    <p>
+        <a title="<?=$page->title?>" href="<?=$page->href?>"><?=$page->title?></a> 
+        [relevance: <?=$page->relevance?>%]<br/>
+        ...<?=$page->quote?>...
+    </p>
+
+<? endforeach; ?>
+
