@@ -96,7 +96,7 @@ div.lft div.menu {
             }
 
             /* show active on all levels */
-            div.menu li.active {
+            div.menu li.active a {
                 display: block !important;
             }
 

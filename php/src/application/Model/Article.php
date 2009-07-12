@@ -250,7 +250,7 @@ class Model_Article {
 
         // Remove all unreadable symbols and cut the line to 500 symbols
         return cutLongLine(preg_replace('/(\s*[^a-z0-9A-Z\-\.\,]\s*)/', ' ', 
-            strip_tags((string)$this->_xml->text)), 500);
+            trim(strip_tags((string)$this->_xml->text)), "\t\n "), 500);
     }    
 
     /**

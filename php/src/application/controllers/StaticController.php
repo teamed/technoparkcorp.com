@@ -62,6 +62,9 @@ class StaticController extends FaZend_Controller_Action {
 
         }
 
+        // make this menu element visible, no matter what
+        $this->view->navigation()->findOneBy('path', $article->page)->visible = true;
+
         // parse special XML meta symbols, like ${url:about/news}
         //$this->view->content = XMLDocument::parseText($this->view->content);
     }

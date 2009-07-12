@@ -1,0 +1,73 @@
+
+<? $this->includeCSS('news.css');?>
+
+<div class="rss">
+    <div class="img"></div><br/>
+    <a href="<?=$this->staticUrl('map/news')?>">RSS XML News Feed, Stay updated!</a>
+</div>    
+
+<?=$this->article->text?>
+
+<?
+    // new holder of news elements
+    $news = Zend_Navigation_Page::factory(array('type'=>'uri'));
+
+    // new holder of years elements
+    $years = Zend_Navigation_Page::factory(array('type'=>'uri'));
+
+    foreach ($this->navigation()->findOneBy('path', $this->article->page)->getPages() as $page) {
+
+        // load news article
+        $article = Model_Article::createByLabel($page->path);
+            
+        // save article for future use
+        $page->article = $article;
+
+        $matches = array();
+        if (preg_match('/year(\d+)$/', $page->path, $matches)) {
+                               
+            // backward chronological order
+            $page->order = $matches[1];
+
+            // year label
+            $page->year = $matches[1];
+
+            // add the article to the holder, to show later
+            $years->addPage($page);
+
+        } else {
+
+            // backward chronological order
+            $page->order = 1-strtotime($article->published);
+
+            // add the article to the holder, to show later
+            $news->addPage($page);
+        }
+
+    }
+?>
+
+<? foreach ($news as $page): ?>
+
+    <p class="news">
+        <b><a href="<?=$page->href?>">
+        <?=$page->article->title?></a></b>, 
+        <?=$page->article->description?><br/>
+        <span>published on <?=$page->article->published?></span>
+    </p>
+
+
+<? endforeach; ?>
+
+<p>Read news from <?=(($this->article->page == 'about/news') ? 'previous' : 'other')?> years:
+
+    <? if ($this->article->page != 'about/news'): ?>
+        <a href="<?=$this->staticUrl('about/news')?>">
+            <?=date('Y')?>
+        </a>
+    <? endif; ?>    
+
+    <? foreach ($years as $year): ?> 
+        <a href="<?=$year->href?>"><?=$year->year?></a>&#32;&#32;
+    <? endforeach; ?>    
+</p>
