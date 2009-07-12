@@ -1,0 +1,71 @@
+/**
+ *
+ * Copyright (c) 2008, TechnoPark Corp., Florida, USA
+ * All rights reserved. THIS IS PRIVATE SOFTWARE.
+ *
+ * Redistribution and use in source and binary forms, with or without modification, are PROHIBITED
+ * without prior written permission from the author. This product may NOT be used anywhere
+ * and on any computer except the server platform of TechnoPark Corp. located at
+ * www.technoparkcorp.com. If you received this code occacionally and without intent to use
+ * it, please report this incident to the author by email: privacy@technoparkcorp.com or
+ * by mail: 568 Ninth Street South 202 Naples, Florida 34102, the United States of America,
+ * tel. +1 (239) 243 0206, fax +1 (239) 236-0738.
+ *
+ * @copyright Copyright (c) TechnoPark Corp., 2001-2009
+ * @version $Id$
+ *
+ */
+
+div.home {
+    background-color: <?=Model_Colors::BLACK?>;
+    color: white;
+    height: 131px;
+}
+
+    div.home table.headers {
+        margin-left: 27px;
+        color: #0093d0;
+        background-color: transparent;
+    }
+
+        div.home table.headers td {
+            font-size: 100%; 
+            line-height: 1.5em;
+            font-weight: bold;
+            width: 240px;
+            padding-top: 11px;
+        }
+
+    div.home table.links {
+        margin-top: 5px;
+        margin-left: 27px;
+        text-decoration: none;
+    }
+
+        div.home table.links td {
+            font-size: 90%; 
+            line-height: 1.3em;
+            width: 170px;
+            vertical-align: top;
+            padding-right: 70px;
+        }
+                    
+            div.home table.links a {
+                text-decoration: none;
+                color: #9cacb6;
+            }
+
+/* central image */
+img.frontimg {
+    width: 814px; 
+    height: 250px; 
+    display: block; 
+    margin-left: -7px;
+}
+
+/* center line, right below the image */
+div.cln {
+    <?=$this->squeezePNG('centerline.png')?> 
+    display: block;
+    margin-left: -7px;
+}

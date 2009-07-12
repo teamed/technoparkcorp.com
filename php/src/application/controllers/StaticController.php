@@ -48,14 +48,19 @@ class StaticController extends FaZend_Controller_Action {
         Model_Navigation::populateNavigation($this->view->navigation(), $article->page);
 
         // change content if the PHTML script found    
-        //$script = APPLICATION_PATH . '/views/scripts/static' . $xmlFile . '.phtml';
-        //if (!file_exists($script) && !preg_match('/\/intro$/', $xmlFile))
-        //    $script = preg_replace('/\/(\w[\w\-]+)\.phtml$/', '/_any.phtml', $script);
-        //if (file_exists($script)) {
-        //    ob_start();
-        //    include $script;
-        //    $this->view->content = ob_get_clean();
-        //}
+        $scripts = array(
+            APPLICATION_PATH . '/views/scripts/content/' => $article->page . '.phtml',
+        );
+
+        // try to render all scripts, one-by-one
+        foreach ($scripts as $path=>$script) {
+            if (!file_exists($path . '/' . $script))
+                continue;
+
+            $this->view->addScriptPath($path);
+            $article->text = $this->view->render($script);
+
+        }
 
         // parse special XML meta symbols, like ${url:about/news}
         //$this->view->content = XMLDocument::parseText($this->view->content);

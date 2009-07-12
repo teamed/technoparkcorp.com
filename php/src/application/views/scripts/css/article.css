@@ -1,3 +1,21 @@
+/**
+ *
+ * Copyright (c) 2008, TechnoPark Corp., Florida, USA
+ * All rights reserved. THIS IS PRIVATE SOFTWARE.
+ *
+ * Redistribution and use in source and binary forms, with or without modification, are PROHIBITED
+ * without prior written permission from the author. This product may NOT be used anywhere
+ * and on any computer except the server platform of TechnoPark Corp. located at
+ * www.technoparkcorp.com. If you received this code occacionally and without intent to use
+ * it, please report this incident to the author by email: privacy@technoparkcorp.com or
+ * by mail: 568 Ninth Street South 202 Naples, Florida 34102, the United States of America,
+ * tel. +1 (239) 243 0206, fax +1 (239) 236-0738.
+ *
+ * @copyright Copyright (c) TechnoPark Corp., 2001-2009
+ * @version $Id$
+ *
+ */
+
 /* article at the center of the page */
 div.article {
     line-height: 1.9em;
@@ -15,6 +33,20 @@ div.noRightCol {
     border: none;
 }
 
+    /* article title */
+    div.article div.title {
+        position: relative;
+        width: auto;
+        font-size: 2.4em;
+        color: <?=Model_Colors::BLUE?>;
+        background-color: transparent;
+        letter-spacing: -0.05em;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        line-height: 1.2em;
+    }
+
+    /* basic elements */
     div.article img,
     div.article p,
     div.article ol,
@@ -27,108 +59,62 @@ div.noRightCol {
         margin-bottom: 0px;
     }
 
-            .fieldhelp {
-                font-size: 0.8em;
-                padding-top: 0px;
-                color: <?=Model_Colors::LIGHT_GRAY?>;
-                line-height: 1.4em;
-                padding-bottom: 0px;
-            }
-
-            div.article p.success,
-            div.article p.error {
-                font-weight: bold;
-                padding: 10px;
-                margin-top: 10px;
-                margin-bottom: 10px;
-            }
-
-            div.article p.error {
-                color: <?=Model_Colors::RED?>;
-                border: 1px solid <?=Model_Colors::RED?>;
-                background-color: #ffeeee;
-            }
-
-            div.article p.success {
-                color: <?=Model_Colors::GREEN?>;
-                border: 1px solid <?=Model_Colors::GREEN?>;
-                background-color: #eeffee;
-            }
-
-             div.article p.date {
-                 padding-top: 0px;
-             }
-
+    /* lists */
     div.article ul,
     div.article ol {
         padding-left: 30px;
     }
 
-    div.article div.picture {
-        text-align: center;
-    }
-
-    div.article div.picture_right {
-        float: right;
-        margin-right: 10px;
-        margin-top: 12px;
-    }
-
-    div.article div.picture_left {
-        float: left;
-        margin-right: 10px;
-        margin-top: 12px;
-    }
-
-    div.article h1 {
-        padding-top: 36px;
-        padding-bottom: 0px;
-        font-size: 1.7em;
-        color: <?=Model_Colors::BLUE?>;
-        background-color: transparent;
-        font-weight: normal;
-    }
-
-    div.article h2 {
-        padding-top: 24px;
-        padding-bottom: 0px;
-        font-size: 1.5em;
-        color: <?=Model_Colors::BLUE?>;
-        background-color: transparent;
-        font-weight: normal;
-    }
-
-    div.article h3 {
-        padding-top: 12px;
-        padding-bottom: 0px;
-        font-size: 1.2em;
-        color: <?=Model_Colors::BLUE?>;
-        background-color: transparent;
-        font-weight: normal;
-        font-variant: small-caps;
-    }
-
+    /* all headers */
+    div.article h1,
+    div.article h2,
+    div.article h3,
     div.article h4 {
-        padding-top: 12px;
         padding-bottom: 0px;
-        font-size: 1em;
-        font-weight: bold;
-        font-variant: small-caps;
+        font-weight: normal;
     }
 
+        div.article h1 {
+            padding-top: 36px;
+            font-size: 1.7em;
+            color: <?=Model_Colors::BLUE?>;
+            background-color: transparent;
+        }
+
+        div.article h2 {
+            padding-top: 24px;
+            font-size: 1.5em;
+            color: <?=Model_Colors::BLUE?>;
+            background-color: transparent;
+        }
+
+        div.article h3 {
+            padding-top: 12px;
+            font-size: 1.2em;
+            color: <?=Model_Colors::BLUE?>;
+            background-color: transparent;
+            font-variant: small-caps;
+        }
+
+        div.article h4 {
+            padding-top: 12px;
+            font-weight: bold;
+            font-variant: small-caps;
+        }
+
+    /* links in text */
     div.article a {
         color: black;
         text-decoration: none;
-        border-bottom-width: 1px;
-        border-bottom-color: <?=Model_Colors::BLACK?>;
-        border-bottom-style: dotted;
+        border-bottom: 1px <?=Model_Colors::BLACK?> dotted;
     }
 
-    div.article a:hover { 
-        color: <?=Model_Colors::BLUE?>;
-        background-color: transparent;
-    }
+        div.article a:hover { 
+            color: <?=Model_Colors::BLUE?>;
+            background-color: transparent;
+        }
 
+    /* tables */
     div.article table {
         width: 100%;
     }
@@ -148,48 +134,19 @@ div.noRightCol {
             color: white;
         }
 
-        div.article table tr.even {
-            background-color: <?=Model_Colors::GRAY?>;
-            color: inherit;
-        }
+            div.article table tr.even {
+                background-color: <?=Model_Colors::GRAY?>;
+                color: inherit;
+            }
 
-        div.article table tr.highlight {
-            background-color: #9cacb6;
-            color: inherit;
-        }
+            div.article table tr.highlight {
+                background-color: #9cacb6;
+                color: inherit;
+            }
 
-    div.article div.sitemap {
-        width: 100%;
-        position: relative;
-        padding-top: 12px;
-    }
-
-        div.article div.sitemap div.sitemap_right {
-            width: 50%;
-            position: absolute;
-            top: 12px;
-            left: 50%;
-        }
-
-        div.article div.sitemap div.sitemap0 {
-            font-size: 1.0em;                
-            font-weight: bold;
-        }
-
-        div.article div.sitemap div.sitemap1 {
-            font-size: 0.9em;
-            padding-left: 10px;
-        }
-
-        div.article div.sitemap div.sitemap2 {
-            font-size: 0.8em;
-            padding-left: 20px;
-        }
-
+    /* SELECT element */
     div.article select {
-        border-width: 1px;
-        border-color: <?=Model_Colors::BLACK?>;
-        border-style: solid;
+        border: 1px <?=Model_Colors::BLACK?> solid;
         font-family: Verdana;
         font-size: 1.1em;
         padding: 2px;
@@ -197,154 +154,39 @@ div.noRightCol {
         margin-bottom: 1px;
     }
 
-    div.article option {
-        padding: 2px;
-        padding-right: 10px;
-    }      
+        div.article option {
+            padding: 2px;
+            padding-right: 10px;
+        }      
 
+    /* INPUT element */
     div.article input,
     div.article input.file,
     div.article textarea {
-            font-family: Verdana;
+        font-family: Verdana;
         border: 1px solid <?=Model_Colors::BLACK?>;
-        padding-left: 5px;
-        padding-right: 5px;
-        font-size: 13px;
-        padding-top: 2px;
-        padding-bottom: 2px;
-        margin-top: 2px;
-        margin-bottom: 2px;
+        padding: 2px 5px 2px 5px;
+        font-size: 1.2em;
+        margin: 2px 0 2px 0;
     }
                         
-    div.article input.button {
-        background-color: <?=Model_Colors::GRAY?>;
-        cursor: pointer;
-    }
+        div.article input.button {
+            background-color: <?=Model_Colors::GRAY?>;
+            cursor: pointer;
+        }
 
+    /* PRE element */
     div.article pre {
         line-height: 1em;
         background-color: #fafafa;
         color: #555555;
-        border-width: 1px;
-        border-color: #9cacb6;
-        border-style: solid;
+        border: 1px #9cacb6 solid;
         padding: 12px;
         margin-bottom: 12px;
         margin-top: 6px;
     }
 
-    div.article div.ss_copyright {
-        margin-top: 20px;
-    }
-
-    div.article div.tags {
-        line-height: 2.0em;
-        margin-top: 10px;
-        background-color: <?=Model_Colors::GRAY?>;
-        color: inherit;
-        padding: 5px;
-    }
-
-        div.article div.tags a {
-            color: <?=Model_Colors::BLUE?>;
-            background-color: transparent;
-            border: none;
-            margin-right: 10px;
-        }
-
-            div.article div.tags a.selected {
-                border: 1px dotted <?=Model_Colors::BLUE?>;
-            }
-
-            div.article div.tags a:hover {
-                background-color: <?=Model_Colors::BLUE?>;
-                color: white;
-            }
-
-    div.article table.stories {
-        margin-top: 30px;
-    }
-
-        div.article table.stories tr td {
-            text-align: left;
-            vertical-align: top;
-            color: #122632;
-            background-color: transparent;
-            line-height: 1.5em;
-            padding: 0px;
-            padding-bottom: 30px;
-        }
-
-            div.article table.stories tr td a {
-                border: none;
-            }
-
-                div.article table.stories tr td a img {
-                    border: none;
-                    padding: 0px;
-                }
-
-            div.article table.stories tr td span {
-                color: #0093d0;
-                background-color: transparent;
-                font-weight: bold;
-            }
-
-    div.article div.screenshots {
-        margin-bottom: 12px;
-    }
-
-        div.article div.screenshots p {
-            margin-bottom: 12px;
-        }
-
-        div.article div.screenshots img {
-            cursor: pointer;
-            width: 119px;
-            display: inline;
-            margin: 0px;
-            margin-right: 10px;
-            border: 1px solid #7d8f9b;
-            padding-top: 0px;
-        }
-
-    div.article div.big_picture {
-        padding: 10px;
-        background-color: white;
-        border: 1px solid #7d8f9b;
-        cursor: pointer;
-        width: 380px;
-        height: 120px;
-        overflow: hidden;
-        position: relative;
-    }
-
-        div.article div.big_picture img {
-        }
-
-        div.article div.big_picture span {
-            position: absolute;
-            top: 0px;
-            left: 5px;
-            z-index: 10;
-            color: #0093d0;
-            background-color: transparent;
-            font-size: 1em;
-            font-weight: bold;
-        }
-
-
-    div.article div.title {
-            position: relative;
-        width: auto;
-        font-size: 2.4em;
-        color: <?=Model_Colors::BLUE?>;
-        background-color: transparent;
-        letter-spacing: -0.05em;
-        padding-bottom: 10px;
-        padding-top: 10px;
-        line-height: 1.2em;
-    }
+/* right column */
 div.right {
     position: absolute;
     width: 127px;
@@ -354,7 +196,7 @@ div.right {
     margin: 0px;
 }
 
-    div.steps {
+    div.article div.right div.steps {
         font-size: 11px;
         line-height: 1.5em;
         width: auto;
@@ -395,6 +237,7 @@ div.right {
                     color: <?=Model_Colors::BLACK?>;
                     background-color: transparent;
                 }
+
                     div.livechat a:hover {
                         color: <?=Model_Colors::BLUE?>;
                         background-color: transparent;
@@ -407,6 +250,7 @@ div.right {
                     color: <?=Model_Colors::BLACK?>;
                     background-color: transparent;
                 }
+
                     div.livechat a.label:hover {
                         color: <?=Model_Colors::BLUE?>;
                         border-bottom: 1px dotted <?=Model_Colors::BLUE?>;
@@ -420,177 +264,25 @@ div.right {
         padding-top: 20px;
     }
 
-    div.right div.years {
-        line-height: 1.4em;
-        margin-top: 15px;
-    }
-
-        div.right div.years a {
-            margin-left: 10px;
-            color: <?=Model_Colors::BLUE?>;
-            background-color: transparent;
-            text-decoration: none;
-            border-bottom-color: <?=Model_Colors::BLUE?>;
-            border-bottom-style: dotted;
-            border-bottom-width: 1px;
-        }
-
-    div.right div.ss_profile {
-        font-size: 9px;
-        line-height: 1.7em;
-        width: auto;
-    }
-
-        div.right div.ss_profile div.param {
-            color: <?=Model_Colors::BLUE?>;
-            background-color: transparent;
-            padding-top: 10px;
-        }
-
-        div.right div.ss_profile div.value {
-        }
-
-            div.right div.ss_profile div.value span.reference {
-                text-decoration: none;
-                color: <?=Model_Colors::BLACK?>;
-                border-bottom-color: <?=Model_Colors::BLACK?>;
-                background-color: transparent;
-                border-bottom-style: dotted;
-                border-bottom-width: 1px;
-                cursor: pointer;
-            }
-
-
-    div.right div.logo {
-        float: right;
-        padding: 10px;
-        border: 1px solid <?=Model_Colors::DARK_GRAY?>;
-        background-color: <?=Model_Colors::WHITE?>;
-        margin-bottom: 10px;
-        min-width: 140px;
-        text-align: center;
-    }
-
+/* list of concepts at the bottom */
 div.concepts {
     font-size: 11px;
     line-height: 1.5em;
     padding: 10px;    
+    width: 405px;
 }
 
-div.popup {
-    visibility: hidden;
-    position: fixed;
-    left: 10px;
-    top: 100px;
-     background-color: <?=Model_Colors::DARK_GRAY?>;
-     border: 1px solid <?=Model_Colors::BLACK?>;
-     padding: 15px;
-     width: auto;
-     text-align: center;
-     z-index: 50;
-     cursor: pointer;
-}
-
-    div.popup img {
-        border: 1px solid <?=Model_Colors::BLACK?>;
-    }
-
-    div.popup p {
-        line-height: 1.3em;
-        text-align: left;
-        margin-bottom: 5px;
-        max-width: 500px;
-    }
-
-div.reference {
-    visibility: hidden;
-    position: fixed;
-    left: 10px;
-    top: 100px;
-     background-color: #7d8f9b;
-     border: 1px solid #122632;
-     z-index: 50;
-     padding: 30px;
-     width: 300px;
-     text-align: center;
-     line-height: 1.5em;
-}    
-
-    div.reference p {
-        margin-bottom: 20px;
-    }
-
-    div.reference a {
-        margin-right: 20px;
-        text-decoration: none;
-        font-size: 1.2em;
-        border-bottom-color: black;
-        border-bottom-style: dotted;
-        border-bottom-width: 1px;
-        font-weight: bold;
-        color: black;
-        background-color: transparent;
-    }
-
-    div.reference span {
-        margin-left: 20px;
-        font-size: 1.2em;
-        border-bottom-color: black;
-        border-bottom-style: dotted;
-        border-bottom-width: 1px;
-        font-weight: bold;
-        cursor: pointer;
-    }
-
-span.vision_deleter,
-span.vision_adder {
-    cursor: pointer;
-    margin-left: 10px;
-}
-
-.boxed {
+/* boxed element */
+div.article .boxed {
     background: <?=Model_Colors::GRAY?>;
     padding: 15px;
     border: 1px <?=Model_Colors::DARK_GRAY?> solid;
 }
 
-hr {
+/* horizontal ruler */
+div.article hr {
     margin-top: 12px;
     margin-bottom: 12px;
 }
-
-span.tipped {
-    border-bottom: dotted 1px <?=Model_Colors::BLUE?>;
-    cursor: pointer;
-}
-
-    span.tipped:hover {
-        background-color: <?=Model_Colors::BLUE?>;
-        color: white;
-    }
-
-.expired {
-    background-color: #e31b23;
-    color: inherit;
-}
-
-div.hotlinks {
-    line-height: 1.9em;
-    padding-bottom: 10px;
-    padding-right: 10px;
-    padding-left: 15px;
-}
-
-    div.hotlinks a {
-        background-color: inherit;
-        color: <?=Model_Colors::DARK_GRAY?>;
-        font-weight: bold;
-        margin-right: 20px;
-        text-decoration: none;
-    }
-    
-        div.hotlinks a:hover {
-            border-bottom: 1px dotted;
-        }
 
 

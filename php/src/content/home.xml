@@ -20,37 +20,52 @@
 
 <article>
 
-	<invisible/>
+    <invisible/>
 
-	<front>
-		<left>
-			<title>Services</title>
-			<item1 name="process/cost">Our prices and estimations</item1>
-			<item2 name="process/scope">Requirements management</item2>
-			<item3 name="process/risk">How we manage project risks</item3>
-		</left>
-		<middle>
-			<title>About TPC</title>
-			<item1 name="about/why">Why customers stay with us</item1>
-			<item2 name="about/history">History of our company</item2>
-			<item3 name="about/jobs">Job Openings</item3>
-		</middle>
-		<right>
-			<title>Latest News</title>
-			<news>about/news/tools</news>
-		</right>	
+    <title>Software Development General Contractor</title>
 
-		<image>/front/girl.jpg</image>
-		<link>innovations/scope-champions</link>
-		<hint>read more about our innovative method of project cost estimating</hint>
-	</front>
+    <description>
+        TechnoPark is a specialized project management firm providing quality development 
+        services to companies all over the world. TechnoPark effectively manages extreme
+        requirements, tight deadlines, and limited budgets. Their team is the new standard 
+        in providing solutions to customers that are proven to be both high value and 
+        high quality.  For more information about how TechnoPark is revolutionizing 
+        development, visit www.TechnoParkCorp.com.
+    </description>
 
-	<text>
-	</text>
+    <keywords>
+        custom software development,
+        software development,
+        project management,
+        quality management,
+        PHP, Java, .Net, C++, Ajax
+    </keywords>
 
-	<title>
-		Software Development General Contractor
-	</title>
+    <front>
+        <left>
+            <title>Services</title>
+            <item1 name="process/cost">Our prices and estimations</item1>
+            <item2 name="process/scope">Requirements management</item2>
+            <item3 name="process/risk">How we manage project risks</item3>
+        </left>
+        <middle>
+            <title>About TPC</title>
+            <item1 name="about/why">Why customers stay with us</item1>
+            <item2 name="about/history">History of our company</item2>
+            <item3 name="about/jobs">Job Openings</item3>
+        </middle>
+        <right>
+            <title>Latest News</title>
+            <news>about/news/tools</news>
+        </right>    
+
+        <image>images/front/estimates.jpg</image>
+        <link>innovations/scope-champions</link>
+        <hint>Read more about our innovative method of project cost estimating</hint>
+    </front>
+
+    <text>
+    </text>
 
 </article>
 

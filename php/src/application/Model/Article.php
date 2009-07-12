@@ -19,7 +19,23 @@
  */
 
 /**
- * Static article
+ * Static article, created by a label
+ *
+ * Properties, that can be accessed as variables:
+ *    - xml:               Model_XML
+ *    - page:              location of the page, like "process/scope/srs"
+ *    - title:             title of the article
+ *    - charset:           real charset set in XML file or "UTF-8"
+ *    - description:       article description
+ *    - keywords:          list of keywords, coma-separated
+ *    - label:             short label of the article, for the menu
+ *    - intro:             intro for the right column
+ *    - visible:           shall we put this article to the menu?
+ *    - showRightColumn:   shall we show the right column at all?
+ *    - published:         when the article was published or FALSE
+ *    - term:              term to be referenced to this article
+ *    - concepts:          array or objects with links to key concepts related
+ *    - steps:             array of objects giving information about articles to show next to it
  *
  * @package Controllers
  */
@@ -203,10 +219,10 @@ class Model_Article {
     protected function _getKeywords() {
 
         if ($this->_xml->keywords)
-            return ucwords(trim($this->_xml->keywords));
+            return ucwords(trim((string)$this->_xml->keywords));
 
         // Remove spaces and other un-readable symbols
-        $txt = ucwords(preg_replace('/(\s*[^a-z0-9A-Z]\s*)/', ' ', strip_tags($this->_xml->text)));
+        $txt = ucwords(preg_replace('/(\s*[^a-z0-9A-Z]\s*)/', ' ', strip_tags((string)$this->_xml->text)));
         
         // Filter the words that are longer than 3 symbols and counts them
         $words = array_count_values(array_filter(explode(' ', $txt), create_function('$word', 
@@ -230,11 +246,11 @@ class Model_Article {
     protected function _getDescription() {
 
         if ($this->_xml->description)
-            return trim(preg_replace("/[\t\n\r]+/", ' ', $this->_xml->description));
+            return trim(preg_replace("/[\t\n\r]+/", ' ', (string)$this->_xml->description));
 
         // Remove all unreadable symbols and cut the line to 500 symbols
-        return CutLongLine(preg_replace('/(\s*[^a-z0-9A-Z\-\.\,]\s*)/', ' ', 
-            strip_tags($this->_xml->text)), 500);
+        return cutLongLine(preg_replace('/(\s*[^a-z0-9A-Z\-\.\,]\s*)/', ' ', 
+            strip_tags((string)$this->_xml->text)), 500);
     }    
 
     /**
