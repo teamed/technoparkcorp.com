@@ -24,7 +24,7 @@
 	<property file="./build.properties" />
 
 	<!-- Main Target -->
-	<target name="main" depends="lint, dbdeploy, test, deploy, ping, doc" />
+	<target name="main" depends="lint, test, deploy, ping, doc" />
 
 	<target name="lint">
 		<phing phingfile="${project.basedir}/src/library/FaZend/Application/Phing/build.xml" inheritRefs="true" target="lint" />
@@ -34,10 +34,6 @@
 		<phing phingfile="${project.basedir}/src/library/FaZend/Application/Phing/build.xml" inheritRefs="true" target="ping" />
 	</target>
 		
-	<target name="dbdeploy">
-		<phing phingfile="${project.basedir}/src/library/FaZend/Application/Phing/build.xml" inheritRefs="true" target="dbdeploy" />
-	</target>
-
 	<target name="test">
 		<phing phingfile="${project.basedir}/src/library/FaZend/Application/Phing/build.xml" inheritRefs="true" target="test" />
 	</target>
