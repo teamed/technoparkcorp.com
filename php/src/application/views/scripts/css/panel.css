@@ -1,0 +1,228 @@
+/**
+ *
+ * Copyright (c) 2008, TechnoPark Corp., Florida, USA
+ * All rights reserved. THIS IS PRIVATE SOFTWARE.
+ *
+ * Redistribution and use in source and binary forms, with or without modification, are PROHIBITED
+ * without prior written permission from the author. This product may NOT be used anywhere
+ * and on any computer except the server platform of TechnoPark Corp. located at
+ * www.technoparkcorp.com. If you received this code occacionally and without intent to use
+ * it, please report this incident to the author by email: privacy@technoparkcorp.com or
+ * by mail: 568 Ninth Street South 202 Naples, Florida 34102, the United States of America,
+ * tel. +1 (239) 243 0206, fax +1 (239) 236-0738.
+ *
+ * @copyright Copyright (c) TechnoPark Corp., 2001-2009
+ * @version $Id$
+ *
+ */
+
+* {
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+}
+
+body {
+    font: 11px Verdana;
+    line-height: 1.9em;
+    color: <?=Model_Colors::BLACK?>;
+    background-color: white;
+}
+
+h1 {
+    font-size: 2em;
+    color: <?=Model_Colors::BLUE?>;
+    background-color: inherit;
+    padding-top: 6px;
+    padding-bottom: 24px;
+    font-weight: normal;
+}
+
+h2 {
+    font-size: 1.5em;
+    color: <?=Model_Colors::BLUE?>;
+    background-color: inherit;
+    font-weight: normal;
+}
+
+th {
+    text-align: left;
+}
+
+    td, th {
+        text-align: left;
+        vertical-align: top;
+        padding: 2px;
+    }
+
+    th {
+        background-color: <?=Model_Colors::BLUE?>;
+        color: white;
+        font-weight: bold;
+    }
+
+    tr.even {
+        color: inherit;
+        background-color: #e7e9ea;
+    }    
+
+    tr.highlight {
+        color: inherit;
+        background-color: #9cacb6;
+    }    
+
+input, 
+textarea, 
+select {
+    padding: 3px;
+    font-family: Verdana;
+    border: 2px solid <?=Model_Colors::GRAY?>;
+}
+
+    input.btn {
+        cursor: pointer;
+        background: <?=Model_Colors::BLUE?>;
+    }
+
+        input.btn:hover {
+            color: <?=Model_Colors::WHITE?>;
+        }
+
+p.flash {
+    color: <?=Model_Colors::RED?>;
+    background-color: inherit;
+}
+
+/* screen-wide header */
+div.header {
+    height: 50px;
+    width: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background: <?=Model_Colors::BLUE?>;
+    color: <?=Model_Colors::WHITE?>;
+}
+    
+    div.header a {
+        text-decoration: none;
+        color: <?=Model_Colors::WHITE?>;
+        border-bottom: 1px dotted <?=Model_Colors::WHITE?>;
+    }
+
+        div.header a:hover {
+            color: <?=Model_Colors::BLUE?>;
+            background: <?=Model_Colors::WHITE?>;
+        }
+
+    div.header form.login {
+        background: <?=Model_Colors::BLUE?>;
+        padding: 10px;
+    }
+
+    div.header div.logo {
+        position: absolute;
+        right: 30px;
+        top: 10px;
+        text-align: right;
+        line-height: 1.2em;
+    }
+
+        div.header div.logo span.logo {
+            color: white;
+            font-weight: bold;
+            font-size: 1.4em;
+            display: block;
+        }
+
+    div.header div.path {
+        position: absolute;
+        left: 30px;
+        top: 10px;
+        font-size: 1.6em;
+        font-weight: bold;
+        color: <?=Model_Colors::WHITE?>;
+    }
+
+    div.header div.r1 {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        width: 15px;
+        height: 5px;
+        background: <?=Model_Colors::WHITE?>;
+    }
+
+    div.header div.r2 {
+        position: absolute;
+        top: 5px;
+        right: 0px;
+        width: 10px;
+        height: 5px;
+        background: <?=Model_Colors::WHITE?>;
+    }
+
+    div.header div.r3 {
+        position: absolute;
+        top: 10px;
+        right: 0px;
+        width: 5px;
+        height: 5px;
+        background: <?=Model_Colors::WHITE?>;
+    }
+
+/* page content */
+div.wrapper {
+    margin-top: 60px;
+    padding: 30px;
+    width: 814px;
+}
+    
+    div.wrapper ul.errors {
+        color: <?=Model_Colors::RED?>;
+        background-color: inherit;
+    }
+
+        div.wrapper ul.errors li {
+            list-style-type: none;
+            padding-bottom: 10px;
+        }
+
+    /* normal links and link-free hrefs */
+    div.wrapper a {
+        text-decoration: none;
+        cursor: pointer;
+        color: <?=Model_Colors::BLACK?>;
+        background-color: inherit;
+        border-bottom: 1px <?=Model_Colors::BLACK?> dotted;
+    }
+        
+        div.wrapper a:visited {
+            color: <?=Model_Colors::BLACK?>;
+        }
+
+        div.wrapper a:hover {
+            color: <?=Model_Colors::BLUE?>;
+            background-color: inherit;
+        }
+
+    div.wrapper p {
+        padding-top: 3px;
+        padding-bottom: 3px;
+        width: 600px;
+    }
+
+/* page finisher */
+div.btm {
+    margin-top: 40px; 
+    line-height: 1.4em; 
+    clear: both;
+    font-size: 0.9em; 
+    margin-left: 30px
+}
+
+    div.btm span {
+        color: gray;
+        padding-top: 3px; 
+        border-top: 2px <?=Model_Colors::GRAY?> solid;
+    }

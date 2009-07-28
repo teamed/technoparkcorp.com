@@ -2,6 +2,7 @@
 
     $this->includeCSS('panel.css');
     $this->includeJQuery();
+    $this->headTitle('thePanel');
 
 ?><?=$this->doctype()?>
 <html xmlns="http://www.w3.org/1999/xhtml"> 
@@ -13,7 +14,44 @@
 </head> 
 <body>
 
-panel
+<div class="header">
+    
+    <div class="path">
+        <?=$this->navigation()->breadcrumbs()
+            ->setLinkLast(true)?>
+        PM / voip / <a href="fdsf">CostManagement</a> / Cost
+    </div>
+
+    <div class="logo">
+        <span class="logo">thePanel<sup style="font-size: 0.3em;">TM</sup> v2.0</span>
+
+        <?=$this->action('login', 'user', 'fazend')?>
+
+        <? if (Model_User::isLoggedIn()): ?>
+            | <a href="<?=$this->url(array(), 'profile', true)?>">my profile</a>
+            | <a href="<?=$this->url(array(), 'pending', true)?>">pending</a>
+        <? endif; ?>
+    </div>
+
+    <div class="r1"></div>     
+    <div class="r2"></div>     
+    <div class="r3"></div>     
+
+</div>
+
+<div class="wrapper">
+
+    <?=$this->flashMessage()?>
+
+    <?=$this->layout()->content?>
+
+    <a href="tt">link</a>
+
+</div>    
+
+<div class="btm">
+    <span>(c) <?=date('Y')?> TechnoPark Corp., rev.<?=FaZend_Revision::get()?>, <?=$this->pageLoadTime()?></span>
+</div>    
 
 <?=$this->headScript() ?>
 </body>

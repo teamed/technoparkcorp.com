@@ -124,6 +124,48 @@ class Model_Article {
     }
     
     /**
+     * Returns how this article is relevant to the given keyword, in percentage
+     *
+     * @param string Keyword to search for
+     * @return stdObject (relevance, quote)
+     */
+    public function getRelevance($keyword) {
+
+        $relevance = new FaZend_StdObject();
+
+        // should be in back-order!
+        $places = array(
+            'text'=>10,
+            'description'=>15,
+            'keywords'=>20,
+            'intro'=>25,
+            'title'=>30,
+            'label'=>40,
+            'page'=>50,
+        );
+
+        // no relevance by default
+        $relevance->relevance = 0;
+
+        // try to find the keyword in any of these
+        foreach ($places as $place=>$weight) {
+            $base = strip_tags($this->$place);
+
+            // where the keyword is located?
+            if (substr_count(strtolower($base), strtolower($keyword)) === 0)
+                continue;
+
+            $location = strpos(strtolower($base), strtolower($keyword));
+            $relevance->relevance += $weight;
+
+            $relevance->quote = substr($base, $location-100, 200);
+        }
+
+        return $relevance;
+
+    }
+
+    /**
      * Parse calls to key methods
      *
      * @param string Name of the key, mapped to _$key method, like: $this->title ---> $this->getTitle()
@@ -273,10 +315,12 @@ class Model_Article {
      * @return boolean
      */
     protected function _getShowRightColumn() {
+        
         if ($this->_xml->hideRightColumn)
             return false;
 
         return true;
+
     }
 
     /**
@@ -285,10 +329,12 @@ class Model_Article {
      * @return string
      */
     protected function _getPublished() {
+        
         if ($this->_xml->date)
             return (string)$this->_xml->date;
 
         return false;
+
     }
 
     /**
@@ -297,10 +343,12 @@ class Model_Article {
      * @return string
      */
     protected function _getIntro() {
+        
         if (!$this->_xml->intro)
             return $this->title;
 
         return (string)$this->_xml->intro;
+
     }
 
     /**
@@ -309,6 +357,7 @@ class Model_Article {
      * @return stdObject[]
      */
     protected function _getConcepts() {
+        
         if (!$this->_xml->concepts)
             return false;
 
@@ -330,6 +379,7 @@ class Model_Article {
      * @return string
      */
     protected function _getTerm() {
+        
         if (!$this->_xml->term)
             return false;
 
@@ -340,6 +390,7 @@ class Model_Article {
             return $term . ' is missed';
 
         return (string)$terms->$term;
+
     }
 
     /**
@@ -375,6 +426,7 @@ class Model_Article {
      * @return stdObject
      */
     protected function _createStep($page = null, $title = null) {
+
         $step = new FaZend_StdObject();
 
         if (!is_null($page)) {
@@ -386,6 +438,7 @@ class Model_Article {
         }
 
         return $step;
+
     }
 
 }
