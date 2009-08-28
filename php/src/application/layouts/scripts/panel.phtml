@@ -17,7 +17,10 @@
 <div class="header">
     
     <div class="path">
-        <?=$this->navigation(new Model_Pages())->breadcrumbs()
+        <?=$this->navigation(Model_Pages::getInstance($this->doc))
+            ->breadcrumbs()
+            ->setSeparator(' / ')
+            ->setMinDepth(0)
             ->setLinkLast(true)?>
     </div>
 
@@ -43,11 +46,6 @@
     <?=$this->flashMessage()?>
 
     <?=$this->layout()->content?>
-
-    <?=$this->navigation(new Model_Pages())->menu()
-        ->setOnlyActiveBranch(false)?>
-
-    <a href="tt">link</a>
 
 </div>    
 

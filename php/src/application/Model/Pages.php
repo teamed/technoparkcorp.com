@@ -26,6 +26,13 @@
 class Model_Pages extends Zend_Navigation {
 
     /**
+     * Instance
+     *
+     * @var Model_Pages
+     */
+    protected static $_instance;
+
+    /**
      * Public constructor
      * 
      * @return void
@@ -34,6 +41,21 @@ class Model_Pages extends Zend_Navigation {
         parent::__construct();
 
         $this->_init($this, '.');
+    }
+
+    /**
+     * Instance getter
+     *
+     * @param string Active document name
+     * @return Model_Pages
+     */
+    public static function getInstance($doc) {
+        if (!isset(self::$_instance))
+            self::$_instance = new Model_Pages();
+
+        self::$_instance->findBy('title', $doc)->setActive();
+
+        return self::$_instance;
     }
 
     /**
