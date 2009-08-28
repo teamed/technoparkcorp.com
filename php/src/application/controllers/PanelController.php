@@ -51,7 +51,7 @@ class PanelController extends FaZend_Controller_Action {
 
         // reconfigure VIEW in order to render this particular document file
         $view->addScriptPath(dirname($path));
-        $this->view->content = $view->render(pathinfo($path, PATHINFO_FILENAME));
+        $this->view->document = $view->render(pathinfo($path, PATHINFO_BASENAME));
 
     }
 
