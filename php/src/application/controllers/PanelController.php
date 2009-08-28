@@ -43,6 +43,16 @@ class PanelController extends FaZend_Controller_Action {
      */
     public function indexAction() {
 
+        $view = new Zend_View();
+        $doc = $view->doc = $this->_getParam('doc');
+
+        // convert document name into absolute PATH
+        $path = Model_Pages::resolvePath($doc);
+
+        // reconfigure VIEW in order to render this particular document file
+        $view->addScriptPath(dirname($path));
+        $this->view->content = $view->render(pathinfo($path, PATHINFO_FILENAME));
+
     }
 
 }

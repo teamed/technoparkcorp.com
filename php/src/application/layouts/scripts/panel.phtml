@@ -17,9 +17,8 @@
 <div class="header">
     
     <div class="path">
-        <?=$this->navigation()->breadcrumbs()
+        <?=$this->navigation(new Model_Pages())->breadcrumbs()
             ->setLinkLast(true)?>
-        PM / voip / <a href="fdsf">CostManagement</a> / Cost
     </div>
 
     <div class="logo">
@@ -44,6 +43,9 @@
     <?=$this->flashMessage()?>
 
     <?=$this->layout()->content?>
+
+    <?=$this->navigation(new Model_Pages())->menu()
+        ->setOnlyActiveBranch(false)?>
 
     <a href="tt">link</a>
 
