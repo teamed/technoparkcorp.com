@@ -19,29 +19,24 @@
  */
 
 /**
- * Panel pages
+ * Wobots executor
  *
- * @package Controllers
+ * @package CLI
  */
-class PanelController extends FaZend_Controller_Action {
+class Wobots extends FaZend_Cli_Abstract {
 
     /**
-     * Pre-configuration
+     * Executor of a command-line command
      *
-     * @return void
+     * @return int Exit code
      */
-    public function preDispatch() {
+    public function execute() {
 
-        Zend_Layout::getMvcInstance()->setLayout('panel');
+        foreach (Model_Wobot::retrieveAll() as $wobot) {
+            echo $wobot->execute();
+        }
 
-    }
-
-    /**
-     * Default and the only action for this controller
-     *
-     * @return void
-     */
-    public function indexAction() {
+        return 0;
 
     }
 

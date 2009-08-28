@@ -19,30 +19,17 @@
  */
 
 /**
- * Panel pages
+ * Collection of projects
  *
- * @package Controllers
+ * @package Artifacts
  */
-class PanelController extends FaZend_Controller_Action {
+class theProjectRegistry extends Model_Artifact {
 
     /**
-     * Pre-configuration
+     * List of projects
      *
-     * @return void
+     * @var theProject[]
      */
-    public function preDispatch() {
-
-        Zend_Layout::getMvcInstance()->setLayout('panel');
-
-    }
-
-    /**
-     * Default and the only action for this controller
-     *
-     * @return void
-     */
-    public function indexAction() {
-
-    }
+    public $projects;
 
 }

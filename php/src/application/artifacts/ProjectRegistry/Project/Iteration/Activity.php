@@ -19,30 +19,54 @@
  */
 
 /**
- * Panel pages
+ * One activity
  *
- * @package Controllers
+ * @package Artifacts
  */
-class PanelController extends FaZend_Controller_Action {
+class theActivity extends Model_Artifact {
 
     /**
-     * Pre-configuration
+     * Name of activity
      *
-     * @return void
+     * @var string
      */
-    public function preDispatch() {
+    public $name;
 
-        Zend_Layout::getMvcInstance()->setLayout('panel');
-
+    /**
+     * Is it already assigned?
+     *
+     * @return boolean
+     */
+    public function isAssigned() {
+        return isset($this->performer);
     }
 
     /**
-     * Default and the only action for this controller
+     * Is cost already estimated?
+     *
+     * @return boolean
+     */
+    public function isCostEstimated() {
+        return isset($this->cost);
+    }
+
+    /**
+     * Is cost estimate already requested?
+     *
+     * @return boolean
+     * @todo implement it
+     */
+    public function isCostEstimateRequested() {
+        return false;
+    }
+
+    /**
+     * Request cost estimate from the performer
      *
      * @return void
+     * @todo implement it
      */
-    public function indexAction() {
-
+    public function requestCostEstimate() {
     }
 
 }

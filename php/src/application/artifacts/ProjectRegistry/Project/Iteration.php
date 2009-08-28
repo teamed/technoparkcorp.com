@@ -19,30 +19,10 @@
  */
 
 /**
- * Panel pages
+ * One iteration
  *
- * @package Controllers
+ * @package Artifacts
  */
-class PanelController extends FaZend_Controller_Action {
-
-    /**
-     * Pre-configuration
-     *
-     * @return void
-     */
-    public function preDispatch() {
-
-        Zend_Layout::getMvcInstance()->setLayout('panel');
-
-    }
-
-    /**
-     * Default and the only action for this controller
-     *
-     * @return void
-     */
-    public function indexAction() {
-
-    }
+class theIteration extends Model_Artifact {
 
 }

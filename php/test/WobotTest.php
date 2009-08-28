@@ -18,31 +18,28 @@
  *
  */
 
+require_once 'FaZend/Test/TestCase.php';
+
 /**
- * Panel pages
+ * Model_Wobot test
  *
- * @package Controllers
+ * @package test
  */
-class PanelController extends FaZend_Controller_Action {
+class WobotTest extends FaZend_Test_TestCase {
 
-    /**
-     * Pre-configuration
-     *
-     * @return void
-     */
-    public function preDispatch() {
-
-        Zend_Layout::getMvcInstance()->setLayout('panel');
-
+    public function testRetrieveAllWorks() {
+        $wobots = Model_Wobot::retrieveAll();
     }
 
-    /**
-     * Default and the only action for this controller
-     *
-     * @return void
-     */
-    public function indexAction() {
+    public function testFactoryMethodWorks() {
+        $this->wobot = Model_Wobot::factory('PM');
+        $this->assertEquals('PM', $this->wobot->name);
+        $this->assertEquals('', $this->wobot->context);
+    }
 
+    public function testWobotCanBeExecuted() {
+        $this->wobot->execute();
+        $this->assertEquals('PM', $this->wobot->name);
     }
 
 }

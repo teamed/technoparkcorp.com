@@ -19,29 +19,23 @@
  */
 
 /**
- * Panel pages
+ * Validate estimates of activities
  *
- * @package Controllers
+ * @package wobots
  */
-class PanelController extends FaZend_Controller_Action {
+class ValidateActivityCostEstimates extends Model_Decision {
 
     /**
-     * Pre-configuration
+     * Make decision
      *
-     * @return void
+     * @return string|false
      */
-    public function preDispatch() {
+    protected function _make() {
 
-        Zend_Layout::getMvcInstance()->setLayout('panel');
+        $this->_log("Test message 1");
+        $this->_log("Test message 2");
 
-    }
-
-    /**
-     * Default and the only action for this controller
-     *
-     * @return void
-     */
-    public function indexAction() {
+        return "all activities are OK";
 
     }
 

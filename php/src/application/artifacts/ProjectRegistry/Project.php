@@ -19,30 +19,30 @@
  */
 
 /**
- * Panel pages
+ * One project
  *
- * @package Controllers
+ * @package Artifacts
  */
-class PanelController extends FaZend_Controller_Action {
+class theProject extends Model_Artifact {
 
     /**
-     * Pre-configuration
+     * List of iterations
      *
-     * @return void
+     * @var theIteration[]
      */
-    public function preDispatch() {
-
-        Zend_Layout::getMvcInstance()->setLayout('panel');
-
-    }
+    public $iterations;
 
     /**
-     * Default and the only action for this controller
+     * Get list of all activities in the project
      *
-     * @return void
+     * @return theActivity[]
      */
-    public function indexAction() {
+    protected function _getActivities() {
+        $activities = array();
+        foreach ($this->iterations as $iteration)
+            $activities = array_merge($activities, $iteration->activities);
 
+        return $activities;
     }
 
 }

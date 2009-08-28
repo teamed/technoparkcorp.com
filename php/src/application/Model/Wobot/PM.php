@@ -19,30 +19,39 @@
  */
 
 /**
- * Panel pages
+ * One PM wobot
  *
- * @package Controllers
+ * @package Model
  */
-class PanelController extends FaZend_Controller_Action {
+class Model_Wobot_PM extends Model_Wobot {
 
     /**
-     * Pre-configuration
+     * Project name
      *
-     * @return void
+     * @var string
      */
-    public function preDispatch() {
+    public $project;
 
-        Zend_Layout::getMvcInstance()->setLayout('panel');
-
+    /**
+     * Calculate context
+     *
+     * @return string
+     */
+    protected function _getContext() {
+        return (string)$this->project;
     }
 
-    /**
-     * Default and the only action for this controller
-     *
-     * @return void
-     */
-    public function indexAction() {
 
+    /**
+     * Selects the next decision to be executed
+     *
+     * @return Model_Decision
+     * @todo implement it
+     */
+    protected function _nextDecision() {
+        $decision = parent::_nextDecision();
+        $decision->project = $this->project;
+        return $decision;
     }
 
 }
