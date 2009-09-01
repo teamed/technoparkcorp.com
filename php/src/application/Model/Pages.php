@@ -49,11 +49,15 @@ class Model_Pages extends Zend_Navigation {
      * @param string Active document name
      * @return Model_Pages
      */
-    public static function getInstance($doc) {
+    public static function getInstance($doc = null) {
         if (!isset(self::$_instance))
             self::$_instance = new Model_Pages();
 
-        self::$_instance->findBy('title', $doc)->setActive();
+        if (!is_null($doc)) {
+            $active = self::$_instance->findBy('title', $doc);
+            if ($active)
+                $active->setActive();
+        }
 
         return self::$_instance;
     }

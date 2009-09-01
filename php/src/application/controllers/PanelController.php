@@ -43,6 +43,9 @@ class PanelController extends FaZend_Controller_Action {
      */
     public function indexAction() {
 
+        if (!Model_User::isLoggedIn())
+            return $this->_forward('restrict');
+
         $view = new Zend_View();
         $doc = $view->doc = $this->view->doc = $this->_getParam('doc');
 
@@ -52,6 +55,46 @@ class PanelController extends FaZend_Controller_Action {
         // reconfigure VIEW in order to render this particular document file
         $view->addScriptPath(dirname($path));
         $this->view->document = $view->render(pathinfo($path, PATHINFO_BASENAME));
+
+    }
+
+    /**
+     * Access restricted
+     *
+     * @return void
+     */
+    public function restrictAction() {
+
+    }
+
+    /**
+     * Get list of options for header
+     *
+     * @return void
+     */
+    public function optsAction() {
+
+        $title = $this->getRequest()->getPost('title');
+
+        $current = Model_Pages::getInstance()->findBy('title', $title);
+        $list = array();
+
+        foreach ($current->parent->getPages() as $page)
+            $list[$page->title] = $page->label;
+
+        $this->_returnJSON($list);
+
+    }
+
+    /**
+     * Redirect to document from POST
+     *
+     * @return void
+     */
+    public function redirectorAction() {
+
+        $doc = $this->getRequest()->getPost('document');
+        $this->_forward('index', null, null, array('doc'=>$doc));
 
     }
 

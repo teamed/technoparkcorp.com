@@ -1,0 +1,18 @@
+
+<? if (!Model_User::isLoggedIn()): ?>
+
+    <a href="#_self" onclick="$('div#lf').toggle();" title="log in with email/password">login</a> &middot;
+    <a href="<?=$this->url(array('action'=>'register'), 'user', true)?>" title="create new account">register</a>
+
+    <div id="lf" style="z-index:100;position: relative;
+        <?=(($this->form->email->getValue() || $this->form->pwd->getValue()) ? false : 'display:none;')?>">
+        <?=$this->form?>
+    </div>
+
+<? else: ?>
+
+    <span>
+        <a href="<?=$this->url(array('action'=>'settings'), 'user', true)?>" title="Your account settings (password, email)">settings</a> &middot;
+        <a href="<?=$this->url(array('action'=>'logout'), 'user', true)?>">logout</a></span>
+
+<? endif; ?>

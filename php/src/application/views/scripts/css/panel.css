@@ -144,6 +144,19 @@ div.header {
         color: <?=Model_Colors::WHITE?>;
     }
 
+        div.header div.path span {
+            cursor: pointer;
+        }
+
+            div.header div.path span form {
+                display: inline;
+            }
+
+                div.header div.path span form select {
+                    font-size: 1.1em;
+                }
+
+    /* nice image on top right corner */
     div.header div.r1 {
         position: absolute;
         top: 0px;

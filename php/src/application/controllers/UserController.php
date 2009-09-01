@@ -39,4 +39,37 @@ class UserController extends Fazend_UserController {
 
     }
 
+    /**
+     * Settings
+     *
+     * @return void
+     */
+    public function settingsAction() {
+
+        if (!Model_User::isLoggedIn())
+            return $this->_redirectFlash('You are not logged in yet', 'index');
+
+        $form = FaZend_Form::create('Settings', $this->view);
+
+        $user = Model_User::me();
+        $form->email->setValue($user->email);
+
+        if (!$form->isFilled())
+            return;
+
+        $email = $form->email->getValue();
+
+        $user->email = $email;
+        $user->save();
+
+        if ($form->password->getValue()) {
+            $user->password = $form->password->getValue();
+            $user->save();
+        }
+
+        $user->logIn();
+
+        $this->_redirectFlash('Changes were successfuly saved', 'index', 'panel', 'default');
+    }
+
 }

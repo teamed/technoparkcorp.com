@@ -1,0 +1,19 @@
+<!-- this script is called by breadcrumbs() helper -->
+
+<? $first = true; ?>
+
+<? foreach ($this->pages as $page): ?>
+
+    <? if (!$first): ?>
+        &#32;/&#32;
+    <? else: ?>
+        <? $first = false; ?>
+    <? endif; ?>
+
+    <? $id = 'header_' . md5($page->title); ?>
+
+    <span id="<?=$id?>" class="page" onclick="selector($('#<?=$id?>'), '<?=$page->title?>')"><?=$page->label?></span>
+
+<? endforeach; ?>
+
+<? $this->includeJS('header.js'); ?>

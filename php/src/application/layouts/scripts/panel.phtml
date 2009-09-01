@@ -7,52 +7,48 @@
 ?><?=$this->doctype()?>
 <html xmlns="http://www.w3.org/1999/xhtml"> 
 <head>  
-<?=$this->headTitle()?>
-<?=$this->headMeta()?>
-<?=$this->headLink()?>
-<?=$this->headStyle()?>
+    <?=$this->headTitle()?>
+    <?=$this->headMeta()?>
+    <?=$this->headLink()?>
+    <?=$this->headStyle()?>
 </head> 
 <body>
 
-<div class="header">
-    
-    <div class="path">
-        <?=$this->navigation(Model_Pages::getInstance($this->doc))
-            ->breadcrumbs()
-            ->setSeparator(' / ')
-            ->setMinDepth(0)
-            ->setLinkLast(true)?>
+    <div class="header">
+
+        <div class="path">
+            <?=$this->navigation(Model_Pages::getInstance($this->doc))
+                ->breadcrumbs()
+                ->setSeparator(' / ')
+                ->setMinDepth(0)
+                ->setPartial('panel/header.phtml')
+                ->setLinkLast(true)?>
+        </div>
+
+        <div class="logo">
+            <span class="logo">thePanel<sup style="font-size: 0.3em;">TM</sup> v2.0</span>
+
+            <?=$this->action('login', 'user', 'fazend')?>
+        </div>
+
+        <div class="r1"></div>
+        <div class="r2"></div>
+        <div class="r3"></div>
+
     </div>
 
-    <div class="logo">
-        <span class="logo">thePanel<sup style="font-size: 0.3em;">TM</sup> v2.0</span>
+    <div class="wrapper">
 
-        <?=$this->action('login', 'user', 'fazend')?>
+        <?=$this->flashMessage()?>
 
-        <? if (Model_User::isLoggedIn()): ?>
-            | <a href="<?=$this->url(array(), 'profile', true)?>">my profile</a>
-            | <a href="<?=$this->url(array(), 'pending', true)?>">pending</a>
-        <? endif; ?>
+        <?=$this->layout()->content?>
+
     </div>
 
-    <div class="r1"></div>     
-    <div class="r2"></div>     
-    <div class="r3"></div>     
+    <div class="btm">
+        <span>(c) <?=date('Y')?> TechnoPark Corp., rev.<?=FaZend_Revision::get()?>, <?=$this->pageLoadTime()?></span>
+    </div>
 
-</div>
-
-<div class="wrapper">
-
-    <?=$this->flashMessage()?>
-
-    <?=$this->layout()->content?>
-
-</div>    
-
-<div class="btm">
-    <span>(c) <?=date('Y')?> TechnoPark Corp., rev.<?=FaZend_Revision::get()?>, <?=$this->pageLoadTime()?></span>
-</div>    
-
-<?=$this->headScript() ?>
+    <?=$this->headScript() ?>
 </body>
 </html>
