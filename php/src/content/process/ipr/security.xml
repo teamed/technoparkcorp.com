@@ -35,40 +35,40 @@
 
 <text>
 
-	<p>"Information is an asset that, like other important business assets, is 
-	essential to an organization's business and consequently needs to be suitably 
-	protected. This is especially important in the increasingly interconnected business 
-	environment. As a result of this increasing interconnectivity, information is 
-	now exposed to a growing number and a wider variety of threats and vulnerabilities,"
-	states ISO/IEC 17799-2005 "Information Technology, Security Techniques, Code of
-	Practice for Information Security Management".</p>
+    <p>"Information is an asset that, like other important business assets, is 
+    essential to an organization's business and consequently needs to be suitably 
+    protected. This is especially important in the increasingly interconnected business 
+    environment. As a result of this increasing interconnectivity, information is 
+    now exposed to a growing number and a wider variety of threats and vulnerabilities,"
+    states ISO/IEC 17799-2005 "Information Technology, Security Techniques, Code of
+    Practice for Information Security Management".</p>
 
-	<p>As the standard defines, we protect information by means of:</p>
+    <p>As the standard defines, we protect information by means of:</p>
 
-	<ul>
-		<li>Strict information security responsibilities</li>
-		<li>Confidential agreements with employees and partners</li>
-		<li>Background checks and screening of employees</li>
-		<li>Information security education</li>
-		<li>Physically secured perimeter and security areas</li>
-		<li>Configuration and change management procedures</li>
-		<li>Proactive capacity management</li>
-		<li>Controls against malicious code</li>
-		<li>User access control and monitoring</li>
-		<li>Cryptographic controls</li>
-		<li>Proactive incident management</li>
-	</ul>
+    <ul>
+        <li>Strict information security responsibilities</li>
+        <li>Confidential agreements with employees and partners</li>
+        <li>Background checks and screening of employees</li>
+        <li>Information security education</li>
+        <li>Physically secured perimeter and security areas</li>
+        <li>Configuration and change management procedures</li>
+        <li>Proactive capacity management</li>
+        <li>Controls against malicious code</li>
+        <li>User access control and monitoring</li>
+        <li>Cryptographic controls</li>
+        <li>Proactive incident management</li>
+    </ul>
 
-	<p>Information we receive from our customers and data created during a project are labeled and
-	stored in authorization-required databases and file systems. User access to such
-	information is granted only by our director.</p>
+    <p>Information we receive from our customers and data created during a project are labeled and
+    stored in authorization-required databases and file systems. User access to such
+    information is granted only by our director.</p>
 
 </text>
 
 <concepts>
-	<c1 name="process/ipr/nda">NDA protects us both against information disclosure</c1>
-	<c2 name="process/ipr/law">US Copyright Law guarantees your intellectual property rights delivery</c2>
-	<c3 name="process/ipr/security">Physical and documentary means exist to protect data on servers and in offices</c3>
+    <c1 name="process/ipr/nda">NDA protects us both against information disclosure</c1>
+    <c2 name="process/ipr/law">US Copyright Law guarantees your intellectual property rights delivery</c2>
+    <c3 name="process/ipr/security">Physical and documentary means exist to protect data on servers and in offices</c3>
 </concepts>
 
 </article>

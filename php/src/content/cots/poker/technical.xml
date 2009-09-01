@@ -26,60 +26,60 @@
 <next>cots/poker/servers</next>
 
 <description>
-	GS-Poker is a stand-alone fully-customizable poker server software
-	with Windows client and C++/PHP server.
+    GS-Poker is a stand-alone fully-customizable poker server software
+    with Windows client and C++/PHP server.
 </description>
 
 <keywords>
-	poker software,
-	online poker software,
-	online poker server software,
-	poker software for sale,
-	online poker system,
-	client poker software,
-	client/server poker system,
+    poker software,
+    online poker software,
+    online poker server software,
+    poker software for sale,
+    online poker system,
+    client poker software,
+    client/server poker system,
 </keywords>
 
 <text>
 
-	<p><a href="${url:cots/poker}">GS-Poker</a> online client server poker software:</p>
+    <p><a href="${url:cots/poker}">GS-Poker</a> online client server poker software:</p>
 
-	<ul>
-		<li>Developed with C++, SQL server, and client-server architecture</li>
-		<li>Client - a stand-alone Win32 application, installed on the end-user PC</li>
-		<li>Only Windows XP/NT supported</li>
-		<li>Client <tt>.exe</tt> file size is about 1.4Mb</li>
-	</ul>
+    <ul>
+        <li>Developed with C++, SQL server, and client-server architecture</li>
+        <li>Client - a stand-alone Win32 application, installed on the end-user PC</li>
+        <li>Only Windows XP/NT supported</li>
+        <li>Client <tt>.exe</tt> file size is about 1.4Mb</li>
+    </ul>
 
-	<p>No matter what your merchant account, we can easily integrate <a href="${url:cots/poker}">GS-Poker</a> with it.
-	We're already connected to the most popular payment systems and card companies.</p>
+    <p>No matter what your merchant account, we can easily integrate <a href="${url:cots/poker}">GS-Poker</a> with it.
+    We're already connected to the most popular payment systems and card companies.</p>
 
-	<table>
-		<tr>
-			<td><png>//images/visa</png></td>
-			<td><png>//images/mc</png></td>
-			<td><png>//images/neteller</png></td>
-			<td><png>//images/mb</png></td>
-		</tr>
-		<tr>
-			<td><png>//images/egold</png></td>
-			<td><png>//images/prepaid</png></td>
-			<td><png>//images/firepay</png></td>
-			<td><png>//images/wm</png></td>
-		</tr>
-	</table>
+    <table>
+        <tr>
+            <td><png>//images/visa</png></td>
+            <td><png>//images/mc</png></td>
+            <td><png>//images/neteller</png></td>
+            <td><png>//images/mb</png></td>
+        </tr>
+        <tr>
+            <td><png>//images/egold</png></td>
+            <td><png>//images/prepaid</png></td>
+            <td><png>//images/firepay</png></td>
+            <td><png>//images/wm</png></td>
+        </tr>
+    </table>
 
-	<p>You can use the system worldwide due to its easy-to-translate language. 
-	All language settings are stored in a separate Windows DLL file.</p>
+    <p>You can use the system worldwide due to its easy-to-translate language. 
+    All language settings are stored in a separate Windows DLL file.</p>
 
-	<p>Read more about <a href="${url:cots/poker/functions}">functionality</a> 
-	and <a href="${url:cots/poker/servers}">hardware requirements</a>.</p>
+    <p>Read more about <a href="${url:cots/poker/functions}">functionality</a> 
+    and <a href="${url:cots/poker/servers}">hardware requirements</a>.</p>
 
 </text>
 
 <images>
 
-	<mb>
+    <mb>
 MB5!.1PT*&amp;@H````-24A$4@```%8````=&quot;`,````&#039;%VMJ````&quot;7!(67,```L3
 M```+$P$`FIP8```*3VE#0U!0:&amp;]T;W-H;W`@24-#(&#039;!R;V9I;&amp;4``&#039;C:G5-G
 M5%/I%CWWWO1&quot;2XB`E$MO4A4((%)&quot;BX`4D28J(0D02H@AH=D54&lt;$1144$&amp;\B@
@@ -170,9 +170,9 @@ MY`@&quot;HYJ+Y)!+OR3D(@&amp;U%=4_X^2+,+ZPFT&amp;V;+Y?A-RZMVF&amp;)8L)KJT5Z&gt;V
 M,2BQ(&amp;)[=5Q2Q@`88W_88*(&gt;T6!B&#039;]*WZMMGYG,`FS8TR+ER%%8`````245.
 %1*Y&quot;8((`
 `
-	</mb>
+    </mb>
 
-	<firepay>
+    <firepay>
 MB5!.1PT*&amp;@H````-24A$4@```%8````=&quot;`,````&#039;%VMJ````&quot;7!(67,```L3
 M```+$P$`FIP8```*3VE#0U!0:&amp;]T;W-H;W`@24-#(&#039;!R;V9I;&amp;4``&#039;C:G5-G
 M5%/I%CWWWO1&quot;2XB`E$MO4A4((%)&quot;BX`4D28J(0D02H@AH=D54&lt;$1144$&amp;\B@
@@ -274,9 +274,9 @@ M4$J&lt;GVXSMT&quot;0STB.?5OB9P%@RD&lt;&#039;`[Z[48:&gt;S*+_OJ/7U[G;:9;5`+]-T+RK
 M&lt;=?3\B(X[/W&amp;OXC#,_8K`#S8\#87&quot;^UZM.95&#039;XA32U+.MT0=(MIK#&lt;&quot;*E-.-
 BP%=&gt;VR!:]OW?=\)?`P&quot;I2&amp;2Y!C+[:0````!)14Y$KD)@@@``
 `
-	</firepay>
+    </firepay>
 
-	<wm>
+    <wm>
 MB5!.1PT*&amp;@H````-24A$4@```%8````=&quot;`,````&#039;%VMJ````&quot;7!(67,```L3
 M```+$P$`FIP8```*3VE#0U!0:&amp;]T;W-H;W`@24-#(&#039;!R;V9I;&amp;4``&#039;C:G5-G
 M5%/I%CWWWO1&quot;2XB`E$MO4A4((%)&quot;BX`4D28J(0D02H@AH=D54&lt;$1144$&amp;\B@
@@ -379,9 +379,9 @@ M4QIN;L[B]A_]N^Q$MLC3%\X=PE/8K5H`M-943LJ*5&quot;=VS&#039;.)9V2_XBW2-TS.
 MYEU7%R&amp;A5^Y-##IK^B7]4GG`.]+/=5&#039;C!TF7PQJVS^W-#GP[J/Y7/TM_#P&quot;F
 3R8&lt;?Z*,78@````!)14Y$KD)@@@``
 `
-	</wm>
+    </wm>
 
-	<visa>
+    <visa>
 MB5!.1PT*&amp;@H````-24A$4@```#P````7&quot;`,```!@2=RU````&quot;7!(67,```L3
 M```+$P$`FIP8```*3VE#0U!0:&amp;]T;W-H;W`@24-#(&#039;!R;V9I;&amp;4``&#039;C:G5-G
 M5%/I%CWWWO1&quot;2XB`E$MO4A4((%)&quot;BX`4D28J(0D02H@AH=D54&lt;$1144$&amp;\B@
@@ -484,9 +484,9 @@ MJ[KBHTIE5&amp;6$)&amp;WYHU(9-:+4,W7SK@:CL_&amp;F63$UJU0JR]&gt;J*`K5?JJ,6K[V
 M[]XED52-B(@H)-6S6E&amp;-B`G9JHBH]C[6QZSW*BFRZQ[(:[0!Z#VL_]&lt;,&amp;?X;
 5``%K7T@K(9[B`````$E%3D2N0F&quot;&quot;
 `
-	</visa>
+    </visa>
 
-	<neteller>
+    <neteller>
 MB5!.1PT*&amp;@H````-24A$4@```%8````=&quot;`,````&#039;%VMJ````&quot;7!(67,```L3
 M```+$P$`FIP8```*3VE#0U!0:&amp;]T;W-H;W`@24-#(&#039;!R;V9I;&amp;4``&#039;C:G5-G
 M5%/I%CWWWO1&quot;2XB`E$MO4A4((%)&quot;BX`4D28J(0D02H@AH=D54&lt;$1144$&amp;\B@
@@ -580,9 +580,9 @@ M0E[&gt;,884PS&amp;U2Q=9.ABZ,0UO-3-0CYOKS&gt;MAJ$9?_W[O&amp;JA[/3[#W#6`(`U+
 M87FN7BO+3O7OWBZ%ZW(@S$A%F,DE\$1S4[^6/J7&lt;^_#D+F:`/^WO$_XY_@P`
 47V3OA^81^CT`````245.1*Y&quot;8((`
 `
-	</neteller>
+    </neteller>
 
-	<prepaid>
+    <prepaid>
 MB5!.1PT*&amp;@H````-24A$4@```%8````=&quot;`,````&#039;%VMJ````&quot;7!(67,```L3
 M```+$P$`FIP8```*3VE#0U!0:&amp;]T;W-H;W`@24-#(&#039;!R;V9I;&amp;4``&#039;C:G5-G
 M5%/I%CWWWO1&quot;2XB`E$MO4A4((%)&quot;BX`4D28J(0D02H@AH=D54&lt;$1144$&amp;\B@
@@ -675,9 +675,9 @@ MSX?&gt;^C1:RQ.I)WYS+*0B/8&quot;%Q1U[HCK&amp;+9IB%?.LZQ,#]+4^&amp;ILZFF^&quot;3C
 M&gt;Z\K6EE7]`9WP,X1N;P3[H)56O31V)WC&#039;?H[=O#&amp;[_X7^CT`/#R_[YP3@9T`
 +````245.1*Y&quot;8((`
 `
-	</prepaid>
+    </prepaid>
 
-	<mc>
+    <mc>
 MB5!.1PT*&amp;@H````-24A$4@```#(````&gt;&quot;`(```#A,]JK````&quot;7!(67,```L3
 M```+$P$`FIP8````(&amp;-(4DT``&#039;HE``&quot;`@P``^?\``(#I``!U,```ZF```#J8
 M```7;Y)?Q48```TX241!5&#039;C:+-?[M^9E6&lt;?QSW7=A^_W^SS[V&lt;_LV7M@#\,P
@@ -757,9 +757,9 @@ MB(`!&quot;`TC:TK-B-I&quot;O&lt;2]SX4?_M#&lt;=8_YV2^P;X%&quot;,N1J7Z(_DQU_&lt;KS
 M:9TCCT1&quot;]-XBM&quot;#?(&amp;964V0]$%^X)]O_TV;Q`6X&#039;KET!!*9;=3?(]#9&gt;L\D=
 I]F[#6Y`YD@%25MFL(`$`32#S?P,`&#039;QZW*PO\R&#039;&lt;`````245.1*Y&quot;8((`
 `
-	</mc>
+    </mc>
 
-	<egold>
+    <egold>
 MB5!.1PT*&amp;@H````-24A$4@```%8````=&quot;`,````&#039;%VMJ````&quot;7!(67,```L3
 M```+$P$`FIP8```*3VE#0U!0:&amp;]T;W-H;W`@24-#(&#039;!R;V9I;&amp;4``&#039;C:G5-G
 M5%/I%CWWWO1&quot;2XB`E$MO4A4((%)&quot;BX`4D28J(0D02H@AH=D54&lt;$1144$&amp;\B@
@@ -864,7 +864,7 @@ M!3;E&#039;:I]1O]5LVVLLVZ!9I&gt;N_E5H7[/1X.I=\UUZ?9^NMI/7VAIO+/6JB&gt;L^
 MKG4_Z]]34_CP-G2\.9N#=2UZ3Y&#039;7Z@R&#039;4[3`WP,`?*[(WU)CY7,`````245.
 %1*Y&quot;8((`
 `
-	</egold>
+    </egold>
 </images>
 
 </article>

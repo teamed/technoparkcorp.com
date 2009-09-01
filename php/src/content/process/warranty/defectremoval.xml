@@ -35,21 +35,21 @@
 
 <text>
 
-	<p>All software has <a href="${url:process/quality/defect}">Defects</a> due to the nature of the development process. Some defects
-	are revealed during <a href="${url:process/quality/coq}">testing</a>, some of them stay hidden until the end-users start
-	to utilize the product.</p>
+    <p>All software has <a href="${url:process/quality/defect}">Defects</a> due to the nature of the development process. Some defects
+    are revealed during <a href="${url:process/quality/coq}">testing</a>, some of them stay hidden until the end-users start
+    to utilize the product.</p>
 
-	<p>In our projects, we do not try to reveal all Defects, since it's impossible and such 
-	intentions will lead to <a href="${url:process/time/schedule}">Schedule</a> and 
-	<a href="${url:process/cost}">Cost</a> overrun. We try to find as many Defects as
-	possible during project lifecycle, so that the residual Defects do not block the project
-	release.</p>	
+    <p>In our projects, we do not try to reveal all Defects, since it's impossible and such 
+    intentions will lead to <a href="${url:process/time/schedule}">Schedule</a> and 
+    <a href="${url:process/cost}">Cost</a> overrun. We try to find as many Defects as
+    possible during project lifecycle, so that the residual Defects do not block the project
+    release.</p>    
 
-	<p>All other Defects are removed during warranty defect removal period, after
-	you identify and report them.</p>
+    <p>All other Defects are removed during warranty defect removal period, after
+    you identify and report them.</p>
 
-	<p>We guarantee that corrective actions are initiated for reported Defects within 
-	five business days.</p>
+    <p>We guarantee that corrective actions are initiated for reported Defects within 
+    five business days.</p>
 
 </text>
 

@@ -35,17 +35,17 @@
 
 <text>
 
-	<p>Manual testing is done by testers through performing operations
-	that will later be done by end-users. This type of testing is necessary
-	to simulate normal and stress modes of operations.</p>
+    <p>Manual testing is done by testers through performing operations
+    that will later be done by end-users. This type of testing is necessary
+    to simulate normal and stress modes of operations.</p>
 
-	<p>Manual testing includes:</p>
+    <p>Manual testing includes:</p>
 
-	<ul>
-		<li>Usability testing</li>
-		<li>Supportability testing</li>
-		<li>Functional testing</li>
-	</ul>
+    <ul>
+        <li>Usability testing</li>
+        <li>Supportability testing</li>
+        <li>Functional testing</li>
+    </ul>
 
 </text>
 

@@ -18,9 +18,9 @@
 
 <categories>
 
-	<category>Architecture</category>
-	<category>Risk Management</category>
-	<category>Risk Mitigation</category>
+    <category>Architecture</category>
+    <category>Risk Management</category>
+    <category>Risk Mitigation</category>
 
 </categories>
 
@@ -32,85 +32,85 @@
 
 <description>
 
-	We're providing early architecture elaboration to identify 
-	technical risks as soon as possible. Sometimes this rule saves 
-	a lot of time and money, prevents cost losses and helps in 
-	reaching the project objectives. This is one of those stories. 
+    We're providing early architecture elaboration to identify 
+    technical risks as soon as possible. Sometimes this rule saves 
+    a lot of time and money, prevents cost losses and helps in 
+    reaching the project objectives. This is one of those stories. 
 
 </description>
 
 <tex>
 
-	The main project's outcome was an on-line ad serving program for 
-	Advertisers and Publishers, which would give them the ability to manage 
-	ads and financial statistics.
+    The main project's outcome was an on-line ad serving program for 
+    Advertisers and Publishers, which would give them the ability to manage 
+    ads and financial statistics.
 
-	The key objective of the project was to get an effective system, which 
-	would allow registered users to make on-line advertisements more effective 
-	by means of creating, managing, tracking, controlling and reporting 
-	ad popularity and financial statistics.
+    The key objective of the project was to get an effective system, which 
+    would allow registered users to make on-line advertisements more effective 
+    by means of creating, managing, tracking, controlling and reporting 
+    ad popularity and financial statistics.
 
-	The main constraint of the project was the inconsistency of the customer's 
-	requirement amount and amount of the initial budget. That's why we 
-	decided to divide the scope of the whole system into several releases. The first 
-	release was to provide only minimal functionality of the system that 
-	would allow the customer to put it to work and earn some revenue. 
+    The main constraint of the project was the inconsistency of the customer's 
+    requirement amount and amount of the initial budget. That's why we 
+    decided to divide the scope of the whole system into several releases. The first 
+    release was to provide only minimal functionality of the system that 
+    would allow the customer to put it to work and earn some revenue. 
 
-	We also decided to separate the database and the main business functions from the
-	user interface because we expected a high load of statistic modules 
-	(800-1200K queries a day). All control and statistic queries were 
-	to work through XML calls. 
+    We also decided to separate the database and the main business functions from the
+    user interface because we expected a high load of statistic modules 
+    (800-1200K queries a day). All control and statistic queries were 
+    to work through XML calls. 
  
 \begin{tikzpicture}
 
-	\node [block] (aGUI) {Advertiser's GUI};
-	\node [block, right=3cm of aGUI] (pGUI) {Publisher's GUI};
-	\node [block, below=2cm of aGUI] (aLogic) {Advertiser's Logic};
-	\node [block, right=3cm of aLogic] (pLogic) {Publisher's Logic};
+    \node [block] (aGUI) {Advertiser's GUI};
+    \node [block, right=3cm of aGUI] (pGUI) {Publisher's GUI};
+    \node [block, below=2cm of aGUI] (aLogic) {Advertiser's Logic};
+    \node [block, right=3cm of aLogic] (pLogic) {Publisher's Logic};
 
-	\node [draw=tpcBlue, fit=(aGUI) (pGUI), inner sep=7mm] (gui) {};
-	\node [below=0mm of gui.north east, anchor=north east] {User Interface (Panel)};
+    \node [draw=tpcBlue, fit=(aGUI) (pGUI), inner sep=7mm] (gui) {};
+    \node [below=0mm of gui.north east, anchor=north east] {User Interface (Panel)};
 
-	\node [draw=tpcBlue, fit=(aLogic) (pLogic), inner sep=7mm] (logic) {};
-	\node [below=0mm of logic.north east, anchor=north east] {Busines Logic and Database (Platform)};
+    \node [draw=tpcBlue, fit=(aLogic) (pLogic), inner sep=7mm] (logic) {};
+    \node [below=0mm of logic.north east, anchor=north east] {Busines Logic and Database (Platform)};
 
-	\node [draw=tpcRed, fit=(aGUI) (aLogic), inner sep=15mm, dashed, very thick] (release) {};
-	\node [below=0mm of release.north, anchor=north, text=tpcRed] {First Release};
+    \node [draw=tpcRed, fit=(aGUI) (aLogic), inner sep=15mm, dashed, very thick] (release) {};
+    \node [below=0mm of release.north, anchor=north, text=tpcRed] {First Release};
 
 \end{tikzpicture}
 
-	First we tried to define the first release scope as all the advertisers' 
-	functions and some minor publishers' functions to make the system 
-	work. But with architecture elaboration we understood that the main project 
-	objective (get the ability to put the system to work and earn revenue) 
-	could not be reached while the Publisher's logic was not implemented.
+    First we tried to define the first release scope as all the advertisers' 
+    functions and some minor publishers' functions to make the system 
+    work. But with architecture elaboration we understood that the main project 
+    objective (get the ability to put the system to work and earn revenue) 
+    could not be reached while the Publisher's logic was not implemented.
  
 \begin{tikzpicture}
 
-	\node [block] (aGUI) {Advertiser's GUI};
-	\node [block, right=3cm of aGUI] (pGUI) {Publisher's GUI};
-	\node [block, below=2cm of aGUI] (aLogic) {Advertiser's Logic};
-	\node [block, right=3cm of aLogic] (pLogic) {Publisher's Logic};
+    \node [block] (aGUI) {Advertiser's GUI};
+    \node [block, right=3cm of aGUI] (pGUI) {Publisher's GUI};
+    \node [block, below=2cm of aGUI] (aLogic) {Advertiser's Logic};
+    \node [block, right=3cm of aLogic] (pLogic) {Publisher's Logic};
 
-	\node [draw=tpcBlue, fit=(aGUI) (pGUI), inner sep=7mm] (gui) {};
-	\node [below=0mm of gui.north east, anchor=north east] {User Interface (Panel)};
+    \node [draw=tpcBlue, fit=(aGUI) (pGUI), inner sep=7mm] (gui) {};
+    \node [below=0mm of gui.north east, anchor=north east] {User Interface (Panel)};
 
-	\node [draw=tpcBlue, fit=(aLogic) (pLogic), inner sep=7mm] (logic) {};
-	\node [below=0mm of logic.north east, anchor=north east] {Busines Logic and Database (Platform)};
+    \node [draw=tpcBlue, fit=(aLogic) (pLogic), inner sep=7mm] (logic) {};
+    \node [below=0mm of logic.north east, anchor=north east] {Busines Logic and Database (Platform)};
 
-	\node [draw=tpcRed, fit=(aLogic) (pLogic), inner sep=15mm, dashed, very thick] (release) {};
-	\node [below right=1mm of release.north west, anchor=north west, text=tpcRed, fill=white] {First Release};
+    \node [draw=tpcRed, fit=(aLogic) (pLogic), inner sep=15mm, dashed, very thick] (release) {};
+    \node [below right=1mm of release.north west, anchor=north west, text=tpcRed, fill=white] {First Release};
 
 \end{tikzpicture}
 
-	So we decided to define the first release scope as all main business 
-	logic, database structure and some minor user interface functions.
+    So we decided to define the first release scope as all main business 
+    logic, database structure and some minor user interface functions.
 
-	This early architecture decomposition of the system saved 400 staff-hours that could be spent for later implementation of the Publishers' logic.
+    This early architecture decomposition of the system saved 400 staff-hours that could be spent for later implementation of the Publishers' logic.
 
-	It's very important for us to decide how a system will look before we start implementation. We usually spend a lot of time on 
-	system definition, architecture elaboration and decomposition. In this 
-	way we appreciably decrease project risk scores and save budget.
+    It's very important for us to decide how a system will look before we start implementation. We usually spend a lot of time on 
+    system definition, architecture elaboration and decomposition. In this 
+    way we appreciably decrease project risk scores and save budget.
 
 </tex>
 

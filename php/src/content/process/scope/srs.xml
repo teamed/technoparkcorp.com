@@ -28,71 +28,71 @@
 <next>process/cost</next>
 
 <description>
-	Software requirements specification (SRS) is a core
-	scope definition document in software development project.
+    Software requirements specification (SRS) is a core
+    scope definition document in software development project.
 </description>
 
 <keywords>
-	SRS,
-	software requirements specification,
-	specification,
-	software scope,
-	scope management plan
+    SRS,
+    software requirements specification,
+    specification,
+    software scope,
+    scope management plan
 </keywords>
 
 <text>
 
-	<p>A Software Requirements Specification (SRS) document is one of 
-	the central artifacts in the course of a software development project.
-	It defines what shall be developed in great detail. 
-	The SRS is a rather technical document and usualy
-	requires your significant attention to read and understand it.</p>
+    <p>A Software Requirements Specification (SRS) document is one of 
+    the central artifacts in the course of a software development project.
+    It defines what shall be developed in great detail. 
+    The SRS is a rather technical document and usualy
+    requires your significant attention to read and understand it.</p>
 
-	<p>The SRS is a format of the
-	<a href="${url:process/scope/specification}">Specification</a>. 
-	The SRS is based on the <a href="${url:process/scope/vision}">Vision</a> and provides
-	details for each <a href="${url:process/scope/feature}">Feature</a> from it.</p>
+    <p>The SRS is a format of the
+    <a href="${url:process/scope/specification}">Specification</a>. 
+    The SRS is based on the <a href="${url:process/scope/vision}">Vision</a> and provides
+    details for each <a href="${url:process/scope/feature}">Feature</a> from it.</p>
 
-	<p>The SRS is created by a system analyst according to details provided by 
-	the requirements specifier (your representative). The SRS includes four sections:</p>
+    <p>The SRS is created by a system analyst according to details provided by 
+    the requirements specifier (your representative). The SRS includes four sections:</p>
 
-	<ul>
-		<li><a href="${url:process/scope/glossary}">Glossary</a></li>
-		<li>Use Cases</li>
-		<li>Functional <a href="${url:process/scope/requirement}">Requirements</a></li>
-		<li>Non-Functional Requirements</li>
-	</ul>
+    <ul>
+        <li><a href="${url:process/scope/glossary}">Glossary</a></li>
+        <li>Use Cases</li>
+        <li>Functional <a href="${url:process/scope/requirement}">Requirements</a></li>
+        <li>Non-Functional Requirements</li>
+    </ul>
 
-	<p><a href="http://standards.ieee.org/reading/ieee/std_public/description/se/830-1998_desc.html">IEEE 
-	830-1998</a> 'Recommended Practices for Software Requirements Specifications' 
-	is used to structure, define and maintain the SRS.</p>
+    <p><a href="http://standards.ieee.org/reading/ieee/std_public/description/se/830-1998_desc.html">IEEE 
+    830-1998</a> 'Recommended Practices for Software Requirements Specifications' 
+    is used to structure, define and maintain the SRS.</p>
 
-	<p>The amount of effort contributed to SRS development and maintenance depends on the project size and complexity. 
-	However, average numbers (in correlation with the project <a href="${url:process/cost/budget}">Budget</a>) are as follows:</p>
+    <p>The amount of effort contributed to SRS development and maintenance depends on the project size and complexity. 
+    However, average numbers (in correlation with the project <a href="${url:process/cost/budget}">Budget</a>) are as follows:</p>
 
-	<table>
-		<tr>
-			<th>Budget, staff-hours</th>
-			<th>Functional Requirements</th>
-			<th>SRS size, pages</th>
-			<th>Efforts, staff-hours</th>
-			<th>Time, weeks</th>
-		</tr>
-		<tr><td>1000-2200</td><td>40-130</td><td>20-60</td><td>150-280</td><td>3-5</td></tr>
-		<tr><td>1900-3500</td><td>100-400</td><td>40-100</td><td>200-400</td><td>4-7</td></tr>
-		<tr><td>3000-5000</td><td>350-700</td><td>80-200</td><td>350-700</td><td>5-9</td></tr>
-	</table>
+    <table>
+        <tr>
+            <th>Budget, staff-hours</th>
+            <th>Functional Requirements</th>
+            <th>SRS size, pages</th>
+            <th>Efforts, staff-hours</th>
+            <th>Time, weeks</th>
+        </tr>
+        <tr><td>1000-2200</td><td>40-130</td><td>20-60</td><td>150-280</td><td>3-5</td></tr>
+        <tr><td>1900-3500</td><td>100-400</td><td>40-100</td><td>200-400</td><td>4-7</td></tr>
+        <tr><td>3000-5000</td><td>350-700</td><td>80-200</td><td>350-700</td><td>5-9</td></tr>
+    </table>
 
-	<p>Functional Requirements for the SRS are uniquely identified and 
-	used in a <a href="${url:process/scope/matrix}">Traceability Matrix</a>
-	in order to provide backward traceability for Features.</p>
+    <p>Functional Requirements for the SRS are uniquely identified and 
+    used in a <a href="${url:process/scope/matrix}">Traceability Matrix</a>
+    in order to provide backward traceability for Features.</p>
 
 </text>
 
 <concepts>
-	<c1 name="process/scope/feature">Feature is a top-level user requirement</c1>
-	<c3 name="process/scope/specification">Specification details Vision</c3>
-	<c5 name="process/cost/rom">ROM Estimate is based on Features</c5>
+    <c1 name="process/scope/feature">Feature is a top-level user requirement</c1>
+    <c3 name="process/scope/specification">Specification details Vision</c3>
+    <c5 name="process/cost/rom">ROM Estimate is based on Features</c5>
 </concepts>
 
 </article>

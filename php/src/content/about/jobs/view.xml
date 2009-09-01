@@ -28,15 +28,15 @@
 
 <text>
 
-	<p>TechnoPark Corp. is constantly looking for talented individuals and software teams that
-	are willing to take participation in our software development projects on a full-time or
-	part-time basis.</p>
+    <p>TechnoPark Corp. is constantly looking for talented individuals and software teams that
+    are willing to take participation in our software development projects on a full-time or
+    part-time basis.</p>
 
-	${php:HR/Staffing/Requisitions:PreviewRequisitionHTML()}
+    ${php:HR/Staffing/Requisitions:PreviewRequisitionHTML()}
 
-	<p>If you fill yourself capable with the listed requirements, please
-	<a href="${mailto:hr}">email us</a>. 
-	Our HR Director will get back to you with an offer.</p>
+    <p>If you fill yourself capable with the listed requirements, please
+    <a href="${mailto:hr}">email us</a>. 
+    Our HR Director will get back to you with an offer.</p>
 
 </text>
 

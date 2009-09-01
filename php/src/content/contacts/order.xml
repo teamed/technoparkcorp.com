@@ -27,23 +27,23 @@
 
 <text>
 
-	<p>Contact us to get a quotation for your software project. The process is simple:</p>
+    <p>Contact us to get a quotation for your software project. The process is simple:</p>
 
-	<ol>
-		<li>You contact us <a href="${url:contacts}">online</a></li>
-		<li>One of our Project Managers gets back to you</li>
-		<li>We solicit your requirements (<a href="${url:process/scope/specification}">Informal Request</a>)</li>
-		<li>We develop <a href="${url:process/scope/vision}">Vision</a></li>
-		<li>You confirm that the Vision covers the whole <a href="${url:process/scope}">scope</a></li>
-		<li>We estimate the project, you get <a href="${url:process/cost/rom}">ROM Estimate</a></li>
-		<li>We give you <a href="${url:process/time/schedule}">Schedule</a>, and Staffing estimates</li>
-		<li>We together sign a Contract</li>
-		<li>You make a first payment (<a href="${url:process/cost/model}">Retainer</a>)</li>
-		<li>We start the Project and finish it <a href="${url:process/time}">in time</a>, 
-			according to the <a href="${url:process/scope/srs}">SRS</a></li>
-	</ol>
+    <ol>
+        <li>You contact us <a href="${url:contacts}">online</a></li>
+        <li>One of our Project Managers gets back to you</li>
+        <li>We solicit your requirements (<a href="${url:process/scope/specification}">Informal Request</a>)</li>
+        <li>We develop <a href="${url:process/scope/vision}">Vision</a></li>
+        <li>You confirm that the Vision covers the whole <a href="${url:process/scope}">scope</a></li>
+        <li>We estimate the project, you get <a href="${url:process/cost/rom}">ROM Estimate</a></li>
+        <li>We give you <a href="${url:process/time/schedule}">Schedule</a>, and Staffing estimates</li>
+        <li>We together sign a Contract</li>
+        <li>You make a first payment (<a href="${url:process/cost/model}">Retainer</a>)</li>
+        <li>We start the Project and finish it <a href="${url:process/time}">in time</a>, 
+            according to the <a href="${url:process/scope/srs}">SRS</a></li>
+    </ol>
 
-	<p>Start with  <a href="${url:contacts}">online contact form</a>.</p>
+    <p>Start with  <a href="${url:contacts}">online contact form</a>.</p>
 
 </text>
 

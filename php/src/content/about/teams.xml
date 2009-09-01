@@ -26,50 +26,50 @@
 <next>contacts/sup</next>
 
 <keywords>
-	remote software team,
-	virtual team,
-	offshore programmers,
-	dedicated distributed team
+    remote software team,
+    virtual team,
+    offshore programmers,
+    dedicated distributed team
 </keywords>
 
 <description>
-	Virtual team concept for outsourcing development
+    Virtual team concept for outsourcing development
 </description>
 
 <text>
 
-	<p>For each new project we build and manage a dedicated distributed team of 
-	narrow-skilled technicians. Each role in a project is being filled by
-	the best suitable talent (<a href="${url:contacts/sup}">tell us about your uniqueness</a> and we will invite
-	you to one of our projects), the company or an individual.</p>
-	
-	<p>The project team includes individuals and companies' engineers from
-	different countries across the globe. With our project management toolkit you
-	interact with documents, project manager and the team effectively
-	and without redundant communications.</p>
+    <p>For each new project we build and manage a dedicated distributed team of 
+    narrow-skilled technicians. Each role in a project is being filled by
+    the best suitable talent (<a href="${url:contacts/sup}">tell us about your uniqueness</a> and we will invite
+    you to one of our projects), the company or an individual.</p>
+    
+    <p>The project team includes individuals and companies' engineers from
+    different countries across the globe. With our project management toolkit you
+    interact with documents, project manager and the team effectively
+    and without redundant communications.</p>
 
-	<p><tikz>
-	\begin{tikzpicture}[font=\small]
-	\tikzstyle{part} = [draw=tpcBlue, text width=25mm, text centered, minimum height=15mm]
-	\tikzstyle{ln} = [draw=tpcBlue, fill=tpcBlue, -triangle 60, line width=2mm]
-	\tikzstyle{ln2} = [draw=tpcGreen, fill=tpcGreen, -triangle 60, line width=2mm]
+    <p><tikz>
+    \begin{tikzpicture}[font=\small]
+    \tikzstyle{part} = [draw=tpcBlue, text width=25mm, text centered, minimum height=15mm]
+    \tikzstyle{ln} = [draw=tpcBlue, fill=tpcBlue, -triangle 60, line width=2mm]
+    \tikzstyle{ln2} = [draw=tpcGreen, fill=tpcGreen, -triangle 60, line width=2mm]
 
-	\node [draw=tpcBlue, fill=tpcBlue!50, minimum height=15mm] (tpc) {\begin{minipage}{40mm}\begin{center}TechnoPark Corp.'s\\ Management System\end{center}\end{minipage}};
-	\node [part, right=20mm of tpc] (user) {Product End-Users};
-	\node [part, above=20mm of tpc] (customer) {You};
-	\node [part, below=20mm of tpc] (techs) {Technicians};
-	\node [part, left=20mm of tpc] (pm) {Project Manager};
+    \node [draw=tpcBlue, fill=tpcBlue!50, minimum height=15mm] (tpc) {\begin{minipage}{40mm}\begin{center}TechnoPark Corp.'s\\ Management System\end{center}\end{minipage}};
+    \node [part, right=20mm of tpc] (user) {Product End-Users};
+    \node [part, above=20mm of tpc] (customer) {You};
+    \node [part, below=20mm of tpc] (techs) {Technicians};
+    \node [part, left=20mm of tpc] (pm) {Project Manager};
 
-	\draw [ln2] (tpc) -- (user);
-	\draw [ln] (customer) -- (tpc);
-	\draw [ln] (techs) -- (tpc);
-	\draw [ln] (pm) -- (tpc);
-	\end{tikzpicture}
-	</tikz></p>
+    \draw [ln2] (tpc) -- (user);
+    \draw [ln] (customer) -- (tpc);
+    \draw [ln] (techs) -- (tpc);
+    \draw [ln] (pm) -- (tpc);
+    \end{tikzpicture}
+    </tikz></p>
 
-	<p>Our typical projects require system analysts, 
-	software architects, software designers, programmers, test analysts,
-	testers, technical/management reviewers, graphic artists, and system administators.</p>
+    <p>Our typical projects require system analysts, 
+    software architects, software designers, programmers, test analysts,
+    testers, technical/management reviewers, graphic artists, and system administators.</p>
 
 </text>
 

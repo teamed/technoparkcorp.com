@@ -35,17 +35,17 @@
 
 <text>
 
-	<p>System testing is performed by testers through special tools and testability
-	elements in order to reveal system <a href="${url:process/quality/defect}">Defects</a>.</p>
-	
-	<p>System testing includes:</p>
+    <p>System testing is performed by testers through special tools and testability
+    elements in order to reveal system <a href="${url:process/quality/defect}">Defects</a>.</p>
+    
+    <p>System testing includes:</p>
 
-	<ul>
-		<li>Performance testing</li>
-		<li>Stress testing</li>
-		<li>Load testing</li>
-		<li>Volume testing</li>
-	</ul>
+    <ul>
+        <li>Performance testing</li>
+        <li>Stress testing</li>
+        <li>Load testing</li>
+        <li>Volume testing</li>
+    </ul>
 
 </text>
 

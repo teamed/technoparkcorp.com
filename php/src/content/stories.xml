@@ -23,15 +23,15 @@
 
 <text>
 
-	<p>Select a category from the lists below and read relevant Success Stories. Click on one of the tags below.
-	This list is updated regularly as we complete new projects. Some of the Stories you see here are
-	the re-worked Lessons Learned we collect by the end of each project Iteration.</p>
+    <p>Select a category from the lists below and read relevant Success Stories. Click on one of the tags below.
+    This list is updated regularly as we complete new projects. Some of the Stories you see here are
+    the re-worked Lessons Learned we collect by the end of each project Iteration.</p>
 
 </text>
 
 <lables>
-	<technology>Technology</technology>
-	<industry>Industry</industry>
+    <technology>Technology</technology>
+    <industry>Industry</industry>
 </lables>
 
 </article>

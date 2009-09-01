@@ -26,36 +26,36 @@
 <next>cots/poker/malta</next>
 
 <description>
-	Poker Server Software is a valuable component for Poker Room business,
-	but not the only component. This page has a list of other important
-	activities for online poker business.
+    Poker Server Software is a valuable component for Poker Room business,
+    but not the only component. This page has a list of other important
+    activities for online poker business.
 </description>
 
 <keywords>
-	poker software,
-	online poker business,
-	online poker server software,
-	poker software for sale,
-	online poker system,
-	poker server software
+    poker software,
+    online poker business,
+    online poker server software,
+    poker software for sale,
+    online poker system,
+    poker server software
 </keywords>
 
 <text>
 
-	<p>In order to run the online poker business you 
-	will need the following components, while we provide only
-	the poker server software:</p>
+    <p>In order to run the online poker business you 
+    will need the following components, while we provide only
+    the poker server software:</p>
 
-	<ol>
-		<li>Poker software (<a href="${url:cots/poker}">GS-Poker</a> is the best option)</li>
-		<li>Graphic design of poker lobby and poker table</li>
-		<li>Website design and development</li>
-		<li>Hosting <a href="${url:cots/poker/servers}">servers</a> platform</li>
-		<li>24x7 technical support of your servers</li>
-		<li>24x7 players support service</li>
-		<li>Merchant account for credit card acceptance</li>
-		<li>Gambling license (we advise <a href="${url:cots/poker/malta}">Maltese Gambling Linces</a>)</li>
-	</ol>
+    <ol>
+        <li>Poker software (<a href="${url:cots/poker}">GS-Poker</a> is the best option)</li>
+        <li>Graphic design of poker lobby and poker table</li>
+        <li>Website design and development</li>
+        <li>Hosting <a href="${url:cots/poker/servers}">servers</a> platform</li>
+        <li>24x7 technical support of your servers</li>
+        <li>24x7 players support service</li>
+        <li>Merchant account for credit card acceptance</li>
+        <li>Gambling license (we advise <a href="${url:cots/poker/malta}">Maltese Gambling Linces</a>)</li>
+    </ol>
 
 </text>
 

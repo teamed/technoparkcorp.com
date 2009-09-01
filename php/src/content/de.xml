@@ -28,20 +28,20 @@
 <next></next>
 
 <description>
-	Individuelle Software-Entwicklung, 
-	Vertrauen Sie Ihr Projekt auf eine professionelle schlusselfertige Generalunternehmer
+    Individuelle Software-Entwicklung, 
+    Vertrauen Sie Ihr Projekt auf eine professionelle schlusselfertige Generalunternehmer
 </description>
 
 <keywords>
-	software-entwicklung,
-	software development,
-	offshore software development,
-	outsourcing,
-	agile softwareentwicklung,
-	softwareentwicklung,
-	java softwareentwicklung,
-	schlusselfertige Generalunternehmer,
-	software Projekt,
+    software-entwicklung,
+    software development,
+    offshore software development,
+    outsourcing,
+    agile softwareentwicklung,
+    softwareentwicklung,
+    java softwareentwicklung,
+    schlusselfertige Generalunternehmer,
+    software Projekt,
         agile softwareentwicklung,
         c# programming,
         individuelle softwareentwicklung,
@@ -68,54 +68,54 @@
 
 <text>
 
-	<p>TechnoPark Corp. ist eine SoftwareVerwertungsgesellschaft mit einer erfinderischen 
-	Ann&auml;herung zum Projekt Management in den virtuellen verteilten Mannschaften. 
-	Wenn Sie uns einstellen, wie eine allgemeine Fremdfirma, die Sie aktiv 
-	ausf&uuml;hrlich jedes letzte der internen Angelegenheiten eines Projektes mit 
-	einbezogen bleiben. Sie steuern Ihr Gesch&auml;ftserfolg mittels unserer 
-	automatisierten sofortigen Metrik, die mit <a href="http://en.wikipedia.org/wiki/Project_Management_Body_of_Knowledge">PMBOK&reg;</a>, 
-	<a href="http://www.sei.cmu.edu/cmmi/general/">CMMI&reg;</a>, 
-	<a href="http://en.wikipedia.org/wiki/IBM_Rational_Unified_Process">RUP</a> and 
-	<a href="http://en.wikipedia.org/wiki/ISO_9001">ISO 9001</a> gef&auml;llig ist.</p>
-	
-	<p><object id="video"
-		width="396" 
-		height="297" 
-		style="border: 1px solid ${def:ColorsDARK_GRAY};">
-		<param name="allowScriptAccess" value="sameDomain" />
-		<param name="movie" value="http://ipf10.tpc-svn.com/video.php?file=about.swf" />
-		<param name="quality" value="high" />
-		<param name="bgcolor" value="#ffffff" />
-		<param name="allowFullScreen" value="false" />
-		<embed src="http://ipf10.tpc-svn.com/video.php?file=about.swf" 
-			quality="high" 
-			bgcolor="#ffffff" 
-			width="396" 
-			height="297" 
-			name="video" 
-			allowScriptAccess="sameDomain" 
-			type="application/x-shockwave-flash" 
-			pluginspage="http://www.adobe.com/go/getflashplayer" 
-			allowFullScreen="false" />
-	</object><br/>
-	<span class='fieldhelp'>1-minute Flash video presentation of the services you buy (2.1Mb)</span></p>
+    <p>TechnoPark Corp. ist eine SoftwareVerwertungsgesellschaft mit einer erfinderischen 
+    Ann&auml;herung zum Projekt Management in den virtuellen verteilten Mannschaften. 
+    Wenn Sie uns einstellen, wie eine allgemeine Fremdfirma, die Sie aktiv 
+    ausf&uuml;hrlich jedes letzte der internen Angelegenheiten eines Projektes mit 
+    einbezogen bleiben. Sie steuern Ihr Gesch&auml;ftserfolg mittels unserer 
+    automatisierten sofortigen Metrik, die mit <a href="http://en.wikipedia.org/wiki/Project_Management_Body_of_Knowledge">PMBOK&reg;</a>, 
+    <a href="http://www.sei.cmu.edu/cmmi/general/">CMMI&reg;</a>, 
+    <a href="http://en.wikipedia.org/wiki/IBM_Rational_Unified_Process">RUP</a> and 
+    <a href="http://en.wikipedia.org/wiki/ISO_9001">ISO 9001</a> gef&auml;llig ist.</p>
+    
+    <p><object id="video"
+        width="396" 
+        height="297" 
+        style="border: 1px solid ${def:ColorsDARK_GRAY};">
+        <param name="allowScriptAccess" value="sameDomain" />
+        <param name="movie" value="http://ipf10.tpc-svn.com/video.php?file=about.swf" />
+        <param name="quality" value="high" />
+        <param name="bgcolor" value="#ffffff" />
+        <param name="allowFullScreen" value="false" />
+        <embed src="http://ipf10.tpc-svn.com/video.php?file=about.swf" 
+            quality="high" 
+            bgcolor="#ffffff" 
+            width="396" 
+            height="297" 
+            name="video" 
+            allowScriptAccess="sameDomain" 
+            type="application/x-shockwave-flash" 
+            pluginspage="http://www.adobe.com/go/getflashplayer" 
+            allowFullScreen="false" />
+    </object><br/>
+    <span class='fieldhelp'>1-minute Flash video presentation of the services you buy (2.1Mb)</span></p>
 
-	<p>Wir arbeiten nur mit &Ouml;rtlich festgelegtpreis Projekten, wo <a href="${url:process/scope}">Kosten</a> 
-	und <a href="${url:process/schedule}">Zeitplan</a> festgelegt sein. Sie bezahlen kein Lohngeh&auml;lter oder 
-	irgendwelche anderen Gemeinkosten, nur ein Festpreis von den <a href="${url:process/warranty/deliverables}">Leistungen</a>.</p>
-	
-	<p>Ein Projekt wird als <a href="${url:about/teams}">virtuelle Mannschaft</a> der schmal-erfahrenen Techniker 
-	organisiert, wenn Sie die besten verwendbaren Talente durch gerade 
-	eine Fremdfirma aufnehmen k&ouml;nnen - uns. Es gibt Berufs-Gruppen der 
-	Software 40+ und Einzelpersonen in unserer Datenbank, die zu 
-	Ihrem Projekt mit einbezogen werden k&ouml;nnte. </p>
+    <p>Wir arbeiten nur mit &Ouml;rtlich festgelegtpreis Projekten, wo <a href="${url:process/scope}">Kosten</a> 
+    und <a href="${url:process/schedule}">Zeitplan</a> festgelegt sein. Sie bezahlen kein Lohngeh&auml;lter oder 
+    irgendwelche anderen Gemeinkosten, nur ein Festpreis von den <a href="${url:process/warranty/deliverables}">Leistungen</a>.</p>
+    
+    <p>Ein Projekt wird als <a href="${url:about/teams}">virtuelle Mannschaft</a> der schmal-erfahrenen Techniker 
+    organisiert, wenn Sie die besten verwendbaren Talente durch gerade 
+    eine Fremdfirma aufnehmen k&ouml;nnen - uns. Es gibt Berufs-Gruppen der 
+    Software 40+ und Einzelpersonen in unserer Datenbank, die zu 
+    Ihrem Projekt mit einbezogen werden k&ouml;nnte. </p>
 
-	<p>Sie stellen die Funktions- und unfunktionalen Anforderungen zur Verf&uuml;gung. 
-	Wir erfassen eine Projektmannschaft und r&uuml;sten sie mit unserem eigenen 
-	on-line-Projektleitersystem aus. Techniker erbringen Programmierungs-, 
-	Pr&uuml;fungs-, Entwurfs- und Analysendienstleistungen. Unser 
-	Projektleiter integriert alle diese Bem&uuml;hungen, um ein Produkt an 
-	Ihre Endbenutzer zusammen zu liefern.</p>
+    <p>Sie stellen die Funktions- und unfunktionalen Anforderungen zur Verf&uuml;gung. 
+    Wir erfassen eine Projektmannschaft und r&uuml;sten sie mit unserem eigenen 
+    on-line-Projektleitersystem aus. Techniker erbringen Programmierungs-, 
+    Pr&uuml;fungs-, Entwurfs- und Analysendienstleistungen. Unser 
+    Projektleiter integriert alle diese Bem&uuml;hungen, um ein Produkt an 
+    Ihre Endbenutzer zusammen zu liefern.</p>
 
 </text>
 

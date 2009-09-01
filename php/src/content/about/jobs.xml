@@ -27,26 +27,26 @@
 
 <text>
 
-	<png style="float: right; width: 150px;">//images/taleo</png>
-	
-	<p>There are a number of available positions on our team.  
-	Please apply online if you have the necessary skills and experience our company desires. 
-	Our site is integrated with <a href="http://www.taleo.com">Taleo.com</a> 
-	Premium talent management platform.</p>
+    <png style="float: right; width: 150px;">//images/taleo</png>
+    
+    <p>There are a number of available positions on our team.  
+    Please apply online if you have the necessary skills and experience our company desires. 
+    Our site is integrated with <a href="http://www.taleo.com">Taleo.com</a> 
+    Premium talent management platform.</p>
 
-	${php:HR/Staffing/Requisitions:PreviewListHTML()}
-	
-	<p>Apply online with your personal information and short message and our HR Director will get
-	back to you with an offer. You may join our team on a full-time or <a href="${url:about/teams}">part-time basis</a>. 
-	If you work <a href="${url:about/teams}">part-time</a> we pay you by bank transfer or cashier check, no matter what country you are from. 
-	We need your talent!</p>
-	
-	<p><a href="${mailto:hr}">HR Director</a> is available by email.</p>
+    ${php:HR/Staffing/Requisitions:PreviewListHTML()}
+    
+    <p>Apply online with your personal information and short message and our HR Director will get
+    back to you with an offer. You may join our team on a full-time or <a href="${url:about/teams}">part-time basis</a>. 
+    If you work <a href="${url:about/teams}">part-time</a> we pay you by bank transfer or cashier check, no matter what country you are from. 
+    We need your talent!</p>
+    
+    <p><a href="${mailto:hr}">HR Director</a> is available by email.</p>
 
 </text>
 
 <images>
-	<taleo>
+    <taleo>
 MB5!.1PT*&amp;@H````-24A$4@```)8````F&quot;`,````1%9*E````&quot;7!(67,```L3
 M```+$P$`FIP8```*3VE#0U!0:&amp;]T;W-H;W`@24-#(&#039;!R;V9I;&amp;4``&#039;C:G5-G
 M5%/I%CWWWO1&quot;2XB`E$MO4A4((%)&quot;BX`4D28J(0D02H@AH=D54&lt;$1144$&amp;\B@
@@ -171,7 +171,7 @@ MVI.POQ#`L-E96&#039;&quot;IZ%3G&gt;OE?R/S3#F1%`,A2MS?WW&gt;M5`Z!Q5\V5E4_Y:&gt;1N
 M7FZ$[:^ZWJG7K1P`L&#039;_W&gt;@&gt;-(/NOOP;.3,RP:QHU(/,9&gt;]_*W_=&amp;PR+I\:J&gt;
 D0K:`F3_VGX=G3U8G[-\#`-W2:&gt;;X#?T2`````$E%3D2N0F&quot;&quot;
 `
-	</taleo>
+    </taleo>
 </images>
 
 </article>

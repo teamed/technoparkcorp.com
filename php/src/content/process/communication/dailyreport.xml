@@ -28,33 +28,33 @@
 <next>process/communication</next>
 
 <description>
-	Daily reports keeps you on track during project execution.
+    Daily reports keeps you on track during project execution.
 </description>
 
 <keywords>
-	daily report,
-	project reporting,
-	project communications plan,
-	project tracking
+    daily report,
+    project reporting,
+    project communications plan,
+    project tracking
 </keywords>
 
 <text>
 
-	<p>The Project manager reports to you on a daily basis by the conclusion of each 
-	<a href="${url:process/communication/availability}">business day</a>. No matter what was done
-	during a day by the project team, and what results were obtained, a
-	Daily Report is sent by email to you.</p>	
+    <p>The Project manager reports to you on a daily basis by the conclusion of each 
+    <a href="${url:process/communication/availability}">business day</a>. No matter what was done
+    during a day by the project team, and what results were obtained, a
+    Daily Report is sent by email to you.</p>    
 
-	<p>The Daily Report includes:</p>
+    <p>The Daily Report includes:</p>
 
-	<ul>
-	<li>List of activities completed</li>
-	<li>Project status (on track, behind schedule, etc.)</li>
-	<li>Hot list of Risks</li>
-	<li>Project performance metrics</li>
-	</ul>
+    <ul>
+    <li>List of activities completed</li>
+    <li>Project status (on track, behind schedule, etc.)</li>
+    <li>Hot list of Risks</li>
+    <li>Project performance metrics</li>
+    </ul>
 
-	<p>This is an example of Daily Report:</p>
+    <p>This is an example of Daily Report:</p>
 
 <pre>
 John,
@@ -82,18 +82,18 @@ The closest Milestone is on 12-Jan (end of the day).
 Liza Peterson, PM
 </pre>
 
-	<p>Since we do <a href="${url:process/communication/incremental}">incremental delivery</a> 
-	of <a href="${url:process/warranty/deliverables}">Deliverables</a>, 
-	each Daily Report may include
-	new functionality implemented and tested. 
-	Your feedback on each Daily Report is expected and welcomed.</p>
+    <p>Since we do <a href="${url:process/communication/incremental}">incremental delivery</a> 
+    of <a href="${url:process/warranty/deliverables}">Deliverables</a>, 
+    each Daily Report may include
+    new functionality implemented and tested. 
+    Your feedback on each Daily Report is expected and welcomed.</p>
 
 </text>
 
 <concepts>
-	<c1 name="process/communication/availability">Project team is available during normal business days and hours</c1>
-	<c2 name="process/communication/incremental">We deliver value to you in incremental and iterative manner</c2>
-	<c3 name="process/time/iteration">Iteration is the atomic element of project Schedule</c3>
+    <c1 name="process/communication/availability">Project team is available during normal business days and hours</c1>
+    <c2 name="process/communication/incremental">We deliver value to you in incremental and iterative manner</c2>
+    <c3 name="process/time/iteration">Iteration is the atomic element of project Schedule</c3>
 </concepts>
 
 </article>

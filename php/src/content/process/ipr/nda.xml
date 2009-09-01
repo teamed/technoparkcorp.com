@@ -35,42 +35,42 @@
 
 <text>
 
-	<p>During the project execution our project manager, project team, executive management and
-	partners may need to have an access to the project information or information provided
-	by you for the project purposes.</p>
+    <p>During the project execution our project manager, project team, executive management and
+    partners may need to have an access to the project information or information provided
+    by you for the project purposes.</p>
 
-	<p>Such information is confidential; that is stated in our software development
-	contract which is signed between us.</p>
+    <p>Such information is confidential; that is stated in our software development
+    contract which is signed between us.</p>
 
-	<p>Our software development contract and Confidential Information means all proprietary information disclosed 
-	or made available by one part to the other in the course of performing hereunder, 
-	whether in written, email, instant message, orally by phone or personally, magnetic, photographic, 
-	optical or other form, and whether now existing or hereafter created, including, without 
-	limitation, all trade secrets, names and contacts of employees and partners, 
-	technology, data, computer programs, processes, methods, operational procedures, plans, 
-	strategies or results, and other information of a similar nature that is not generally disclosed by 
-	such Party to the public.</p>
-	
-	<p>Confidential Information shall not include any information which:</p>
-	
-	<ul>
-	<li>is proven by written evidence to have been in a receiving party's possession prior to disclosure by the other 
-	Party;</li>
-	<li>is received from a third party having the right to disclose such information; </li>
-	<li>is or hereafter becomes public knowledge through no act or fault of a receiving party; or </li>
-	<li>is proven by written evidence to have been independently developed by a receiving party without access to 
-	the Confidential Information of the other party.</li>
-	</ul>
+    <p>Our software development contract and Confidential Information means all proprietary information disclosed 
+    or made available by one part to the other in the course of performing hereunder, 
+    whether in written, email, instant message, orally by phone or personally, magnetic, photographic, 
+    optical or other form, and whether now existing or hereafter created, including, without 
+    limitation, all trade secrets, names and contacts of employees and partners, 
+    technology, data, computer programs, processes, methods, operational procedures, plans, 
+    strategies or results, and other information of a similar nature that is not generally disclosed by 
+    such Party to the public.</p>
+    
+    <p>Confidential Information shall not include any information which:</p>
+    
+    <ul>
+    <li>is proven by written evidence to have been in a receiving party's possession prior to disclosure by the other 
+    Party;</li>
+    <li>is received from a third party having the right to disclose such information; </li>
+    <li>is or hereafter becomes public knowledge through no act or fault of a receiving party; or </li>
+    <li>is proven by written evidence to have been independently developed by a receiving party without access to 
+    the Confidential Information of the other party.</li>
+    </ul>
 
-	<p>Non-Disclosure Agreement (NDA) is signed between our company and you in order 
-	to protect both parties against losses of such confidential information.</p>
+    <p>Non-Disclosure Agreement (NDA) is signed between our company and you in order 
+    to protect both parties against losses of such confidential information.</p>
 
 </text>
 
 <concepts>
-	<c1 name="process/ipr/nda">NDA protects us both against information disclosure</c1>
-	<c2 name="process/ipr/law">US Copyright Law guarantees your intellectual property rights</c2>
-	<c3 name="process/ipr/security">Physical and documentary means exist to protect data on servers and in offices</c3>
+    <c1 name="process/ipr/nda">NDA protects us both against information disclosure</c1>
+    <c2 name="process/ipr/law">US Copyright Law guarantees your intellectual property rights</c2>
+    <c3 name="process/ipr/security">Physical and documentary means exist to protect data on servers and in offices</c3>
 </concepts>
 
 </article>

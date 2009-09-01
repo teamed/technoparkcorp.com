@@ -35,7 +35,7 @@
 
 <text>
 
-	<p>Prior to beginning a project, a software development contract is signed between us stating:</p>
+    <p>Prior to beginning a project, a software development contract is signed between us stating:</p>
 
 <pre>
 169. Parties shall deem all Deliverables created by
@@ -44,9 +44,9 @@ Copyright Law of the United States of America
 (edition of June 2003)
 </pre>
 
-	<p>Reference to <a href="http://www.copyright.gov/title17/">Copyright Law of the United States of America</a> 
-	means that <a href="${url:process/warranty/deliverables}">Deliverables</a>
-	created for you by TPC are "Works Made For Hire" as defined in the Law:</p>
+    <p>Reference to <a href="http://www.copyright.gov/title17/">Copyright Law of the United States of America</a> 
+    means that <a href="${url:process/warranty/deliverables}">Deliverables</a>
+    created for you by TPC are "Works Made For Hire" as defined in the Law:</p>
 
 <pre>
 Copyright Law of the United States, par. 201:
@@ -59,17 +59,17 @@ signed by them, owns all of the rights comprised
 in the copyright.
 </pre>
 
-	<p>Thus, Deliverables and the Intellectual Propery Rights (IPR) for them are transferred
-	to you when the project is closed, plus the Acceptance Statement is signed and 
-	the final <a href="${url:process/cost/model}">payment</a> is
-	processed.</p>
+    <p>Thus, Deliverables and the Intellectual Propery Rights (IPR) for them are transferred
+    to you when the project is closed, plus the Acceptance Statement is signed and 
+    the final <a href="${url:process/cost/model}">payment</a> is
+    processed.</p>
 
 </text>
 
 <concepts>
-	<c1 name="process/ipr/nda">NDA protects both you and us against information disclosure</c1>
-	<c2 name="process/ipr/law">US Copyright Law guarantees Intellectual Property Rights delivery to you</c2>
-	<c3 name="process/ipr/security">Physical and documentary means exist to protect data on servers and in offices</c3>
+    <c1 name="process/ipr/nda">NDA protects both you and us against information disclosure</c1>
+    <c2 name="process/ipr/law">US Copyright Law guarantees Intellectual Property Rights delivery to you</c2>
+    <c3 name="process/ipr/security">Physical and documentary means exist to protect data on servers and in offices</c3>
 </concepts>
 
 </article>

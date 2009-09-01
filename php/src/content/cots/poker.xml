@@ -26,64 +26,64 @@
 <next>cots/poker/functions</next>
 
 <description>
-	Online Poker Server Software for Texas Holdem, Omaha,
-	7-Stud and other online poker games. Windows-based.
+    Online Poker Server Software for Texas Holdem, Omaha,
+    7-Stud and other online poker games. Windows-based.
 </description>
 
 <keywords>
-	poker server software,
-	poker software, pocker,
-	poker software developers,
-	online poker software,
-	poker software for sale,
-	online poker system,
-	online poker server,
-	poker room software,
-	off-the-shelf poker server software,
+    poker server software,
+    poker software, pocker,
+    poker software developers,
+    online poker software,
+    poker software for sale,
+    online poker system,
+    online poker server,
+    poker room software,
+    off-the-shelf poker server software,
 </keywords>
 
 <text>
 
-	<png style="margin-left: -35px; float:right;">//images/box</png>
+    <png style="margin-left: -35px; float:right;">//images/box</png>
 
-	<p>We designed <b>GS-Poker</b> as an off-the-shelf client-server software platform solution
-	for companies to use in their newly created poker rooms. Though this poker server software is a result 
-	of 400,000 USD in development costs, we offer it for only <b>20,000 EUR</b>, saving you 
-	an enormous amount of time and money. </p>
-	
-	<p>Development started in 2001, with the launch of the first version in 2003. 
-	Currenty GS-Poker software is owned and distributed by our company with all necessary rights
-	and licenses.</p>
-	
-	<p>In addition to the software, we also provide <b>the source code</b> with any purchase. 
-	<a href="${url:cots/poker/license}">The license</a> allows you to modify it, but prohibits reselling it.</p>
+    <p>We designed <b>GS-Poker</b> as an off-the-shelf client-server software platform solution
+    for companies to use in their newly created poker rooms. Though this poker server software is a result 
+    of 400,000 USD in development costs, we offer it for only <b>20,000 EUR</b>, saving you 
+    an enormous amount of time and money. </p>
+    
+    <p>Development started in 2001, with the launch of the first version in 2003. 
+    Currenty GS-Poker software is owned and distributed by our company with all necessary rights
+    and licenses.</p>
+    
+    <p>In addition to the software, we also provide <b>the source code</b> with any purchase. 
+    <a href="${url:cots/poker/license}">The license</a> allows you to modify it, but prohibits reselling it.</p>
 
-	<p>With the purchase of GS-Poker, you receive:</p>
+    <p>With the purchase of GS-Poker, you receive:</p>
 
-	<ul>
-		<li>A <a href="${url:cots/poker/license}">one-domain license</a> of GS-Poker software</li>
-		<li>One year of free bug removal service</li>
-		<li>Free change of poker table logotype</li>
-		<li>Installation on your servers within 30 business days</li>
-		<li>Development of additional functions at our standard hourly rate</li>
-		<li>Free access to new versions and updates during the course of one year</li>
-	</ul>	
+    <ul>
+        <li>A <a href="${url:cots/poker/license}">one-domain license</a> of GS-Poker software</li>
+        <li>One year of free bug removal service</li>
+        <li>Free change of poker table logotype</li>
+        <li>Installation on your servers within 30 business days</li>
+        <li>Development of additional functions at our standard hourly rate</li>
+        <li>Free access to new versions and updates during the course of one year</li>
+    </ul>    
 
-	<p>For additional details about GS-Poker, see <a href="${url:cots/poker/technical}">technical specifications</a>, 
-	<a href="${url:cots/poker/functions}">functionality</a>, 
-	and <a href="${url:cots/poker/servers}">hardware requirements</a>, 
-	and review the latest <a href="${url:cots/poker/screenshots}">screenshots</a>. 
-	We can
-	also help you obtain a Maltese <a href="${url:cots/poker/malta}">gambling license</a>
-	if you would like to setup <a href="${url:cots/poker/business}">poker business</a> there.</p>
+    <p>For additional details about GS-Poker, see <a href="${url:cots/poker/technical}">technical specifications</a>, 
+    <a href="${url:cots/poker/functions}">functionality</a>, 
+    and <a href="${url:cots/poker/servers}">hardware requirements</a>, 
+    and review the latest <a href="${url:cots/poker/screenshots}">screenshots</a>. 
+    We can
+    also help you obtain a Maltese <a href="${url:cots/poker/malta}">gambling license</a>
+    if you would like to setup <a href="${url:cots/poker/business}">poker business</a> there.</p>
 
-	<p><a href="${url:contacts}">Contact us</a> to receive a demo of GS-Poker (poker server software),
-	so you can see how easy it will be for your business to start making money.</p>
+    <p><a href="${url:contacts}">Contact us</a> to receive a demo of GS-Poker (poker server software),
+    so you can see how easy it will be for your business to start making money.</p>
 
 </text>
 
 <images>
-	<box>
+    <box>
 MB5!.1PT*&amp;@H````-24A$4@```/H```$1&quot;`(```#=&gt;BV?````&quot;7!(67,```L3
 M```+$P$`FIP8````(&amp;-(4DT``&#039;HE``&quot;`@P``^?\``(#I``!U,```ZF```#J8
 M```7;Y)?Q48``+NU241!5&#039;C:[/UWF)W7=1Z*K[7VWE\Y92HPZ&quot;#80;%*%&amp;F*
@@ -1156,7 +1156,7 @@ M]0^DA@]:U?&lt;2\3N;VV]Y0&#039;Q7F?6[5I&gt;_#6+S;K\^A/MW*`+&gt;B27W]QX&gt;^!#N
 MWY62YL/7MQ#T;W/]/]R\=U!Z;@O;#CC]&#039;DY7WQU2S3N^;KVAL;_)V[[C:?76
 9#_O_#P!02_15,\(/M`````!)14Y$KD)@@@``
 `
-	</box>
+    </box>
 </images>
 
 </article>

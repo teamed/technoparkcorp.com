@@ -29,75 +29,75 @@
 <next>process/cost</next>
 
 <description>
-	TechnoPark Corp. is a software development general contractor, with
-	innovative full-scale project management toolkit, automated quality of process control,
-	agile best practices, and a virtual team project model.
+    TechnoPark Corp. is a software development general contractor, with
+    innovative full-scale project management toolkit, automated quality of process control,
+    agile best practices, and a virtual team project model.
 </description>
 
 <keywords>
-	Project Management,
-	Custom Software Development,
-	Quality Control,
-	Software Metrics,
-	risk management,
-	offshore programming,
-	outsourcing programming,
-	software general contracting,
-	general contractor
+    Project Management,
+    Custom Software Development,
+    Quality Control,
+    Software Metrics,
+    risk management,
+    offshore programming,
+    outsourcing programming,
+    software general contracting,
+    general contractor
 </keywords>
 
 <text>
 
-	<p>TechnoPark Corp. is a software development <a href='http://en.wikipedia.org/wiki/General_contractor'>general contractor</a>
-	with an innovative approach to project management in <a href="${url:about/teams}">virtual distributed teams</a>. 
-	Like nowhere else, when you hire us as a general contractor
-	you stay actively involved in every last detail of a project internal affairs. 
-	You control your business success by means of our
-	automated instant metrics,
-	compliant with <a href="http://en.wikipedia.org/wiki/Project_Management_Body_of_Knowledge">PMBOK&reg;</a>, 
-	<a href="http://www.sei.cmu.edu/cmmi/general/">CMMI&reg;</a>, 
-	<a href="http://en.wikipedia.org/wiki/IBM_Rational_Unified_Process">RUP</a> and 
-	<a href="http://en.wikipedia.org/wiki/ISO_9001">ISO 9001</a>.</p>
-	
-	<p><object id="video"
-		width="396" 
-		height="297" 
-		style="border: 1px solid ${def:Colors::DARK_GRAY};">
-		<param name="allowScriptAccess" value="sameDomain" />
-		<param name="movie" value="http://ipf10.tpc-svn.com/video.php?file=about.swf" />
-		<param name="quality" value="high" />
-		<param name="bgcolor" value="#ffffff" />
-		<param name="allowFullScreen" value="false" />
-		<embed src="http://ipf10.tpc-svn.com/video.php?file=about.swf" 
-			quality="high" 
-			bgcolor="#ffffff" 
-			width="396" 
-			height="297" 
-			name="video" 
-			allowScriptAccess="sameDomain" 
-			type="application/x-shockwave-flash" 
-			pluginspage="http://www.adobe.com/go/getflashplayer" 
-			allowFullScreen="false" />
-	</object><br/>
-	<span class='fieldhelp'>1-minute Flash video presentation of the services you buy (2.1Mb)</span></p>
+    <p>TechnoPark Corp. is a software development <a href='http://en.wikipedia.org/wiki/General_contractor'>general contractor</a>
+    with an innovative approach to project management in <a href="${url:about/teams}">virtual distributed teams</a>. 
+    Like nowhere else, when you hire us as a general contractor
+    you stay actively involved in every last detail of a project internal affairs. 
+    You control your business success by means of our
+    automated instant metrics,
+    compliant with <a href="http://en.wikipedia.org/wiki/Project_Management_Body_of_Knowledge">PMBOK&reg;</a>, 
+    <a href="http://www.sei.cmu.edu/cmmi/general/">CMMI&reg;</a>, 
+    <a href="http://en.wikipedia.org/wiki/IBM_Rational_Unified_Process">RUP</a> and 
+    <a href="http://en.wikipedia.org/wiki/ISO_9001">ISO 9001</a>.</p>
+    
+    <p><object id="video"
+        width="396" 
+        height="297" 
+        style="border: 1px solid ${def:Colors::DARK_GRAY};">
+        <param name="allowScriptAccess" value="sameDomain" />
+        <param name="movie" value="http://ipf10.tpc-svn.com/video.php?file=about.swf" />
+        <param name="quality" value="high" />
+        <param name="bgcolor" value="#ffffff" />
+        <param name="allowFullScreen" value="false" />
+        <embed src="http://ipf10.tpc-svn.com/video.php?file=about.swf" 
+            quality="high" 
+            bgcolor="#ffffff" 
+            width="396" 
+            height="297" 
+            name="video" 
+            allowScriptAccess="sameDomain" 
+            type="application/x-shockwave-flash" 
+            pluginspage="http://www.adobe.com/go/getflashplayer" 
+            allowFullScreen="false" />
+    </object><br/>
+    <span class='fieldhelp'>1-minute Flash video presentation of the services you buy (2.1Mb)</span></p>
 
-	<p>We work only with fixed-price projects, where 
-	<a href="${url:process/scope}">Scope</a>, 
-	<a href="${url:process/cost}">Cost</a> and 
-	<a href="${url:process/time}">Schedule</a> are always baselined.
-	You do not pay salaries or any other indirect costs, only a fixed price of 
-	<a href="${url:process/warranty/deliverables}">Deliverables</a>.</p>
-	
-	<p>A project is organized as a <a href="${url:about/teams}">virtual team</a> of narrow-skilled
-	engineers when you can pick-up the best suitable talents through
-	just one contractor - us. There are 70+ professional software
-	groups and individuals in our database who could be involved to your project.</p>
+    <p>We work only with fixed-price projects, where 
+    <a href="${url:process/scope}">Scope</a>, 
+    <a href="${url:process/cost}">Cost</a> and 
+    <a href="${url:process/time}">Schedule</a> are always baselined.
+    You do not pay salaries or any other indirect costs, only a fixed price of 
+    <a href="${url:process/warranty/deliverables}">Deliverables</a>.</p>
+    
+    <p>A project is organized as a <a href="${url:about/teams}">virtual team</a> of narrow-skilled
+    engineers when you can pick-up the best suitable talents through
+    just one contractor - us. There are 70+ professional software
+    groups and individuals in our database who could be involved to your project.</p>
 
-	<p>You provide functional and non-functional requirements. 
-	We gather a project team and equip it with our proprietary 
-	online project management system. Technicians provide programming,
-	testing, design and analysis services. Our project manager integrates
-	all these efforts together in order to deliver a product to your end-users.</p>
+    <p>You provide functional and non-functional requirements. 
+    We gather a project team and equip it with our proprietary 
+    online project management system. Technicians provide programming,
+    testing, design and analysis services. Our project manager integrates
+    all these efforts together in order to deliver a product to your end-users.</p>
 
 </text>
 

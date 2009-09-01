@@ -26,99 +26,99 @@
 <next>cots/poker/functions</next>
 
 <description>
-	GS-Poker is a fully standalone Poker Server Software installated
-	and configured on a custom server. You get a complete poker room
-	solution that enalbes you to run your own poker room business.
+    GS-Poker is a fully standalone Poker Server Software installated
+    and configured on a custom server. You get a complete poker room
+    solution that enalbes you to run your own poker room business.
 </description>
 
 <keywords>
-	poker software,
-	poker server software,
-	poker client server,
-	online poker server platform,
-	online poker server requirements,
-	poker software for sale,
-	online poker system
+    poker software,
+    poker server software,
+    poker client server,
+    online poker server platform,
+    online poker server requirements,
+    poker software for sale,
+    online poker system
 </keywords>
 
 <text>
 
-	<p>You will need one dedicated server in order to install and operate 
-	the <a href="${url:cots/poker}">GS-Poker</a> poker room software,
-	with the following specifications:</p>
+    <p>You will need one dedicated server in order to install and operate 
+    the <a href="${url:cots/poker}">GS-Poker</a> poker room software,
+    with the following specifications:</p>
 
-	<table>
-	<tr>
-		<th>Parameter</th>
-		<th>Poker Server</th>
-	</tr>
-	<tr>
-		<td>Processor</td>
-		<td>Dual Core Opteron 2214HE</td>
-	</tr>
-	<tr>
-		<td>Memory (RAM)</td>
-		<td>4Gb DDR2</td>
-	</tr>
-	<tr>
-		<td>Hard-disk (HDD)</td>
-		<td>1x250Gb SATA</td>
-	</tr>
-	<tr>
-		<td>Ethernet (LAN)</td>
-		<td>100Mb/s</td>
-	</tr>
-	<tr>
-		<td>Operating system</td>
-		<td>Windows Server 2003 SE</td>
-	</tr>
-	<tr>
-		<td>Installed Software</td>
-		<td>SQL Server 2000<br/>
-		Apache Http Server w/PHP5<br/></td>
-	</tr>
-	<tr>
-		<td>Dedicated IP</td>
-		<td>yes</td>
-	</tr>
-	<tr>
-		<td>Monthly data transfer</td>
-		<td>1000Gb</td>
-	</tr>
-	<tr>
-		<td>Rackspace.com monthly charges</td>
-		<td>380 USD</td>
-	</tr>
-	<tr>
-		<td>Alert Communications monthly charges</td>
-		<td>325 EUR</td>
-	</tr>
-	</table>
+    <table>
+    <tr>
+        <th>Parameter</th>
+        <th>Poker Server</th>
+    </tr>
+    <tr>
+        <td>Processor</td>
+        <td>Dual Core Opteron 2214HE</td>
+    </tr>
+    <tr>
+        <td>Memory (RAM)</td>
+        <td>4Gb DDR2</td>
+    </tr>
+    <tr>
+        <td>Hard-disk (HDD)</td>
+        <td>1x250Gb SATA</td>
+    </tr>
+    <tr>
+        <td>Ethernet (LAN)</td>
+        <td>100Mb/s</td>
+    </tr>
+    <tr>
+        <td>Operating system</td>
+        <td>Windows Server 2003 SE</td>
+    </tr>
+    <tr>
+        <td>Installed Software</td>
+        <td>SQL Server 2000<br/>
+        Apache Http Server w/PHP5<br/></td>
+    </tr>
+    <tr>
+        <td>Dedicated IP</td>
+        <td>yes</td>
+    </tr>
+    <tr>
+        <td>Monthly data transfer</td>
+        <td>1000Gb</td>
+    </tr>
+    <tr>
+        <td>Rackspace.com monthly charges</td>
+        <td>380 USD</td>
+    </tr>
+    <tr>
+        <td>Alert Communications monthly charges</td>
+        <td>325 EUR</td>
+    </tr>
+    </table>
 
-	<p>The server requirements are valid for up to 2000 concurrent poker players. 
-	<a href="${url:cots/poker}">GS-Poker</a> is both horizontally and vertically
-	scalable, so if your business plan requires
-	higher performace, you will need only to acquire more powerful or additional servers.</p>
+    <p>The server requirements are valid for up to 2000 concurrent poker players. 
+    <a href="${url:cots/poker}">GS-Poker</a> is both horizontally and vertically
+    scalable, so if your business plan requires
+    higher performace, you will need only to acquire more powerful or additional servers.</p>
 
-	<p>You will need to rent a dedicated server to use as the poker server.
-	The high-quality, dedicated poker hosting your business needs can be
-	supplied by 
-	<ahref name="http://www.rackspace.com">RackSpace.com</ahref> (USA) or 
-	<ahref name="http://www.alert.com.mt">Alert Communications</ahref> (Malta, EU). 
-	Both bill by credit card, on a monthly basis.</p>
+    <p>You will need to rent a dedicated server to use as the poker server.
+    The high-quality, dedicated poker hosting your business needs can be
+    supplied by 
+    <ahref name="http://www.rackspace.com">RackSpace.com</ahref> (USA) or 
+    <ahref name="http://www.alert.com.mt">Alert Communications</ahref> (Malta, EU). 
+    Both bill by credit card, on a monthly basis.</p>
 
-	<table><tr>
-	<td><png>//images/rackspace</png></td>
-	<td><png>//images/alert</png></td>
-	</tr></table>
+    <table><tr>
+    <td><png>//images/rackspace</png></td>
+    <td><png>//images/alert</png></td>
+    </tr></table>
 
-	<p>Read about <a href="${url:cots/poker/functions}">functionality</a> 
-	and <a href="${url:cots/poker/servers}">hardware requirements</a>.</p>
+    <p>Read about <a href="${url:cots/poker/functions}">functionality</a> 
+    and <a href="${url:cots/poker/servers}">hardware requirements</a>.</p>
 
 </text>
 
 <images>
-	<rackspace>
+    <rackspace>
 MB5!.1PT*&amp;@H````-24A$4@```&#039;\````X&quot;`,```#C/M?U````&quot;7!(67,```L3
 M```+$P$`FIP8```*3VE#0U!0:&amp;]T;W-H;W`@24-#(&#039;!R;V9I;&amp;4``&#039;C:G5-G
 M5%/I%CWWWO1&quot;2XB`E$MO4A4((%)&quot;BX`4D28J(0D02H@AH=D54&lt;$1144$&amp;\B@
@@ -241,9 +241,9 @@ M&amp;[G:W).,-%OS5R?81GO[A+QO&quot;XKQ&#039;DAV-`&gt;1&#039;&amp;&gt;.XI\WD[GF.&
 MW_LS;-.-U2=^H*T7;@*8$_THY_LL2O?^_43CO___.P`&quot;29EUW@^F-@````!)
 &#039;14Y$KD)@@@``
 `
-	</rackspace>
+    </rackspace>
 
-	<alert>
+    <alert>
 MB5!.1PT*&amp;@H````-24A$4@```(L````\&quot;`,```!A&quot;+D`````&quot;7!(67,```L3
 M```+$P$`FIP8```*3VE#0U!0:&amp;]T;W-H;W`@24-#(&#039;!R;V9I;&amp;4``&#039;C:G5-G
 M5%/I%CWWWO1&quot;2XB`E$MO4A4((%)&quot;BX`4D28J(0D02H@AH=D54&lt;$1144$&amp;\B@
@@ -353,7 +353,7 @@ MT08=?+-X&lt;P&quot;*\`D`+4\2$I8^&quot;4N-6&gt;]8&amp;5`HV$GLJ#FAPRE?O&gt;3K!XU&
 M0+WGXAMR2B4LQ?7&gt;`2CT@(#&quot;B\*EW&amp;,..L^&amp;`_&quot;%&gt;7GYRK?=/WF_&gt;\;R6P&gt;%
 ?LUW.6,Y8?G7\,P`8`\&quot;$FA&#039;0#`````!)14Y$KD)@@@``
 `
-	</alert>
+    </alert>
 </images>
 
 </article>

@@ -35,94 +35,94 @@
 
 <text>
 
-	<p>Payments are done according to an approved <a href="${url:process/time/schedule}">Schedule</a>. 
-	Each payment is connected
-	to a certain Milestone, and is paid when all of the acceptance criteria is met by
-	the project team.</p>
+    <p>Payments are done according to an approved <a href="${url:process/time/schedule}">Schedule</a>. 
+    Each payment is connected
+    to a certain Milestone, and is paid when all of the acceptance criteria is met by
+    the project team.</p>
 
-	<p>What is important for the project is to keep total amount of 
-	payments received higher than actual project cost, as total amount of
-	staff-hours paid for task executors. 
-	This diagram shows the dynamic nature of project payments:</p>
+    <p>What is important for the project is to keep total amount of 
+    payments received higher than actual project cost, as total amount of
+    staff-hours paid for task executors. 
+    This diagram shows the dynamic nature of project payments:</p>
 
-	<p align="center"><tikz>
+    <p align="center"><tikz>
 \begin{tikzpicture}
-	\tikzstyle{ln} = [draw=tpcBlack, -triangle 60]
+    \tikzstyle{ln} = [draw=tpcBlack, -triangle 60]
 
-	\draw [-triangle 60, semithick] (0,0) -- coordinate (x axis mid) (12,0) node[right] {$t$};
-	\draw [-triangle 60, semithick] (0,0) -- coordinate (y axis mid) (0,7) node[above] {hours};
-											 	
-	% the grid
-	\draw [very thin, color=gray] (0,0) grid [step=0.5] (12,7);
+    \draw [-triangle 60, semithick] (0,0) -- coordinate (x axis mid) (12,0) node[right] {$t$};
+    \draw [-triangle 60, semithick] (0,0) -- coordinate (y axis mid) (0,7) node[above] {hours};
+                                                 
+    % the grid
+    \draw [very thin, color=gray] (0,0) grid [step=0.5] (12,7);
 
-	\tikzstyle{payment} = [thick, anchor=south west, draw=tpcGreen, fill=tpcGreen!20]
-	\node [payment, minimum height=10mm, minimum width=20mm] at (0,0) (payment1) {};
-	\node [payment, minimum height=30mm, minimum width=20mm] at (2,1) (payment2) {};
-	\node [payment, minimum height=20mm, minimum width=40mm] at (4,4) (payment3) {};
-	\node [payment, minimum height=10mm, minimum width=40mm] at (8,6) (payment4) {};
+    \tikzstyle{payment} = [thick, anchor=south west, draw=tpcGreen, fill=tpcGreen!20]
+    \node [payment, minimum height=10mm, minimum width=20mm] at (0,0) (payment1) {};
+    \node [payment, minimum height=30mm, minimum width=20mm] at (2,1) (payment2) {};
+    \node [payment, minimum height=20mm, minimum width=40mm] at (4,4) (payment3) {};
+    \node [payment, minimum height=10mm, minimum width=40mm] at (8,6) (payment4) {};
 
-	\tikzstyle{pmt} = [anchor=east]
-	\node [pmt] at (-0.5,0.5) (pmt1) {$P_1$};
-	\node [pmt] at (-0.5,2.5) (pmt2) {$P_2$};
-	\node [pmt] at (-0.5,5) (pmt3) {$P_3$};
-	\node [pmt] at (-0.5,6.5) (pmt4) {$P_4$};
+    \tikzstyle{pmt} = [anchor=east]
+    \node [pmt] at (-0.5,0.5) (pmt1) {$P_1$};
+    \node [pmt] at (-0.5,2.5) (pmt2) {$P_2$};
+    \node [pmt] at (-0.5,5) (pmt3) {$P_3$};
+    \node [pmt] at (-0.5,6.5) (pmt4) {$P_4$};
 
-	\tikzstyle{milestone} = [anchor=north]
-	\node [milestone] at (2,-0.5) (m1) {$M_1$};
-	\node [milestone] at (4,-0.5) (m2) {$M_2$};
-	\node [milestone] at (8,-0.5) (m3) {$M_3$};
+    \tikzstyle{milestone} = [anchor=north]
+    \node [milestone] at (2,-0.5) (m1) {$M_1$};
+    \node [milestone] at (4,-0.5) (m2) {$M_2$};
+    \node [milestone] at (8,-0.5) (m3) {$M_3$};
 
-	\tikzstyle{pln} = [dashed, -triangle 60, draw=tpcGreen, fill=tpcGreen, thick]
-	\draw [pln] (pmt1) -- (payment1);
-	\draw [pln] (pmt2) -- (payment2);
-	\draw [pln] (pmt3) -- (payment3);
-	\draw [pln] (pmt4) -- (payment4);
+    \tikzstyle{pln} = [dashed, -triangle 60, draw=tpcGreen, fill=tpcGreen, thick]
+    \draw [pln] (pmt1) -- (payment1);
+    \draw [pln] (pmt2) -- (payment2);
+    \draw [pln] (pmt3) -- (payment3);
+    \draw [pln] (pmt4) -- (payment4);
 
-	\draw [pln] (m1) -- (2,0);
-	\draw [pln] (m2) -- (4,0);
-	\draw [pln] (m3) -- (8,0);
+    \draw [pln] (m1) -- (2,0);
+    \draw [pln] (m2) -- (4,0);
+    \draw [pln] (m3) -- (8,0);
 
-	\draw [draw=tpcBlue, thick, mark=*] plot coordinates {
-		(0,0) 
-		(0.5,0.3)
-		(1,0.4) 
-		(1.5,0.6) 
-		(2,0.8) 
-		(2.5,0.9) 
-		(3,1.6) 
-		(3.5,2.4) 
-		(4,3.7) 
-		(4.5,4.6) 
-		(5,4.9) 
-		(5.5,5.1) 
-		(6,5.3) 
-		(6.5,5.4) 
-		(7,5.6) 
-		(7.5,5.8) 
-		(8,5.9) 
-		(8.5,6.0) 
-		(9,6.1)
-		(9.5,6.15)
-		(10,6.2)
-		(10.5,6.25)
-	} node [anchor=west, text=tpcBlue, fill=white, draw=tpcBlue, thin] {Actual Cost (AC)};
+    \draw [draw=tpcBlue, thick, mark=*] plot coordinates {
+        (0,0) 
+        (0.5,0.3)
+        (1,0.4) 
+        (1.5,0.6) 
+        (2,0.8) 
+        (2.5,0.9) 
+        (3,1.6) 
+        (3.5,2.4) 
+        (4,3.7) 
+        (4.5,4.6) 
+        (5,4.9) 
+        (5.5,5.1) 
+        (6,5.3) 
+        (6.5,5.4) 
+        (7,5.6) 
+        (7.5,5.8) 
+        (8,5.9) 
+        (8.5,6.0) 
+        (9,6.1)
+        (9.5,6.15)
+        (10,6.2)
+        (10.5,6.25)
+    } node [anchor=west, text=tpcBlue, fill=white, draw=tpcBlue, thin] {Actual Cost (AC)};
 \end{tikzpicture}
-	</tikz></p>
+    </tikz></p>
 
-	<p>You will make payments (P<sub>1</sub>, P<sub>2</sub>, P<sub>3</sub> and P<sub>4</sub>) in order
-	to cover actual cost of the project, but strictly according to
-	the approved Schedule document with a list of Milestones (M<sub>1</sub>, M<sub>2</sub>, and M<sub>3</sub>)</p>
-	
-	<p>We accept different payment options: cashier checks, wire transfers to 
-	US bank account, credit cards (<a href="http://www.visa.com">Visa</a>, 
-	<a href="http://www.mastercard.com">MasterCard</a>, 
-	<a href="http://www.americanexpress.com">AmEx</a>).</p>
+    <p>You will make payments (P<sub>1</sub>, P<sub>2</sub>, P<sub>3</sub> and P<sub>4</sub>) in order
+    to cover actual cost of the project, but strictly according to
+    the approved Schedule document with a list of Milestones (M<sub>1</sub>, M<sub>2</sub>, and M<sub>3</sub>)</p>
+    
+    <p>We accept different payment options: cashier checks, wire transfers to 
+    US bank account, credit cards (<a href="http://www.visa.com">Visa</a>, 
+    <a href="http://www.mastercard.com">MasterCard</a>, 
+    <a href="http://www.americanexpress.com">AmEx</a>).</p>
 
 </text>
 
 <concepts>
-	<c3 name="process/cost/rom">ROM Estimate is based on preliminary specification you provided</c3>
-	<c4 name="process/cost/budget">Budget is a final estimation of the project size and price</c4>
+    <c3 name="process/cost/rom">ROM Estimate is based on preliminary specification you provided</c3>
+    <c4 name="process/cost/budget">Budget is a final estimation of the project size and price</c4>
 </concepts>
 
 </article>

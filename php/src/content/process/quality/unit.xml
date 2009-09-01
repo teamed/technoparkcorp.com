@@ -35,30 +35,30 @@
 
 <text>
 
-	<p>Unit testing means that software includes special modules in automatic
-	mode test, other modules, and components. Unit tests play an adhesive role between
-	software modules and <a href="${url:process/scope/requirement}">Requirements</a>. Unit tests guarantee that in any moment
-	all software modules work as they worked before, when the unit tests were created and executed.</p>
+    <p>Unit testing means that software includes special modules in automatic
+    mode test, other modules, and components. Unit tests play an adhesive role between
+    software modules and <a href="${url:process/scope/requirement}">Requirements</a>. Unit tests guarantee that in any moment
+    all software modules work as they worked before, when the unit tests were created and executed.</p>
 
-	<p>We exploit this powerful technology in all projects, no matter what platform or
-	programming language is used. Unit testing gives a number of benefits to you:</p>
+    <p>We exploit this powerful technology in all projects, no matter what platform or
+    programming language is used. Unit testing gives a number of benefits to you:</p>
 
-	<ul>
-		<li>Software is self-verifiable</li>
-		<li>A programmer change does not affect core refactoring</li>
-		<li>Code is stable and predictable</li>
-		<li>Software is scalable and supportable</li>
-	</ul>
+    <ul>
+        <li>Software is self-verifiable</li>
+        <li>A programmer change does not affect core refactoring</li>
+        <li>Code is stable and predictable</li>
+        <li>Software is scalable and supportable</li>
+    </ul>
 
-	<p>While the technology is very useful for any project, it requires additional
-	time for design and development during early <a href="${url:process/time/iteration}">Iterations</a>.</p>
+    <p>While the technology is very useful for any project, it requires additional
+    time for design and development during early <a href="${url:process/time/iteration}">Iterations</a>.</p>
 
 </text>
 
 <concepts>
-	<c1 name="process/scope/requirement">Requirement is tested on the inside by unit tests</c1>
-	<c2 name="process/time">Unit tests increase project efforts at the beginning and decrease later</c2>
-	<c3 name="process/scope/specification">Specification is the only document describing the scope of project</c3>
+    <c1 name="process/scope/requirement">Requirement is tested on the inside by unit tests</c1>
+    <c2 name="process/time">Unit tests increase project efforts at the beginning and decrease later</c2>
+    <c3 name="process/scope/specification">Specification is the only document describing the scope of project</c3>
 </concepts>
 
 </article>

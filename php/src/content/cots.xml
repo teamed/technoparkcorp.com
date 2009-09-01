@@ -29,12 +29,12 @@
 
 <text>
 
-	<p>We sell boxed off-the-shelf software, which we develop, maintain and deploy to different customers.
-	List of ready-to-use software is constantly extending, please visit us regularly to get updates.</p>
+    <p>We sell boxed off-the-shelf software, which we develop, maintain and deploy to different customers.
+    List of ready-to-use software is constantly extending, please visit us regularly to get updates.</p>
 
-	<p><a href="${url:cots/poker}">GS-Poker client/server software</a> for poker rooms, based on C++, PHP and MS SQL Server.</p>
+    <p><a href="${url:cots/poker}">GS-Poker client/server software</a> for poker rooms, based on C++, PHP and MS SQL Server.</p>
 
-	<p>For more details on the boxed products we offer, please <a href="${url:contacts}">contact us</a>.</p>
+    <p>For more details on the boxed products we offer, please <a href="${url:contacts}">contact us</a>.</p>
 
 </text>
 

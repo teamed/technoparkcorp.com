@@ -28,268 +28,268 @@
 <next>about/legalnotes</next>
 
 <keywords>
-	privacy policy,
-	BBB.org,
-	TRUSTe,
-	online privacy software development
+    privacy policy,
+    BBB.org,
+    TRUSTe,
+    online privacy software development
 </keywords>
 
 <description>
-	Privacy Policy, compliant with BBB and TRUSTe.
-	TechnoPark Corp., referred to as "TPC", is committed to protecting your 
-	privacy and ensuring you have a positive experience on our website(s). This 
-	policy outlines our personal information handling practices for both 
-	online and offline data. If you give us personal information, we 
-	will treat it according to this policy.
+    Privacy Policy, compliant with BBB and TRUSTe.
+    TechnoPark Corp., referred to as "TPC", is committed to protecting your 
+    privacy and ensuring you have a positive experience on our website(s). This 
+    policy outlines our personal information handling practices for both 
+    online and offline data. If you give us personal information, we 
+    will treat it according to this policy.
 </description>
 
 <text>
 
-	<p>TechnoPark Corp., referred to as "TPC", is committed to protecting your 
-	privacy and ensuring you have a positive experience on our website(s). This 
-	policy outlines our personal information handling practices for both 
-	online and offline data. If you give us personal information, we 
-	will treat it according to this policy.</p>
+    <p>TechnoPark Corp., referred to as "TPC", is committed to protecting your 
+    privacy and ensuring you have a positive experience on our website(s). This 
+    policy outlines our personal information handling practices for both 
+    online and offline data. If you give us personal information, we 
+    will treat it according to this policy.</p>
 
-	<p>We encourage you to read this privacy policy to ensure you understand 
-	TPC's privacy practices. This policy covers the TPC corporate website 
-	(www.technoparkcorp.com) and is applicable worldwide.</p>
+    <p>We encourage you to read this privacy policy to ensure you understand 
+    TPC's privacy practices. This policy covers the TPC corporate website 
+    (www.technoparkcorp.com) and is applicable worldwide.</p>
 
-	<a href="http://www.truste.org/ivalidate.php?url=www.technoparkcorp.com&amp;sealid=101" 
-		style="float: left; padding-right: 20px; border: none;" alt="TRUSTe.org"><png>//images/truste</png></a>
+    <a href="http://www.truste.org/ivalidate.php?url=www.technoparkcorp.com&amp;sealid=101" 
+        style="float: left; padding-right: 20px; border: none;" alt="TRUSTe.org"><png>//images/truste</png></a>
 
-	<p>TechnoPark Corp is a licensee of the <ahref name="http://www.truste.org">TRUSTe</ahref> Web Privacy Seal Program.  
-	<a href="http://www.truste.org">TRUSTe</a> is an independent, non-profit organization whose mission is to 
-	build user's trust and confidence in the Internet by promoting the use 
-	of fair information practices.  This privacy statement covers the Web site 
-	www.technoparkcorp.com.  Because this Web site wants to demonstrate its commitment 
-	to your privacy, it has agreed to disclose its information practices and 
-	have its privacy practices reviewed for compliance by <a href="http://www.truste.org">TRUSTe</a>.</p>
+    <p>TechnoPark Corp is a licensee of the <ahref name="http://www.truste.org">TRUSTe</ahref> Web Privacy Seal Program.  
+    <a href="http://www.truste.org">TRUSTe</a> is an independent, non-profit organization whose mission is to 
+    build user's trust and confidence in the Internet by promoting the use 
+    of fair information practices.  This privacy statement covers the Web site 
+    www.technoparkcorp.com.  Because this Web site wants to demonstrate its commitment 
+    to your privacy, it has agreed to disclose its information practices and 
+    have its privacy practices reviewed for compliance by <a href="http://www.truste.org">TRUSTe</a>.</p>
 
-	<a href="http://www.bbbonline.org/cks.asp?id=10805219819" 
-		style="float: left; padding-right: 20px; border: none;" alt="Click to verify BBB accreditation and to see a BBB report">
-		<png>//images/bbb</png></a>
+    <a href="http://www.bbbonline.org/cks.asp?id=10805219819" 
+        style="float: left; padding-right: 20px; border: none;" alt="Click to verify BBB accreditation and to see a BBB report">
+        <png>//images/bbb</png></a>
 
-	<p>TechnoPark Corp. is a proud holder of BBB Online Seal. The BBBOnLine trustmark confirms 
-	a company is an accredited business in the BBB where they are based, has 
-	met truth in advertising guidelines, discloses information about the business and its 
-	policies, follows basic privacy and security practices, and responds appropriately 
-	to problems that arise.</p>
+    <p>TechnoPark Corp. is a proud holder of BBB Online Seal. The BBBOnLine trustmark confirms 
+    a company is an accredited business in the BBB where they are based, has 
+    met truth in advertising guidelines, discloses information about the business and its 
+    policies, follows basic privacy and security practices, and responds appropriately 
+    to problems that arise.</p>
 
-	<p>If you have questions or concerns regarding this statement, you should first contact 
-	Arthur Petrenko at 568 Ninth Street South 202, Naples, Florida, 34102, 
-	<a href="${mailto:privacy}">${mailto:privacy}</a>.  If you do not 
-	receive acknowledgement of your inquiry or your inquiry has not been satisfactorily 
-	addressed, you should contact TRUSTe at <a href="http://www.truste.org/consumers/watchdog_complaint.php">http://www.truste.org/consumers/watchdog_complaint.php</a>.
-	TRUSTe will then serve as a liaison with us to resolve your concerns.</p>
+    <p>If you have questions or concerns regarding this statement, you should first contact 
+    Arthur Petrenko at 568 Ninth Street South 202, Naples, Florida, 34102, 
+    <a href="${mailto:privacy}">${mailto:privacy}</a>.  If you do not 
+    receive acknowledgement of your inquiry or your inquiry has not been satisfactorily 
+    addressed, you should contact TRUSTe at <a href="http://www.truste.org/consumers/watchdog_complaint.php">http://www.truste.org/consumers/watchdog_complaint.php</a>.
+    TRUSTe will then serve as a liaison with us to resolve your concerns.</p>
 
-	
-	<h1>Collection of PII</h1>
+    
+    <h1>Collection of PII</h1>
 
-	<p>When TPC collects any Personally Identifiable Information (PII) on our corporate website, 
-	we will express our need for the personal data at the point of collection.</p>
+    <p>When TPC collects any Personally Identifiable Information (PII) on our corporate website, 
+    we will express our need for the personal data at the point of collection.</p>
 
-	<p>PII is any information that can be used to identify an individual, and may 
-	include, but is not limited to, name, email address, postal or other physical 
-	address, title, occupation, and other information required to provide a service, 
-	deliver a product, or carry out a transaction you have requested.</p>
-	
-	<p>Some of the reasons we collect your personal information include:</p>
+    <p>PII is any information that can be used to identify an individual, and may 
+    include, but is not limited to, name, email address, postal or other physical 
+    address, title, occupation, and other information required to provide a service, 
+    deliver a product, or carry out a transaction you have requested.</p>
+    
+    <p>Some of the reasons we collect your personal information include:</p>
 
-	<ul>
-		<li>Account registration and maitenance;</li>
-		<li>Sales feedback;</li>
-		<li>Online chat with sales representative;</li>
-		<li>Newsletters;</li>
-		<li>Online payments by credit card, and others.</li>
-	</ul>
+    <ul>
+        <li>Account registration and maitenance;</li>
+        <li>Sales feedback;</li>
+        <li>Online chat with sales representative;</li>
+        <li>Newsletters;</li>
+        <li>Online payments by credit card, and others.</li>
+    </ul>
 
-	
-	<h1>Usage of PII</h1>
+    
+    <h1>Usage of PII</h1>
 
-	<p>We will only use PII in the way we specified when it was collected. We will 
-	not subsequently change the way PII is used without your consent. Some of 
-	the ways we may use PII include:</p>
+    <p>We will only use PII in the way we specified when it was collected. We will 
+    not subsequently change the way PII is used without your consent. Some of 
+    the ways we may use PII include:</p>
 
-	<ul>
-		<li>To provide the ability to create personal profile areas and view protected content;</li>
-		<li>To provide the ability to contact you, and provide you with shipping and billing information;</li>
-		<li>To provide customer feedback and support;</li>
-		<li>To invoice you, process credit card payments and communicate with our bank;</li>
-		<li>To conduct questionnaires and surveys in order to provide better products 
-		and services to our customers and end users. Your completion of any questionnaires is voluntary;</li>
-		<li>To support recruitment inquiries;</li>
-		<li>To understand more about you, so we can personalize newsletters and websites 
-		to your preferences;</li>
-		<li>To help diagnose problems with the server and to administer the website;</li>
-		<li>To meet contract obligations.</li>
-	</ul>	
-
-
-	<h1>Updating of PII</h1>
-
-	<p>We need your help in keeping the PII you have shared with us accurate and 
-	up to date. Please notify us of any changes to your PII.</p>
-
-	<p>Our sites DOES NOT allow you to make these updates yourself online. In order
-	to update your PII you shall <a href="${mailto:privacy}">email us</a>
-	or call at +1 (239) 243 0206.</p> 
-
-	
-	<h1>Unsubscribing</h1>
-
-	<p>Subscriptions to our newsletters can be managed ONLY by direct request sent to us <a href="${mailto:privacy}">by email</a>.
-	In addition, each email newsletter includes instructions on how you can un-subscribe from that particular mailing.</p>
-
-	<p>You may also unsubscribe from TPC's newsletters by sending a letter, including your 
-	name, email address and the title of the marketing material you wish to unsubscribe from to:</p>
-
-	<p>TechnoPark Corp.<br/>
-	Unsubscribe/Privacy<br/>
-	568 Ninth Street South 202,<br/>
-	Naples, Florida, 34102</p>
+    <ul>
+        <li>To provide the ability to create personal profile areas and view protected content;</li>
+        <li>To provide the ability to contact you, and provide you with shipping and billing information;</li>
+        <li>To provide customer feedback and support;</li>
+        <li>To invoice you, process credit card payments and communicate with our bank;</li>
+        <li>To conduct questionnaires and surveys in order to provide better products 
+        and services to our customers and end users. Your completion of any questionnaires is voluntary;</li>
+        <li>To support recruitment inquiries;</li>
+        <li>To understand more about you, so we can personalize newsletters and websites 
+        to your preferences;</li>
+        <li>To help diagnose problems with the server and to administer the website;</li>
+        <li>To meet contract obligations.</li>
+    </ul>    
 
 
-	<h1>Non-personal information collection</h1>
+    <h1>Updating of PII</h1>
 
-	<p>In some instances, TPC may collect non-personal (aggregate or demographic) 
-	data through cookies, web logs, and web beacons. This information is used to 
-	better understand and improve the usability, performance and effectiveness of our website.</p>
+    <p>We need your help in keeping the PII you have shared with us accurate and 
+    up to date. Please notify us of any changes to your PII.</p>
 
+    <p>Our sites DOES NOT allow you to make these updates yourself online. In order
+    to update your PII you shall <a href="${mailto:privacy}">email us</a>
+    or call at +1 (239) 243 0206.</p> 
 
-	<h1>Sharing and Disclosure of PII</h1>
+    
+    <h1>Unsubscribing</h1>
 
-	<p>We do not sell or rent your PII to third-parties for marketing purposes unless you 
-	have granted us permission to do so.</p>
+    <p>Subscriptions to our newsletters can be managed ONLY by direct request sent to us <a href="${mailto:privacy}">by email</a>.
+    In addition, each email newsletter includes instructions on how you can un-subscribe from that particular mailing.</p>
 
-	<p>We may share your PII within TPC or any of our worldwide subsidiaries for purposes of 
-	data processing or storage.</p>
+    <p>You may also unsubscribe from TPC's newsletters by sending a letter, including your 
+    name, email address and the title of the marketing material you wish to unsubscribe from to:</p>
 
-	<p>We may also share your PII with authorized third-party agents or 
-	contractors in order to provide a requested service or transaction. For example, if we 
-	need to ship something to you, we must share your name and address with a shipping company. 
-	We only provide third-party agents with the minimum amount of PII necessary to 
-	complete the requested service or transaction.</p>
-
-	<p>We may respond to subpoenas, court orders, or legal process by disclosing your 
-	PII and other related information, if necessary. We also may choose to 
-	establish or exercise our legal rights or defend against legal claims.</p>
-
-	<p>We may collect and possibly share PII and any other additional information available 
-	to us in order to investigate, prevent, or take action regarding illegal 
-	activities, suspected fraud, situations involving potential threats to the 
-	physical safety of any person, violations of TPC's terms of use, 
-	or as otherwise required by law.</p>
-
-	<p>While navigating TPC's web site you may be directed to content or functionality 
-	that is hosted by a third party supplier, not on TechnoParkCorp.com. This is typically 
-	done to host special events, such as contests. When information is collected on 
-	behalf of TPC exclusively, TPC's privacy policy will be referenced on the site 
-	and will govern how your information is used. For other, non-TPC sites, 
-	the site owner's privacy policy will be referenced. It is TPC's practice to 
-	require such suppliers to handle information in a manner consistent with TPC's 
-	privacy and security policies.</p>
-
-	<p>We will ask you for your opt-in consent to share your PII with a third party for 
-	any other reason.</p>
-	
-
-	<h1>Storage and Security of PII</h1>
-
-	<p>TPC is committed to protecting the PII you share with us. We utilize a combination 
-	of security technologies, procedures, and organizational measures to help protect your 
-	PII from unauthorized access, use or disclosure.</p>
-
-	<p>When we transfer sensitive personal data (for example, credit card 
-	information) over the Internet, we protect it using Secure Sockets Layer (SSL) 
-	encryption technology. To learn more about SSL, follow <a href="http://en.wikipedia.org/wiki/Secure_Sockets_Layer">this link</a>.</p>
-
-	<p>While we strive to protect your PII, we cannot ensure the security of the 
-	information you transmit.</p>
-
-	<p>We recommend you to take every precaution in protecting your PII when you are on 
-	the Internet. For example, change your passwords often, use a combination of 
-	letters and numbers when creating passwords, and make sure you use a secure browser.</p>
-
-	<p>If you have any questions about security on our website, you can <a href="${mailto:privacy}">email us</a>.</p>
+    <p>TechnoPark Corp.<br/>
+    Unsubscribe/Privacy<br/>
+    568 Ninth Street South 202,<br/>
+    Naples, Florida, 34102</p>
 
 
-	<h1>Cookies</h1>
+    <h1>Non-personal information collection</h1>
 
-	<p>Cookie is a small text file that is stored on a user's computer for record-keeping purposes.
-	TPC websites utilize cookies, although you can still access most of them even 
-	if you choose to disable cookies in your browser. Some websites will not allow you 
-	to complete certain activities if cookies are disabled.</p>
-
-	<p>We do not link the information we store in cookies to any PII you submit while on the site.</p>
-
-	<p>We use both session ID cookies and persistent cookies. We use session cookies to make 
-	it easier for you to navigate our site. A session ID cookie expires when you close 
-	your browser. A persistent cookie remains on your hard drive for an extended period 
-	of time. You can remove persistent cookies by following directions provided in 
-	your Internet browser's help file. To learn more about cookies, follow the 
-	<a href="http://en.wikipedia.org/wiki/HTTP_cookie">link</a>.</p>
-
-	<p>We store the identified of your latest login in cookie in order to avoid
-	mutliple login requests when there are delays in site usage. We set a persistent 
-	cookie to store your passwords, so you don't have to enter it more than once.  
-	Persistent cookies also enable us to track and target the interests of 
-	our users to enhance the experience on our site.</p>
-
-	<p>We use multiple third parties to monitor web traffic, statistics, advertisement 
-	'click-through', and other activities on TPC's sites. Where authorized by TPC, 
-	such third parties may use cookies, TPC's web log files, web beacons, and 
-	other monitoring technologies to compile anonymous aggregate statistics on 
-	TPC's website visitors.</p>
-
-	<p>Current versions of web browsers offer enhanced user controls regarding 
-	the placement and duration of both first and third party cookies. Search for 
-	"cookies" under your web browser's Help menu for more information on cookie management 
-	features available to you.</p>
+    <p>In some instances, TPC may collect non-personal (aggregate or demographic) 
+    data through cookies, web logs, and web beacons. This information is used to 
+    better understand and improve the usability, performance and effectiveness of our website.</p>
 
 
-	<h1>Linked websites</h1>
+    <h1>Sharing and Disclosure of PII</h1>
 
-	<p>Our websites may provide links to other third-party websites which are outside 
-	our control and not covered by this policy. We encourage you to review the privacy 
-	policies posted on these (and all) sites.</p>
+    <p>We do not sell or rent your PII to third-parties for marketing purposes unless you 
+    have granted us permission to do so.</p>
 
-	<p>TPC uses live chat tool provided by <a href="http://www.liveperson.com">LivePerson.com</a>.
-	You should be aware that information submitted by you in live chat may be read, collected
-	or used by LivePerson.com, according to their privacy policies. For more information about
-	LivePerson.com privacy policies follow <a href="http://liveperson.com/about/privacy.asp">the link</a>.</p>
+    <p>We may share your PII within TPC or any of our worldwide subsidiaries for purposes of 
+    data processing or storage.</p>
 
-	<p>TPC classifies your PII as confidential information. Confidential 
-	information is protected by being stored on secure servers that only select TechnoPark 
-	Corp. personnel have access to. The PII is encrypted to prevent 
-	unauthorized access.</p>
+    <p>We may also share your PII with authorized third-party agents or 
+    contractors in order to provide a requested service or transaction. For example, if we 
+    need to ship something to you, we must share your name and address with a shipping company. 
+    We only provide third-party agents with the minimum amount of PII necessary to 
+    complete the requested service or transaction.</p>
 
-	
-	<h1>Changes to Privacy Policy</h1>
+    <p>We may respond to subpoenas, court orders, or legal process by disclosing your 
+    PII and other related information, if necessary. We also may choose to 
+    establish or exercise our legal rights or defend against legal claims.</p>
 
-	<p>If we decide to change our Privacy Policy, we will post those changes to this 
-	privacy statement, the home page, and other places we deem appropriate so that you 
-	are aware of what information we collect, how we use it, and under what circumstances, 
-	if any, we disclose it.</p>
+    <p>We may collect and possibly share PII and any other additional information available 
+    to us in order to investigate, prevent, or take action regarding illegal 
+    activities, suspected fraud, situations involving potential threats to the 
+    physical safety of any person, violations of TPC's terms of use, 
+    or as otherwise required by law.</p>
 
-	<p>We reserve the right to modify this privacy statement at any time, so please review 
-	it frequently.  If we make material changes to this policy, we will notify you here, 
-	by email, or by means of a notice on our home page.</p>
+    <p>While navigating TPC's web site you may be directed to content or functionality 
+    that is hosted by a third party supplier, not on TechnoParkCorp.com. This is typically 
+    done to host special events, such as contests. When information is collected on 
+    behalf of TPC exclusively, TPC's privacy policy will be referenced on the site 
+    and will govern how your information is used. For other, non-TPC sites, 
+    the site owner's privacy policy will be referenced. It is TPC's practice to 
+    require such suppliers to handle information in a manner consistent with TPC's 
+    privacy and security policies.</p>
 
-	<p>Your continued use of this site means you fully accept those changes. Last update of the Privacy Policy
-	was made on <b>10/10/2008</b>.</p>
+    <p>We will ask you for your opt-in consent to share your PII with a third party for 
+    any other reason.</p>
+    
 
-	
-	<h1>Questions or Comments?</h1>
+    <h1>Storage and Security of PII</h1>
 
-	<p>If you have any questions or comments about this Privacy Policy, the practices of this site, 
-	or your interaction with TPC by means of this site, please <a href="${url:contacts}">contact us</a> or
-	send us <a href="${mailto:privacy}">an email</a>.</p>
+    <p>TPC is committed to protecting the PII you share with us. We utilize a combination 
+    of security technologies, procedures, and organizational measures to help protect your 
+    PII from unauthorized access, use or disclosure.</p>
+
+    <p>When we transfer sensitive personal data (for example, credit card 
+    information) over the Internet, we protect it using Secure Sockets Layer (SSL) 
+    encryption technology. To learn more about SSL, follow <a href="http://en.wikipedia.org/wiki/Secure_Sockets_Layer">this link</a>.</p>
+
+    <p>While we strive to protect your PII, we cannot ensure the security of the 
+    information you transmit.</p>
+
+    <p>We recommend you to take every precaution in protecting your PII when you are on 
+    the Internet. For example, change your passwords often, use a combination of 
+    letters and numbers when creating passwords, and make sure you use a secure browser.</p>
+
+    <p>If you have any questions about security on our website, you can <a href="${mailto:privacy}">email us</a>.</p>
+
+
+    <h1>Cookies</h1>
+
+    <p>Cookie is a small text file that is stored on a user's computer for record-keeping purposes.
+    TPC websites utilize cookies, although you can still access most of them even 
+    if you choose to disable cookies in your browser. Some websites will not allow you 
+    to complete certain activities if cookies are disabled.</p>
+
+    <p>We do not link the information we store in cookies to any PII you submit while on the site.</p>
+
+    <p>We use both session ID cookies and persistent cookies. We use session cookies to make 
+    it easier for you to navigate our site. A session ID cookie expires when you close 
+    your browser. A persistent cookie remains on your hard drive for an extended period 
+    of time. You can remove persistent cookies by following directions provided in 
+    your Internet browser's help file. To learn more about cookies, follow the 
+    <a href="http://en.wikipedia.org/wiki/HTTP_cookie">link</a>.</p>
+
+    <p>We store the identified of your latest login in cookie in order to avoid
+    mutliple login requests when there are delays in site usage. We set a persistent 
+    cookie to store your passwords, so you don't have to enter it more than once.  
+    Persistent cookies also enable us to track and target the interests of 
+    our users to enhance the experience on our site.</p>
+
+    <p>We use multiple third parties to monitor web traffic, statistics, advertisement 
+    'click-through', and other activities on TPC's sites. Where authorized by TPC, 
+    such third parties may use cookies, TPC's web log files, web beacons, and 
+    other monitoring technologies to compile anonymous aggregate statistics on 
+    TPC's website visitors.</p>
+
+    <p>Current versions of web browsers offer enhanced user controls regarding 
+    the placement and duration of both first and third party cookies. Search for 
+    "cookies" under your web browser's Help menu for more information on cookie management 
+    features available to you.</p>
+
+
+    <h1>Linked websites</h1>
+
+    <p>Our websites may provide links to other third-party websites which are outside 
+    our control and not covered by this policy. We encourage you to review the privacy 
+    policies posted on these (and all) sites.</p>
+
+    <p>TPC uses live chat tool provided by <a href="http://www.liveperson.com">LivePerson.com</a>.
+    You should be aware that information submitted by you in live chat may be read, collected
+    or used by LivePerson.com, according to their privacy policies. For more information about
+    LivePerson.com privacy policies follow <a href="http://liveperson.com/about/privacy.asp">the link</a>.</p>
+
+    <p>TPC classifies your PII as confidential information. Confidential 
+    information is protected by being stored on secure servers that only select TechnoPark 
+    Corp. personnel have access to. The PII is encrypted to prevent 
+    unauthorized access.</p>
+
+    
+    <h1>Changes to Privacy Policy</h1>
+
+    <p>If we decide to change our Privacy Policy, we will post those changes to this 
+    privacy statement, the home page, and other places we deem appropriate so that you 
+    are aware of what information we collect, how we use it, and under what circumstances, 
+    if any, we disclose it.</p>
+
+    <p>We reserve the right to modify this privacy statement at any time, so please review 
+    it frequently.  If we make material changes to this policy, we will notify you here, 
+    by email, or by means of a notice on our home page.</p>
+
+    <p>Your continued use of this site means you fully accept those changes. Last update of the Privacy Policy
+    was made on <b>10/10/2008</b>.</p>
+
+    
+    <h1>Questions or Comments?</h1>
+
+    <p>If you have any questions or comments about this Privacy Policy, the practices of this site, 
+    or your interaction with TPC by means of this site, please <a href="${url:contacts}">contact us</a> or
+    send us <a href="${mailto:privacy}">an email</a>.</p>
 
 </text>
 
 <images>
-	<truste>
+    <truste>
 MB5!.1PT*&amp;@H````-24A$4@```$0```!?&quot;`,```!FW)&#039;8````&quot;7!(67,```L3
 M```+$P$`FIP8```*3VE#0U!0:&amp;]T;W-H;W`@24-#(&#039;!R;V9I;&amp;4``&#039;C:G5-G
 M5%/I%CWWWO1&quot;2XB`E$MO4A4((%)&quot;BX`4D28J(0D02H@AH=D54&lt;$1144$&amp;\B@
@@ -423,9 +423,9 @@ M&#039;&quot;G:[,YHU8A/-K:UVC.E2;5+HSOY@]&quot;4NX8_GK@:@&#039;ZS+\3E`&quot;P;/G
 M&gt;7E[UU[6$K\X900S!19\^UIYRN3?#8F\^/7)Q_I!4B9`/#F-#N_7;UC@NWLJ
 F&quot;7?&#039;MOUX8*9I5[;_DV7_GP$`HJR`BB!@)@4`````245.1*Y&quot;8((`
 `
-	</truste>
+    </truste>
 
-	<bbb>
+    <bbb>
 MB5!.1PT*&amp;@H````-24A$4@```#P```!@&quot;`,```!V;N&#039;,````&quot;7!(67,```L3
 M```+$P$`FIP8```*3VE#0U!0:&amp;]T;W-H;W`@24-#(&#039;!R;V9I;&amp;4``&#039;C:G5-G
 M5%/I%CWWWO1&quot;2XB`E$MO4A4((%)&quot;BX`4D28J(0D02H@AH=D54&lt;$1144$&amp;\B@
@@ -534,7 +534,7 @@ M.X)RP[B\1.+V?I,`&lt;JN!\ET#[T(JD#WE?)$&quot;4IP9^GRZ5&#039;FC#J._2?X`H^P&gt;
 M4/8K&lt;PS?6H4&amp;&quot;$&gt;+%K$;Q2&quot;.Z?=?QG&lt;OI93)!(@&#039;\X)L+#JA\*L&#039;O57/RKZY
 B82&lt;5H`?6S].(*S7^&amp;P!JE,!PIP.XN0````!)14Y$KD)@@@``
 `
-	</bbb>
+    </bbb>
 </images>
 
 </article>

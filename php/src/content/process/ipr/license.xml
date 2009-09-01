@@ -35,14 +35,14 @@
 
 <text>
 
-	<p>Under construction</p>
+    <p>Under construction</p>
 
 </text>
 
 <concepts>
-	<c1 name="process/ipr/nda">NDA protects both the customer and developer against information disclosure</c1>
-	<c2 name="process/ipr/law">US Copyright Law guarantees Intellectual Property Rights delivery to the customer</c2>
-	<c3 name="process/ipr/security">Physical and documentary means exist to protect data on servers and in offices</c3>
+    <c1 name="process/ipr/nda">NDA protects both the customer and developer against information disclosure</c1>
+    <c2 name="process/ipr/law">US Copyright Law guarantees Intellectual Property Rights delivery to the customer</c2>
+    <c3 name="process/ipr/security">Physical and documentary means exist to protect data on servers and in offices</c3>
 </concepts>
 
 </article>

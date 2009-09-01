@@ -18,10 +18,10 @@
 
 <categories>
 
-	<category>Risk Management</category>
-	<category>Customer Satisfaction</category>
-	<category>Prototyping</category>
-	<category>Scope Management</category>
+    <category>Risk Management</category>
+    <category>Customer Satisfaction</category>
+    <category>Prototyping</category>
+    <category>Scope Management</category>
 
 </categories>
 
@@ -32,49 +32,49 @@
 <invisible/>
 
 <description>
-	
-	The main target for any of our projects is the customer's success. 
-	That's why sometimes we try to take our focus away from daily 
-	project problems and look at the situation from a higher point of 
-	view. From this point we can observe wider horizons and 
-	identify problems or even risks that can affect the project objectives.
+    
+    The main target for any of our projects is the customer's success. 
+    That's why sometimes we try to take our focus away from daily 
+    project problems and look at the situation from a higher point of 
+    view. From this point we can observe wider horizons and 
+    identify problems or even risks that can affect the project objectives.
 
 </description>
 
 <tex>
 
-	The objective of the project was to create the system that would allow 
-	the web-surfers to get support by clicking the banner. But the
-	most important objective of the project for the customer was to get the 
-	ability to sell such services.
+    The objective of the project was to create the system that would allow 
+    the web-surfers to get support by clicking the banner. But the
+    most important objective of the project for the customer was to get the 
+    ability to sell such services.
 
-	In the middle of implementation we noticed that the customer was 
-	going to use one demo server, with low performance and reliability, to 
-	demonstrate the system to potential buyers. Such a server was unable to 
-	handle the system that was intended for high performance with a full load. 
-	Hardware risks were not taken into account.
+    In the middle of implementation we noticed that the customer was 
+    going to use one demo server, with low performance and reliability, to 
+    demonstrate the system to potential buyers. Such a server was unable to 
+    handle the system that was intended for high performance with a full load. 
+    Hardware risks were not taken into account.
 
-	Of course this was not our problem because the contract was signed and 
-	it's not up to us to decide where the customer is going to use the system. But 
-	the risk affected the key objective of our project -- the customer's success.
+    Of course this was not our problem because the contract was signed and 
+    it's not up to us to decide where the customer is going to use the system. But 
+    the risk affected the key objective of our project -- the customer's success.
 
-	That's why we notified him about this risk and suggested a more reliable 
-	demo version of the system especially for demonstration purposes.
+    That's why we notified him about this risk and suggested a more reliable 
+    demo version of the system especially for demonstration purposes.
 
-	The project was running close to the finish line. The Customer had found his first 
-	client and asking us to force the work. He wanted to get the working system as 
-	soon as possible. Under this time pressure we configured the system 
-	at demo and work platform in a week. But after the first round of 
-	negotiations the customer came back to us with an issue -- the demo 
-	server system often died with some unexpected errors.
+    The project was running close to the finish line. The Customer had found his first 
+    client and asking us to force the work. He wanted to get the working system as 
+    soon as possible. Under this time pressure we configured the system 
+    at demo and work platform in a week. But after the first round of 
+    negotiations the customer came back to us with an issue -- the demo 
+    server system often died with some unexpected errors.
 
-	In two days a more productive demo server was bought and the demo version 
-	of system was configured. The second round of negotiations was finished with 
-	triumph. The key objective was reached and the project was closed successfully.
+    In two days a more productive demo server was bought and the demo version 
+    of system was configured. The second round of negotiations was finished with 
+    triumph. The key objective was reached and the project was closed successfully.
 
-	It's very important for us to help the customer be successful. The customer's 
-	success is our triumph! That's why we worry about the customer's 
-	risks and issues. When it comes to completing a project, we never have the attitude of "it's not our problem". 
+    It's very important for us to help the customer be successful. The customer's 
+    success is our triumph! That's why we worry about the customer's 
+    risks and issues. When it comes to completing a project, we never have the attitude of "it's not our problem". 
 
 </tex>
 

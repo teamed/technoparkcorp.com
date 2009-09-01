@@ -26,90 +26,90 @@
 <next>about/facts</next>
 
 <keywords>
-	ISO 9001,
-	TechnoPark Corp,
-	TRUSTe,
-	Online privacy
-	custom software development
+    ISO 9001,
+    TechnoPark Corp,
+    TRUSTe,
+    Online privacy
+    custom software development
 </keywords>
 
 <description>
-	Custom software development company from Florida with a history of 
-	achievements and a great future. Contact us to get more information.
+    Custom software development company from Florida with a history of 
+    achievements and a great future. Contact us to get more information.
 </description>
 
 <text>
 
-	<p>Our company is doing custom software development since 2001, here is a list of
-	key facts and events:</p>
+    <p>Our company is doing custom software development since 2001, here is a list of
+    key facts and events:</p>
 
-	<table>
-	<tr>
-		<th style="width: 110px;">Date</th>
-		<th>Event</th>
-	</tr>
+    <table>
+    <tr>
+        <th style="width: 110px;">Date</th>
+        <th>Event</th>
+    </tr>
 
-	<tr>
-		<td>August, 2008</td>
-		<td>TechnoPark Corp. registered its first patent application with United
-		States Patent and Trademark Office (USPTO), App. no. 12/193,010</td>
-	</tr>
+    <tr>
+        <td>August, 2008</td>
+        <td>TechnoPark Corp. registered its first patent application with United
+        States Patent and Trademark Office (USPTO), App. no. 12/193,010</td>
+    </tr>
 
-	<tr>
-		<td>June, 2008</td>
-		<td>TechnoPark Corp. registered copyright for online project management 
-		materials published on the corporate site, <a href="${url:about/news/uacopyright}">read more</a></td>
-	</tr>
+    <tr>
+        <td>June, 2008</td>
+        <td>TechnoPark Corp. registered copyright for online project management 
+        materials published on the corporate site, <a href="${url:about/news/uacopyright}">read more</a></td>
+    </tr>
 
-	<tr>
-		<td>April, 2008</td>
-		<td>TechnoPark Corp. becomes a member of <a href="http://www.bbb.org">Better Business Bureau</a></td>
-	</tr>
+    <tr>
+        <td>April, 2008</td>
+        <td>TechnoPark Corp. becomes a member of <a href="http://www.bbb.org">Better Business Bureau</a></td>
+    </tr>
 
-	<tr>
-		<td>January, 2008</td>
-		<td>TechnoPark Corp. successfully announced their ISO 9001:2000 certification, <a href="${url:about/news/year2008/iso9001}">read more</a></td>
-	</tr>
+    <tr>
+        <td>January, 2008</td>
+        <td>TechnoPark Corp. successfully announced their ISO 9001:2000 certification, <a href="${url:about/news/year2008/iso9001}">read more</a></td>
+    </tr>
 
-	<tr>
-		<td>January, 2008</td>
-		<td>TechnoPark Corp. receives Online Privacy Seal from TRUSTe.org, that confirms our intention to protect
-		personally identifiable information provided to us by our customers, <a href="${url:about/news/truste}">read more</a></td>
-	</tr>
+    <tr>
+        <td>January, 2008</td>
+        <td>TechnoPark Corp. receives Online Privacy Seal from TRUSTe.org, that confirms our intention to protect
+        personally identifiable information provided to us by our customers, <a href="${url:about/news/truste}">read more</a></td>
+    </tr>
 
-	<tr>
-		<td>March, 2007</td>
-		<td>TechnoPark Corp. becomes a member of 
-		<a href="http://www.russoft.org/russoft/?members">RUSSOFT.org</a>, 
-		<a href="${url:about/news/news11}">read more</a></td>
-	</tr>
+    <tr>
+        <td>March, 2007</td>
+        <td>TechnoPark Corp. becomes a member of 
+        <a href="http://www.russoft.org/russoft/?members">RUSSOFT.org</a>, 
+        <a href="${url:about/news/news11}">read more</a></td>
+    </tr>
 
-	<tr>
-		<td>November, 2006</td>
-		<td>Mobile payment processing software, developed by TechnoPark Corp., is certified by Visa/Mastercard as 
-		compliant to PCI DSS Level 1, <a href="${url:about/news/year2006/news16}">read more</a></td>
-	</tr>
+    <tr>
+        <td>November, 2006</td>
+        <td>Mobile payment processing software, developed by TechnoPark Corp., is certified by Visa/Mastercard as 
+        compliant to PCI DSS Level 1, <a href="${url:about/news/year2006/news16}">read more</a></td>
+    </tr>
 
-	<tr>
-		<td>March, 2005</td>
-		<td>TechnoPark Corp. becomes a member of <a href="http://www.hi-tech.org.ua">Hi-Tech Initiative</a>, 
-		Ukraine.</td>
-	</tr>
+    <tr>
+        <td>March, 2005</td>
+        <td>TechnoPark Corp. becomes a member of <a href="http://www.hi-tech.org.ua">Hi-Tech Initiative</a>, 
+        Ukraine.</td>
+    </tr>
 
-	<tr>
-		<td>November, 2004</td>
-		<td>TechnoPark Corp. is incorporated in Florida, United States as S-Corporation.</td>
-	</tr>
+    <tr>
+        <td>November, 2004</td>
+        <td>TechnoPark Corp. is incorporated in Florida, United States as S-Corporation.</td>
+    </tr>
 
-	<tr>
-		<td>March, 2001</td>
-		<td>Custom software development business is started in Florida, United States and 
-		Dnepropetrovsk, Ukraine.</td>
-	</tr>
+    <tr>
+        <td>March, 2001</td>
+        <td>Custom software development business is started in Florida, United States and 
+        Dnepropetrovsk, Ukraine.</td>
+    </tr>
 
-	</table>
+    </table>
 
-	<p>Read about our <a href="${url:about/facts}">key facts</a> and <a href="${url:about/news}">latest news</a>.</p>
+    <p>Read about our <a href="${url:about/facts}">key facts</a> and <a href="${url:about/news}">latest news</a>.</p>
 
 </text>
 

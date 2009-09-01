@@ -28,50 +28,50 @@
 <next>process/scope/feature</next>
 
 <description>
-	Vision is a preliminary scope definition document, that we create
-	before the contract is signed.
+    Vision is a preliminary scope definition document, that we create
+    before the contract is signed.
 </description>
 
 <keywords>
-	vision,
-	features,
-	project charter,
-	scope definition,
-	preliminary scope definition
+    vision,
+    features,
+    project charter,
+    scope definition,
+    preliminary scope definition
 </keywords>
 
 <text>
 
-	<p>Each customer has their own understanding of task definition.  Customers also use their own format
-	for documentation. Sometimes, such documentation is properly formatted and presented, and
-	sometimes it is not. We use a uniform and standard format for the preliminary scope
-	definition. It is short, simple, and very clear - we call it the Vision.</p>
+    <p>Each customer has their own understanding of task definition.  Customers also use their own format
+    for documentation. Sometimes, such documentation is properly formatted and presented, and
+    sometimes it is not. We use a uniform and standard format for the preliminary scope
+    definition. It is short, simple, and very clear - we call it the Vision.</p>
 
-	<p>The Vision document is a two page file that includes a description of the project,
-	list of <a href="${url:process/scope/feature}">Features</a>, key risks, assumptions, and architectural concepts. 
-	It is possible to present any product scope in this simple format,
-	even if the product is very large.</p>
+    <p>The Vision document is a two page file that includes a description of the project,
+    list of <a href="${url:process/scope/feature}">Features</a>, key risks, assumptions, and architectural concepts. 
+    It is possible to present any product scope in this simple format,
+    even if the product is very large.</p>
 
-	<p>The Vision document is not a fully-dressed <a href="${url:process/scope/specification}">Specification</a> and cannot be used by 
-	developers for the purpose of programming. The Vision is used by the system analyst, project manager,
-	customer, and other stakeholders for the following reasons:</p>
+    <p>The Vision document is not a fully-dressed <a href="${url:process/scope/specification}">Specification</a> and cannot be used by 
+    developers for the purpose of programming. The Vision is used by the system analyst, project manager,
+    customer, and other stakeholders for the following reasons:</p>
 
-	<anchor name="list">
-	<ul>
-		<li>To define the boundaries of the product.</li>
-		<li>To gain an understanding of project goals.</li>
-		<li>To identify key stakeholders and their needs.</li>
-	</ul>
-	</anchor>
+    <anchor name="list">
+    <ul>
+        <li>To define the boundaries of the product.</li>
+        <li>To gain an understanding of project goals.</li>
+        <li>To identify key stakeholders and their needs.</li>
+    </ul>
+    </anchor>
 
-	<p>A system analyst usually spends up to five hours developing the Vision.</p>
+    <p>A system analyst usually spends up to five hours developing the Vision.</p>
 
 </text>
 
 <concepts>
-	<c1 name="process/scope/feature">Feature is a top-level user requirement</c1>
-	<c3 name="process/scope/specification">Specification details Vision</c3>
-	<c5 name="process/cost/rom">ROM Estimate is based on Features</c5>
+    <c1 name="process/scope/feature">Feature is a top-level user requirement</c1>
+    <c3 name="process/scope/specification">Specification details Vision</c3>
+    <c5 name="process/cost/rom">ROM Estimate is based on Features</c5>
 </concepts>
 
 </article>

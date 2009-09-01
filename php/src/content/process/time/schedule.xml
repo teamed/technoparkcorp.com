@@ -28,91 +28,91 @@
 <next>process/time/spi</next>
 
 <description>
-	Schedule is a core time tracking/management document in the project, which
-	collects together iterations, milestones and objectives. The document
-	is kept current in our online project management system.
+    Schedule is a core time tracking/management document in the project, which
+    collects together iterations, milestones and objectives. The document
+    is kept current in our online project management system.
 </description>
 
 <keywords>
-	schedule,
-	iteration,
-	iteration plan,
-	milestone,
-	LCO milestone,
-	LCA milestone,
-	IOC milestone,
-	project release milestone,
-	rational unified process,
-	RUP,
-	time management,
-	planning,
-	time tracking
+    schedule,
+    iteration,
+    iteration plan,
+    milestone,
+    LCO milestone,
+    LCA milestone,
+    IOC milestone,
+    project release milestone,
+    rational unified process,
+    RUP,
+    time management,
+    planning,
+    time tracking
 </keywords>
 
 <text>
 
-	<p>The Schedule is a coarse-grained project scenario, which splits the 
-	whole project into <a href="${url:process/time/iteration}">Iterations</a>.
-	Each Iteration delivers  a certain product functionality. 
-	The Schedule is created during the <a href="${url:process/time/inception}">Inception Phase</a>
-	and is approved on an <a href="${url:process/time/lco}">LCO Milestone</a>.</p>
-	
-	<p>The Schedule is kept current during the whole project. 
-	By having this document, you know
-	when and what results or functions to expect.</p>
+    <p>The Schedule is a coarse-grained project scenario, which splits the 
+    whole project into <a href="${url:process/time/iteration}">Iterations</a>.
+    Each Iteration delivers  a certain product functionality. 
+    The Schedule is created during the <a href="${url:process/time/inception}">Inception Phase</a>
+    and is approved on an <a href="${url:process/time/lco}">LCO Milestone</a>.</p>
+    
+    <p>The Schedule is kept current during the whole project. 
+    By having this document, you know
+    when and what results or functions to expect.</p>
 
-	<p>The Schedule is created by the project manager, 
-	right after you approve the <a href="${url:process/scope/specification}">Specification</a>.
-	Together, all Iterations cover the whole project scope as defined in the Specification. 
-	Overall, the Schedule is a central document in the project <a href="${url:process/time}">time management</a>.</p>
+    <p>The Schedule is created by the project manager, 
+    right after you approve the <a href="${url:process/scope/specification}">Specification</a>.
+    Together, all Iterations cover the whole project scope as defined in the Specification. 
+    Overall, the Schedule is a central document in the project <a href="${url:process/time}">time management</a>.</p>
 
-	<p>We utilize the best practices of 
-	<a href="http://www.ibm.com/rational">Rational Unified Process (RUP)</a> for the product lifecycle.
-	Thus, the key mandatory Milestones in each project are:</p>
+    <p>We utilize the best practices of 
+    <a href="http://www.ibm.com/rational">Rational Unified Process (RUP)</a> for the product lifecycle.
+    Thus, the key mandatory Milestones in each project are:</p>
 
-	<ul>
-		<li>Lifecycle Objective (LCO) Milestone</li>
-		<li>Lifecycle Architecture (LCA) Milestone</li>
-		<li>Initial Operational Capability (IOC) Milestone</li>
-		<li>Release Milestone</li>
-	</ul>
+    <ul>
+        <li>Lifecycle Objective (LCO) Milestone</li>
+        <li>Lifecycle Architecture (LCA) Milestone</li>
+        <li>Initial Operational Capability (IOC) Milestone</li>
+        <li>Release Milestone</li>
+    </ul>
 
-	<p>The Schedule is developed by the project manager in our online management system and you approve
-	it with one click. The project moves on only when the Schedule had been approved.</p>
+    <p>The Schedule is developed by the project manager in our online management system and you approve
+    it with one click. The project moves on only when the Schedule had been approved.</p>
 
-	<p>This is an example of a Schedule:</p>
+    <p>This is an example of a Schedule:</p>
 
-	<table>
-		<tr>
-			<th>#</th>
-			<th>Objective</th>
-			<th>Finish</th>
-			<th>Staff-hours</th>
-		</tr>
-		<tr><td></td><td>Project start</td><td>28-Jan</td><td></td></tr>
-		<tr><td>I1</td><td>Inception Phase</td><td>8-Feb</td><td>130</td></tr>
-		<tr><td>M1</td><td>Budget Approval (LCO Milestone)</td><td>8-Feb</td><td></td></tr>
-		<tr><td>I2</td><td>Prototype (R1, R5, R9)</td><td>22-Feb</td><td>240</td></tr>
-		<tr><td>M2</td><td>Architecture Baselined (LCA Milestone)</td><td>8-Feb</td><td></td></tr>
-		<tr><td>I2</td><td>R1, R3, R4, R8</td><td>22-Feb</td><td>240</td></tr>
-		<tr><td>I3</td><td>R2, R5, R9</td><td>4-Mar</td><td>225</td></tr>
-		<tr><td>I4</td><td>R6, R7, R10</td><td>18-Mar</td><td>310</td></tr>
-		<tr><td>M3</td><td>Product Readiness (IOC Milestone)</td><td>18-Mar</td><td></td></tr>
-		<tr><td>I5</td><td>Transition Phase</td><td>3-Apr</td><td>180</td></tr>
-		<tr><td>M4</td><td>Project finished (Release Milestone)</td><td>3-Apr</td><td></td></tr>
-	</table>
+    <table>
+        <tr>
+            <th>#</th>
+            <th>Objective</th>
+            <th>Finish</th>
+            <th>Staff-hours</th>
+        </tr>
+        <tr><td></td><td>Project start</td><td>28-Jan</td><td></td></tr>
+        <tr><td>I1</td><td>Inception Phase</td><td>8-Feb</td><td>130</td></tr>
+        <tr><td>M1</td><td>Budget Approval (LCO Milestone)</td><td>8-Feb</td><td></td></tr>
+        <tr><td>I2</td><td>Prototype (R1, R5, R9)</td><td>22-Feb</td><td>240</td></tr>
+        <tr><td>M2</td><td>Architecture Baselined (LCA Milestone)</td><td>8-Feb</td><td></td></tr>
+        <tr><td>I2</td><td>R1, R3, R4, R8</td><td>22-Feb</td><td>240</td></tr>
+        <tr><td>I3</td><td>R2, R5, R9</td><td>4-Mar</td><td>225</td></tr>
+        <tr><td>I4</td><td>R6, R7, R10</td><td>18-Mar</td><td>310</td></tr>
+        <tr><td>M3</td><td>Product Readiness (IOC Milestone)</td><td>18-Mar</td><td></td></tr>
+        <tr><td>I5</td><td>Transition Phase</td><td>3-Apr</td><td>180</td></tr>
+        <tr><td>M4</td><td>Project finished (Release Milestone)</td><td>3-Apr</td><td></td></tr>
+    </table>
 
-	<p>The Schedule is tracked with a <a href="${url:process/time/spi}">Schedule Performance Index (SPI)</a>, 
-	which shows you and the project team what progress has been made. The SPI 
-	is presented to you on each Iteration Acceptance Meeting.</p>
+    <p>The Schedule is tracked with a <a href="${url:process/time/spi}">Schedule Performance Index (SPI)</a>, 
+    which shows you and the project team what progress has been made. The SPI 
+    is presented to you on each Iteration Acceptance Meeting.</p>
 
 
 </text>
 
 <concepts>
-	<c2 name="process/time/lco">The LCO Milestone approves Schedule, Budget and Risks</c2>
-	<c4 name="process/time/iteration">Iteration is the shortest element of time management</c4>
-	<c5 name="process/time/spi">The SPI from Earned Value Analysis helps to track project</c5>
+    <c2 name="process/time/lco">The LCO Milestone approves Schedule, Budget and Risks</c2>
+    <c4 name="process/time/iteration">Iteration is the shortest element of time management</c4>
+    <c5 name="process/time/spi">The SPI from Earned Value Analysis helps to track project</c5>
 </concepts>
 
 </article>

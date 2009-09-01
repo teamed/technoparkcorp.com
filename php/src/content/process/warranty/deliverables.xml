@@ -35,41 +35,41 @@
 
 <text>
 
-	<p>Deliverables are what you pay for and what the project team produces. There
-	is nothing more important in a project than the Deliverables.</p>
+    <p>Deliverables are what you pay for and what the project team produces. There
+    is nothing more important in a project than the Deliverables.</p>
 
-	<p>You receive the following:</p>
+    <p>You receive the following:</p>
 
-	<ul>
-		<li>Commented Source Code with unit-tests;</li>
-		<li>Compiled products (executables);</li>
-		<li>Specifications in original format (<a href="${url:process/scope/srs}">SRS</a>, <a href="${url:process/scope/vision}">Vision</a>);</li>
-		<li>User manual</li>
-	</ul>
+    <ul>
+        <li>Commented Source Code with unit-tests;</li>
+        <li>Compiled products (executables);</li>
+        <li>Specifications in original format (<a href="${url:process/scope/srs}">SRS</a>, <a href="${url:process/scope/vision}">Vision</a>);</li>
+        <li>User manual</li>
+    </ul>
 
-	<p>Project documentation includes, but is not delivered under contract:</p>
+    <p>Project documentation includes, but is not delivered under contract:</p>
 
-	<ul>
-		<li><a href="${url:process/time/schedule}">Schedule</a></li>
-		<li>Software Architecture Document (SAD)</li>
-		<li>Test Plan (w/ Test Cases)</li>
-		<li>Software Development Plan (SDP)</li>
-		<li><a href="${url:process/time/iteration}">Iteration</a> Plans</li>
-		<li>Meeting Protocols</li>
-		<li><a href="${url:process/scope/matrix}">Traceability Matrix</a></li>
-		<li><a href="${url:process/risk/risklist}">Risk List</a></li>
-	</ul>
+    <ul>
+        <li><a href="${url:process/time/schedule}">Schedule</a></li>
+        <li>Software Architecture Document (SAD)</li>
+        <li>Test Plan (w/ Test Cases)</li>
+        <li>Software Development Plan (SDP)</li>
+        <li><a href="${url:process/time/iteration}">Iteration</a> Plans</li>
+        <li>Meeting Protocols</li>
+        <li><a href="${url:process/scope/matrix}">Traceability Matrix</a></li>
+        <li><a href="${url:process/risk/risklist}">Risk List</a></li>
+    </ul>
 
-	<p>You have an access to all project documentation, but we are 
-	not contractually obliged to deliver it.</p>
+    <p>You have an access to all project documentation, but we are 
+    not contractually obliged to deliver it.</p>
 
 
 </text>
 
 <concepts>
-	<c1 name="process/scope/srs">SRS is the core project specification document that explains the functionality</c1>
-	<c3 name="process/time/iteration">Iterations constitute project timeline in an incremental manner</c3>
-	<c5 name="process/time/schedule">Schedule is a high-level project plan that leads to project completion</c5>
+    <c1 name="process/scope/srs">SRS is the core project specification document that explains the functionality</c1>
+    <c3 name="process/time/iteration">Iterations constitute project timeline in an incremental manner</c3>
+    <c5 name="process/time/schedule">Schedule is a high-level project plan that leads to project completion</c5>
 </concepts>
 
 </article>

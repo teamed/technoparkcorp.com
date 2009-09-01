@@ -26,77 +26,65 @@
 <next>about/history</next>
 
 <keywords>
-	Florida,
-	software development,
-	Custom Software Development,
-	Ukraine,
-	TechnoPark Corporation,
-	ISO 9001,
-	ISO 9001:2000
+    Florida,
+    software development,
+    Custom Software Development,
+    Ukraine,
+    TechnoPark Corporation,
+    ISO 9001,
+    ISO 9001:2000
 </keywords>
 
 <description>
-	ISO 9001 certified custom software development company from Florida. Working
-	since 2001, have certificates of quality, pending trademarks and patents
+    ISO 9001 certified custom software development company from Florida. Working
+    since 2001, have certificates of quality, pending trademarks and patents
 </description>
 
 <text>
 
-	<p>TechnoPark Corp. is a custom software development company with a unique methodology
-	of project management in agile projects. The company was founded during 2001 in Florida, U.S.A.
-	The majority of our in-house personnel is located in Florida, U.S.A. (headquarters).</p>	
+    <p>TechnoPark Corp. is a custom software development company with a unique methodology
+    of project management in agile projects. The company was founded during 2001 in Florida, U.S.A.
+    The majority of our in-house personnel is located in Florida, U.S.A. (headquarters).</p>    
 
-	<p>Key facts about TechnoPark Corp.:</p>
+    <p>Key facts about TechnoPark Corp.:</p>
 
-	<table>
-		<tr>
-			<th style="width: 120px;">Parameter</th>
-			<th>Value</th>
-		</tr>
-		<tr><td>Business name:</td><td>TECHNOPARK CORPORATION</td></tr>
-		<tr><td>DUNS<a href="https://smallbusiness.dnb.com">?</a> Number:</td><td>62-773-2535</td></tr>
-		<tr><td>Incorporated on:</td><td>20-Feb-2006</td></tr>
-		<tr><td>Incorporated in:</td><td>State of Florida, USA</td></tr>
-		<tr><td>Legal status:</td><td>Corporation</td></tr>
-		<tr><td>Full-time Employees:</td><td>12</td></tr>
-		
-		<tr><td>Headquarters and Sales Office:</td><td>568 Ninth Street South 202,<br/>
-			Naples, Florida 34102, USA<br/>
-			tel. +1 (239) 935 5429</td></tr>
-		
-		<tr><td>Profile:</td><td>Custom software development company</td></tr>
-		
-		<tr><td>Patents:</td><td>pending US 12/193,010, 12/264,370</td></tr>
-		
-		<tr><td>Certificates:</td><td><a href="${url:news/year2008/iso9001}">ISO 9001:2000</a> since Jan-08</td></tr>
+    <table>
+        <tr>
+            <th style="width: 120px;">Parameter</th>
+            <th>Value</th>
+        </tr>
+        <tr><td>Business name:</td><td>TECHNOPARK CORPORATION</td></tr>
+        <tr><td>DUNS<a href="https://smallbusiness.dnb.com">?</a> Number:</td><td>62-773-2535</td></tr>
+        <tr><td>Incorporated on:</td><td>20-Feb-2006</td></tr>
+        <tr><td>Incorporated in:</td><td>State of Florida, USA</td></tr>
+        <tr><td>Legal status:</td><td>Corporation</td></tr>
+        <tr><td>Full-time Employees:</td><td>12</td></tr>
+        
+        <tr><td>Headquarters and Sales Office:</td><td>568 Ninth Street South 202,<br/>
+            Naples, Florida 34102, USA<br/>
+            tel. +1 (239) 935 5429</td></tr>
+        
+        <tr><td>Profile:</td><td>Custom software development company</td></tr>
+        
+        <tr><td>Patents:</td><td>pending US 12/193,010, 12/264,370</td></tr>
+        
+        <tr><td>Certificates:</td><td><a href="${url:news/year2008/iso9001}">ISO 9001:2000</a> since Jan-08</td></tr>
 
-		<tr><td>Seals:</td><td><a href="${url:about/privacypolicy}">BBB</a> Online Seal<br/>
-			<a href="${url:about/privacypolicy}">TRUSTe</a> Privacy Seal</td></tr>
+        <tr><td>Seals:</td><td><a href="${url:about/privacypolicy}">BBB</a> Online Seal<br/>
+            <a href="${url:about/privacypolicy}">TRUSTe</a> Privacy Seal</td></tr>
 
-		<tr><td>Copyrights:</td><td>
-			
-			TPC Logo with a slogan "Plan Your Success" 
-			<a href="http://tarr.uspto.gov/servlet/tarr?regser=serial&amp;entry=77438094">registered</a> 
-			on 11-Nov-08 in US Patent and Trademark Office (USPTO)<br/><br/>
+        <tr><td>Copyrights:</td><td>
+            
+            TPC Logo with a slogan "Plan Your Success" 
+            <a href="http://tarr.uspto.gov/servlet/tarr?regser=serial&amp;entry=77438094">registered</a> 
+            on 11-Nov-08 in US Patent and Trademark Office (USPTO)<br/><br/>
 
-			Copyright for online project management materials 
-			<a href="${url:about/news/uacopyright}">is registered in Ukraine</a><br/><br/>
+            Copyright for online project management materials 
+            <a href="${url:about/news/uacopyright}">is registered in Ukraine</a><br/><br/>
 
-			Text of our software development contract is registered
-			with <a href="http://www.copyright.gov">US Copyright Office</a>.
+            Text of our software development contract is registered
+            with <a href="http://www.copyright.gov">US Copyright Office</a>.
 
-			</td></tr>
-		
-		<tr><td>Ukrainian office:</td><td>Êîä ÅÄÐÏÎÓ 33595858 
-			<a href="http://www.sta.gov.ua/control/uk/vat/search">ïðîâåðèòü</a></td></tr>
-
-	</table>
-
-	<p>More information can be received after 
-	<a href="${url:contacts}">direct contact</a> with our office.</p>
-
-</text>
-
-</article>
-
-
+            </td></tr>
+        
+        <tr><td>Ukrainian office:</td><td>

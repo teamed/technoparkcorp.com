@@ -26,37 +26,37 @@
 <next>cots/poker/functions</next>
 
 <description>
-	GS-Poker is a online poker server software that you can try
-	for free and play with a demo. This page has our latest
-	screenshots.
+    GS-Poker is a online poker server software that you can try
+    for free and play with a demo. This page has our latest
+    screenshots.
 </description>
 
 <keywords>
-	poker software screenshots,
-	poker server software demo,
-	poker client server demo,
-	online poker server platform demo,
-	online poker server requirements demo,
-	poker software for sale demo,
-	online poker system demo
+    poker software screenshots,
+    poker server software demo,
+    poker client server demo,
+    online poker server platform demo,
+    online poker server requirements demo,
+    poker software for sale demo,
+    online poker system demo
 </keywords>
 
 <text>
 
-	<p>Sample screenshot of the poker table:</p>
+    <p>Sample screenshot of the poker table:</p>
 
-	<png>//images/ss2</png>
+    <png>//images/ss2</png>
 
-	<p>Sample screenshot of the lobby:</p>
+    <p>Sample screenshot of the lobby:</p>
 
-	<png>//images/ss3</png>
+    <png>//images/ss3</png>
 
-	<p>For more information on how to run <a href="${url:cots/poker}">GS-Poker</a>, please <a href="${url:contacts}">contact us</a>.</p>
+    <p>For more information on how to run <a href="${url:cots/poker}">GS-Poker</a>, please <a href="${url:contacts}">contact us</a>.</p>
 
 </text>
 
 <images>
-	<ss2>
+    <ss2>
 MB5!.1PT*&amp;@H````-24A$4@```8\```$@&quot;`,```![#@_N````&quot;7!(67,```L3
 M```+$P$`FIP8```*3VE#0U!0:&amp;]T;W-H;W`@24-#(&#039;!R;V9I;&amp;4``&#039;C:G5-G
 M5%/I%CWWWO1&quot;2XB`E$MO4A4((%)&quot;BX`4D28J(0D02H@AH=D54&lt;$1144$&amp;\B@
@@ -1949,9 +1949,9 @@ M7#_@T+DS0M/+]:(.[5;!K7;+Q?&quot;]G&#039;GA65$0S.DHU=.W*=4.`5$&#039;;E&quot;+&qu
 M.QRVT+%HMB1T#_]W_%1&amp;UVQI6)?\O^.GXCW)_K]K\%,:_\\`3UPST&gt;04ZI,`
 +````245.1*Y&quot;8((`
 `
-	</ss2>
+    </ss2>
 
-	<ss3>
+    <ss3>
 MB5!.1PT*&amp;@H````-24A$4@```9````$?&quot;`,```!8AV#S````&quot;7!(67,```L3
 M```+$P$`FIP8```*3VE#0U!0:&amp;]T;W-H;W`@24-#(&#039;!R;V9I;&amp;4``&#039;C:G5-G
 M5%/I%CWWWO1&quot;2XB`E$MO4A4((%)&quot;BX`4D28J(0D02H@AH=D54&lt;$1144$&amp;\B@
@@ -3087,7 +3087,7 @@ MQRI&amp;0Q/^&lt;SC\W6/;[O^6R^E_]642KGSG9P?8[7Y[MVO!;;O_P?K;=H^[OL3O
 M__5/O6TW&quot;:=C%:/_QVX=^;_E$:N,^;\GX?]7Q_\S`#WX[&quot;KQK073`````$E%
 &amp;3D2N0F&quot;&quot;
 `
-	</ss3>
+    </ss3>
 
 </images>
 

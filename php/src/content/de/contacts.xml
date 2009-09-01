@@ -18,9 +18,9 @@
 ]>
 
 <!-- 
-	Version tracking section:
+    Version tracking section:
 
-	9/15/07 Yegor - first version
+    9/15/07 Yegor - first version
 
 -->
 
@@ -33,31 +33,31 @@
 <next></next>
 
 <description>
-	Individuelle Software-Entwicklung, 
-	Contacts of TechnoPark Corp. in Germany, Europe and USA
+    Individuelle Software-Entwicklung, 
+    Contacts of TechnoPark Corp. in Germany, Europe and USA
 </description>
 
 <keywords>
-	software-entwicklung,
-	software development,
-	offshore software development,
-	outsourcing,
-	agile softwareentwicklung,
-	softwareentwicklung,
-	java softwareentwicklung
+    software-entwicklung,
+    software development,
+    offshore software development,
+    outsourcing,
+    agile softwareentwicklung,
+    softwareentwicklung,
+    java softwareentwicklung
 </keywords>
 
 <text>
 
-	<p>Am bequemsten ist es, Kontakte per E-mail auszutauschen und 
-	sich anschlie&szlig;end zu Gespr&auml;chen zu treffen: <a href="${mailto:sales}">email</a></p>
+    <p>Am bequemsten ist es, Kontakte per E-mail auszutauschen und 
+    sich anschlie&szlig;end zu Gespr&auml;chen zu treffen: <a href="${mailto:sales}">email</a></p>
 
-	<p> Wahrscheinlich arbeiten Sie schon mit Auftragnehmern oder hatten bereits Arbeitserfahrungen mit entfernt arbeitenden Teams. 
-	M&ouml;glicherweise ist diese Erfahrung negativ. Wir werden Ihnen vorschlagen, wie es am besten ist, die Arbeit mit uns 
-	aufzubauen, damit die Projekte f&uuml;r Sie und uns erfolgreich sind. </p>
+    <p> Wahrscheinlich arbeiten Sie schon mit Auftragnehmern oder hatten bereits Arbeitserfahrungen mit entfernt arbeitenden Teams. 
+    M&ouml;glicherweise ist diese Erfahrung negativ. Wir werden Ihnen vorschlagen, wie es am besten ist, die Arbeit mit uns 
+    aufzubauen, damit die Projekte f&uuml;r Sie und uns erfolgreich sind. </p>
 
-	<p>Naples, Florida<br/>
-	tel. +1 (239) 935 5429</p>
+    <p>Naples, Florida<br/>
+    tel. +1 (239) 935 5429</p>
 
 </text>
 

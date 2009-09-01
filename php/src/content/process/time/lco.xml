@@ -28,39 +28,39 @@
 <next>process/time/schedule</next>
 
 <description>
-	LCO Milestone closes Inception Phase and approves all mandatory
-	project management artifacts: Schedule, Risk List, Budget and
-	Specification (SRS).
+    LCO Milestone closes Inception Phase and approves all mandatory
+    project management artifacts: Schedule, Risk List, Budget and
+    Specification (SRS).
 </description>
 
 <keywords>
-	LCO milestone,
-	inception phase,
-	budget,
-	specification,
-	project planning,
-	project charter
+    LCO milestone,
+    inception phase,
+    budget,
+    specification,
+    project planning,
+    project charter
 </keywords>
 
 <text>
 
-	<p>The Lifecycle Objectives (LCO) Milestone is a moment when the <a href="${url:process/scope/specification}">Specification</a>, 
-	<a href="${url:process/cost/budget}">Budget,</a> and the <a href="${url:process/time/schedule}">Schedule</a> are ready
-	and presented to you for approval.</p>
+    <p>The Lifecycle Objectives (LCO) Milestone is a moment when the <a href="${url:process/scope/specification}">Specification</a>, 
+    <a href="${url:process/cost/budget}">Budget,</a> and the <a href="${url:process/time/schedule}">Schedule</a> are ready
+    and presented to you for approval.</p>
 
-	<p>At this point, you examine the Lifecycle Objectives of the project, and decide either 
-	to proceed or to cancel it.</p>
-	
-	<p>If the project is approved at this moment, we continue to work.</p>
+    <p>At this point, you examine the Lifecycle Objectives of the project, and decide either 
+    to proceed or to cancel it.</p>
+    
+    <p>If the project is approved at this moment, we continue to work.</p>
 
-	<p>If project is not approved for any reason, project is closed and you pay only the 
-	<a href="${url:process/cost/retainer}">Retainer</a> for the work done on Specification development.</p>
+    <p>If project is not approved for any reason, project is closed and you pay only the 
+    <a href="${url:process/cost/retainer}">Retainer</a> for the work done on Specification development.</p>
 
 </text>
 
 <concepts>
-	<c2 name="process/time/schedule">The Schedule is prepared during Inception Phase and presented at the LCO Milestone</c2>
-	<c5 name="process/scope/specification">All functional and non-functional requirements are listed in Specification</c5>
+    <c2 name="process/time/schedule">The Schedule is prepared during Inception Phase and presented at the LCO Milestone</c2>
+    <c5 name="process/scope/specification">All functional and non-functional requirements are listed in Specification</c5>
 </concepts>
 
 </article>

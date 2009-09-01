@@ -28,56 +28,56 @@
 <next>process/quality/coq</next>
 
 <description>
-	Price per hour includes direct and indirect expenses and is the 
-	only monetary value used for project cost calculation.
+    Price per hour includes direct and indirect expenses and is the 
+    only monetary value used for project cost calculation.
 </description>
 
 <keywords>
-	price per hour,
-	ROM estimate,
-	budget,
-	project price,
-	software development price
+    price per hour,
+    ROM estimate,
+    budget,
+    project price,
+    software development price
 </keywords>
 
 <text>
 
-	<p>We only work with fixed-price contracts. 
-	Staff-hours are used to calculate the price. 
-	The <a href="${url:process/cost/budget}">Budget</a> is the amount of required staff-hours multiplied by the price of one staff-hour.</p>
-							 
-	<p>The price per staff-hour includes direct expenses, indirect expenses, and our profit.
-	Depending on the size of the project and cost of technical specialists' efforts
-	price per hour may vary in interval between $25 and $60.</p>
+    <p>We only work with fixed-price contracts. 
+    Staff-hours are used to calculate the price. 
+    The <a href="${url:process/cost/budget}">Budget</a> is the amount of required staff-hours multiplied by the price of one staff-hour.</p>
+                             
+    <p>The price per staff-hour includes direct expenses, indirect expenses, and our profit.
+    Depending on the size of the project and cost of technical specialists' efforts
+    price per hour may vary in interval between $25 and $60.</p>
 
-	<p>Direct expenses include:</p> 
-	
-	<ul>
-		<li>Expenses for technicians/suppliers;</li>
-		<li>Salary and bonuses of project manager;</li>
-		<li>Our expenses for project management software development;</li>
-		<li>Equipment rental;</li>
-		<li>Local and state taxes.</li>
-	</ul>
-	
-	<p>Indirect expenses include:</p>
+    <p>Direct expenses include:</p> 
+    
+    <ul>
+        <li>Expenses for technicians/suppliers;</li>
+        <li>Salary and bonuses of project manager;</li>
+        <li>Our expenses for project management software development;</li>
+        <li>Equipment rental;</li>
+        <li>Local and state taxes.</li>
+    </ul>
+    
+    <p>Indirect expenses include:</p>
 
-	<ul>
-		<li>Corporate QA services;</li>
-		<li>Process improvement;</li>
-		<li>Free defect removal services;</li>
-		<li>Mistakes in estimates that may result in project cost overrun;</li>
-		<li>Management reserve.</li>
-	</ul>
+    <ul>
+        <li>Corporate QA services;</li>
+        <li>Process improvement;</li>
+        <li>Free defect removal services;</li>
+        <li>Mistakes in estimates that may result in project cost overrun;</li>
+        <li>Management reserve.</li>
+    </ul>
 
-	<p>You approve a Budget as the fixed amount of staff-hours and monetary value required to complete the project. 
-	The Budget is never changed if scope of the work is not changed.</p>
+    <p>You approve a Budget as the fixed amount of staff-hours and monetary value required to complete the project. 
+    The Budget is never changed if scope of the work is not changed.</p>
 
 </text>
 
 <concepts>
-	<c3 name="process/cost/rom">ROM Estimate is based on preliminary Specification you provided</c3>
-	<c4 name="process/cost/budget">Budget is a final estimate of the project size and price</c4>
+    <c3 name="process/cost/rom">ROM Estimate is based on preliminary Specification you provided</c3>
+    <c4 name="process/cost/budget">Budget is a final estimate of the project size and price</c4>
 </concepts>
 
 </article>

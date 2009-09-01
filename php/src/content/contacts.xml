@@ -27,69 +27,69 @@
 
 <text>
 
-	<p>Call now and get immediate consultation for your software project.</p>
+    <p>Call now and get immediate consultation for your software project.</p>
 
-	<p>568, 9th Street South, 202<br/>
-	Naples, Florida, 34102<br/>
-	United States of America<br/>
-	sales@technoparkcorp.com<br/>
-	tel. (239) 935-5429</p>
+    <p>568, 9th Street South, 202<br/>
+    Naples, Florida, 34102<br/>
+    United States of America<br/>
+    sales@technoparkcorp.com<br/>
+    tel. (239) 935-5429</p>
 
-	<p>We respond to email inquiries in 24 hours or less. All online inquiries are tracked
-	with SalesForce.com automation software. Please, use the form below to expedite the
-	process and automate it.</p>
+    <p>We respond to email inquiries in 24 hours or less. All online inquiries are tracked
+    with SalesForce.com automation software. Please, use the form below to expedite the
+    process and automate it.</p>
 
-	<p><a href="http://www.salesforce.com" style="float:right;border:0;" title="Salesforce.com Logo"><png>//images/sfa</png></a>
-	Your request will be processed in the next 24 hours. 
-	All requests are automated with SalesForce.com software.</p>
+    <p><a href="http://www.salesforce.com" style="float:right;border:0;" title="Salesforce.com Logo"><png>//images/sfa</png></a>
+    Your request will be processed in the next 24 hours. 
+    All requests are automated with SalesForce.com software.</p>
 
-	<form action="https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="post">
-	<p>
-	<input type="hidden" name="oid" value="00D60000000779r" />
-	<input type="hidden" name="sfga" value="" />
-	<input type="hidden" name="retURL" value="${url:contacts}${arg:ref:sfa}" />
-	<input type="hidden" name="lead_source" value="Web site contact" />
-	First name:<br/>
-	<input maxlength="40" name="first_name" size="17" /><br/>
-	Last name:<br/>
-	<input maxlength="40" name="last_name" size="24" /><br/>
-	Email:<br/>
-	<input maxlength="80" name="email" size="30" /><br/>
-	<input maxlength="40" name="phone" size="23" type="hidden" />
-	Your question:<br/>
+    <form action="https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="post">
+    <p>
+    <input type="hidden" name="oid" value="00D60000000779r" />
+    <input type="hidden" name="sfga" value="" />
+    <input type="hidden" name="retURL" value="${url:contacts}${arg:ref:sfa}" />
+    <input type="hidden" name="lead_source" value="Web site contact" />
+    First name:<br/>
+    <input maxlength="40" name="first_name" size="17" /><br/>
+    Last name:<br/>
+    <input maxlength="40" name="last_name" size="24" /><br/>
+    Email:<br/>
+    <input maxlength="80" name="email" size="30" /><br/>
+    <input maxlength="40" name="phone" size="23" type="hidden" />
+    Your question:<br/>
 
-	<input name="description" size="50" /><br/>
+    <input name="description" size="50" /><br/>
 
-	<input type="submit" 
-		value="" 
-		style="background: transparent url(${img:/button_send.gif}) top left no-repeat; border: none; cursor: pointer; width: 65px; height: 22px;" />
+    <input type="submit" 
+        value="" 
+        style="background: transparent url(${img:/button_send.gif}) top left no-repeat; border: none; cursor: pointer; width: 65px; height: 22px;" />
 
-	</p></form>
+    </p></form>
 
-	<a href="http://www.truste.org/ivalidate.php?url=www.technoparkcorp.com&amp;sealid=101" 
-		style="float: left; padding-right: 20px; border:0;" ><png>//images/truste</png></a>
+    <a href="http://www.truste.org/ivalidate.php?url=www.technoparkcorp.com&amp;sealid=101" 
+        style="float: left; padding-right: 20px; border:0;" ><png>//images/truste</png></a>
 
-	<p>TechnoPark Corp is a licensee of the <a href="http://www.truste.org">TRUSTe</a> Web Privacy Seal Program.  
-	<a href="http://www.truste.org">TRUSTe</a> is an independent, non-profit organization whose mission is to 
-	build user's trust and confidence in the Internet by promoting the use 
-	of fair information practices.  This privacy statement covers the Web site 
-	www.technoparkcorp.com.  Because this Web site wants to demonstrate its commitment 
-	to your privacy, it has agreed to disclose its information practices and 
-	have its privacy practices reviewed for compliance by <a href="http://www.truste.org">TRUSTe</a>.</p>
+    <p>TechnoPark Corp is a licensee of the <a href="http://www.truste.org">TRUSTe</a> Web Privacy Seal Program.  
+    <a href="http://www.truste.org">TRUSTe</a> is an independent, non-profit organization whose mission is to 
+    build user's trust and confidence in the Internet by promoting the use 
+    of fair information practices.  This privacy statement covers the Web site 
+    www.technoparkcorp.com.  Because this Web site wants to demonstrate its commitment 
+    to your privacy, it has agreed to disclose its information practices and 
+    have its privacy practices reviewed for compliance by <a href="http://www.truste.org">TRUSTe</a>.</p>
 
-	<a href="http://www.bbbonline.org/cks.asp?id=10805219819" 
-		style="float: left; padding-right: 20px; border:0;"><png>//images/bbb</png></a>
+    <a href="http://www.bbbonline.org/cks.asp?id=10805219819" 
+        style="float: left; padding-right: 20px; border:0;"><png>//images/bbb</png></a>
 
-	<p>TechnoPark Corp. is a proud holder of BBB Online Seal. The BBBOnLine trustmark confirms 
-	a company is an accredited business in the BBB where they are based, has 
-	met truth in advertising guidelines, discloses information about the business and its 
-	policies, follows basic privacy and security practices, and responds appropriately 
-	to problems that arise.</p>
+    <p>TechnoPark Corp. is a proud holder of BBB Online Seal. The BBBOnLine trustmark confirms 
+    a company is an accredited business in the BBB where they are based, has 
+    met truth in advertising guidelines, discloses information about the business and its 
+    policies, follows basic privacy and security practices, and responds appropriately 
+    to problems that arise.</p>
 
 </text>
 
 <images>
-	<truste>
+    <truste>
 MB5!.1PT*&amp;@H````-24A$4@```$0```!?&quot;`,```!FW)&#039;8````&quot;7!(67,```L3
 M```+$P$`FIP8```*3VE#0U!0:&amp;]T;W-H;W`@24-#(&#039;!R;V9I;&amp;4``&#039;C:G5-G
 M5%/I%CWWWO1&quot;2XB`E$MO4A4((%)&quot;BX`4D28J(0D02H@AH=D54&lt;$1144$&amp;\B@
@@ -223,9 +223,9 @@ M&#039;&quot;G:[,YHU8A/-K:UVC.E2;5+HSOY@]&quot;4NX8_GK@:@&#039;ZS+\3E`&quot;P;/G
 M&gt;7E[UU[6$K\X900S!19\^UIYRN3?#8F\^/7)Q_I!4B9`/#F-#N_7;UC@NWLJ
 F&quot;7?&#039;MOUX8*9I5[;_DV7_GP$`HJR`BB!@)@4`````245.1*Y&quot;8((`
 `
-	</truste>
+    </truste>
 
-	<bbb>
+    <bbb>
 MB5!.1PT*&amp;@H````-24A$4@```#P```!@&quot;`,```!V;N&#039;,````&quot;7!(67,```L3
 M```+$P$`FIP8```*3VE#0U!0:&amp;]T;W-H;W`@24-#(&#039;!R;V9I;&amp;4``&#039;C:G5-G
 M5%/I%CWWWO1&quot;2XB`E$MO4A4((%)&quot;BX`4D28J(0D02H@AH=D54&lt;$1144$&amp;\B@
@@ -334,9 +334,9 @@ M.X)RP[B\1.+V?I,`&lt;JN!\ET#[T(JD#WE?)$&quot;4IP9^GRZ5&#039;FC#J._2?X`H^P&gt;
 M4/8K&lt;PS?6H4&amp;&quot;$&gt;+%K$;Q2&quot;.Z?=?QG&lt;OI93)!(@&#039;\X)L+#JA\*L&#039;O57/RKZY
 B82&lt;5H`?6S].(*S7^&amp;P!JE,!PIP.XN0````!)14Y$KD)@@@``
 `
-	</bbb>
+    </bbb>
 
-	<sfa>
+    <sfa>
 MB5!.1PT*&amp;@H````-24A$4@```&#039;,````D&quot;`,```&quot;-%O6;````&quot;7!(67,```L3
 M```+$P$`FIP8```*3VE#0U!0:&amp;]T;W-H;W`@24-#(&#039;!R;V9I;&amp;4``&#039;C:G5-G
 M5%/I%CWWWO1&quot;2XB`E$MO4A4((%)&quot;BX`4D28J(0D02H@AH=D54&lt;$1144$&amp;\B@
@@ -444,7 +444,7 @@ M=W2^A.YH&gt;1UYU*=OOF]%K,O.PZJ94_.F^\1GA&amp;=2GM&#039;8X_ZW9.;)3Q&lt;W5;4&#039
 M$?,!&amp;R&quot;SZF-ACIX)H&gt;D/_Q:0`:!HR?P_\$8+Q]&lt;?\UM&amp;;ICD+6FOBK-*YF7&amp;
 @-&lt;SUX0G_TW^._AH`J_DVF&amp;-=3@P`````245.1*Y&quot;8((`
 `
-	</sfa>
+    </sfa>
 
 </images>
 

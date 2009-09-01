@@ -26,69 +26,69 @@
 <next>process/communication</next>
 
 <description>
-	Risk management is a core component of our project management
-	methodology. Some risks are transfered to customer during inception phase.
+    Risk management is a core component of our project management
+    methodology. Some risks are transfered to customer during inception phase.
 </description>
 
 <keywords>
-	software risk,
-	risk mitigation,
-	risk transfer,
-	risk identification, 
-	risk identification and mitigation,
-	risk list,
-	inception phase,
-	risk strategy
+    software risk,
+    risk mitigation,
+    risk transfer,
+    risk identification, 
+    risk identification and mitigation,
+    risk list,
+    inception phase,
+    risk strategy
 </keywords>
 
 <term>risk</term>
 
 <text>
 
-	<p>A Risk is a possible event that may impact the outcome of a project.</p>
-	
-	<p>All Risks are identified during the <a href="${url:process/time/inception}">Inception Phase</a> and a  
-	<a href="${url:process/risk/risklist}">Risk List</a> is developed which includes mitigations and contingencies
-	plans for each Risk. 
-	Usually, a Risk List identifies up to 20 areas of concern.</p>
+    <p>A Risk is a possible event that may impact the outcome of a project.</p>
+    
+    <p>All Risks are identified during the <a href="${url:process/time/inception}">Inception Phase</a> and a  
+    <a href="${url:process/risk/risklist}">Risk List</a> is developed which includes mitigations and contingencies
+    plans for each Risk. 
+    Usually, a Risk List identifies up to 20 areas of concern.</p>
 
-	<p align="center"><tikz>
+    <p align="center"><tikz>
 \begin{tikzpicture}
-	[node distance = 2.5cm, 
-	auto, thick]
+    [node distance = 2.5cm, 
+    auto, thick]
 
-	\node [block, text width=3.3cm] (identification) {Risk identification};
-	\node [block, below of=identification] (riskplans) {Development of risk plans};
-	\node [block, text width=3.5cm, below of=riskplans] (strategies) {Customer selects Risk Strategies};
-	\node [block, text width=5cm, below of=strategies] (changes) {Changes to Scope, Cost and Specification};
-	\node [choice, text width=2cm, below=1cm of changes] (lco) {LCO Milestone};
+    \node [block, text width=3.3cm] (identification) {Risk identification};
+    \node [block, below of=identification] (riskplans) {Development of risk plans};
+    \node [block, text width=3.5cm, below of=riskplans] (strategies) {Customer selects Risk Strategies};
+    \node [block, text width=5cm, below of=strategies] (changes) {Changes to Scope, Cost and Specification};
+    \node [choice, text width=2cm, below=1cm of changes] (lco) {LCO Milestone};
 
-	\path [line] (identification) -- (riskplans);
-	\path [line] (riskplans) -- (strategies);
-	\path [line] (strategies) -- (changes);
-	\path [line] (changes) -- (lco);
+    \path [line] (identification) -- (riskplans);
+    \path [line] (riskplans) -- (strategies);
+    \path [line] (strategies) -- (changes);
+    \path [line] (changes) -- (lco);
 
-	\node [draw=tpcBlue, dashed, fit=(identification) (riskplans) (strategies) (changes)] (group) {};
+    \node [draw=tpcBlue, dashed, fit=(identification) (riskplans) (strategies) (changes)] (group) {};
 
-	\node [right=1cm of group, text width=3cm, inner sep=5mm] 
-		{This activites are performed first time during Inception Phase, and later on each Iteration};
+    \node [right=1cm of group, text width=3cm, inner sep=5mm] 
+        {This activites are performed first time during Inception Phase, and later on each Iteration};
 \end{tikzpicture}
-	</tikz></p>
+    </tikz></p>
 
-	<p>You select a strategy for addressing each Risk and the <a href="${url:process/scope}">Scope</a>, 
-	<a href="${url:process/cost}">Cost</a>, 
-	and <a href="${url:process/time/schedule}">Schedule</a> are adapted according to Risk response plans.</p>
+    <p>You select a strategy for addressing each Risk and the <a href="${url:process/scope}">Scope</a>, 
+    <a href="${url:process/cost}">Cost</a>, 
+    and <a href="${url:process/time/schedule}">Schedule</a> are adapted according to Risk response plans.</p>
 
-	<p>Besides this formal procedure of Risk Strategies acceptance we 
-	conduct a full-scale risk management in each <a href="${url:process/time/iteration}">Iteration</a>, including
-	risk identification, analysis, and response planning.</p>
+    <p>Besides this formal procedure of Risk Strategies acceptance we 
+    conduct a full-scale risk management in each <a href="${url:process/time/iteration}">Iteration</a>, including
+    risk identification, analysis, and response planning.</p>
 
 </text>
 
 <concepts>
-	<c1 name="process/risk/risk">Risk is the best manager for project team, Risk leads the team</c1>
-	<c3 name="process/risk/risklist">Risks are maintained, sorted and prioritized in Risk List</c3>
-	<c5 name="process/cost">Risk response plans increase project cost while increasing success probability</c5>
+    <c1 name="process/risk/risk">Risk is the best manager for project team, Risk leads the team</c1>
+    <c3 name="process/risk/risklist">Risks are maintained, sorted and prioritized in Risk List</c3>
+    <c5 name="process/cost">Risk response plans increase project cost while increasing success probability</c5>
 </concepts>
 
 </article>

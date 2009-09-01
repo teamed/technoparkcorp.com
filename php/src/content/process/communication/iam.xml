@@ -28,46 +28,46 @@
 <next>process/time</next>
 
 <description>
-	Incremental delivery of product guarantees customer satisfaction
+    Incremental delivery of product guarantees customer satisfaction
 </description>
 
 <keywords>
-	incremental delivery,
-	requirements acceptance,
-	iteration acceptance meeting,
-	RUP iteration acceptance
+    incremental delivery,
+    requirements acceptance,
+    iteration acceptance meeting,
+    RUP iteration acceptance
 </keywords>
 
 <text>
 
-	<p><a href="${url:process/communication/incremental}">Incremental delivery</a> means 
-	that a software product is created, <a href="${url:process/quality}">tested</a> and delivered to you
-	in a number of builds. Each build has a new portion of functionality. A new build
-	is delivered by the end of each <a href="${url:process/time/iteration}">Iteration</a>.</p>
+    <p><a href="${url:process/communication/incremental}">Incremental delivery</a> means 
+    that a software product is created, <a href="${url:process/quality}">tested</a> and delivered to you
+    in a number of builds. Each build has a new portion of functionality. A new build
+    is delivered by the end of each <a href="${url:process/time/iteration}">Iteration</a>.</p>
 
-	<p>The Iteration Acceptance Meeting is an online meeting (20-40 minutes) where the project manager
-	presents Iteration results and explains them. You review the results,
-	and confirm what new functionality was accepted during Iteration (and what was not).</p>
+    <p>The Iteration Acceptance Meeting is an online meeting (20-40 minutes) where the project manager
+    presents Iteration results and explains them. You review the results,
+    and confirm what new functionality was accepted during Iteration (and what was not).</p>
 
-	<p>Typical agenda of Iteration Acceptance Meeting:</p>
+    <p>Typical agenda of Iteration Acceptance Meeting:</p>
 
-	<ul>
-		<li>What was the plan for Iteration</li>
-		<li>What was completed and accepted by the customer</li>
-		<li>What failed and why</li>
-		<li>Current project <a href="${url:process/risk}">risks</a> and <a href="${url:process/risk/strategy}">mitigation plans</a></li>
-		<li>Earned Value Analysis data (<a href="${url:process/time/spi}">SPI</a>, etc.)</li>
-	</ul>
+    <ul>
+        <li>What was the plan for Iteration</li>
+        <li>What was completed and accepted by the customer</li>
+        <li>What failed and why</li>
+        <li>Current project <a href="${url:process/risk}">risks</a> and <a href="${url:process/risk/strategy}">mitigation plans</a></li>
+        <li>Earned Value Analysis data (<a href="${url:process/time/spi}">SPI</a>, etc.)</li>
+    </ul>
 
-	<p>The Iteration Acceptance Meeting is the most important activity because the project team 
-	receives your feedback about project results.</p>
+    <p>The Iteration Acceptance Meeting is the most important activity because the project team 
+    receives your feedback about project results.</p>
 
 </text>
 
 <concepts>
-	<c1 name="process/time/schedule">Schedule is a coarse-grained project plan developed by the project manager</c1>
-	<c2 name="process/time/iteration">Iteration is detailed project plan of one time frame</c2>
-	<c3 name="process/risk">Risks are communicated with you during the whole project lifecycle</c3>
+    <c1 name="process/time/schedule">Schedule is a coarse-grained project plan developed by the project manager</c1>
+    <c2 name="process/time/iteration">Iteration is detailed project plan of one time frame</c2>
+    <c3 name="process/risk">Risks are communicated with you during the whole project lifecycle</c3>
 </concepts>
 
 </article>

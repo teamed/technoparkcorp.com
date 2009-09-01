@@ -35,34 +35,34 @@
 
 <text>
 
-	<p>Software development is very tightly connected with intellectual property that is
-	created, managed, and transferred during project execution. We pay serious attention
-	to such property, whether it is owned by you or by us.</p>
+    <p>Software development is very tightly connected with intellectual property that is
+    created, managed, and transferred during project execution. We pay serious attention
+    to such property, whether it is owned by you or by us.</p>
 
-	<p>A <a href="${url:process/ipr/nda}">Non-Disclosure Agreement (NDA)</a> is signed prior to any communication on the software project. 
-	The NDA states that any confidential information disclosed by you is to 
-	be protected and we have no rights of republishing or redistributing any such information.</p>
+    <p>A <a href="${url:process/ipr/nda}">Non-Disclosure Agreement (NDA)</a> is signed prior to any communication on the software project. 
+    The NDA states that any confidential information disclosed by you is to 
+    be protected and we have no rights of republishing or redistributing any such information.</p>
 
-	<p>Software development contracts limit our ability to transfer or disclose intellectual
-	property created during project execution. We are incorporated in the United States and
-	work according to 
-	<a href="http://www.copyright.gov/title17/">Copyright Law of the United States of America</a> - 
-	our services are titled in the contract as
-	<a href="${url:process/ipr/law}">"work made for hire"</a>.</p>
+    <p>Software development contracts limit our ability to transfer or disclose intellectual
+    property created during project execution. We are incorporated in the United States and
+    work according to 
+    <a href="http://www.copyright.gov/title17/">Copyright Law of the United States of America</a> - 
+    our services are titled in the contract as
+    <a href="${url:process/ipr/law}">"work made for hire"</a>.</p>
 
-	<p>We protect Confidential Information in our offices and servers by means of a strict
-	internal <a href="${url:process/ipr/security}">Information Security Policy</a> designed in 
-	compliance with ISO 27001.</p>
+    <p>We protect Confidential Information in our offices and servers by means of a strict
+    internal <a href="${url:process/ipr/security}">Information Security Policy</a> designed in 
+    compliance with ISO 27001.</p>
 
-	<p>We are a proud holder of <a href="${url:about/privacypolicy}">TRUSTe Online Privacy Seal</a>
-	and a member of <a href="http://www.bbb.org">Better Business Bureau (BBB)</a>.</p>
+    <p>We are a proud holder of <a href="${url:about/privacypolicy}">TRUSTe Online Privacy Seal</a>
+    and a member of <a href="http://www.bbb.org">Better Business Bureau (BBB)</a>.</p>
 
 </text>
 
 <concepts>
-	<c1 name="process/ipr/nda">NDA protects both you and us against information disclosure</c1>
-	<c2 name="process/ipr/law">US Copyright Law guarantees intellectual property rights delivery to you</c2>
-	<c3 name="process/ipr/security">Physical and documentable means exist to protect data on servers and in offices</c3>
+    <c1 name="process/ipr/nda">NDA protects both you and us against information disclosure</c1>
+    <c2 name="process/ipr/law">US Copyright Law guarantees intellectual property rights delivery to you</c2>
+    <c3 name="process/ipr/security">Physical and documentable means exist to protect data on servers and in offices</c3>
 </concepts>
 
 </article>
