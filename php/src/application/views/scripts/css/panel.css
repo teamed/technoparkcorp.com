@@ -144,17 +144,21 @@ div.header {
         color: <?=Model_Colors::WHITE?>;
     }
 
-        div.header div.path span {
-            cursor: pointer;
+        div.header div.path span.page {
         }
 
-            div.header div.path span form {
+            div.header div.path span.page form {
                 display: inline;
             }
 
-                div.header div.path span form select {
+                div.header div.path span.page form select {
                     font-size: 1.1em;
                 }
+
+            div.header div.path span.page span {
+                cursor: pointer;
+                margin-left: 0px;
+            }
 
     /* nice image on top right corner */
     div.header div.r1 {

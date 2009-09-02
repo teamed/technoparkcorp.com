@@ -79,9 +79,10 @@ class Model_Pages extends Zend_Navigation {
      * Resolve path by document name
      *
      * @param string Document name
+     * @param array List of INIT scripts, will be filled
      * @return string PHTML absolute path name
      */
-    public static function resolvePath($doc) {
+    public static function resolvePath($doc, array &$scripts = array()) {
         $path = APPLICATION_PATH . '/pages';
 
         foreach (explode('/', $doc . '.phtml') as $segment) {
@@ -91,6 +92,9 @@ class Model_Pages extends Zend_Navigation {
                 $segment = preg_replace('/^.*?(\.phtml)?$/', '_any${1}', $segment);
 
             $path .= $segment;
+
+            if (file_exists($path . '/_init.phtml'))
+                $scripts[] = $path . '/_init.phtml';
         }
 
         if (!file_exists($path))

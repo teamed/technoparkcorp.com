@@ -36,9 +36,7 @@ abstract class Model_Wobot extends FaZend_StdObject {
     public static function retrieveAll() {
         $wobots = array();
         foreach (array('ABC', 'CDE') as $project) {
-            $wobot = self::factory('PM');
-            $wobot->project = $project;
-            $wobots[] = $wobot;
+            $wobots[] = self::factory('PM.' . $project);
         }
         return $wobots;
     }
@@ -46,12 +44,14 @@ abstract class Model_Wobot extends FaZend_StdObject {
     /**
      * Factory method to create new specific wobot
      *
-     * @param string Wobot type
+     * @param string Wobot name including context, like PM.ABC
      * @return Model_Wobot
      */
-    public static function factory($type) {
-        $className = 'Model_Wobot_' . $type;
-        return new $className();
+    public static function factory($name) {
+        $exp = explode('.', $name);
+
+        $className = 'Model_Wobot_' . $exp[0];
+        return new $className(isset($exp[1]) ? $exp[1] : null);
     }
 
     /**

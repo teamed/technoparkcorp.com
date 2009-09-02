@@ -89,4 +89,19 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history {
 
     }
 
+    /**
+     * Retrieve all decisions for this particular wobot and context
+     * 
+     * @param Model_Wobot Wobot to work with
+     * @return Model_Decision_History[]
+     */
+    public static function retrieveByWobot(Model_Wobot $wobot) {
+        return self::retrieve()
+            ->where('wobot = ?', $wobot->name)
+            ->where('context = ?', $wobot->context)
+            ->order('created DESC')
+            ->setRowClass('Model_Decision_History')
+            ->fetchAll();
+    }
+
 }

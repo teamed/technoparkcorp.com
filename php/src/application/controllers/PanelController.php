@@ -54,11 +54,21 @@ class PanelController extends FaZend_Controller_Action {
             return $this->_forward('restrict', null, null, array('msg'=>'Document "' . $doc . '" is not available for you'));
 
         // convert document name into absolute PATH
-        $path = Model_Pages::resolvePath($doc);
+        $scripts = array();
+        $path = Model_Pages::resolvePath($doc, $scripts);
+
+        /**
+         *  @todo this should be improved
+         */
+        $this->view->document = '';
+        foreach ($scripts as $script) {
+            $view->addScriptPath(dirname($script));
+            $this->view->document .= $view->render(pathinfo($script, PATHINFO_BASENAME));
+        }
 
         // reconfigure VIEW in order to render this particular document file
         $view->addScriptPath(dirname($path));
-        $this->view->document = $view->render(pathinfo($path, PATHINFO_BASENAME));
+        $this->view->document .= $view->render(pathinfo($path, PATHINFO_BASENAME));
 
     }
 

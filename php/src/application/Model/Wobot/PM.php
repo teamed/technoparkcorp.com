@@ -30,7 +30,16 @@ class Model_Wobot_PM extends Model_Wobot {
      *
      * @var string
      */
-    public $project;
+    protected $_project;
+
+    /**
+     * Initializer
+     *
+     * @return void
+     */
+    protected function __construct($context = null) {
+        $this->_project = $context;
+    }
 
     /**
      * Calculate context
@@ -38,7 +47,7 @@ class Model_Wobot_PM extends Model_Wobot {
      * @return string
      */
     protected function _getContext() {
-        return (string)$this->project;
+        return (string)$this->_project;
     }
 
 

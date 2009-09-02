@@ -32,9 +32,9 @@ class WobotTest extends FaZend_Test_TestCase {
     }
 
     public function testFactoryMethodWorks() {
-        $this->wobot = Model_Wobot::factory('PM');
+        $this->wobot = Model_Wobot::factory('PM.ABC');
         $this->assertEquals('PM', $this->wobot->name);
-        $this->assertEquals('', $this->wobot->context);
+        $this->assertEquals('ABC', $this->wobot->context);
     }
 
     public function testWobotCanBeExecuted() {
