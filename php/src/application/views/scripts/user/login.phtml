@@ -12,7 +12,9 @@
 <? else: ?>
 
     <span>
-        <a href="<?=$this->url(array('action'=>'settings'), 'user', true)?>" title="Your account settings (password, email)">settings</a> &middot;
-        <a href="<?=$this->url(array('action'=>'logout'), 'user', true)?>">logout</a></span>
+        <a href="<?=$this->url(array('action'=>'settings'), 'user', true)?>"
+           title="Your account settings (password, email)"><?=$this->escape(Model_User::me()->email)?></a> &middot;
+        <a href="<?=$this->url(array('action'=>'logout'), 'user', true)?>"
+           title="Log out">logout</a></span>
 
 <? endif; ?>

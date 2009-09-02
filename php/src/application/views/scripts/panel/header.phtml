@@ -12,7 +12,10 @@
 
     <? $id = 'header_' . md5($page->title); ?>
 
-    <span id="<?=$id?>" class="page" onclick="selector($('#<?=$id?>'), '<?=$page->title?>')"><?=$page->label?></span>
+    <span id="<?=$id?>"
+          class="page"
+          title="click to change"
+          onclick="selector($('#<?=$id?>'), '<?=$page->title?>')"><?=$page->label?></span>
 
 <? endforeach; ?>
 

@@ -18,6 +18,8 @@
 
         <div class="path">
             <?=$this->navigation(Model_Pages::getInstance($this->doc))
+                ->setAcl(Model_Pages::getInstance()->getAcl())
+                ->setRole(Model_User::me()->email)
                 ->breadcrumbs()
                 ->setSeparator(' / ')
                 ->setMinDepth(0)

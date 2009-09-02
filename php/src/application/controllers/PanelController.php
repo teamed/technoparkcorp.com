@@ -44,10 +44,14 @@ class PanelController extends FaZend_Controller_Action {
     public function indexAction() {
 
         if (!Model_User::isLoggedIn())
-            return $this->_forward('restrict');
+            return $this->_forward('restrict', null, null, array('msg'=>'You are not logged in'));
 
-        $view = new Zend_View();
+        $view = clone $this->view;
         $doc = $view->doc = $this->view->doc = $this->_getParam('doc');
+
+        // permission check
+        if (!Model_Pages::getInstance()->isAllowed(Model_User::me()->email, $doc))
+            return $this->_forward('restrict', null, null, array('msg'=>'Document "' . $doc . '" is not available for you'));
 
         // convert document name into absolute PATH
         $path = Model_Pages::resolvePath($doc);
@@ -64,7 +68,8 @@ class PanelController extends FaZend_Controller_Action {
      * @return void
      */
     public function restrictAction() {
-
+        $this->view->message = ($this->_hasParam('msg') ? 
+            $this->_getParam('msg') : false);
     }
 
     /**
@@ -75,12 +80,16 @@ class PanelController extends FaZend_Controller_Action {
     public function optsAction() {
 
         $title = $this->getRequest()->getPost('title');
+        $acl = Model_Pages::getInstance()->getAcl();
 
         $current = Model_Pages::getInstance()->findBy('title', $title);
         $list = array();
 
-        foreach ($current->parent->getPages() as $page)
+        foreach ($current->parent->getPages() as $page) {
+            if (!$acl->isAllowed(Model_User::me()->email, $page->resource))
+                continue;
             $list[$page->title] = $page->label;
+        }
 
         $this->_returnJSON($list);
 
@@ -94,7 +103,7 @@ class PanelController extends FaZend_Controller_Action {
     public function redirectorAction() {
 
         $doc = $this->getRequest()->getPost('document');
-        $this->_forward('index', null, null, array('doc'=>$doc));
+        $this->_helper->redirector->gotoRoute(array('doc'=>$doc), 'panel', true, false);
 
     }
 

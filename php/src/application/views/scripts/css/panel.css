@@ -189,6 +189,7 @@ div.wrapper {
     margin-top: 60px;
     padding: 30px;
     width: 814px;
+    font-size: 1.1em;
 }
     
     div.wrapper ul.errors {
@@ -205,18 +206,14 @@ div.wrapper {
     div.wrapper a {
         text-decoration: none;
         cursor: pointer;
-        color: <?=Model_Colors::BLACK?>;
+        color: <?=Model_Colors::BLUE?>;
         background-color: inherit;
-        border-bottom: 1px <?=Model_Colors::BLACK?> dotted;
+        border-bottom: 1px <?=Model_Colors::BLUE?> dotted;
     }
         
-        div.wrapper a:visited {
-            color: <?=Model_Colors::BLACK?>;
-        }
-
         div.wrapper a:hover {
-            color: <?=Model_Colors::BLUE?>;
-            background-color: inherit;
+            color: <?=Model_Colors::WHITE?>;
+            background-color: <?=Model_Colors::BLUE?>;
         }
 
     div.wrapper p {
@@ -224,6 +221,25 @@ div.wrapper {
         padding-bottom: 3px;
         width: 600px;
     }
+
+    div.wrapper table.icon {
+        display: inline-block;
+    }
+
+        div.wrapper table.icon td {
+            width: 5px;
+            height: 5px;
+            padding: 0;
+            margin: 0;
+        }
+
+            div.wrapper table.icon td.i1 {
+                background-color: <?=Model_Colors::BLUE?>;
+            }
+
+            div.wrapper table.icon td.i0 {
+                background-color: <?=Model_Colors::WHITE?>;
+            }
 
 /* page finisher */
 div.btm {

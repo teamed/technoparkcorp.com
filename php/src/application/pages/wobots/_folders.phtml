@@ -1,2 +1,6 @@
 
-PM.phtml
+<? foreach (Model_Wobot::retrieveAll() as $wobot): ?>
+
+    <?=$wobot?>.phtml
+
+<? endforeach; ?>

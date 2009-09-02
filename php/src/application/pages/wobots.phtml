@@ -1,1 +1,13 @@
-<p>list of projects</p>
+<p>Full list of wobots in the system (working now):</p>
+
+<p>
+<? foreach (Model_Wobot::retrieveAll() as $wobot): ?>
+
+    <div style="display:inline-block; margin-right: 20px;">
+        <?=$this->icon('wobot')?><br/>
+        <a href="<?=$this->panelUrl('wobots/' . $wobot)?>"><?=$wobot?></a>
+    </div>
+
+<? endforeach; ?>
+</p>
+

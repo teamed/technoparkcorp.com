@@ -55,6 +55,15 @@ abstract class Model_Wobot extends FaZend_StdObject {
     }
 
     /**
+     * Text name of the wobot
+     *
+     * @return string
+     */
+    protected function __toString() {
+        return $this->name . '.' . $this->context;
+    }
+
+    /**
      * Calculate name of the wobot
      *
      * @return string
