@@ -19,10 +19,17 @@
  */
 
 /**
- * One user
+ * Collection of wobots
  *
- * @package Model
+ * @package Artifacts
  */
-class Model_User extends Shared_User {
+class theWobotRegistry extends Model_Artifact {
+
+    /**
+     * List of wobots
+     *
+     * @var theWobot[]
+     */
+    public $wobots;
 
 }

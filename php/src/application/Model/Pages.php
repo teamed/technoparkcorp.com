@@ -121,6 +121,9 @@ class Model_Pages extends Zend_Navigation {
      * @return boolean
      */
     public function isAllowed($email, $doc) {
+        if (!$this->getAcl()->has($doc))
+            return false;
+
         // recursively check parent
         if (strpos($doc, '/') !== false) {
             if (!$this->isAllowed($email, substr($doc, 0, strrpos($doc, '/'))))

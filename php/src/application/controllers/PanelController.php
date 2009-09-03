@@ -32,6 +32,30 @@ class PanelController extends FaZend_Controller_Action {
      */
     public function preDispatch() {
 
+        $session = new Zend_Session_Namespace('panel2');
+        if ($session->user) {
+
+            Model_User::setCurrentUser($session->user);
+            
+        } else {
+
+            $adapter = new Model_Auth_Adapter(array(
+                'accept_schemes' => 'basic',
+                'realm' => 'thePanel 2.0'));
+
+            $adapter->setBasicResolver(new Model_Auth_Resolver());
+            $adapter->setRequest($this->getRequest());
+            $adapter->setResponse($this->getResponse());
+
+            $result = $adapter->authenticate();
+            if (!$result->isValid())
+                return $this->_forward('index', 'static', null, array('page'=>'system/404'));
+
+            $identity = $result->getIdentity();
+            Model_User::setCurrentUser($identity['username']);
+            $session->user = $identity['username'];
+        }
+
         Zend_Layout::getMvcInstance()->setLayout('panel');
 
     }

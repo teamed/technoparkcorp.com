@@ -19,10 +19,27 @@
  */
 
 /**
- * One user
+ * HTTP access adapter
  *
  * @package Model
  */
-class Model_User extends Shared_User {
+class Model_Auth_Adapter extends Zend_Auth_Adapter_Http {
+
+    /**
+     * Basic Authentication
+     *
+     * @param  string $header Client's Authorization header
+     * @throws Zend_Auth_Adapter_Exception
+     * @return Zend_Auth_Result
+     */
+    protected function _basicAuth($header) {
+
+        do {
+            $authResult = parent::_basicAuth($header);
+        } while (!$authResult->isValid() && $this->getBasicResolver()->hasMore());
+
+        return $authResult;
+
+    }
 
 }

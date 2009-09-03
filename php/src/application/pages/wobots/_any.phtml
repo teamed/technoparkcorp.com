@@ -1,5 +1,6 @@
 
-Wobot: <?=$this->wobot?>
+<?=$this->icon('wobot')?><br/>
+<?=$this->wobot?>
 
 <? FaZend_Paginator::addPaginator(Model_Decision_History::retrieveByWobot($this->wobot),
     $this, '1'); ?>
@@ -11,6 +12,8 @@ Wobot: <?=$this->wobot?>
     ->hideColumn('context')
 
     ->setParser('hash', create_function('$hash', 'return substr($hash, 0, strrpos($hash, "/"));'))
+
+    ->addOption('protocol', 'id', 'id', array('controller'=>'panel', 'action'=>'index', 'doc'=>'protocol'))
 
     ->setPaginator($this->paginator)
     ?>

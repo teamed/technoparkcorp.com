@@ -5,7 +5,7 @@
     $this->headTitle('thePanel');
 
 ?><?=$this->doctype()?>
-<html xmlns="http://www.w3.org/1999/xhtml"> 
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>  
     <?=$this->headTitle()?>
     <?=$this->headMeta()?>
@@ -28,9 +28,8 @@
         </div>
 
         <div class="logo">
-            <span class="logo">thePanel<sup style="font-size: 0.3em;">TM</sup> v2.0</span>
-
-            <?=$this->action('login', 'user', 'fazend')?>
+            <span class="logo">thePanel<sup style="font-size: 0.3em;">TM</sup> v2.0</span><br/>
+            <?=$this->escape(Model_User::me()->email)?>
         </div>
 
         <div class="r1"></div>
