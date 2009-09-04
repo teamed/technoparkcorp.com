@@ -17,8 +17,7 @@
 /**
  * Panel URL builder
  *
- * @see http://naneau.nl/2007/07/08/use-the-url-view-helper-please/
- * @package FaZend 
+ * @package helpers
  */
 class Helper_PanelUrl extends FaZend_View_Helper {
 
