@@ -63,14 +63,14 @@ class PanelController extends FaZend_Controller_Action {
      */
     public function indexAction() {
 
-        if (!Model_User::isLoggedIn())
-            return $this->_forward('restrict', null, null, array('msg'=>'You are not logged in'));
-
         $view = clone $this->view;
         $doc = $view->doc = $this->view->doc = $this->_getParam('doc');
 
         // later...
         //$view->root = FaZend_POS::root();
+
+        // configure it
+        Model_Pages::setDocument($doc);
 
         // permission check
         if (!Model_Pages::getInstance()->isAllowed(Model_User::me()->email, $doc))

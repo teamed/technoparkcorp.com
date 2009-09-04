@@ -17,7 +17,7 @@
     <div class="header">
 
         <div class="path">
-            <?=$this->navigation(Model_Pages::getInstance($this->doc))
+            <?=$this->navigation(Model_Pages::getInstance())
                 ->setAcl(Model_Pages::getInstance()->getAcl())
                 ->setRole(Model_User::me()->email)
                 ->breadcrumbs()

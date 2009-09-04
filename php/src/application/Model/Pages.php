@@ -36,6 +36,13 @@ class Model_Pages extends Zend_Navigation {
     protected static $_instance;
 
     /**
+     * Doc name
+     *
+     * @var string
+     */
+    protected static $_doc;
+
+    /**
      * Access Control List
      *
      * @var Zend_Acl
@@ -52,25 +59,35 @@ class Model_Pages extends Zend_Navigation {
 
         $this->_acl = new Zend_Acl();
         $this->_acl->deny();
-        
+
+        // initialize the entire structure
         $this->_init($this, '.');
+
+        // select active thread
+        $active = $this->findBy('title', self::$_doc);
+        if ($active)
+            $active->setActive();
+
+    }
+
+    /**
+     * Set the name of current document
+     *
+     * @param string Document name
+     * @return void
+     */
+    public static function setDocument($doc) {
+        self::$_doc = $doc;
     }
 
     /**
      * Instance getter
      *
-     * @param string Active document name
      * @return Model_Pages
      */
-    public static function getInstance($doc = null) {
+    public static function getInstance() {
         if (!isset(self::$_instance))
             self::$_instance = new Model_Pages();
-
-        if (!is_null($doc)) {
-            $active = self::$_instance->findBy('title', $doc);
-            if ($active)
-                $active->setActive();
-        }
 
         return self::$_instance;
     }
@@ -147,6 +164,13 @@ class Model_Pages extends Zend_Navigation {
             $files = explode("\n", $this->_parse($fullPath . '/_folders.phtml'));
         } else {
             $files = scandir($fullPath);
+    
+            // maybe this document is in active document, but is absent in files
+            if (file_exists($fullPath . '/_any.phtml') &&
+                (strpos(self::$_doc, $container->title) === 0)) {
+                $name = substr(self::$_doc, strlen($container->title)+1);
+                $files[] = (strpos($name, '/') === false ? $name : substr($name, 0, strpos($name, '/'))) . '.phtml';
+            }
         }
 
         $prefix = (($container instanceof Zend_Navigation_Page_Uri) ?

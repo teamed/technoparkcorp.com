@@ -195,6 +195,10 @@ div.wrapper {
     width: 814px;
     font-size: 1.1em;
 }
+
+    div.wrapper ul {
+        margin-left: 20px;
+    }
     
     div.wrapper ul.errors {
         color: <?=Model_Colors::RED?>;
