@@ -47,7 +47,8 @@
     </div>
 
     <div class="btm">
-        <span>(c) <?=date('Y')?> TechnoPark Corp., rev.<?=FaZend_Revision::get()?>, <?=$this->pageLoadTime()?></span>
+        <span>(c) <?=date('Y')?> TechnoPark Corp., rev.<?=FaZend_Revision::get()?>, <?=$this->pageLoadTime()?><br/>
+        your IP: <?=$_SERVER['REMOTE_ADDR']?></span>
     </div>
 
     <?=$this->headScript() ?>

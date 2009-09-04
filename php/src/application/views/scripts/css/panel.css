@@ -255,11 +255,12 @@ div.btm {
     line-height: 1.4em; 
     clear: both;
     font-size: 0.9em; 
-    margin-left: 30px
+    margin-left: 30px;
+    display: inline-block;
+    border-top: 2px <?=Model_Colors::GRAY?> solid;
 }
 
     div.btm span {
         color: gray;
         padding-top: 3px; 
-        border-top: 2px <?=Model_Colors::GRAY?> solid;
     }
