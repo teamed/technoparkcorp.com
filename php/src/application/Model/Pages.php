@@ -153,14 +153,28 @@ class Model_Pages extends Zend_Navigation {
             ($container->title . '/') : false);
 
         // search all pages in the given directory
-        foreach ($files as $file) {
+        foreach ($files as $id=>$file) {
 
             $file = trim($file, " \t\n\r");
 
-            $matches = array();
-            if (!preg_match('/^([a-zA-Z0-9\.]+)\.phtml$/', $file, $matches)) {
+            // ignore empty lines
+            if (!$file)
                 continue;
-            }
+                
+            // ignore dirs and special files
+            if (($file[0] == '.') || ($file[0] == '_'))
+                continue;
+
+            // ignore directories
+            if (file_exists($fullPath . '/' . $file) && is_dir($fullPath . '/' . $file))
+                continue;
+
+            // notify about unknown format
+            $matches = array();
+            if (!preg_match('/^([a-zA-Z0-9\.]+)\.phtml$/', $file, $matches))
+                FaZend_Exception::raise('Model_Pages_IncorrectFormat',
+                    "File $id has invalid format in $fullPath: '" . $file . "'");
+                
             $title = $matches[1];
             $doc = $prefix . $title;
 
@@ -180,9 +194,9 @@ class Model_Pages extends Zend_Navigation {
         // call directories
         foreach ($container->getPages() as $pg) {
 
-            $dir = $fullPath . '/' . $pg->title;
+            $dir = $fullPath . '/' . $pg->label;
             if (file_exists($dir) && is_dir($dir)) 
-                $this->_init($pg, $path . '/' . $pg->title);
+                $this->_init($pg, $path . '/' . $pg->label);
 
             $anyDir = $fullPath . '/_any';
             if (file_exists($anyDir) && is_dir($anyDir))

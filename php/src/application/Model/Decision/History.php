@@ -104,4 +104,14 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history {
             ->fetchAll();
     }
 
+    /**
+     * Title of the decision
+     *
+     * @return string
+     */
+    public function getTitle() {
+    
+        return 'bb';
+    }
+
 }

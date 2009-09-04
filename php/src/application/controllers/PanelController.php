@@ -33,11 +33,7 @@ class PanelController extends FaZend_Controller_Action {
     public function preDispatch() {
 
         $session = new Zend_Session_Namespace('panel2');
-        if ($session->user) {
-
-            Model_User::setCurrentUser($session->user);
-            
-        } else {
+        if (!$session->user) {
 
             $adapter = new Model_Auth_Adapter(array(
                 'accept_schemes' => 'basic',
@@ -52,10 +48,10 @@ class PanelController extends FaZend_Controller_Action {
                 return $this->_forward('index', 'static', null, array('page'=>'system/404'));
 
             $identity = $result->getIdentity();
-            Model_User::setCurrentUser($identity['username']);
             $session->user = $identity['username'];
         }
 
+        Model_User::setCurrentUser($session->user);
         Zend_Layout::getMvcInstance()->setLayout('panel');
 
     }
@@ -72,6 +68,9 @@ class PanelController extends FaZend_Controller_Action {
 
         $view = clone $this->view;
         $doc = $view->doc = $this->view->doc = $this->_getParam('doc');
+
+        // later...
+        //$view->root = FaZend_POS::root();
 
         // permission check
         if (!Model_Pages::getInstance()->isAllowed(Model_User::me()->email, $doc))
