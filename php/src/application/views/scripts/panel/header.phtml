@@ -13,9 +13,10 @@
     <? $id = 'header_' . md5($page->title); ?>
 
     <span id="<?=$id?>" class="page">
-        <a href="<?=$this->panelUrl($page->title)?>"><?=$page->label?></a><span
+        <a href="<?=$this->panelUrl($page->title)?>"><?=$page->label?></a><? if ($page->parent->count() > 1): ?><span
             onclick="selector($('#<?=$id?>'), '<?=$page->title?>')"
             title="click to change">&darr;</span>
+        <? endif; ?>
     </span>
 
 <? endforeach; ?>

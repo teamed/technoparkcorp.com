@@ -110,8 +110,8 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history {
      * @return string
      */
     public function getTitle() {
-    
-        return 'bb';
+        $title = substr($this->hash, 0, strpos($this->hash, '/'));
+        return preg_replace('/([A-Z])/', ' ${1}', $title);
     }
 
 }
