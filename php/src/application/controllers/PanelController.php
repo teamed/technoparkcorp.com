@@ -26,14 +26,21 @@
 class PanelController extends FaZend_Controller_Action {
 
     /**
+     * Session namespace
+     *
+     * @var Zend_Session_Namespace
+     */
+    protected $_session;
+
+    /**
      * Pre-configuration
      *
      * @return void
      */
     public function preDispatch() {
 
-        $session = new Zend_Session_Namespace('panel2');
-        if (!$session->user) {
+        $this->_session = new Zend_Session_Namespace('panel2');
+        if (!$this->_session->user) {
 
             $adapter = new Model_Auth_Adapter(array(
                 'accept_schemes' => 'basic',
@@ -48,10 +55,10 @@ class PanelController extends FaZend_Controller_Action {
                 return $this->_forward('index', 'static', null, array('page'=>'system/404'));
 
             $identity = $result->getIdentity();
-            $session->user = $identity['username'];
+            $this->_session->user = $identity['username'];
         }
 
-        Model_User::setCurrentUser($session->user);
+        Model_User::setCurrentUser($this->_session->user);
         Zend_Layout::getMvcInstance()->setLayout('panel');
 
     }
@@ -68,6 +75,10 @@ class PanelController extends FaZend_Controller_Action {
 
         // later...
         //$view->root = FaZend_POS::root();
+        $view->root = new FaZend_StdObject();
+        $view->root->projectRegistry = new ArrayIterator();
+        $view->root->projectRegistry['ABC'] = new theProject();
+        $view->root->projectRegistry['ABC']->name = 'ABC';
 
         // configure it
         Model_Pages::setDocument($doc);

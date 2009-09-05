@@ -1,1 +1,9 @@
-<p>list of projects</p>
+<p>Full list of projects:</p>
+
+<?=$this->gallery()
+    ->setSource($this->root->projectRegistry)
+    ->setIcon('project')
+    ->setLink('{name}')
+    ?>
+
+

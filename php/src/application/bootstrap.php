@@ -22,7 +22,21 @@
 *
 * @package application
 */
-class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap { }
+class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap {
+
+    /**
+     * Initialize autoloader for artifacts
+     *
+     * @return void
+     */
+    protected function _initDbAutoloader() {
+
+        $autoloader = Zend_Loader_Autoloader::getInstance();
+        $autoloader->pushAutoloader(new Model_Loader_Artifacts(), 'the');
+
+    }
+
+}
 
 // total amount of seconds in day
 define('SECONDS_IN_DAY', (24*60*60));

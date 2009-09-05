@@ -147,23 +147,7 @@ class Helper_Table extends FaZend_View_Helper {
      * @return string
      */
     public function resolveDocumentName($name, array $row) {
-        $link = $this->_links[$name];
-
-        if (!$link)
-            return $link;
-
-        $matches = array();
-        if (preg_match_all('/\{(.*?)\}/', $link, $matches)) {
-            foreach ($matches[0] as $id=>$match)
-                $link = str_replace($match, $row[$matches[1][$id]], $link);
-        }
-
-        if ($link[0] == '/')
-            $link = substr($link, 1);
-        else
-            $link = $this->getView()->doc . '/' . $link;
-
-        return $link;
+        return Model_Pages::resolveLink($this->_links[$name], $row);
     }
 
 }

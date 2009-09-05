@@ -38,7 +38,7 @@ abstract class Model_Wobot extends FaZend_StdObject {
         foreach (array('ABC', 'CDE') as $project) {
             $wobots[] = self::factory('PM.' . $project);
         }
-        return $wobots;
+        return new ArrayIterator($wobots);
     }
 
     /**
@@ -60,6 +60,15 @@ abstract class Model_Wobot extends FaZend_StdObject {
      * @return string
      */
     protected function __toString() {
+        return $this->fullName;
+    }
+
+    /**
+     * Text name of the wobot
+     *
+     * @return string
+     */
+    protected function _getFullName() {
         return $this->name . '.' . $this->context;
     }
 

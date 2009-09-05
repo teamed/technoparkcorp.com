@@ -122,6 +122,51 @@ class Model_Pages extends Zend_Navigation {
     }
 
     /**
+     * Resolve link from string and array/object
+     *
+     * You can call this method to resolve the link using some object. For
+     * example:
+     *
+     * <code>
+     * $object = new Activity(222);
+     * $link = 'project/{project}/schedule/{id}';
+     * echo Model_Pages::resolveLink($link, $object);
+     * </code>
+     *
+     * Metas 'project' and 'id' will be replaced by values from $object
+     *
+     * @param string Link with meta-symbols, like "wobots/{name}/details"
+     * @param array|object Source of data for resolving the link metas
+     * @return string
+     */
+    public static function resolveLink($link, $row) {
+        if (!$link)
+            return $link;
+
+        $matches = array();
+        if (preg_match_all('/\{(.*?)\}/', $link, $matches)) {
+            foreach ($matches[0] as $id=>$match) {
+                $name = $matches[1][$id];
+                if (is_array($row))
+                    $value = $row[$name];
+                else
+                    $value = $row->$name;
+                $link = str_replace($match, $value, $link);
+            }
+        }
+
+        if (!$link)
+            return $link;
+
+        if ($link[0] == '/')
+            $link = substr($link, 1);
+        else
+            $link = self::$_doc . '/' . $link;
+
+        return $link;
+    }
+
+    /**
      * Get instance of ACL
      *
      * @return Zend_Acl

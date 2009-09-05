@@ -1,0 +1,10 @@
+div.gallery {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+    div.gallery div.element {
+        display:inline-block;
+        margin-right: 40px;
+        text-align: center;
+    }
