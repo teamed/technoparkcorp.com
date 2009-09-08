@@ -139,24 +139,26 @@ class Model_Pages extends Zend_Navigation {
      * @param array|object Source of data for resolving the link metas
      * @return string
      */
-    public static function resolveLink($link, $row) {
+    public static function resolveLink($link, $row = null) {
         if (!$link)
             return $link;
 
-        $matches = array();
-        if (preg_match_all('/\{(.*?)\}/', $link, $matches)) {
-            foreach ($matches[0] as $id=>$match) {
-                $name = $matches[1][$id];
-                if (is_array($row))
-                    $value = $row[$name];
-                else
-                    $value = $row->$name;
-                $link = str_replace($match, $value, $link);
+        if (!is_null($row)) {
+            $matches = array();
+            if (preg_match_all('/\{(.*?)\}/', $link, $matches)) {
+                foreach ($matches[0] as $id=>$match) {
+                    $name = $matches[1][$id];
+                    if (is_array($row))
+                        $value = $row[$name];
+                    else
+                        $value = $row->$name;
+                    $link = str_replace($match, $value, $link);
+                }
             }
-        }
 
-        if (!$link)
-            return $link;
+            if (!$link)
+                return $link;
+        }
 
         if ($link[0] == '/')
             $link = substr($link, 1);
