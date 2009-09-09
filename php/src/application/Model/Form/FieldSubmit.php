@@ -36,6 +36,24 @@ class Model_Form_FieldSubmit extends Model_Form_Field {
     }
     
     /**
+     * Configure form element
+     *
+     * @param Zend_Form_Element The element to configure
+     * @return void
+     */
+    protected function _configureFormElement(Zend_Form_Element $element) {
+        parent::_configureFormElement($element);
+        $element->setAttrib('class', 'btn');
+
+        if (isset($this->_value))
+            $label = $this->_value;
+        else
+            $label = 'Submit';
+
+        $element->setLabel($label);
+    }
+
+    /**
      * Set action
      *
      * @param callback Validator of the field value

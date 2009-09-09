@@ -28,7 +28,7 @@ abstract class Model_Form_Field {
     /**
      * Helper instance
      *
-     * @var Helper_Form
+     * @var Helper_Forma
      */
     protected $_helper;
 
@@ -54,6 +54,13 @@ abstract class Model_Form_Field {
     protected $_label;
 
     /**
+     * Field value
+     *
+     * @var string
+     */
+    protected $_value;
+
+    /**
      * Help below the element
      *
      * @var string
@@ -71,11 +78,11 @@ abstract class Model_Form_Field {
      * Factory method
      *
      * @param string Type of field
-     * @param Helper_Form Form, the owner
+     * @param Helper_Forma Form, the owner
      * @return Model_Form_Field
      * #throws Model_Form_Field_ClassNotFound
      */
-    public static function factory($type, Helper_Form $helper) {
+    public static function factory($type, Helper_Forma $helper) {
         $className = 'Model_Form_Field' . ucfirst($type);
         return new $className($helper);
     }
@@ -85,7 +92,7 @@ abstract class Model_Form_Field {
      *
      * @return void
      */
-    protected function __construct(Helper_Form $helper) {
+    protected function __construct(Helper_Forma $helper) {
         $this->_helper = $helper;
     }
 
@@ -97,8 +104,42 @@ abstract class Model_Form_Field {
      */
     public function getFormElement($name) {
         $element = $this->_getFormElement($name);
-
+        $this->_configureFormElement($element);
         return $element;
+    }
+
+    /**
+     * Configure form element
+     *
+     * @param Zend_Form_Element The element to configure
+     * @return void
+     */
+    protected function _configureFormElement(Zend_Form_Element $element) {
+
+        $element->setDecorators(array())
+            ->addDecorator('ViewHelper')
+            ->addDecorator('Errors')
+            ->addDecorator('HtmlTag', array(
+                'tag'=>'dd'));
+
+        if (isset($this->_label)) {
+            $element->setLabel($this->_label .
+                ($this->_required ? "<span style='color:red;'>*</span>" : false) . ':')
+                ->addDecorator('Label', array(
+                    //'tag'=>'dt',
+                    'escape'=>false));
+        }
+
+        if (isset($this->_value))
+            $element->setValue($this->_value);
+
+        if ($this->_required)
+            $element->setRequired(true);
+
+        foreach ($this->_attribs as $name=>$value) {
+            $element->setAttrib($name, $value);
+        }
+
     }
 
     /**
@@ -154,6 +195,16 @@ abstract class Model_Form_Field {
      */
     protected function _setHelp($help) {
         $this->_help = $help;
+    }
+
+    /**
+     * Setter, to add value to the field
+     *
+     * @param string Value to show in the field
+     * @return void
+     */
+    protected function _setValue($value) {
+        $this->_value = $value;
     }
 
     /**

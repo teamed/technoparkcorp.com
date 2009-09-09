@@ -2,7 +2,7 @@
 <p>Creating new project you will immedidately start new PM wobot to work
     with the project.</p>
 
-<?=$this->form()
+<?=$this->forma()
     ->addField('text', 'name')
         ->fieldRequired()
         ->fieldLabel('New unique project name')
@@ -11,5 +11,6 @@
         ->fieldAttrib('maxlength', 10)
         ->fieldValidator(array('theProject', 'validateNewName'))
     ->addField('submit')
+        ->fieldValue('Create new project')
         ->fieldAction('create', $this->root->projectRegistry, 'theProject')
     ?>

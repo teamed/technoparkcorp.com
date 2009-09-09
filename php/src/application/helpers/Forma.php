@@ -19,7 +19,7 @@
  *
  * @package helpers
  */
-class Helper_Form extends FaZend_View_Helper {
+class Helper_Forma extends FaZend_View_Helper {
 
     /**
      * Fields
@@ -31,9 +31,10 @@ class Helper_Form extends FaZend_View_Helper {
     /**
      * Builds the object
      *
-     * @return Helper_Form
+     * @return Helper_Forma
      */
-    public function form() {
+    public function forma() {
+        $this->getView()->includeCSS('helper/forma.css');
         return $this;
     }
 
@@ -51,7 +52,7 @@ class Helper_Form extends FaZend_View_Helper {
      *
      * @param string Name of field class
      * @param string|null Name of the field to create
-     * @return Helper_Form
+     * @return Helper_Forma
      */
     public function addField($type, $name = null) {
         $field = Model_Form_Field::factory($type, $this);
@@ -67,14 +68,17 @@ class Helper_Form extends FaZend_View_Helper {
     public function _render() {
         $form = new Zend_Form();
 
-        $form->setView($this->getView());
-        $form->setMethod('post');
+        $form->setView($this->getView())
+            ->setMethod('post')
+            ->setDecorators(array())
+            ->addDecorator('FormElements')
+            ->addDecorator('Form');
 
         foreach ($this->_fields as $name=>$field) {
             $form->addElement($field->getFormElement($name));
         }
 
-        return (string)$form->__toString();
+        return '<p>' . (string)$form->__toString() . '</p>';
     }
 
     /**
@@ -86,7 +90,7 @@ class Helper_Form extends FaZend_View_Helper {
     protected function _uniqueName($name) {
         if (!is_null($name)) {
             if (isset($this->_fields[$name]))
-                FaZend_Exception::raise('Helper_Form_FieldAlreadyExists', "Field '{$name}' already exists in the form");
+                FaZend_Exception::raise('Helper_Forma_FieldAlreadyExists', "Field '{$name}' already exists in the form");
             return $name;
         }
 

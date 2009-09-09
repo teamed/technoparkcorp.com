@@ -81,11 +81,15 @@ select {
 
     input.btn {
         cursor: pointer;
-        background: <?=Model_Colors::BLUE?>;
+        background: <?=Model_Colors::GRAY?>;
+        margin-top: 10px;
+        border: none;
+        padding: 5px;
     }
 
         input.btn:hover {
             color: <?=Model_Colors::WHITE?>;
+            background: <?=Model_Colors::BLUE?>;
         }
 
 p.flash {
@@ -128,12 +132,18 @@ div.header {
         line-height: 1.2em;
     }
 
-        div.header div.logo span.logo {
+        div.header div.logo a.logo {
             color: white;
             font-weight: bold;
             font-size: 1.4em;
             display: block;
+            border: none;
         }
+
+            div.header div.logo a.logo:hover {
+                background: inherit;
+                color: inherit;
+            }
 
     div.header div.path {
         position: absolute;
