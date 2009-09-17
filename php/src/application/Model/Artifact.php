@@ -37,6 +37,15 @@ class Model_Artifact extends ArrayIterator {
     }
 
     /**
+     * Stub
+     *
+     * @return array
+     */
+    public function toArray() {
+        return array();
+    }
+
+    /**
      * Get validator object for this artifact
      *
      * @return Model_Artifact_Validator

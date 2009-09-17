@@ -39,8 +39,7 @@ class theProjectRegistry extends Model_Artifact {
             ->regexp($name, '/^\w{4,12}$/', 'Invalid project name')
             ->false(isset($this[$name]), 'Project "' . $name . '" already exists');
 
-        FaZend_Log::info("New project $name created");
-        FaZend_Log::info("New project $name created");
+        FaZend_Log::info("New project '{$name}' created");
 
         return $this[$name] = new theProject();
 

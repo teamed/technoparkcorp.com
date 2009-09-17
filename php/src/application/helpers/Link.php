@@ -30,12 +30,14 @@ class Helper_Link extends FaZend_View_Helper {
      */
     public function link($link, $title) {
 
+        $resolvedLink = Model_Pages::resolveLink($link);
+
         // if this link is not allowed for current user
-        if (!Model_Pages::getInstance()->isLinkAllowed($link))
+        if (!Model_Pages::getInstance()->isLinkAllowed($resolvedLink))
             return '';
 
         return '<p>' .
-            '<a href="' . $this->getView()->panelUrl(Model_Pages::resolveLink($link)) . '">' .
+            '<a href="' . $this->getView()->panelUrl($resolvedLink) . '">' .
             $this->getView()->escape($title) . '</a></p>';
     }
 

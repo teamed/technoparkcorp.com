@@ -29,11 +29,29 @@ class Helper_Bar extends FaZend_View_Helper {
     protected $_links = array();
 
     /**
+     * Style
+     *
+     * @var string
+     */
+    protected $_style = 'snake';
+
+    /**
      * Builds a collection of bars
      *
      * @return Helper_Bar
      */
     public function bar() {
+        return $this;
+    }
+
+    /**
+     * Set style
+     *
+     * @param string Style
+     * @return $this
+     */
+    public function setStyle($style) {
+        $this->_style = $style;
         return $this;
     }
 
@@ -63,17 +81,39 @@ class Helper_Bar extends FaZend_View_Helper {
 
         foreach ($this->_links as $link) {
 
+            $resolvedLink = Model_Pages::resolveLink($link['link']);
+
             // if this link is not allowed for current user
-            if (!Model_Pages::getInstance()->isLinkAllowed($link['link']))
+            if (!Model_Pages::getInstance()->isLinkAllowed($resolvedLink))
                 continue;
 
-            $htmls[] = '<a href="' . $this->getView()->panelUrl($lnk = Model_Pages::resolveLink($link['link'])) . '" ' .
-                'title="' . $this->getView()->escape($link['title'] . " ({$lnk})") . '">' .
+            $htmls[] = '<a href="' . $this->getView()->panelUrl($resolvedLink) . '" ' .
+                'title="' . $this->getView()->escape($link['title'] . " ({$resolvedLink})") . '">' .
                 $this->getView()->escape($link['title']) . '</a>';
 
         }
 
-        return '<p>' . implode(' &middot; ', $htmls) . '</p>';
+        return $this->{'_draw' . ucfirst($this->_style)}($htmls);
+    }
+
+    /**
+     * Draw in SNAKE style
+     *
+     * @param array List of links
+     * @return string
+     */
+    protected function _drawSnake(array $links) {
+        return '<p>' . implode('&#32;&middot;&#32;', $links) . '</p>';
+    }
+
+    /**
+     * Draw in STAIRS style
+     *
+     * @param array List of links
+     * @return string
+     */
+    protected function _drawStairs(array $links) {
+        return '<ul><li>' . implode('</li><li>', $links) . '</li></ul>';
     }
 
 }

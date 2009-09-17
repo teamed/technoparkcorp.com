@@ -61,6 +61,14 @@ class PanelController extends FaZend_Controller_Action {
         Model_User::setCurrentUser($this->_session->user);
         Zend_Layout::getMvcInstance()->setLayout('panel');
 
+        //$view->root = FaZend_POS::root();
+        $this->view->root = new FaZend_StdObject();
+        $this->view->root->projectRegistry = new theProjectRegistry();
+        $this->view->root->projectRegistry->createNewProject('ABCD');
+
+        // configure pages
+        Model_Pages::setView($this->view);
+
     }
 
     /**
@@ -71,13 +79,8 @@ class PanelController extends FaZend_Controller_Action {
     public function indexAction() {
 
         $view = clone $this->view;
-        $doc = $view->doc = $this->view->doc = $this->_getParam('doc');
 
-        // later...
-        //$view->root = FaZend_POS::root();
-        $view->root = new FaZend_StdObject();
-        $view->root->projectRegistry = new theProjectRegistry();
-        $view->root->projectRegistry->createNewProject('ABCD');
+        $doc = $view->doc = $this->view->doc = $this->_getParam('doc');
 
         // configure it
         Model_Pages::setDocument($doc);

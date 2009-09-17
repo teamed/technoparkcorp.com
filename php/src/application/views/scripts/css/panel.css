@@ -58,7 +58,7 @@ th {
     th {
         background-color: <?=Model_Colors::BLUE?>;
         color: white;
-        font-weight: bold;
+        font-weight: normal;
     }
 
     tr.even {

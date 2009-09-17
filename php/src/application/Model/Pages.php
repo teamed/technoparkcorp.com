@@ -43,6 +43,13 @@ class Model_Pages extends Zend_Navigation {
     protected static $_doc;
 
     /**
+     * The view
+     *
+     * @var Zend_View
+     */
+    protected static $_view;
+
+    /**
      * Access Control List
      *
      * @var Zend_Acl
@@ -78,6 +85,16 @@ class Model_Pages extends Zend_Navigation {
      */
     public static function setDocument($doc) {
         self::$_doc = $doc;
+    }
+
+    /**
+     * Set the View
+     *
+     * @param Zend_View View to use
+     * @return void
+     */
+    public static function setView(Zend_View $view) {
+        self::$_view = $view;
     }
 
     /**
@@ -139,7 +156,7 @@ class Model_Pages extends Zend_Navigation {
      * @param array|object Source of data for resolving the link metas
      * @return string
      */
-    public static function resolveLink($link, $row = null) {
+    public static function resolveLink($link, $row = null, $key = null) {
         if (!$link)
             return $link;
 
@@ -149,7 +166,9 @@ class Model_Pages extends Zend_Navigation {
             if (preg_match_all('/\{(.*?)\}/', $link, $matches)) {
                 foreach ($matches[0] as $id=>$match) {
                     $name = $matches[1][$id];
-                    if (is_array($row))
+                    if ($name == '__key')
+                        $value = $key;
+                    else if (is_array($row))
                         $value = $row[$name];
                     else
                         $value = $row->$name;
@@ -174,13 +193,12 @@ class Model_Pages extends Zend_Navigation {
      * This link is available for the user?
      *
      * @param string The link text
-     * @param mixed The row
+     * @return boolean
      */
-    public function isLinkAllowed($link, $row = null, $email = null) {
-        $doc = self::resolveLink($link, $row);
+    public function isLinkAllowed($link, $email = null) {
         if (is_null($email))
             $email = Model_User::me()->email;
-        return $this->isAllowed($email, $doc);
+        return $this->isAllowed($email, $link);
     }
 
     /**
@@ -299,7 +317,7 @@ class Model_Pages extends Zend_Navigation {
      * @return string
      */
     protected function _parse($file) {
-        $view = new Zend_View();
+        $view = clone self::$_view;
         $view->setScriptPath(dirname($file));
         return $view->render(basename($file));
     }

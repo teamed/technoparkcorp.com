@@ -1,3 +1,6 @@
 
-ABC.phtml
-CDE.phtml
+<? foreach ($this->root->projectRegistry as $name=>$project): ?>
+
+    <?=$name?>.phtml   
+
+<? endforeach; ?>

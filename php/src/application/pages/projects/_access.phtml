@@ -1,6 +1,7 @@
 
-[ABC]
-yegor256@yahoo.com = rw
+<? foreach ($this->root->projectRegistry as $name=>$project): ?>
 
-[CDE]
+    [<?=$name?>]
+    yegor256@yahoo.com = rw
 
+<? endforeach; ?>
