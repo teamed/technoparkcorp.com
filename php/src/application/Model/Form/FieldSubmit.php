@@ -26,6 +26,13 @@
 class Model_Form_FieldSubmit extends Model_Form_Field {
 
     /**
+     * Action to call when clicked
+     *
+     * @var callback
+     */
+    protected $_action;
+
+    /**
      * Create and return form element
      *
      * @param string Name of the element
@@ -59,7 +66,8 @@ class Model_Form_FieldSubmit extends Model_Form_Field {
      * @param callback Validator of the field value
      * @return void
      */
-    protected function _setAction() {
+    protected function _setAction($class, $method) {
+        $this->_action = array($class, $method);
     }
 
 }

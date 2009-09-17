@@ -18,32 +18,28 @@
  *
  */
 
-
 /**
- * Collection of projects
+ * Validator, abstract
  *
- * @package Artifacts
+ * @package Model
  */
-class theProjectRegistry extends Model_Artifact {
+class Model_Artifact_Validator_Abstract {
 
     /**
-     * Create new project
+     * The subject to validate
      *
-     * @param string Name of the project to create
-     * @return theProject
+     * @var mixed
      */
-    public function createNewProject($name) {
+    protected $_subject;
 
-        $this->_validator
-            ->type($name, 'string', 'Project name should be string')
-            ->regexp($name, '/^\w{4,12}$/', 'Invalid project name')
-            ->false(isset($this[$name]), 'Project "' . $name . '" already exists');
-
-        FaZend_Log::info("New project $name created");
-        FaZend_Log::info("New project $name created");
-
-        return $this[$name] = new theProject();
-
+    /**
+     * Public constructor
+     *
+     * @param mixed The subject to validate
+     * @return void
+     */
+    public function __construct($subject) {
+        $this->_subject = $subject;
     }
 
 }

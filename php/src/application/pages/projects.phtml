@@ -1,6 +1,7 @@
-<p>
-    <a href="<?=$this->link('/PMO/start')?>">start new project</a>
-</p>
+<?=$this->bar()
+    ->addLink('/PMO/start', 'start new project')
+    ->addLink('/PMO/registry', 'project registry')
+    ?>
 
 <p>Full list of projects:</p>
 

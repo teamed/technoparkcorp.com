@@ -94,7 +94,7 @@ class Helper_Table extends FaZend_View_Helper {
     /**
      * Add new column
      *
-     * @param string Name of the object property to get
+     * @param string|false Name of the object property to get, false = KEY
      * @param string Header to show
      * @return Helper_Table
      */

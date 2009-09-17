@@ -76,9 +76,8 @@ class PanelController extends FaZend_Controller_Action {
         // later...
         //$view->root = FaZend_POS::root();
         $view->root = new FaZend_StdObject();
-        $view->root->projectRegistry = new ArrayIterator();
-        $view->root->projectRegistry['ABC'] = new theProject();
-        $view->root->projectRegistry['ABC']->name = 'ABC';
+        $view->root->projectRegistry = new theProjectRegistry();
+        $view->root->projectRegistry->createNewProject('ABCD');
 
         // configure it
         Model_Pages::setDocument($doc);
@@ -103,6 +102,10 @@ class PanelController extends FaZend_Controller_Action {
         // reconfigure VIEW in order to render this particular document file
         $view->addScriptPath(dirname($path));
         $this->view->document .= $view->render(pathinfo($path, PATHINFO_BASENAME));
+
+        // if execution inside this view is completed - show only the result
+        if ($view->formaCompleted)
+            $this->view->document = '<pre class="log">' . $view->formaCompleted . '</pre>';
 
     }
 

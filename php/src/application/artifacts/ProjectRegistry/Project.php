@@ -25,12 +25,8 @@
  */
 class theProject extends Model_Artifact {
 
-    /**
-     * List of iterations
-     *
-     * @var theIteration[]
-     */
-    public $iterations;
+    public function doPause() {
+    }
 
     /**
      * Get list of all activities in the project

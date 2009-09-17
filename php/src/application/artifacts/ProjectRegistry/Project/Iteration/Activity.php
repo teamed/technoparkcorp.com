@@ -25,6 +25,22 @@
  */
 class theActivity extends Model_Artifact {
 
+    public function assignPredecessors($token) {
+        if (!$token) {
+            return $this->token();
+
+
+        }
+    }
+
+    function useit() {
+        $token = $activity->assignPredecessors();
+
+        $token->
+
+        $activity->assignPredecessors($token);
+    }
+
     /**
      * Name of activity
      *

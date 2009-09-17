@@ -18,32 +18,35 @@
  *
  */
 
-
 /**
- * Collection of projects
+ * One simple validator
  *
- * @package Artifacts
+ * @package Model
  */
-class theProjectRegistry extends Model_Artifact {
+class Model_Artifact_Validator {
 
     /**
-     * Create new project
+     * Call decorator
      *
-     * @param string Name of the project to create
-     * @return theProject
+     * @param string Name of the method
+     * @param array List of arguments
+     * @return value
      */
-    public function createNewProject($name) {
+    public function __call($method, array $args) {
+        // first param is subject
+        $subject = array_shift($args);
 
-        $this->_validator
-            ->type($name, 'string', 'Project name should be string')
-            ->regexp($name, '/^\w{4,12}$/', 'Invalid project name')
-            ->false(isset($this[$name]), 'Project "' . $name . '" already exists');
+        // last param is message
+        $message = array_pop($args);
 
-        FaZend_Log::info("New project $name created");
-        FaZend_Log::info("New project $name created");
+        $class = 'Model_Artifact_Validator_' . ucfirst($method);
+        $validator = new $class($subject);
 
-        return $this[$name] = new theProject();
+        if (!call_user_func_array(array($validator, 'validate'), $args)) {
+            FaZend_Exception::raise($class . '_Failure', $message . ' (' . (is_scalar($subject) ? $subject : get_class($subject)) . ')');
+        }
 
+        return $this;
     }
 
 }

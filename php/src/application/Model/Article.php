@@ -291,8 +291,13 @@ class Model_Article {
             return trim(preg_replace("/[\t\n\r]+/", ' ', (string)$this->_xml->description));
 
         // Remove all unreadable symbols and cut the line to 500 symbols
-        return cutLongLine(preg_replace('/(\s*[^a-z0-9A-Z\-\.\,]\s*)/', ' ', 
-            trim(strip_tags((string)$this->_xml->text)), "\t\n "), 500);
+        if ($this->_xml->text)
+            return cutLongLine(preg_replace('/(\s*[^a-z0-9A-Z\-\.\,]\s*)/', ' ',
+                trim(strip_tags((string)$this->_xml->text), "\t\n ")), 500);
+
+        // no text, no description
+        return '...';
+
     }    
 
     /**

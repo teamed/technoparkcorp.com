@@ -4,13 +4,12 @@
 
 <?=$this->forma()
     ->addField('text', 'name')
-        ->fieldRequired()
-        ->fieldLabel('New unique project name')
-        ->fieldHelp('Project name should be short and informative')
-        ->fieldAttrib('size', 10)
-        ->fieldAttrib('maxlength', 10)
-        ->fieldValidator(array('theProject', 'validateNewName'))
+        ->fieldLabel('Name of a new project')
+        ->fieldAttrib('size', 15)
+        ->fieldAttrib('maxlength', 12)
+        ->fieldRequired(true)
     ->addField('submit')
         ->fieldValue('Create new project')
-        ->fieldAction('create', $this->root->projectRegistry, 'theProject')
+        ->fieldAction($this->root->projectRegistry, 'createNewProject')
     ?>
+

@@ -76,6 +76,7 @@ textarea,
 select {
     padding: 3px;
     font-family: Verdana;
+    font-size: 1em;
     border: 2px solid <?=Model_Colors::GRAY?>;
 }
 
@@ -213,6 +214,8 @@ div.wrapper {
     div.wrapper ul.errors {
         color: <?=Model_Colors::RED?>;
         background-color: inherit;
+        margin-left: 0 !important;
+        font-size: 0.8em;
     }
 
         div.wrapper ul.errors li {
@@ -234,10 +237,17 @@ div.wrapper {
             background-color: <?=Model_Colors::BLUE?>;
         }
 
+    /* all paragraphs */
     div.wrapper p {
-        padding-top: 3px;
+        padding-top: 6px;
         padding-bottom: 3px;
         width: 600px;
+    }
+
+    /* PRE elements */
+    div.wrapper pre.log {
+        line-height: 1.2em;
+        padding-top: 6px;
     }
 
     div.wrapper table.icon {

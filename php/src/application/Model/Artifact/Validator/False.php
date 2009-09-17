@@ -18,32 +18,21 @@
  *
  */
 
-
 /**
- * Collection of projects
+ * Validate if it's false?
  *
- * @package Artifacts
+ * @package Model
  */
-class theProjectRegistry extends Model_Artifact {
+class Model_Artifact_Validator_False extends Model_Artifact_Validator_Abstract {
 
     /**
-     * Create new project
+     * Validator
      *
-     * @param string Name of the project to create
-     * @return theProject
+     * @param boolean Value to check
+     * @return boolean
      */
-    public function createNewProject($name) {
-
-        $this->_validator
-            ->type($name, 'string', 'Project name should be string')
-            ->regexp($name, '/^\w{4,12}$/', 'Invalid project name')
-            ->false(isset($this[$name]), 'Project "' . $name . '" already exists');
-
-        FaZend_Log::info("New project $name created");
-        FaZend_Log::info("New project $name created");
-
-        return $this[$name] = new theProject();
-
+    public function validate() {
+        return !(bool)$this->_subject;
     }
 
 }

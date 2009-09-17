@@ -18,32 +18,31 @@
  *
  */
 
-
 /**
- * Collection of projects
+ * Validate type
  *
- * @package Artifacts
+ * @package Model
  */
-class theProjectRegistry extends Model_Artifact {
+class Model_Artifact_Validator_Type extends Model_Artifact_Validator_Abstract {
 
     /**
-     * Create new project
+     * Validator
      *
-     * @param string Name of the project to create
-     * @return theProject
+     * @param string Type name
+     * @return boolean
+     * @throws Model_Artifact_Validator_Type_InvalidType
      */
-    public function createNewProject($name) {
-
-        $this->_validator
-            ->type($name, 'string', 'Project name should be string')
-            ->regexp($name, '/^\w{4,12}$/', 'Invalid project name')
-            ->false(isset($this[$name]), 'Project "' . $name . '" already exists');
-
-        FaZend_Log::info("New project $name created");
-        FaZend_Log::info("New project $name created");
-
-        return $this[$name] = new theProject();
-
+    public function validate($type) {
+        switch (strtolower($type)) {
+            case 'string':
+                return is_string($this->_subject);
+            case 'integer':
+            case 'int':
+                return is_integer($this->_subject);
+            default:
+                FaZend_Exception::raise('Model_Artifact_Validator_Type_InvalidType',
+                    "Type '{$type}' is unknown");
+        }
     }
 
 }

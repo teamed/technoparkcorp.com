@@ -23,15 +23,26 @@
  *
  * @package Model
  */
-class Model_Artifact {
+class Model_Artifact extends ArrayIterator {
 
     /**
-     * 
+     * Validator
      *
-     * @return Model_User
+     * @param string Name of the field
+     * @return value
      */
-    public function a() {
-        ;
+    public function __get($name) {
+        if ($name == '_validator')
+            return $this->_getValidator();
+    }
+
+    /**
+     * Get validator object for this artifact
+     *
+     * @return Model_Artifact_Validator
+     */
+    protected function _getValidator() {
+        return new Model_Artifact_Validator();
     }
 
 }

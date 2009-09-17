@@ -24,10 +24,19 @@ class Helper_Link extends FaZend_View_Helper {
     /**
      * Builds a link
      *
+     * @param string Link to use
+     * @param Title to show in HTML
      * @return Helper_Table
      */
-    public function link($link) {
-        return $this->getView()->panelUrl(Model_Pages::resolveLink($link));
+    public function link($link, $title) {
+
+        // if this link is not allowed for current user
+        if (!Model_Pages::getInstance()->isLinkAllowed($link))
+            return '';
+
+        return '<p>' .
+            '<a href="' . $this->getView()->panelUrl(Model_Pages::resolveLink($link)) . '">' .
+            $this->getView()->escape($title) . '</a></p>';
     }
 
 }

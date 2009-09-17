@@ -143,6 +143,7 @@ class Model_Pages extends Zend_Navigation {
         if (!$link)
             return $link;
 
+        // replace meta-s
         if (!is_null($row)) {
             $matches = array();
             if (preg_match_all('/\{(.*?)\}/', $link, $matches)) {
@@ -156,16 +157,30 @@ class Model_Pages extends Zend_Navigation {
                 }
             }
 
-            if (!$link)
-                return $link;
         }
 
+        if (!$link)
+            return $link;
+            
         if ($link[0] == '/')
             $link = substr($link, 1);
         else
             $link = self::$_doc . '/' . $link;
 
         return $link;
+    }
+
+    /**
+     * This link is available for the user?
+     *
+     * @param string The link text
+     * @param mixed The row
+     */
+    public function isLinkAllowed($link, $row = null, $email = null) {
+        $doc = self::resolveLink($link, $row);
+        if (is_null($email))
+            $email = Model_User::me()->email;
+        return $this->isAllowed($email, $doc);
     }
 
     /**

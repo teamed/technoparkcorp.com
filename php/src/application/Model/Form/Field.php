@@ -75,6 +75,15 @@ abstract class Model_Form_Field {
     protected $_validators = array();
 
     /**
+     * Private constructor
+     *
+     * @return void
+     */
+    protected function __construct(Helper_Forma $helper) {
+        $this->_helper = $helper;
+    }
+
+    /**
      * Factory method
      *
      * @param string Type of field
@@ -88,15 +97,6 @@ abstract class Model_Form_Field {
     }
 
     /**
-     * Private constructor
-     *
-     * @return void
-     */
-    protected function __construct(Helper_Forma $helper) {
-        $this->_helper = $helper;
-    }
-
-    /**
      * Create and return form element
      *
      * @param string Name of the element
@@ -106,6 +106,56 @@ abstract class Model_Form_Field {
         $element = $this->_getFormElement($name);
         $this->_configureFormElement($element);
         return $element;
+    }
+
+    /**
+     * Returns method parameter
+     *
+     * @param ReflectionParameter The parameter required by some method
+     * @return mixed
+     */
+    public function getMethodParam(ReflectionParameter $param) {
+        return Zend_Controller_Front::getInstance()->getRequest()->getPost($param->name);
+    }
+
+    /**
+     * Form method gateway
+     *
+     * @return string
+     */
+    public function __toString() {
+        return $this->_helper->__toString();
+    }
+
+    /**
+     * Call catcher
+     *
+     * @param string Method name
+     * @param array List of params
+     * @return value
+     */
+    public function __call($method, $args) {
+        if (strpos($method, 'field') !== 0)
+            return call_user_func_array(array($this->_helper, $method), $args);
+
+        $func = '_set' . substr($method, 5);
+
+        call_user_func_array(array($this, $func), $args);
+
+        return $this;
+    }
+
+    /**
+     * Get variable from inside
+     *
+     * @param string Method name
+     * @return value
+     */
+    public function __get($name) {
+        $method = '_get' . ucfirst($name);
+        if (method_exists($this, $method))
+            return $this->$method();
+        return $this->{'_' . $name};
     }
 
     /**
@@ -149,33 +199,6 @@ abstract class Model_Form_Field {
      * @return Zend_Form_Element
      */
     abstract protected function _getFormElement($name);
-
-    /**
-     * Form method gateway
-     *
-     * @return string
-     */
-    public function __toString() {
-        return $this->_helper->__toString();
-    }
-
-    /**
-     * Call catcher
-     *
-     * @param string Method name
-     * @param array List of params
-     * @return value
-     */
-    public function __call($method, $args) {
-        if (strpos($method, 'field') !== 0)
-            return call_user_func_array(array($this->_helper, $method), $args);
-
-        $func = '_set' . substr($method, 5);
-
-        call_user_func_array(array($this, $func), $args);
-
-        return $this;
-    }
 
     /**
      * Setter, to add label to the field

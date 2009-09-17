@@ -1,0 +1,7 @@
+
+<p>Full list of projects running now:</p>
+
+<?=$this->table()
+    ->addColumn('__key', 'Project Name')
+    ->setSource($this->root->projectRegistry)
+    ?>
