@@ -11,4 +11,6 @@
 <p>This particular document is not available for you. Here is
 a list of documents that you can access:</p>
 
-<p><?=$this->navigation()->menu(Model_Pages::getInstance())?></p>
+<p><?=$this->navigation()
+    ->menu(Model_Pages::getInstance())
+    ->setMaxDepth(1)?></p>
