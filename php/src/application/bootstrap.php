@@ -18,10 +18,10 @@
  */
 
 /**
-* Bootstraper
-*
-* @package application
-*/
+ * Bootstraper
+ *
+ * @package application
+ */
 class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap {
 
     /**
@@ -34,6 +34,33 @@ class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap {
         $autoloader = Zend_Loader_Autoloader::getInstance();
         $autoloader->pushAutoloader(new Model_Loader_Artifacts(), 'the');
 
+    }
+
+    /**
+     * Initialize SHARED library for connecting to FaZend
+     *
+     * @return void
+     */
+    protected function _initSharedLib() {
+        $this->bootstrap('Fazend');
+        Model_Project::setClassName('Model_Project');
+    }
+
+    /**
+     * Intialize View
+     *
+     * @return void
+     */
+    protected function _initPanelView() {
+        // get root of the entire tree
+        $this->bootstrap('view');
+        $view = $this->getResource('view');
+
+        // root of the entire artifact tree
+        $view->root = Model_Artifact::root();
+
+        // intiate pages builder
+        Model_Pages::getInstance()->setView($view);
     }
 
 }
