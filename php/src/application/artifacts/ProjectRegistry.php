@@ -27,22 +27,16 @@
 class theProjectRegistry extends Model_Artifact {
 
     /**
-     * Create new project
-     *
-     * @param string Name of the project to create
-     * @return theProject
+     * List all projects
+     * 
+     * @return void
      */
-    public function createNewProject($name) {
-
-        $this->_validator
-            ->type($name, 'string', 'Project name should be string')
-            ->regexp($name, '/^\w{4,12}$/', 'Invalid project name')
-            ->false(isset($this[$name]), 'Project "' . $name . '" already exists');
-
-        FaZend_Log::info("New project '{$name}' created");
-
-        return $this[$name] = new theProject();
-
+    public function __construct() {
+        foreach (Model_Project::retrieveAll() as $project) {
+            if (!$project->isManaged())
+                continue;
+            $this[$project->name] = new theProject();
+        }
     }
 
 }
