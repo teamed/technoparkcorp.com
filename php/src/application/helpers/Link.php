@@ -33,7 +33,7 @@ class Helper_Link extends FaZend_View_Helper {
         $resolvedLink = Model_Pages::resolveLink($link);
 
         // if this link is not allowed for current user
-        if (!Model_Pages::getInstance()->isLinkAllowed($resolvedLink))
+        if (!Model_Pages::getInstance()->isAllowed($resolvedLink))
             return '';
 
         return '<p>' .

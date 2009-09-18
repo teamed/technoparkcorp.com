@@ -24,13 +24,20 @@ class Helper_Segment extends FaZend_View_Helper {
     /**
      * Returns segment of document name
      *
+     * @param int Number of segment
      * @return string|int
      */
-    public function segment($num) {
+    public function segment($num = null) {
 
         $exp = explode('/', $this->getView()->doc);
 
-        $segment = $exp[$num];
+        if (is_null($num))
+            $segment = array_pop($exp);
+        else {
+            if ($num < 0)
+                $num = count($exp) + $num - 1;
+            $segment = $exp[$num];
+        }
 
         if (is_numeric($segment))
             $segment = (int)$segment;

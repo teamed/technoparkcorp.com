@@ -64,22 +64,23 @@ class Helper_Gallery extends FaZend_View_Helper {
      * @return string HTML
      */
     public function __toString() {
+
         $html = '<div class="gallery">';
-        
+
+        $icon = $this->getView()->icon($this->_icon);
         foreach ($this->_source as $key=>$element) {
 
             $link = Model_Pages::resolveLink($this->_link, $element, $key);
 
             // if this link is not allowed for current user
-            if (!Model_Pages::getInstance()->isLinkAllowed($link))
+            if (!Model_Pages::getInstance()->isAllowed($link))
                 continue;
 
-            $html .= "<div class='element'>" .
-                $this->getView()->icon($this->_icon);
+            $html .= "<div class='element'>" . $icon;
 
             if (isset($this->_link)) {
                 $html .= '<br/>' .
-                    "<a href='" . $link . "'>" .
+                    "<a href='" . $link . "' title='{$link}'>" .
                     $this->getView()->escape(($this->_title == '__key' ? $key : $element->{$this->_title})) . "</a>";
             }
 
