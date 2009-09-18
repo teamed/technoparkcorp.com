@@ -61,13 +61,7 @@ class PanelController extends FaZend_Controller_Action {
         Model_User::setCurrentUser($this->_session->user);
         Zend_Layout::getMvcInstance()->setLayout('panel');
 
-        //$view->root = FaZend_POS::root();
-        $this->view->root = new FaZend_StdObject();
-        $this->view->root->projectRegistry = new theProjectRegistry();
-        $this->view->root->projectRegistry->createNewProject('ABCD');
-
-        // configure pages
-        Model_Pages::setView($this->view);
+        $this->_pages = Model_Pages::getInstance();
 
     }
 
@@ -82,16 +76,18 @@ class PanelController extends FaZend_Controller_Action {
 
         $doc = $view->doc = $this->view->doc = $this->_getParam('doc');
 
-        // configure it
-        Model_Pages::setDocument($doc);
+        // permission check for current user
+        if (!$this->_pages->isAllowed($doc))
+            return $this->_forward('restrict', null, null, array('msg'=>'Sorry, the document "' . $doc . '" is not available for you'));
 
-        // permission check
-        if (!Model_Pages::getInstance()->isAllowed(Model_User::me()->email, $doc))
-            return $this->_forward('restrict', null, null, array('msg'=>'Document "' . $doc . '" is not available for you'));
+        // configure it, set the active document for further references
+        $this->_pages->setActiveDocument($doc);
+
+        $this->view->headTitle($doc . ' -- ' );
 
         // convert document name into absolute PATH
         $scripts = array();
-        $path = Model_Pages::resolvePath($doc, $scripts);
+        $path = $this->_pages->resolvePath($doc, $scripts);
 
         /**
          *  @todo this should be improved
@@ -130,15 +126,20 @@ class PanelController extends FaZend_Controller_Action {
     public function optsAction() {
 
         $title = $this->getRequest()->getPost('title');
-        $acl = Model_Pages::getInstance()->getAcl();
 
-        $current = Model_Pages::getInstance()->findBy('title', $title);
+        // this is required in order to INIT the list of pages
+        $this->_pages->setActiveDocument($title);
+
+        $current = $this->_pages->findBy('title', $title);
         $list = array();
 
-        foreach ($current->parent->getPages() as $page) {
-            if (!$acl->isAllowed(Model_User::me()->email, $page->resource))
-                continue;
-            $list[$page->title] = $page->label;
+        if ($current) {
+
+            foreach ($current->parent->getPages() as $page) {
+                if (!$this->_pages->isAllowed($page->resource))
+                    continue;
+                $list[$page->title] = $page->label;
+            }
         }
 
         $this->_returnJSON($list);
