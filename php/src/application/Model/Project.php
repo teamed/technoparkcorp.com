@@ -19,57 +19,37 @@
  */
 
 /**
- * One simple artifact
+ * One project
  *
  * @package Model
  */
-class Model_Artifact extends ArrayIterator {
+class Model_Project extends Shared_Project {
 
     /**
-     * root
-     */
-    protected static $_root = null;
-
-    /**
-     * Root of the entire hierarchy
+     * This project is managed by wobots?
      *
-     * @return Model_Artifact
+     * The project is managed if one of it's stakeholders is 'pm@wobot.net'
+     *
+     * @return boolean
      */
-    public static function root() {
-        if (is_null(self::$_root)) {
-            self::$_root = new FaZend_StdObject();
-            self::$_root->projectRegistry = new theProjectRegistry();
+    public function isManaged() {
+        return in_array('pm', $this->getWobots());
+    }
+
+
+    /**
+     * Get list of wobots (emails)
+     *
+     * @return string[]
+     */
+    public function getWobots() {
+        $list = array();
+        foreach ($this->getStakeholders() as $email=>$password) {
+            $matches = array();
+            if (preg_match('/^(.*)@wobot\.net$/', $email, $matches))
+                $list[] = strtolower($matches[1]);
         }
-        return self::$_root;
-    }
-
-    /**
-     * Validator
-     *
-     * @param string Name of the field
-     * @return value
-     */
-    public function __get($name) {
-        if ($name == '_validator')
-            return $this->_getValidator();
-    }
-
-    /**
-     * Stub
-     *
-     * @return array
-     */
-    public function toArray() {
-        return array();
-    }
-
-    /**
-     * Get validator object for this artifact
-     *
-     * @return Model_Artifact_Validator
-     */
-    protected function _getValidator() {
-        return new Model_Artifact_Validator();
+        return $list;
     }
 
 }

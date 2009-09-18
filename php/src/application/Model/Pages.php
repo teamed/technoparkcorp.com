@@ -36,18 +36,11 @@ class Model_Pages extends Zend_Navigation {
     protected static $_instance;
 
     /**
-     * Doc name
-     *
-     * @var string
-     */
-    protected static $_doc;
-
-    /**
-     * The view
+     * The view to use when parsing PTHML special files
      *
      * @var Zend_View
      */
-    protected static $_view;
+    protected $_view = null;
 
     /**
      * Access Control List
@@ -55,47 +48,6 @@ class Model_Pages extends Zend_Navigation {
      * @var Zend_Acl
      */
     protected $_acl;
-
-    /**
-     * Public constructor
-     * 
-     * @return void
-     */
-    public function __construct() {
-        parent::__construct();
-
-        $this->_acl = new Zend_Acl();
-        $this->_acl->deny();
-
-        // initialize the entire structure
-        $this->_init($this, '.');
-
-        // select active thread
-        $active = $this->findBy('title', self::$_doc);
-        if ($active)
-            $active->setActive();
-
-    }
-
-    /**
-     * Set the name of current document
-     *
-     * @param string Document name
-     * @return void
-     */
-    public static function setDocument($doc) {
-        self::$_doc = $doc;
-    }
-
-    /**
-     * Set the View
-     *
-     * @param Zend_View View to use
-     * @return void
-     */
-    public static function setView(Zend_View $view) {
-        self::$_view = $view;
-    }
 
     /**
      * Instance getter
@@ -110,13 +62,53 @@ class Model_Pages extends Zend_Navigation {
     }
 
     /**
+     * Set the View
+     *
+     * @param Zend_View View to use
+     * @return void
+     */
+    public function setView(Zend_View $view) {
+        // save it locally, but a clone, in order to avoid conflicts
+        // with the main execution stream
+        $this->_view = clone $view;
+    }
+
+    /**
+     * Get instance of ACL
+     *
+     * @return Zend_Acl
+     */
+    public function getAcl() {
+        if (!isset($this->_acl))
+            $this->_init();
+        return $this->_acl;
+    }
+
+    /**
+     * Set active document
+     *
+     * @param string Document name
+     * @return void
+     */
+    public function setActiveDocument($doc) {
+
+        // the document will be activated, if it physically exists
+        $this->_activateDocument($doc);
+
+        // select active thread
+        $active = $this->findBy('title', $doc);
+        if ($active)
+            $active->setActive();
+    }
+
+    /**
      * Resolve path by document name
      *
      * @param string Document name
      * @param array List of INIT scripts, will be filled
      * @return string PHTML absolute path name
      */
-    public static function resolvePath($doc, array &$scripts = array()) {
+    public function resolvePath($doc, array &$scripts = array()) {
         $path = APPLICATION_PATH . '/pages';
 
         foreach (explode('/', $doc . '.phtml') as $segment) {
@@ -184,48 +176,35 @@ class Model_Pages extends Zend_Navigation {
         if ($link[0] == '/')
             $link = substr($link, 1);
         else
-            $link = self::$_doc . '/' . $link;
+            $link = self::getInstance()->findOneBy('active', true)->title . '/' . $link;
 
         return $link;
     }
 
     /**
-     * This link is available for the user?
-     *
-     * @param string The link text
-     * @return boolean
-     */
-    public function isLinkAllowed($link, $email = null) {
-        if (is_null($email))
-            $email = Model_User::me()->email;
-        return $this->isAllowed($email, $link);
-    }
-
-    /**
-     * Get instance of ACL
-     *
-     * @return Zend_Acl
-     */
-    public function getAcl() {
-        return $this->_acl;
-    }
-
-    /**
      * This page is allowed for this particular user?
      *
-     * @param string User email
      * @param string Document full name
+     * @param string|null User email, NULL means current user
      * @return boolean
      */
-    public function isAllowed($email, $doc) {
+    public function isAllowed($doc, $email = null) {
+        // the document will be activated, if it physically exists
+        $this->_activateDocument($doc);
+
         if (!$this->getAcl()->has($doc))
             return false;
 
+        // get default user email
+        if (is_null($email))
+            $email = Model_User::me()->email;
+
         // recursively check parent
         if (strpos($doc, '/') !== false) {
-            if (!$this->isAllowed($email, substr($doc, 0, strrpos($doc, '/'))))
+            if (!$this->isAllowed(substr($doc, 0, strrpos($doc, '/')), $email))
                 return false;
         }
+        
         return $this->getAcl()->isAllowed($email, $doc);
     }
 
@@ -236,7 +215,14 @@ class Model_Pages extends Zend_Navigation {
      * @param string Directory to search pages for
      * @return void
      */
-    protected function _init(Zend_Navigation_Container $container, $path) {
+    protected function _init(Zend_Navigation_Container $container = null, $path = '.') {
+
+        // first level or recursion? initialize it
+        if (is_null($container)) {
+            $container = $this;
+            $this->_acl = new Zend_Acl();
+            $this->_acl->deny();
+        }
 
         $fullPath = APPLICATION_PATH . '/pages/' . $path;
 
@@ -244,13 +230,6 @@ class Model_Pages extends Zend_Navigation {
             $files = explode("\n", $this->_parse($fullPath . '/_folders.phtml'));
         } else {
             $files = scandir($fullPath);
-    
-            // maybe this document is in active document, but is absent in files
-            if (file_exists($fullPath . '/_any.phtml') &&
-                (strpos(self::$_doc, $container->title) === 0)) {
-                $name = substr(self::$_doc, strlen($container->title)+1);
-                $files[] = (strpos($name, '/') === false ? $name : substr($name, 0, strpos($name, '/'))) . '.phtml';
-            }
         }
 
         $prefix = (($container instanceof Zend_Navigation_Page_Uri) ?
@@ -279,17 +258,7 @@ class Model_Pages extends Zend_Navigation {
                 FaZend_Exception::raise('Model_Pages_IncorrectFormat',
                     "File $id has invalid format in $fullPath: '" . $file . "'");
                 
-            $title = $matches[1];
-            $doc = $prefix . $title;
-
-            $page = new Zend_Navigation_Page_Uri(array(
-                'label' => $title,
-                'title' => $doc,
-                'uri' => Zend_Registry::getInstance()->view->panelUrl($doc),
-                'resource' => $doc,
-            ));
-
-            $container->addPage($page);
+            $container->addPage($this->_createPage($prefix . $matches[1]));
         }
 
         // parse _access.phtml file and build ACL
@@ -317,9 +286,16 @@ class Model_Pages extends Zend_Navigation {
      * @return string
      */
     protected function _parse($file) {
-        $view = clone self::$_view;
-        $view->setScriptPath(dirname($file));
-        return $view->render(basename($file));
+
+        // if there is not VIEW - don't parse the file
+        if (is_null($this->_view))
+            return file_get_contents($file);
+
+        // parse this particular file
+        $this->_view->setScriptPath(dirname($file));
+        $parsed = $this->_view->render(basename($file));
+        return $parsed;
+
     }
 
     /**
@@ -375,6 +351,7 @@ class Model_Pages extends Zend_Navigation {
                 "Line $id in file $accessFile has invalid format: $line");
         }
 
+        // create resources
         foreach ($pages->getPages() as $pg) {
             if (!isset($rights[$pg->name]))
                 $this->_addResource($pg->title);
@@ -399,22 +376,24 @@ class Model_Pages extends Zend_Navigation {
 
         assert(preg_match('/^r|rw|$/', $access));
 
+        $acl = $this->getAcl();
+
         // create a role if it is absent
-        if (($email != '*') && !$this->_acl->hasRole($email))
-            $this->_acl->addRole($email);
+        if (($email != '*') && !$acl->hasRole($email))
+            $acl->addRole($email);
 
         // create resource if absent
-        if (!$this->_acl->has($page))
+        if (!$acl->has($page))
             $this->_addResource($page);
 
         if ($email == '*')
             $email = null;
 
         if (!$access)
-            $this->_acl->deny($email, $page);
+            $acl->deny($email, $page);
         else
             // allow access for this actor to this resource
-            $this->_acl->allow($email, $page/*str_split($access)*/);
+            $acl->allow($email, $page/*str_split($access)*/);
 
     }
 
@@ -425,9 +404,55 @@ class Model_Pages extends Zend_Navigation {
      * @return void
      */
     protected function _addResource($page) {
-        $this->_acl->addResource($page, strpos($page, '/') !== false ?
+        $this->getAcl()->addResource($page, strpos($page, '/') !== false ?
             substr($page, 0, strrpos($page, '/')) : null);
     }
 
+    /**
+     * Find document physically and add it to the list of resources
+     * 
+     * @param string Full name of the document
+     * @return boolean Found or not?
+     */
+    protected function _activateDocument($doc) {
+
+        // if it's already here - skip it
+        if ($this->getAcl()->has($doc))
+            return true;
+            
+        // we should active the parent first, if we can
+        if (strpos($doc, '/')) {
+            if (!$this->_activateDocument($parent = substr($doc, 0, strrpos($doc, '/'))))
+                return false;
+        }
+
+        try {
+            // here we can get an exception, if the file is not found
+            $path = $this->resolvePath($doc);
+        } catch (Model_Pages_DocumentNotFound $e) {
+            return false;
+        }
+
+        $this->_addResource($doc);
+        $parentContainer = isset($parent) ? $this->findOneBy('title', $parent) : $this;
+
+        $parentContainer->addPage($this->_createPage($doc));
+
+    }
+
+    /**
+     * Create a single page for container
+     *
+     * @param string Name of the page to be created
+     * @return Zend_Navigation_Page
+     */
+    protected function _createPage($doc) {
+        return new Zend_Navigation_Page_Uri(array(
+            'label' => (strrpos($doc, '/') ? substr(strrchr($doc, '/'), 1) : $doc),
+            'title' => $doc,
+            'uri' => Zend_Registry::getInstance()->view->panelUrl($doc),
+            'resource' => $doc,
+        ));
+    }
 
 }
