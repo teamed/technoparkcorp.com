@@ -22,7 +22,7 @@
 class FaZend_Validator_Regexp extends FaZend_Validator_Abstract {
 
     /**
-     * Validator
+     * Validate by regular expression
      *
      * @param string Regular expression
      * @return boolean
