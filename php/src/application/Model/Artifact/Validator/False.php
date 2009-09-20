@@ -23,12 +23,11 @@
  *
  * @package Model
  */
-class Model_Artifact_Validator_False extends Model_Artifact_Validator_Abstract {
+class Model_Validator_False extends Model_Validator_Abstract {
 
     /**
      * Validator
      *
-     * @param boolean Value to check
      * @return boolean
      */
     public function validate() {

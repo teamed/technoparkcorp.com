@@ -1,34 +1,29 @@
 <?php
 /**
  *
- * Copyright (c) 2008, TechnoPark Corp., Florida, USA
- * All rights reserved. THIS IS PRIVATE SOFTWARE.
+ * Copyright (c) FaZend.com
+ * All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or without modification, are PROHIBITED
- * without prior written permission from the author. This product may NOT be used anywhere
- * and on any computer except the server platform of TechnoPark Corp. located at
- * www.technoparkcorp.com. If you received this code occacionally and without intent to use
- * it, please report this incident to the author by email: privacy@technoparkcorp.com or
- * by mail: 568 Ninth Street South 202 Naples, Florida 34102, the United States of America,
- * tel. +1 (239) 243 0206, fax +1 (239) 236-0738.
+ * You can use this product "as is" without any warranties from authors.
+ * You can change the product only through Google Code repository
+ * at http://code.google.com/p/fazend
+ * If you have any questions about privacy, please email privacy@fazend.com
  *
- * @author Yegor Bugaenko <egor@technoparkcorp.com>
- * @copyright Copyright (c) TechnoPark Corp., 2001-2009
+ * @copyright Copyright (c) FaZend.com
  * @version $Id$
- *
+ * @category FaZend
  */
 
 /**
  * Validate if it's true?
  *
- * @package Model
+ * @package FaZend
  */
-class Model_Artifact_Validator_True extends Model_Artifact_Validator_Abstract {
+class FaZend_Validator_True extends FaZend_Validator_Abstract {
 
     /**
      * Validator
      *
-     * @param boolean Value to check
      * @return boolean
      */
     public function validate() {
