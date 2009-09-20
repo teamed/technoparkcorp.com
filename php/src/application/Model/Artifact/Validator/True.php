@@ -15,7 +15,7 @@
  */
 
 /**
- * Validate if it's true?
+ * Validate if it's subject equals to true?
  *
  * @package FaZend
  */
