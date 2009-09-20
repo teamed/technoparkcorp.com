@@ -28,16 +28,17 @@ abstract class Model_Decision_PM extends Model_Decision {
     /**
      * Project, the owner of the decision
      *
-     * @var Model_Project
+     * @var theProject
      */
     protected $_project;
 
     /**
      * Set project, the initiator of this decision
      *
+     * @param theProject Project, the holder of the decision
      * @return void
      **/
-    public function setProject(Model_Project $project) {
+    public function setProject(theProject $project) {
         $this->_project = $project;
     }
 
@@ -53,7 +54,7 @@ abstract class Model_Decision_PM extends Model_Decision {
     /**
      * Returns project, the initiator of this decision
      *
-     * @return Model_Project
+     * @return theProject
      **/
     protected function _getProject() {
         return $this->_project;

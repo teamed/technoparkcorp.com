@@ -72,3 +72,12 @@ define('SECONDS_IN_MINUTE', 60);
 
 define('CONTENT_PATH', realpath(APPLICATION_PATH . '/../content'));
 
+/**
+ * Simplified access point to FaZend_Log
+ *
+ * @param string Message to log
+ * @return void
+ */
+function logg($message) {
+    FaZend_Log::log($message);
+}

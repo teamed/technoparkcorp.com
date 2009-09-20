@@ -33,7 +33,18 @@ class theProject extends Model_Artifact {
      * @return theStaffAssignments
      **/
     protected function _getStaffAssignments() {
-        return new theStaffAssignments($this->name);
+        return new theStaffAssignments($this);
+    }
+    
+    /**
+     * Get work orders
+     *
+     * Returns a holder of all work orders
+     *
+     * @return theWorkOrders
+     **/
+    protected function _getWorkOrders() {
+        return new theWorkOrders($this);
     }
     
     /**

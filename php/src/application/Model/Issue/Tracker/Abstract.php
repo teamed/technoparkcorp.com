@@ -23,23 +23,41 @@
  *
  * @package Model
  */
-abstract class Model_Issue_Tracker_Abstract {
+abstract class Model_Issue_Tracker_Abstract extends FaZend_StdObject {
+
+    /**
+     * Cache of trackers
+     *
+     * @var Model_Issue_Tracker_Abstract[]
+     */
+    protected static $_trackers = array();
+
+    /**
+	 * Create a new tracker
+     *
+     * @param Model_Issue_Abstract|string Issue type of type of tracker in string
+     * @param mixed Connection/configuration parameters
+     * @return Model_Issue_Tracker_Abstract
+     */
+	public static function factory($type, $params) {
+	    if ($type instanceof Model_Issue_Abstract)
+	        $type = str_replace('Model_Issue_', '', get_class($type));
+	    
+        $className = 'Model_Issue_Tracker_' . ucfirst($type);
+        $id = $className . ':' . serialize($params);
+        
+        if (!isset(self::$_trackers[$id]))
+            self::$_trackers[$id] = new $className($params);
+            
+        return self::$_trackers[$id];
+    }
 
     /**
 	 * Constructor
      *
+     * @param mixed Connection parameters
      * @return void
      */
-	public function __construct() {
-    }
-
-    /**
-	 * Find issue by decision and id
-     *
-     * @param Model_Decision The initiator of the issue
-     * @param string Unique ID for this particular decision
-     * @return Model_Issue_Abstract
-     */
-	abstract public function findByDecision(Model_Decision $decision, $id);
+	abstract public function __construct($params);
 
 }

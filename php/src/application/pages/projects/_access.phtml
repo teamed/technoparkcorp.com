@@ -2,6 +2,8 @@
 <? foreach ($this->root->projectRegistry as $name=>$project): ?>
 
     [<?=$name?>]
-    yegor256@yahoo.com = rw
+    <? foreach ($project->getStakeholders() as $email=>$pwd): ?>
+        <?=$email?> = rw
+    <? endforeach; ?>
 
 <? endforeach; ?>

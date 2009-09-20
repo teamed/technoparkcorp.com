@@ -72,7 +72,7 @@ class Model_Wobot_PM extends Model_Wobot {
     protected function _nextDecision() {
         // return it, preconfigured
         $decision = Model_Decision::factory($this->_nextDecisionFile(), $this);
-        $decision->setProject($this->_project);
+        $decision->setProject(Model_Artifact::root()->projectRegistry[$this->_project->name]);
         return $decision;
     }
 

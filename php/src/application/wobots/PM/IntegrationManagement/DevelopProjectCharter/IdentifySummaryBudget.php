@@ -26,25 +26,10 @@
 class IdentifySummaryBudget extends Model_Decision_PM {
 
     /**
-     * Create order
-     *
-     * @return Model_Order_Abstract
-     */
-    public function order() {
-        return $this->_order()
-            ->setPerformer($this->project->staffAssignments->PM)
-            ->setCloser(null)
-            ->setText('to specify summary budget')
-            ->setPage('Integration/Charter/setBudget')
-            ->setPrice(0.1)
-            ->setPriority(Model_Order::BLOCKER);
-    }
-
-    /**
      * Make decision, identify summary budget
      *
      * @return string|false
-     * @throws Exception If something happens 
+     * @throws FaZend_Validator_Failure If something happens 
      */
     protected function _make() {
         
@@ -52,7 +37,14 @@ class IdentifySummaryBudget extends Model_Decision_PM {
             ->false(isset($this->project->charter->summaryBudget), 'Summary Budget already set')
             ->true($this->project->staffAssignments->hasRole('PM'), 'Role PM is not defined in the project yet');
 
-        return $this->order()->execute();
+        return $this->project->workOrders->get($this)
+            ->setPerformer($this->project->staffAssignments->PM)
+            ->setCloser(null)
+            ->setText('to specify summary budget')
+            ->setPage('Integration/Charter/setBudget')
+            ->setPrice(0.1)
+            ->setPriority(Model_Order::BLOCKER)
+            ->execute();
         
     }
     

@@ -33,12 +33,13 @@ class theStaffAssignments extends Model_Artifact {
     protected $_project;
 
     /**
-     * Create artifact using project name
+     * Create artifact using project
      *
+     * @param theProject Holder of this collection
      * @return void
      **/
-    public function __construct($project) {
-        $this->_project = Model_Project::findByName($project);
+    public function __construct(theProject $project) {
+        $this->_project = Model_Project::findByName($project->name);
     }
     
     /**

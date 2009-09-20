@@ -38,7 +38,26 @@ class PayClosedOrders extends Model_Decision_PM {
      */
     protected function _make() {
         
-        $orders = Model_Order::retrieveByWobot($this->wobot);
+        // go through the list of all orders
+        foreach ($this->project->workOrders as $order) {
+            
+            // skip the paid orders
+            if ($order->isPaid()) {
+                logg("Order {$order} was paid already");
+                continue;
+            }
+            
+            // validate that it's already finished and confirmed
+            if (!$order->isDelivered()) {
+                logg("Order {$order} is not delivered ye, won't pay");
+                continue;
+            }
+                
+            // pay it
+            $order->pay();
+            return "Order {$order} was paid";
+                
+        }
 
     }
     

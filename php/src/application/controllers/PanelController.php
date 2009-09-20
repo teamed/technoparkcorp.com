@@ -40,27 +40,41 @@ class PanelController extends FaZend_Controller_Action {
     public function preDispatch() {
 
         $this->_session = new Zend_Session_Namespace('panel2');
-        if (!$this->_session->user) {
 
+        if ($this->_session->user) {
+            try {
+                Model_User::setCurrentUser($this->_session->user);
+            } catch (Shared_User_NotFoundException $e) {
+                // nothing to do, HTTP will do the validation
+            }
+        }
+
+        // if the user is not logged in - try to log him/her in
+        if (!Model_User::isLoggedIn()) {
+            // show as much information as possible
             $adapter = new Model_Auth_Adapter(array(
                 'accept_schemes' => 'basic',
-                'realm' => 'thePanel 2.0'));
+                'realm' => 'thePanel 2.0 ' . FaZend_Revision::get() . '/' . count(Model_Project::retrieveAll())));
 
             $adapter->setBasicResolver(new Model_Auth_Resolver());
             $adapter->setRequest($this->getRequest());
             $adapter->setResponse($this->getResponse());
 
             $result = $adapter->authenticate();
-            if (!$result->isValid())
+            if ($result->isValid()) {
+                $identity = $result->getIdentity();
+                $identity = $identity['username'];
+            } else {
                 return $this->_forward('index', 'static', null, array('page'=>'system/404'));
+            }
 
-            $identity = $result->getIdentity();
-            $this->_session->user = $identity['username'];
+            Model_User::setCurrentUser($this->_session->user = $identity);
         }
 
-        Model_User::setCurrentUser($this->_session->user);
+        // change layout of the view
         Zend_Layout::getMvcInstance()->setLayout('panel');
 
+        // get pages instance for the controller to user later
         $this->_pages = Model_Pages::getInstance();
 
     }

@@ -19,29 +19,40 @@
  */
 
 /**
- * Trac tracker
+ * Project work orders
  *
- * @package Model
+ * @package Artifacts
  */
-class Model_Issue_Tracker_Trac {
+class theWorkOrders extends Model_Artifact {
 
     /**
-     * The project related to this Trac
+     * Project
      *
-     * @var Model_Project
+     * @var theProject
      */
     protected $_project;
 
     /**
-	 * Construct the class
+     * Create artifact using project
      *
-     * @param mixed Connection params
+     * @param theProject Holder of this collection
      * @return void
-     */
-	public function __construct($params) {
-	    validate()
-	        ->type($params, 'string', 'Only project name is accepted as param');
-	    $this->_project = Model_Project::findByName($params);
-	}
-
+     **/
+    public function __construct(theProject $project) {
+        $this->_project = $project;
+    }
+        
+    /**
+     * Get a work order
+     *
+     * @param Model_Decision_PM|string Decision class or name
+     * @param string|null ID of the order if required
+     * @return void
+     **/
+    public function get($decision, $id = null) {
+        if ($decision instanceof Model_Decision)
+            $decision = get_class($decision);
+        return new theWorkOrder($this->_project, $decision, $id);
+    }
+        
 }

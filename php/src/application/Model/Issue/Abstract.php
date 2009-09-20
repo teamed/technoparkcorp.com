@@ -23,7 +23,20 @@
  *
  * @package Model
  */
-class Model_Issue_Abstract {
+abstract class Model_Issue_Abstract extends FaZend_StdObject {
+
+    // priorities
+    const BLOCKER = 1;
+    const CRITICAL = 2;
+    const MAJOR = 3;
+    const MINOR = 4;
+    
+    /**
+     * Tracker
+     * 
+     * @var Model_Issue_Tracker_Abstract
+     */
+    protected $_tracker = null;
 
     /**
      * Id of the issue, unique in the tracker
@@ -33,12 +46,27 @@ class Model_Issue_Abstract {
     protected $_id;
 
     /**
+	 * Create a new issue
+     *
+     * @param string Tracker name (class suffix)
+     * @param mixed Parameters required by the tracker
+     * @param string Unique id of the issue
+     * @return Model_Issue_Abstract
+     */
+	public static function factory($tracker, $params, $id) {
+        $className = 'Model_Issue_' . ucfirst($tracker);
+        return new $className($params, $id);
+    }
+
+    /**
 	 * Constructor
      *
+     * @param mixed Tracker connection params
      * @param string Unique id of the issue
      * @return void
      */
-	public function __construct($id) {
+	public function __construct($params, $id) {
+	    $this->_tracker = Model_Issue_Tracker_Abstract::factory($this, $params);
 	    $this->_id = $id;
     }
 
@@ -82,10 +110,26 @@ class Model_Issue_Abstract {
     abstract public function makeOpen();
     
     /**
+     * This issue is delivered already?
+     *
+     * @return boolean
+     **/
+    public function isDelivered() {
+        foreach ($this->messages)
+    }
+    
+    /**
      * Save all changes made
      *
      * @return $this
      **/
     abstract protected function _save();
-    
+
+    /**
+     * Get all messages
+     *
+     * @return Model_Issue_Message_Abstract[]
+     **/
+    abstract protected function _getMessages();
+        
 }

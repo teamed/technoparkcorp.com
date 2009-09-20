@@ -19,29 +19,29 @@
  */
 
 /**
- * Trac tracker
+ * Close the order of 'identify summary project budget'
  *
- * @package Model
+ * @package wobots
  */
-class Model_Issue_Tracker_Trac {
+class IdentifySummaryBudgetClose extends Model_Decision_PM {
 
     /**
-     * The project related to this Trac
+     * Make decision, identify summary budget
      *
-     * @var Model_Project
+     * @return string|false
+     * @throws FaZend_Validator_Failure If something happens 
      */
-    protected $_project;
+    protected function _make() {
+        
+        $order = $this->project->workOrders->get('IdentifySummaryBudget');
+        
+        validate()
+            ->true($order->exists())
+            ->false($order->isDelivered())
+            ->true(isset($this->project->charter->summaryBudget));
 
-    /**
-	 * Construct the class
-     *
-     * @param mixed Connection params
-     * @return void
-     */
-	public function __construct($params) {
-	    validate()
-	        ->type($params, 'string', 'Only project name is accepted as param');
-	    $this->_project = Model_Project::findByName($params);
-	}
-
+        return $this->order()->delivered();
+        
+    }
+    
 }
