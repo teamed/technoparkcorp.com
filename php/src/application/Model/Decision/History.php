@@ -30,15 +30,17 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history {
      *
      * @param Model_Wobot Wobot that initiated this decision
      * @param Model_Decision Decision that has to be protocoled
+     * @param string|false Decision made
+     * @param string Log of the decision made
      * @return Model_Decision_History
      */
-    public static function create(Model_Wobot $wobot, Model_Decision $decision) {
+    public static function create(Model_Wobot $wobot, Model_Decision $decision, $result, $log) {
         $row = new Model_Decision_History();
 
         $row->wobot = $wobot->name;
         $row->context = $wobot->context;
-        $row->result = $decision->decision;
-        $row->protocol = $decision->log;
+        $row->result = $result;
+        $row->protocol = $log;
         $row->hash = $decision->hash;
         $row->save();
 

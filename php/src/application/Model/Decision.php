@@ -42,9 +42,9 @@ abstract class Model_Decision extends FaZend_StdObject {
     /**
      * Log messages
      *
-     * @var string[]
+     * @var string
      */
-    protected $_logMessages = array();
+    protected $_log;
 
     /**
      * Decision just made
@@ -69,9 +69,10 @@ abstract class Model_Decision extends FaZend_StdObject {
      * Create instance of this class, using the file name
      *
      * @param string File name of the decision file
+     * @param Model_Wobot Wobot, the initiator
      * @return Model_Decision
      */
-    public static function factory($file, $wobot) {
+    public static function factory($file, Model_Wobot $wobot) {
         $className = pathinfo($file, PATHINFO_FILENAME);
         require_once $file;
         return new $className($file, $wobot);
@@ -86,32 +87,34 @@ abstract class Model_Decision extends FaZend_StdObject {
     public static function hash($file) {
         return pathinfo($file, PATHINFO_FILENAME) . '/' . md5($file);
     }
-
-    /**
-     * Is it required to make it now?
-     *
-     * The method is called before making this decision. If you return FALSE
-     * here, the decision won't be executed.
-     *
-     * @return boolean
-     */
-    public function isRequired() {
-        return true;
-    }
-
+    
     /**
      * Make decision and protocol results
      *
-     * @return void
+     * @return string|false Result of decision made (FALSE = no decission)
      */
     public function make() {
-        if ($this->isRequired()) 
-            $this->_decision = $this->_make();
-        else
-            $this->_decision = 'Not required';
 
+        FaZend_Log::getInstance()->addWriter('Memory', 'decision');
+
+        try {
+            
+            FaZend_Log::log('Starting decision: ' . $this->_file);
+            $decision = $this->_make();
+
+        } catch (Exception $e) {
+            // some error inside - we skip the process
+            FaZend_Log::log($e->getMessage());
+            $decision = false;
+        }
+        
+        $log = FaZend_Log::getInstance()->getWriterAndRemove('decision')->getLog();
+        
         // protocol this decision
-        Model_Decision_History::create($this->_wobot, $this);
+        Model_Decision_History::create($this->_wobot, $this, $decision, $log);
+        
+        return $decision;
+        
     }
 
     /**
@@ -128,40 +131,6 @@ abstract class Model_Decision extends FaZend_StdObject {
      * @return string|false
      */
     abstract protected function _make();
-
-    /**
-     * Internal protocoling method
-     *
-     * The method is called during decision making process.
-     *
-     * @param string Message to be protocoled
-     * @return void
-     */
-    public function _log($message) {
-        $this->_logMessages[] = $message;
-    }
-
-    /**
-     * Return log of decision making
-     *
-     * The method is called from protocoller
-     *
-     * @return string
-     */
-    protected function _getLog() {
-        return implode("\n", $this->_logMessages);
-    }
-
-    /**
-     * Return result of decision making
-     *
-     * The method is called from protocoller
-     *
-     * @return string
-     */
-    protected function _getDecision() {
-        return $this->_decision;
-    }
 
     /**
      * Return has of this particular decision

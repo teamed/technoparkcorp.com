@@ -33,7 +33,8 @@ class Model_Project extends Shared_Project {
      * @return boolean
      */
     public function isManaged() {
-        return in_array('pm', $this->getWobots());
+        $email = Model_Wobot::factory('PM.' . $this->name)->email;
+        return in_array($email, $this->getWobots());
     }
 
 
@@ -46,10 +47,40 @@ class Model_Project extends Shared_Project {
         $list = array();
         foreach ($this->getStakeholders() as $email=>$password) {
             $matches = array();
-            if (preg_match('/^(.*)@wobot\.net$/', $email, $matches))
+            if (preg_match('/^(.*@' . preg_quote(Model_Wobot::EMAIL_DOMAIN) . ')$/', $email, $matches))
                 $list[] = strtolower($matches[1]);
         }
         return $list;
     }
 
+    /**
+     * Get list of emails for a given role
+     *
+     * Roles should be defined in authz file, like:
+     *
+     * <code>
+     * [project:/role/CCB]
+     * pm@wobot.net = rw
+     *
+     * [project:/role/PM]
+     * john@tpc2.com = r
+     * </code>
+     *
+     * @return string[]
+     */
+    public function getStakeholdersByRole($role) {
+        // array_filter will remove people with FALSE (no access)
+        return array_keys(array_filter($this->getAccessRights('/role/' . $role)));
+    }
+    
+    /**
+     * Name of the issue tracker for this given project
+     *
+     * @return string
+     * @todo This is just a stub now, it should be configured
+     **/
+    protected function _getTracker() {
+        return 'trac';
+    }
+    
 }

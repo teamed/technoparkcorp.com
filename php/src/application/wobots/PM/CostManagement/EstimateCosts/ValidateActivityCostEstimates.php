@@ -32,8 +32,8 @@ class ValidateActivityCostEstimates extends Model_Decision {
      */
     protected function _make() {
 
-        $this->_log("Test message 1");
-        $this->_log("Test message 2");
+        FaZend_Log::log("Test message 1");
+        FaZend_Log::log("Test message 2");
 
         return "all activities are OK";
 

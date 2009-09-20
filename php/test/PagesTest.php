@@ -29,6 +29,7 @@ class PagesTest extends FaZend_Test_TestCase {
 
     public function testParsingWorks() {
         $this->pages = Model_Pages::getInstance();
+        $acl = $this->pages->getAcl();
     }
 
     public function testNavigationWorks() {

@@ -25,20 +25,27 @@
  */
 class theProject extends Model_Artifact {
 
-    public function doPause() {
-    }
-
     /**
-     * Get list of all activities in the project
+     * Get staff assignments artifact
      *
-     * @return theActivity[]
-     */
-    protected function _getActivities() {
-        $activities = array();
-        foreach ($this->iterations as $iteration)
-            $activities = array_merge($activities, $iteration->activities);
-
-        return $activities;
+     * Returns a holder of all staff assignments
+     *
+     * @return theStaffAssignments
+     **/
+    protected function _getStaffAssignments() {
+        return new theStaffAssignments($this->name);
     }
-
+    
+    /**
+     * Get project name
+     *
+     * The project itself doesn't know anything about its name, that's 
+     * why we should ask project registry about the name of this project.
+     *
+     * @return string
+     **/
+    protected function _getName() {
+        return 
+    }
+    
 }

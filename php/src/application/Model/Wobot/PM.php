@@ -28,7 +28,7 @@ class Model_Wobot_PM extends Model_Wobot {
     /**
      * Project name
      *
-     * @var string
+     * @var Model_Project
      */
     protected $_project;
 
@@ -38,7 +38,20 @@ class Model_Wobot_PM extends Model_Wobot {
      * @return void
      */
     protected function __construct($context = null) {
-        $this->_project = $context;
+        $this->_project = Model_Project::findByName($context);
+    }
+
+    /**
+     * Returns a list of all possible wobot names of this given type/class
+     *
+     * @return string[]
+     **/
+    public static function getAllNames() {
+        $list = array();
+        foreach (Model_Artifact::root()->projectRegistry as $name=>$project) {
+            $list[] = 'PM.' . $name;
+        }
+        return $list;
     }
 
     /**
@@ -47,7 +60,7 @@ class Model_Wobot_PM extends Model_Wobot {
      * @return string
      */
     protected function _getContext() {
-        return (string)$this->_project;
+        return (string)$this->_project->name;
     }
 
 
@@ -55,11 +68,11 @@ class Model_Wobot_PM extends Model_Wobot {
      * Selects the next decision to be executed
      *
      * @return Model_Decision
-     * @todo implement it
      */
     protected function _nextDecision() {
-        $decision = parent::_nextDecision();
-        $decision->project = $this->project;
+        // return it, preconfigured
+        $decision = Model_Decision::factory($this->_nextDecisionFile(), $this);
+        $decision->setProject($this->_project);
         return $decision;
     }
 

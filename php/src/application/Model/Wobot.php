@@ -20,10 +20,15 @@
 
 /**
  * One wobot
+ * 
+ * Abstract class, acting as a dispatcher and a general parent for
+ * all wobots.
  *
  * @package Model
  */
 abstract class Model_Wobot extends FaZend_StdObject {
+
+    const EMAIL_DOMAIN = 'wobot.net'; // domain to be used in all wobot's emails
 
     /**
      * Get list of all wobots
@@ -35,9 +40,14 @@ abstract class Model_Wobot extends FaZend_StdObject {
      */
     public static function retrieveAll() {
         $wobots = array();
-        foreach (Model_Artifact::root()->projectRegistry as $name=>$project) {
-            $wobots[] = self::factory('PM.' . $name);
+        
+        // list all wobot names
+        foreach (self::_getAllNames() as $name) {
+            $wobotClass = __CLASS__ . '_' . $name;
+            foreach ($wobotClass::getAllNames() as $wobotName)
+                $wobots = self::factory($wobotName);
         }
+            
         return new ArrayIterator($wobots);
     }
 
@@ -50,7 +60,7 @@ abstract class Model_Wobot extends FaZend_StdObject {
     public static function factory($name) {
         $exp = explode('.', $name);
 
-        $className = 'Model_Wobot_' . $exp[0];
+        $className = __CLASS__ . '_' . $exp[0];
         return new $className(isset($exp[1]) ? $exp[1] : null);
     }
 
@@ -78,7 +88,25 @@ abstract class Model_Wobot extends FaZend_StdObject {
      * @return string
      */
     protected function _getName() {
-        return str_replace('Model_Wobot_', '', get_class($this));
+        return str_replace(__CLASS__ . '_', '', get_class($this));
+    }
+
+    /**
+     * Calculate email of the wobot (without domain, which is always self::EMAIL_DOMAIN)
+     *
+     * @return string
+     */
+    protected function _getEmailPrefix() {
+        return strtolower($this->name);
+    }
+
+    /**
+     * Calculate email of the wobot
+     *
+     * @return string
+     */
+    protected function _getEmail() {
+        return $this->email . '@' . self::EMAIL_DOMAIN;
     }
 
     /**
@@ -91,12 +119,12 @@ abstract class Model_Wobot extends FaZend_StdObject {
     }
 
     /**
-     * Execute this wobot
+     * Execute this wobot (make next waiting decision)
      *
-     * @return string Log of execution
+     * @return string The decision just made
      */
     public function execute() {
-        $this->_nextDecision()->make();
+        return $this->_nextDecision()->make();
     }
 
     /**
@@ -105,15 +133,22 @@ abstract class Model_Wobot extends FaZend_StdObject {
      * @return Model_Decision
      */
     protected function _nextDecision() {
+        // return it, preconfigured
+        return Model_Decision::factory($this->_nextDecisionFile(), $this);
+    }
+
+    /**
+     * Selects the next decision to be executed
+     *
+     * @return string PHP file with next decision
+     */
+    protected function _nextDecisionFile() {
 
         // get list of all files in this wobot
         $files = $this->_getDecisionFiles();
 
         // find next decision to be made
-        $file = Model_Decision_History::findNextDecision($this, $files);
-
-        // return it, preconfigured
-        return Model_Decision::factory($file, $this);
+        return Model_Decision_History::findNextDecision($this, $files);
 
     }
 
@@ -127,6 +162,7 @@ abstract class Model_Wobot extends FaZend_StdObject {
         if (is_null($path))
             $path = APPLICATION_PATH . '/wobots/' . $this->name;
 
+        // get through all files in the directory and collect PHP decisions
         $files = array();
         foreach (glob($path . '/*') as $file) {
             if (is_dir($file))
@@ -135,7 +171,24 @@ abstract class Model_Wobot extends FaZend_StdObject {
                 $files[] = $file;
         }
 
+        // return list of found PHP files
         return $files;
+    }
+
+    /**
+     * Returns a list of all possible wobot names (using /wobots directory)
+     *
+     * @return string[]
+     **/
+    protected static function _getAllNames() {
+        $dir = APPLICATION_PATH . '/wobots';
+        $list = array();
+        foreach (scandir($dir) as $file) {
+            if ($file[0] == '.')
+                continue;
+            $list[] = $file;
+        }
+        return $list;
     }
 
 }

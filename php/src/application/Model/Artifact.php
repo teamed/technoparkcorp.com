@@ -44,32 +44,13 @@ class Model_Artifact extends ArrayIterator {
     }
 
     /**
-     * Validator
-     *
-     * @param string Name of the field
-     * @return value
-     */
-    public function __get($name) {
-        if ($name == '_validator')
-            return $this->_getValidator();
-    }
-
-    /**
      * Stub
      *
      * @return array
+     * @todo remove it later
      */
     public function toArray() {
         return array();
-    }
-
-    /**
-     * Get validator object for this artifact
-     *
-     * @return Model_Artifact_Validator
-     */
-    protected function _getValidator() {
-        return new Model_Artifact_Validator();
     }
 
 }

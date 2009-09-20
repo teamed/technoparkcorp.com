@@ -25,10 +25,6 @@
  */
 class RequestActivityCostEstimates extends Model_Decision {
 
-    public function isRequired() {
-        return false;
-    }
-
     /**
      * Make decision
      *
@@ -49,7 +45,7 @@ class RequestActivityCostEstimates extends Model_Decision {
                 $activity->requestCostEstimate();
 
                 // protocol this operation
-                $this->_log("Activity {$activity->name} is assigned to " .
+                FaZend_Log::log("Activity {$activity->name} is assigned to " .
                     "{$activity->performer}, but cost is not yet estimated/requested. Estimate requested.");
 
                 // calculate made requests
