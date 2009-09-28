@@ -2,7 +2,7 @@
 <? foreach ($this->root->projectRegistry as $name=>$project): ?>
 
     [<?=$name?>]
-    <? foreach ($project->getStakeholders() as $email=>$pwd): ?>
+    <? foreach ($project->staffAssignments->getEverybody() as $email): ?>
         <?=$email?> = rw
     <? endforeach; ?>
 

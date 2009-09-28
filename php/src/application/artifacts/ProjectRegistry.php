@@ -36,6 +36,13 @@ class theProjectRegistry extends Model_Artifact {
             if (!$project->isManaged())
                 continue;
             $this[$project->name] = new theProject();
+            $this[$project->name]->setName($project->name);
+        }
+        
+        if (APPLICATION_ENV !== 'production') {
+            $name = Model_Project_Test::NAME;
+            $this[$name] = new theProject();
+            $this[$name]->setName($name);
         }
     }
 

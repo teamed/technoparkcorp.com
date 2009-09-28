@@ -43,6 +43,7 @@ class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap {
      */
     protected function _initSharedLib() {
         $this->bootstrap('Fazend');
+        
         Model_Project::setClassName('Model_Project');
     }
 
@@ -52,6 +53,8 @@ class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap {
      * @return void
      */
     protected function _initPanelView() {
+        $this->bootstrap('Fazend');
+        
         // get root of the entire tree
         $this->bootstrap('view');
         $view = $this->getResource('view');
@@ -79,5 +82,5 @@ define('CONTENT_PATH', realpath(APPLICATION_PATH . '/../content'));
  * @return void
  */
 function logg($message) {
-    FaZend_Log::log($message);
+    FaZend_Log::info($message);
 }

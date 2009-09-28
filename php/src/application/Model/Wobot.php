@@ -106,7 +106,7 @@ abstract class Model_Wobot extends FaZend_StdObject {
      * @return string
      */
     protected function _getEmail() {
-        return $this->email . '@' . self::EMAIL_DOMAIN;
+        return $this->emailPrefix . '@' . self::EMAIL_DOMAIN;
     }
 
     /**

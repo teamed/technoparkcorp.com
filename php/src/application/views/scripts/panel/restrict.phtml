@@ -1,16 +1,31 @@
 <h1>Access restricted</h1>
 
-<p class="flash">
-    <? if ($this->message): ?>
-        <?=$this->message?>
-    <? else: ?>
-        Unknown reason
-    <? endif; ?>
-</p>
+<? if (Model_Pages::getInstance()->getAcl()->hasRole(Model_User::me()->email)): ?>
 
-<p>This particular document is not available for you. Here is
-a list of documents that you can access:</p>
+    <p class="flash">
+        <? if ($this->message): ?>
+            <?=$this->message?>
+        <? else: ?>
+            Unknown reason of access restriction, refer to admin
+        <? endif; ?>
+    </p>
 
-<p><?=$this->navigation()
-    ->menu(Model_Pages::getInstance())
-    ->setMaxDepth(1)?></p>
+    <p>This particular document is not available for you. Here is
+        a list of documents that you can access:</p>
+
+    <p><?=$this->navigation(Model_Pages::getInstance())
+        ->menu()
+        ->setAcl(Model_Pages::getInstance()->getAcl())
+        ->setRole(Model_User::me()->email)
+        ->setMaxDepth(2)
+        ?></p>
+        
+<? else: ?>
+
+    <p>You don't have enough access permissions to access this
+        management panel, although your email (<tt><?=Model_User::me()->email?></tt>) is registered
+        in one of the projects we manage. Refer to the sponsor or
+        the project manager of your project for obtaining required access
+        rights. Sorry for any inconveniences.</p>
+
+<? endif; ?>

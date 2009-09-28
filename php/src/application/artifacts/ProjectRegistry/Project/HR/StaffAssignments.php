@@ -39,7 +39,7 @@ class theStaffAssignments extends Model_Artifact {
      * @return void
      **/
     public function __construct(theProject $project) {
-        $this->_project = Model_Project::findByName($project->name);
+        $this->_project = Model_Project::findProjectByName($project->name);
     }
     
     /**
@@ -77,4 +77,14 @@ class theStaffAssignments extends Model_Artifact {
     public function hasRole($role) {
         return (bool)count($this->_project->getStakeholdersByRole($name));
     }    
+    
+    /**
+     * Get list of all project stakeholders
+     *
+     * @return string[]
+     **/
+    public function getEverybody() {
+        return array_keys($this->_project->getStakeholders());
+    }    
+    
 }

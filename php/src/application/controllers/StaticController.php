@@ -45,7 +45,8 @@ class StaticController extends FaZend_Controller_Action {
             return;
         }    
 
-        Model_Navigation::populateNavigation($this->view->navigation(), $article->page);
+        $container = $this->view->navigation();
+        Model_Navigation::populateNavigation($container, $article->page);
 
         // change content if the PHTML script found    
         $scripts = array(

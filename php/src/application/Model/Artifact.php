@@ -53,4 +53,15 @@ class Model_Artifact extends ArrayIterator {
         return array();
     }
 
+    /**
+     * Getter
+     *
+     * @param $name
+     */
+    public function __get($name) {
+        $method = '_get' . ucfirst($name);
+        if (method_exists($this, $method))
+            return $this->$method();
+    }
+
 }

@@ -62,10 +62,10 @@ class Helper_Bar extends FaZend_View_Helper {
      * @param string Label
      * @return $this
      */
-    public function addLink($link, $title) {
+    public function addLink($link, $title = null) {
         $this->_links[] = array(
             'link'=>$link,
-            'title'=>$title
+            'title'=>(is_null($title) ? $link : $title)
         );
         return $this;
     }

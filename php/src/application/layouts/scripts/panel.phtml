@@ -16,16 +16,18 @@
 
     <div class="header">
 
-        <div class="path">
-            <?=$this->navigation(Model_Pages::getInstance())
-                ->setAcl(Model_Pages::getInstance()->getAcl())
-                ->setRole(Model_User::me()->email)
-                ->breadcrumbs()
-                ->setSeparator(' / ')
-                ->setMinDepth(0)
-                ->setPartial('panel/header.phtml')
-                ->setLinkLast(true)?>
-        </div>
+        <? if (Model_Pages::getInstance()->getAcl()->hasRole(Model_User::me()->email)): ?>
+            <div class="path">
+                <?=$this->navigation(Model_Pages::getInstance())
+                    ->setAcl(Model_Pages::getInstance()->getAcl())
+                    ->setRole(Model_User::me()->email)
+                    ->breadcrumbs()
+                    ->setSeparator(' / ')
+                    ->setMinDepth(0)
+                    ->setPartial('panel/header.phtml')
+                    ->setLinkLast(true)?>
+            </div>
+        <? endif; ?>
 
         <div class="logo">
             <a class="logo" href="<?=$this->panelUrl('root')?>" title="Home">thePanel<sup style="font-size: 0.3em;">TM</sup> v2.0</a>

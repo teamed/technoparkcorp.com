@@ -1,0 +1,19 @@
+/* document publishing bar */
+div.wrapper div.publish {
+    position: fixed;
+    top: 50px;
+    left: 30px;
+}
+
+/* top content box for publish helper */
+div.wrapper div.publisher {
+    border-bottom: 1px dashed <?=Model_Colors::BLUE?>;
+    border-left: 1px dashed <?=Model_Colors::BLUE?>;
+    margin: -15px 0 20px 0px;
+    padding: 10px;
+    font-size: 0.85em;
+}
+
+    div.wrapper div.publisher p.error {
+        color: <?=Model_Colors::RED?>;
+    }

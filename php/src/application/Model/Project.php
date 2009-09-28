@@ -26,6 +26,17 @@
 class Model_Project extends Shared_Project {
 
     /**
+     * Finds project by its name or create one if it's a test project
+     *
+     * @return Model_Project
+     **/
+    public static function findProjectByName($name) {
+        if (($name === Model_Project_Test::NAME) && (APPLICATION_ENV !== 'production'))
+            return Model_Project_Test::make();
+        return self::findByName($name);
+    }
+
+    /**
      * This project is managed by wobots?
      *
      * The project is managed if one of it's stakeholders is 'pm@wobot.net'

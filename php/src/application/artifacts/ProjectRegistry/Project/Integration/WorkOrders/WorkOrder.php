@@ -41,12 +41,12 @@ class theWorkOrder extends Model_Artifact {
      * @return void
      **/
     public function __construct(theProject $project, $decision, $id) {
+        $this->_project = Model_Project::findByName($project->name);
         $this->_issue = Model_Issue_Abstract::factory(
-            'trac', 
+            $this->_project->tracker, 
             $project->name, 
             $decision . ':' . $id);
                 
-        $this->_project = Model_Project::findByName($project->name);
     }
         
     /**

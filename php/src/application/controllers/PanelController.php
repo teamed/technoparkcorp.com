@@ -38,16 +38,12 @@ class PanelController extends FaZend_Controller_Action {
      * @return void
      */
     public function preDispatch() {
-
-        $this->_session = new Zend_Session_Namespace('panel2');
-
-        if ($this->_session->user) {
-            try {
-                Model_User::setCurrentUser($this->_session->user);
-            } catch (Shared_User_NotFoundException $e) {
-                // nothing to do, HTTP will do the validation
-            }
-        }
+        
+        // in testing environment you do EVERYTHING under this role
+        // in order to avoid conflicts with real documents in
+        // real environment (fazend for example)
+        if (APPLICATION_ENV !== 'production')
+            Model_User::logIn('tester@tpc2.com');
 
         // if the user is not logged in - try to log him/her in
         if (!Model_User::isLoggedIn()) {
@@ -68,7 +64,7 @@ class PanelController extends FaZend_Controller_Action {
                 return $this->_forward('index', 'static', null, array('page'=>'system/404'));
             }
 
-            Model_User::setCurrentUser($this->_session->user = $identity);
+            Model_User::logIn($identity);
         }
 
         // change layout of the view

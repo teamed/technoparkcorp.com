@@ -28,6 +28,8 @@
  */
 class Model_Pages extends Zend_Navigation {
 
+    const ADMIN = 'director@tpc2.com';
+
     /**
      * Instance
      *
@@ -186,9 +188,10 @@ class Model_Pages extends Zend_Navigation {
      *
      * @param string Document full name
      * @param string|null User email, NULL means current user
+     * @param string|null Privileges to apply
      * @return boolean
      */
-    public function isAllowed($doc, $email = null) {
+    public function isAllowed($doc, $email = null, $privileges = null) {
         // the document will be activated, if it physically exists
         $this->_activateDocument($doc);
 
@@ -201,7 +204,7 @@ class Model_Pages extends Zend_Navigation {
 
         // recursively check parent
         if (strpos($doc, '/') !== false) {
-            if (!$this->isAllowed(substr($doc, 0, strrpos($doc, '/')), $email))
+            if (!$this->isAllowed(substr($doc, 0, strrpos($doc, '/')), $email, $privileges))
                 return false;
         }
         

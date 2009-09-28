@@ -26,6 +26,23 @@
 class theProject extends Model_Artifact {
 
     /**
+     * Unique name of this project, to be set from registry
+     *
+     * @var string
+     */
+    protected $_name = null;
+
+    /**
+     * Set project name
+     *
+     * @param string The name
+     * @return void
+     **/
+    public function setName($name) {
+        $this->_name = $name;
+    }
+    
+    /**
      * Get staff assignments artifact
      *
      * Returns a holder of all staff assignments
@@ -48,15 +65,22 @@ class theProject extends Model_Artifact {
     }
     
     /**
-     * Get project name
+     * Get list of milestones
      *
-     * The project itself doesn't know anything about its name, that's 
-     * why we should ask project registry about the name of this project.
+     * @todo REMOVE IT LATER! This property should be retrieved by POS, not like this now
+     * @return theMilestones
+     **/
+    protected function _getMilestones() {
+        return new theMilestones($this);
+    }
+    
+    /**
+     * Get project name
      *
      * @return string
      **/
     protected function _getName() {
-        return 
+        return $this->_name;
     }
     
 }

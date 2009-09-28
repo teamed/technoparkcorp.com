@@ -1,3 +1,5 @@
-project status page
+<h1>Project "<?=$this->project->name?>"</h1>
 
-project name: 
+<?=$this->bar()
+    ->addLink('Time/Milestones', 'project milestones')
+    ?>

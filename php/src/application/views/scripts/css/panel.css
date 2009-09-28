@@ -16,6 +16,7 @@
  *
  */
 
+/* all objects */
 * {
     padding: 0px;
     margin: 0px;
@@ -45,6 +46,7 @@ h2 {
     font-weight: normal;
 }
 
+/* table properties */
 th {
     text-align: left;
 }
@@ -71,6 +73,7 @@ th {
         background-color: #9cacb6;
     }    
 
+/* form properties */
 input, 
 textarea, 
 select {
@@ -93,6 +96,7 @@ select {
             background: <?=Model_Colors::BLUE?>;
         }
 
+/* flash message line */
 p.flash {
     color: <?=Model_Colors::RED?>;
     background-color: inherit;
@@ -198,7 +202,7 @@ div.header {
         height: 5px;
         background: <?=Model_Colors::WHITE?>;
     }
-
+    
 /* page content */
 div.wrapper {
     margin-top: 60px;
