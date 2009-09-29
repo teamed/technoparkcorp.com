@@ -19,23 +19,30 @@
  */
 
 /**
- * Project work orders
+ * Total number of defects found in the project
  *
  * @package Artifacts
  */
-class theWorkOrders extends Model_Artifact_Dynamic {
+class theMtcDefectsFound extends theMtcAbstract {
 
     /**
-     * Get a work order
+     * Initialize this metric
      *
-     * @param Model_Decision_PM|string Decision class or name
-     * @param string|null ID of the order if required
      * @return void
      **/
-    public function get($decision, $id = null) {
-        if ($decision instanceof Model_Decision)
-            $decision = get_class($decision);
-        return new theWorkOrder($this->_owner, $decision, $id);
+    protected function _init() {
+        $this->setTitle('Total number of defects found')
+            ->setDefault(round($this->_metrics()->codeSLOC / 5))
+            ->setVisible(true);
+    }
+        
+    /**
+     * Calculate
+     *
+     * @return integer
+     **/
+    protected function _calculate() {
+        return 10;
     }
         
 }

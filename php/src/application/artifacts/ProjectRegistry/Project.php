@@ -33,6 +33,26 @@ class theProject extends Model_Artifact {
     protected $_name = null;
 
     /**
+     * List of dynamic artifacts
+     * 
+     * @var string
+     */
+    protected $_artifacts = array(
+        'staffAssignments',
+        'metrics',
+        'workOrders',
+        'metrics',
+        'milestones',
+    );
+    
+    /**
+     * Cached artifacts 
+     *
+     * @var mixed[]
+     */
+    protected $_cached = array();
+
+    /**
      * Set project name
      *
      * @param string The name
@@ -43,35 +63,18 @@ class theProject extends Model_Artifact {
     }
     
     /**
-     * Get staff assignments artifact
+     * Get one of sub-artifacts
      *
-     * Returns a holder of all staff assignments
-     *
-     * @return theStaffAssignments
+     * @return void
      **/
-    protected function _getStaffAssignments() {
-        return new theStaffAssignments($this);
-    }
-    
-    /**
-     * Get work orders
-     *
-     * Returns a holder of all work orders
-     *
-     * @return theWorkOrders
-     **/
-    protected function _getWorkOrders() {
-        return new theWorkOrders($this);
-    }
-    
-    /**
-     * Get list of milestones
-     *
-     * @todo REMOVE IT LATER! This property should be retrieved by POS, not like this now
-     * @return theMilestones
-     **/
-    protected function _getMilestones() {
-        return new theMilestones($this);
+    public function __get($name) {
+        if (!in_array($name, $this->_artifacts)) 
+            return parent::__get($name);
+        $class = 'the' . ucfirst($name);
+        
+        if (!isset($this->_cached[$class]))
+            $this->_cached[$class] = new $class($this);
+        return $this->_cached[$class];
     }
     
     /**

@@ -19,23 +19,40 @@
  */
 
 /**
- * Project work orders
+ * Project metrics collector
  *
  * @package Artifacts
  */
-class theWorkOrders extends Model_Artifact_Dynamic {
+class theMetrics extends Model_Artifact_Dynamic {
 
     /**
-     * Get a work order
+     * Collection of metric classes, in order to avoid object duplication
      *
-     * @param Model_Decision_PM|string Decision class or name
-     * @param string|null ID of the order if required
-     * @return void
+     * @var theMtcAbstract
+     */
+    protected $_cached = array();
+
+    /**
+     * Get a metric
+     *
+     * @param string Name of the metric, e.g. defectsFound
+     * @return integer
      **/
-    public function get($decision, $id = null) {
-        if ($decision instanceof Model_Decision)
-            $decision = get_class($decision);
-        return new theWorkOrder($this->_owner, $decision, $id);
+    public function __get($metric) {
+        return $this->get($metric)->getValue();
     }
         
+    /**
+     * Get a metric class
+     *
+     * @param string Name of the metric, e.g. defectsFound
+     * @return theMtcAbstract
+     **/
+    public function get($metric) {
+        $className = 'theMtc' . ucfirst($metric);
+        if (!isset($this->_cached[$className]))
+            $this->_cached[$className] = new $className($this->_owner);
+        return $this->_cached[$className];
+    }
+            
 }

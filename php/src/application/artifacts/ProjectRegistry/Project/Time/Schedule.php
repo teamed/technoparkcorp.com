@@ -23,6 +23,6 @@
  *
  * @package Artifacts
  */
-class theSchedule extends Model_Artifact {
+class theSchedule {
 
 }

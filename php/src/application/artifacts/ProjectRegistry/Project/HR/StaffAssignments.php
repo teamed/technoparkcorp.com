@@ -23,7 +23,7 @@
  *
  * @package Artifacts
  */
-class theStaffAssignments extends Model_Artifact {
+class theStaffAssignments extends Model_Artifact_Dynamic {
 
     /**
      * Project
@@ -39,6 +39,7 @@ class theStaffAssignments extends Model_Artifact {
      * @return void
      **/
     public function __construct(theProject $project) {
+        parent::__construct($project);
         $this->_project = Model_Project::findProjectByName($project->name);
     }
     
