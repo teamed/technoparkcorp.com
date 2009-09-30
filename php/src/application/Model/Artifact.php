@@ -23,7 +23,8 @@
  *
  * @package Model
  */
-class Model_Artifact extends ArrayIterator {
+class Model_Artifact extends ArrayIterator 
+    implements Model_Artifact_Interface {
 
     /**
      * root
@@ -37,31 +38,10 @@ class Model_Artifact extends ArrayIterator {
      */
     public static function root() {
         if (is_null(self::$_root)) {
-            self::$_root = new FaZend_StdObject();
+            self::$_root = new Model_Artifact();
             self::$_root->projectRegistry = new theProjectRegistry();
         }
         return self::$_root;
-    }
-
-    /**
-     * Stub
-     *
-     * @return array
-     * @todo remove it later
-     */
-    public function toArray() {
-        return array();
-    }
-
-    /**
-     * Getter
-     *
-     * @param $name
-     */
-    public function __get($name) {
-        $method = '_get' . ucfirst($name);
-        if (method_exists($this, $method))
-            return $this->$method();
     }
 
 }
