@@ -1,0 +1,6 @@
+<h1>Staff Assignments</h1>
+
+<?=$this->table()
+    ->setSource($this->project->staffAssignments->getEverybody())
+    ->addColumn('getEmail', 'Stakeholder/Email')
+    ?>

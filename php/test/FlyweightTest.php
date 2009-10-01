@@ -18,27 +18,31 @@
  *
  */
 
-/**
- * Synchronize activities between schedule and work orders
- *
- * @package wobots
- */
-class SynchronizeActivities extends Model_Decision_PM {
+require_once 'FaZend/Test/TestCase.php';
 
-    /**
-     * Synchronize between work orders and schedule
-     *
-     * @return string|false
-     * @throws FaZend_Validator_Failure If something happens 
-     */
-    protected function _make() {
-        
-        validate()
-            ->false($this->_project->objectives->isApproved(), 'Objectives are not approved yet');
-
-        // synchronize with work orders
-        $this->project->schedule->synchronize();        
-
+class TestClass {
+    public $id;
+    public function __construct($param1, $param2) {
+        $this->id = $param1 . $param2;
     }
-    
+}
+
+/**
+ * Model_Flyweight test
+ *
+ * @package test
+ */
+class FlyweightTest extends FaZend_Test_TestCase {
+
+    public function testMechanismWorks() {
+        $object1 = Model_Flyweight::factory('TestClass', 'A', 'B');
+        $object2 = Model_Flyweight::factory('TestClass', 'C', 'D');
+        
+        $object1copy = Model_Flyweight::factory('TestClass', 'A', 'B');
+        $this->assertEquals($object1, $object1copy);
+
+        $object2copy = Model_Flyweight::factory('TestClass', 'C', 'E');
+        $this->assertNotEquals($object2, $object2copy);
+    }
+
 }

@@ -87,8 +87,10 @@ class PanelController extends FaZend_Controller_Action {
         $doc = $view->doc = $this->view->doc = $this->_getParam('doc');
 
         // permission check for current user
-        if (!$this->_pages->isAllowed($doc))
-            return $this->_forward('restrict', null, null, array('msg'=>'Sorry, the document "' . $doc . '" is not available for you'));
+        if (!$this->_pages->isAllowed($doc)) {
+            return $this->_forward('restrict', null, null, 
+                array('msg'=>'Sorry, the document "' . $doc . '" is not available for you'));
+        }
 
         // configure it, set the active document for further references
         $this->_pages->setActiveDocument($doc);

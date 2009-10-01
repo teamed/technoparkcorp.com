@@ -34,25 +34,9 @@ class RequestEstimate extends Model_Decision_PM {
     protected function _make() {
         
         validate()
-            ->false($this->project->objectives->isApproved(), 'Objectives are not approved yet');
+            ->false($this->_project->objectives->isApproved(), 'Objectives are not approved yet');
 
-        $list = $this->project->activityList;
-        $unestimated = $this->project->activityList->getWithUnclearEstimates();
-
-        logg(count($unclear) . ' activities require estimation');
-
-        // draw a network diagram
-        $this->_logger->svg($list->svg()
-            ->styleNetworkDiagram()
-            ->highlight($unestimated)));
-
-        logg('Here is the list of them:');
-
-        $this->_logger->table()
-            ->setSource($unestimated);
-            
-        // select one activity
-        // and send it for estimation to the performer
+        $this->_project->activityList->requestEstimates();
         
     }
     

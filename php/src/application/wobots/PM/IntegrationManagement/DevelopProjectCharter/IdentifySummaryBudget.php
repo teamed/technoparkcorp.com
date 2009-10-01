@@ -34,10 +34,10 @@ class IdentifySummaryBudget extends Model_Decision_PM {
     protected function _make() {
         
         validate()
-            ->false(isset($this->project->charter->summaryBudget), 'Summary Budget already set')
-            ->true($this->project->staffAssignments->hasRole('PM'), 'Role PM is not defined in the project yet');
+            ->false(isset($this->_project->charter->summaryBudget), 'Summary Budget already set')
+            ->true($this->_project->staffAssignments->hasRole('PM'), 'Role PM is not defined in the project yet');
 
-        return $this->project->workOrders->get($this)
+        return $this->_project->workOrders->get($this)
             ->setPerformer($this->project->staffAssignments->PM)
             ->setCloser(null)
             ->setText('to specify summary budget')

@@ -31,8 +31,8 @@ class theStaffAssignments implements Model_Artifact_Stateless {
      * You can call $staffAssignments->PM and you will get a list of project
      * managers (if many) or just one PM (if he/she is alone)
      *
-     * @return string|array One email or an array of emails
-     * @throws theStaffAssignment_RoleNotFound
+     * @return theProjectRole|theStakeholder One stakeholder or role
+     * @throws Exception If the role is not found
      **/
     public function __get($name) {
         $list = $this->_project()->getStakeholdersByRole($name);
@@ -42,9 +42,9 @@ class theStaffAssignments implements Model_Artifact_Stateless {
                 
         // if just one email - return it as string
         if (count($list) == 1)
-            return array_pop($list);
+            return Model_Flyweight::factory('theStakeholder', $this, array_pop($list));
             
-        return $list;
+        return Model_Flyweight::factory('theProjectRole', $this, $name);
     }
 
     /**
@@ -62,10 +62,13 @@ class theStaffAssignments implements Model_Artifact_Stateless {
     /**
      * Get list of all project stakeholders
      *
-     * @return string[]
+     * @return ArrayIterator
      **/
     public function getEverybody() {
-        return array_keys($this->_project()->getStakeholders());
+        $list = new ArrayIterator(); 
+        foreach (array_keys($this->_project()->getStakeholders()) as $email)
+            $list[] = Model_Flyweight::factory('theStakeholder', $this, $email);
+        return $list;
     }    
     
     /**

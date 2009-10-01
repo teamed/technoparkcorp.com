@@ -39,7 +39,7 @@ class PayClosedOrders extends Model_Decision_PM {
     protected function _make() {
         
         // go through the list of all orders
-        foreach ($this->project->workOrders as $order) {
+        foreach ($this->_project->workOrders as $order) {
             
             // skip the paid orders
             if ($order->isPaid()) {

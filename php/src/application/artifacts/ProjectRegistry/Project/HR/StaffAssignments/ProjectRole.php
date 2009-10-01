@@ -19,26 +19,46 @@
  */
 
 /**
- * Synchronize activities between schedule and work orders
+ * Project role
  *
- * @package wobots
+ * @package Artifacts
  */
-class SynchronizeActivities extends Model_Decision_PM {
+class theProjectRole implements Model_Artifact_Stateless {
 
     /**
-     * Synchronize between work orders and schedule
+     * Staff assignments object from the project
      *
-     * @return string|false
-     * @throws FaZend_Validator_Failure If something happens 
+     * @var theStaffAssignments
      */
-    protected function _make() {
-        
-        validate()
-            ->false($this->_project->objectives->isApproved(), 'Objectives are not approved yet');
+    protected $_staffAssignments;
 
-        // synchronize with work orders
-        $this->project->schedule->synchronize();        
+    /**
+     * Title of the role
+     *
+     * @var string
+     */
+    protected $_title;
 
+    /**
+     * Construct it
+     *
+     * @param theStaffAssignments The holder of this stakeholder
+     * @param string The role title, alnum only
+     * @return void
+     **/
+    public function __construct(theStaffAssignments $staffAssignments, $title) {
+        validate()->alnum($title);
+        $this->_staffAssignments = $staffAssignments;
+        $this->_title = $title;
     }
-    
+
+    /**
+     * Show role in string
+     *
+     * @return string
+     **/
+    public function __toString() {
+        return $this->_title;
+    }
+
 }

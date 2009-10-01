@@ -1,5 +1,14 @@
 <h1>Project "<?=$this->project->name?>"</h1>
 
 <?=$this->bar()
-    ->addLink('Time/Milestones', 'project milestones')
+    ->setStyle('stairs')
+    ->addLink('Integration', 'Integration Management')
+    ->addLink('Time', 'Time Management')
+    ->addLink('Cost', 'Cost Management')
+    ->addLink('Scope', 'Scope Management')
+    ->addLink('Risk', 'Risk Management')
+    ->addLink('Quality', 'Quality Management')
+    ->addLink('Communications', 'Communications Management')
+    ->addLink('Procurement', 'Procurement Management')
+    ->addLink('HR', 'Human Resource Management')
     ?>

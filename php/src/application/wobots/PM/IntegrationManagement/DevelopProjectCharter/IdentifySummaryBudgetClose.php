@@ -33,12 +33,12 @@ class IdentifySummaryBudgetClose extends Model_Decision_PM {
      */
     protected function _make() {
         
-        $order = $this->project->workOrders->get('IdentifySummaryBudget');
+        $order = $this->_project->workOrders->get('IdentifySummaryBudget');
         
         validate()
             ->true($order->exists())
             ->false($order->isDelivered())
-            ->true(isset($this->project->charter->summaryBudget));
+            ->true(isset($this->_project->charter->summaryBudget));
 
         return $this->order()->delivered();
         

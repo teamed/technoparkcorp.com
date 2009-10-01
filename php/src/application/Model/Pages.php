@@ -199,8 +199,10 @@ class Model_Pages extends Zend_Navigation {
         // the document will be activated, if it physically exists
         $this->_activateDocument($doc);
 
-        if (!$this->getAcl()->has($doc))
+        if (!$this->getAcl()->has($doc)) {
+            FaZend_Log::info('Document \'' . $doc . '\' doesn\'t exist in ACL');
             return false;
+        }
 
         // get default user email
         if (is_null($email))
@@ -437,6 +439,7 @@ class Model_Pages extends Zend_Navigation {
             // here we can get an exception, if the file is not found
             $path = $this->resolvePath($doc);
         } catch (Model_Pages_DocumentNotFound $e) {
+            FaZend_Log::info($e->getMessage());
             return false;
         }
 
@@ -444,6 +447,7 @@ class Model_Pages extends Zend_Navigation {
         $parentContainer = isset($parent) ? $this->findOneBy('title', $parent) : $this;
 
         $parentContainer->addPage($this->_createPage($doc));
+        return true;
 
     }
 
