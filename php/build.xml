@@ -20,30 +20,14 @@
 
 <project name="panel2" basedir="." default="main">
 
-        <!-- get properties from file -->
+    <!-- get properties from file -->
 	<property file="./build.properties" />
 
-	<!-- Main Target -->
-	<target name="main" depends="lint, test, deploy, ping, doc" />
-
-	<target name="lint">
-		<phing phingfile="${project.basedir}/src/library/FaZend/Application/Phing/build.xml" inheritRefs="true" target="lint" />
+	<target name="main">
+		<phing phingfile="${project.basedir}/src/library/FaZend/Application/Phing/build.xml" 
+		    inheritRefs="true" 
+		    haltonfailure="true"
+		    target="main" />
 	</target>
-		
-	<target name="ping">
-		<phing phingfile="${project.basedir}/src/library/FaZend/Application/Phing/build.xml" inheritRefs="true" target="ping" />
-	</target>
-		
-	<target name="test">
-		<phing phingfile="${project.basedir}/src/library/FaZend/Application/Phing/build.xml" inheritRefs="true" target="test" />
-	</target>
-
-	<target name="deploy">
-		<phing phingfile="${project.basedir}/src/library/FaZend/Application/Phing/build.xml" inheritRefs="true" target="deploy" />
-	</target>
-
-	<target name="doc">
-		<phing phingfile="${project.basedir}/src/library/FaZend/Application/Phing/build.xml" inheritRefs="true" target="doc" />
-	</target>
-
+	
 </project>
