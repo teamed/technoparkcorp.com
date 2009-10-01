@@ -18,12 +18,19 @@
  *
  */
 
+require_once 'FaZend/Test/TestCase.php';
+require_once 'AbstractProjectTest.php';
+
 /**
- * One artifact, which is a bag
+ * Test WBS
  *
- * @package Artifacts
+ * @package test
  */
-abstract class Model_Artifact_Bag extends ArrayIterator
-    implements Model_Artifact_Interface {
+class WBSTest extends AbstractProjectTest {
+
+    public function testGeneralMechanismWorks() {
+        $wbs = $this->project->WBS;
+        logg(count($wbs) . ' work packages in WBS');
+    }
 
 }

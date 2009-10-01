@@ -19,11 +19,17 @@
  */
 
 /**
- * One artifact, which is a bag
+ * One decision interface
  *
- * @package Artifacts
+ * @package Model
  */
-abstract class Model_Artifact_Bag extends ArrayIterator
-    implements Model_Artifact_Interface {
+interface Model_Decision_Interface {
+
+    /**
+     * Make decision and protocol results
+     *
+     * @return string|false Result of decision made (FALSE = no decission)
+     */
+    public function make();
 
 }

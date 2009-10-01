@@ -23,26 +23,8 @@
  *
  * @package Artifacts
  */
-class theStaffAssignments extends Model_Artifact_Dynamic {
+class theStaffAssignments implements Model_Artifact_Stateless {
 
-    /**
-     * Project
-     *
-     * @var Model_Project
-     */
-    protected $_project;
-
-    /**
-     * Create artifact using project
-     *
-     * @param theProject Holder of this collection
-     * @return void
-     **/
-    public function __construct(theProject $project) {
-        parent::__construct($project);
-        $this->_project = Model_Project::findProjectByName($project->name);
-    }
-    
     /**
      * Dispatcher
      *
@@ -53,12 +35,10 @@ class theStaffAssignments extends Model_Artifact_Dynamic {
      * @throws theStaffAssignment_RoleNotFound
      **/
     public function __get($name) {
-        $list = $this->_project->getStakeholdersByRole($name);
+        $list = $this->_project()->getStakeholdersByRole($name);
         
         // if nothing found - throw an exception
-        if (!count($list))
-            FaZend_Exception::raise('theStaffAssignment_RoleNotFound', 
-                "Role $name is not found in project {$this->_project->name}");
+        validate()->true(count($list) > 0, "Role '{$name}' is not found in project '{$this->_project()->name}'");
                 
         // if just one email - return it as string
         if (count($list) == 1)
@@ -76,7 +56,7 @@ class theStaffAssignments extends Model_Artifact_Dynamic {
      * @return boolean
      **/
     public function hasRole($role) {
-        return (bool)count($this->_project->getStakeholdersByRole($name));
+        return (bool)count($this->_project()->getStakeholdersByRole($role));
     }    
     
     /**
@@ -85,7 +65,16 @@ class theStaffAssignments extends Model_Artifact_Dynamic {
      * @return string[]
      **/
     public function getEverybody() {
-        return array_keys($this->_project->getStakeholders());
+        return array_keys($this->_project()->getStakeholders());
     }    
+    
+    /**
+     * Get Model_Project object
+     *
+     * @return Model_Project
+     **/
+    public function _project() {
+        return Model_Project::findProjectByName($this->owner->name);
+    }
     
 }

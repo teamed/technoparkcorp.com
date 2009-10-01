@@ -32,7 +32,7 @@ class AbstractProjectTest extends FaZend_Test_TestCase {
         
         $name = Model_Project_Test::NAME;
         $this->project = new theProject();
-        $this->project->setName($name);
+        $this->project->name = $name;
     }
 
 }

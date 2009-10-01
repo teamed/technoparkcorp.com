@@ -19,11 +19,19 @@
  */
 
 /**
- * One artifact, which is a bag
+ * Activity list in a project
  *
  * @package Artifacts
  */
-abstract class Model_Artifact_Bag extends ArrayIterator
-    implements Model_Artifact_Interface {
+class theActivityList extends Model_Artifact_Bag {
+
+    /**
+     * Initialize the list
+     *
+     * @return void
+     */
+    protected function _init() {
+//        $this->_collection = $this->_owner->WBS->getActivities();
+    }
 
 }

@@ -31,18 +31,18 @@ class theProjectRegistry extends Model_Artifact {
      * 
      * @return void
      */
-    public function __construct() {
+    protected function _init() {
         foreach (Model_Project::retrieveAll() as $project) {
             if (!$project->isManaged())
                 continue;
             $this[$project->name] = new theProject();
-            $this[$project->name]->setName($project->name);
+            $this[$project->name]->name = $project->name;
         }
         
         if (APPLICATION_ENV !== 'production') {
             $name = Model_Project_Test::NAME;
             $this[$name] = new theProject();
-            $this[$name]->setName($name);
+            $this[$name]->name = $name;
         }
     }
 

@@ -26,7 +26,7 @@
  *
  * @package Model
  */
-abstract class Model_Wobot extends FaZend_StdObject {
+abstract class Model_Wobot implements Model_Wobot_Interface {
 
     const EMAIL_DOMAIN = 'wobot.net'; // domain to be used in all wobot's emails
 
@@ -39,16 +39,16 @@ abstract class Model_Wobot extends FaZend_StdObject {
      * @todo Implement it properly, should use /wobots directory
      */
     public static function retrieveAll() {
-        $wobots = array();
+        $wobots = new ArrayIterator();
         
         // list all wobot names
         foreach (self::_getAllNames() as $name) {
             $wobotClass = __CLASS__ . '_' . $name;
             foreach ($wobotClass::getAllNames() as $wobotName)
-                $wobots = self::factory($wobotName);
+                $wobots[] = self::factory($wobotName);
         }
             
-        return new ArrayIterator($wobots);
+        return $wobots;
     }
 
     /**
@@ -70,7 +70,7 @@ abstract class Model_Wobot extends FaZend_StdObject {
      * @return string
      */
     public function __toString() {
-        return $this->fullName;
+        return $this->getFullName();
     }
 
     /**
@@ -78,8 +78,8 @@ abstract class Model_Wobot extends FaZend_StdObject {
      *
      * @return string
      */
-    protected function _getFullName() {
-        return $this->name . '.' . $this->context;
+    public function getFullName() {
+        return $this->getName() . '.' . $this->getContext();
     }
 
     /**
@@ -87,7 +87,7 @@ abstract class Model_Wobot extends FaZend_StdObject {
      *
      * @return string
      */
-    protected function _getName() {
+    public function getName() {
         return str_replace(__CLASS__ . '_', '', get_class($this));
     }
 
@@ -96,8 +96,8 @@ abstract class Model_Wobot extends FaZend_StdObject {
      *
      * @return string
      */
-    protected function _getEmailPrefix() {
-        return strtolower($this->name);
+    public function getEmailPrefix() {
+        return strtolower($this->getName());
     }
 
     /**
@@ -105,8 +105,8 @@ abstract class Model_Wobot extends FaZend_StdObject {
      *
      * @return string
      */
-    protected function _getEmail() {
-        return $this->emailPrefix . '@' . self::EMAIL_DOMAIN;
+    public function getEmail() {
+        return $this->getEmailPrefix() . '@' . self::EMAIL_DOMAIN;
     }
 
     /**
@@ -114,7 +114,7 @@ abstract class Model_Wobot extends FaZend_StdObject {
      *
      * @return string
      */
-    protected function _getContext() {
+    public function getContext() {
         return '';
     }
 
@@ -160,7 +160,7 @@ abstract class Model_Wobot extends FaZend_StdObject {
      */
     protected function _getDecisionFiles($path = null) {
         if (is_null($path))
-            $path = APPLICATION_PATH . '/wobots/' . $this->name;
+            $path = APPLICATION_PATH . '/wobots/' . $this->getName();
 
         // get through all files in the directory and collect PHP decisions
         $files = array();

@@ -23,14 +23,7 @@
  *
  * @package Artifacts
  */
-class theMetrics extends Model_Artifact_Dynamic {
-
-    /**
-     * Collection of metric classes, in order to avoid object duplication
-     *
-     * @var theMtcAbstract
-     */
-    protected $_cached = array();
+class theMetrics extends Model_Artifact_Bag {
 
     /**
      * Get a metric
@@ -50,9 +43,9 @@ class theMetrics extends Model_Artifact_Dynamic {
      **/
     public function get($metric) {
         $className = 'theMtc' . ucfirst($metric);
-        if (!isset($this->_cached[$className]))
-            $this->_cached[$className] = new $className($this->_owner);
-        return $this->_cached[$className];
+        if (!isset($this[$className]))
+            $this[$className] = new $className($this);
+        return $this[$className];
     }
             
 }

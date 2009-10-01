@@ -18,12 +18,22 @@
  *
  */
 
+require_once 'FaZend/Test/TestCase.php';
+require_once 'AbstractProjectTest.php';
+
 /**
- * One artifact, which is a bag
+ * Test staff assignments
  *
- * @package Artifacts
+ * @package test
  */
-abstract class Model_Artifact_Bag extends ArrayIterator
-    implements Model_Artifact_Interface {
+class StaffAssignmentsTest extends AbstractProjectTest {
+
+    public function testGeneralMechanismWorks() {
+        $CCB = $this->project->staffAssignments->CCB;
+        logg('Change Control Board in test project: ' . $CCB);
+        
+        $this->project->staffAssignments->hasRole('PM');
+        $this->project->staffAssignments->getEverybody();
+    }
 
 }

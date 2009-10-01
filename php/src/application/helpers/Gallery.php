@@ -79,9 +79,19 @@ class Helper_Gallery extends FaZend_View_Helper {
             $html .= "<div class='element'>" . $icon;
 
             if (isset($this->_link)) {
+                // create a label for each element
+                if ($this->_title == '__key') {
+                    $title = $key;
+                } else {
+                    if (method_exists($element, $this->_title))
+                        $title = $element->{$this->_title}();
+                    else
+                        $title = $element->{$this->_title};
+                }
+                
                 $html .= '<br/>' .
                     "<a href='" . $link . "' title='{$link}'>" .
-                    $this->getView()->escape(($this->_title == '__key' ? $key : $element->{$this->_title})) . "</a>";
+                    $this->getView()->escape($title) . "</a>";
             }
 
             $html .= '</div>';

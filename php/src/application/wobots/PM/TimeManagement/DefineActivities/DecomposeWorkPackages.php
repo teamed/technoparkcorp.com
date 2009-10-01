@@ -40,9 +40,6 @@ class DecomposeWorkPackages extends Model_Decision_PM {
 
         logg(count($this->project->WBS) . ' work packages are decomposed to ' . count($list) . ' activities');
 
-        $this->_logger->table()
-            ->setSource($list);
-        
     }
     
 }

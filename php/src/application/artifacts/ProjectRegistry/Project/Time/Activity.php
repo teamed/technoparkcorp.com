@@ -23,7 +23,7 @@
  *
  * @package Artifacts
  */
-class theActivity extends Model_Artifact {
+class theActivity extends Model_Artifact_Dynamic {
 
     public function assignPredecessors($token) {
         if (!$token) {

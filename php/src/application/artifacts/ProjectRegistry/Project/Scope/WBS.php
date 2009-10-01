@@ -19,11 +19,10 @@
  */
 
 /**
- * One artifact, which is a bag
+ * Project work breakdown structure, collection of work packages
  *
  * @package Artifacts
  */
-abstract class Model_Artifact_Bag extends ArrayIterator
-    implements Model_Artifact_Interface {
-
+class theWBS extends Model_Artifact_Bag {
+        
 }

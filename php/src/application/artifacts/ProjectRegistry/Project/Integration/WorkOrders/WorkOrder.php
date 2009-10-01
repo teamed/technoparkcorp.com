@@ -23,7 +23,7 @@
  *
  * @package Artifacts
  */
-class theWorkOrder extends Model_Artifact {
+class theWorkOrder implements Model_Artifact_Stateless {
 
     /**
      * Issue responsible for this order
@@ -35,12 +35,12 @@ class theWorkOrder extends Model_Artifact {
     /**
      * Create artifact using project
      *
-     * @param theProject Holder of this collection
+     * @param theWorkOrders Holder of this particular work order
      * @param string Name of decision
      * @param string ID of decision
      * @return void
      **/
-    public function __construct(theProject $project, $decision, $id) {
+    public function __construct(theWorkOrders $workOrders, $decision, $id) {
         $this->_project = Model_Project::findByName($project->name);
         $this->_issue = Model_Issue_Abstract::factory(
             $this->_project->tracker, 

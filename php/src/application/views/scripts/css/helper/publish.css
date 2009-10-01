@@ -12,6 +12,7 @@ div.wrapper div.publisher {
     margin: -15px 0 20px 0px;
     padding: 10px;
     font-size: 0.85em;
+    line-height: 1.4em;
 }
 
     div.wrapper div.publisher p.error {

@@ -160,12 +160,16 @@ class Model_Pages extends Zend_Navigation {
             if (preg_match_all('/\{(.*?)\}/', $link, $matches)) {
                 foreach ($matches[0] as $id=>$match) {
                     $name = $matches[1][$id];
-                    if ($name == '__key')
+                    if ($name == '__key') {
                         $value = $key;
-                    else if (is_array($row))
+                    } else if (is_array($row)) {
                         $value = $row[$name];
-                    else
-                        $value = $row->$name;
+                    } else {
+                        if (method_exists($row, $name))
+                            $value = $row->$name();
+                        else
+                            $value = $row->$name;
+                    }
                     $link = str_replace($match, $value, $link);
                 }
             }

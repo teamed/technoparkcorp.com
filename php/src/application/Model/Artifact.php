@@ -44,4 +44,34 @@ class Model_Artifact extends ArrayIterator
         return self::$_root;
     }
 
+    /**
+     * To be implemented in FaZend_POS_Abstract
+     *
+     * @return void
+     */
+    public function __construct() {
+        $this->_init();
+    }
+    
+    /**
+     * To be implemented in FaZend_POS_Abstract
+     *
+     * @return void
+     */
+    protected function _init() {
+    }
+    
+    /**
+     * Attach sub-artifact if it's not here already
+     *
+     * @return $this
+     */
+    protected function _attach($name, Model_Artifact_Interface $artifact) {
+        if (!isset($this->$name)) {
+            $artifact->owner = $this; // TODO: this should be removed and implemented with ps()->parent
+            $this->$name = $artifact;
+        }
+        return $this;
+    }
+    
 }

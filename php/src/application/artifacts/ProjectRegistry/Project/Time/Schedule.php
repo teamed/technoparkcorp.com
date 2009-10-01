@@ -19,10 +19,10 @@
  */
 
 /**
- * Project schedule
+ * Project schedule, collection of activities
  *
  * @package Artifacts
  */
-class theSchedule {
+class theSchedule extends Model_Artifact_Collection {
 
 }

@@ -23,7 +23,7 @@
  *
  * @package Artifacts
  */
-class theWorkOrders extends Model_Artifact_Dynamic {
+class theWorkOrders implements Model_Artifact_Stateless {
 
     /**
      * Get a work order
@@ -35,7 +35,7 @@ class theWorkOrders extends Model_Artifact_Dynamic {
     public function get($decision, $id = null) {
         if ($decision instanceof Model_Decision)
             $decision = get_class($decision);
-        return new theWorkOrder($this->_owner, $decision, $id);
+        return new theWorkOrder($this, $decision, $id);
     }
         
 }

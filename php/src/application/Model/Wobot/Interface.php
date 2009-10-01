@@ -19,39 +19,52 @@
  */
 
 /**
- * One project for test
+ * One wobot interface
  *
  * @package Model
  */
-class Model_Project_Test extends Model_Project {
-
-    const NAME = 'test';
-    const PM = 'tester@tpc2.com';
+interface Model_Wobot_Interface {
 
     /**
-     * Create and return a test project instance
+     * Text name of the wobot, e.g. 'PM.test'
      *
-     * @return Model_Project_Test
-     **/
-    public static function make() {
-        $pwd = md5(rand());
-        return new Model_Project_Test(
-            1, // id
-            self::NAME, // project name
-            new Shared_User(1, self::PM, $pwd), // project manager
-            '[' . self::NAME . ":/]\n" . self::PM . ' = rw', // authz file
-            self::PM . ' = ' . $pwd // passwd file, random password
-            );
-    }
-
-    /**
-     * Get list of emails for a given role
-     *
-     * @param strin Role name
-     * @return string[] List of emails
+     * @return string
      */
-    public function getStakeholdersByRole($role) {
-        return array(Model_Project_Test::PM);
-    }
+    public function getFullName();
+
+    /**
+     * Calculate name of the wobot and return it, just name, e.g. 'PM'
+     *
+     * @return string
+     */
+    public function getName();
+
+    /**
+     * Calculate email of the wobot (without domain, which is always self::EMAIL_DOMAIN)
+     *
+     * @return string
+     */
+    public function getEmailPrefix();
     
+    /**
+     * Calculate full email of the wobot
+     *
+     * @return string
+     */
+    public function getEmail();
+
+    /**
+     * Calculate context, project name for example: 'test', 'ABC', etc.
+     *
+     * @return string
+     */
+    public function getContext();
+
+    /**
+     * Execute this wobot (make next waiting decision)
+     *
+     * @return string The decision just made
+     */
+    public function execute();
+
 }

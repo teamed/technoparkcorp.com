@@ -44,7 +44,7 @@ class Model_Project extends Shared_Project {
      * @return boolean
      */
     public function isManaged() {
-        $email = Model_Wobot::factory('PM.' . $this->name)->email;
+        $email = Model_Wobot::factory('PM.' . $this->name)->getEmail();
         return in_array($email, $this->getWobots());
     }
 

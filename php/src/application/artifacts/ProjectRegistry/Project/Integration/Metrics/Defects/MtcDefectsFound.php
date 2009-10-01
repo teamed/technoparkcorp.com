@@ -32,7 +32,7 @@ class theMtcDefectsFound extends theMtcAbstract {
      **/
     protected function _init() {
         $this->setTitle('Total number of defects found')
-            ->setDefault(round($this->_metrics()->codeSLOC / 5))
+            ->setDefault(round($this->_metrics->codeSLOC / 5))
             ->setVisible(true);
     }
         

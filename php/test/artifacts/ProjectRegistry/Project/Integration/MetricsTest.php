@@ -26,7 +26,7 @@ require_once 'AbstractProjectTest.php';
  *
  * @package test
  */
-class WobotTest extends AbstractProjectTest {
+class MetricsTest extends AbstractProjectTest {
 
     public function testGeneralMechanismWorks() {
         $defects = $this->project->metrics->defectsFound;

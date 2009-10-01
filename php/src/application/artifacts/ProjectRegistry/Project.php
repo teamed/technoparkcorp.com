@@ -29,61 +29,23 @@ class theProject extends Model_Artifact {
      * Unique name of this project, to be set from registry
      *
      * @var string
+     * @todo kill it, we should get this name from ps()->name
      */
-    protected $_name = null;
+    public $name = null;
 
     /**
-     * List of dynamic artifacts
+     * Initialize project
      * 
-     * @var string
-     */
-    protected $_artifacts = array(
-        'staffAssignments',
-        'metrics',
-        'workOrders',
-        'metrics',
-        'milestones',
-    );
-    
-    /**
-     * Cached artifacts 
-     *
-     * @var mixed[]
-     */
-    protected $_cached = array();
-
-    /**
-     * Set project name
-     *
-     * @param string The name
      * @return void
-     **/
-    public function setName($name) {
-        $this->_name = $name;
-    }
-    
-    /**
-     * Get one of sub-artifacts
-     *
-     * @return void
-     **/
-    public function __get($name) {
-        if (!in_array($name, $this->_artifacts)) 
-            return parent::__get($name);
-        $class = 'the' . ucfirst($name);
-        
-        if (!isset($this->_cached[$class]))
-            $this->_cached[$class] = new $class($this);
-        return $this->_cached[$class];
-    }
-    
-    /**
-     * Get project name
-     *
-     * @return string
-     **/
-    protected function _getName() {
-        return $this->_name;
+     */
+    protected function _init() {
+        $this
+            ->_attach('staffAssignments', new theStaffAssignments())
+            ->_attach('metrics', new theMetrics())
+            ->_attach('workOrders', new theWorkOrders())
+            ->_attach('milestones', new theMilestones())
+            ->_attach('activityList', new theActivityList())
+            ->_attach('WBS', new theWBS());
     }
     
 }

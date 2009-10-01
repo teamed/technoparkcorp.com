@@ -29,7 +29,7 @@ class ProjectTest extends FaZend_Test_TestCase {
 
     public function testRetrieveAllWorks() {
         $projects = Model_Project::retrieveAll();
-        $this->assertGreaterThan(0, count($projects), 'No projects, why?...');
+        $this->assertTrue(count($projects) > 0, 'No projects, why?...');
 
         $this->project = array_shift($projects);
     }

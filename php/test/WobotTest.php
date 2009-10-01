@@ -29,17 +29,18 @@ class WobotTest extends FaZend_Test_TestCase {
 
     public function testRetrieveAllWorks() {
         $wobots = Model_Wobot::retrieveAll();
+        $this->assertTrue(count($wobots) > 0, 'No wobots, why?');
     }
 
     public function testFactoryMethodWorks() {
-        $this->wobot = Model_Wobot::factory('PM.ABC');
-        $this->assertEquals('PM', $this->wobot->name);
-        $this->assertEquals('ABC', $this->wobot->context);
+        $this->wobot = Model_Wobot::factory('PM.' . Model_Project_Test::NAME);
+        
+        $this->assertEquals('PM', $this->wobot->getName(), 'Wobot name is not PM, why?');
+        $this->assertEquals(Model_Project_Test::NAME, $this->wobot->getContext(), 'Context is not equal to project name, why?');
     }
 
     public function testWobotCanBeExecuted() {
         $this->wobot->execute();
-        $this->assertEquals('PM', $this->wobot->name);
     }
 
 }

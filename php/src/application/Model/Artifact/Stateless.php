@@ -19,11 +19,10 @@
  */
 
 /**
- * One artifact, which is a bag
+ * One artifact, which is stateless
  *
  * @package Artifacts
  */
-abstract class Model_Artifact_Bag extends ArrayIterator
-    implements Model_Artifact_Interface {
+interface Model_Artifact_Stateless extends Model_Artifact_Interface {
 
 }

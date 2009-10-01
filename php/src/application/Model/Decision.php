@@ -23,7 +23,7 @@
  *
  * @package Model
  */
-abstract class Model_Decision extends FaZend_StdObject {
+abstract class Model_Decision implements Model_Decision_Interface {
 
     /**
      * File name of the decision
@@ -38,13 +38,6 @@ abstract class Model_Decision extends FaZend_StdObject {
      * @var Model_Wobot
      */
     protected $_wobot;
-
-    /**
-     * Log messages
-     *
-     * @var string
-     */
-    protected $_log;
 
     /**
      * Decision just made
@@ -89,6 +82,17 @@ abstract class Model_Decision extends FaZend_StdObject {
     }
     
     /**
+     * Return has of this particular decision
+     *
+     * The method is called from protocoller
+     *
+     * @return string
+     */
+    public function getHash() {
+        return self::hash($this->_file);
+    }
+
+    /**
      * Make decision and protocol results
      *
      * @return string|false Result of decision made (FALSE = no decission)
@@ -99,12 +103,12 @@ abstract class Model_Decision extends FaZend_StdObject {
 
         try {
             
-            FaZend_Log::log('Starting decision: ' . $this->_file);
+            logg('Starting decision: ' . $this->_file);
             $decision = $this->_make();
 
         } catch (Exception $e) {
             // some error inside - we skip the process
-            FaZend_Log::log($e->getMessage());
+            logg($e->getMessage());
             $decision = false;
         }
         
@@ -131,16 +135,5 @@ abstract class Model_Decision extends FaZend_StdObject {
      * @return string|false
      */
     abstract protected function _make();
-
-    /**
-     * Return has of this particular decision
-     *
-     * The method is called from protocoller
-     *
-     * @return string
-     */
-    protected function _getHash() {
-        return self::hash($this->_file);
-    }
 
 }

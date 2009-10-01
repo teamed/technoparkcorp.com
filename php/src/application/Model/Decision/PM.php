@@ -42,22 +42,4 @@ abstract class Model_Decision_PM extends Model_Decision {
         $this->_project = $project;
     }
 
-    /**
-     * Create new PM order
-     *
-     * @return Model_Order_PM
-     */
-    protected function _order() {
-        return Model_Order::factory($this);
-    }
-
-    /**
-     * Returns project, the initiator of this decision
-     *
-     * @return theProject
-     **/
-    protected function _getProject() {
-        return $this->_project;
-    }
-
 }

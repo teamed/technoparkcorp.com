@@ -18,12 +18,19 @@
  *
  */
 
+require_once 'FaZend/Test/TestCase.php';
+require_once 'AbstractProjectTest.php';
+
 /**
- * One artifact, which is a bag
+ * Test activity list
  *
- * @package Artifacts
+ * @package test
  */
-abstract class Model_Artifact_Bag extends ArrayIterator
-    implements Model_Artifact_Interface {
+class ActivityListTest extends AbstractProjectTest {
+
+    public function testGeneralMechanismWorks() {
+        $list = $this->project->activityList;
+        logg(count($list) . ' activities in the list');
+    }
 
 }

@@ -38,7 +38,7 @@ class Model_Wobot_PM extends Model_Wobot {
      * @return void
      */
     protected function __construct($context = null) {
-        $this->_project = Model_Project::findByName($context);
+        $this->_project = Model_Project::findProjectByName($context);
     }
 
     /**
@@ -59,7 +59,7 @@ class Model_Wobot_PM extends Model_Wobot {
      *
      * @return string
      */
-    protected function _getContext() {
+    public function getContext() {
         return (string)$this->_project->name;
     }
 

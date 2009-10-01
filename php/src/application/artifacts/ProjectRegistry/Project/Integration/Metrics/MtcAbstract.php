@@ -23,15 +23,16 @@
  *
  * @package Artifacts
  */
-abstract class theMtcAbstract extends FaZend_StdObject {
+abstract class theMtcAbstract extends FaZend_StdObject 
+    implements Model_Artifact_Stateless {
 
     /**
-     * Project
+     * Link to the metrics holder in this project
      *
-     * @var theProject
+     * @var theMetrics
      */
-    protected $_project;
-    
+    protected $_metrics;
+
     /**
      * Title of the metric
      *
@@ -54,16 +55,16 @@ abstract class theMtcAbstract extends FaZend_StdObject {
     protected $_visible = false;
 
     /**
-     * Create artifact using project
+     * Create new metric class
      *
-     * @param theProject Holder of this collection
      * @return void
      **/
-    public function __construct(theProject $project) {
-        $this->_project = $project;
+    public final function __construct(theMetrics $metrics) {
+        $this->_metrics = $metrics;
+        // initialize it
         $this->_init();
     }
-        
+
     /**
      * Get value of the metric
      *
@@ -81,21 +82,12 @@ abstract class theMtcAbstract extends FaZend_StdObject {
     abstract protected function _calculate();
         
     /**
-     * Initialize this metric
+     * Initializer
      *
      * @return void
      **/
     protected function _init() {
         // to be overriden...
-    }
-        
-    /**
-     * Access point to other metrics in the project
-     *
-     * @return theMetrics
-     **/
-    protected function _metrics() {
-        return $this->_project->metrics;
     }
         
 }

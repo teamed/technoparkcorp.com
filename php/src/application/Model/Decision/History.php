@@ -37,11 +37,11 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history {
     public static function create(Model_Wobot $wobot, Model_Decision $decision, $result, $log) {
         $row = new Model_Decision_History();
 
-        $row->wobot = $wobot->name;
-        $row->context = $wobot->context;
+        $row->wobot = $wobot->getName();
+        $row->context = $wobot->getContext();
         $row->result = $result;
         $row->protocol = $log;
-        $row->hash = $decision->hash;
+        $row->hash = $decision->getHash();
         $row->save();
 
         return $row;
@@ -56,18 +56,20 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history {
      */
     public static function findNextDecision(Model_Wobot $wobot, array $files) {
 
+        // keep them in alphabetic order always, to make sure we
+        // execute them all, and don't lose any one
         sort($files);
 
         // the list is NOT empty
-        assert(count($files));
+        validate()->true(count($files) > 0);
 
         // first element of the list - we return it if nothing better found
         $first = $files[0];
 
         $latest = self::retrieve()
             ->setSilenceIfEmpty()
-            ->where('wobot = ?', $wobot->name)
-            ->where('context = ?', $wobot->context)
+            ->where('wobot = ?', $wobot->getName())
+            ->where('context = ?', $wobot->getContext())
             ->order('created DESC')
             ->fetchRow();
 
@@ -99,8 +101,8 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history {
      */
     public static function retrieveByWobot(Model_Wobot $wobot) {
         return self::retrieve()
-            ->where('wobot = ?', $wobot->name)
-            ->where('context = ?', $wobot->context)
+            ->where('wobot = ?', $wobot->getName())
+            ->where('context = ?', $wobot->getContext())
             ->order('created DESC')
             ->setRowClass('Model_Decision_History')
             ->fetchAll();
