@@ -23,7 +23,7 @@
  *
  * @package Artifacts
  */
-class theActivity extends Model_Artifact_Stateless {
+class theActivity implements Model_Artifact_Stateless {
 
     /**
      * Work package it came from

@@ -19,51 +19,11 @@
  */
 
 /**
- * One activity
+ * Group of activities
  *
  * @package Artifacts
  */
-class theActivity extends Model_Artifact_Stateless {
+class theActivities extends ArrayIterator implements Model_Artifact_Stateless {
 
-    /**
-     * Work package it came from
-     *
-     * @var theWorkPackage
-     */
-    public $wp;
-
-    /**
-     * Is it already assigned?
-     *
-     * @return boolean
-     */
-    public function isAssigned() {
-    }
-
-    /**
-     * Is cost already estimated?
-     *
-     * @return boolean
-     */
-    public function isCostEstimated() {
-    }
-
-    /**
-     * Is cost estimate already requested?
-     *
-     * @return boolean
-     * @todo implement it
-     */
-    public function isCostEstimateRequested() {
-    }
-
-    /**
-     * Request cost estimate from the performer
-     *
-     * @return void
-     * @todo implement it
-     */
-    public function requestCostEstimate() {
-    }
 
 }

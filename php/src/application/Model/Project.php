@@ -39,7 +39,9 @@ class Model_Project extends Shared_Project {
     /**
      * This project is managed by wobots?
      *
-     * The project is managed if one of it's stakeholders is 'pm@wobot.net'
+     * The project is managed if one of it's stakeholders is '*@wobot.net',
+     * while the exact email depends on the particular project. Exact email
+     * of the wobot you can get from Model_Wobot class, getEmail() method
      *
      * @return boolean
      */

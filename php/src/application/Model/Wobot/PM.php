@@ -26,6 +26,19 @@
 class Model_Wobot_PM extends Model_Wobot {
 
     /**
+     * Names of wobots, dependins on the FIRST letter of project name
+     *
+     * Associative array where key is a range of letters, like 'a-c' and
+     * the value is first name plus last name.
+     *
+     * @var string[]
+     */
+    private static $_names = array(
+        'a-p' => 'Alex Safonov', // a.safonov is his email
+        'r-z' => 'Roman Satin', // r.satin is his email
+    );
+
+    /**
      * Project name
      *
      * @var Model_Project
@@ -63,6 +76,19 @@ class Model_Wobot_PM extends Model_Wobot {
         return (string)$this->_project->name;
     }
 
+    /**
+     * Calculate email of the wobot (without domain, which is always self::EMAIL_DOMAIN)
+     *
+     * @return string
+     */
+    public function getEmailPrefix() {
+        foreach (self::$_names as $regexp=>$name)
+            if (preg_match('/^[' . $regexp . ']/', $this->_project->name)) {
+                $exp = explode(' ', strtolower($name));
+                return $exp[0][0] . '.' . $exp[1];
+            }
+        return strtolower($this->getName());
+    }
 
     /**
      * Selects the next decision to be executed

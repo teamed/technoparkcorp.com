@@ -73,7 +73,7 @@ class theWorkPackage implements Model_Artifact_Stateless {
      * @return theActivity[]
      */
     public function getActivities() {
-        $activities = array();
+        $activities = new theActivities();
         
         $activities[] = new theActivity($this);
         

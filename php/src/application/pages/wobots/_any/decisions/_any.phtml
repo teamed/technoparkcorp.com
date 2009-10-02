@@ -2,9 +2,11 @@
 
 <p>
     Date: <?=$decision->created?><br/>
-    Title: <?=$decision->getTitle()?><br/>
-    Decision: <b><?=$decision->result?></b>
+    Title: "<?=$decision->getTitle()?>"<br/>
+    Decision made: <b><?=$decision->result?></b>
 </p>
+
+<p>Protocol:</p>
 
 <pre>
 <?=$decision->protocol?>
