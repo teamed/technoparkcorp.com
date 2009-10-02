@@ -23,30 +23,14 @@
  *
  * @package Artifacts
  */
-class theActivity extends Model_Artifact_Dynamic {
-
-    public function assignPredecessors($token) {
-        if (!$token) {
-            return $this->token();
-
-
-        }
-    }
-
-    function useit() {
-        $token = $activity->assignPredecessors();
-
-        $token->
-
-        $activity->assignPredecessors($token);
-    }
+class theActivity extends Model_Artifact_Stateless {
 
     /**
-     * Name of activity
+     * Work package it came from
      *
-     * @var string
+     * @var theWorkPackage
      */
-    public $name;
+    public $wp;
 
     /**
      * Is it already assigned?
@@ -54,7 +38,6 @@ class theActivity extends Model_Artifact_Dynamic {
      * @return boolean
      */
     public function isAssigned() {
-        return isset($this->performer);
     }
 
     /**
@@ -63,7 +46,6 @@ class theActivity extends Model_Artifact_Dynamic {
      * @return boolean
      */
     public function isCostEstimated() {
-        return isset($this->cost);
     }
 
     /**
@@ -73,7 +55,6 @@ class theActivity extends Model_Artifact_Dynamic {
      * @todo implement it
      */
     public function isCostEstimateRequested() {
-        return false;
     }
 
     /**

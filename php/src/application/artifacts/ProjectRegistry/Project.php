@@ -41,11 +41,14 @@ class theProject extends Model_Artifact {
     protected function _init() {
         $this
             ->_attach('staffAssignments', new theStaffAssignments(), 'project')
-            ->_attach('metrics', new theMetrics(), 'project')
+            ->_attach('metrics', new theMetrics())
             ->_attach('workOrders', new theWorkOrders(), 'project')
             ->_attach('milestones', new theMilestones())
-            ->_attach('activityList', new theActivityList(), 'project')
-            ->_attach('WBS', new theWBS(), 'project');
+            ->_attach('activityList', new theActivityList())
+            ->_attach('wbs', new theWBS());
+            
+        $this->wbs->reload();
+        $this->activityList->reload();
     }
     
 }

@@ -88,7 +88,7 @@ abstract class theMtcAbstract
      * @return void
      **/
     public function setMetrics(theMetrics $metrics) {
-        $this->_project = $metrics->project;
+        $this->_project = $metrics->ps()->parent;
     }
         
     /**

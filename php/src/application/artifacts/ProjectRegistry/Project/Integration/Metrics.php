@@ -26,13 +26,6 @@
 class theMetrics extends Model_Artifact_Bag {
 
     /**
-     * The holder of this staff assignments
-     *
-     * @var theProject
-     */
-    public $project;
-
-    /**
      * Get a metric class
      *
      * @param string Name of the metric, e.g. defectsFound
@@ -50,7 +43,9 @@ class theMetrics extends Model_Artifact_Bag {
             $dir = ucfirst($dir);
         
         // include this particular metric file
-        require_once dirname(__FILE__) . '/Metrics/' . implode('/', $exp) . '/' . $metricName . '.php';
+        $file = dirname(__FILE__) . '/Metrics/' . implode('/', $exp) . '/' . $metricName . '.php';
+        if (!file_exists($file))
+            FaZend_Exception::raise('MetricsNotFound', "Metric '{$metric}' not found");
 
         // attach this metric to the holder
         $this->_attachItem($metric, new $metricClass(), 'setMetrics');

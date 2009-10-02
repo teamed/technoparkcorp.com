@@ -23,7 +23,8 @@
  *
  * @package Artifacts
  */
-class theWBS extends Model_Artifact_Bag {
+class theWBS extends Model_Artifact_Bag 
+    implements Model_Artifact_Passive {
     
     /**
      * Returns a list of activities to be done now, according to current WBS
@@ -37,17 +38,21 @@ class theWBS extends Model_Artifact_Bag {
     /**
      * Load work packages into the WBS, before iteration
      *
-     * @return mixed
+     * @return void
      **/
-    public function count() {
-        // already loaded?
-        if (parent::count() == 0) {
-            foreach ($this->_getListOfIniFiles() as $code=>$file)
-                $this[$code] = new theWorkPackage($this, $code, new Zend_Config_Ini($file, 'wp', array(
-                    'allowModifications'=>true)));
-        }
-        
-        return parent::count();
+    public function reload() {
+        foreach ($this->_getListOfIniFiles() as $code=>$file)
+            $this->_attachItem($code, new theWorkPackage($code, 
+                new Zend_Config_Ini($file, 'wp', array('allowModifications'=>true))), 'wbs');
+    }
+    
+    /**
+     * WBS is loaded?
+     *
+     * @return boolean
+     **/
+    public function isLoaded() {
+        return (bool)count($this);
     }
     
     /**

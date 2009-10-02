@@ -19,30 +19,51 @@
  */
 
 /**
- * Total number of defects found in the project
+ * One activity
  *
  * @package Artifacts
  */
-class theMtcDefectsFound extends theMtcAbstract {
+class theActivity extends Model_Artifact_Stateless {
 
     /**
-     * Initialize this metric
+     * Work package it came from
+     *
+     * @var theWorkPackage
+     */
+    public $wp;
+
+    /**
+     * Is it already assigned?
+     *
+     * @return boolean
+     */
+    public function isAssigned() {
+    }
+
+    /**
+     * Is cost already estimated?
+     *
+     * @return boolean
+     */
+    public function isCostEstimated() {
+    }
+
+    /**
+     * Is cost estimate already requested?
+     *
+     * @return boolean
+     * @todo implement it
+     */
+    public function isCostEstimateRequested() {
+    }
+
+    /**
+     * Request cost estimate from the performer
      *
      * @return void
-     **/
-    protected function _init() {
-        $this->setTitle('Total number of defects found')
-            ->setDefault(round($this->_metrics->codeSLOC / 5))
-            ->setVisible(true);
+     * @todo implement it
+     */
+    public function requestCostEstimate() {
     }
-        
-    /**
-     * Calculate
-     *
-     * @return integer
-     **/
-    protected function _calculate() {
-        return 10;
-    }
-        
+
 }

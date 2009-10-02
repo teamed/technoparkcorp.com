@@ -30,98 +30,54 @@ class theWorkPackage implements Model_Artifact_Stateless {
      *
      * @var theWBS
      */
-    protected $_wbs;
+    public $wbs;
     
     /**
-     * Unique code of this workpackage
+     * Config of the WP
      *
-     * @var string
+     * @var Zend_Config
      */
-    protected $_code;
-    
-    /**
-     * Cost of work package, in USD dollars
-     *
-     * @var int
-     */
-    protected $_cost;
-    
-    /**
-     * Statement of work
-     *
-     * @var string
-     */
-    protected $_SOW;
+    protected $_config;
     
     /**
      * Create new work package from INI file
      *
-     * @param theWBS Holder of this object
      * @param string Code of the work package
      * @param Zend_Config_Ini INI file with configuration
      * @return void
      **/
-    public function __construct(theWBS $wbs, $code, Zend_Config_Ini $config) {
-        $this->_wbs = $wbs;
+    public function __construct($code, Zend_Config_Ini $config) {
         $this->_code = $code;
-        $this->_loadIni($config);
+        $this->_config = $config;
     }
     
     /**
-     * Get the code of this WP
+     * Getter
      *
-     * @return string
+     * @return mixed
      **/
-    public function getCode() {
-        return $this->_code;
-    }
-    
-    /**
-     * Get the cost in USD of this WP
-     *
-     * @return integer
-     **/
-    public function getCost() {
-        return $this->_cost;
-    }
-    
-    /**
-     * Get statement of work of this WP
-     *
-     * @return string
-     **/
-    public function getSOW() {
-        return $this->_SOW;
-    }
-    
-    /**
-     * Convert INI file into internal variables
-     *
-     * @param Zend_Config_Ini INI file with configuration
-     * @return void
-     **/
-    protected function _loadIni(Zend_Config_Ini $config) {
-        $this->_parse($config);
-        $this->_cost = $this->_makeInt($config->cost);
-        $this->_SOW = $config->SOW;
-        
-        if (isset($config->facers))
-            $this->_loadTrimers();
-    }
-    
-    /**
-     * Convert INI file internal variables into real values
-     *
-     * @param Zend_Config_Ini INI file with configuration
-     * @return void
-     **/
-    protected function _parse(Zend_Config_Ini $config) {
-        foreach ($config as $key=>$value) {
-            $config->$key = $this->_translate($value);
-            if ($value instanceof Zend_Config_Ini)
-                $this->_parse($value);
+    public function __get($name) {
+        switch ($name) {
+            case 'cost':
+                return $this->_makeInt($this->_translate($this->_config->cost));
+            case 'sow':
+                return $this->_translate($this->_config->sow);
+            case 'code':
+                return $this->_code;
         }
-        return $config;
+    }
+    
+    /**
+     * Get list of all activities
+     *
+     * @return theActivity[]
+     */
+    public function getActivities() {
+        $activities = array();
+        
+        $activities[] = new theActivity($this);
+        
+        return $activities;
     }
     
     /**
@@ -132,19 +88,19 @@ class theWorkPackage implements Model_Artifact_Stateless {
      **/
     protected function _translate($line) {
         $matches = array();
-        if (!preg_match_all('/(\+|\#|\!)\{([\w\d]+)\}/', $line, $matches))
+        if (!preg_match_all('/(\+|\#|\!)\{([\w\d\/]+)\}/', $line, $matches))
             return $line;
         foreach ($matches[0] as $id=>$match) {
-            $metric = $this->_wbs->owner->metrics->get($matches[2][$id]);
+            $metric = $this->wbs->project->metrics->get($matches[2][$id]);
             switch ($matches[1][$id]) {
                 case '+':
-                    $replacer = $metric->getTarget() - $metric->getValue();
+                    $replacer = $metric->delta;
                     break;
                 case '!':
-                    $replacer = $metric->getValue();
+                    $replacer = $metric->value;
                     break;
                 case '#':
-                    $replacer = $metric->getTarget();
+                    $replacer = $metric->target;
                     break;
             }
             $line = str_replace($match, $replacer, $line);

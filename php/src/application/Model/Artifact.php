@@ -84,12 +84,13 @@ class Model_Artifact extends ArrayIterator
     protected function _initialize(Model_Artifact_Interface $artifact, $property) {
         if (is_null($property))
             $artifact->ps()->parent = $this; // TODO: this should be removed and implemented in FaZend
-        else {
+        elseif ($artifact instanceof Model_Artifact_Stateless) {
             if (method_exists($artifact, $property))
                 $artifact->$property($this);
             else
                 $artifact->$property = $this;
-        }
+        } else
+            FaZend_Exception::raise('InvalidChildArtifact', 'Artifact ' . get_class($artifact) . ' is not stateless');
     }
     
     /**

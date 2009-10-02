@@ -30,8 +30,11 @@ class theActivityList extends Model_Artifact_Bag {
      *
      * @return void
      */
-    protected function _init() {
-//        $this->_collection = $this->_owner->WBS->getActivities();
+    public function reload() {
+        foreach ($this->ps()->parent->wbs as $wp) {
+            foreach ($wp->getActivities() as $activity)
+                $this[] = $activity;
+        }
     }
 
 }
