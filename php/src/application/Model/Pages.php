@@ -192,10 +192,10 @@ class Model_Pages extends Zend_Navigation {
      *
      * @param string Document full name
      * @param string|null User email, NULL means current user
-     * @param string|null Privileges to apply
+     * @param string Privileges to apply
      * @return boolean
      */
-    public function isAllowed($doc, $email = null, $privileges = null) {
+    public function isAllowed($doc, $email = null, $privileges = 'r') {
         // the document will be activated, if it physically exists
         $this->_activateDocument($doc);
 
@@ -214,7 +214,7 @@ class Model_Pages extends Zend_Navigation {
                 return false;
         }
         
-        return $this->getAcl()->isAllowed($email, $doc);
+        return $this->getAcl()->isAllowed($email, $doc, $privileges);
     }
 
     /**
@@ -352,7 +352,8 @@ class Model_Pages extends Zend_Navigation {
 
                 if (!isset($rights[$current]))
                     $rights[$current] = array();
-                $rights[$current][$matches[1]] = $matches[2];
+                    
+                $rights[$current][$matches[1]] = ($matches[2] ? ($matches[2] == 'rw' ? array('r', 'w'): 'r') : false);
                 continue;
             }
 
@@ -398,11 +399,13 @@ class Model_Pages extends Zend_Navigation {
         if ($email == '*')
             $email = null;
 
-        if (!$access)
+        if (!$access) {
             $acl->deny($email, $page);
-        else
-            // allow access for this actor to this resource
-            $acl->allow($email, $page/*str_split($access)*/);
+        } else {
+            if ($access == 'rw')
+                $acl->allow($email, $page, 'w');
+            $acl->allow($email, $page, null);
+        }
 
     }
 
@@ -427,6 +430,7 @@ class Model_Pages extends Zend_Navigation {
 
         // if it's already here - skip it
         if ($this->getAcl()->has($doc))
+            // bug($this->_acl);
             return true;
             
         // we should active the parent first, if we can

@@ -33,7 +33,7 @@ class Model_Colors {
     const RED =            '#e31b23';
     const GREEN =          '#54b948';
     const ORANGE =         'orange';
-    const YELLOW =         'yellow';
+    const YELLOW =         '#fff454';
     const WHITE =          '#ffffff';
 
     const RUP_BORDER =     '#9a0033';

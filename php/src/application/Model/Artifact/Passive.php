@@ -18,30 +18,25 @@
  *
  */
 
-require_once 'FaZend/Test/TestCase.php';
-require_once 'AbstractProjectTest.php';
-
 /**
- * Test metrics management mechanism
+ * One artifact, which is passive and should be reloaded if you need it to be current
  *
- * @package test
+ * @package Artifacts
  */
-class MetricsTest extends AbstractProjectTest {
+interface Model_Artifact_Passive {
 
-    public function testGeneralMechanismWorks() {
-        $defects = $this->project->metrics->get('defects/total')->value;
-        logg($defects . ' defects found');
-    }
+    /**
+     * Reloads this artifact and makes it current
+     *
+     * @return void
+     **/
+    public function reload();
 
-    public function testGetAllWorks() {
-        $list = $this->project->metrics->getAll();
-        logg(count($list) . ' metrics found');
-        $metric = $list->current();
-        
-        logg('Value: ' . $metric->value);
-        logg('Default: ' . $metric->default);
-        logg('Target: ' . $metric->target);
-        logg('Delta: ' . $metric->delta);
-    }
+    /**
+     * Does it have any value now or we need to reload to work with?
+     *
+     * @return boolean
+     **/
+    public function isLoaded();
 
 }

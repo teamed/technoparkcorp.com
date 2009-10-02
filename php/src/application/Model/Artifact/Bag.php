@@ -22,8 +22,8 @@
  * One artifact, which is a bag
  *
  * @package Artifacts
+ * @todo Should extend FaZend_POS_Bag
  */
-abstract class Model_Artifact_Bag extends ArrayIterator
-    implements Model_Artifact_Interface {
+abstract class Model_Artifact_Bag extends Model_Artifact {
 
 }

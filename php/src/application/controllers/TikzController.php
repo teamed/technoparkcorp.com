@@ -30,9 +30,18 @@ class TikzController extends FaZend_Controller_Action {
      * @return void
      */
     public function indexAction() {
-
-        return $this->_returnPNG(Model_XML::tikzShow($this->_getParam('tikz')));
-
+        return $this->_returnPNG(Model_XML::tikzShow($this->_getParam('tikz')), false);
     }    
+    
+    /**
+     * Clear the DB of tikz images
+     * 
+     * @return void
+     */
+    public function cleanAction() {
+        Model_XML::tikzClean();
+        $this->_redirectFlash('TIKZ database cleaned', 'index', 'static');
+    }    
+
 }
 

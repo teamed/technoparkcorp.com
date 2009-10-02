@@ -1,0 +1,10 @@
+<h1>Project Metrics (full list)</h1>
+
+<?=$this->table()
+    ->setSource($this->project->metrics->getAll())
+    ->addColumn('__key', 'Name')
+    ->addColumn('default', 'Default')
+    ->addColumn('value', 'Value')
+    ->addColumn('target', 'Target')
+    ->addColumn('delta', 'Delta')
+    ?>

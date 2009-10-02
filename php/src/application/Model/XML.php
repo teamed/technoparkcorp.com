@@ -33,6 +33,13 @@ class Model_XML {
     protected static $_cache;
     
     /**
+     * View to render TIKZ/TEX files
+     *
+     * @var Zend_Cache
+     */
+    protected static $_view = null;
+    
+    /**
      * SimpleXML document
      *
      * @var SimpleXML
@@ -47,6 +54,12 @@ class Model_XML {
      */
     protected function __construct($xml) {
         $this->_xml = $xml;
+
+        if (!isset(self::$_view)) {
+            self::$_view = clone Zend_Registry::getInstance()->view;    
+            self::$_view->setScriptPath(APPLICATION_PATH . '/tikz');
+            self::$_view->setFilter(null);
+        }
     }
 
     /**
@@ -73,7 +86,7 @@ class Model_XML {
      * @return var
      */
     public function __get($key) {
-        if ($this->_xml->$key)
+        if (isset($this->_xml->$key))
             return new Model_XML($this->_xml->$key);
         return false;
     }
@@ -138,7 +151,7 @@ class Model_XML {
             $md5 = md5($match);
 
             $text = str_replace($matches[0][$key], "<img alt='loading...' src='" .
-                self::_view()->url(array('tikz'=>$md5), 'tikz', true) . "' " . $matches[2][$key] . " />", $text);
+                self::$_view->url(array('tikz'=>$md5), 'tikz', true) . "' " . $matches[2][$key] . " />", $text);
 
             // what type of image it is?    
             switch ($matches[1][$key]) {    
@@ -150,12 +163,10 @@ class Model_XML {
                     if (self::_cache()->test($md5) || self::_cache()->test($md5 . '_png'))
                         continue;    
 
-                    $view = new Zend_View();    
-                    $view->setScriptPath(APPLICATION_PATH . '/tikz');
-                    $view->tikz = $match;
+                    self::$_view->tikz = $match;
 
                     // save the file, which will be used later, but HTTP call
-                    self::_cache()->save($view->render('image.tex'), $md5);    
+                    self::_cache()->save(self::$_view->render('image.tex'), $md5);    
 
                     break;    
 
@@ -199,11 +210,11 @@ class Model_XML {
             switch ($match) {
 
                 case 'url':
-                    $replacement = self::_view()->staticUrl($matches[2][$key]);
+                    $replacement = self::$_view->staticUrl($matches[2][$key]);
                     break;
 
                 case 'img':
-                    $replacement = self::_view()->viewFile($matches[2][$key]);
+                    $replacement = self::$_view->viewFile($matches[2][$key]);
                     break;
 
                 case 'mailto':
@@ -224,6 +235,15 @@ class Model_XML {
     }
 
     /**
+     * Clean the entire DB of tikz images
+     *
+     * @return void
+     */
+    public static final function tikzClean() {
+        self::_cache()->clean();
+    }
+
+    /**
      * Show one image, created with LaTeX Tikz
      *
      * @param string MD5 code of the requested image to show
@@ -231,18 +251,39 @@ class Model_XML {
      */
     public static final function tikzShow($md5) {
 
+        // if this PNG already exists
         if (self::_cache()->test($md5 . '_png')) 
             return self::_cache()->load($md5 . '_png');
 
         // even if the source is absent?    
-        if (!self::_cache()->test($md5)) 
-            return self::_errorPNG($md5);
+        if (!self::_cache()->test($md5)) {
+            FaZend_Log::err('Call made to an absent TIKZ image: ' . $md5);
+            return self::_errorPNG($md5, Model_Colors::BLUE);
+        }
 
-        $png = Model_IPF10::getInstance()->TikzImage(self::_cache()->load($md5));
+        // try to get PNG from IPF10
+        try {
+            $png = Model_IPF10::getInstance()->TikzImage(self::_cache()->load($md5));
+        } catch (Exception $e) {
+            return self::_errorPNG($md5, Model_Colors::RED);
+        }
+        
+        // maybe the result returned is empty?
+        if (!$png) {
+            FaZend_Log::err('Error in XML/tikzShow - empty PNG, will try again next time');
+            return self::_errorPNG($md5, Model_Colors::GRAY);
+        }
+        
+        // maybe the PNG is not a valid image?
+        if (imagecreatefromstring($png) === false) {
+            FaZend_Log::err('Error in XML/tikzShow - invalid PNG (' . strlen($png) . ' bytes), will try again next time');
+            return self::_errorPNG($md5, Model_Colors::YELLOW);
+        }
 
         self::_cache()->save($png, $md5 . '_png');
         self::_cache()->remove($md5);
 
+        // return PNG image content
         return $png;
 
     }
@@ -253,25 +294,18 @@ class Model_XML {
      * @param string MD5 code of the requested (and failed) image
      * @return string
      */
-    protected static function _errorPNG($md5) {
+    protected static function _errorPNG($md5, $color = Model_Colors::RED) {
         
-        $img = imagecreatetruecolor(300, 30);
+        $img = imagecreatetruecolor(50, 30);
 
-        imagefill($img, 0, 0, Model_Colors::getForImage($img, Colors::RED));
+        imagefill($img, 0, 0, Model_Colors::getForImage($img, $color));
+        imageline($img, 0, 0, 49, 29, Model_Colors::getForImage($img, Model_Colors::WHITE));
+        imageline($img, 0, 29, 49, 0, Model_Colors::getForImage($img, Model_Colors::WHITE));
             
         ob_start();
         imagepng($img);
         return ob_get_clean();
     }    
-
-    /**
-     * Get an instance of current Zend_View
-     *
-     * @return Zend_View
-     */
-    protected static function _view() {
-        return Zend_Registry::getInstance()->view;
-    }
 
     /**
      * Get an instance of cache

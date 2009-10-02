@@ -33,4 +33,9 @@ class WBSTest extends AbstractProjectTest {
         logg(count($wbs) . ' work packages in WBS');
     }
 
+    public function testActivitiesAreAvailable() {
+        $list = $this->project->WBS->getActivities();
+        logg(count($list) . ' activities found from WBS');
+    }
+
 }

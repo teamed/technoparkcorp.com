@@ -48,7 +48,7 @@ class Helper_Publish extends FaZend_View_Helper {
      * @param Model_Artifact The artifact to publish
      * @return Helper_Publish
      */
-    public function publish(Model_Artifact $doc) {
+    public function publish(Model_Artifact_Interface $doc) {
         $this->_doc = $doc;
         $this->_loadAcl();
         return $this;
@@ -81,7 +81,7 @@ class Helper_Publish extends FaZend_View_Helper {
         $current = $this->getView()->doc;
         
         // define privileges of current user on current page
-        $privileges = null;
+        $privileges = 'r';
         if (Model_Pages::getInstance()->isAllowed($current, null, 'w'))
             $privileges = 'rw';
 
@@ -105,7 +105,8 @@ class Helper_Publish extends FaZend_View_Helper {
         }
 
         return '<div class="publish">' .
-            '<tt>' . get_class($this->_doc) . '</tt>: ' . 
+            '<tt>' . get_class($this->_doc) . '</tt>' .
+            ($privileges == 'rw' ? '<sup title="you can read/write" style="cursor:pointer;"><small>rw</small></sup>: ' : false) . 
             implode('&#32;&middot;&#32;', $links) . '</div>' . 
             (isset($pageHtml) ? "<div class='publisher'>" . $pageHtml . '</div>' : false);
         

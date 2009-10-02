@@ -45,6 +45,54 @@ class Model_Artifact extends ArrayIterator
     }
 
     /**
+     * Attach sub-artifact if it's not here already
+     *
+     * @param string Name of the property to be accessed later
+     * @param Model_Artifact_Interface The artifact to attach
+     * @param string Property to set with $this
+     * @return $this
+     */
+    protected function _attach($name, Model_Artifact_Interface $artifact, $property = null) {
+        if (!isset($this->$name)) 
+            $this->$name = $artifact;
+        $this->_initialize($this->$name, $property);
+        return $this;
+    }
+    
+    /**
+     * Attach sub-artifact if it's not here already, as an item in array
+     *
+     * @param string Key of the array
+     * @param Model_Artifact_Interface The artifact to attach
+     * @param string Property to set with $this
+     * @return $this
+     */
+    protected function _attachItem($key, Model_Artifact_Interface $artifact, $property = null) {
+        if (!isset($this[$key]))
+            $this[$key] = $artifact;
+        $this->_initialize($this[$key], $property);
+        return $this;
+    }
+    
+    /**
+     * Initialize child artifact
+     *
+     * @param Model_Artifact_Interface The artifact to attach
+     * @param string Property to set with $this
+     * @return void
+     */
+    protected function _initialize(Model_Artifact_Interface $artifact, $property) {
+        if (is_null($property))
+            $artifact->ps()->parent = $this; // TODO: this should be removed and implemented in FaZend
+        else {
+            if (method_exists($artifact, $property))
+                $artifact->$property($this);
+            else
+                $artifact->$property = $this;
+        }
+    }
+    
+    /**
      * To be implemented in FaZend_POS_Abstract
      *
      * @return void
@@ -62,16 +110,21 @@ class Model_Artifact extends ArrayIterator
     }
     
     /**
-     * Attach sub-artifact if it's not here already
+     * To be implemented in FaZend_POS_Abstract
      *
-     * @return $this
+     * @var object
      */
-    protected function _attach($name, Model_Artifact_Interface $artifact) {
-        if (!isset($this->$name)) {
-            $artifact->owner = $this; // TODO: this should be removed and implemented with ps()->parent
-            $this->$name = $artifact;
-        }
-        return $this;
+    private $__ps;
+    
+    /**
+     * To be implemented in FaZend_POS_Abstract
+     *
+     * @return object
+     */
+    public function ps() {
+        if (!isset($this->__ps))
+            $this->__ps = new FaZend_StdObject();
+        return $this->__ps;
     }
     
 }

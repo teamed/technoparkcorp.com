@@ -28,6 +28,10 @@ class Model_IPF10 {
     const WSDL_URI = 'http://ipf10.tpc-svn.com/wsdl.php';
     const COOKIE = 'ipf10session';
     
+    const IPF10_LOGIN = 'robot@technoparkcorp.com';
+    const IPF10_PASSWORD = 'justatestpassword';
+    const IPF10_SECRET = 'secret23';
+    
     /**
      * Singleton pattern
      *
@@ -79,9 +83,9 @@ class Model_IPF10 {
 
         // secret params for login, don't change them
         $id = $this->_soapClient->Login(
-            'robot@technoparkcorp.com', 
-            'justatestpassword', 
-            'secret23');
+            self::IPF10_LOGIN, 
+            self::IPF10_PASSWORD, 
+            self::IPF10_SECRET);
 
         // set the name of the cookie
         $this->_soapClient->__setCookie(self::COOKIE, $id);
@@ -102,9 +106,10 @@ class Model_IPF10 {
         try {
 
             return convert_uudecode($this->_getSoapClient()->TikzImage((string)$tex));
-
+            
         } catch (SoapFault $e) {
 
+            FaZend_Log::err('Error in IPF10/TikzImage: ' . $e->getMessage());
             FaZend_Exception::raise('Model_IPF10_TikzImageSoapFault',
                 'SOAP error: '.$e->getMessage());
 
@@ -126,6 +131,7 @@ class Model_IPF10 {
 
         } catch (SoapFault $e) {
 
+            FaZend_Log::err('Error in IPF10/TikzPDF: ' . $e->getMessage());
             FaZend_Exception::raise('Model_IPF10_TikzPDFSoapFault',
                 'SOAP error: '.$e->getMessage());
 
