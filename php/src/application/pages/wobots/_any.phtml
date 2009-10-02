@@ -1,6 +1,6 @@
 
 <?=$this->icon('wobot')?><br/>
-<?=$this->wobot?> (<tt><?=$this->wobot->getEmail()?></tt>)
+<?=$this->wobot?> (<?=$this->wobot->getHumanName()?>, <tt><?=$this->wobot->getEmail()?></tt>)
 
 <?=$this->table()
     ->setSource(Model_Decision_History::retrieveByWobot($this->wobot))

@@ -82,12 +82,20 @@ class Model_Wobot_PM extends Model_Wobot {
      * @return string
      */
     public function getEmailPrefix() {
+        $exp = explode(' ', strtolower($this->getHumanName()));
+        return $exp[0][0] . '.' . $exp[1];
+    }
+
+    /**
+     * Get the full name of the human-wobot
+     *
+     * @return string
+     */
+    public function getHumanName() {
         foreach (self::$_names as $regexp=>$name)
-            if (preg_match('/^[' . $regexp . ']/', $this->_project->name)) {
-                $exp = explode(' ', strtolower($name));
-                return $exp[0][0] . '.' . $exp[1];
-            }
-        return strtolower($this->getName());
+            if (preg_match('/^[' . $regexp . ']/', $this->_project->name))
+                return $name;
+        FaZend_Exception::raise('Model_Wobot_NameNotFound');
     }
 
     /**

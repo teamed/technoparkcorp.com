@@ -110,6 +110,13 @@ abstract class Model_Wobot implements Model_Wobot_Interface {
     }
 
     /**
+     * Get the full name of the human-wobot
+     *
+     * @return string
+     */
+    abstract public function getHumanName();
+    
+    /**
      * Calculate context
      *
      * @return string

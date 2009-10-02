@@ -61,6 +61,13 @@ interface Model_Wobot_Interface {
     public function getContext();
 
     /**
+     * Get the full name of the human-wobot
+     *
+     * @return string
+     */
+    public function getHumanName();
+        
+    /**
      * Execute this wobot (make next waiting decision)
      *
      * @return string The decision just made
