@@ -21,73 +21,146 @@
 /**
  * Abstract project metric
  *
+ * You can access any metric like this:
+ *
+ * <code>
+ * $metric->value; // current value
+ * $metric->default; // default target to be reached
+ * $metric->target; // target to be reached, equals to 'default' if not changed
+ * $metric->delta; // the difference between target and current value
+ * </code>
+ * 
  * @package Artifacts
  */
-abstract class theMtcAbstract extends FaZend_StdObject 
-    implements Model_Artifact_Stateless {
+abstract class theMtcAbstract
+    implements Model_Artifact_Stateless, Model_Artifact_Passive {
 
     /**
-     * Link to the metrics holder in this project
+     * Project where the metric is located
      *
-     * @var theMetrics
+     * @var theProject
      */
-    protected $_metrics;
+    protected $_project;
 
     /**
-     * Title of the metric
-     *
-     * @var string
-     */
-    protected $_title;
-
-    /**
-     * Default value
-     *
-     * @var integer
-     */
-    protected $_default = 0;
-
-    /**
-     * Is it visible in objectives?
+     * Is it visible in objectives? Project stakeholders can set target value for the metric?
      *
      * @var boolean
      */
-    protected $_visible = false;
+    public $visible = false;
 
     /**
-     * Create new metric class
+     * Value of the metric, loaded latest
+     *
+     * @var numeric
+     */
+    private $_value;
+    
+    /**
+     * Default target of the metric
+     *
+     * @var numeric
+     */
+    private $_default;
+    
+    /**
+     * Load this metric
      *
      * @return void
      **/
-    public final function __construct(theMetrics $metrics) {
-        $this->_metrics = $metrics;
-        // initialize it
-        $this->_init();
-    }
-
-    /**
-     * Get value of the metric
-     *
-     * @return integer
-     **/
-    public function getValue() {
-        return $this->_calculate();
+    public function reload() {
+        // to be overriden if necessary
+        $this->value = 0;
     }
         
     /**
-     * Perform real calculation of the metric
+     * Is it loaded?
      *
-     * @return integer
+     * @return boolean
      **/
-    abstract protected function _calculate();
+    public function isLoaded() {
+        return isset($this->_value);
+    }
         
     /**
-     * Initializer
+     * Save the holder of the metric
      *
      * @return void
      **/
-    protected function _init() {
-        // to be overriden...
+    public function setMetrics(theMetrics $metrics) {
+        $this->_project = $metrics->project;
+    }
+        
+    /**
+     * Simplified getter, dispatcher
+     *
+     * @param string Name of the property
+     * @return numeric
+     **/
+    public function __get($name) {
+        
+        // reload it before doing anything
+        if (!$this->isLoaded())
+            $this->reload();
+            
+        switch ($name) {
+            case 'value':
+                if (!isset($this->_value)) {
+                    FaZend_Exception::raise('MetricReloadingException', 
+                        'Metric ' . get_class($this) . ' is not reloaded by reload(), why?');
+                }
+                return $this->_value;
+                
+            case 'default':
+                if (!isset($this->_default))
+                    return null;
+                return $this->_default;
+                
+            case 'target':
+                // TODO: we should go into Objectives for this value!
+                return $this->_default;
+                
+            case 'delta':
+                return $this->target - $this->value;
+        }
+        
+        FaZend_Exception::raise('MetricAccessException', "You can GET only declared properties of a metric ($name)");
+    }
+        
+    /**
+     * Simplified setter, dispatcher
+     *
+     * @param string Name of the property
+     * @param integer Value to save
+     * @return void
+     **/
+    public function __set($name, $value) {
+        validate()->numeric($value, "You can only save NUMERIC values to metrics");
+        
+        switch ($name) {
+            case 'value':
+                $this->_value = $value;
+                return;
+            case 'default':
+                $this->_default = $value;
+                return;
+        }
+        
+        FaZend_Exception::raise('MetricAccessException', "You can SET only declared properties of a metric ($name)");
+    }
+        
+    /**
+     * Convert it to array
+     *
+     * @return array
+     **/
+    public function toArray() {
+        return array(
+            'default' => $this->default,
+            'value' => $this->value,
+            'target' => $this->target,
+            'delta' => $this->delta,
+        );
     }
         
 }

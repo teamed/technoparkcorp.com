@@ -26,12 +26,19 @@
 class theStaffAssignments implements Model_Artifact_Stateless {
 
     /**
+     * The holder of this staff assignments
+     *
+     * @var theProject
+     */
+    public $project;
+
+    /**
      * Dispatcher
      *
      * You can call $staffAssignments->PM and you will get a list of project
      * managers (if many) or just one PM (if he/she is alone)
      *
-     * @return theProjectRole|theStakeholder One stakeholder or role
+     * @return theProjectRole|theStakeholder One stakeholder or one role
      * @throws Exception If the role is not found
      **/
     public function __get($name) {
@@ -77,7 +84,7 @@ class theStaffAssignments implements Model_Artifact_Stateless {
      * @return Model_Project
      **/
     public function _project() {
-        return Model_Project::findProjectByName($this->owner->name);
+        return Model_Project::findProjectByName($this->project->name);
     }
     
 }

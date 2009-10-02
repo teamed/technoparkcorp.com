@@ -19,30 +19,29 @@
  */
 
 /**
- * Project work orders
+ * Total number of CRITICAL defects found in the project
  *
  * @package Artifacts
  */
-class theWorkOrders implements Model_Artifact_Stateless {
+class theMtcDefectsCritical extends theMtcAbstract {
 
     /**
-     * The holder of this staff assignments
+     * Initialize this metric
      *
-     * @var theProject
-     */
-    public $project;
-
-    /**
-     * Get a work order
-     *
-     * @param Model_Decision_PM|string Decision class or name
-     * @param string|null ID of the order if required
      * @return void
      **/
-    public function get($decision, $id = null) {
-        if ($decision instanceof Model_Decision)
-            $decision = get_class($decision);
-        return new theWorkOrder($this, $decision, $id);
+    protected function _init() {
+        $this->setTitle('Total number of CRITICAL defects found')
+            ->setDefault(round($this->_metrics->defectsFound / 10));
+    }
+        
+    /**
+     * Calculate
+     *
+     * @return integer
+     **/
+    protected function _calculate() {
+        return 10;
     }
         
 }

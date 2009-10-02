@@ -26,15 +26,12 @@
 class theMetrics extends Model_Artifact_Bag {
 
     /**
-     * Get a metric
+     * The holder of this staff assignments
      *
-     * @param string Name of the metric, e.g. defectsFound
-     * @return integer
-     **/
-    public function __get($metric) {
-        return $this->get($metric)->getValue();
-    }
-        
+     * @var theProject
+     */
+    public $project;
+
     /**
      * Get a metric class
      *
@@ -42,10 +39,49 @@ class theMetrics extends Model_Artifact_Bag {
      * @return theMtcAbstract
      **/
     public function get($metric) {
-        $className = 'theMtc' . ucfirst($metric);
-        if (!isset($this[$className]))
-            $this[$className] = new $className($this);
-        return $this[$className];
+        validate()->regex($metric, '/^(\w+\/?)+$/', "Metric name should be formatted: name/name/name/... etc.");
+        
+        $exp = explode('/', $metric);
+        $metricName = 'Mtc' . ucfirst(array_pop($exp));
+        $metricClass = 'the' . $metricName;
+        
+        // build the absolute path of PHP metric file
+        foreach ($exp as &$dir)
+            $dir = ucfirst($dir);
+        
+        // include this particular metric file
+        require_once dirname(__FILE__) . '/Metrics/' . implode('/', $exp) . '/' . $metricName . '.php';
+
+        // attach this metric to the holder
+        $this->_attachItem($metric, new $metricClass(), 'setMetrics');
+        
+        return $this[$metric];
+    }
+    
+    /**
+     * Get an array of ALL metrics in the project
+     *
+     * @param string Prefix to apply
+     * @return theMtcAbstract[]
+     **/
+    public function getAll($prefix = '') {
+        $path = dirname(__FILE__) . '/Metrics/' . $prefix;
+        $metrics = array();
+        foreach (glob($path . '/*') as $file) {
+            $metric = pathinfo($file, PATHINFO_FILENAME);
+            if (is_dir($file))
+                $metrics += $this->getAll(lcfirst($metric) . '/');
+            elseif ($prefix) {
+                // PHP 5.3 only: lcfirst()
+                $metricName = $prefix . lcfirst(substr($metric, 3));
+                $metrics[$metricName] = $this->get($metricName);
+            }
+        }
+        
+        if (!$prefix)
+            return new ArrayIterator($metrics);
+        else
+            return $metrics;
     }
             
 }

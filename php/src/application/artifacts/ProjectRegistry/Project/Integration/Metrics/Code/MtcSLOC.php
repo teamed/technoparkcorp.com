@@ -19,30 +19,19 @@
  */
 
 /**
- * Project work orders
+ * Total number of lines of code in the source code
  *
  * @package Artifacts
  */
-class theWorkOrders implements Model_Artifact_Stateless {
+class theMtcSloc extends theMtcAbstract {
 
     /**
-     * The holder of this staff assignments
+     * Reload
      *
-     * @var theProject
-     */
-    public $project;
-
-    /**
-     * Get a work order
-     *
-     * @param Model_Decision_PM|string Decision class or name
-     * @param string|null ID of the order if required
      * @return void
      **/
-    public function get($decision, $id = null) {
-        if ($decision instanceof Model_Decision)
-            $decision = get_class($decision);
-        return new theWorkOrder($this, $decision, $id);
+    public function reload() {
+        $this->value = 10;
     }
         
 }

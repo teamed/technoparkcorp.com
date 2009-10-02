@@ -24,5 +24,56 @@
  * @package Artifacts
  */
 class theWBS extends Model_Artifact_Bag {
+    
+    /**
+     * Returns a list of activities to be done now, according to current WBS
+     *
+     * @return theActivity[]
+     **/
+    public function getActivities() {
+        // returns them
+    }
+    
+    /**
+     * Load work packages into the WBS, before iteration
+     *
+     * @return mixed
+     **/
+    public function count() {
+        // already loaded?
+        if (parent::count() == 0) {
+            foreach ($this->_getListOfIniFiles() as $code=>$file)
+                $this[$code] = new theWorkPackage($this, $code, new Zend_Config_Ini($file, 'wp', array(
+                    'allowModifications'=>true)));
+        }
         
+        return parent::count();
+    }
+    
+    /**
+     * Get list of all packages
+     *
+     * Returns an associative array where key is a code of the package
+     * and the value is an absolute path of the INI file with the config
+     *
+     * @return string[]
+     **/
+    protected function _getListOfIniFiles($path = null, $prefix = '') {
+
+        // all INI files are here, in /packages directory
+        if (is_null($path))
+            $path = realpath(dirname(__FILE__) . '/WBS/packages');
+            
+        $files = array();
+        foreach (glob($path . '/*') as $file) {
+            if (is_dir($file))
+                $files += $this->_getListOfIniFiles($file, $prefix . pathinfo($file, PATHINFO_FILENAME) . '.');
+            else
+                $files[$prefix . pathinfo($file, PATHINFO_FILENAME)] = $file;
+        }
+        return $files;
+        
+        
+    }
+    
 }
