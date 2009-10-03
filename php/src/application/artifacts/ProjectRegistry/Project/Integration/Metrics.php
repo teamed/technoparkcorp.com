@@ -32,7 +32,7 @@ class theMetrics extends Model_Artifact_Bag {
      * @return theMtcAbstract
      **/
     public function get($metric) {
-        validate()->regex($metric, '/^(\w+\/?)+$/', "Metric name should be formatted: name/name/name/... etc.");
+        validate()->regex($metric, '/^(\w+\/?)+$/', "Metric name should be formatted: name/name/name/... etc., '$metric' received");
         
         $exp = explode('/', $metric);
         $metricName = 'Mtc' . ucfirst(array_pop($exp));
@@ -56,27 +56,36 @@ class theMetrics extends Model_Artifact_Bag {
     /**
      * Get an array of ALL metrics in the project
      *
-     * @param string Prefix to apply
      * @return theMtcAbstract[]
      **/
-    public function getAll($prefix = '') {
-        $path = dirname(__FILE__) . '/Metrics/' . $prefix;
-        $metrics = array();
-        foreach (glob($path . '/*') as $file) {
-            $metric = pathinfo($file, PATHINFO_FILENAME);
-            if (is_dir($file))
-                $metrics += $this->getAll(lcfirst($metric) . '/');
-            elseif ($prefix) {
-                // PHP 5.3 only: lcfirst()
-                $metricName = $prefix . lcfirst(substr($metric, 3));
-                $metrics[$metricName] = $this->get($metricName);
-            }
+    public function getAll() {
+        $path = dirname(__FILE__) . '/Metrics';        
+        $metrics = new ArrayIterator();
+        $regexp = '/^' . preg_quote($path, '/') . '(?:(\/\w+)*?)\/Mtc([^(Abstract)]\w+)\.php$/';        
+        $matches = array();
+        foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path)) as $file) {
+            if (!preg_match($regexp, $file->getPathName(), $matches))
+                continue;
+                
+            $metricName = $this->_pathToName($matches[1] . '/' . $matches[2]);
+            $metrics[$metricName] = $this->get($metricName);
         }
         
-        if (!$prefix)
-            return new ArrayIterator($metrics);
-        else
-            return $metrics;
+        return $metrics;
+    }
+    
+    /**
+     * Convert metric path to name
+     *
+     * @param string
+     * @return string
+     */
+    protected function _pathToName($path) {
+        $exp = array_filter(explode('/', $path));
+        foreach ($exp as &$sector)
+            // PHP 5.3 only: lcfirst()
+            $sector = lcfirst($sector);
+        return implode('/', $exp);
     }
             
 }
