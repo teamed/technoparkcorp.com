@@ -23,55 +23,53 @@
  *
  * @package Artifacts
  */
-class theMetrics extends Model_Artifact_Bag {
+class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive {
 
     /**
-     * Get a metric class
+     * Is it reloaded?
      *
-     * @param string Name of the metric, e.g. defectsFound
-     * @return theMtcAbstract
+     * @return boolean
      **/
-    public function get($metric) {
-        validate()->regex($metric, '/^(\w+\/?)+$/', "Metric name should be formatted: name/name/name/... etc., '$metric' received");
-        
-        $exp = explode('/', $metric);
-        $metricName = 'Mtc' . ucfirst(array_pop($exp));
-        $metricClass = 'the' . $metricName;
-        
-        // build the absolute path of PHP metric file
-        foreach ($exp as &$dir)
-            $dir = ucfirst($dir);
-        
-        // include this particular metric file
-        $file = dirname(__FILE__) . '/Metrics/' . implode('/', $exp) . '/' . $metricName . '.php';
-        if (!file_exists($file))
-            FaZend_Exception::raise('MetricsNotFound', "Metric '{$metric}' not found");
-
-        // attach this metric to the holder
-        $this->_attachItem($metric, new $metricClass(), 'setMetrics');
-        
-        return $this[$metric];
+    public function isLoaded() {
+        return (bool)count($this);
     }
     
     /**
-     * Get an array of ALL metrics in the project
+     * Reload all metrics
      *
-     * @return theMtcAbstract[]
+     * @return void
      **/
-    public function getAll() {
+    public function reload() {
         $path = dirname(__FILE__) . '/Metrics';        
-        $metrics = new ArrayIterator();
-        $regexp = '/^' . preg_quote($path, '/') . '(?:(\/\w+)*?)\/Mtc([^(Abstract)]\w+)\.php$/';        
+        $regexp = '/^' . preg_quote($path, '/') . '(?:(\/\w+)*?)\/(Mtc([^(Abstract)]\w+))\.php$/';        
         $matches = array();
+        $added = array();
         foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path)) as $file) {
             if (!preg_match($regexp, $file->getPathName(), $matches))
                 continue;
                 
-            $metricName = $this->_pathToName($matches[1] . '/' . $matches[2]);
-            $metrics[$metricName] = $this->get($metricName);
+            $metricName = $this->_pathToName($matches[1] . '/' . $matches[3]);
+            $added[] = $metricName;
+            
+            // don't add it again, if it exists
+            if (isset($this[$metricName]))
+                continue;
+
+            $newClassName = 'standaloneMetric_' . str_replace('/', '_', $metricName);
+            if (!class_exists($newClassName)) {
+                $php = str_replace('<?php', '', php_strip_whitespace($file->getPathName()));
+                $php = preg_replace('/(class\s)the' . $matches[2] . '(\sextends\stheMtcAbstract[\s\{])/', 
+                    '${1}' . $newClassName . '${2}', $php);
+                eval($php);
+            }
+            
+            $this->_attachItem($metricName, new $newClassName(), 'setMetrics');
         }
         
-        return $metrics;
+        // remove obsolete metrics, which are absent in files
+        foreach ($this as $key=>$metric)
+            if (!in_array($key, $added))
+                unset($this[$key]);
     }
     
     /**

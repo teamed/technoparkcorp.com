@@ -45,6 +45,7 @@ class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap {
         $this->bootstrap('Fazend');
         
         Model_Project::setClassName('Model_Project');
+        Shared_Cache::setLifecycle(5 * 60); // 5 hours cache lifecycle
     }
 
     /**

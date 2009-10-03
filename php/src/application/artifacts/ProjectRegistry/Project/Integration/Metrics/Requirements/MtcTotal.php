@@ -18,30 +18,20 @@
  *
  */
 
-require_once 'FaZend/Test/TestCase.php';
-require_once 'AbstractProjectTest.php';
-
 /**
- * Test metrics management mechanism
+ * Total number of functional requirements 
  *
- * @package test
+ * @package Artifacts
  */
-class MetricsTest extends AbstractProjectTest {
+class theMtcTotal extends theMtcAbstract {
 
-    public function testGeneralMechanismWorks() {
-        $defects = $this->project->metrics['defects/total']->value;
-        logg($defects . ' defects found');
+    /**
+     * Reload
+     *
+     * @return void
+     **/
+    public function reload() {
+        $this->value = 10;
     }
-
-    public function testGetAllWorks() {
-        $list = $this->project->metrics;
-        logg(count($list) . ' metrics found');
-        $metric = current($list);
         
-        logg('Value: ' . $metric->value);
-        logg('Default: ' . $metric->default);
-        logg('Target: ' . $metric->target);
-        logg('Delta: ' . $metric->delta);
-    }
-
 }

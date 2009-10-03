@@ -91,7 +91,7 @@ class theWorkPackage implements Model_Artifact_Stateless {
         if (!preg_match_all('/(\+|\#|\!)\{([\w\d\/]+)\}/', $line, $matches))
             return $line;
         foreach ($matches[0] as $id=>$match) {
-            $metric = $this->wbs->project->metrics->get($matches[2][$id]);
+            $metric = $this->wbs->ps()->parent->metrics[$matches[2][$id]];
             switch ($matches[1][$id]) {
                 case '+':
                     $replacer = $metric->delta;

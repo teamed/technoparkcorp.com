@@ -1,7 +1,9 @@
+<?=$this->publish($this->project->metrics)?>
+
 <h1>Project Metrics (full list)</h1>
 
 <?=$this->table()
-    ->setSource($this->project->metrics->getAll())
+    ->setSource($this->project->metrics)
     ->addColumn('__key', 'Name')
     ->addColumn('default', 'Default')
     ->addColumn('value', 'Value')

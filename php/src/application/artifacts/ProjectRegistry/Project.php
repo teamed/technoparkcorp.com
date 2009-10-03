@@ -48,6 +48,7 @@ class theProject extends Model_Artifact {
             ->_attach('wbs', new theWBS());
             
         $this->wbs->reload();
+        $this->metrics->reload();
         $this->activityList->reload();
     }
     

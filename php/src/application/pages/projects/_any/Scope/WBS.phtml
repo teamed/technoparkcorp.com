@@ -1,9 +1,9 @@
-<?=$this->publish($this->project->WBS)?>
+<?=$this->publish($this->project->wbs)?>
 
 <h1>Work Breakdown Structure (WBS)</h1>
 
 <?=$this->table()
-    ->setSource($this->project->WBS)
+    ->setSource($this->project->wbs)
     ->addColumn('code', 'Work package')
     ->addColumn('cost', 'Cost, USD')
     ->addColumn('sow', 'Statement of work')
