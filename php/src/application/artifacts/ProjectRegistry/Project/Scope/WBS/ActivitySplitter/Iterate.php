@@ -19,19 +19,19 @@
  */
 
 /**
- * Total number of all defects found in the project
+ * Iterate
  *
  * @package Artifacts
  */
-class Metrics_Defects_Total extends theMtcAbstract {
-
+class ActivitySplitter_Iterate extends theActivitySplitterAbstract {
+            
     /**
-     * Reload
+     * Split this list
      *
      * @return void
      **/
-    public function reload() {
-        $this->value = 10;
+    public function split(theActivities $activities) {
+        // validate()->true(count($activities) == 1, "Iterate should be specified first");
     }
-        
+
 }

@@ -23,7 +23,7 @@
  *
  * @package Artifacts
  */
-class theProject extends Model_Artifact {
+class theProject extends Model_Artifact implements Model_Artifact_Passive {
 
     /**
      * Unique name of this project, to be set from registry
@@ -38,18 +38,27 @@ class theProject extends Model_Artifact {
      * 
      * @return void
      */
-    protected function _init() {
+    public function reload() {
         $this
             ->_attach('staffAssignments', new theStaffAssignments(), 'project')
             ->_attach('metrics', new theMetrics())
             ->_attach('workOrders', new theWorkOrders(), 'project')
             ->_attach('milestones', new theMilestones())
             ->_attach('activityList', new theActivityList())
-            ->_attach('wbs', new theWBS());
+            ->_attach('wbs', new theWbs());
             
         $this->wbs->reload();
         $this->metrics->reload();
         $this->activityList->reload();
+    }
+    
+    /**
+     * Is it current?
+     * 
+     * @return boolean
+     */
+    public function isLoaded() {
+        return false;
     }
     
 }

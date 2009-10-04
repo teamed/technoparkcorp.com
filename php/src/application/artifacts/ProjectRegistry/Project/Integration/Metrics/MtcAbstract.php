@@ -149,18 +149,4 @@ abstract class theMtcAbstract
         FaZend_Exception::raise('MetricAccessException', "You can SET only declared properties of a metric ($name)");
     }
         
-    /**
-     * Convert it to array
-     *
-     * @return array
-     **/
-    public function toArray() {
-        return array(
-            'default' => $this->default,
-            'value' => $this->value,
-            'target' => $this->target,
-            'delta' => $this->delta,
-        );
-    }
-        
 }

@@ -23,7 +23,7 @@
  *
  * @package Artifacts
  */
-class theMtcTotal extends theMtcAbstract {
+class Metrics_Requirements_Total extends theMtcAbstract {
 
     /**
      * Reload

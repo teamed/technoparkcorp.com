@@ -44,6 +44,7 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive {
         $regexp = '/^' . preg_quote($path, '/') . '(?:(\/\w+)*?)\/(Mtc([^(Abstract)]\w+))\.php$/';        
         $matches = array();
         $added = array();
+        $new = 0;
         foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path)) as $file) {
             if (!preg_match($regexp, $file->getPathName(), $matches))
                 continue;
@@ -55,21 +56,23 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive {
             if (isset($this[$metricName]))
                 continue;
 
-            $newClassName = 'standaloneMetric_' . str_replace('/', '_', $metricName);
-            if (!class_exists($newClassName)) {
-                $php = str_replace('<?php', '', php_strip_whitespace($file->getPathName()));
-                $php = preg_replace('/(class\s)the' . $matches[2] . '(\sextends\stheMtcAbstract[\s\{])/', 
-                    '${1}' . $newClassName . '${2}', $php);
-                eval($php);
-            }
-            
-            $this->_attachItem($metricName, new $newClassName(), 'setMetrics');
+            require_once $file->getPathName();
+            $className = 'Metrics_' . str_replace('/', '_', trim($matches[1], '/')) . '_' . $matches[3];
+            $this->_attachItem($metricName, new $className(), 'setMetrics');
+            $new++;
         }
         
         // remove obsolete metrics, which are absent in files
-        foreach ($this as $key=>$metric)
-            if (!in_array($key, $added))
+        $deleted = 0;
+        foreach ($this as $key=>$metric) {
+            if (!in_array($key, $added)) {
                 unset($this[$key]);
+                $deleted++;
+            }
+        }
+                
+        logg('Reloaded ' . count($this) . ' metrics in ' . $this->ps()->parent->name 
+            . ', ' . $new . ' added, ' . $deleted . ' deleted');
     }
     
     /**

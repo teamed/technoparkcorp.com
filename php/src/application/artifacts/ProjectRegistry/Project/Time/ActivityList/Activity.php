@@ -23,14 +23,67 @@
  *
  * @package Artifacts
  */
-class theActivity implements Model_Artifact_Stateless {
+class theActivity implements Model_Artifact_Stateless, Model_Artifact_Passive {
 
     /**
      * Work package it came from
      *
      * @var theWorkPackage
      */
-    public $wp;
+    protected $wp;
+
+    /**
+     * Code of activity inside this WP
+     *
+     * @var integer|string
+     */
+    protected $_code;
+
+    /**
+     * Cost in USD we can spend on it
+     *
+     * @var
+     */
+    protected $_cost;
+    
+    /**
+     * Construct it
+     *
+     * @return void
+     **/
+    public function __construct(theWorkPackage $wp, $code) {
+        $this->_wp = $wp;
+        $this->_code = $code;
+    }
+
+    /**
+     * Is it already loaded
+     *
+     * @return boolean
+     */
+    public function isLoaded() {
+        // never loaded, since we don't have information about Trac etc.
+        return false;
+    }
+
+    /**
+     * Reload it from Trac
+     *
+     * @return void
+     * @todo implement it
+     */
+    public function reload() {
+        // later...
+    }
+
+    /**
+     * Unique name of the activity
+     *
+     * @return string
+     */
+    public function getName() {
+        return $this->_wp->code . '.' . $this->_code;
+    }
 
     /**
      * Is it already assigned?

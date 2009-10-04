@@ -23,7 +23,7 @@
  *
  * @package Artifacts
  */
-class theMtcSloc extends theMtcAbstract {
+class Metrics_Code_Sloc extends theMtcAbstract {
 
     /**
      * Reload

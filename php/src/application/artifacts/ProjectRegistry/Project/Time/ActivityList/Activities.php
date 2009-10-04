@@ -25,5 +25,13 @@
  */
 class theActivities extends ArrayIterator implements Model_Artifact_Stateless {
 
+    /**
+     * Merge with another list of activities
+     *
+     * @return void
+     **/
+    public function merge(theActivities $list) {
+        
+    }
 
 }

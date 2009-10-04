@@ -24,26 +24,44 @@
  *
  * @package Artifacts
  */
-class theProjectRegistry extends Model_Artifact {
+class theProjectRegistry extends Model_Artifact implements Model_Artifact_Passive {
 
     /**
-     * List all projects
+     * Load all projects
      * 
      * @return void
      */
-    protected function _init() {
+    public function reload() {
         foreach (Model_Project::retrieveAll() as $project) {
             if (!$project->isManaged())
                 continue;
-            $this[$project->name] = new theProject();
-            $this[$project->name]->name = $project->name;
+            
+            $p = new theProject();
+            $p->name = $project->name;
+            
+            $this->_attachItem($project->name, $p);            
         }
         
         if (APPLICATION_ENV !== 'production') {
-            $name = Model_Project_Test::NAME;
-            $this[$name] = new theProject();
-            $this[$name]->name = $name;
+            $p = new theProject();
+            $p->name = Model_Project_Test::NAME;
+            $this->_attachItem($p->name, $p);            
+        }
+
+        // reload them all
+        foreach ($this as $project) {
+            if (!$project->isLoaded())
+                $project->reload();
         }
     }
 
+    /**
+     * Is it loaded?
+     * 
+     * @return boolean
+     */
+    public function isLoaded() {
+        return false;
+    }
+    
 }

@@ -19,19 +19,41 @@
  */
 
 /**
- * Total number of all defects found in the project
+ * One module
  *
  * @package Artifacts
  */
-class Metrics_Defects_Total extends theMtcAbstract {
-
+abstract class theActivitySplitterAbstract {
+    
     /**
-     * Reload
+     * WBS
+     *
+     * @var theWbs
+     */
+    protected $_wbs;
+    
+    /**
+     * Configuration
+     *
+     * @var Zend_Config
+     */
+    protected $_config;
+    
+    /**
+     * Construct it
      *
      * @return void
      **/
-    public function reload() {
-        $this->value = 10;
+    public function __construct(theWbs $wbs, Zend_Config $config) {
+        $this->_wbs = $wbs;
+        $this->_config = $config;
     }
-        
+    
+    /**
+     * Split this list
+     *
+     * @return void
+     **/
+    abstract public function split(theActivities $activities);
+    
 }

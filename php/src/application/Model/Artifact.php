@@ -40,6 +40,7 @@ class Model_Artifact extends ArrayIterator
         if (is_null(self::$_root)) {
             self::$_root = new Model_Artifact();
             self::$_root->projectRegistry = new theProjectRegistry();
+            self::$_root->projectRegistry->reload();
         }
         return self::$_root;
     }

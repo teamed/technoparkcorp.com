@@ -23,18 +23,30 @@
  *
  * @package Artifacts
  */
-class theActivityList extends Model_Artifact_Bag {
+class theActivityList extends Model_Artifact_Bag implements Model_Artifact_Passive {
 
+    /**
+     * It is loaded already?
+     *
+     * @return boolean
+     */
+    public function isLoaded() {
+        return (bool)count($this);
+    }
+    
     /**
      * Initialize the list
      *
      * @return void
      */
     public function reload() {
-        foreach ($this->ps()->parent->wbs as $wp) {
-            foreach ($wp->getActivities() as $activity)
-                $this[] = $activity;
-        }
+        // remove all existing
+        foreach ($this as $key=>$value)
+            unset($this[$key]);
+            
+        // add new from WBS
+        foreach ($this->ps()->parent->wbs->getActivities() as $activity)
+            $this[] = $activity;            
     }
 
 }

@@ -28,9 +28,9 @@ class theWorkPackage implements Model_Artifact_Stateless {
     /**
      * WBS, holder of this work package
      *
-     * @var theWBS
+     * @var theWbs
      */
-    public $wbs;
+    protected $wbs;
     
     /**
      * Config of the WP
@@ -52,6 +52,16 @@ class theWorkPackage implements Model_Artifact_Stateless {
     }
     
     /**
+     * Set WBS
+     *
+     * @param theWbs
+     * @return void
+     */
+    public function setWbs(theWbs $wbs) {
+        $this->_wbs = $wbs;
+    }
+    
+    /**
      * Getter
      *
      * @return mixed
@@ -59,9 +69,9 @@ class theWorkPackage implements Model_Artifact_Stateless {
     public function __get($name) {
         switch ($name) {
             case 'cost':
-                return $this->_makeInt($this->_translate($this->_config->cost));
+                return $this->_wbs->translateIni($this->_config->cost, true);
             case 'sow':
-                return $this->_translate($this->_config->sow);
+                return $this->_wbs->translateIni($this->_config->sow);
             case 'code':
                 return $this->_code;
         }
@@ -70,55 +80,18 @@ class theWorkPackage implements Model_Artifact_Stateless {
     /**
      * Get list of all activities
      *
-     * @return theActivity[]
+     * @param theActivitySplitter Splitter, the dispatcher
+     * @return void
      */
-    public function getActivities() {
+    public function split(theActivitySplitter $splitter) {
         $activities = new theActivities();
         
-        $activities[] = new theActivity($this);
-        
-        return $activities;
-    }
-    
-    /**
-     * Translate one line/string into another
-     *
-     * @param string Line of text
-     * @return string
-     **/
-    protected function _translate($line) {
-        $matches = array();
-        if (!preg_match_all('/(\+|\#|\!)\{([\w\d\/]+)\}/', $line, $matches))
-            return $line;
-        foreach ($matches[0] as $id=>$match) {
-            $metric = $this->wbs->ps()->parent->metrics[$matches[2][$id]];
-            switch ($matches[1][$id]) {
-                case '+':
-                    $replacer = $metric->delta;
-                    break;
-                case '!':
-                    $replacer = $metric->value;
-                    break;
-                case '#':
-                    $replacer = $metric->target;
-                    break;
-            }
-            $line = str_replace($match, $replacer, $line);
+        // parse this activity by all modules from INI file
+        foreach ($this->_config->split as $key=>$module) {
+            $splitter->split($key, $module, $activities);
         }
-        return $line;
-    }
-    
-    /**
-     * Make it integer
-     *
-     * @param string Line of text, which COULD be int or a formula
-     * @return integer
-     **/
-    protected function _makeInt($line) {
-        if (is_numeric($line))
-            return (integer)$line;
-        eval('$value = ' . $line . ';');
-        return $value;
+        
+        $splitter->append($activities);
     }
     
 }
