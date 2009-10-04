@@ -30,7 +30,7 @@ class theActivity implements Model_Artifact_Stateless, Model_Artifact_Passive {
      *
      * @var theWorkPackage
      */
-    protected $wp;
+    protected $_wp;
 
     /**
      * Code of activity inside this WP
@@ -40,20 +40,82 @@ class theActivity implements Model_Artifact_Stateless, Model_Artifact_Passive {
     protected $_code;
 
     /**
-     * Cost in USD we can spend on it
+     * Statement of work
      *
-     * @var
+     * @var string
+     */
+    protected $_sow;
+
+    /**
+     * Cost we can spend on it, our estimate
+     *
+     * @var Model_Cost
      */
     protected $_cost;
     
     /**
+     * Estimate of cost by performer
+     *
+     * @var Model_Cost
+     */
+    protected $_costEstimate;
+    
+    /**
+     * Our estimate of duration, days
+     *
+     * @var integer
+     */
+    protected $_duration;
+    
+    /**
+     * Estimate of duration made by performer, days
+     *
+     * @var integer
+     */
+    protected $_durationEstimate;
+    
+    /**
+     * Assigned performer (doesn't mean that he/she AGREED to perform the activity)
+     *
+     * @var theStatekholder
+     */
+    protected $_performer;
+    
+    /**
+     * Controller, acceptor of the activity
+     *
+     * @var theStatekholder
+     */
+    protected $_acceptor;
+    
+    /**
+     * List of predecessors
+     *
+     * @var theActivityPredecessor
+     */
+    protected $_predecessors;
+    
+    /**
      * Construct it
      *
+     * @param theWorkPackage Originator of the activity
+     * @param string Unique code for this work package
      * @return void
      **/
     public function __construct(theWorkPackage $wp, $code) {
         $this->_wp = $wp;
         $this->_code = $code;
+    }
+
+    /**
+     * Factory method
+     *
+     * @param theWorkPackage Originator of the activity
+     * @param string Unique code for this work package
+     * @return theActivity
+     **/
+    public static function factory(theWorkPackage $wp, $code) {
+        return new theActivity($wp, $code);
     }
 
     /**
@@ -75,14 +137,55 @@ class theActivity implements Model_Artifact_Stateless, Model_Artifact_Passive {
     public function reload() {
         // later...
     }
+    
+    /**
+     * Getter dispatcher
+     *
+     * @return mixed
+     **/
+    public function __get($name) {
+        $var = '_' . $name;
+        if (property_exists($this, $var))
+            return $this->$var;
+        
+        $method = '_get' . ucfirst($name);
+        if (method_exists($this, $method))
+            return $this->$method();
+            
+        FaZend_Exception::raise('Activity_PropertyOrMethodNotFound', "Can't find what is '$name'");
+    }
 
     /**
-     * Unique name of the activity
+     * Set SOW
      *
-     * @return string
+     * @param string Statement of work
+     * @return $this
      */
-    public function getName() {
-        return $this->_wp->code . '.' . $this->_code;
+    public function setSow($sow) {
+        $this->_sow = $sow;
+        return $this;
+    }
+
+    /**
+     * Set cost, our estimate
+     *
+     * @param Model_Cost Cost estimate
+     * @return $this
+     */
+    public function setCost(Model_Cost $cost) {
+        $this->_cost = $cost;
+        return $this;
+    }
+
+    /**
+     * Set performer
+     *
+     * @param theStakeholder Stakeholder to be assigned here
+     * @return $this
+     */
+    public function setPerformer(theStakeholder $person) {
+        $this->_performer = $person;
+        return $this;
     }
 
     /**
@@ -117,6 +220,15 @@ class theActivity implements Model_Artifact_Stateless, Model_Artifact_Passive {
      * @todo implement it
      */
     public function requestCostEstimate() {
+    }
+
+    /**
+     * Unique name of the activity
+     *
+     * @return string
+     */
+    protected function _getName() {
+        return $this->_wp->code . '.' . $this->_code;
     }
 
 }

@@ -18,35 +18,21 @@
  *
  */
 
+require_once 'FaZend/Test/TestCase.php';
+
 /**
- * One project for test
+ * Model_Cost test
  *
- * @package Model
+ * @package test
  */
-class Model_Project_Test extends Model_Project {
+class CostTest extends FaZend_Test_TestCase {
 
-    const NAME = 'test';
-    const PM = 'tester@tpc2.com';
-
-    /**
-     * Create and return a test project instance
-     *
-     * @return Model_Project_Test
-     **/
-    public static function make() {
-        $pwd = md5(rand());
+    public function testRetrieveAllWorks() {
+        $cost = new Model_Cost('50.78');
         
-        $authz = '[' . self::NAME . ":/]\n" . self::PM . " = rw\n";
-        foreach (array('SystemAnalyst', 'Architect') as $role)
-            $authz .= '[' . self::NAME . ':' . Model_Project::ROLE_AUTHZ_PREFIX . "$role]\n" . self::PM . " = rw\n";
-        
-        return new Model_Project_Test(
-            1, // id
-            self::NAME, // project name
-            new Shared_User(1, self::PM, $pwd), // project manager
-            $authz, // authz file
-            self::PM . ' = ' . $pwd // passwd file, random password
-            );
+        logg('Cost __toString(): ' . $cost);
+        logg('Cost ->usd: ' . $cost->usd);
+        logg('Cost ->cents: ' . $cost->cents);
     }
 
 }

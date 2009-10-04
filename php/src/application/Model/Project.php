@@ -24,6 +24,8 @@
  * @package Model
  */
 class Model_Project extends Shared_Project {
+    
+    const ROLE_AUTHZ_PREFIX = '/role/';
 
     /**
      * Finds project by its name or create one if it's a test project
@@ -79,11 +81,28 @@ class Model_Project extends Shared_Project {
      * john@tpc2.com = r
      * </code>
      *
+     * @param string Name of the role
      * @return string[]
      */
     public function getStakeholdersByRole($role) {
         // array_filter will remove people with FALSE (no access)
-        return array_keys(array_filter($this->getAccessRights('/role/' . $role)));
+        return array_keys(array_filter($this->getAccessRights(self::ROLE_AUTHZ_PREFIX . $role)));
+    }
+    
+    /**
+     * Get list of all roles for the given email
+     *
+     * @param string Name of the role
+     * @return string[]
+     */
+    public function getRolesByStakeholder($email) {
+        $roles = array();
+        foreach ($this->getAllowedPaths($email) as $path) {
+            $matches = array();
+            if (preg_match('/^' . preg_quote(self::ROLE_AUTHZ_PREFIX, '/') . '(\w+)$/', $path, $matches))
+                $roles[] = $matches[1];
+        }
+        return $roles;
     }
     
     /**

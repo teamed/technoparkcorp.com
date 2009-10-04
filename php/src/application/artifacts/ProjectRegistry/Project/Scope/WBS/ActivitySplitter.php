@@ -64,15 +64,16 @@ class theActivitySplitter {
     /**
      * Create new splitting module and split activities
      *
+     * @param theWorkPackage Initiator of this procedure
      * @param string Name of the module
      * @param Zend_Config Config for the module
      * @param theActivities List of activities
      * @return void
      **/
-    public function split($name, Zend_Config $config, theActivities $list) {
+    public function split(theWorkPackage $wp, $name, Zend_Config $config, theActivities $list) {
         $className = 'ActivitySplitter_' . ucfirst($name);
         require_once dirname(__FILE__) . '/ActivitySplitter/' . ucfirst($name) . '.php';
-        $splitter = new $className($this->_wbs, $config);
+        $splitter = new $className($this->_wbs, $wp, $config);
         $splitter->split($list);
     }
     

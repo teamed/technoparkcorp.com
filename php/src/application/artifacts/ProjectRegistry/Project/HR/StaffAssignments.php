@@ -23,7 +23,7 @@
  *
  * @package Artifacts
  */
-class theStaffAssignments implements Model_Artifact_Stateless {
+class theStaffAssignments extends ArrayIterator implements Model_Artifact_Stateless, Model_Artifact_Passive {
 
     /**
      * The holder of this staff assignments
@@ -32,6 +32,25 @@ class theStaffAssignments implements Model_Artifact_Stateless {
      */
     public $project;
 
+    /**
+     * Reload list of stakeholders
+     *
+     * @return void
+     **/
+    public function reload() {
+        foreach (array_keys($this->_project()->getStakeholders()) as $email)
+            $this[$email] = Model_Flyweight::factory('theStakeholder', $this, $email);
+    }    
+    
+    /**
+     * Is it loaded?
+     *
+     * @return boolean
+     **/
+    public function isLoaded() {
+        return (bool)count($this);
+    }
+    
     /**
      * Dispatcher
      *
@@ -67,24 +86,40 @@ class theStaffAssignments implements Model_Artifact_Stateless {
     }    
     
     /**
-     * Get list of all project stakeholders
+     * Get one stakeholder by role
      *
-     * @return ArrayIterator
+     * @return theStakeholder One stakeholder for this role
+     * @throws Exception If the role is not found
      **/
-    public function getEverybody() {
-        $list = new ArrayIterator(); 
-        foreach (array_keys($this->_project()->getStakeholders()) as $email)
-            $list[] = Model_Flyweight::factory('theStakeholder', $this, $email);
-        return $list;
-    }    
+    public function findRandomStakeholderByRole(theProjectRole $role) {
+        $list = $this->_project()->getStakeholdersByRole((string)$role);
+        
+        // if nothing found - throw an exception
+        validate()->true(count($list) > 0, "Role '{$role}' is not found in project '{$this->_project()->name}'");
+                
+        return Model_Flyweight::factory('theStakeholder', $this, array_pop($list));
+    }
+
+    /**
+     * Get list of roles for the given person
+     *
+     * @param theStakeholder The person
+     * @return theProjectRole[] List of roles
+     **/
+    public function retrieveRolesByStakeholder(theStakeholder $person) {
+        $roles = $this->_project()->getRolesByStakeholder((string)$person);
+        foreach ($roles as &$role)
+            $role = Model_Flyweight::factory('theProjectRole', $this, $role);
+        return $roles;
+    }
     
     /**
      * Get Model_Project object
      *
      * @return Model_Project
      **/
-    public function _project() {
-        return Model_Project::findProjectByName($this->project->name);
+    protected function _project() {
+        return $this->project->fzProject();
     }
     
 }

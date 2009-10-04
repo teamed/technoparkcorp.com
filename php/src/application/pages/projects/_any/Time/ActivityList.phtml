@@ -1,6 +1,12 @@
+<?=$this->publish($this->project->activityList)?>
+
 <h1>Activity List</h1>
 
 <?=$this->table()
     ->setSource($this->project->activityList)
-    ->addColumn('getName', 'Name')
+    ->addColumn('name', 'Name')
+    ->addColumn('sow', 'Statement of work')
+    ->addColumn('cost', 'Cost')
+    ->addColumn('duration', 'Duration')
+    ->addColumn('performer', 'Performer')
     ?>

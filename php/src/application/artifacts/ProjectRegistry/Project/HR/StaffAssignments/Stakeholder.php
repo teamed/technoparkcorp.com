@@ -70,4 +70,22 @@ class theStakeholder implements Model_Artifact_Stateless {
         return $this->_email;
     }
 
+    /**
+     * Get list of my roles
+     *
+     * @return theProjectRole[]
+     **/
+    public function getRoles() {
+        return $this->_staffAssignments->retrieveRolesByStakeholder($this);
+    }
+
+    /**
+     * Get list of my roles, in string
+     *
+     * @return string
+     **/
+    public function getRolesString() {
+        return implode(', ', $this->getRoles());
+    }
+
 }

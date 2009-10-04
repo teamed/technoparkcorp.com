@@ -41,7 +41,7 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive {
      **/
     public function reload() {
         $path = dirname(__FILE__) . '/Metrics';        
-        $regexp = '/^' . preg_quote($path, '/') . '(?:(\/\w+)*?)\/(Mtc([^(Abstract)]\w+))\.php$/';        
+        $regexp = '/^' . preg_quote($path, '/') . '((?:\/\w+)*?)\/(Mtc([^(Abstract)]\w+))\.php$/';        
         $matches = array();
         $added = array();
         $new = 0;

@@ -47,7 +47,7 @@ class theProjectRole implements Model_Artifact_Stateless {
      * @return void
      **/
     public function __construct(theStaffAssignments $staffAssignments, $title) {
-        validate()->alnum($title);
+        validate()->alnum($title, array());
         $this->_staffAssignments = $staffAssignments;
         $this->_title = $title;
     }
@@ -61,4 +61,13 @@ class theProjectRole implements Model_Artifact_Stateless {
         return $this->_title;
     }
 
+    /**
+     * Get random stakeholder, if exists
+     *
+     * @return theStakeholder
+     **/
+    public function random() {
+        return $this->_staffAssignments->findRandomStakeholderByRole($this);
+    }
+    
 }

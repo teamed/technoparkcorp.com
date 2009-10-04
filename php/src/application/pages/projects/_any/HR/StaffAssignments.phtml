@@ -1,6 +1,11 @@
 <h1>Staff Assignments</h1>
 
 <?=$this->table()
-    ->setSource($this->project->staffAssignments->getEverybody())
+    ->setSource($this->project->staffAssignments)
     ->addColumn('getEmail', 'Stakeholder/Email')
+    ->addColumn('getRolesString', 'Roles assigned')
     ?>
+    
+<p>Project access configuration file (<tt>authz</tt>) is used:</p>
+    
+<pre><?=$this->project->fzProject()->authz?></pre>

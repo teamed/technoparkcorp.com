@@ -19,34 +19,23 @@
  */
 
 /**
- * One project for test
+ * Create single activity from the work package
  *
- * @package Model
+ * @package Artifacts
  */
-class Model_Project_Test extends Model_Project {
-
-    const NAME = 'test';
-    const PM = 'tester@tpc2.com';
-
+class ActivitySplitter_Single extends theActivitySplitterAbstract {
+            
     /**
-     * Create and return a test project instance
+     * Split this list
      *
-     * @return Model_Project_Test
+     * @return void
      **/
-    public static function make() {
-        $pwd = md5(rand());
+    public function split(theActivities $activities) {
+        validate()->true(count($activities) == 0, "Single should be called when the list is empty");
         
-        $authz = '[' . self::NAME . ":/]\n" . self::PM . " = rw\n";
-        foreach (array('SystemAnalyst', 'Architect') as $role)
-            $authz .= '[' . self::NAME . ':' . Model_Project::ROLE_AUTHZ_PREFIX . "$role]\n" . self::PM . " = rw\n";
-        
-        return new Model_Project_Test(
-            1, // id
-            self::NAME, // project name
-            new Shared_User(1, self::PM, $pwd), // project manager
-            $authz, // authz file
-            self::PM . ' = ' . $pwd // passwd file, random password
-            );
+         $activities[] = theActivity::factory($this->_wp, 'single')
+             ->setSow($this->_wp->sow)
+             ->setCost($this->_wp->cost);
     }
 
 }

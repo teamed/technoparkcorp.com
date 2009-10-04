@@ -69,7 +69,7 @@ class theWorkPackage implements Model_Artifact_Stateless {
     public function __get($name) {
         switch ($name) {
             case 'cost':
-                return $this->_wbs->translateIni($this->_config->cost, true);
+                return new Model_Cost($this->_wbs->translateIni($this->_config->cost, true));
             case 'sow':
                 return $this->_wbs->translateIni($this->_config->sow);
             case 'code':
@@ -86,9 +86,12 @@ class theWorkPackage implements Model_Artifact_Stateless {
     public function split(theActivitySplitter $splitter) {
         $activities = new theActivities();
         
+        // create first single activity
+        $splitter->split($this, 'single', new Zend_Config(array()), $activities);
+
         // parse this activity by all modules from INI file
-        foreach ($this->_config->split as $key=>$module) {
-            $splitter->split($key, $module, $activities);
+        foreach ($this->_config->split as $key=>$config) {
+            $splitter->split($this, $key, $config, $activities);
         }
         
         $splitter->append($activities);

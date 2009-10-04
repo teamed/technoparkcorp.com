@@ -19,34 +19,20 @@
  */
 
 /**
- * One project for test
+ * Total number of top-level functional requirements 
  *
- * @package Model
+ * @package Artifacts
  */
-class Model_Project_Test extends Model_Project {
-
-    const NAME = 'test';
-    const PM = 'tester@tpc2.com';
+class Metrics_Requirements_Functional_Top_Total extends theMtcAbstract {
 
     /**
-     * Create and return a test project instance
+     * Reload
      *
-     * @return Model_Project_Test
+     * @return void
      **/
-    public static function make() {
-        $pwd = md5(rand());
-        
-        $authz = '[' . self::NAME . ":/]\n" . self::PM . " = rw\n";
-        foreach (array('SystemAnalyst', 'Architect') as $role)
-            $authz .= '[' . self::NAME . ':' . Model_Project::ROLE_AUTHZ_PREFIX . "$role]\n" . self::PM . " = rw\n";
-        
-        return new Model_Project_Test(
-            1, // id
-            self::NAME, // project name
-            new Shared_User(1, self::PM, $pwd), // project manager
-            $authz, // authz file
-            self::PM . ' = ' . $pwd // passwd file, random password
-            );
+    public function reload() {
+        $this->value = 0;
+        $this->default = 12;
     }
-
+        
 }

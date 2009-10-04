@@ -19,34 +19,31 @@
  */
 
 /**
- * One project for test
+ * Assign activities to certain performer(s)
  *
- * @package Model
+ * @package Artifacts
  */
-class Model_Project_Test extends Model_Project {
-
-    const NAME = 'test';
-    const PM = 'tester@tpc2.com';
-
+class ActivitySplitter_Assign extends theActivitySplitterAbstract {
+            
     /**
-     * Create and return a test project instance
+     * Split this list
      *
-     * @return Model_Project_Test
+     * @return void
      **/
-    public static function make() {
-        $pwd = md5(rand());
+    public function split(theActivities $activities) {
+        $role = $this->_wbs->translateIni($this->_config->role);
         
-        $authz = '[' . self::NAME . ":/]\n" . self::PM . " = rw\n";
-        foreach (array('SystemAnalyst', 'Architect') as $role)
-            $authz .= '[' . self::NAME . ':' . Model_Project::ROLE_AUTHZ_PREFIX . "$role]\n" . self::PM . " = rw\n";
+        // maybe nobody still for this WP in the staff assignments
+        if (!isset($this->_project()->staffAssignments[$role]))
+            return;
         
-        return new Model_Project_Test(
-            1, // id
-            self::NAME, // project name
-            new Shared_User(1, self::PM, $pwd), // project manager
-            $authz, // authz file
-            self::PM . ' = ' . $pwd // passwd file, random password
-            );
+        $person = $this->_project()->staffAssignments[$role];
+        
+        if ($person instanceof theProjectRole)
+            $person = $person->random();
+        
+        foreach ($activities as $activity)
+            $activity->setPerformer($person);
     }
 
 }

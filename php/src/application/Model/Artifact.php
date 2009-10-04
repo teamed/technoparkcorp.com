@@ -92,6 +92,10 @@ class Model_Artifact extends ArrayIterator
                 $artifact->$property = $this;
         } else
             FaZend_Exception::raise('InvalidChildArtifact', 'Artifact ' . get_class($artifact) . ' is not stateless');
+            
+        // reload it
+        if (($artifact instanceof Model_Artifact_Passive) && !$artifact->isLoaded())
+            $artifact->reload();
     }
     
     /**

@@ -44,12 +44,8 @@ class theProject extends Model_Artifact implements Model_Artifact_Passive {
             ->_attach('metrics', new theMetrics())
             ->_attach('workOrders', new theWorkOrders(), 'project')
             ->_attach('milestones', new theMilestones())
-            ->_attach('activityList', new theActivityList())
-            ->_attach('wbs', new theWbs());
-            
-        $this->wbs->reload();
-        $this->metrics->reload();
-        $this->activityList->reload();
+            ->_attach('wbs', new theWbs())
+            ->_attach('activityList', new theActivityList());
     }
     
     /**
@@ -59,6 +55,15 @@ class theProject extends Model_Artifact implements Model_Artifact_Passive {
      */
     public function isLoaded() {
         return false;
+    }
+    
+    /**
+     * Get project from fazend
+     * 
+     * @return Model_Project
+     */
+    public function fzProject() {
+        return Model_Project::findProjectByName($this->name);
     }
     
 }

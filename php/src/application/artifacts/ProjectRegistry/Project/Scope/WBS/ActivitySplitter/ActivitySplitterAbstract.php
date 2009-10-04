@@ -33,6 +33,13 @@ abstract class theActivitySplitterAbstract {
     protected $_wbs;
     
     /**
+     * Work package
+     *
+     * @var theWorkPackage
+     */
+    protected $_wp;
+    
+    /**
      * Configuration
      *
      * @var Zend_Config
@@ -44,8 +51,9 @@ abstract class theActivitySplitterAbstract {
      *
      * @return void
      **/
-    public function __construct(theWbs $wbs, Zend_Config $config) {
+    public function __construct(theWbs $wbs, theWorkPackage $wp, Zend_Config $config) {
         $this->_wbs = $wbs;
+        $this->_wp = $wp;
         $this->_config = $config;
     }
     
@@ -55,5 +63,14 @@ abstract class theActivitySplitterAbstract {
      * @return void
      **/
     abstract public function split(theActivities $activities);
+    
+    /**
+     * Get project
+     *
+     * @return theProject
+     **/
+    protected function _project() {
+        return $this->_wbs->ps()->parent;
+    }
     
 }
