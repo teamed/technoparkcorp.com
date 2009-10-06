@@ -32,7 +32,7 @@
  * 
  * @package Artifacts
  */
-abstract class Metrics_Abstract
+abstract class Metric_Abstract
     implements Model_Artifact_Stateless, Model_Artifact_Passive {
 
     /**

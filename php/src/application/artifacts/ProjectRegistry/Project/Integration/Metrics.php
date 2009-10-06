@@ -45,7 +45,7 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive {
 
         // enable this directory for class loading
         $autoloader = Zend_Loader_Autoloader::getInstance();
-        $autoloader->registerNamespace('Metrics_');
+        $autoloader->registerNamespace('Metric_');
         set_include_path(get_include_path() . PATH_SEPARATOR . $path);
 
         $regexp = '/^' . preg_quote($path, '/') . '((?:\/\w+)*?)\/(\w+)\.php$/';        
@@ -93,7 +93,7 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive {
      * @return string Metric name like 'code/sloc'
      */
     protected function _classToName($className) {
-        $exp = array_filter(explode('/', $path));
+        $exp = array_filter(explode('_', $className));
         
         validate()->true(array_shift($exp) == 'Metric');
         
