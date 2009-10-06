@@ -19,18 +19,37 @@
  */
 
 /**
- * Total number of functional requiremnts
+ * Total number of defects
  * 
  * @package Artifacts
  */
-class Metric_Requirements_Functional_Total extends Metric_Abstract {
+class Metric_Defects_Total extends Metric_Abstract {
+
+    const DIMENSION_NONE = 0;
+    const DIMENSION_SEVERITY = 1;
+    const DIMENSION_ARTIFACT = 2;
+    const DIMENSION_REPORTER = 3;
+    const DIMENSION_ASSIGNEE = 4;
+    const DIMENSION_STATUS = 5;
+
+    const STATUS_ANY = 0x00;
+    const STATUS_OPEN = 0x01;
+    const STATUS_FIXED = 0x02;
+    const STATUS_INVALID = 0x04;
 
     /**
-     * Level of requirements
+     * Dimension
      *
      * @var integer
      */
-    protected $_level = 0;
+    protected $_dimension = self::DIMENSION_NONE;
+
+    /**
+     * Status of defect
+     *
+     * @var integer
+     */
+    protected $_status = self::STATUS_ANY;
 
     /**
      * Load this metric
@@ -38,8 +57,8 @@ class Metric_Requirements_Functional_Total extends Metric_Abstract {
      * @return void
      **/
     public function reload() {
-        $this->value = 7;
-        $this->default = 12;
+        $this->value = 180;
+        $this->default = 350;
     }
         
 }
