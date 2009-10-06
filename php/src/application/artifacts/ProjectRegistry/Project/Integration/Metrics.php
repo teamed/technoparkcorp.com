@@ -40,24 +40,35 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive {
      * @return void
      **/
     public function reload() {
-        $path = dirname(__FILE__) . '/Metrics';        
-        $regexp = '/^' . preg_quote($path, '/') . '((?:\/\w+)*?)\/(Mtc([^(Abstract)]\w+))\.php$/';        
-        $matches = array();
+        // here we have all project metrics
+        $path = dirname(__FILE__) . '/metrics-library';        
+
+        // enable this directory for class loading
+        $autoloader = Zend_Loader_Autoloader::getInstance();
+        $autoloader->registerNamespace('Metrics_');
+        set_include_path(get_include_path() . PATH_SEPARATOR . $path);
+
+        $regexp = '/^' . preg_quote($path, '/') . '((?:\/\w+)*?)\/(\w+)\.php$/';        
         $added = array();
         $new = 0;
         foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path)) as $file) {
+            
+            // skip abstract classes
+            if ($file->getFileName() == 'Abstract.php')
+                continue;
+            
+            // skip all other files, which are not related to metrics
             if (!preg_match($regexp, $file->getPathName(), $matches))
                 continue;
                 
-            $metricName = $this->_pathToName($matches[1] . '/' . $matches[3]);
+            $className = str_replace('/', '_', trim($matches[1], '/')) . '_' . $matches[2];
+            $metricName = $this->_classToName($className);
             $added[] = $metricName;
             
             // don't add it again, if it exists
             if (isset($this[$metricName]))
                 continue;
 
-            require_once $file->getPathName();
-            $className = 'Metrics_' . str_replace('/', '_', trim($matches[1], '/')) . '_' . $matches[3];
             $this->_attachItem($metricName, new $className(), 'setMetrics');
             $new++;
         }
@@ -76,13 +87,16 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive {
     }
     
     /**
-     * Convert metric path to name
+     * Convert metric class name to metric name
      *
-     * @param string
-     * @return string
+     * @param string Class name like 'Metric_Code_Sloc'
+     * @return string Metric name like 'code/sloc'
      */
-    protected function _pathToName($path) {
+    protected function _classToName($className) {
         $exp = array_filter(explode('/', $path));
+        
+        validate()->true(array_shift($exp) == 'Metric');
+        
         foreach ($exp as &$sector)
             // PHP 5.3 only: lcfirst()
             $sector = lcfirst($sector);
