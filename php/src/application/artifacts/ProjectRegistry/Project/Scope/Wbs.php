@@ -45,9 +45,16 @@ class theWbs extends Model_Artifact_Bag implements Model_Artifact_Passive {
      * @return void
      **/
     public function reload() {
-        foreach ($this->_getListOfIniFiles() as $code=>$file)
-            $this->_attachItem($code, new theWorkPackage($code, 
-                new Zend_Config_Ini($file, 'wp', array('allowModifications'=>true))), 'setWbs');
+        // clear all existing WPs
+        foreach ($this as $key=>$metric)
+            unset($this[$key]);
+        
+        // add new from metrics
+        foreach ($this->ps()->parent->metrics as $metric) {
+            $wp = $metric->getWorkPackage();
+            if (!is_null($wp))
+                $this->_attachItem($wp->code, $wp, 'setWbs');
+        }
     }
     
     /**
@@ -57,66 +64,6 @@ class theWbs extends Model_Artifact_Bag implements Model_Artifact_Passive {
      **/
     public function isLoaded() {
         return (bool)count($this);
-    }
-    
-    /**
-     * Translate one line/string into another
-     *
-     * @param string Line of text
-     * @param boolean Expected value is numeric?
-     * @return string
-     **/
-    public function translateIni($line, $numeric = false) {
-        $matches = array();
-        if (!preg_match_all('/(\+|\#|\!)\{([\w\d\/]+)\}/', $line, $matches))
-            return $line;
-        foreach ($matches[0] as $id=>$match) {
-            $metric = $this->ps()->parent->metrics[$matches[2][$id]];
-            switch ($matches[1][$id]) {
-                case '+':
-                    $replacer = $metric->delta;
-                    break;
-                case '!':
-                    $replacer = $metric->value;
-                    break;
-                case '#':
-                    $replacer = $metric->target;
-                    break;
-            }
-            $line = str_replace($match, $replacer, $line);
-        }
-        
-        // try to convert it
-        if ($numeric && !is_numeric($line))
-            eval('$line = ' . $line . ';');
-        
-        return $line;
-    }
-    
-    /**
-     * Get list of all packages
-     *
-     * Returns an associative array where key is a code of the package
-     * and the value is an absolute path of the INI file with the config
-     *
-     * @return string[]
-     **/
-    protected function _getListOfIniFiles($path = null, $prefix = '') {
-
-        // all INI files are here, in /packages directory
-        if (is_null($path))
-            $path = realpath(dirname(__FILE__) . '/WBS/packages');
-            
-        $files = array();
-        foreach (glob($path . '/*') as $file) {
-            if (is_dir($file))
-                $files += $this->_getListOfIniFiles($file, $prefix . pathinfo($file, PATHINFO_FILENAME) . '.');
-            else
-                $files[$prefix . pathinfo($file, PATHINFO_FILENAME)] = $file;
-        }
-        return $files;
-        
-        
     }
     
 }

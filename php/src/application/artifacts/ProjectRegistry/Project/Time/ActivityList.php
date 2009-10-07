@@ -26,6 +26,13 @@
 class theActivityList extends Model_Artifact_Bag implements Model_Artifact_Passive {
 
     /**
+     * List of activities
+     *
+     * @var theActivities
+     */
+    protected $_activities;
+
+    /**
      * It is loaded already?
      *
      * @return boolean
@@ -40,13 +47,23 @@ class theActivityList extends Model_Artifact_Bag implements Model_Artifact_Passi
      * @return void
      */
     public function reload() {
-        // remove all existing
-        foreach ($this as $key=>$value)
-            unset($this[$key]);
-            
-        // add new from WBS
-        foreach ($this->ps()->parent->wbs->getActivities() as $activity)
-            $this[] = $activity;            
+        $this->_attach('_activities', new theActivities());
+        $this->_activities->setProject($this->ps()->parent);
+        $this->_activities->reload();
+    }
+    
+    /**
+     * Getter to dispatch
+     *
+     * @param string Name of property
+     * @return mixed
+     **/
+    public function __get($name) {
+        switch ($name) {
+            case 'list':
+                return $this->_activities;
+        }
+        return parent::__get($name);
     }
 
 }

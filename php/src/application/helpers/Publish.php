@@ -157,7 +157,6 @@ class Helper_Publish extends FaZend_View_Helper {
             if (preg_match('/^(?:\s?#.*|\s?)$/', $line))
                 continue;
 
-            $matches = array();
             if (!preg_match('/^(\w+)\s?=\s?(.*)$/', trim($line, "\t\r\n "), $matches))
                 FaZend_Exception::raise('Helper_Publish_InvalidSyntax', "Error in access.pthml file, line #$id: $line");
             

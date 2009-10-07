@@ -87,7 +87,6 @@ abstract class Model_Issue_Abstract extends FaZend_StdObject {
      * @return void
      **/
     public function __call($name, $args) {
-        $matches = array();
         if (preg_match('/^set(.*)$/', $name, $matches) {
             $matches[1][0] = strtolower($matches[1][0]);
             $this->{'_' . matches[1][0]} = array_shift($args);

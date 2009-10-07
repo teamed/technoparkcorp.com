@@ -1,41 +1,12 @@
 <?=$this->article->text?>
 
-<?
+<? foreach (Model_Article::lucene()->find(Zend_Controller_Front::getInstance()->getRequest()->getPost('keyword')) as $hit): ?>
 
-    // search request
-    $keyword = Zend_Controller_Front::getInstance()->getRequest()->getPost('keyword');
-
-    // new holder of pages found
-    $found = array();
-
-    foreach ($this->navigation()->findAllBy('visible', true) as $page) {
-
-        // load news article
-        $article = Model_Article::createByLabel($page->path);
+    <? $article = Model_Article::createByLabel($hit->path) ?>
             
-        // how relevant is this article?
-        $relevance = $article->getRelevance($keyword);
-        if ($relevance->relevance == 0)
-            continue;
-
-        // add the article to the holder, to show later
-        $found[] = FaZend_StdObject::create()
-            ->set('title', $page->title)
-            ->set('href', $page->href)
-            ->set('relevance', $relevance->relevance)
-            ->set('quote', $relevance->quote);
-
-    }
-
-    usort($found, create_function('$a, $b', 'return $a->relevance < $b->relevance;'));
-
-?>
-
-<? foreach (array_slice($found, 0, 10) as $page): ?>
-
     <p>
-        <a title="<?=$this->escape($page->title)?>" href="<?=$page->href?>"><?=$this->escape($page->title)?></a><br/> 
-        ...<?=preg_replace('/(' . preg_quote($keyword). ')/i', '<b>${1}</b>', $this->escape($page->quote))?>...
+        <a title="<?=$this->escape($page->title)?>" href="<?=$this->staticUrl($page->path)?>"><?=$this->escape($page->title)?></a><br/> 
+        ......
     </p>
 
 <? endforeach; ?>

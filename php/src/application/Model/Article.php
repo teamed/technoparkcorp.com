@@ -63,6 +63,13 @@ class Model_Article {
     protected $_cache = array();
 
     /**
+     * Lucene search instance
+     *
+     * @var Zend_Search_Lucene
+     */
+    protected static $_lucene;
+
+    /**
      * Create new article
      *
      * @return void
@@ -124,45 +131,41 @@ class Model_Article {
     }
     
     /**
-     * Returns how this article is relevant to the given keyword, in percentage
+     * Return search engine instance
      *
-     * @param string Keyword to search for
-     * @return stdObject (relevance, quote)
+     * @return Zend_Search_Lucene
      */
-    public function getRelevance($keyword) {
-
-        $relevance = new FaZend_StdObject();
-
-        // should be in back-order!
-        $places = array(
-            'text'=>10,
-            'description'=>15,
-            'keywords'=>20,
-            'intro'=>25,
-            'title'=>30,
-            'label'=>40,
-            'page'=>50,
-        );
-
-        // no relevance by default
-        $relevance->relevance = 0;
-
-        // try to find the keyword in any of these
-        foreach ($places as $place=>$weight) {
-            $base = strip_tags($this->$place);
-
-            // where the keyword is located?
-            if (substr_count(strtolower($base), strtolower($keyword)) === 0)
-                continue;
-
-            $location = strpos(strtolower($base), strtolower($keyword));
-            $relevance->relevance += $weight;
-
-            $relevance->quote = substr($base, $location-100, 200);
+    public static function lucene() {
+        
+        if (!isset(self::$_lucene)) {        
+            $path = TEMP_PATH . '/panel2lucene';
+            if (file_exists($path))
+                $index = Zend_Search_Lucene::create($path);
+            else
+                $index = Zend_Search_Lucene::open($path);
         }
+        
+        return self::$_lucene;
+        
+    }
 
-        return $relevance;
-
+    /**
+     * Add this article to lucene search index
+     *
+     * @return void
+     */
+    public function luceneIndex() {
+        $hits = self::lucene()->find('path:' . $this->path);
+        if (count($hits) > 1) {
+            foreach ($hits as $hit)
+                self::lucene()->delete($hit->id);
+        }
+        
+        $doc = new Zend_Search_Lucene_Document();
+        $doc->addField(Zend_Search_Lucene_Field::Text('title', $this->title));
+        $doc->addField(Zend_Search_Lucene_Field::Text('path', $this->path));
+        $doc->addField(Zend_Search_Lucene_Field::UnStored('content', $this->text));
+        self::lucene()->addDocument($doc);
     }
 
     /**

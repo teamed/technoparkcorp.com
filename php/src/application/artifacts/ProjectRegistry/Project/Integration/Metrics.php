@@ -69,21 +69,46 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive {
             if (isset($this[$metricName]))
                 continue;
 
-            $this->_attachItem($metricName, new $className(), 'setMetrics');
+            $this->_attachMetric($metricName, $className);
             $new++;
         }
         
-        // remove obsolete metrics, which are absent in files
-        $deleted = 0;
-        foreach ($this as $key=>$metric) {
-            if (!in_array($key, $added)) {
-                unset($this[$key]);
-                $deleted++;
-            }
+        logg('Reloaded ' . count($this) . ' metrics in ' . $this->ps()->parent->name);
+    }
+
+    /**
+     * Get metric even if it doesn't exist in array
+     *
+     * @return Metric_Abstract
+     **/
+    public function offsetGet($name) {
+        $metrics = $this->getArrayCopy();
+        if (isset($metrics[$name])) {
+            return $metrics[$name];
         }
-                
-        logg('Reloaded ' . count($this) . ' metrics in ' . $this->ps()->parent->name 
-            . ', ' . $new . ' added, ' . $deleted . ' deleted');
+
+        // top level metric can't be used in patterning
+        if (!strpos($name, '/'))
+            FaZend_Exception::raise('MetricNotFound', "Metric '$name' not found");
+        
+        return $this->_findMetric($name);
+    }
+    
+    /**
+     * Attach one metric to the collection
+     *
+     * @param string Name of the metric, like 'requirements/total'
+     * @param string|Metric_Abstract Name of the class, like 'Metric_Requirements_Total'
+     * @return Metric_Abstract
+     **/
+    protected function _attachMetric($name, $class) {
+        if (!($class instanceof Metric_Abstract))
+            $class = new $class();
+            
+        $this->_attachItem($name, $class, 'setMetrics');
+        $this[$name]->setName($name);
+
+        return $this[$name];       
     }
     
     /**
@@ -103,4 +128,35 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive {
         return implode('/', $exp);
     }
             
+    /**
+     * Find metric and create it, if possible
+     *
+     * @return Metric_Abstract
+     * @throws MetricNotFound
+     **/
+    protected function _findMetric($name) {
+        $exp = explode('/', $name);
+        
+        // go from end to start
+        for ($i=count($exp)-1; $i>0; $i--) {
+            $parent = implode('/', array_slice($exp, 0, $i));
+            
+            if (isset($this[$parent])) {
+                $metric = $this[$parent];
+                break;
+            }
+            
+        }
+
+        if (!isset($metric))
+            FaZend_Exception::raise('MetricNotFound', "Metric '{$name}' not found");
+
+        $pattern = implode('/', array_slice($exp, $i));
+        if (!$metric->isMatched($pattern))
+            FaZend_Exception::raise('MetricDoesntMatch',
+                "Metric '{$name}' doesn't match you pattern: {$pattern}");
+            
+        return $this->_attachMetric($name, $metric->cloneByPattern($pattern));
+    }
+
 }

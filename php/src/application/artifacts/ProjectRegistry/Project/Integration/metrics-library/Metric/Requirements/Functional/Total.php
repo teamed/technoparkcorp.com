@@ -25,12 +25,10 @@
  */
 class Metric_Requirements_Functional_Total extends Metric_Abstract {
 
-    /**
-     * Level of requirements
-     *
-     * @var integer
-     */
-    protected $_level = 0;
+    protected $_patterns = array(
+        '/level(\d+)/' => 'level',
+        '/level(\d+)\/(\w+)/' => 'level, status',
+        );
 
     /**
      * Load this metric
@@ -38,8 +36,14 @@ class Metric_Requirements_Functional_Total extends Metric_Abstract {
      * @return void
      **/
     public function reload() {
-        $this->value = 7;
-        $this->default = 12;
+        if ($this->_getOption('level')) {
+            $this->_value = 999;
+            $this->_default = $this->_project->metrics['requirements/functional/total']->target * 5;
+            return;
+        }
+        
+        $this->_value = 7;
+        $this->_default = 12;
     }
         
 }

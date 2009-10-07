@@ -135,7 +135,6 @@ class Helper_Gallery extends FaZend_View_Helper {
     public function setLink($link) {
         $this->_link = $link;
 
-        $matches = array();
         if (preg_match('/\{(.*?)\}/', $this->_link, $matches))
             $this->setTitle($matches[1]);
 

@@ -44,6 +44,7 @@ class theProject extends Model_Artifact implements Model_Artifact_Passive {
             ->_attach('metrics', new theMetrics())
             ->_attach('workOrders', new theWorkOrders(), 'project')
             ->_attach('milestones', new theMilestones())
+            ->_attach('objectives', new theObjectives())
             ->_attach('wbs', new theWbs())
             ->_attach('activityList', new theActivityList());
     }

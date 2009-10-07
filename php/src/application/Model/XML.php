@@ -200,7 +200,6 @@ class Model_XML {
      */
     protected function _parseMetas($text) {
 
-        $matches = array();
         if (!preg_match_all('/\${(\w+)\:(.*)}/smU', $text, $matches))
             return $text;
 

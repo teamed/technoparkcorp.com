@@ -1,0 +1,64 @@
+
+business model
+requirements
+    glossary
+        total
+        readability - how good it is formatted
+        reference-rate - how often terms are referenced
+    actors
+        total
+    interfaces
+        total
+    use cases
+        format correctness
+        total: requirements/functional/total / 10
+    functional
+        deepness - biggest level..
+        total: OBJECTIVE
+            by level: level0: 12, level1: 45, level2: ...
+            by status: 
+        format correctness
+        structure correctness
+        ambiguity
+    quality of service
+
+architecture
+    components
+        total: requirements/functional/total / 10
+        by type
+        traceability coverage
+            to glossary term
+            to QOS
+            to functional reqs
+        defects coverage
+            minor/major/critical/blocker
+            open/fixed/invalid
+    diagrams
+        by type
+
+design
+    classes
+        traceability coverage
+            to requirements
+            to components
+    scripts
+    unit tests
+    
+code
+    complexity
+    coverage
+    sloc
+deliverables
+    requirements attributes
+repository
+    traceability
+
+
+traceability
+    from artifact, to artifact
+    from type/all, to type/all
+        coverage
+defects
+    by artifact/severity/status/all
+        adp
+        

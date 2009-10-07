@@ -101,7 +101,6 @@ class Helper_Forma extends FaZend_View_Helper {
         }
 
         $newId = 1;
-        $matches = array();
         foreach ($this->_fields as $id=>$field) {
             if (preg_match('/^field(\d+)$/', $id, $matches))
                 $newId = (int)$matches[1] + 1;

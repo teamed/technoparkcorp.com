@@ -19,43 +19,10 @@
  */
 
 /**
- * Group of activities
+ * Project objectives
  *
  * @package Artifacts
  */
-class theActivities extends ArrayIterator implements Model_Artifact_Stateless, Model_Artifact_Passive {
-
-    /**
-     * Project, the owner of this list
-     *
-     * @var theProject
-     */
-    protected $_project;
-
-    /**
-     * Set project
-     *
-     * @return void
-     **/
-    public function setProject(theProject $project) {
-        $this->_project = $project;
-    }
-
-    /**
-     * Reload it
-     *
-     * @return void
-     **/
-    public function reload() {
-    }
-
-    /**
-     * Is it loaded?
-     *
-     * @return boolean
-     **/
-    public function isLoaded() {
-        return (bool)count($this);
-    }
-
+class theObjectives extends Model_Artifact {
+        
 }

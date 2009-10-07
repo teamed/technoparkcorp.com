@@ -43,25 +43,39 @@ abstract class Metric_Abstract
     protected $_project;
 
     /**
-     * Is it visible in objectives? Project stakeholders can set target value for the metric?
+     * Name of this metric
      *
-     * @var boolean
+     * @var string
      */
-    public $visible = false;
+    protected $_name;
 
     /**
      * Value of the metric, loaded latest
      *
      * @var numeric
      */
-    private $_value;
+    protected $_value = null;
     
     /**
      * Default target of the metric
      *
      * @var numeric
      */
-    private $_default;
+    protected $_default;
+    
+    /**
+     * Set of options
+     *
+     * @var array
+     */
+    private $_options;
+    
+    /**
+     * List of patterns
+     *
+     * @var array
+     */
+    protected $_patterns;
     
     /**
      * Load this metric
@@ -69,8 +83,9 @@ abstract class Metric_Abstract
      * @return void
      **/
     public function reload() {
-        // to be overriden if necessary
-        $this->value = 0;
+        // you should override this method in child class
+        FaZend_Exception::raise('MetricIsNotOverriden', 
+            'Metric ' . get_class($this) . 'does not override reload(), it is wrong');
     }
         
     /**
@@ -78,17 +93,28 @@ abstract class Metric_Abstract
      *
      * @return boolean
      **/
-    public function isLoaded() {
+    public final function isLoaded() {
         return isset($this->_value);
     }
         
     /**
      * Save the holder of the metric
      *
+     * @param theMetrics Owner of this metric
      * @return void
      **/
-    public function setMetrics(theMetrics $metrics) {
+    public final function setMetrics(theMetrics $metrics) {
         $this->_project = $metrics->ps()->parent;
+    }
+        
+    /**
+     * Save the name of this metric
+     *
+     * @param string Name of the metric
+     * @return void
+     **/
+    public final function setName($name) {
+        $this->_name = $name;
     }
         
     /**
@@ -97,12 +123,8 @@ abstract class Metric_Abstract
      * @param string Name of the property
      * @return numeric
      **/
-    public function __get($name) {
+    public final function __get($name) {
         
-        // reload it before doing anything
-        if (!$this->isLoaded())
-            $this->reload();
-            
         switch ($name) {
             case 'value':
                 if (!isset($this->_value)) {
@@ -116,15 +138,25 @@ abstract class Metric_Abstract
                     return null;
                 return $this->_default;
                 
+            // target is set in objectives, if set
             case 'target':
-                // TODO: we should go into Objectives for this value!
+                if (isset($this->_project->objectives[$this->_name]))
+                    return $this->_project->objectives[$this->_name];
                 return $this->_default;
                 
             case 'delta':
-                return $this->target - $this->value;
+                if (isset($this->_default))
+                    return $this->target - $this->_value;
+                return null;
+
+            // if this metric doesn't have DEFAULT - we can't make it visible
+            // in objective and nobody can set it's target value
+            case 'visible':
+                return isset($this->_default);
         }
         
-        FaZend_Exception::raise('MetricAccessException', "You can GET only declared properties of a metric ($name)");
+        FaZend_Exception::raise('MetricAccessException', 
+            'You can GET only declared properties of a metric (' . get_class($this) . '::' . $name . ')');
     }
         
     /**
@@ -134,19 +166,95 @@ abstract class Metric_Abstract
      * @param integer Value to save
      * @return void
      **/
-    public function __set($name, $value) {
+    public final function __set($name, $value) {
         validate()->numeric($value, "You can only save NUMERIC values to metrics");
         
         switch ($name) {
-            case 'value':
-                $this->_value = $value;
-                return;
-            case 'default':
-                $this->_default = $value;
+            case 'target':
+                $this->_project->objectives[$this->_name] = $value;
                 return;
         }
         
-        FaZend_Exception::raise('MetricAccessException', "You can SET only declared properties of a metric ($name)");
+        FaZend_Exception::raise('MetricAccessException', 
+            'You can SET only declared properties of a metric (' . get_class($this) . '::' . $name . ')');
+    }
+    
+    /**
+     * The metric matches this pattern?
+     *
+     * @param string Regex pattern
+     * @return boolean
+     **/
+    public final function isMatched($pattern) {
+        if (!isset($this->_patterns))
+            return false;
+        foreach (array_keys($this->_patterns) as $regex)
+            if (preg_match($regex, $pattern))
+                return true;
+        return false;
+    }
+
+    /**
+     * Clone metric using this pattern
+     *
+     * @param string Regex pattern
+     * @return Metric_Abstract
+     **/
+    public final function cloneByPattern($pattern) {
+        validate()->true(isset($this->_patterns));
+        
+        foreach ($this->_patterns as $regex=>$opts) {
+            if (!preg_match($regex, $pattern, $matches))
+                continue;
+                
+            $options = array();
+                
+            // $opts comes in with this format: "level, status, name, ..."
+            $vars = explode(',', $opts);
+            foreach ($vars as $i=>$var)
+                $options[trim($var)] = $matches[$i+1];
+            
+            $className = get_class($this);
+            $metric = new $className();
+            $metric->_options = $options;
+            return $metric;
+        }
+
+        FaZend_Exception::raise('MetricPatternMismatch', 
+            'Cannot clone ' . get_class($this) . ' with this pattern: "' . $pattern . '"');
+    }
+
+    /**
+     * Return one single option or NULL if it's not set
+     *
+     * @param string Name of option
+     * @return mixed|null
+     **/
+    protected final function _getOption($name) {
+        if (isset($this->_options[$name]))
+            return $this->_options[$name];
+        return null;
+    }
+
+    /**
+     * Create work package according to this metric information
+     *
+     * @return theWorkPackage|null The work package to achieve this metric target or null if not necessary to achieve
+     **/
+    public function getWorkPackage() {
+        // you should override this method, if necessary
+        return null;
+    }
+        
+    /**
+     * Create work package, internal helper
+     *
+     * @param mixed Cost, param for Model_Cost::__construct()
+     * @param string Title of work package
+     * @return theWorkPackage
+     **/
+    protected final function _makeWp($cost, $title) {
+        return new theWorkPackage(str_replace('_', '.', get_class($this)), new Model_Cost($cost), $title);
     }
         
 }

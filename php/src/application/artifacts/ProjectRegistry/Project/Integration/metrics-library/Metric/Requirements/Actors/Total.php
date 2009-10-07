@@ -19,43 +19,28 @@
  */
 
 /**
- * Group of activities
- *
+ * Total number of actors
+ * 
  * @package Artifacts
  */
-class theActivities extends ArrayIterator implements Model_Artifact_Stateless, Model_Artifact_Passive {
+class Metric_Requirements_Actors_Total extends Metric_Abstract {
 
     /**
-     * Project, the owner of this list
-     *
-     * @var theProject
-     */
-    protected $_project;
-
-    /**
-     * Set project
-     *
-     * @return void
-     **/
-    public function setProject(theProject $project) {
-        $this->_project = $project;
-    }
-
-    /**
-     * Reload it
+     * Load this metric
      *
      * @return void
      **/
     public function reload() {
+        $this->_value = 1;
     }
-
+        
     /**
-     * Is it loaded?
+     * Get work package
      *
-     * @return boolean
+     * @return theWorkPackage
      **/
-    public function isLoaded() {
-        return (bool)count($this);
+    public function getWorkPackage() {
+        return $this->_makeWp(10.6, sprintf('Specify at least %d actors', $this->target));
     }
-
+        
 }

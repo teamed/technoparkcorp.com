@@ -61,7 +61,6 @@ class Model_Project extends Shared_Project {
     public function getWobots() {
         $list = array();
         foreach ($this->getStakeholders() as $email=>$password) {
-            $matches = array();
             if (preg_match('/^(.*@' . preg_quote(Model_Wobot::EMAIL_DOMAIN) . ')$/', $email, $matches))
                 $list[] = strtolower($matches[1]);
         }
@@ -98,7 +97,6 @@ class Model_Project extends Shared_Project {
     public function getRolesByStakeholder($email) {
         $roles = array();
         foreach ($this->getAllowedPaths($email) as $path) {
-            $matches = array();
             if (preg_match('/^' . preg_quote(self::ROLE_AUTHZ_PREFIX, '/') . '(\w+)$/', $path, $matches))
                 $roles[] = $matches[1];
         }

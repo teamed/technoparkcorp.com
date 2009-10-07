@@ -30,25 +30,41 @@ class theWorkPackage implements Model_Artifact_Stateless {
      *
      * @var theWbs
      */
-    protected $wbs;
+    protected $_wbs;
     
     /**
-     * Config of the WP
+     * Unique code
      *
-     * @var Zend_Config
+     * @var string
      */
-    protected $_config;
+    protected $_code;
     
     /**
-     * Create new work package from INI file
+     * Cost
+     *
+     * @var Model_Cost
+     */
+    protected $_cost;
+    
+    /**
+     * Title
+     *
+     * @var string
+     */
+    protected $_title;
+    
+    /**
+     * Create new work package
      *
      * @param string Code of the work package
-     * @param Zend_Config_Ini INI file with configuration
+     * @param Model_Cost Cost of work package
+     * @param string Title of it
      * @return void
      **/
-    public function __construct($code, Zend_Config_Ini $config) {
+    public function __construct($code, Model_Cost $cost, $title) {
         $this->_code = $code;
-        $this->_config = $config;
+        $this->_cost = $cost;
+        $this->_title = $title;
     }
     
     /**
@@ -69,32 +85,12 @@ class theWorkPackage implements Model_Artifact_Stateless {
     public function __get($name) {
         switch ($name) {
             case 'cost':
-                return new Model_Cost($this->_wbs->translateIni($this->_config->cost, true));
-            case 'sow':
-                return $this->_wbs->translateIni($this->_config->sow);
+                return $this->_cost;
+            case 'title':
+                return $this->_title;
             case 'code':
                 return $this->_code;
         }
-    }
-    
-    /**
-     * Get list of all activities
-     *
-     * @param theActivitySplitter Splitter, the dispatcher
-     * @return void
-     */
-    public function split(theActivitySplitter $splitter) {
-        $activities = new theActivities();
-        
-        // create first single activity
-        $splitter->split($this, 'single', new Zend_Config(array()), $activities);
-
-        // parse this activity by all modules from INI file
-        foreach ($this->_config->split as $key=>$config) {
-            $splitter->split($this, $key, $config, $activities);
-        }
-        
-        $splitter->append($activities);
     }
     
 }

@@ -156,7 +156,6 @@ class Model_Pages extends Zend_Navigation {
 
         // replace meta-s
         if (!is_null($row)) {
-            $matches = array();
             if (preg_match_all('/\{(.*?)\}/', $link, $matches)) {
                 foreach ($matches[0] as $id=>$match) {
                     $name = $matches[1][$id];
@@ -262,7 +261,6 @@ class Model_Pages extends Zend_Navigation {
                 continue;
 
             // notify about unknown format
-            $matches = array();
             if (!preg_match('/^([a-zA-Z0-9\.]+)\.phtml$/', $file, $matches))
                 FaZend_Exception::raise('Model_Pages_IncorrectFormat',
                     "File $id has invalid format in $fullPath: '" . $file . "'");
@@ -332,7 +330,6 @@ class Model_Pages extends Zend_Navigation {
             if (!$line)
                 continue;
 
-            $matches = array();
             if (preg_match('/^\[(.*?)\]$/', $line, $matches)) {
                 $current = $matches[1];
 
@@ -343,7 +340,6 @@ class Model_Pages extends Zend_Navigation {
                 continue;
             }
 
-            $matches = array();
             if (preg_match('/^(.*?)\s?\=\s?(r|rw|)$/', $line, $matches)) {
 
                 if (!$current)

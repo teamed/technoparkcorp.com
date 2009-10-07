@@ -83,36 +83,20 @@ class Model_Artifact extends ArrayIterator
      * @return void
      */
     protected function _initialize(Model_Artifact_Interface $artifact, $property) {
-        if (is_null($property))
+        if (is_null($property) && !($artifact instanceof Model_Artifact_Stateless)) {
             $artifact->ps()->parent = $this; // TODO: this should be removed and implemented in FaZend
-        elseif ($artifact instanceof Model_Artifact_Stateless) {
+        } elseif (!is_null($property) && ($artifact instanceof Model_Artifact_Stateless)) {
             if (method_exists($artifact, $property))
                 $artifact->$property($this);
             else
                 $artifact->$property = $this;
-        } else
+        } elseif (!is_null($property)) {
             FaZend_Exception::raise('InvalidChildArtifact', 'Artifact ' . get_class($artifact) . ' is not stateless');
+        }
             
-        // reload it
+        // reload it if it's empty now and requires loading
         if (($artifact instanceof Model_Artifact_Passive) && !$artifact->isLoaded())
             $artifact->reload();
-    }
-    
-    /**
-     * To be implemented in FaZend_POS_Abstract
-     *
-     * @return void
-     */
-    public function __construct() {
-        $this->_init();
-    }
-    
-    /**
-     * To be implemented in FaZend_POS_Abstract
-     *
-     * @return void
-     */
-    protected function _init() {
     }
     
     /**

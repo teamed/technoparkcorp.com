@@ -91,6 +91,9 @@ class Model_Navigation {
 
             // load the article
             $article = Model_Article::createByLabel($fullLabel);
+            
+            // add this article to search
+            $article->luceneIndex();
 
             // create and add new page to the current collection
             $page = new Zend_Navigation_Page_Uri(array(
@@ -150,7 +153,7 @@ class Model_Navigation {
             return self::$_cache;
 
         self::$_cache = Zend_Cache::factory('Core', 'File', array(
-            'caching' => true,
+            'caching' => false,
             'cache_id_prefix' => 'panel2nav' . FaZend_Revision::get(),
             'lifetime' => null, // live forever
             'automatic_serialization' => true,

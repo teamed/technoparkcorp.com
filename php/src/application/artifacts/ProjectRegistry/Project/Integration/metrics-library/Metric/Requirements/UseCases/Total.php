@@ -19,43 +19,20 @@
  */
 
 /**
- * Group of activities
- *
+ * Total number of use cases
+ * 
  * @package Artifacts
  */
-class theActivities extends ArrayIterator implements Model_Artifact_Stateless, Model_Artifact_Passive {
+class Metric_Requirements_UseCases_Total extends Metric_Abstract {
 
     /**
-     * Project, the owner of this list
-     *
-     * @var theProject
-     */
-    protected $_project;
-
-    /**
-     * Set project
-     *
-     * @return void
-     **/
-    public function setProject(theProject $project) {
-        $this->_project = $project;
-    }
-
-    /**
-     * Reload it
+     * Load this metric
      *
      * @return void
      **/
     public function reload() {
+        $this->_value = 1;
+        $this->_default = $this->_project->metrics['requirements/functional/total/level1']->target / 10;
     }
-
-    /**
-     * Is it loaded?
-     *
-     * @return boolean
-     **/
-    public function isLoaded() {
-        return (bool)count($this);
-    }
-
+        
 }
