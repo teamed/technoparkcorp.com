@@ -53,14 +53,22 @@ final class Model_Cost {
      * @param string Text representation of the cost
      * @return void
      */
-    public function __construct($value) {
-        validate()->numeric($value, "Numeric only so far");
+    public function __construct($value = false) {
+        
+        $currency = 'USD';
+        $value = (string)$value;
+        
+        if ($value && !is_numeric($value)) {
+            preg_match('/^([\-\+]?\d+(?:\.\d+)?)(?:\s?(\w{3}))?$/', $value, $matches);
+            $value = $matches[1];
+            $currency = $matches[2];
+        }
         
         $this->_value = (int)($value * 100);
         // we should implement it properly
-        $this->_currency = Model_Flyweight::factory('Zend_Currency', 'en_US', 'USD')
+        $this->_currency = Model_Flyweight::factory('Zend_Currency', 'en_US', $currency)
             ->setFormat(array(
-                'precision' => 0, // no cents to show
+                'precision' => 2, // cents to show
                 'display' => Zend_Currency::USE_SYMBOL,
                 'position' => Zend_Currency::RIGHT));
     }
@@ -96,6 +104,27 @@ final class Model_Cost {
      **/
     protected function _getInUsd() {
         return $this->_value;
+    }
+    
+    /**
+     * Add new value to current one
+     *
+     * @return $this
+     **/
+    public function add(Model_Cost $cost) {
+        $this->_value += 100 * $cost->usd;
+        return $this;
+    }
+
+    /**
+     * Multiply current value by this new value
+     *
+     * @param integer Multiplier
+     * @return $this
+     **/
+    public function multiply($num) {
+        $this->_value *= $num;
+        return $this;
     }
 
 }

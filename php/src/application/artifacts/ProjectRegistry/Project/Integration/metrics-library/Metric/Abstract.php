@@ -126,6 +126,8 @@ abstract class Metric_Abstract
     public final function __get($name) {
         
         switch ($name) {
+            case 'name':
+                return $this->_name;
             case 'value':
                 if (!isset($this->_value)) {
                     FaZend_Exception::raise('MetricReloadingException', 
@@ -249,12 +251,23 @@ abstract class Metric_Abstract
     /**
      * Create work package, internal helper
      *
-     * @param mixed Cost, param for Model_Cost::__construct()
+     * @param string|integer|Model_Cost Cost, param for Model_Cost::__construct()
      * @param string Title of work package
      * @return theWorkPackage
      **/
     protected final function _makeWp($cost, $title) {
-        return new theWorkPackage(str_replace('_', '.', get_class($this)), new Model_Cost($cost), $title);
+        if (!($cost instanceof Model_Cost))
+            $cost = new Model_Cost($cost);
+        return new theWorkPackage($this->_name, $cost, $title);
+    }
+    
+    /**
+     * Make sure the sub-metric with this pattern is loaded
+     *
+     * @return void
+     **/
+    protected function _pingPattern($pattern) {
+        $this->_project->metrics[$this->_name . '/' . $pattern];
     }
         
 }

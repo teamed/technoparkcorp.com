@@ -105,8 +105,8 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive {
         if (!($class instanceof Metric_Abstract))
             $class = new $class();
             
+        $class->setName($name);
         $this->_attachItem($name, $class, 'setMetrics');
-        $this[$name]->setName($name);
 
         return $this[$name];       
     }

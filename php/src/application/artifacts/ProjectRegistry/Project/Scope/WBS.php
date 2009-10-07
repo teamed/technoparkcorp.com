@@ -50,11 +50,8 @@ class theWbs extends Model_Artifact_Bag implements Model_Artifact_Passive {
             unset($this[$key]);
         
         // add new from metrics
-        foreach ($this->ps()->parent->metrics as $metric) {
-            $wp = $metric->getWorkPackage();
-            if (!is_null($wp))
-                $this->_attachItem($wp->code, $wp, 'setWbs');
-        }
+        foreach ($this->ps()->parent->metrics as $metric)
+            $this->_findWorkPackage($metric->name);
     }
     
     /**
@@ -66,4 +63,61 @@ class theWbs extends Model_Artifact_Bag implements Model_Artifact_Passive {
         return (bool)count($this);
     }
     
+    /**
+     * Get WP even if it doesn't exist in array
+     *
+     * @return theWorkPackage
+     **/
+    public function offsetGet($name) {
+        $wp = $this->_findWorkPackage($name);
+        if (is_null($wp)) {
+            FaZend_Exception::raise('WorkPackageAbsent', 
+                "Metric '{$name}' does not have a work package in " . get_class($metric) . "::getWorkPackage()");
+        }
+        return $wp;
+    }
+
+    /**
+     * Summarize work packages and return their cummulative cost
+     *
+     * @param array|string Name or list of names - regular expressions
+     * @return Model_Cost
+     **/
+    public function sum($regexs) {
+        if (!is_array($regexs))
+            $regexs = array($regexs);
+            
+        $sum = new Model_Cost();
+        foreach ($regexs as $regex) {
+            foreach ($this->ps()->parent->metrics as $metric) {
+                if (!preg_match('/' . $regex . '/', $metric->name))
+                    continue;
+                $wp = $this->_findWorkPackage($metric->name);
+                if ($wp)
+                    $sum->add($wp->cost);
+                
+            }
+        }
+        return $sum;
+    }
+    
+    /**
+     * Get WP or return NULL
+     *
+     * @param string Name of the work package
+     * @return theWorkPackage
+     **/
+    protected function _findWorkPackage($name) {
+        $wps = $this->getArrayCopy();
+        if (isset($wps[$name])) {
+            return $wps[$name];
+        }
+
+        $metric = $this->ps()->parent->metrics[$name];
+        $wp = $metric->getWorkPackage();
+        if ($wp)
+            $this->_attachItem($wp->code, $wp, 'setWbs');
+        return $wp;
+    }
+
 }

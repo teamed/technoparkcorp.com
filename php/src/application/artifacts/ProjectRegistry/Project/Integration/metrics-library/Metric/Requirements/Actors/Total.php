@@ -40,7 +40,9 @@ class Metric_Requirements_Actors_Total extends Metric_Abstract {
      * @return theWorkPackage
      **/
     public function getWorkPackage() {
-        return $this->_makeWp(10.6, sprintf('Specify at least %d actors', $this->target));
+        return $this->_makeWp(
+            $this->_project->wbs->sum('requirements\/functional\/total')->multiply(0.2), 
+            'Specify actors');
     }
         
 }

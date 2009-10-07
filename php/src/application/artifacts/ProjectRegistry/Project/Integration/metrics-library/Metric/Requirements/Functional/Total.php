@@ -25,9 +25,36 @@
  */
 class Metric_Requirements_Functional_Total extends Metric_Abstract {
 
+    /**
+     * Forwarders
+     *
+     * @var array
+     */
     protected $_patterns = array(
-        '/level(\d+)/' => 'level',
-        '/level(\d+)\/(\w+)/' => 'level, status',
+        '/level\/(\w+)/' => 'level',
+        '/level\/(\w+)\/(\w+)/' => 'level, status',
+        );
+
+    /**
+     * Level code
+     */
+    protected $_levelCode = array(
+        'first' => 0,
+        'second' => 1,
+        'third' => 2,
+        'forth' => 3,
+        );
+
+    /**
+     * Price per each requirement on some level
+     *
+     * @var array
+     */
+    protected $_pricePerRequirement = array(
+        'first' => '45 USD',
+        'second' => '10 USD',
+        'third' => '4 USD',
+        'forth' => '2 USD'
         );
 
     /**
@@ -36,14 +63,47 @@ class Metric_Requirements_Functional_Total extends Metric_Abstract {
      * @return void
      **/
     public function reload() {
-        if ($this->_getOption('level')) {
-            $this->_value = 999;
-            $this->_default = $this->_project->metrics['requirements/functional/total']->target * 5;
+        
+        if ($this->_getOption('level') !== null) {
+            $max = max(array_keys($this->_pricePerRequirement));
+            validate()
+                ->true(isset($this->_pricePerRequirement[$this->_getOption('level')]));
+
+            $this->_value = 0;
+            
+            $increment = pow($this->_project->metrics['requirements/functional/total']->target, 1/4);
+            $this->_default = round(pow($increment, 1+$this->_levelCode[$this->_getOption('level')]));
             return;
         }
         
         $this->_value = 7;
-        $this->_default = 12;
+        $this->_default = 120;
+
+        // make sure all levels are loaded
+        foreach (array_keys($this->_levelCode) as $level)
+            $this->_pingPattern('level/' . $level);
+            
     }
         
+    /**
+     * Get work package
+     *
+     * @return theWorkPackage
+     **/
+    public function getWorkPackage() {
+        // if we already have too many requirements - skip this WP
+        if ($this->delta < 0)
+            return null;
+            
+        // we specify requirements only on some particular level
+        if (!$this->_getOption('level'))
+            return null;
+            
+        $price = $this->_pricePerRequirement[$this->_getOption('level')];
+            
+        return $this->_makeWp($this->delta * $price, 
+            sprintf('Specify +%d functional requirements on %s level',
+                $this->delta, $this->_getOption('level'), $this->value));
+    }
+    
 }

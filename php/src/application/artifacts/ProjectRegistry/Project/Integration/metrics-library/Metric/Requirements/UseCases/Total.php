@@ -32,7 +32,7 @@ class Metric_Requirements_UseCases_Total extends Metric_Abstract {
      **/
     public function reload() {
         $this->_value = 1;
-        $this->_default = $this->_project->metrics['requirements/functional/total/level1']->target / 10;
+        $this->_default = round($this->_project->metrics['requirements/functional/total/level/first']->target / 10);
     }
         
 }
