@@ -77,7 +77,7 @@ class Metric_Requirements_Functional_Total extends Metric_Abstract {
         }
         
         $this->_value = 7;
-        $this->_default = 120;
+        $this->_default = 300;
 
         // make sure all levels are loaded
         foreach (array_keys($this->_levelCode) as $level)

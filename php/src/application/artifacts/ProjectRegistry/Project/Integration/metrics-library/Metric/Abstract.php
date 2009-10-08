@@ -249,6 +249,30 @@ abstract class Metric_Abstract
     }
         
     /**
+     * Split work package onto activities
+     *
+     * @return void
+     **/
+    public function split(theActivities $list) {
+        $wp = $this->_project->wbs[$this->_name];
+        $activity = theActivity::factory($this->_name, '1')
+            ->setSow($wp->title)
+            ->setCost($wp->cost);
+        $list[] = $activity;
+        
+        $slice = $list->getSliceByWp($wp);
+        $this->_split($slice);
+    }
+    
+    /**
+     * Split, by slice provided
+     *
+     * @return void
+     **/
+    protected function _split(Slice_Plugin_Abstract $slice) {
+    }
+    
+    /**
      * Create work package, internal helper
      *
      * @param string|integer|Model_Cost Cost, param for Model_Cost::__construct()

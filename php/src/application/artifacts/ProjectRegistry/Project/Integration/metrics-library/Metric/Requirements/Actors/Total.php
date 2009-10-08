@@ -45,4 +45,24 @@ class Metric_Requirements_Actors_Total extends Metric_Abstract {
             'Specify actors');
     }
         
+    /**
+     * Split the WP onto activities
+     *
+     * @param Slice_Plugin_Abstract
+     * @return void
+     **/
+    protected function _split(Slice_Plugin_Abstract $slice) {
+        $slice->iterate('downCurve', array('minCost'=>'25 USD'));
+            
+        foreach ($slice->sector(1, null) as $activity) {
+            $slice->afterMilestone($activity)
+                ->when('[readiness] > ?', $slice->sumUntil($activity) / $slice->cost);
+        }
+            
+        foreach ($slice as $activity) {
+            theActivityCriteria::factory($activity)
+                ->when('[requirements/actors/compliance] > ?', $slice->sumUntil($activity) / $slice->cost);
+        }
+    }
+        
 }
