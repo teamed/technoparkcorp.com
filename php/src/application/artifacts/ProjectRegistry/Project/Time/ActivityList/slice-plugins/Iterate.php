@@ -19,49 +19,19 @@
  */
 
 /**
- * Activity list in a project
- *
- * @package Artifacts
+ * Iterate activities
+ * 
+ * @package Slice_Plugin
  */
-class theActivityList extends Model_Artifact_Bag implements Model_Artifact_Passive {
+class Slice_Plugin_Iterate extends Slice_Plugin_Abstract {
 
     /**
-     * List of activities
+     * Iterate
      *
-     * @var theActivities
-     */
-    protected $_activities;
-
-    /**
-     * It is loaded already?
-     *
-     * @return boolean
-     */
-    public function isLoaded() {
-        return (bool)count($this);
-    }
-    
-    /**
-     * Initialize the list
-     *
-     * @return void
-     */
-    public function reload() {
-        $this->_attach('_activities', new theActivities(), 'setActivityList');
-    }
-    
-    /**
-     * Getter to dispatch
-     *
-     * @param string Name of property
      * @return mixed
      **/
-    public function __get($name) {
-        switch ($name) {
-            case 'list':
-                return $this->_activities;
-        }
-        return parent::__get($name);
+    public function execute($style, array $options = array()) {
+        // ...
     }
-
+        
 }

@@ -37,8 +37,8 @@ class theActivities extends ArrayIterator implements Model_Artifact_Stateless, M
      *
      * @return void
      **/
-    public function setProject(theProject $project) {
-        $this->_project = $project;
+    public function setActivityList(theActivityList $list) {
+        $this->_project = $list->ps()->parent;
     }
 
     /**
@@ -47,6 +47,15 @@ class theActivities extends ArrayIterator implements Model_Artifact_Stateless, M
      * @return void
      **/
     public function reload() {
+        // kill all existing activities
+        foreach ($this as $key=>$value)
+            unset($this[$key]);
+            
+        // ask all work packages to add their activities
+        foreach ($this->_project->wbs as $wp) {
+            $wp->split($this);
+            logg('WP ' . $wp->code . ' added ' . count($this));
+        }
     }
 
     /**
@@ -56,6 +65,22 @@ class theActivities extends ArrayIterator implements Model_Artifact_Stateless, M
      **/
     public function isLoaded() {
         return (bool)count($this);
+    }
+    
+    /**
+     * Get new slice, with only activites from this WP
+     *
+     * @return Slice_Plugin_Simple
+     **/
+    public function getSliceByWp(theWorkPackage $wp) {
+        $list = array();
+        foreach ($this as $activity) {
+            if ($activity->wp == $wp->code)
+                $list[] = $activity;
+        }
+        
+        require_once dirname(__FILE__) . '/slice-plugins/Abstract.php';
+        return Slice_Plugin_Abstract::factory('simple', $list);
     }
 
 }

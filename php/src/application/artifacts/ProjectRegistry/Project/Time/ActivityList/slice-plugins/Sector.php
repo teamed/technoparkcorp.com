@@ -19,49 +19,26 @@
  */
 
 /**
- * Activity list in a project
- *
- * @package Artifacts
+ * Sector of the array
+ * 
+ * @package Slice_Plugin
  */
-class theActivityList extends Model_Artifact_Bag implements Model_Artifact_Passive {
+class Slice_Plugin_Sector extends Slice_Plugin_Abstract {
 
     /**
-     * List of activities
+     * Get a sector of this slice
      *
-     * @var theActivities
-     */
-    protected $_activities;
-
-    /**
-     * It is loaded already?
-     *
-     * @return boolean
-     */
-    public function isLoaded() {
-        return (bool)count($this);
-    }
-    
-    /**
-     * Initialize the list
-     *
-     * @return void
-     */
-    public function reload() {
-        $this->_attach('_activities', new theActivities(), 'setActivityList');
-    }
-    
-    /**
-     * Getter to dispatch
-     *
-     * @param string Name of property
-     * @return mixed
+     * @param integer First element (start with 0)
+     * @param integer Last element (NULL means 'till the end')
+     * @return Slice_Plugin_Simple
      **/
-    public function __get($name) {
-        switch ($name) {
-            case 'list':
-                return $this->_activities;
+    public function execute($start, $end) {
+        foreach ($this as $key=>$activity) {
+            if (($key < $start) ||
+                (!is_null($end) && ($key > $end)))
+                unset($this[$key]);
         }
-        return parent::__get($name);
+        return $this;
     }
-
+        
 }

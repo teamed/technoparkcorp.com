@@ -26,9 +26,9 @@
 class theActivity implements Model_Artifact_Stateless, Model_Artifact_Passive {
 
     /**
-     * Work package it came from
+     * Work package it came from, code
      *
-     * @var theWorkPackage
+     * @var string
      */
     protected $_wp;
 
@@ -102,7 +102,7 @@ class theActivity implements Model_Artifact_Stateless, Model_Artifact_Passive {
      * @param string Unique code for this work package
      * @return void
      **/
-    public function __construct(theWorkPackage $wp, $code) {
+    public function __construct($wp, $code) {
         $this->_wp = $wp;
         $this->_code = $code;
     }
@@ -114,7 +114,7 @@ class theActivity implements Model_Artifact_Stateless, Model_Artifact_Passive {
      * @param string Unique code for this work package
      * @return theActivity
      **/
-    public static function factory(theWorkPackage $wp, $code) {
+    public static function factory($wp, $code) {
         return new theActivity($wp, $code);
     }
 
@@ -228,7 +228,7 @@ class theActivity implements Model_Artifact_Stateless, Model_Artifact_Passive {
      * @return string
      */
     protected function _getName() {
-        return $this->_wp->code . '.' . $this->_code;
+        return $this->_wp . '.' . $this->_code;
     }
 
 }
