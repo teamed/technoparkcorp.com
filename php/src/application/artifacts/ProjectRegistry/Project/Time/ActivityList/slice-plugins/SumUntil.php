@@ -19,21 +19,31 @@
  */
 
 /**
- * Iterate activities
+ * Sum cost of all activities until you reach given one (sum it ALSO)
  * 
  * @package Slice_Plugin
  */
-class Slice_Plugin_Iterate extends Slice_Plugin_Abstract {
+class Slice_Plugin_SumUntil extends Slice_Plugin_Abstract {
 
     /**
-     * Iterate
+     * Sum them!
      *
-     * @return mixed
+     * @return Model_Cost
      **/
-    public function execute($style, array $options = array()) {
-        validate()->true(count($this) == 1, "You can iterate only when you have ONE activity in slice");
-        $method = 'iterate_' . ucfirst($style);
-        return $this->$method($options);
+    public function execute(theActivity $stop) {
+        $sum = new Model_Cost();
+        $found = false;
+        foreach ($this as $activity) {
+            $sum->add($activity->cost);
+            if ($activity == $stop) {
+                $found = true;
+                break;
+            }
+        }
+        if (!$found)
+            FaZend_Exception::raise('SumUntil_ActivityNotFound', "Activity {$stop} not found");
+            
+        return $sum;
     }
         
 }

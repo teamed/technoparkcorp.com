@@ -52,16 +52,23 @@ class Metric_Requirements_Actors_Total extends Metric_Abstract {
      * @return void
      **/
     protected function _split(Slice_Plugin_Abstract $slice) {
-        $slice->iterate('downCurve', array('minCost'=>'25 USD'));
-            
-        foreach ($slice->sector(1, null) as $activity) {
+        
+        // split the activity onto smaller pieces
+        $total = $slice->iterate('downCurve', array(
+            'sow' => 'Identify actors',
+            'maxCost' => '50 USD',
+            'minCost' => '10 USD'));
+return;
+        // attach them to milestones
+        foreach ($slice->sector(1, null) as $i=>$activity) {
             $slice->afterMilestone($activity)
-                ->when('[readiness] > ?', $slice->sumUntil($activity) / $slice->cost);
+                ->when('[readiness] > ?', 0.3 * $i / $total);
         }
             
-        foreach ($slice as $activity) {
+        // assign exit criteria
+        foreach ($slice->onlyActivities() as $activity) {
             theActivityCriteria::factory($activity)
-                ->when('[requirements/actors/compliance] > ?', $slice->sumUntil($activity) / $slice->cost);
+                ->when('[requirements/actors/compliance] > ?', $slice->sumUntil($activity)->divide($slice->sum()));
         }
     }
         

@@ -82,6 +82,13 @@ class theActivity implements Model_Artifact_Stateless, Model_Artifact_Passive {
     protected $_performer;
     
     /**
+     * Criteria of final
+     *
+     * @var theActivityCriteria
+     */
+    protected $_criteria;
+    
+    /**
      * Controller, acceptor of the activity
      *
      * @var theStatekholder
@@ -103,8 +110,8 @@ class theActivity implements Model_Artifact_Stateless, Model_Artifact_Passive {
      * @return void
      **/
     public function __construct($wp, $code) {
-        $this->_wp = $wp;
-        $this->_code = $code;
+        $this->_wp = (string)$wp;
+        $this->_code = (string)$code;
     }
 
     /**
@@ -173,7 +180,18 @@ class theActivity implements Model_Artifact_Stateless, Model_Artifact_Passive {
      * @return $this
      */
     public function setCost(Model_Cost $cost) {
-        $this->_cost = $cost;
+        $this->_cost = clone $cost;
+        return $this;
+    }
+
+    /**
+     * Set criteria
+     *
+     * @param theActivityCriteria The criteria of closure
+     * @return $this
+     */
+    public function setCriteria(theActivityCriteria $criteria) {
+        $this->_criteria = $criteria;
         return $this;
     }
 
@@ -186,6 +204,15 @@ class theActivity implements Model_Artifact_Stateless, Model_Artifact_Passive {
     public function setPerformer(theStakeholder $person) {
         $this->_performer = $person;
         return $this;
+    }
+
+    /**
+     * Is it a milestone
+     *
+     * @return boolean
+     */
+    public function isMilestone() {
+        return isset($this->_duration) && ($this->_duration == 0);
     }
 
     /**
@@ -220,6 +247,26 @@ class theActivity implements Model_Artifact_Stateless, Model_Artifact_Passive {
      * @todo implement it
      */
     public function requestCostEstimate() {
+    }
+
+    /**
+     * Activity belongs to this work package?
+     *
+     * @param theWorkPackage
+     * @return boolean
+     */
+    public function belongsTo(theWorkPackage $wp) {
+        return $wp->code == $this->_wp;
+    }
+
+    /**
+     * Activity equals to another one?
+     *
+     * @param theActivity
+     * @return boolean
+     */
+    public function equalsTo(theActivity $activity) {
+        return $activity->name == $this->name;
     }
 
     /**

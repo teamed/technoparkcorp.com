@@ -19,21 +19,22 @@
  */
 
 /**
- * Iterate activities
+ * Total cost of all activities
  * 
  * @package Slice_Plugin
  */
-class Slice_Plugin_Iterate extends Slice_Plugin_Abstract {
+class Slice_Plugin_Sum extends Slice_Plugin_Abstract {
 
     /**
-     * Iterate
+     * Summarize them
      *
-     * @return mixed
+     * @return Model_Cost
      **/
-    public function execute($style, array $options = array()) {
-        validate()->true(count($this) == 1, "You can iterate only when you have ONE activity in slice");
-        $method = 'iterate_' . ucfirst($style);
-        return $this->$method($options);
+    public function execute() {
+        $sum = new Model_Cost();
+        foreach ($this as $activity)
+             $sum->add($activity->cost);
+        return $sum;
     }
         
 }

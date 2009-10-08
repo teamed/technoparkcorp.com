@@ -25,4 +25,57 @@
  */
 class Slice_Plugin_Simple extends Slice_Plugin_Abstract {
 
+    /**
+     * WP code
+     *
+     * @var theWorkPackage
+     */
+    protected $_wp;
+
+    /**
+     * Set name of the holder
+     *
+     * @return void
+     **/
+    public function setWp(theWorkPackage $wp) {
+        $this->_wp = $wp;
+        return $this;
+    }
+
+    /**
+     * Delete one activity
+     *
+     * @param theActivity Activity to delete
+     * @return void
+     **/
+    public final function delete(theActivity $toKill) {
+        foreach ($this->_activities as $key=>$activity) {
+            if ($activity->equalsTo($toKill)) {
+                unset($this->_activities[$key]);
+            }
+        }
+    }
+    
+    /**
+     * Create one new activity
+     *
+     * @param string Code of new activity
+     * @return theActivity
+     **/
+    public final function add($code) {
+        $activity = theActivity::factory($this->_wp->code, $code);
+        $this->_activities[] = $activity;
+        return $activity;
+    }
+    
+    /**
+     * What activities in the global list are here, in this slice?
+     *
+     * @param theActivity Activity to check
+     * @return boolean
+     **/
+    protected function _isInside(theActivity $activity) {
+        return $activity->belongsTo($this->_wp);
+    }
+        
 }

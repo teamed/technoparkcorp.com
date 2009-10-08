@@ -19,21 +19,23 @@
  */
 
 /**
- * Iterate activities
+ * Only activities in the array
  * 
  * @package Slice_Plugin
  */
-class Slice_Plugin_Iterate extends Slice_Plugin_Abstract {
+class Slice_Plugin_OnlyActivities extends Slice_Plugin_Abstract {
 
     /**
-     * Iterate
+     * Get a sector of this slice
      *
-     * @return mixed
+     * @return $this
      **/
-    public function execute($style, array $options = array()) {
-        validate()->true(count($this) == 1, "You can iterate only when you have ONE activity in slice");
-        $method = 'iterate_' . ucfirst($style);
-        return $this->$method($options);
+    public function execute() {
+        foreach ($this as $key=>$activity) {
+            if ($activity->isMilestone())
+                unset($this[$key]);
+        }
+        return $this;
     }
         
 }

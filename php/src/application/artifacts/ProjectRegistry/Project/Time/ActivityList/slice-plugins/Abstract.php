@@ -23,7 +23,14 @@
  * 
  * @package Slice_Plugin
  */
-abstract class Slice_Plugin_Abstract extends ArrayIterator {
+abstract class Slice_Plugin_Abstract implements Iterator {
+
+    /**
+     * List of actitivites
+     *
+     * @var theActivities|array
+     */
+    protected $_activities;
 
     /**
      * Static plugin loader
@@ -35,26 +42,27 @@ abstract class Slice_Plugin_Abstract extends ArrayIterator {
     /**
      * Create new plugin, using list of activities
      *
+     * @param string Name of plugin to create
+     * @param theActivities Holder of this SLICE
      * @return void
      **/
-    public static function factory($name, array $list) {
+    public static function factory($name, $activities) {
         if (!isset(self::$_loader)) {
             self::$_loader = new Zend_Loader_PluginLoader(array('Slice_Plugin_' => dirname(__FILE__)));
         }
         // load this plugin, if possible
         $sliceName = self::$_loader->load($name);
-        return new $sliceName($list);        
+        return new $sliceName($activities);        
     }
      
     /**
      * Save list of activities to work with
      *
-     * @param array List of activities
+     * @param theActivities Holder of this SLICE
      * @return void
      **/
-    public function __construct(array $activities) {
-        foreach ($activities as $activity)
-            $this[] = $activity;
+    public function __construct($activities) {
+        $this->_activities = $activities;
     }
         
     /**
@@ -63,10 +71,88 @@ abstract class Slice_Plugin_Abstract extends ArrayIterator {
      * @return Slice_Plugin_Abstract
      **/
     public function __call($method, array $args) {
-        $slice = self::factory($method, $this->getArrayCopy());
+        $slice = self::factory($method, $this);
         if (method_exists($slice, 'execute'))
             return call_user_func_array(array($slice, 'execute'), $args);
         return $slice;
+    }
+        
+    /**
+     * Delete one activity
+     *
+     * @param theActivity Activity to delete
+     * @return void
+     **/
+    public function delete(theActivity $toKill) {
+        return $this->_activities->delete($toKill);
+    }
+    
+    /**
+     * Create one new activity
+     *
+     * @param string Code of new activity
+     * @return theActivity
+     **/
+    public function add($code) {
+        return $this->_activities->add($code);
+    }
+    
+    /**
+     * Iterator::current()
+     *
+     * @return theActivity
+     **/
+    public function current() {
+        return $this->_activities->current();
+    }
+    
+    /**
+     * Iterator::key()
+     *
+     * @return theActivity
+     **/
+    public function key() {
+        return $this->_activities->key();
+    }
+    
+    /**
+     * Iterator::next()
+     *
+     * @return theActivity
+     **/
+    public function next() {
+        return $this->_activities->next();
+    }
+    
+    /**
+     * Iterator::rewind()
+     *
+     * @return theActivity
+     **/
+    public function rewind() {
+        $this->_activities->rewind();
+        while ($this->_activities->current() && !$this->_isInside($this->_activities->current())) {
+            $this->_activities->next();
+        }
+    }
+    
+    /**
+     * Iterator::valid()
+     *
+     * @return theActivity
+     **/
+    public function valid() {
+        return $this->_activities->valid();
+    }
+    
+    /**
+     * What activities in the global list are here, in this slice?
+     *
+     * @param theActivity Activity to check
+     * @return boolean
+     **/
+    protected function _isInside(theActivity $activity) {
+        return true;
     }
         
 }

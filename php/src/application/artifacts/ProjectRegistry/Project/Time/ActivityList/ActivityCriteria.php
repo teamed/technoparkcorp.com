@@ -19,21 +19,41 @@
  */
 
 /**
- * Iterate activities
- * 
- * @package Slice_Plugin
+ * Criteria of activity closure
+ *
+ * @package Artifacts
  */
-class Slice_Plugin_Iterate extends Slice_Plugin_Abstract {
+class theActivityCriteria {
 
     /**
-     * Iterate
+     * Construct it
      *
-     * @return mixed
+     * @return void
      **/
-    public function execute($style, array $options = array()) {
-        validate()->true(count($this) == 1, "You can iterate only when you have ONE activity in slice");
-        $method = 'iterate_' . ucfirst($style);
-        return $this->$method($options);
+    protected function __construct() {
     }
-        
+
+    /**
+     * Factory method
+     *
+     * @param theActivity Activity to attach to
+     * @return theActivityCriteria
+     **/
+    public static function factory(theActivity $activity) {
+        $criteria = new self();
+        $activity->setCriteria($criteria);
+        return $criteria;
+    }
+
+    /**
+     * Condition to attach
+     *
+     * @param string Condition
+     * @return $this
+     */
+    public function when($condition) {
+        // ...
+        return $this;
+    }
+
 }

@@ -73,14 +73,9 @@ class theActivities extends ArrayIterator implements Model_Artifact_Stateless, M
      * @return Slice_Plugin_Simple
      **/
     public function getSliceByWp(theWorkPackage $wp) {
-        $list = array();
-        foreach ($this as $activity) {
-            if ($activity->wp == $wp->code)
-                $list[] = $activity;
-        }
-        
         require_once dirname(__FILE__) . '/slice-plugins/Abstract.php';
-        return Slice_Plugin_Abstract::factory('simple', $list);
+        return Slice_Plugin_Abstract::factory('simple', $this)
+            ->setWp($wp);
     }
 
 }
