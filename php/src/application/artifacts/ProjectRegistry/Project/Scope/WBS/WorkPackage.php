@@ -26,11 +26,11 @@
 class theWorkPackage implements Model_Artifact_Stateless {
     
     /**
-     * WBS, holder of this work package
+     * Project
      *
-     * @var theWbs
+     * @var theProject
      */
-    protected $_wbs;
+    protected $_project;
     
     /**
      * Unique code
@@ -74,7 +74,7 @@ class theWorkPackage implements Model_Artifact_Stateless {
      * @return void
      */
     public function setWbs(theWbs $wbs) {
-        $this->_wbs = $wbs;
+        $this->_project = $wbs->ps()->parent;
     }
     
     /**
@@ -91,6 +91,15 @@ class theWorkPackage implements Model_Artifact_Stateless {
             case 'code':
                 return $this->_code;
         }
+    }
+    
+    /**
+     * Split work package to activities
+     *
+     * @return void
+     **/
+    public final function split(theActivities $list) {
+        return $this->_project->metrics[$this->_code]->split($list);
     }
     
 }
