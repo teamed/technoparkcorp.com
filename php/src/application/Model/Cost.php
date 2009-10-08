@@ -127,4 +127,17 @@ final class Model_Cost {
         return $this;
     }
 
+    /**
+     * Divide it
+     *
+     * @param integer|Model_Cost Divider
+     * @return $this
+     **/
+    public function divide($div) {
+        if ($div instanceof Model_Cost)
+            return $this->_value / $div->usd;
+        $this->_value /= $div;
+        return $this;
+    }
+
 }
