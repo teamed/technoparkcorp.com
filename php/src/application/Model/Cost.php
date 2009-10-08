@@ -38,7 +38,7 @@ final class Model_Cost {
      *
      * @var integer
      */
-    protected $_value;
+    protected $_cents;
     
     /**
      * Currency
@@ -54,22 +54,42 @@ final class Model_Cost {
      * @return void
      */
     public function __construct($value = false) {
+        $this->set($value);
+    }
+
+    /**
+     * Create class
+     *
+     * @return Model_Cost
+     **/
+    public static function factory($value) {
+        return new Model_Cost($value);
+    }
+
+    /**
+     * Set value
+     *
+     * @param string Text representation of the cost
+     * @return void
+     */
+    public function set($value) {
         
         $currency = 'USD';
         $value = (string)$value;
         
         if ($value && !is_numeric($value)) {
-            preg_match('/^([\-\+]?\d+(?:\.\d+)?)(?:\s?(\w{3}))?$/', $value, $matches);
+            if (!preg_match('/^([\-\+]?\d+(?:\.\d+)?)(?:\s?(\w{3}))?$/', str_replace(',', '', $value), $matches))
+                FaZend_Exception::raise('Model_Cost_InvalidFormat', "Invalid format: '{$value}'");
             $value = $matches[1];
             $currency = $matches[2];
         }
         
-        $this->_value = (int)($value * 100);
+        $this->_cents = (int)($value * 100);
         // we should implement it properly
         $this->_currency = Model_Flyweight::factory('Zend_Currency', 'en_US', $currency)
             ->setFormat(array(
                 'precision' => 2, // cents to show
-                'display' => Zend_Currency::USE_SYMBOL,
+                'display' => Zend_Currency::USE_SHORTNAME,
                 'position' => Zend_Currency::RIGHT));
     }
 
@@ -90,9 +110,9 @@ final class Model_Cost {
     public function __get($name) {
         switch ($name) {
             case 'usd':
-                return $this->_getInUsd() / 100;
+                return $this->_getCents() / 100;
             case 'cents':
-                return $this->_getInUsd();
+                return $this->_getCents();
         }
     }
 
@@ -102,8 +122,8 @@ final class Model_Cost {
      * @return integer
      * @todo implement it properly, getting conversion rates somewhere
      **/
-    protected function _getInUsd() {
-        return $this->_value;
+    protected function _getCents() {
+        return $this->_cents;
     }
     
     /**
@@ -112,7 +132,17 @@ final class Model_Cost {
      * @return $this
      **/
     public function add(Model_Cost $cost) {
-        $this->_value += 100 * $cost->usd;
+        $this->_cents += $cost->cents;
+        return $this;
+    }
+
+    /**
+     * Deduct this value from current one
+     *
+     * @return $this
+     **/
+    public function deduct(Model_Cost $cost) {
+        $this->_cents -= $cost->cents;
         return $this;
     }
 
@@ -123,7 +153,7 @@ final class Model_Cost {
      * @return $this
      **/
     public function multiply($num) {
-        $this->_value *= $num;
+        $this->_cents *= $num;
         return $this;
     }
 
@@ -135,9 +165,37 @@ final class Model_Cost {
      **/
     public function divide($div) {
         if ($div instanceof Model_Cost)
-            return $this->_value / $div->usd;
-        $this->_value /= $div;
+            return $this->_cents / $div->cents;
+        $this->_cents /= $div;
         return $this;
+    }
+
+    /**
+     * Greater than
+     *
+     * @param Model_Cost|mixed Another value
+     * @return boolean
+     **/
+    public function greaterThan(Model_Cost $cost = null, $orEqual = false) {
+        if (is_null($cost))
+            return $this->_cents > 0;
+        if ($orEqual)
+            return $this->_cents >= $cost->cents;
+        return $this->_cents > $cost->cents;
+    }
+
+    /**
+     * Less than
+     *
+     * @param Model_Cost|mixed Another value
+     * @return boolean
+     **/
+    public function lessThan(Model_Cost $cost = null, $orEqual = false) {
+        if (is_null($cost))
+            return $this->_cents < 0;
+        if ($orEqual)
+            return $this->_cents <= $cost->cents;
+        return $this->_cents < $cost->cents;
     }
 
 }
