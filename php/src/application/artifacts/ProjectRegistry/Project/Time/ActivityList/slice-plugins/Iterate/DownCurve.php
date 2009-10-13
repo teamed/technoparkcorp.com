@@ -26,6 +26,20 @@
 class Slice_Plugin_Iterate_DownCurve extends Slice_Plugin_Abstract {
 
     /**
+     * Minimim
+     *
+     * @var float
+     */
+    protected $_min;
+
+    /**
+     * Vertical delta
+     *
+     * @var float
+     */
+    protected $_d;
+
+    /**
      * Iterate
      *
      * @return mixed
@@ -36,26 +50,124 @@ class Slice_Plugin_Iterate_DownCurve extends Slice_Plugin_Abstract {
         $total = Model_Cost::factory($activity->cost);
         $this->delete($activity);
         
-        // the smallest decrement we can afford
-        $decrement = Model_Cost::factory($options['minCost'])->divide(2.4);
-        $cost = Model_Cost::factory($options['maxCost']);
-        $i = 0;
+        $this->_min = Model_Cost::factory($options['minCost'])->usd;
         
-        do {
-            $this->add($i++)
-                ->setCost($cost)
-                ->setSow($options['sow']);
-                
-            $total->deduct($cost);
-            $cost->deduct($decrement);
+        /**
+         * We will allocate numbers using $cos(x)$ function.
+         * We assume that $x$ will be changing in $[0;\pi/2]$ interval.
+         *
+         * Vertical axis indicates the amount of money to be spend,
+         * and horizontal axis indicates time.
+         *
+         * Function used: $f(x) = min + cos(x) * D$, where
+         * $D$ is should be calculated using integral. We assume
+         * that $\int f(x)$ in interval $[0;\pi/2]$ equals to total cost of work package.
+         * Thus, $\int f(x) = x * min + sin(x) * D = T$, $T$ is total cost.
+         * Thus, $D = (T - x * min) / sin(x)$
+         *
+         * On interval $[0;pi/2]$ $x$ equals to $\pi/2$ and $sin(x)$ equals to $1$
+         */
+        $this->_d = $total->usd - $this->_min * pi()/2;
+        
+        /** 
+         * The smallest horizontal increment $p$ of $X$ we can afford, should
+         * produce a rectangle on interval $[\pi/2-p;\pi/2]$ which square equals to $min$.
+         *
+         * Thus, $F(\pi/2) - F(x) = min$. Solution see below.
+         */
+        $p = pi()/2 - $this->_delta();
+        
+        /**
+         * We start from the left horizontal point and move right until we reach $\pi/2$
+         */
+        $i = 1;
+        for ($a = 0; $a < pi()/2; $a += $p) {
             
-            // if the cost we are going to deduct in the next
-            // activity is too small
-            // if ($total->lessThan(Model_Cost::factory($cost)->add(Model_Cost::factory($options['minCost']))))
-                // $cost->set($total);
-        } while ($total->greaterThan());
+            // to avoid small pieces at the end
+            if ($a+2*$p > pi()/2)
+                $p = pi()/2 - $a;
+                
+            $activity = $this->add($i++)
+                ->setCost(Model_Cost::factory($this->_square($a, $a+$p)))
+                ->setSow($options['sow']);
+        };
+    }
+    
+    /**
+     * Calculate square of a vertical bar on graph
+     *
+     * @param float X-coordinate, start
+     * @param float X-coordinate, stop
+     * @return float
+     **/
+    protected function _square($a, $b) {
+        return $this->_int($b) - $this->_int($a);
+    }
         
-        return $i;
+    /**
+     * Function
+     *
+     * @param float X-coordinate
+     * @return float
+     **/
+    protected function _f($x) {
+        return $this->_min + cos($x) * $this->_d;
+    }
+        
+    /**
+     * Integral of f(x) = F(x)
+     *
+     * @param float X-coordinate
+     * @return float
+     **/
+    protected function _int($x) {
+        return $x * $this->_min + sin($x) * $this->_d;
+    }
+    
+    /**
+     * Calculate minimal horizontal delta
+     *
+     * The smallest horizontal increment $p$ of $X$ we can afford, should
+     * produce a rectangle on interval $[\pi/2-p;\pi/2]$ which square equals to $min$.
+     *
+     * Thus, $F(\pi/2) - F(x) = min$, where $F(x) = min * x + d * sin(x) = $.
+     *
+     * $ = min * \pi/2 + d - min * x - d * sin(x) = min$
+     *
+     * $ min * \pi/2 - min + d - min * x - d * sin(x) = 0$
+     *
+     * Now we have function $\lambda(x)$ which should be equal to zero with
+     * some value of $x$. We will use Newton-Raphson method, see link. 
+     *
+     * @link http://mathcentral.uregina.ca/QQ/database/QQ.09.00/roble1.html
+     * @return float
+     **/
+    protected function _delta() {
+        $x = 0; // it's important to start from zero!
+        do {
+            $x = $x - $this->_lambda($x) / $this->_lambdaDerivative($x);
+        } while (abs($this->_lambda($x)) > 0.01);
+        return $x;
+    }
+
+    /**
+     * Lambda for _delta() calculation
+     *
+     * @param float X
+     * @return float
+     **/
+    protected function _lambda($x) {
+        return $this->_min * pi()/2 + $this->_d - $this->_min * $x - $this->_d * sin($x) - $this->_min;
+    }
+        
+    /**
+     * Derivative for lambda
+     *
+     * @param float X
+     * @return float
+     **/
+    protected function _lambdaDerivative($x) {
+        return - $this->_min - $this->_d * cos($x);
     }
         
 }
