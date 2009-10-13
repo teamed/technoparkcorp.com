@@ -48,25 +48,6 @@ class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap {
         Shared_Cache::setLifecycle(5 * 60); // 5 hours cache lifecycle
     }
 
-    /**
-     * Intialize View
-     *
-     * @return void
-     */
-    protected function _initPanelView() {
-        $this->bootstrap('Fazend');
-        
-        // get root of the entire tree
-        $this->bootstrap('view');
-        $view = $this->getResource('view');
-
-        // root of the entire artifact tree
-        $view->root = Model_Artifact::root();
-
-        // intiate pages builder
-        Model_Pages::getInstance()->setView($view);
-    }
-
 }
 
 // total amount of seconds in day

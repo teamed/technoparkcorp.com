@@ -2,11 +2,14 @@
 
 <? foreach (Model_Article::lucene()->find(Zend_Controller_Front::getInstance()->getRequest()->getPost('keyword')) as $hit): ?>
 
-    <? $article = Model_Article::createByLabel($hit->path) ?>
+    <? $doc = $hit->getDocument(); ?>
+
+    <? $article = Model_Article::createByLabel($doc->page); ?>
             
     <p>
-        <a title="<?=$this->escape($page->title)?>" href="<?=$this->staticUrl($page->path)?>"><?=$this->escape($page->title)?></a><br/> 
-        ......
+        <b><a title="<?=$article->title?>" 
+            href="<?=$this->staticUrl($article->page)?>"><?=$article->title?></a></b><br/> 
+        <?=$this->escape($article->description)?>
     </p>
 
 <? endforeach; ?>

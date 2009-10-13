@@ -66,11 +66,32 @@ class StaticController extends FaZend_Controller_Action {
 
         // make this menu element visible, no matter what
         $page = $this->view->navigation()->findOneBy('path', $article->page);
-        $page->visible = true;
-        $page->parent->visible = true;
+        if ($page) {
+            $page->visible = true;
+            $page->parent->visible = true;
+        }
 
         // parse special XML meta symbols, like ${url:about/news}
         //$this->view->content = XMLDocument::parseText($this->view->content);
+    }
+
+    /**
+     * Download document in PDF
+     *
+     * @return void
+     **/
+    public function pdfAction() {
+        $article = Model_Article::createByLabel($this->_getParam('page'));
+        $pdf = $article->asPdf();
+
+            $this->_helper->layout->disableLayout();
+            $this->_helper->viewRenderer->setNoRender();
+
+            $this->getResponse()
+                ->setHeader('Content-Type', 'application/pdf')
+                ->setHeader('Content-Length', strlen($pdf))
+                ->setBody($pdf);
+        // return $this->_returnPDF($pdf);
     }
 
 }

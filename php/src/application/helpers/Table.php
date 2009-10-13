@@ -87,6 +87,9 @@ class Helper_Table extends FaZend_View_Helper {
 
         FaZend_Paginator::addPaginator($iterator, $this->getView(), 1, 'paginator');
 
+        // in other words - NO paging
+        $this->getView()->paginator->setItemCountPerPage(1000);
+        
         $this->_table->setPaginator($this->getView()->paginator);
         return $this;
     }

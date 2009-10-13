@@ -24,6 +24,8 @@
  * @package Controllers
  */
 class Model_Navigation {
+    
+    const USE_CACHE = true;
 
     /**
      * Cache of navigation map
@@ -54,12 +56,17 @@ class Model_Navigation {
             $container->setPages(self::_cache()->load('map'));
     
         } else {
+            
+            // kill LUCENE search index
+            Model_Article::lucene(true);
 
             // we should calculate them again
             self::_addMenuPages($container);
 
             // and save to cache
             self::_cache()->save($container->getPages(), 'map');
+            
+            logg('Indexed ' . Model_Article::lucene()->numDocs() . ' articles in Lucene');
 
         }
 
@@ -93,6 +100,8 @@ class Model_Navigation {
             $article = Model_Article::createByLabel($fullLabel);
             
             // add this article to search
+            // this operation takes time, but since the entire navigation-building
+            // process is cached - it's OK
             $article->luceneIndex();
 
             // create and add new page to the current collection
@@ -153,7 +162,7 @@ class Model_Navigation {
             return self::$_cache;
 
         self::$_cache = Zend_Cache::factory('Core', 'File', array(
-            'caching' => false,
+            'caching' => self::USE_CACHE,
             'cache_id_prefix' => 'panel2nav' . FaZend_Revision::get(),
             'lifetime' => null, // live forever
             'automatic_serialization' => true,

@@ -67,6 +67,12 @@ class PanelController extends FaZend_Controller_Action {
             Model_User::logIn($identity);
         }
 
+        // root of the entire artifact tree
+        $this->view->root = Model_Artifact::root();
+
+        // intiate pages builder
+        Model_Pages::getInstance()->setView($this->view);
+
         // change layout of the view
         Zend_Layout::getMvcInstance()->setLayout('panel');
 

@@ -73,7 +73,7 @@ class Model_Article {
      * Create new article
      *
      * @return void
-     * @throw Model_Article_NotFound
+     * @throws Model_Article_NotFound
      */
     protected function __construct() {
     }
@@ -81,9 +81,10 @@ class Model_Article {
     /**
      * Create new article by file
      *
-     * @param string XML file path
-     * @return void
-     * @throw Model_Article_NotFound
+     * @param string XML file path, absolute
+     * @param string Name of the page to create, label
+     * @return Model_Article
+     * @throws Model_Article_NotFound
      */
     public static function createFromFile($file, $page) {
 
@@ -99,8 +100,9 @@ class Model_Article {
     /**
      * Create new article by label
      *
-     * @return void
-     * @throw Model_Article_NotFound
+     * @param string Path of the article, like 'process/scope'
+     * @return Model_Article
+     * @throws Model_Article_NotFound
      */
     public static function createByLabel($page) {
 
@@ -112,7 +114,7 @@ class Model_Article {
             // if it's absent - we go away
             if (!file_exists(CONTENT_PATH . '/' . $xmlFile . '.xml'))
                 FaZend_Exception::raise('Model_Article_NotFound', 
-                    "page $page not found: (tried {$xmlFile}.xml)");
+                    "Page '{$page}' not found: (tried '{$xmlFile}.xml')");
         }    
 
         return self::createFromFile(CONTENT_PATH . '/' . $xmlFile . '.xml', $page);
@@ -133,16 +135,20 @@ class Model_Article {
     /**
      * Return search engine instance
      *
+     * @param boolean Shall we kill the existing index and start over?
      * @return Zend_Search_Lucene
      */
-    public static function lucene() {
+    public static function lucene($refresh = false) {
         
         if (!isset(self::$_lucene)) {        
             $path = TEMP_PATH . '/panel2lucene';
-            if (file_exists($path))
-                $index = Zend_Search_Lucene::create($path);
+            if (file_exists($path) && !$refresh)
+                self::$_lucene = Zend_Search_Lucene::open($path);
             else
-                $index = Zend_Search_Lucene::open($path);
+                self::$_lucene = Zend_Search_Lucene::create($path);
+                
+            Zend_Search_Lucene::setResultSetLimit(20);
+            Zend_Search_Lucene::setTermsPerQueryLimit(100);
         }
         
         return self::$_lucene;
@@ -152,20 +158,30 @@ class Model_Article {
     /**
      * Add this article to lucene search index
      *
+     * If the article already exists in the index, ignore it
+     *
      * @return void
      */
-    public function luceneIndex() {
-        $hits = self::lucene()->find('path:' . $this->path);
-        if (count($hits) > 1) {
-            foreach ($hits as $hit)
-                self::lucene()->delete($hit->id);
-        }
-        
+    public function luceneIndex() {        
         $doc = new Zend_Search_Lucene_Document();
-        $doc->addField(Zend_Search_Lucene_Field::Text('title', $this->title));
-        $doc->addField(Zend_Search_Lucene_Field::Text('path', $this->path));
-        $doc->addField(Zend_Search_Lucene_Field::UnStored('content', $this->text));
+        $doc->addField(Zend_Search_Lucene_Field::Text('page', $this->page));
+        foreach (array('label', 'title', 'description', 'keywords', 'text') as $field)
+            $doc->addField(Zend_Search_Lucene_Field::UnStored($field, $this->$field));
         self::lucene()->addDocument($doc);
+    }
+    
+    /**
+     * Return PDF copy of this article
+     *
+     * @return PDF
+     * @todo To be implemented later
+     **/
+    public function asPdf() {
+        $pdf = new Zend_Pdf();
+        
+        // to be implemented!
+        
+        return $pdf->render();
     }
 
     /**
