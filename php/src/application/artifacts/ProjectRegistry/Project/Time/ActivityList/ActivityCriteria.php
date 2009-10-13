@@ -26,6 +26,13 @@
 class theActivityCriteria {
 
     /**
+     * Conditions
+     *
+     * @var array
+     */
+    protected $_conditions = array();
+
+    /**
      * Construct it
      *
      * @return void
@@ -52,6 +59,8 @@ class theActivityCriteria {
      */
     public function when($condition) {
         // ...
+        $this->_conditions[] = $condition;
+        
         return $this;
     }
 

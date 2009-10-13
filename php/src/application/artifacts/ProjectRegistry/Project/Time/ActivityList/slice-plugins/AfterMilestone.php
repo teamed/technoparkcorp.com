@@ -42,6 +42,7 @@ class Slice_Plugin_AfterMilestone extends Slice_Plugin_Abstract {
         // create milestone for each activity
         foreach ($activities as $activity) {
             $milestone = $this->add($this->_nextCode());
+            $activity->addPredecessor($milestone);
             $names[] = $milestone->name;
         }
         return $this->selectedOnly($names);

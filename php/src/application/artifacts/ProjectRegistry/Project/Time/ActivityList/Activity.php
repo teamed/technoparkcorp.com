@@ -25,6 +25,8 @@
  */
 class theActivity implements Model_Artifact_Stateless, Model_Artifact_Passive {
 
+    const END_TO_START = 'ES';
+
     /**
      * Work package it came from, code
      *
@@ -196,12 +198,26 @@ class theActivity implements Model_Artifact_Stateless, Model_Artifact_Passive {
     }
 
     /**
+     * Add precessor
+     *
+     * @param theActivity Predecessor
+     * @return $this
+     */
+    public function addPredecessor(theActivity $predecessor, $type = self::END_TO_START, $lag = 0) {
+        $this->_predecessors[] = FaZend_StdObject::create()
+            ->set('activity', $predecessor)
+            ->set('type', $type)
+            ->set('lag', $lag);
+        return $this;
+    }
+
+    /**
      * Is it a milestone
      *
      * @return boolean
      */
     public function isMilestone() {
-        return isset($this->_duration) && ($this->_duration == 0);
+        return !isset($this->_cost);
     }
 
     /**
