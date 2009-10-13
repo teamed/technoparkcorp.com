@@ -100,7 +100,7 @@ class theActivity implements Model_Artifact_Stateless, Model_Artifact_Passive {
      *
      * @var theActivityPredecessor
      */
-    protected $_predecessors;
+    protected $_predecessors = array();
     
     /**
      * Construct it
@@ -151,14 +151,14 @@ class theActivity implements Model_Artifact_Stateless, Model_Artifact_Passive {
      * @return mixed
      **/
     public function __get($name) {
-        $var = '_' . $name;
-        if (property_exists($this, $var))
-            return $this->$var;
-        
         $method = '_get' . ucfirst($name);
         if (method_exists($this, $method))
             return $this->$method();
             
+        $var = '_' . $name;
+        if (property_exists($this, $var))
+            return $this->$var;
+        
         FaZend_Exception::raise('Activity_PropertyOrMethodNotFound', "Can't find what is '$name'");
     }
 
@@ -181,17 +181,6 @@ class theActivity implements Model_Artifact_Stateless, Model_Artifact_Passive {
      */
     public function setCost(Model_Cost $cost) {
         $this->_cost = clone $cost;
-        return $this;
-    }
-
-    /**
-     * Set criteria
-     *
-     * @param theActivityCriteria The criteria of closure
-     * @return $this
-     */
-    public function setCriteria(theActivityCriteria $criteria) {
-        $this->_criteria = $criteria;
         return $this;
     }
 
@@ -276,6 +265,17 @@ class theActivity implements Model_Artifact_Stateless, Model_Artifact_Passive {
      */
     protected function _getName() {
         return $this->_wp . '.' . $this->_code;
+    }
+
+    /**
+     * Get criteria
+     *
+     * @return theActivityCriteria The criteria of closure
+     */
+    protected function _getCriteria() {
+        if (!isset($this->_criteria))
+            $this->_criteria = theActivityCriteria::factory($this);
+        return $this->_criteria;
     }
 
 }

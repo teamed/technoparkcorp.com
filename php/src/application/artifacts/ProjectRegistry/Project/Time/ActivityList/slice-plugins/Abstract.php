@@ -23,12 +23,12 @@
  * 
  * @package Slice_Plugin
  */
-abstract class Slice_Plugin_Abstract implements Iterator {
+abstract class Slice_Plugin_Abstract implements Iterator, Countable {
 
     /**
      * List of actitivites
      *
-     * @var theActivities|array
+     * @var theActivities
      */
     protected $_activities;
 
@@ -47,6 +47,8 @@ abstract class Slice_Plugin_Abstract implements Iterator {
      * @return void
      **/
     public static function factory($name, $activities) {
+        assert($activities instanceof Slice_Plugin_Abstract || $activities instanceof theActivities);
+
         if (!isset(self::$_loader)) {
             self::$_loader = new Zend_Loader_PluginLoader(array('Slice_Plugin_' => dirname(__FILE__)));
         }
@@ -62,6 +64,8 @@ abstract class Slice_Plugin_Abstract implements Iterator {
      * @return void
      **/
     public function __construct($activities) {
+        assert($activities instanceof Slice_Plugin_Abstract || $activities instanceof theActivities);
+        
         $this->_activities = $activities;
     }
         
@@ -125,6 +129,19 @@ abstract class Slice_Plugin_Abstract implements Iterator {
     }
     
     /**
+     * Countable::count()
+     *
+     * @return integer
+     **/
+    public function count() {
+        $count = 0;
+        foreach ($this->_activities as $activity)
+            if ($this->_isInside($activity))
+                $count++;
+        return $count;
+    }
+    
+    /**
      * Iterator::rewind()
      *
      * @return theActivity
@@ -139,7 +156,7 @@ abstract class Slice_Plugin_Abstract implements Iterator {
     /**
      * Iterator::valid()
      *
-     * @return theActivity
+     * @return boolean
      **/
     public function valid() {
         return $this->_activities->valid();
@@ -153,6 +170,19 @@ abstract class Slice_Plugin_Abstract implements Iterator {
      **/
     protected function _isInside(theActivity $activity) {
         return true;
+    }
+        
+    /**
+     * Get next available code for activity
+     *
+     * @return integer
+     **/
+    protected function _nextCode() {
+        $code = 0;
+        foreach ($this as $activity)
+            if ($activity->code >= $code)
+                $code = $activity->code + 1;
+        return $code;
     }
         
 }

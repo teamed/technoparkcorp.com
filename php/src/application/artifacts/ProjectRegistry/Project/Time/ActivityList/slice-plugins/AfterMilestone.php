@@ -19,23 +19,32 @@
  */
 
 /**
- * Iterate activities
+ * Set one milestone in front of every activity from the slice
  * 
  * @package Slice_Plugin
  */
-class Slice_Plugin_Iterate extends Slice_Plugin_Abstract {
+class Slice_Plugin_AfterMilestone extends Slice_Plugin_Abstract {
 
     /**
-     * Iterate
+     * Set one milestone in front of every activity and return a list of milestones
      *
-     * @return mixed
+     * @param array List of options
+     * @return $this
      **/
-    public function execute($style, array $options = array()) {
-        validate()->true(count($this) == 1, 
-            "You can iterate only when you have ONE activity in slice, now there are " . count($this));
-        
-        $method = 'iterate_' . ucfirst($style);
-        return $this->$method($options);
+    public function execute(array $options = array()) {
+        $names = array();
+
+        // grab activities to work with
+        $activities = array();
+        foreach ($this as $activity)
+            $activities[] = $activity;
+            
+        // create milestone for each activity
+        foreach ($activities as $activity) {
+            $milestone = $this->add($this->_nextCode());
+            $names[] = $milestone->name;
+        }
+        return $this->selectedOnly($names);
     }
         
 }

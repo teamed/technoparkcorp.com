@@ -32,8 +32,10 @@ class Slice_Plugin_Sum extends Slice_Plugin_Abstract {
      **/
     public function execute() {
         $sum = new Model_Cost();
-        foreach ($this as $activity)
-             $sum->add($activity->cost);
+        foreach ($this as $activity) {
+            if ($activity->cost instanceof Model_Cost)
+                $sum->add($activity->cost); 
+        }
         return $sum;
     }
         

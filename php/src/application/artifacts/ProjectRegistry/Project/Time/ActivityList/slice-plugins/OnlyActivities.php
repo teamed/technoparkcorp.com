@@ -26,16 +26,13 @@
 class Slice_Plugin_OnlyActivities extends Slice_Plugin_Abstract {
 
     /**
-     * Get a sector of this slice
+     * Show only activities, not milestones
      *
-     * @return $this
+     * @param theActivity Activity to check
+     * @return boolean
      **/
-    public function execute() {
-        foreach ($this as $key=>$activity) {
-            if ($activity->isMilestone())
-                unset($this[$key]);
-        }
-        return $this;
+    protected function _isInside(theActivity $activity) {
+        return !$activity->isMilestone();
     }
         
 }

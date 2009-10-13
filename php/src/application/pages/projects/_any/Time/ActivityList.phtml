@@ -3,7 +3,7 @@
 <h1>Activity List</h1>
 
 <?=$this->table()
-    ->setSource($this->project->activityList)
+    ->setSource($this->project->activityList->list)
     ->addColumn('name', 'Name')
     ->addColumn('sow', 'Statement of work')
     ->addColumn('cost', 'Cost')

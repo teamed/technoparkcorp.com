@@ -19,23 +19,38 @@
  */
 
 /**
- * Iterate activities
+ * Selected codes only
  * 
  * @package Slice_Plugin
  */
-class Slice_Plugin_Iterate extends Slice_Plugin_Abstract {
+class Slice_Plugin_SelectedOnly extends Slice_Plugin_Abstract {
 
     /**
-     * Iterate
+     * List of names of activities
      *
-     * @return mixed
+     * @var string[]
+     */
+    protected $_names = array();
+
+    /**
+     * Milestone is in the list
+     *
+     * @param theActivity Activity to check
+     * @return boolean
      **/
-    public function execute($style, array $options = array()) {
-        validate()->true(count($this) == 1, 
-            "You can iterate only when you have ONE activity in slice, now there are " . count($this));
-        
-        $method = 'iterate_' . ucfirst($style);
-        return $this->$method($options);
+    protected function _isInside(theActivity $activity) {
+        return in_array($activity->name, $this->_names);
     }
         
+    /**
+     * Set list of names to use
+     *
+     * @param array List of activity names
+     * @return $this
+     **/
+    public function execute(array $names = array()) {
+        $this->_names = $names;
+        return $this;
+    }
+    
 }

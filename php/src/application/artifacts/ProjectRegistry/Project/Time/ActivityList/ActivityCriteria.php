@@ -41,7 +41,6 @@ class theActivityCriteria {
      **/
     public static function factory(theActivity $activity) {
         $criteria = new self();
-        $activity->setCriteria($criteria);
         return $criteria;
     }
 

@@ -26,6 +26,31 @@
 class Slice_Plugin_Sector extends Slice_Plugin_Abstract {
 
     /**
+     * Start index
+     *
+     * @var integer
+     */
+    protected $_start = 0;
+
+    /**
+     * End index
+     *
+     * @var integer
+     */
+    protected $_end = null;
+
+    /**
+     * Show only activities, not milestones
+     *
+     * @param theActivity Activity to check
+     * @return boolean
+     **/
+    protected function _isInside(theActivity $activity) {
+        return ($activity->code >= $this->_start) &&
+            (is_null($this->_end) || ($activity->code <= $this->_end));
+    }
+        
+    /**
      * Get a sector of this slice
      *
      * @param integer First element (start with 0)
@@ -33,11 +58,8 @@ class Slice_Plugin_Sector extends Slice_Plugin_Abstract {
      * @return Slice_Plugin_Simple
      **/
     public function execute($start, $end) {
-        foreach ($this as $key=>$activity) {
-            if (($key < $start) ||
-                (!is_null($end) && ($key > $end)))
-                unset($this[$key]);
-        }
+        $this->_start = $start;
+        $this->_end = $end;
         return $this;
     }
         

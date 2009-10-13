@@ -93,9 +93,9 @@ class Model_Wobot_PM extends Model_Wobot {
      */
     public function getHumanName() {
         foreach (self::$_names as $regexp=>$name)
-            if (preg_match('/^[' . $regexp . ']/', $this->_project->name))
+            if (preg_match('/^[' . $regexp . ']/i', $this->_project->name))
                 return $name;
-        FaZend_Exception::raise('Model_Wobot_NameNotFound');
+        FaZend_Exception::raise('Model_Wobot_NameNotFound', "Can find human name for project: '{$this->_project->name}'");
     }
 
     /**

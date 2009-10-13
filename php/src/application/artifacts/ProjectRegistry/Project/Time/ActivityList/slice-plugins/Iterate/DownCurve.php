@@ -80,7 +80,7 @@ class Slice_Plugin_Iterate_DownCurve extends Slice_Plugin_Abstract {
         /**
          * We start from the left horizontal point and move right until we reach $\pi/2$
          */
-        $i = 1;
+        $i = 0;
         for ($a = 0; $a < pi()/2; $a += $p) {
             
             // to avoid small pieces at the end

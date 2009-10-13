@@ -64,7 +64,10 @@ class Slice_Plugin_Simple extends Slice_Plugin_Abstract {
      **/
     public final function add($code) {
         $activity = theActivity::factory($this->_wp->code, $code);
+        $key = key($this->_activities);
         $this->_activities[] = $activity;
+        if ($key != key($this->_activities))
+            bug(888);
         return $activity;
     }
     
