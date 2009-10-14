@@ -38,6 +38,20 @@ abstract class Model_Issue_Abstract {
      * @var string
      */
     protected $_code;
+    
+    /**
+     * List of messages in this trac
+     *
+     * @var Model_Issue_Message_Abstract[]
+     */
+    protected $_messages;
+
+    /**
+     * List of fields
+     *
+     * @var string[]
+     */
+    protected $_fields = array();
 
     /**
 	 * Constructor
@@ -49,6 +63,26 @@ abstract class Model_Issue_Abstract {
 	public function __construct(Model_Issue_Tracker_Abstract $tracker, $code) {
 	    $this->_tracker = $tracker;
 	    $this->_code = $code;
+    }
+
+    /**
+     * Set field value
+     *
+     * @return string
+     **/
+    public function setField($name, $value) {
+        $this->_fields[$name] = $value;
+        return $this;
+    }
+
+    /**
+     * Get field value
+     *
+     * @param string Name of the field
+     * @return string
+     **/
+    public function getField($name) {
+        return $this->_fields[$name];
     }
 
     /**
@@ -67,6 +101,26 @@ abstract class Model_Issue_Abstract {
      **/
     public function exists() {
         return $this->_tracker->issueExists($this);
+    }
+
+    /**
+     * Get list of messages
+     *
+     * @return Model_Issue_Message_Abstract
+     **/
+    public function getMessages() {
+        if (!isset($this->_messages))
+            $this->_messages = $this->_tracker->getIssueMessages($this);
+        return $this->_messages;
+    }
+
+    /**
+     * Make sure it exists in tracker
+     *
+     * @return void
+     **/
+    public function makeAlive() {
+        return $this->_tracker->makeIssueAlive($this);
     }
 
 }

@@ -56,8 +56,72 @@ class Model_Issue_Tracker_Trac extends Model_Issue_Tracker_Abstract {
      * @return boolean
      **/
     public function issueExists(Model_Issue_Abstract $issue) {
+        // if TRAC id already exists in the class - we are sure that issue exists in trac
+        if ($issue->getId())
+            return true;
+        
+        // if we already checked this issue and know that it's absent
+        if ($issue->getId() === false)
+            return false;
+        
+        // get list of IDs with this code (we expect JUST ONE)
         $ids = $this->_rpc()->query('code=' . $issue->getCode());
-        return count($ids) == 1;
+        logg("Query to Trac for code '{$issue->getCode()}' returned " . count($ids) . ' ticket');
+        
+        // nothing or something strange
+        if (count($ids) != 1) {
+            $issue->setId(false);
+            return false;
+        }
+    
+        // remember found ID in the class
+        $issue->setId(array_pop($ids));
+        
+        // return success
+        return true;
+    }
+        
+    /**
+     * List of messages in this issue
+     *
+     * @param Model_Issue_Abstract The issue to check
+     * @return Model_Issue_Message_Abstract
+     **/
+    public function getIssueMessages(Model_Issue_Abstract $issue) {
+        if (!$this->issueExists($issue))
+            FaZend_Exception::raise('Model_Issue_Tracker_Trac', 
+                "Issue {$issue->name} is absent in Trac");
+                
+        $log = $this->_rpc()->changeLog($issue->getId());
+        
+        return $log;
+    }
+        
+    /**
+     * Make sure that this issue exists in trac
+     *
+     * @param Model_Issue_Abstract The issue to check
+     * @return void
+     **/
+    public function makeIssueAlive(Model_Issue_Abstract $issue) {
+        // maybe it's alive already?
+        if ($this->issueExists($issue))
+            return;
+                
+        // create new ticket in trac
+        $id = $this->_rpc()->create(
+            $issue->getField('summary'),
+            $issue->getField('description'),
+            array(
+                'reporter' => Model_User::getCurrentUser()->email, 
+                'code' => $issue->getCode(),
+                ), 
+            false);
+            
+        logg("Trac ticket #$id created: '{$issue->getField('summary')}'");
+        $issue->setId($id);
+        
+        return $log;
     }
         
     /**
@@ -83,9 +147,10 @@ class Model_Issue_Tracker_Trac extends Model_Issue_Tracker_Abstract {
                 
             try {
                 $fields = $this->_xmlRpc->getTicketFields();
-            } catch (Zend_XmlRpc_Client_HttpException $e) {
+            } catch (Exception $e) {
                 FaZend_Exception::raise('Model_Issue_Tracker_Trac_FailedConnection',
-                    "Can't connect: login '{$login}', password: '{$password}', URI: '{$uri}'");
+                    "Can't connect: login '{$login}', password: '{$password}', URI: '{$uri}'. " . 
+                    get_class($e) . ": '" . $e->getMessage() . "'");
             }
             
         }

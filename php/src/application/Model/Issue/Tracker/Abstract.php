@@ -34,16 +34,8 @@ abstract class Model_Issue_Tracker_Abstract extends FaZend_StdObject {
      */
 	public static function factory($type, $params) {
         $className = 'Model_Issue_Tracker_' . ucfirst($type);
-        return new $className($params);
+        return Model_Flyweight::factory($className, $params);
     }
-
-    /**
-	 * Constructor
-     *
-     * @param mixed Connection parameters
-     * @return void
-     */
-	abstract public function __construct($params);
 
     /**
      * Find one issue by id
@@ -53,7 +45,7 @@ abstract class Model_Issue_Tracker_Abstract extends FaZend_StdObject {
      **/
     public function find($id) {
         $className = 'Model_Issue_' . $this->getType();
-        return new $className($this, $id);
+        return Model_Flyweight::factory($className, $this, $id);
     }
     
     /**

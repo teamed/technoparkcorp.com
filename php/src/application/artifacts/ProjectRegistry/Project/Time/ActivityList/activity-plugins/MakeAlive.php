@@ -19,36 +19,28 @@
  */
 
 /**
- * One issue in Trac
- *
- * @package Model
+ * Make sure that issue exists for this activity
+ * 
+ * @package Activity_Plugin
  */
-class Model_Issue_Trac extends Model_Issue_Abstract {
+class Activity_Plugin_MakeAlive extends Activity_Plugin_Abstract {
 
     /**
-     * Unique ID of the ticket in trac (trac field)
+     * Execute it
      *
-     * @var integer
-     */
-    protected $_id = null;
-    
-    /**
-     * Save TRAC id
-     *
-     * @return void
+     * @return boolean
      **/
-    public function setId($id) {
-        $this->_id = $id;
-        return $this;
+    public function execute() {
+        // if it already exists - skip the procedure
+        if ($this->_activity->isIssueExist())
+            return;
+            
+        $this->_issue
+            ->setField('summary', $this->_activity->name)
+            ->setField('description', $this->_activity->sow);
+        $this->_issue->makeAlive();
+        
+        $this->_issue->getMessages();
     }
-    
-    /**
-     * Get trac ID
-     *
-     * @return integer
-     **/
-    public function getId() {
-        return $this->_id;
-    }
-    
+                            
 }

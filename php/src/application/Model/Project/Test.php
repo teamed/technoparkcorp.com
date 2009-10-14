@@ -31,18 +31,28 @@ class Model_Project_Test extends Model_Project {
     const PM = 'tester@tpc2.com';
 
     /**
+     * Instance of project
+     *
+     * @var Model_Project_Test
+     */
+    protected static $_instanceTest;
+
+    /**
      * Create and return a test project instance
      *
      * @return Model_Project_Test
      **/
     public static function make() {
+        if (isset(self::$_instanceTest))
+            return self::$_instanceTest;
+        
         $pwd = md5(rand());
         
         $authz = '[' . self::NAME . ":/]\n" . self::PM . " = rw\n";
         foreach (array('SystemAnalyst', 'Architect') as $role)
             $authz .= '[' . self::NAME . ':' . Model_Project::ROLE_AUTHZ_PREFIX . "$role]\n" . self::PM . " = rw\n";
         
-        return new Model_Project_Test(
+        return self::$_instanceTest = new Model_Project_Test(
             1, // id
             self::NAME, // project name
             new Shared_User(1, self::OWNER, self::OWNER_PWD), // project manager
