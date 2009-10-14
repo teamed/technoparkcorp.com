@@ -255,7 +255,7 @@ abstract class Metric_Abstract
      **/
     public function split(theActivities $list) {
         $wp = $this->_project->wbs[$this->_name];
-        $activity = theActivity::factory($this->_name, '1')
+        $activity = theActivity::factory($this->_project->activityList->activities, $this->_name, '1')
             ->setSow($wp->title)
             ->setCost($wp->cost);
         $list[] = $activity;

@@ -26,6 +26,8 @@
 class Model_Project_Test extends Model_Project {
 
     const NAME = 'test';
+    const OWNER = 'yegor256@yahoo.com';
+    const OWNER_PWD = 'violetta';
     const PM = 'tester@tpc2.com';
 
     /**
@@ -43,9 +45,10 @@ class Model_Project_Test extends Model_Project {
         return new Model_Project_Test(
             1, // id
             self::NAME, // project name
-            new Shared_User(1, self::PM, $pwd), // project manager
+            new Shared_User(1, self::OWNER, self::OWNER_PWD), // project manager
             $authz, // authz file
-            self::PM . ' = ' . $pwd // passwd file, random password
+            self::PM . ' = ' . $pwd . "\n" . 
+                self::OWNER . '=' . self::OWNER_PWD . "\n" // passwd file, random password
             );
     }
 

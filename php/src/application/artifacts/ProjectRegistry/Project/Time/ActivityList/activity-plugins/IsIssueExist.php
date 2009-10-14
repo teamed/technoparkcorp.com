@@ -19,10 +19,19 @@
  */
 
 /**
- * One issue in issue-tracking system
- *
- * @package Model
+ * Activity order exist
+ * 
+ * @package Activity_Plugin
  */
-class Model_Issue {
+class Activity_Plugin_IsIssueExist extends Activity_Plugin_Abstract {
 
+    /**
+     * Execute it
+     *
+     * @return boolean
+     **/
+    public function execute() {
+        return $this->_issue->exists();
+    }
+                            
 }

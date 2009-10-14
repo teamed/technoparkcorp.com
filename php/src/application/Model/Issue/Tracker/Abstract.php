@@ -26,13 +26,6 @@
 abstract class Model_Issue_Tracker_Abstract extends FaZend_StdObject {
 
     /**
-     * Cache of trackers
-     *
-     * @var Model_Issue_Tracker_Abstract[]
-     */
-    protected static $_trackers = array();
-
-    /**
 	 * Create a new tracker
      *
      * @param Model_Issue_Abstract|string Issue type of type of tracker in string
@@ -40,16 +33,8 @@ abstract class Model_Issue_Tracker_Abstract extends FaZend_StdObject {
      * @return Model_Issue_Tracker_Abstract
      */
 	public static function factory($type, $params) {
-	    if ($type instanceof Model_Issue_Abstract)
-	        $type = str_replace('Model_Issue_', '', get_class($type));
-	    
         $className = 'Model_Issue_Tracker_' . ucfirst($type);
-        $id = $className . ':' . serialize($params);
-        
-        if (!isset(self::$_trackers[$id]))
-            self::$_trackers[$id] = new $className($params);
-            
-        return self::$_trackers[$id];
+        return new $className($params);
     }
 
     /**
@@ -60,4 +45,34 @@ abstract class Model_Issue_Tracker_Abstract extends FaZend_StdObject {
      */
 	abstract public function __construct($params);
 
+    /**
+     * Find one issue by id
+     *
+     * @param string Unique ID of the issue
+     * @return Model_Issue_Abstract
+     **/
+    public function find($id) {
+        $className = 'Model_Issue_' . $this->getType();
+        return new $className($this, $id);
+    }
+    
+    /**
+     * Get type of tracker, e.g. 'trac'
+     *
+     * @return string
+     **/
+    public function getType() {
+        return str_replace('Model_Issue_Tracker_', '', get_class($this));
+    }
+        
+    /**
+     * Issue really exists in tracker?
+     *
+     * @param Model_Issue_Abstract The issue to check
+     * @return boolean
+     **/
+    public function issueExists(Model_Issue_Abstract $issue) {
+        return false;
+    }
+        
 }

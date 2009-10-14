@@ -41,9 +41,7 @@ class theActivityCriteria extends ArrayIterator {
      * @return $this
      */
     public function when($condition) {
-        // ...
-        $this[] = $condition;
-        
+        $this[] = call_user_func_array('sprintf', func_get_args());
         return $this;
     }
 

@@ -28,6 +28,13 @@ class theActivity {
     const SEPARATOR = '.';
 
     /**
+     * Holder of this activity
+     *
+     * @var theActivities
+     */
+    protected $_activities;
+
+    /**
      * Work package it came from, code
      *
      * @var string
@@ -93,11 +100,13 @@ class theActivity {
     /**
      * Construct it
      *
+     * @param theActivities Holder of this activity
      * @param theWorkPackage Originator of the activity
      * @param string Unique code for this work package
      * @return void
      **/
-    public function __construct($wp, $code) {
+    public function __construct(theActivities $activities, $wp, $code) {
+        $this->_activities = $activities;
         $this->_wp = (string)$wp;
         $this->_code = (string)$code;
     }
@@ -105,12 +114,13 @@ class theActivity {
     /**
      * Factory method
      *
+     * @param theActivities Holder of this activity
      * @param theWorkPackage Originator of the activity
      * @param string Unique code for this work package
      * @return theActivity
      **/
-    public static function factory($wp, $code) {
-        return new theActivity($wp, $code);
+    public static function factory(theActivities $activities, $wp, $code) {
+        return new theActivity($activities, $wp, $code);
     }
 
     /**
@@ -215,6 +225,15 @@ class theActivity {
      */
     protected function _getName() {
         return $this->_wp . self::SEPARATOR . $this->_code;
+    }
+
+    /**
+     * Project of this activity
+     *
+     * @return theProject
+     */
+    protected function _getProject() {
+        return $this->_activities->getProject();
     }
 
     /**

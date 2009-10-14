@@ -9,3 +9,14 @@
     Criteria: <?=$activity->criteria?><br/>
     Predecessors: <?=$activity->predecessors?>
 </p>
+   
+<p> 
+    isMilestone: <?=$this->yesNo($activity->isMilestone())?><br/>
+    isIssueExist: <?=$this->yesNo($activity->isIssueExist())?><br/>
+    isAssigned: <?=$this->yesNo($activity->isAssigned())?><br/>
+    isAccepted: <?=$this->yesNo($activity->isAccepted())?><br/>
+    isCostEstimated: <?=$this->yesNo($activity->isCostEstimated())?><br/>
+    isDurationEstimated: <?=$this->yesNo($activity->isCostEstimated())?><br/>
+    isStarted: <?=$this->yesNo($activity->isStarted())?><br/>
+    isClosed: <?=$this->yesNo($activity->isClosed())?>
+</p>

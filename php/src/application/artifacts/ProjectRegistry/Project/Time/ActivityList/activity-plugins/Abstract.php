@@ -33,6 +33,13 @@ abstract class Activity_Plugin_Abstract {
     protected $_activity;
 
     /**
+     * Issue
+     *
+     * @var Model_Issue_Abstract
+     */
+    protected $_issue;
+
+    /**
      * Static plugin loader
      *
      * @var Zend_Loader_PluginLoader
@@ -63,6 +70,7 @@ abstract class Activity_Plugin_Abstract {
      **/
     public function __construct(theActivity $activity) {
         $this->_activity = $activity;
+        $this->_issue = $activity->project->fzProject()->getTracker()->find($activity->name);
     }
                             
 }

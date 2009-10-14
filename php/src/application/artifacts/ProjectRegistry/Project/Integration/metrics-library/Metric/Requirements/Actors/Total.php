@@ -56,17 +56,17 @@ class Metric_Requirements_Actors_Total extends Metric_Abstract {
         // split the activity onto smaller pieces
         $total = $slice->iterate('downCurve', array(
             'sow' => 'Identify actors',
-            'minCost' => '100 USD'));
+            'minCost' => '10 USD'));
             
         $i = 1;
         foreach ($slice->codeRegex('/^a[\d]+$/')->afterMilestone() as $milestone) {
             $milestone->criteria
-                ->when('[readiness] > ?', 0.3 * $i++ / $total);
+                ->when('[readiness] > %0.2f', 0.3 * $i++ / $total);
         }
             
         foreach ($slice->onlyActivities() as $activity) {
             $activity->criteria
-                ->when('[requirements/actors/compliance] > ?', $slice->sumUntil($activity)->divide($slice->sum()));
+                ->when('[requirements/actors/compliance] > %0.2f', $slice->sumUntil($activity)->divide($slice->sum()));
         }
         
     }

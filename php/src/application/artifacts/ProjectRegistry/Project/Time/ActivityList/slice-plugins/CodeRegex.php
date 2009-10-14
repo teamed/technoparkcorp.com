@@ -19,10 +19,38 @@
  */
 
 /**
- * One issue in issue-tracking system
- *
- * @package Model
+ * Sector of the array, by regular expression
+ * 
+ * @package Slice_Plugin
  */
-class Model_Issue {
+class Slice_Plugin_CodeRegex extends Slice_Plugin_Abstract {
 
+    /**
+     * Regular expression
+     *
+     * @var string
+     */
+    protected $_regex;
+
+    /**
+     * Show only activities which codes match regex
+     *
+     * @param theActivity Activity to check
+     * @return boolean
+     **/
+    protected function _isInside(theActivity $activity) {
+        return preg_match($this->_regex, $activity->code);
+    }
+        
+    /**
+     * Get a sector of this slice
+     *
+     * @param string Mask
+     * @return Slice_Plugin_CodeRegex
+     **/
+    public function execute($regex) {
+        $this->_regex = $regex;
+        return $this;
+    }
+        
 }

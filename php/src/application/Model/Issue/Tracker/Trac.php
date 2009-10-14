@@ -23,7 +23,7 @@
  *
  * @package Model
  */
-class Model_Issue_Tracker_Trac {
+class Model_Issue_Tracker_Trac extends Model_Issue_Tracker_Abstract {
 
     /**
      * The project related to this Trac
@@ -31,17 +31,65 @@ class Model_Issue_Tracker_Trac {
      * @var Model_Project
      */
     protected $_project;
+    
+    /**
+     * Client for Trac
+     *
+     * @var Zend_XmlRpc_Client
+     */
+    protected $_xmlRpc;
 
     /**
 	 * Construct the class
      *
-     * @param mixed Connection params
+     * @param Model_Project The project, owner of this trac
      * @return void
      */
-	public function __construct($params) {
-	    validate()
-	        ->type($params, 'string', 'Only project name is accepted as param');
-	    $this->_project = Model_Project::findByName($params);
+	public function __construct(Model_Project $project) {
+	    $this->_project = $project;
 	}
+
+    /**
+     * Issue really exists in tracker?
+     *
+     * @param Model_Issue_Abstract The issue to check
+     * @return boolean
+     **/
+    public function issueExists(Model_Issue_Abstract $issue) {
+        $ids = $this->_rpc()->query('code=' . $issue->getCode());
+        return count($ids) == 1;
+    }
+        
+    /**
+     * Get XML RPC client instance
+     *
+     * @return Zend_XmlRpc_Client
+     **/
+    protected function _rpc() {
+        if (!isset($this->_xmlRpc)) {
+            $uri = 'http://trac.fazend.com/' . $this->_project->name . '/xmlrpc';
+
+            // configure HTTP connector
+            $httpClient = new Zend_Http_Client($uri, array());
+            $login = $this->_project->user->email;
+            $password = $this->_project->user->password;
+            
+            $httpClient->setAuth($login, $password);
+            // make connection
+            $client = new Zend_XmlRpc_Client($uri, $httpClient);
+
+            // get this particular proxy locator
+            $this->_xmlRpc = $client->getProxy('ticket');
+                
+            try {
+                $fields = $this->_xmlRpc->getTicketFields();
+            } catch (Zend_XmlRpc_Client_HttpException $e) {
+                FaZend_Exception::raise('Model_Issue_Tracker_Trac_FailedConnection',
+                    "Can't connect: login '{$login}', password: '{$password}', URI: '{$uri}'");
+            }
+            
+        }
+        return $this->_xmlRpc;
+    }
 
 }

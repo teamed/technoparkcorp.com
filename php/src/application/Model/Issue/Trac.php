@@ -24,32 +24,5 @@
  * @package Model
  */
 class Model_Issue_Trac extends Model_Issue_Abstract {
-
-    /**
-     * Make sure the issue exists. If not - create it right now
-     *
-     * @return $this
-     **/
-    public function makeAlive() {
-        return $this;
-    }
-    
-    /**
-     * Make sure the issue exists AND is open right now. If not, do the necessary actions.
-     *
-     * @return $this
-     **/
-    public function makeOpen() {
-        return $this;
-    }
-    
-    /**
-     * Save all changes made
-     *
-     * @return $this
-     **/
-    protected function _save() {
-        return $this;
-    }
     
 }

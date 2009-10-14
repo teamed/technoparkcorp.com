@@ -104,13 +104,13 @@ class Model_Project extends Shared_Project {
     }
     
     /**
-     * Name of the issue tracker for this given project
+     * Issue tracker for this project
      *
-     * @return string
-     * @todo This is just a stub now, it should be configured
+     * @return Model_Issue_Tracker_Abstract
+     * @todo Should be configurable
      **/
-    protected function _getTracker() {
-        return 'trac';
+    public function getTracker() {
+        return Model_Issue_Tracker_Abstract::factory('trac', $this);
     }
     
 }

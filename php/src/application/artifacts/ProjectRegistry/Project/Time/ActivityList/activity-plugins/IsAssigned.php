@@ -19,10 +19,22 @@
  */
 
 /**
- * One issue in issue-tracking system
- *
- * @package Model
+ * Activity is assigned to a certain person
+ * 
+ * @package Activity_Plugin
  */
-class Model_Issue {
+class Activity_Plugin_IsAssigned extends Activity_Plugin_Abstract {
 
+    /**
+     * Execute it
+     *
+     * @return boolean
+     **/
+    public function execute() {
+        if (!$this->_activity->isIssueExist())
+            return false;
+            
+        return true;
+    }
+                            
 }

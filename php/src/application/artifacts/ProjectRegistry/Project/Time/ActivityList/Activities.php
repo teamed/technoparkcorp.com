@@ -68,6 +68,15 @@ class theActivities extends ArrayIterator implements Model_Artifact_Stateless, M
     }
     
     /**
+     * Get project
+     *
+     * @return theProject
+     **/
+    public function getProject() {
+        return $this->_project;
+    }
+    
+    /**
      * Get new slice
      *
      * @return Slice_Plugin_Simple
