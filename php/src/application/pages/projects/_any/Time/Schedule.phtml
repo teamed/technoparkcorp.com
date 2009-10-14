@@ -1,1 +1,12 @@
-<p>Schedule</p>
+<?=$this->publish($this->project->activityList)?>
+
+<h1>Schedule</h1>
+
+<?=$this->table()
+    ->setSource($this->project->schedule->activities)
+    ->addColumn('name', 'Name')
+    ->addColumn('sow', 'Statement of work')
+    ->addColumn('cost', 'Cost')
+    ->addColumn('duration', 'Duration')
+    ->addColumn('performer', 'Performer')
+    ?>

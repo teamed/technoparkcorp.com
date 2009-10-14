@@ -68,14 +68,36 @@ class theActivities extends ArrayIterator implements Model_Artifact_Stateless, M
     }
     
     /**
-     * Get new slice, with only activites from this WP
+     * Get new slice
      *
      * @return Slice_Plugin_Simple
      **/
-    public function getSliceByWp(theWorkPackage $wp) {
+    public function getSlice() {
         require_once dirname(__FILE__) . '/slice-plugins/Abstract.php';
-        return Slice_Plugin_Abstract::factory('simple', $this)
-            ->setWp($wp);
+        return Slice_Plugin_Abstract::factory('simple', $this);
+    }
+
+    /**
+     * Get new slice, with only activites from this WP
+     *
+     * @param theWorkPackage Work package to narrow activities to
+     * @return Slice_Plugin_Simple
+     **/
+    public function getSliceByWp(theWorkPackage $wp) {
+        return $this->getSlice()->setWp($wp);
+    }
+    
+    /**
+     * Find one activity by given ID
+     *
+     * @param string Alnum ID of the activity
+     * @return theActivity
+     **/
+    public function findById($id) {
+        foreach ($this as $activity)
+            if ($activity->id == $id)
+                return $activity;
+        FaZend_Exception::raise('ActivityNotFound', 'Activity not found with ID: ' . $id);
     }
 
 }

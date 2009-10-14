@@ -3,10 +3,14 @@
 <h1>Activity List</h1>
 
 <?=$this->table()
-    ->setSource($this->project->activityList->list)
+    ->setSource($this->project->activityList->activities)
     ->addColumn('name', 'Name')
     ->addColumn('sow', 'Statement of work')
     ->addColumn('cost', 'Cost')
     ->addColumn('duration', 'Duration')
     ->addColumn('performer', 'Performer')
+    ->addColumn('criteria', 'Criteria')
+    ->addColumn('predecessors', 'Predecessors')
+    
+    ->addOption('name', '{id}')
     ?>

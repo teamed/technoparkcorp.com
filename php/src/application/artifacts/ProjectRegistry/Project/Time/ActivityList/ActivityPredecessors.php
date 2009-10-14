@@ -19,11 +19,11 @@
  */
 
 /**
- * Criteria of activity closure
+ * List of activity predecessors
  *
  * @package Artifacts
  */
-class theActivityCriteria extends ArrayIterator {
+class theActivityPredecessors extends ArrayIterator {
 
     /**
      * Convert to string
@@ -31,19 +31,22 @@ class theActivityCriteria extends ArrayIterator {
      * @return string
      */
     public function __toString() {
-        return (string)implode('; ', $this->getArrayCopy());
+        $predecessors = array();
+        foreach ($this as $p)
+            $predecessors[] = (string)$p;
+        return (string)implode('; ', $predecessors);
     }
     
     /**
-     * Condition to attach
+     * Add precessor
      *
-     * @param string Condition
+     * @param theActivity Predecessor
+     * @param string Type of link
+     * @param integer Lag in hours
      * @return $this
      */
-    public function when($condition) {
-        // ...
-        $this[] = $condition;
-        
+    public function add(theActivity $predecessor, $type = theActivityPredecessor::FINISH_TO_START, $lag = 0) {
+        $this[] = theActivityPredecessor::factory($predecessor, $type, $lag);
         return $this;
     }
 

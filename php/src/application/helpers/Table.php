@@ -147,9 +147,10 @@ class Helper_Table extends FaZend_View_Helper {
      *
      * @param string Name of the link/column
      * @param array Row from the table
+     * @param mixed Key of the row
      * @return string
      */
-    public function resolveDocumentName($name, array $row, $key) {
+    public function resolveDocumentName($name, $row, $key) {
         return Model_Pages::resolveLink($this->_links[$name], $row, $key);
     }
 

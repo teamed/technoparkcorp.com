@@ -175,14 +175,30 @@ abstract class Slice_Plugin_Abstract implements Iterator, Countable {
     /**
      * Get next available code for activity
      *
+     * @param string Prefix in code
      * @return integer
      **/
-    protected function _nextCode() {
+    protected function _nextCode($prefix = '') {
         $code = 0;
-        foreach ($this as $activity)
-            if ($activity->code >= $code)
-                $code = $activity->code + 1;
+        foreach ($this as $activity) {
+            if (!preg_match('/^' . preg_quote($prefix, '/') . '(\d+)$/', $activity->code, $matches))
+                continue;
+            if ($matches[1] >= $code)
+                $code = intval($matches[1]) + 1;
+        }
         return $code;
+    }
+        
+    /**
+     * Set options if they are not yet set
+     *
+     * @return void
+     **/
+    protected function _normalizeOptions(array &$options, array $defaults) {
+        foreach ($defaults as $key=>$value) {
+            if (!isset($options[$key]))
+                $options[$key] = $value;
+        }
     }
         
 }

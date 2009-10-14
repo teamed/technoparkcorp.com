@@ -42,9 +42,17 @@ class Slice_Plugin_Iterate_DownCurve extends Slice_Plugin_Abstract {
     /**
      * Iterate
      *
+     * @param array List of options
      * @return mixed
      **/
     public function execute(array $options = array()) {
+        
+        $this->_normalizeOptions($options, array(
+            'minCost' => '10 USD', // minimal possible cost of one activity
+            'codePrefix' => 'a', // prefix to set before each new code of activity
+            'sow' => 'Perform work', //statement of work to set to each activity
+            ));
+        
         $this->rewind();
         $activity = $this->current();
         $total = Model_Cost::factory($activity->cost);
@@ -87,10 +95,12 @@ class Slice_Plugin_Iterate_DownCurve extends Slice_Plugin_Abstract {
             if ($a+2*$p > pi()/2)
                 $p = pi()/2 - $a;
                 
-            $activity = $this->add($i++)
+            $activity = $this->add($options['codePrefix'] . $i++)
                 ->setCost(Model_Cost::factory($this->_square($a, $a+$p)))
                 ->setSow($options['sow']);
         };
+        
+        return $i;
     }
     
     /**

@@ -32,6 +32,12 @@ class Slice_Plugin_AfterMilestone extends Slice_Plugin_Abstract {
      * @return $this
      **/
     public function execute(array $options = array()) {
+
+        $this->_normalizeOptions($options, array(
+            'codePrefix' => 'm', // prefix to set before each new code of activity
+            'sow' => 'milestone', // statement of work to set to each activity
+            ));
+        
         $names = array();
 
         // grab activities to work with
@@ -41,8 +47,9 @@ class Slice_Plugin_AfterMilestone extends Slice_Plugin_Abstract {
             
         // create milestone for each activity
         foreach ($activities as $activity) {
-            $milestone = $this->add($this->_nextCode());
-            $activity->addPredecessor($milestone);
+            $milestone = $this->add($options['codePrefix'] . $this->_nextCode($options['codePrefix']))
+                ->setSow($options['sow']);
+            $activity->predecessors->add($milestone);
             $names[] = $milestone->name;
         }
         return $this->selectedOnly($names);

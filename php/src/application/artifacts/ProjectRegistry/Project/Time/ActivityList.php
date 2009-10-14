@@ -26,19 +26,12 @@
 class theActivityList extends Model_Artifact_Bag implements Model_Artifact_Passive {
 
     /**
-     * List of activities
-     *
-     * @var theActivities
-     */
-    protected $_activities;
-
-    /**
      * It is loaded already?
      *
      * @return boolean
      */
     public function isLoaded() {
-        return (bool)count($this);
+        return isset($this->activities);
     }
     
     /**
@@ -47,21 +40,7 @@ class theActivityList extends Model_Artifact_Bag implements Model_Artifact_Passi
      * @return void
      */
     public function reload() {
-        $this->_attach('_activities', new theActivities(), 'setActivityList');
+        $this->_attach('activities', new theActivities(), 'setActivityList');
     }
     
-    /**
-     * Getter to dispatch
-     *
-     * @param string Name of property
-     * @return mixed
-     **/
-    public function __get($name) {
-        switch ($name) {
-            case 'list':
-                return $this->_activities;
-        }
-        return parent::__get($name);
-    }
-
 }

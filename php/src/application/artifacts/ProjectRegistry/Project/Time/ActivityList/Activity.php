@@ -23,9 +23,9 @@
  *
  * @package Artifacts
  */
-class theActivity implements Model_Artifact_Stateless, Model_Artifact_Passive {
+class theActivity {
 
-    const END_TO_START = 'ES';
+    const SEPARATOR = '.';
 
     /**
      * Work package it came from, code
@@ -56,25 +56,11 @@ class theActivity implements Model_Artifact_Stateless, Model_Artifact_Passive {
     protected $_cost;
     
     /**
-     * Estimate of cost by performer
-     *
-     * @var Model_Cost
-     */
-    protected $_costEstimate;
-    
-    /**
      * Our estimate of duration, days
      *
      * @var integer
      */
     protected $_duration;
-    
-    /**
-     * Estimate of duration made by performer, days
-     *
-     * @var integer
-     */
-    protected $_durationEstimate;
     
     /**
      * Assigned performer (doesn't mean that he/she AGREED to perform the activity)
@@ -100,9 +86,9 @@ class theActivity implements Model_Artifact_Stateless, Model_Artifact_Passive {
     /**
      * List of predecessors
      *
-     * @var theActivityPredecessor
+     * @var theActivityPredecessors
      */
-    protected $_predecessors = array();
+    protected $_predecessors;
     
     /**
      * Construct it
@@ -128,28 +114,24 @@ class theActivity implements Model_Artifact_Stateless, Model_Artifact_Passive {
     }
 
     /**
-     * Is it already loaded
+     * Call plugin
      *
-     * @return boolean
-     */
-    public function isLoaded() {
-        // never loaded, since we don't have information about Trac etc.
-        return false;
+     * @param string Name of plugin, lowercase first letter
+     * @param array List of arguments
+     * @return Activity_Plugin_Abstract
+     **/
+    public function __call($method, array $args) {
+        require_once dirname(__FILE__) . '/activity-plugins/Abstract.php';
+        $plugin = Activity_Plugin_Abstract::factory($method, $this);
+        if (method_exists($plugin, 'execute'))
+            return call_user_func_array(array($plugin, 'execute'), $args);
+        return $plugin;
     }
 
     /**
-     * Reload it from Trac
-     *
-     * @return void
-     * @todo implement it
-     */
-    public function reload() {
-        // later...
-    }
-    
-    /**
      * Getter dispatcher
      *
+     * @param string Name of property to get
      * @return mixed
      **/
     public function __get($name) {
@@ -167,7 +149,7 @@ class theActivity implements Model_Artifact_Stateless, Model_Artifact_Passive {
     /**
      * Set SOW
      *
-     * @param string Statement of work
+     * @param string Statement of work for the activity
      * @return $this
      */
     public function setSow($sow) {
@@ -198,60 +180,12 @@ class theActivity implements Model_Artifact_Stateless, Model_Artifact_Passive {
     }
 
     /**
-     * Add precessor
-     *
-     * @param theActivity Predecessor
-     * @return $this
-     */
-    public function addPredecessor(theActivity $predecessor, $type = self::END_TO_START, $lag = 0) {
-        $this->_predecessors[] = FaZend_StdObject::create()
-            ->set('activity', $predecessor)
-            ->set('type', $type)
-            ->set('lag', $lag);
-        return $this;
-    }
-
-    /**
      * Is it a milestone
      *
      * @return boolean
      */
     public function isMilestone() {
         return !isset($this->_cost);
-    }
-
-    /**
-     * Is it already assigned?
-     *
-     * @return boolean
-     */
-    public function isAssigned() {
-    }
-
-    /**
-     * Is cost already estimated?
-     *
-     * @return boolean
-     */
-    public function isCostEstimated() {
-    }
-
-    /**
-     * Is cost estimate already requested?
-     *
-     * @return boolean
-     * @todo implement it
-     */
-    public function isCostEstimateRequested() {
-    }
-
-    /**
-     * Request cost estimate from the performer
-     *
-     * @return void
-     * @todo implement it
-     */
-    public function requestCostEstimate() {
     }
 
     /**
@@ -271,7 +205,7 @@ class theActivity implements Model_Artifact_Stateless, Model_Artifact_Passive {
      * @return boolean
      */
     public function equalsTo(theActivity $activity) {
-        return $activity->name == $this->name;
+        return $activity->name === $this->name;
     }
 
     /**
@@ -280,7 +214,16 @@ class theActivity implements Model_Artifact_Stateless, Model_Artifact_Passive {
      * @return string
      */
     protected function _getName() {
-        return $this->_wp . '.' . $this->_code;
+        return $this->_wp . self::SEPARATOR . $this->_code;
+    }
+
+    /**
+     * Unique alnum ID of the activity
+     *
+     * @return string
+     */
+    protected function _getId() {
+        return md5($this->name);
     }
 
     /**
@@ -290,8 +233,19 @@ class theActivity implements Model_Artifact_Stateless, Model_Artifact_Passive {
      */
     protected function _getCriteria() {
         if (!isset($this->_criteria))
-            $this->_criteria = theActivityCriteria::factory($this);
+            $this->_criteria = new theActivityCriteria();
         return $this->_criteria;
+    }
+
+    /**
+     * Get predecessors
+     *
+     * @return theActivityPredecessors List of predecessors
+     */
+    protected function _getPredecessors() {
+        if (!isset($this->_predecessors))
+            $this->_predecessors = new theActivityPredecessors();
+        return $this->_predecessors;
     }
 
 }

@@ -1,0 +1,11 @@
+<? $activity = $this->project->activityList->activities->findById($this->segment())?>
+
+<h1>Activity "<?=$activity->name?>"</h1>
+
+<p>
+    Name: <?=$activity->name?><br/>
+    Cost: <?=$activity->cost?><br/>
+    SOW: <?=$activity->sow?><br/>
+    Criteria: <?=$activity->criteria?><br/>
+    Predecessors: <?=$activity->predecessors?>
+</p>

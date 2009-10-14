@@ -25,6 +25,8 @@
  */
 class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive {
 
+    const SEPARATOR = '/';
+
     /**
      * Is it reloaded?
      *
@@ -88,7 +90,7 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive {
         }
 
         // top level metric can't be used in patterning
-        if (!strpos($name, '/'))
+        if (!strpos($name, self::SEPARATOR))
             FaZend_Exception::raise('MetricNotFound', "Metric '$name' not found");
         
         return $this->_findMetric($name);
@@ -120,12 +122,12 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive {
     protected function _classToName($className) {
         $exp = array_filter(explode('_', $className));
         
-        validate()->true(array_shift($exp) == 'Metric');
+        validate()->true(array_shift($exp) == 'Metric', "Metric class name shall start with Metric: '$className'");
         
         foreach ($exp as &$sector)
             // PHP 5.3 only: lcfirst()
             $sector = lcfirst($sector);
-        return implode('/', $exp);
+        return implode(self::SEPARATOR, $exp);
     }
             
     /**
@@ -135,11 +137,11 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive {
      * @throws MetricNotFound
      **/
     protected function _findMetric($name) {
-        $exp = explode('/', $name);
+        $exp = explode(self::SEPARATOR, $name);
         
         // go from end to start
         for ($i=count($exp)-1; $i>0; $i--) {
-            $parent = implode('/', array_slice($exp, 0, $i));
+            $parent = implode(self::SEPARATOR, array_slice($exp, 0, $i));
             
             if (isset($this[$parent])) {
                 $metric = $this[$parent];
@@ -151,7 +153,7 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive {
         if (!isset($metric))
             FaZend_Exception::raise('MetricNotFound', "Metric '{$name}' not found");
 
-        $pattern = implode('/', array_slice($exp, $i));
+        $pattern = implode(self::SEPARATOR, array_slice($exp, $i));
         if (!$metric->isMatched($pattern))
             FaZend_Exception::raise('MetricDoesntMatch',
                 "Metric '{$name}' doesn't match you pattern: {$pattern}");

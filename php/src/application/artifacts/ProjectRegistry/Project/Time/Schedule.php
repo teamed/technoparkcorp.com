@@ -23,6 +23,24 @@
  *
  * @package Artifacts
  */
-class theSchedule extends Model_Artifact_Bag {
+class theSchedule extends Model_Artifact_Bag implements Model_Artifact_Passive {
 
+    /**
+     * It is loaded already?
+     *
+     * @return boolean
+     */
+    public function isLoaded() {
+        return isset($this->activities);
+    }
+    
+    /**
+     * Initialize the list
+     *
+     * @return void
+     */
+    public function reload() {
+        $this->_attach('activities', clone $this->ps()->parent->activityList->activities);
+    }
+    
 }
