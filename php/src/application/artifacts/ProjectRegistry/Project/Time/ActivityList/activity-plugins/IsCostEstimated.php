@@ -34,7 +34,7 @@ class Activity_Plugin_IsCostEstimated extends Activity_Plugin_Abstract {
         if (!$this->_activity->isIssueExist())
             return false;
             
-        return true;
+        return $this->_issue->isCostEstimated();
     }
                             
 }

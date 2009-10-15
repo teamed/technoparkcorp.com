@@ -29,6 +29,7 @@ class Model_Project_Test extends Model_Project {
     const OWNER = 'yegor256@yahoo.com';
     const OWNER_PWD = 'violetta';
     const PM = 'tester@tpc2.com';
+    const PM_PWD = 'violetta';
 
     /**
      * Instance of project
@@ -57,7 +58,7 @@ class Model_Project_Test extends Model_Project {
             self::NAME, // project name
             new Shared_User(1, self::OWNER, self::OWNER_PWD), // project manager
             $authz, // authz file
-            self::PM . ' = ' . $pwd . "\n" . 
+            self::PM . ' = ' . self::PM_PWD . "\n" . 
                 self::OWNER . '=' . self::OWNER_PWD . "\n" // passwd file, random password
             );
     }

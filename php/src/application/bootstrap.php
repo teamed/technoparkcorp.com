@@ -64,5 +64,9 @@ define('CONTENT_PATH', realpath(APPLICATION_PATH . '/../content'));
  * @return void
  */
 function logg($message) {
-    FaZend_Log::info($message);
+    try {
+        FaZend_Log::info($message);
+    } catch (Zend_Log_Exception $e) {
+        echo '<p>Log missed: ' . $message . '</p>';
+    }
 }

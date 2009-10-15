@@ -37,10 +37,7 @@ class Activity_Plugin_MakeAlive extends Activity_Plugin_Abstract {
             
         $this->_issue->changelog
             ->set('summary', $this->_activity->name)
-            ->set('description', $this->_activity->sow)
-            ->set('reporter', Model_User::getCurrentUser()->email);
-            
-        bug($this->_issue->changelog);
+            ->set('description', $this->_activity->sow);
     }
                             
 }

@@ -65,8 +65,14 @@ class Model_Issue_Tracker_Trac extends Model_Issue_Tracker_Abstract {
 
         // configure HTTP connector
         $httpClient = new Zend_Http_Client($uri, array());
-        $login = $this->_project->user->email;
-        $password = $this->_project->user->password;        
+        
+        // project owner/sponsor gets access
+        // $login = $this->_project->user->email;
+        // $password = $this->_project->user->password;        
+        
+        // current user gets access
+        $login = Model_User::getCurrentUser()->email;
+        $password = $this->_project->getStakeholderPassword($login);
         $httpClient->setAuth($login, $password);
 
         // make connection

@@ -34,7 +34,7 @@ class Activity_Plugin_IsAssigned extends Activity_Plugin_Abstract {
         if (!$this->_activity->isIssueExist())
             return false;
             
-        // if (!$this->_issue->changelog)
+        return $this->_issue->isAssigned();
     }
                             
 }

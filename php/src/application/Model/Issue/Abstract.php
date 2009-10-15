@@ -71,7 +71,12 @@ abstract class Model_Issue_Abstract {
      * @return void
      */
 	public function __destruct() {
-	    $this->_saveChangelog();
+	    try {
+            if (isset($this->_changelog))
+	            $this->_saveChangelog();
+	    } catch (Exception $e) {
+	        bug($e);
+        }
     }
 
     /**
@@ -94,32 +99,47 @@ abstract class Model_Issue_Abstract {
     }
 
     /**
-     * Get changelog for this issue
-     *
-     * @return Model_Issue_Changelog_Changelog
-     **/
-    protected function _getChangelog() {
-        if (isset($this->_changelog))
-            return $this->_changelog;
-            
-        $this->_changelog = new Model_Issue_Changelog_Changelog();
-        
-        // load it with real-life data from tracker
-        if ($this->exists())
-            $this->_loadChangelog();
-            
-        // make sure the code is set properly
-        $this->_changelog->set('summary', $this->_code);
-
-        return $this->_changelog;
-    }
-
-    /**
      * This issue really exist in tracker now?
      *
      * @return integer ID in tracker
      **/
     abstract public function exists();
+
+    /**
+     * Cost is estimated?
+     *
+     * @return boolean
+     **/
+    public function isCostEstimated() {
+        return $this->changelog->get('cost') && $this->changelog->get('cost')->getValue();
+    }
+
+    /**
+     * Duration is estimated?
+     *
+     * @return boolean
+     **/
+    public function isDurationEstimated() {
+        return $this->changelog->get('duration') && $this->changelog->get('duration')->getValue();
+    }
+
+    /**
+     * Is it closed?
+     *
+     * @return boolean
+     **/
+    public function isClosed() {
+        return ($this->changelog->get('status')->getValue() != Model_Issue_Changelog_Field_Status::OPEN);
+    }
+
+    /**
+     * Is it assigned?
+     *
+     * @return boolean
+     **/
+    public function isAssigned() {
+        return (bool)$this->changelog->get('owner')->getValue();
+    }
 
     /**
      * Load changelog
@@ -134,5 +154,23 @@ abstract class Model_Issue_Abstract {
      * @return void
      **/
     abstract protected function _saveChangelog();
+
+    /**
+     * Get changelog for this issue
+     *
+     * @return Model_Issue_Changelog_Changelog
+     **/
+    protected function _getChangelog() {
+        if (isset($this->_changelog))
+            return $this->_changelog;
+            
+        $this->_changelog = new Model_Issue_Changelog_Changelog();
+        
+        // load it with real-life data from tracker
+        if ($this->exists())
+            $this->_loadChangelog();
+            
+        return $this->_changelog;
+    }
 
 }

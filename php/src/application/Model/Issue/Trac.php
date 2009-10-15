@@ -41,14 +41,17 @@ class Model_Issue_Trac extends Model_Issue_Abstract {
         
         // get list of IDs with this code (we expect JUST ONE)
         $ids = $this->_proxy()->query('code=' . $this->code);
-        logg("Query to Trac for code '{$this->code}' returned " . count($ids) . ' ticket');
         
         // nothing or something strange
-        if (count($ids) != 1)
+        if (count($ids) != 1) {
+            logg("Query to Trac for code '{$this->code}' returned " . count($ids) . ' tickets');
             return $this->_id = false;
+        }
     
         // remember found ID in the class and return it
-        return $this->_id = array_pop($ids);
+        $this->_id = array_pop($ids);
+        logg("Issue #{$this->_id} found in Trac for code '{$this->code}");
+        return $this->_id;
     }
         
     /**
@@ -58,7 +61,7 @@ class Model_Issue_Trac extends Model_Issue_Abstract {
      **/
     protected function _loadChangelog() {
         $log = $this->_proxy()->changeLog($this->_id);
-        logg("Issue '{$this->_id}' has " . count($log) . ' changes (from changelog)');
+        logg("Issue #{$this->_id} has " . count($log) . ' changes in Trac');
         
         $fields = array();
         $records = array();
@@ -74,7 +77,6 @@ class Model_Issue_Trac extends Model_Issue_Abstract {
                 $records[] = array($k, $v, $details[3]['reporter'], $details[1]);
         }
 
-        // bug($log);
         foreach ($records as $record) {
             list($name, $value, $author, $date) = $this->_translateFromTrac(
                 $record[0], // name of field
@@ -85,8 +87,10 @@ class Model_Issue_Trac extends Model_Issue_Abstract {
                 
             if (!$this->_changelog->allowsField($name))
                 continue;
+                
             $this->_changelog->load($name, $value, $author, $date);
         }
+        // bug($this->_changelog);
     }
         
     /**
@@ -95,19 +99,37 @@ class Model_Issue_Trac extends Model_Issue_Abstract {
      * @return void
      **/
     protected function _saveChangelog() {
+        $pairs = $this->_changelog->whatToSave();
+        
+        // nothing was changed?
+        if (!count($pairs))
+            return;
+        
+        // bug($this->_translateToTrac($pairs));
         // maybe it's alive already?
         if (!$this->exists()) {
+            // make sure it has the right code
+            $pairs['code'] = $this->code;
+
             // create new ticket in trac
-            $id = $this->_rpc()->create(
+            $this->_id = $this->_proxy()->create(
                 (string)$this->_changelog->get('summary')->getValue(),
                 (string)$this->_changelog->get('description')->getValue(),
-                $this->_translateToTrac($this->_changelog->whatToSave()),
-                false);
+                $this->_translateToTrac($pairs),
+                true);
             
-            logg("Trac ticket #$id created");
-            $this->_id = $id;
+            logg("Trac ticket #{$this->_id} was created");
+            
         } else {
-            //...
+            
+            $pairs['action'] = 'leave';
+            $this->_proxy()->update(
+                $this->_id, 
+                isset($pairs['comment']) ? $pairs['comment'] : '',
+                $this->_translateToTrac($pairs),
+                true);
+            logg("Trac ticket #{$this->_id} was updated");
+            
         }
     }
 
@@ -148,6 +170,7 @@ class Model_Issue_Trac extends Model_Issue_Abstract {
                         break;
                     default: 
                         $this->_resolutionCache = Model_Issue_Changelog_Field_Status::INVALID;
+                        break;
                 }
                 break;
 
@@ -155,8 +178,10 @@ class Model_Issue_Trac extends Model_Issue_Abstract {
                 switch ($value) {
                     case 'closed':
                         $value = $this->resolutionCache;
+                        break;
                     default: 
                         $value = Model_Issue_Changelog_Field_Status::OPEN;
+                        break;
                 }
                 break;
         
@@ -165,22 +190,28 @@ class Model_Issue_Trac extends Model_Issue_Abstract {
                 switch ($value) {
                     case 'task':
                         $value = Model_Issue_Changelog_Field_Type::TASK;
+                        break;
                     default: 
                         $value = Model_Issue_Changelog_Field_Type::DEFECT;
+                        break;
                 }
                 break;
 
             // priority of ticket
             case 'priority':
                 switch ($value) {
-                    case 'major':
+                    case 'minor':
                         $value = Model_Issue_Changelog_Field_Priority::MINOR;
+                        break;
                     case 'critical':
                         $value = Model_Issue_Changelog_Field_Priority::CRITICAL;
+                        break;
                     case 'blocker':
                         $value = Model_Issue_Changelog_Field_Priority::BLOCKER;
+                        break;
                     default: 
                         $value = Model_Issue_Changelog_Field_Priority::MAJOR;
+                        break;
                 }
                 break;
 
@@ -226,6 +257,86 @@ class Model_Issue_Trac extends Model_Issue_Abstract {
      * @return array
      **/
     protected function _translateToTrac(array $pairs) {
+        foreach ($pairs as $name=>&$value) {
+            switch ($name) {
+
+                case 'type':
+                    switch ($value) {
+                        case Model_Issue_Changelog_Field_Type::TASK:
+                            $value = 'task';
+                            break;
+                        default: 
+                            $value = 'defect';
+                            break;
+                    }
+                    break;
+
+                case 'status':
+                    switch ($value) {
+                        case Model_Issue_Changelog_Field_Status::OPEN:
+                            $value = 'reopened'; // we open it again
+                            $pairs['resolution'] = ''; // delete the resolution
+                            break;
+                        case Model_Issue_Changelog_Field_Status::INVALID:
+                            $pairs['resolution'] = 'invalid';
+                            $value = 'closed';
+                            break;
+                        case Model_Issue_Changelog_Field_Status::FIXED:
+                            $pairs['resolution'] = 'fixed';
+                            $value = 'closed';
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+
+
+                case 'priority':
+                    switch ($value) {
+                        case Model_Issue_Changelog_Field_Priority::MINOR:
+                            $value = 'minor';
+                            break;
+                        case Model_Issue_Changelog_Field_Priority::CRITICAL:
+                            $value = 'critical';
+                            break;
+                        case Model_Issue_Changelog_Field_Priority::BLOCKER:
+                            $value = 'blocker';
+                            break;
+                        default: 
+                            $value = 'major';
+                            break;
+                    }
+                    break;
+                    
+                case 'duration':
+                    $options = Shared_Trac::getDurationOptions();
+                    if (isset($options[$value]))
+                        $value = $options[$value];
+                    else
+                        $value = array_pop($options);
+                    break;
+
+                case 'summary':
+                case 'description':
+                case 'comment':
+                    unset($pairs[$name]);
+                    break;
+                    
+                case 'component':
+                case 'owner':
+                case 'reporter':
+                case 'cost':
+                case 'code':
+                case 'action':
+                    break;
+
+                default:
+                    FaZend_Exception::raise('Model_Issue_Trac_UnknownField',
+                        "Unknown field going into Trac: '{$name}', value: '{$value}'");
+
+            }
+        }
+        
         return $pairs;
     }
         

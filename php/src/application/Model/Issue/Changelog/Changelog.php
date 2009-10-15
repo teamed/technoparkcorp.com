@@ -107,7 +107,7 @@ class Model_Issue_Changelog_Changelog {
     public function whatToSave() {
         $list = array();
         foreach ($this->_fields as $name=>$field) {
-            if ($field->wasChanged())
+            if ($field && $field->wasChanged())
                 $list[$name] = $field->getValue();
         }
         return $list;
