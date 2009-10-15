@@ -26,29 +26,207 @@
 class Model_Issue_Trac extends Model_Issue_Abstract {
 
     /**
-     * Unique ID of the ticket in trac (trac field)
+     * Issue really exists in tracker?
      *
-     * @var integer
-     */
-    protected $_id = null;
+     * @return integer ID of this issue in Trac
+     **/
+    public function exists() {
+        // if TRAC id already exists in the class - we are sure that issue exists in trac
+        if ($this->_id)
+            return true;
+        
+        // if we already checked this issue and know that it's absent
+        if ($this->_id === false)
+            return false;
+        
+        // get list of IDs with this code (we expect JUST ONE)
+        $ids = $this->_proxy()->query('code=' . $this->code);
+        logg("Query to Trac for code '{$this->code}' returned " . count($ids) . ' ticket');
+        
+        // nothing or something strange
+        if (count($ids) != 1)
+            return $this->_id = false;
     
+        // remember found ID in the class and return it
+        return $this->_id = array_pop($ids);
+    }
+        
     /**
-     * Save TRAC id
+     * Load changelog data
      *
      * @return void
      **/
-    public function setId($id) {
-        $this->_id = $id;
-        return $this;
+    protected function _loadChangelog() {
+        $log = $this->_proxy()->changeLog($this->_id);
+        logg("Issue '{$this->_id}' has " . count($log) . ' changes (from changelog)');
+        
+        $fields = array();
+        $records = array();
+        foreach ($log as $record) {
+            $records[] = array($record[2], $record[4], $record[1], $record[0]);
+            $fields[$record[2]] = true;
+        }
+        
+        $details = $this->_proxy()->get($this->_id);
+        
+        foreach ($details[3] as $k=>$v) {
+            if (!isset($fields[$k]))
+                $records[] = array($k, $v, $details[3]['reporter'], $details[1]);
+        }
+
+        // bug($log);
+        foreach ($records as $record) {
+            list($name, $value, $author, $date) = $this->_translateFromTrac(
+                $record[0], // name of field
+                $record[1], // value of this field
+                $record[2], // author of changes
+                $record[3] // date of change
+                );
+                
+            if (!$this->_changelog->allowsField($name))
+                continue;
+            $this->_changelog->load($name, $value, $author, $date);
+        }
+    }
+        
+    /**
+     * Save all changes made in changelog and create issue before, if necessary
+     *
+     * @return void
+     **/
+    protected function _saveChangelog() {
+        // maybe it's alive already?
+        if (!$this->exists()) {
+            // create new ticket in trac
+            $id = $this->_rpc()->create(
+                (string)$this->_changelog->get('summary')->getValue(),
+                (string)$this->_changelog->get('description')->getValue(),
+                $this->_translateToTrac($this->_changelog->whatToSave()),
+                false);
+            
+            logg("Trac ticket #$id created");
+            $this->_id = $id;
+        } else {
+            //...
+        }
+    }
+
+    /**
+     * Return XML RPC proxy for tickets in Trac
+     *
+     * @return Zend_XmlRpc_Client
+     **/
+    protected function _proxy() {
+        return $this->_tracker->getXmlRpcTicketProxy();
     }
     
     /**
-     * Get trac ID
+     * Translate what we got from Trac to our changelog-suitable pair
      *
-     * @return integer
+     * @param string Name of the field
+     * @param string Value of the field
+     * @param string Author of the field
+     * @param string Date of change of the field
+     * @return array
      **/
-    public function getId() {
-        return $this->_id;
+    protected function _translateFromTrac($name, $value, $author, $date) {
+        switch ($name) {
+            
+            // we ignore them
+            case 'code':
+            case 'cc':
+            case 'keywords':
+            case 'milestone':
+            case 'version':
+                $name = null;
+                break;
+                
+            case 'resolution':
+                switch ($value) {
+                    case 'fixed':
+                        $this->_resolutionCache = Model_Issue_Changelog_Field_Status::FIXED;
+                        break;
+                    default: 
+                        $this->_resolutionCache = Model_Issue_Changelog_Field_Status::INVALID;
+                }
+                break;
+
+            case 'status':
+                switch ($value) {
+                    case 'closed':
+                        $value = $this->resolutionCache;
+                    default: 
+                        $value = Model_Issue_Changelog_Field_Status::OPEN;
+                }
+                break;
+        
+            // type of ticket
+            case 'type':
+                switch ($value) {
+                    case 'task':
+                        $value = Model_Issue_Changelog_Field_Type::TASK;
+                    default: 
+                        $value = Model_Issue_Changelog_Field_Type::DEFECT;
+                }
+                break;
+
+            // priority of ticket
+            case 'priority':
+                switch ($value) {
+                    case 'major':
+                        $value = Model_Issue_Changelog_Field_Priority::MINOR;
+                    case 'critical':
+                        $value = Model_Issue_Changelog_Field_Priority::CRITICAL;
+                    case 'blocker':
+                        $value = Model_Issue_Changelog_Field_Priority::BLOCKER;
+                    default: 
+                        $value = Model_Issue_Changelog_Field_Priority::MAJOR;
+                }
+                break;
+
+            case 'component':
+            case 'summary':
+            case 'owner':
+            case 'reporter':
+            case 'description':
+            case 'comment':
+                $value = (string)$value;
+                if (!$value)
+                    $name = null;
+                break;
+
+            case 'cost':
+                $value = (int)$value;
+                break;
+        
+            case 'duration':
+                $value = array_search($value, Shared_Trac::getDurationOptions());
+                if ($value === false)
+                    $value = 20; // 20 days if Trac value is not clear
+                break;
+
+            default:
+                FaZend_Exception::raise('Model_Issue_Trac_UnknownField',
+                    "Unknown field came from Trac: '{$name}', value: '{$value}'");
+        
+        }
+        
+        return array(
+            (string)$name, 
+            $value, 
+            (string)$author, 
+            strtotime($date)
+            );
     }
     
+    /**
+     * Convert our internal fields to Trac
+     *
+     * @param array List of pairs to be sent to trac
+     * @return array
+     **/
+    protected function _translateToTrac(array $pairs) {
+        return $pairs;
+    }
+        
 }

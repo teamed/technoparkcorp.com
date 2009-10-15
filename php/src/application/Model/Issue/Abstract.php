@@ -40,19 +40,19 @@ abstract class Model_Issue_Abstract {
     protected $_code;
     
     /**
-     * List of messages in this trac
+     * Changelog
      *
-     * @var Model_Issue_Message_Abstract[]
+     * @var Model_Issue_Changelog_Changelog
      */
-    protected $_messages;
+    protected $_changelog;
 
     /**
-     * List of fields
+     * Unique ID of the ticket in tracker
      *
-     * @var string[]
+     * @var integer
      */
-    protected $_fields = array();
-
+    protected $_id = null;
+    
     /**
 	 * Constructor
      *
@@ -66,61 +66,73 @@ abstract class Model_Issue_Abstract {
     }
 
     /**
-     * Set field value
+	 * Destructor
      *
-     * @return string
-     **/
-    public function setField($name, $value) {
-        $this->_fields[$name] = $value;
-        return $this;
+     * @return void
+     */
+	public function __destruct() {
+	    $this->_saveChangelog();
     }
 
     /**
-     * Get field value
+     * Getter dispatcher
      *
-     * @param string Name of the field
+     * @param string Name of property to get
      * @return string
      **/
-    public function getField($name) {
-        return $this->_fields[$name];
+    public function __get($name) {
+        $method = '_get' . ucfirst($name);
+        if (method_exists($this, $method))
+            return $this->$method();
+            
+        $var = '_' . $name;
+        if (property_exists($this, $var))
+            return $this->$var;
+        
+        FaZend_Exception::raise('Model_Issue_PropertyOrMethodNotFound', 
+            "Can't find what is '$name'");        
     }
 
     /**
-     * Return code of the issue
+     * Get changelog for this issue
      *
-     * @return string
+     * @return Model_Issue_Changelog_Changelog
      **/
-    public function getCode() {
-        return $this->_code;
+    protected function _getChangelog() {
+        if (isset($this->_changelog))
+            return $this->_changelog;
+            
+        $this->_changelog = new Model_Issue_Changelog_Changelog();
+        
+        // load it with real-life data from tracker
+        if ($this->exists())
+            $this->_loadChangelog();
+            
+        // make sure the code is set properly
+        $this->_changelog->set('summary', $this->_code);
+
+        return $this->_changelog;
     }
 
     /**
      * This issue really exist in tracker now?
      *
-     * @return void
+     * @return integer ID in tracker
      **/
-    public function exists() {
-        return $this->_tracker->issueExists($this);
-    }
+    abstract public function exists();
 
     /**
-     * Get list of messages
-     *
-     * @return Model_Issue_Message_Abstract
-     **/
-    public function getMessages() {
-        if (!isset($this->_messages))
-            $this->_messages = $this->_tracker->getIssueMessages($this);
-        return $this->_messages;
-    }
-
-    /**
-     * Make sure it exists in tracker
+     * Load changelog
      *
      * @return void
      **/
-    public function makeAlive() {
-        return $this->_tracker->makeIssueAlive($this);
-    }
+    abstract protected function _loadChangelog();
+
+    /**
+     * Save changelog
+     *
+     * @return void
+     **/
+    abstract protected function _saveChangelog();
 
 }

@@ -57,14 +57,4 @@ abstract class Model_Issue_Tracker_Abstract extends FaZend_StdObject {
         return str_replace('Model_Issue_Tracker_', '', get_class($this));
     }
         
-    /**
-     * Issue really exists in tracker?
-     *
-     * @param Model_Issue_Abstract The issue to check
-     * @return boolean
-     **/
-    public function issueExists(Model_Issue_Abstract $issue) {
-        return false;
-    }
-        
 }

@@ -19,22 +19,22 @@
  */
 
 /**
- * Activity is assigned to a certain person
- * 
- * @package Activity_Plugin
+ * One changelog field, owner of the issue
+ *
+ * @package Model
  */
-class Activity_Plugin_IsAssigned extends Activity_Plugin_Abstract {
+class Model_Issue_Changelog_Field_Owner extends Model_Issue_Changelog_Field_Abstract {
 
     /**
-     * Execute it
+     * Validate new value
      *
-     * @return boolean
+     * @param mixed Value to set
+     * @return void
+     * @throws Exception if failed
      **/
-    public function execute() {
-        if (!$this->_activity->isIssueExist())
-            return false;
-            
-        // if (!$this->_issue->changelog)
+    protected function _validate($value) {
+        validate()->emailAddress($value, array(), "Invalid owner's email: '{$value}'");
+        return false;
     }
-                            
+
 }

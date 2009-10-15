@@ -19,22 +19,30 @@
  */
 
 /**
- * Activity is assigned to a certain person
- * 
- * @package Activity_Plugin
+ * One changelog field, type of issue
+ *
+ * @package Model
  */
-class Activity_Plugin_IsAssigned extends Activity_Plugin_Abstract {
+class Model_Issue_Changelog_Field_Type extends Model_Issue_Changelog_Field_Abstract {
+
+    const DEFECT = 1;
+    const TASK = 2;
 
     /**
-     * Execute it
+     * Validate new value
      *
-     * @return boolean
+     * @param mixed Value to set
+     * @return void
+     * @throws Exception if failed
      **/
-    public function execute() {
-        if (!$this->_activity->isIssueExist())
-            return false;
+    protected function _validate($value) {
+        validate()
+            ->type($value, 'integer', "Type of issue shall be INT only")
+            ->true(in_array($value, array(
+                self::DEFECT,
+                self::TASK)), "Type of issue shall be from pre-defined list only");
             
-        // if (!$this->_issue->changelog)
+        return true;
     }
-                            
+
 }

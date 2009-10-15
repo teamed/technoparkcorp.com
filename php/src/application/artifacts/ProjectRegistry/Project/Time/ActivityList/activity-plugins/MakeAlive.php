@@ -35,12 +35,12 @@ class Activity_Plugin_MakeAlive extends Activity_Plugin_Abstract {
         if ($this->_activity->isIssueExist())
             return;
             
-        $this->_issue
-            ->setField('summary', $this->_activity->name)
-            ->setField('description', $this->_activity->sow);
-        $this->_issue->makeAlive();
-        
-        $this->_issue->getMessages();
+        $this->_issue->changelog
+            ->set('summary', $this->_activity->name)
+            ->set('description', $this->_activity->sow)
+            ->set('reporter', Model_User::getCurrentUser()->email);
+            
+        bug($this->_issue->changelog);
     }
                             
 }

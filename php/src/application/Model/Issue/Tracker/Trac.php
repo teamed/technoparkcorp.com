@@ -25,6 +25,8 @@
  */
 class Model_Issue_Tracker_Trac extends Model_Issue_Tracker_Abstract {
 
+    const URI = 'http://trac.fazend.com';
+
     /**
      * The project related to this Trac
      *
@@ -50,110 +52,29 @@ class Model_Issue_Tracker_Trac extends Model_Issue_Tracker_Abstract {
 	}
 
     /**
-     * Issue really exists in tracker?
-     *
-     * @param Model_Issue_Abstract The issue to check
-     * @return boolean
-     **/
-    public function issueExists(Model_Issue_Abstract $issue) {
-        // if TRAC id already exists in the class - we are sure that issue exists in trac
-        if ($issue->getId())
-            return true;
-        
-        // if we already checked this issue and know that it's absent
-        if ($issue->getId() === false)
-            return false;
-        
-        // get list of IDs with this code (we expect JUST ONE)
-        $ids = $this->_rpc()->query('code=' . $issue->getCode());
-        logg("Query to Trac for code '{$issue->getCode()}' returned " . count($ids) . ' ticket');
-        
-        // nothing or something strange
-        if (count($ids) != 1) {
-            $issue->setId(false);
-            return false;
-        }
-    
-        // remember found ID in the class
-        $issue->setId(array_pop($ids));
-        
-        // return success
-        return true;
-    }
-        
-    /**
-     * List of messages in this issue
-     *
-     * @param Model_Issue_Abstract The issue to check
-     * @return Model_Issue_Message_Abstract
-     **/
-    public function getIssueMessages(Model_Issue_Abstract $issue) {
-        if (!$this->issueExists($issue))
-            FaZend_Exception::raise('Model_Issue_Tracker_Trac', 
-                "Issue {$issue->name} is absent in Trac");
-                
-        $log = $this->_rpc()->changeLog($issue->getId());
-        
-        return $log;
-    }
-        
-    /**
-     * Make sure that this issue exists in trac
-     *
-     * @param Model_Issue_Abstract The issue to check
-     * @return void
-     **/
-    public function makeIssueAlive(Model_Issue_Abstract $issue) {
-        // maybe it's alive already?
-        if ($this->issueExists($issue))
-            return;
-                
-        // create new ticket in trac
-        $id = $this->_rpc()->create(
-            $issue->getField('summary'),
-            $issue->getField('description'),
-            array(
-                'reporter' => Model_User::getCurrentUser()->email, 
-                'code' => $issue->getCode(),
-                ), 
-            false);
-            
-        logg("Trac ticket #$id created: '{$issue->getField('summary')}'");
-        $issue->setId($id);
-        
-        return $log;
-    }
-        
-    /**
      * Get XML RPC client instance
      *
      * @return Zend_XmlRpc_Client
      **/
-    protected function _rpc() {
-        if (!isset($this->_xmlRpc)) {
-            $uri = 'http://trac.fazend.com/' . $this->_project->name . '/xmlrpc';
-
-            // configure HTTP connector
-            $httpClient = new Zend_Http_Client($uri, array());
-            $login = $this->_project->user->email;
-            $password = $this->_project->user->password;
+    public function getXmlRpcTicketProxy() {
+        if (isset($this->_xmlRpc))
+            return $this->_xmlRpc;
             
-            $httpClient->setAuth($login, $password);
-            // make connection
-            $client = new Zend_XmlRpc_Client($uri, $httpClient);
+        // this is the URL of trac hack XMLRPC
+        $uri = self::URI . '/' . $this->_project->name . '/xmlrpc';
 
-            // get this particular proxy locator
-            $this->_xmlRpc = $client->getProxy('ticket');
-                
-            try {
-                $fields = $this->_xmlRpc->getTicketFields();
-            } catch (Exception $e) {
-                FaZend_Exception::raise('Model_Issue_Tracker_Trac_FailedConnection',
-                    "Can't connect: login '{$login}', password: '{$password}', URI: '{$uri}'. " . 
-                    get_class($e) . ": '" . $e->getMessage() . "'");
-            }
+        // configure HTTP connector
+        $httpClient = new Zend_Http_Client($uri, array());
+        $login = $this->_project->user->email;
+        $password = $this->_project->user->password;        
+        $httpClient->setAuth($login, $password);
+
+        // make connection
+        $client = new Zend_XmlRpc_Client($uri, $httpClient);
+
+        // get this particular proxy locator
+        $this->_xmlRpc = $client->getProxy('ticket');
             
-        }
         return $this->_xmlRpc;
     }
 

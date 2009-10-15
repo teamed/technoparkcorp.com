@@ -19,22 +19,32 @@
  */
 
 /**
- * Activity is assigned to a certain person
- * 
- * @package Activity_Plugin
+ * One changelog field, status of the issue
+ *
+ * @package Model
  */
-class Activity_Plugin_IsAssigned extends Activity_Plugin_Abstract {
+class Model_Issue_Changelog_Field_Status extends Model_Issue_Changelog_Field_Abstract {
 
+    const OPEN = 1;
+    const FIXED = 2;
+    const INVALID = 3;
+    
     /**
-     * Execute it
+     * Validate new value
      *
-     * @return boolean
+     * @param mixed Value to set
+     * @return void
+     * @throws Exception if failed
      **/
-    public function execute() {
-        if (!$this->_activity->isIssueExist())
-            return false;
+    protected function _validate($value) {
+        validate()
+            ->type($value, 'integer', "Status shall be INT only")
+            ->true(in_array($value, array(
+                self::OPEN,
+                self::FIXED,
+                self::INVALID)), "Status shall be from the predefined list");
             
-        // if (!$this->_issue->changelog)
+        return true;
     }
-                            
+
 }
