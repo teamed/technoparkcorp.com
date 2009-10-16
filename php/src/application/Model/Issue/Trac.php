@@ -53,7 +53,7 @@ class Model_Issue_Trac extends Model_Issue_Abstract {
         
         // we posted it recently
         if ($lastDate > time() - SECONDS_IN_DAY * $lag) {
-            logg("No '{$code}' to ticket #{$this->_id} since we alread did it " . 
+            logg("No '{$code}' to ticket #{$this->_id} since we already did it " . 
                 round((time() - $lastDate)/SECONDS_IN_HOUR, 1) . ' hours ago, at ' .
                 date('m/d/y h:i:s', $lastDate));
             return;
@@ -106,7 +106,7 @@ class Model_Issue_Trac extends Model_Issue_Abstract {
             $records[] = array($record[2], $record[4], $record[1], $record[0]);
             $fields[$record[2]] = true;
         }
-        
+
         $details = $this->_proxy()->get($this->_id);
         
         foreach ($details[3] as $k=>$v) {

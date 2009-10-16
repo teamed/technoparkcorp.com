@@ -29,6 +29,13 @@
 abstract class Model_Wobot implements Model_Wobot_Interface {
 
     const EMAIL_DOMAIN = 'wobot.net'; // domain to be used in all wobot's emails
+    
+    /**
+     * List of wobots
+     *
+     * @var Model_Wobot[]
+     */
+    protected static $_wobots = array();
 
     /**
      * Get list of all wobots
@@ -39,16 +46,16 @@ abstract class Model_Wobot implements Model_Wobot_Interface {
      * @todo Implement it properly, should use /wobots directory
      */
     public static function retrieveAll() {
-        $wobots = new ArrayIterator();
+        self::$_wobots = new ArrayIterator();
         
         // list all wobot names
         foreach (self::_getAllNames() as $name) {
             $wobotClass = __CLASS__ . '_' . $name;
             foreach ($wobotClass::getAllNames() as $wobotName)
-                $wobots[] = self::factory($wobotName);
+                self::$_wobots[$wobotName] = self::factory($wobotName);
         }
             
-        return $wobots;
+        return self::$_wobots;
     }
 
     /**
@@ -58,10 +65,13 @@ abstract class Model_Wobot implements Model_Wobot_Interface {
      * @return Model_Wobot
      */
     public static function factory($name) {
+        if (isset(self::$_wobots[$name]))
+            return self::$_wobots[$name];
+            
         $exp = explode('.', $name);
 
         $className = __CLASS__ . '_' . $exp[0];
-        return new $className(isset($exp[1]) ? $exp[1] : null);
+        return self::$_wobots[$name] = new $className(isset($exp[1]) ? $exp[1] : null);
     }
 
     /**

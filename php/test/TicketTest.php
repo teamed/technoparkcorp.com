@@ -19,22 +19,19 @@
  */
 
 require_once 'FaZend/Test/TestCase.php';
+require_once 'AbstractProjectTest.php';
 
 /**
- * Abstract test case for project-related testing
+ * Model_Ticket test
  *
  * @package test
  */
-class AbstractProjectTest extends FaZend_Test_TestCase {
+class TicketTest extends AbstractProjectTest {
 
-    public function setUp() {
-        parent::setUp();
-        
-        $name = Model_Project_Test::NAME;
-        $this->project = new theProject();
-        $this->project->name = $name;
-        
-        $this->project->reload();
+    public function testSampleMechanismWorks() {
+        $str = ticket('PM/time/activity/estimate/all', array(
+            'activity'=>$this->project->activityList->activities->findByName('requirements/actors/total.a0')));
+        logg($str);
     }
 
 }
