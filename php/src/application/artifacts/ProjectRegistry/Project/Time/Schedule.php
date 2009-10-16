@@ -41,6 +41,11 @@ class theSchedule extends Model_Artifact_Bag implements Model_Artifact_Passive {
      */
     public function reload() {
         $this->_attach('activities', clone $this->ps()->parent->activityList->activities);
+        
+        // set start
+        foreach ($this->activities as $activity) {
+            $activity->start = time();
+        }
     }
     
 }

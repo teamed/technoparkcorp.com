@@ -31,6 +31,10 @@ class Activity_Plugin_IsCostEstimated extends Activity_Plugin_Abstract {
      * @return boolean
      **/
     public function execute() {
+        // milestones can't become alive in tracker
+        if ($this->_activity->isMilestone())
+            return false;
+
         if (!$this->_activity->isIssueExist())
             return false;
             

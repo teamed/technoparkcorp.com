@@ -158,14 +158,15 @@ abstract class Model_Decision implements Model_Decision_Interface {
             
             logg('Starting decision: ' . $this->_file);
             $decision = $this->_make();
+            logg('Decision execution finished (' . pathinfo($this->_file, PATHINFO_FILENAME) . ')');
 
         } catch (Exception $e) {
             // some error inside - we skip the process
-            logg($e->getMessage());
+            FaZend_Log::err($e->getMessage());
             $decision = false;
+            logg('Decision execution aborted');
         }
         
-        logg('Decision execution finished (' . pathinfo($this->_file, PATHINFO_FILENAME) . ')');
         $log = FaZend_Log::getInstance()->getWriterAndRemove('decision')->getLog();
         
         // protocol this decision

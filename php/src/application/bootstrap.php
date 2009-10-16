@@ -74,6 +74,15 @@ function logg($message) {
 }
 
 /**
+ * Get ticket and return it's string value
+ *
+ * @return string
+ */
+function ticket($name, array $params = array()) {
+    return (string) Model_Ticket::factory($name, $params);
+}
+
+/**
  * Return string with plural/singular inside
  *
  * @param string Input line with metas

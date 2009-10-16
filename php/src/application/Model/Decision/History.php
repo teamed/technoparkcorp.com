@@ -55,6 +55,8 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history {
     public static function findByHash($hash) {
         return self::retrieve()
             ->where('hash = ?', $hash)
+            ->order('created DESC')
+            ->limit(1)
             ->setRowClass('Model_Decision_History')
             ->fetchRow();
     }

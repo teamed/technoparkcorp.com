@@ -19,11 +19,11 @@
  */
 
 /**
- * Activity order exist
+ * Request estimate
  * 
  * @package Activity_Plugin
  */
-class Activity_Plugin_IsIssueExist extends Activity_Plugin_Abstract {
+class Activity_Plugin_RequestEstimate extends Activity_Plugin_Abstract {
 
     /**
      * Execute it
@@ -31,11 +31,19 @@ class Activity_Plugin_IsIssueExist extends Activity_Plugin_Abstract {
      * @return boolean
      **/
     public function execute() {
-        // milestones can't become alive in tracker
         if ($this->_activity->isMilestone())
-            return false;
-            
-        return $this->_issue->exists();
+            return;
+        
+        // make sure it exists
+        $this->_activity->makeAlive();
+
+        // if it is already estimated - skip
+        if ($this->_activity->isCostEstimated() && $this->_activity->isDurationEstimated())
+            return;
+        
+        // ask performer to estimate it    
+        $this->_issue
+            ->askOnce('requestEstimate', ticket('PM/time/activity/requestEstimate'));
     }
                             
 }

@@ -26,6 +26,39 @@
 class Model_Issue_Trac extends Model_Issue_Abstract {
 
     /**
+     * Send this message just once to the ticke
+     *
+     * @param string Code of the message
+     * @param string Text of the message
+     * @param integer How many days before we can ask again
+     * @return void
+     **/
+    public function askOnce($code, $text, $lag = 5) {
+        $lastDate = false;
+        foreach ($this->changelog->get('comment')->getChanges() as $change) {
+            // not from me
+            if ($change->author != Model_User::getCurrentUser()->email)
+                continue;
+                
+            // not with a code
+            if (!preg_match('/^\{{3}\n#!comment\n([\w\d]{32})\n\}{3}\n/', $change->value, $matches))
+                continue;
+                
+            // invalid code
+            if ($matches[1] != md5($code))
+                continue;
+                
+            $lastDate = max($lastDate, $change->date);
+        }
+        
+        // we posted it recently
+        if ($lastDate > time() - SECONDS_IN_DAY * $lag)
+            return;
+            
+        $this->changelog->set('comment', "{{{\n#!comment\n" . md5($code) . "\n}}}\n" . $text);
+    }
+
+    /**
      * Issue really exists in tracker?
      *
      * @return integer ID of this issue in Trac

@@ -33,10 +33,25 @@ class RequestEstimate extends Model_Decision_PM {
      */
     protected function _make() {
         
-        validate()
-            ->false($this->_project->objectives->isApproved(), 'Objectives are not approved yet');
+        // validate()
+            // ->false($this->_project->objectives->ps()->isApproved(), 'Objectives are not approved yet');
 
-        $this->_project->activityList->requestEstimates();
+        $cnt = 0;
+        foreach ($this->_project->schedule->activities as $activity) {
+            // the activity is too far in the future, there is 
+            // no necessity to request estimates now
+            if ($activity->start > time() + SECONDS_IN_DAY * 20)
+                continue;
+               
+            // if it is already estimated? 
+            if ($activity->isCostEstimated() && $activity->isDurationEstimated())
+                continue;
+            
+            // request estimate for this activity
+            $activity->requestEstimate();
+        }
+        
+        return plural('Requested estimates for activit[ies]', $cnt);
         
     }
     

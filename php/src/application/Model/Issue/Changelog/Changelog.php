@@ -112,5 +112,5 @@ class Model_Issue_Changelog_Changelog {
         }
         return $list;
     }
-
+    
 }

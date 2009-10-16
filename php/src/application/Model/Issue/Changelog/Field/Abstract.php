@@ -101,6 +101,15 @@ abstract class Model_Issue_Changelog_Field_Abstract {
 
         return $this->_changes[count($this->_changes)-1]->value;
     }
+    
+    /**
+     * Get a list of changes
+     *
+     * @return FaZend_StdObject[]
+     **/
+    public function getChanges() {
+        return $this->_changes;
+    }
 
     /**
      * Add one change
