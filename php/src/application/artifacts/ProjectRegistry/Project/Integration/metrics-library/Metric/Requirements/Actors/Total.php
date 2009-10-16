@@ -25,6 +25,8 @@
  */
 class Metric_Requirements_Actors_Total extends Metric_Abstract {
 
+    const PORTION = 0.12;
+
     /**
      * Load this metric
      *
@@ -41,7 +43,7 @@ class Metric_Requirements_Actors_Total extends Metric_Abstract {
      **/
     public function getWorkPackage() {
         return $this->_makeWp(
-            $this->_project->wbs->sum('requirements\/functional\/total')->multiply(0.2), 
+            $this->_project->wbs->sum('requirements\/functional\/total')->multiply(self::PORTION), 
             'Specify actors');
     }
         

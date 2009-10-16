@@ -34,8 +34,8 @@ h1 {
     font-size: 2em;
     color: <?=Model_Colors::BLUE?>;
     background-color: inherit;
-    padding-top: 6px;
-    padding-bottom: 24px;
+    padding-top: 18px;
+    padding-bottom: 18px;
     font-weight: normal;
 }
 
@@ -44,6 +44,8 @@ h2 {
     color: <?=Model_Colors::BLUE?>;
     background-color: inherit;
     font-weight: normal;
+    padding-top: 18px;
+    padding-bottom: 6px;
 }
 
 /* table properties */
@@ -98,6 +100,12 @@ select {
 
 /* flash message line */
 p.flash {
+    color: <?=Model_Colors::RED?>;
+    background-color: inherit;
+}
+
+/* if the document is shared */
+p.shared {
     color: <?=Model_Colors::RED?>;
     background-color: inherit;
 }

@@ -25,6 +25,8 @@
  */
 class theWpAggregator extends theWorkPackage {
 
+    const MAX_PACKAGES_TO_SHOW_IN_TITLE = 8;
+
     /**
      * List of aggregated work packages
      *
@@ -87,7 +89,9 @@ class theWpAggregator extends theWorkPackage {
      **/
     protected function _getTitle() {
         $cnt = count($this->_aggregatedWps);
-        return plural("{$cnt} Work Package[s]: ", $cnt) . implode(', ', array_keys($this->_aggregatedWps));
+        return plural("{$cnt} Work Package[s]: ", $cnt) . 
+            implode(', ', array_slice(array_keys($this->_aggregatedWps), 0, self::MAX_PACKAGES_TO_SHOW_IN_TITLE)) . 
+            ($cnt > self::MAX_PACKAGES_TO_SHOW_IN_TITLE ? ', ...' : false);
     }
 
 }

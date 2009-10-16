@@ -242,7 +242,7 @@ class theActivity {
      * @return string
      */
     protected function _getId() {
-        return md5($this->name);
+        return Model_Pages_Encoder::encode($this->name);
     }
 
     /**

@@ -88,41 +88,15 @@ class PanelController extends FaZend_Controller_Action {
      */
     public function indexAction() {
 
-        $view = clone $this->view;
-
-        $doc = $view->doc = $this->view->doc = $this->_getParam('doc');
+        $doc = $this->_getParam('doc');
 
         // permission check for current user
         if (!$this->_pages->isAllowed($doc)) {
             return $this->_forward('restrict', null, null, 
                 array('msg'=>'Sorry, the document "' . $doc . '" is not available for you'));
         }
-
-        // configure it, set the active document for further references
-        $this->_pages->setActiveDocument($doc);
-
-        $this->view->headTitle($doc . ' -- ' );
-
-        // convert document name into absolute PATH
-        $scripts = array();
-        $path = $this->_pages->resolvePath($doc, $scripts);
-
-        /**
-         *  @todo this should be improved
-         */
-        $this->view->document = '';
-        foreach ($scripts as $script) {
-            $view->addScriptPath(dirname($script));
-            $this->view->document .= $view->render(pathinfo($script, PATHINFO_BASENAME));
-        }
-
-        // reconfigure VIEW in order to render this particular document file
-        $view->addScriptPath(dirname($path));
-        $this->view->document .= $view->render(pathinfo($path, PATHINFO_BASENAME));
-
-        // if execution inside this view is completed - show only the result
-        if ($view->formaCompleted)
-            $this->view->document = '<pre class="log">' . $view->formaCompleted . '</pre>';
+        
+        $this->_buildDocument($doc);
 
     }
 
@@ -174,6 +148,64 @@ class PanelController extends FaZend_Controller_Action {
         $doc = $this->getRequest()->getPost('document');
         $this->_helper->redirector->gotoRoute(array('doc'=>$doc), 'panel', true, false);
 
+    }
+
+    /**
+     * Grant access to shared documents
+     *
+     * @return void
+     */
+    public function sharedAction() {
+
+        require_once 'helpers/SharedDoc.php';
+        list($doc, $email) = explode(Helper_SharedDoc::SEPARATOR, Model_Pages_Encoder::decode($this->_getParam('doc')));
+        
+        // access control
+        if (Model_User::getCurrentUser()->email != $email)
+            return $this->_forward('restrict', null, null, 
+                array('msg'=>'Sorry, the document "' . $doc . '" is not shared with you, but only with ' . $email));
+        
+        // build document and show it
+        $this->_buildDocument($doc);
+
+    }
+
+    /**
+     * Build document content
+     *
+     * @return string HTML
+     **/
+    protected function _buildDocument($doc) {
+        $view = clone $this->view;
+
+        $view->doc = $this->view->doc = $doc;
+
+        // configure it, set the active document for further references
+        $this->_pages->setActiveDocument($doc);
+
+        $this->view->headTitle($doc . ' -- ' );
+
+        // convert document name into absolute PATH
+        $scripts = array();
+        $path = $this->_pages->resolvePath($doc, $scripts);
+
+        /**
+         *  @todo this should be improved
+         */
+        $this->view->document = '';
+        foreach ($scripts as $script) {
+            $view->addScriptPath(dirname($script));
+            $this->view->document .= $view->render(pathinfo($script, PATHINFO_BASENAME));
+        }
+
+        // reconfigure VIEW in order to render this particular document file
+        $view->addScriptPath(dirname($path));
+        $this->view->document .= $view->render(pathinfo($path, PATHINFO_BASENAME));
+
+        // if execution inside this view is completed - show only the result
+        if ($view->formaCompleted)
+            $this->view->document = '<pre class="log">' . $view->formaCompleted . '</pre>';
+        
     }
 
 }

@@ -46,9 +46,18 @@
         ->addOption('code', '{suffix}')
         ?>
         
+    <h2>Synopsis</h2>
+        
 <!-- activity to show -->
 <? else: ?>
 
     <h1>Activity: "<?=$this->activity->name?>"</h1>
+
+    <p>
+        Cost: <?=$this->activity->cost?><br/>
+        SOW: <?=$this->activity->sow?><br/>
+        Criteria: <?=$this->activity->criteria?><br/>
+        Predecessors: <?=$this->activity->predecessors?>
+    </p>
 
 <? endif; ?>

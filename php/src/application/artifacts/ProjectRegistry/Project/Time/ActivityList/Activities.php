@@ -103,10 +103,7 @@ class theActivities extends ArrayIterator implements Model_Artifact_Stateless, M
      * @return theActivity
      **/
     public function findById($id) {
-        foreach ($this as $activity)
-            if ($activity->id == $id)
-                return $activity;
-        FaZend_Exception::raise('ActivityNotFound', 'Activity not found with ID: ' . $id);
+        return $this->findByName(Model_Pages_Encoder::decode($id));
     }
 
     /**
