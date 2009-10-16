@@ -56,10 +56,10 @@ class Model_Project_Test extends Model_Project {
         return self::$_instanceTest = new Model_Project_Test(
             1, // id
             self::NAME, // project name
-            new Shared_User(1, self::OWNER, self::OWNER_PWD), // project manager
+            new Shared_User(1, self::OWNER, self::OWNER_PWD), // project owner
             $authz, // authz file
-            self::PM . ' = ' . self::PM_PWD . "\n" . 
-                self::OWNER . '=' . self::OWNER_PWD . "\n" // passwd file, random password
+                self::PM . ' = ' . self::PM_PWD . "\n" . 
+                self::OWNER . '=' . self::OWNER_PWD . "\n" // passwd file
             );
     }
 

@@ -1,0 +1,5 @@
+<? $decision = $this->wobot->decisionFactory(Model_Pages_Encoder::decode($this->segment())) ?>
+
+<p>Decision: <b><?=$decision->make(); ?></b></p>
+
+<pre><?=$decision->getHistory()->protocol?></pre>

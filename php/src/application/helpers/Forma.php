@@ -17,6 +17,17 @@
 /**
  * Form to show
  *
+ * <code>
+ * <?=$this->forma()
+ *    ->addField('text')
+ *        ->fieldLabel('My text:')
+ *        ->fieldRequired(true)
+ *        ->fieldAttrib('maxlength', 45)
+ *    ->addField('submit')
+ *        ->fieldAction($class, $method)
+ *     ?>
+ * </code>
+ *
  * @package helpers
  */
 class Helper_Forma extends FaZend_View_Helper {
@@ -44,7 +55,11 @@ class Helper_Forma extends FaZend_View_Helper {
      * @return string HTML
      */
     public function __toString() {
-        return (string)$this->_render();
+        try {
+            return (string)$this->_render();
+        } catch (Exception $e) {
+            return get_class($e) . ': ' . $e->getMessage();
+        }
     }
 
     /**
@@ -149,7 +164,7 @@ class Helper_Forma extends FaZend_View_Helper {
                 $mnemos[] = (is_scalar($methodArgs[$param->name]) ? $methodArgs[$param->name] : get_class($methodArgs[$param->name]));
             }
 
-            FaZend_Log::info('Calling ' . $rMethod->getDeclaringClass()->name . '::' . $method .
+            logg('Calling ' . $rMethod->getDeclaringClass()->name . '::' . $method .
                 '(\'' . implode("', '", $mnemos) . '\')');
 
             // execute the target method

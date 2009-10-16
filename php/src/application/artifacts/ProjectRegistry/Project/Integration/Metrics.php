@@ -97,6 +97,16 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive {
     }
     
     /**
+     * Find metric by ID
+     *
+     * @param string ID of the metric to find
+     * @return Metric_Abstract
+     **/
+    public function findById($id) {
+        return $this[Model_Pages_Encoder::decode($id)];
+    }
+    
+    /**
      * Attach one metric to the collection
      *
      * @param string Name of the metric, like 'requirements/total'

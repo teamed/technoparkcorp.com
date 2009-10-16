@@ -99,13 +99,12 @@ class Model_Wobot_PM extends Model_Wobot {
     }
 
     /**
-     * Selects the next decision to be executed
+     * Create decision
      *
      * @return Model_Decision
-     */
-    protected function _nextDecision() {
-        // return it, preconfigured
-        $decision = Model_Decision::factory($this->_nextDecisionFile(), $this);
+     **/
+    public function decisionFactory($file) {
+        $decision = parent::decisionFactory($file);
         $decision->setProject(Model_Artifact::root()->projectRegistry[$this->_project->name]);
         return $decision;
     }

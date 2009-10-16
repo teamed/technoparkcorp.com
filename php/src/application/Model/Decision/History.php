@@ -48,6 +48,18 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history {
     }
 
     /**
+     * Find one decision history record
+     *
+     * @return Model_Decision_History
+     **/
+    public static function findByHash($hash) {
+        return self::retrieve()
+            ->where('hash = ?', $hash)
+            ->setRowClass('Model_Decision_History')
+            ->fetchRow();
+    }
+
+    /**
      * Find next waiting decision
      *
      * @param Model_Wobot Wobot that is looking for new decision

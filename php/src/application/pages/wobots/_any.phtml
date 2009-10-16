@@ -2,6 +2,9 @@
 <?=$this->icon('wobot')?><br/>
 <?=$this->wobot?> (<?=$this->wobot->getHumanName()?>, <tt><?=$this->wobot->getEmail()?></tt>)
 
+<?=$this->bar()
+    ->addLink('decisions', 'Decisions')?>
+
 <?=$this->table()
     ->setSource(Model_Decision_History::retrieveByWobot($this->wobot))
 

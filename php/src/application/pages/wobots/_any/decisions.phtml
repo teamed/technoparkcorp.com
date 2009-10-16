@@ -1,1 +1,16 @@
-decisions
+<h1>All decisions are being made by "<?=$this->wobot?>"</h1>
+
+<? $files = Model_Decision::getDecisionFiles($this->wobot); ?>
+
+<? $prefix = array(); ?>
+<? foreach ($files as $label=>$file): ?>
+    <? foreach (array_slice(explode('/', $label), 0, -1) as $i=>$sector): ?>
+        <? if (!isset($prefix[$i]) || $sector != $prefix[$i]): ?>
+            <? $prefix[$i] = $sector ?>
+            <span style="margin-left:<?=$i*10?>px;"><?=$sector?></span><br/>
+        <? endif; ?>
+    <? endforeach; ?>
+    <span style="margin-left:<?=($i+1)*10?>px;">
+        <?=$this->link('make/' . Model_Pages_Encoder::encode($label), substr(strrchr($label, '/'), 1), false)?>
+    </span><br/>
+<? endforeach; ?>

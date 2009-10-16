@@ -33,12 +33,13 @@ class DecomposeWorkPackages extends Model_Decision_PM {
      */
     protected function _make() {
         
-        validate()
-            ->false($this->_project->objectives->isApproved(), 'Objectives are not approved yet');
+        // validate()
+            // ->false($this->_project->objectives->ps()->isApproved(), 'Objectives are not approved yet');
 
-        $list = $this->_project->activityList;
+        $this->_project->activityList->reload();
 
-        logg(count($this->_project->WBS) . ' work packages are decomposed to ' . count($list) . ' activities');
+        return count($this->_project->wbs) . ' work packages are decomposed to ' . 
+            count($this->_project->activityList->activities) . ' activities';
 
     }
     

@@ -66,9 +66,53 @@ abstract class Model_Decision implements Model_Decision_Interface {
      * @return Model_Decision
      */
     public static function factory($file, Model_Wobot $wobot) {
+        if (!file_exists($file))
+            $file = APPLICATION_PATH . '/wobots/' . $wobot->getName() . '/' . $file . '.php';
+        
         $className = pathinfo($file, PATHINFO_FILENAME);
         require_once $file;
         return new $className($file, $wobot);
+    }
+
+    /**
+     * Selects the next decision to be executed
+     *
+     * @param Model_Wobot Wobot, the initiator
+     * @return Model_Decision
+     */
+    public static function nextForWobot(Model_Wobot $wobot) {
+
+        // get list of all files in this wobot
+        $files = self::getDecisionFiles($wobot);
+
+        // find next decision to be made
+        return Model_Decision_History::findNextDecision($wobot, $files);
+
+    }
+
+    /**
+     * Get full list of wobot decision files
+     *
+     * Returns an associative array where key is a label of decision, like 
+     * 'TimeManagement/DefineActivities/DecomposeWorkPackages', and the value
+     * is an absolute file path. 
+     *
+     * @param Model_Wobot The author of decisions
+     * @return string[]
+     */
+    public static function getDecisionFiles(Model_Wobot $wobot) {
+        $path = APPLICATION_PATH . '/wobots/' . $wobot->getName();
+
+        // get through all files in the directory and collect PHP decisions
+        $files = array();
+        foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path)) as $file) {
+            if (!preg_match('/\.php$/', $file))
+                continue;
+            $files[substr($file, strlen($path)+1, -4)] = $file;
+        }
+
+        // return list of found PHP files
+        return $files;
     }
 
     /**
@@ -93,6 +137,15 @@ abstract class Model_Decision implements Model_Decision_Interface {
     }
 
     /**
+     * Get instance of Model_Decision_History for this decision
+     *
+     * @return Model_Decision_History
+     **/
+    public function getHistory() {
+        return Model_Decision_History::findByHash($this->getHash());
+    }
+
+    /**
      * Make decision and protocol results
      *
      * @return string|false Result of decision made (FALSE = no decission)
@@ -112,6 +165,7 @@ abstract class Model_Decision implements Model_Decision_Interface {
             $decision = false;
         }
         
+        logg('Decision execution finished (' . pathinfo($this->_file, PATHINFO_FILENAME) . ')');
         $log = FaZend_Log::getInstance()->getWriterAndRemove('decision')->getLog();
         
         // protocol this decision

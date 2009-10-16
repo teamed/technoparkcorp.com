@@ -1,0 +1,16 @@
+<? $metric = $this->project->metrics->findById($this->segment())?>
+
+<h1>Set New Target for "<?=$metric->name?>"</h1>
+
+<?=$this->forma()
+    ->addField('text', 'target')
+        ->fieldLabel('Current target:')
+        ->fieldValue($metric->target)
+        ->fieldRequired(true)
+        ->fieldAttrib('maxlength', 10)
+        ->fieldAttrib('size', 5)
+    ->addField('submit')
+        ->fieldValue('Save')
+        ->fieldAction($metric, 'setTarget')
+    ?>
+    

@@ -131,55 +131,16 @@ abstract class Model_Wobot implements Model_Wobot_Interface {
      * @return string The decision just made
      */
     public function execute() {
-        return $this->_nextDecision()->make();
+        return Model_Decision::nextForWobot($this)->execute();
     }
 
     /**
-     * Selects the next decision to be executed
+     * Create decision
      *
      * @return Model_Decision
-     */
-    protected function _nextDecision() {
-        // return it, preconfigured
-        return Model_Decision::factory($this->_nextDecisionFile(), $this);
-    }
-
-    /**
-     * Selects the next decision to be executed
-     *
-     * @return string PHP file with next decision
-     */
-    protected function _nextDecisionFile() {
-
-        // get list of all files in this wobot
-        $files = $this->_getDecisionFiles();
-
-        // find next decision to be made
-        return Model_Decision_History::findNextDecision($this, $files);
-
-    }
-
-    /**
-     * Get full list of wobot decision files
-     *
-     * @param string Path to find files in
-     * @return string[]
-     */
-    protected function _getDecisionFiles($path = null) {
-        if (is_null($path))
-            $path = APPLICATION_PATH . '/wobots/' . $this->getName();
-
-        // get through all files in the directory and collect PHP decisions
-        $files = array();
-        foreach (glob($path . '/*') as $file) {
-            if (is_dir($file))
-                $files = array_merge($files, $this->_getDecisionFiles($file));
-            else
-                $files[] = $file;
-        }
-
-        // return list of found PHP files
-        return $files;
+     **/
+    public function decisionFactory($file) {
+        return Model_Decision::factory($file, $this);
     }
 
     /**

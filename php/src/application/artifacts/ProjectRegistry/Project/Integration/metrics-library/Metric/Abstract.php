@@ -118,6 +118,17 @@ abstract class Metric_Abstract
     }
         
     /**
+     * Save the target
+     *
+     * @param string Target
+     * @return void
+     **/
+    public final function setTarget($target) {
+        $this->_project->objectives[$this->_name] = $value;
+        return $this;
+    }
+        
+    /**
      * Simplified getter, dispatcher
      *
      * @param string Name of the property
@@ -128,6 +139,10 @@ abstract class Metric_Abstract
         switch ($name) {
             case 'name':
                 return $this->_name;
+                
+            case 'id':
+                return Model_Pages_Encoder::encode($this->_name);
+
             case 'value':
                 if (!isset($this->_value)) {
                     FaZend_Exception::raise('MetricReloadingException', 
@@ -173,8 +188,7 @@ abstract class Metric_Abstract
         
         switch ($name) {
             case 'target':
-                $this->_project->objectives[$this->_name] = $value;
-                return;
+                return $this->setTarget($value);
         }
         
         FaZend_Exception::raise('MetricAccessException', 
