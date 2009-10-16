@@ -1,0 +1,37 @@
+<?
+    try {
+        $this->wp = $this->project->wbs->findOrMakeWp($this->segments(4, 0, theMetrics::SEPARATOR));
+    } catch (WorkPackageCantBeMade $e) {
+        try {
+            $activityName = $this->segments(4, -1, theMetrics::SEPARATOR) . theActivity::SEPARATOR . $this->segment();
+            $this->activity = $this->project->activityList->activities->findByName($activityName);
+        } catch (ActivityNotFound $e1) {
+            FaZend_Exception::raise('WrongActivityName', 
+                "Activity/WP not found with name '{$activityName}'. {$e->getMessage()}. {$e1->getMessage()}.");
+        }
+    }
+    
+?>
+
+<!-- work package to show -->
+<? if (isset($this->wp)): ?>
+
+    <h1>Work Package: "<?=$this->wp->code?>"</h1>
+
+    <p>Cost of Work Package: <b><?=$this->wp->cost?></b></p>
+
+    <?=$this->table()
+        ->setSource($this->project->wbs->getWorkPackagesByPrefix($this->wp->code))
+        ->addColumn('code', 'Work package')
+        ->addColumn('cost', 'Cost')
+        ->addColumn('title', 'Statement of work')
+        
+        ->addOption('code', '{suffix}')
+        ?>
+        
+<!-- activity to show -->
+<? else: ?>
+
+    <h1>Activity: "<?=$this->activity->name?>"</h1>
+
+<? endif; ?>

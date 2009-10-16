@@ -61,7 +61,7 @@ class theWorkPackage implements Model_Artifact_Stateless {
      * @param string Title of it
      * @return void
      **/
-    public function __construct($code, Model_Cost $cost, $title) {
+    public function __construct($code, Model_Cost $cost = null, $title) {
         $this->_code = $code;
         $this->_cost = $cost;
         $this->_title = $title;
@@ -90,6 +90,10 @@ class theWorkPackage implements Model_Artifact_Stateless {
                 return $this->_title;
             case 'code':
                 return $this->_code;
+            case 'suffix':
+                if (strpos($this->_code, theMetrics::SEPARATOR) === false)
+                    return $this->_code;
+                return substr(strrchr($this->_code, theMetrics::SEPARATOR), 1);
         }
     }
     
@@ -98,7 +102,7 @@ class theWorkPackage implements Model_Artifact_Stateless {
      *
      * @return void
      **/
-    public final function split(theActivities $list) {
+    public function split(theActivities $list) {
         return $this->_project->metrics[$this->_code]->split($list);
     }
     

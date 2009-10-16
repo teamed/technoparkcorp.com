@@ -71,10 +71,13 @@ class Helper_Table extends FaZend_View_Helper {
     public function __toString() {
 
         $this->_table->showColumns($this->_columns);
+        $this->_table->setNoDataMessage('');
 
-        return 
-            '<p>' . $this->_table->__toString() . '</p>' .
-            $this->getView()->paginator;
+        $html = $this->_table->__toString();
+        if (!$html)
+            return '';
+
+        return '<p>' . $html . '</p>' . $this->getView()->paginator;
     }
 
     /**

@@ -3,8 +3,13 @@
 <h1>Work Breakdown Structure (WBS)</h1>
 
 <?=$this->table()
-    ->setSource($this->project->wbs)
+    // ->setSource($this->project->wbs)
+    ->setSource($this->project->wbs->getWorkPackagesByPrefix(''))
     ->addColumn('code', 'Work package')
     ->addColumn('cost', 'Cost')
     ->addColumn('title', 'Statement of work')
+
+    ->addOption('code', '{code}')
     ?>
+    
+<p>Total Cost: <b><?=$this->project->wbs->sum()?></b></p>

@@ -83,7 +83,7 @@ class theWbs extends Model_Artifact_Bag implements Model_Artifact_Passive {
      * @param array|string Name or list of names - regular expressions
      * @return Model_Cost
      **/
-    public function sum($regexs) {
+    public function sum($regexs = '') {
         if (!is_array($regexs))
             $regexs = array($regexs);
             
@@ -102,18 +102,86 @@ class theWbs extends Model_Artifact_Bag implements Model_Artifact_Passive {
     }
     
     /**
+     * Get list of workpackages with given prefix and all aggregators below them
+     *
+     * @return theWorkPackage[]
+     **/
+    public function getWorkPackagesByPrefix($prefix = '') {
+        $list = new ArrayIterator();
+        foreach ($this as $wp) {
+            
+            $code = $wp->code;
+            // wrong way
+            if (!preg_match('/^' . preg_quote($prefix . ($prefix ? theMetrics::SEPARATOR : false), '/') . 
+                '([\w\d]+)(?:' . preg_quote(theMetrics::SEPARATOR, '/') . '(.*))?$/', $code, $matches))
+                continue;
+                
+            // bug($matches);
+            // we are right here, not below!
+            if (empty($matches[2]))
+                $list[$matches[1] . '*'] = $wp;
+                
+            if (!isset($list[$matches[1]]))
+                $list[$matches[1]] = new theWpAggregator($prefix . ($prefix ? theMetrics::SEPARATOR : false) . $matches[1], null, null);
+            $list[$matches[1]]->addWorkPackage($wp);
+        }
+        
+        return $list;
+    }
+    
+    /**
+     * Find work package or make an aggregate
+     *
+     * @param string Code of WP to be found or built
+     * @return theWorkPackage
+     * @throws WorkPackageCantBeMade
+     **/
+    public function findOrMakeWp($code) {
+        try {
+            return $this->_findWorkPackage($code);
+        } catch (WorkPackageNotFound $e) {
+        } catch (WorkPackageNotFound $e) {
+            // just go forward
+        }
+
+        if (strpos($code, theMetrics::SEPARATOR) === false) {
+            $parent = '';
+            $kid = $code;
+        } else {
+            $parent = substr($code, 0, strrpos($code, theMetrics::SEPARATOR));
+            $kid = substr(strrchr($code, theMetrics::SEPARATOR), 1);
+        }
+        $wps = $this->getWorkPackagesByPrefix($parent);
+        
+        if (!isset($wps[$kid]))
+            FaZend_Exception::raise('WorkPackageCantBeMade', 
+                "WP '{$kid}' not found in parent '{$parent}', while " . count($wps) . ' WPs found there');
+                
+        return $wps[$kid];
+                
+    }
+    
+    /**
      * Get WP or return NULL
      *
      * @param string Name of the work package
      * @return theWorkPackage
+     * @throws WorkPackageNotFound, MetricDoesntMatch
      **/
-    protected function _findWorkPackage($name) {
+    protected function _findWorkPackage($code) {
         $wps = $this->getArrayCopy();
-        if (isset($wps[$name])) {
-            return $wps[$name];
+        if (isset($wps[$code])) {
+            return $wps[$code];
         }
 
-        $metric = $this->ps()->parent->metrics[$name];
+        try {
+            $metric = $this->ps()->parent->metrics[$code];
+        } catch (MetricNotFound $e) {
+            FaZend_Exception::raise('WorkPackageNotFound', $e->getMessage());
+        } catch (MetricDoesntMatch $e) {
+            FaZend_Exception::raise('WorkPackageNotFound', $e->getMessage());
+        }
+        
         $wp = $metric->getWorkPackage();
         if ($wp)
             $this->_attachItem($wp->code, $wp, 'setWbs');
