@@ -114,6 +114,15 @@ class theStaffAssignments extends ArrayIterator implements Model_Artifact_Statel
     }
     
     /**
+     * Get stakeholder which is LOGGED IN now
+     *
+     * @return theStakeholder
+     **/
+    public function getActiveStakeholder() {
+        return $this[Model_User::getCurrentUser()->email];
+    }
+    
+    /**
      * Get Model_Project object
      *
      * @return Model_Project

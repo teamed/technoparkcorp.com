@@ -246,6 +246,15 @@ class theActivity {
     }
 
     /**
+     * Doc name which is responsible for the description of this activity
+     *
+     * @return string
+     */
+    protected function _getDoc() {
+        return 'projects/' . $this->project->name . '/WBS/' . $this->wp . '/' . $this->code;
+    }
+    
+    /**
      * Get criteria
      *
      * @return theActivityCriteria The criteria of closure

@@ -33,7 +33,7 @@ class Helper_SharedDoc extends FaZend_View_Helper {
     public function sharedDoc($doc, theStakeholder $stakeholder) {
 
         return $this->getView()->longUrl(array(
-            'doc'=>Model_Pages_Encoder::encode($doc . self::SEPARATOR . $stakeholder->getEmail)), 'shared', true);
+            'doc'=>Model_Pages_Encoder::encode($doc . self::SEPARATOR . $stakeholder->getEmail())), 'shared', true);
 
     }
 

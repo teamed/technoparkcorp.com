@@ -68,7 +68,38 @@ class Model_Ticket {
      * @return string
      **/
     public function __toString() {
-        return file_get_contents(APPLICATION_PATH . '/tickets/' . $this->_name . '.phtml');
+        try {
+            return $this->_render();
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+    
+    /**
+     * Make it as string
+     *
+     * @return string
+     **/
+    public function _render() {
+        $language = 'en';
+
+        $view = clone Zend_Registry::getInstance()->get('view');
+        $view->assign($this->_params);
+        $view->addScriptPath($path = APPLICATION_PATH . '/tickets/' . $this->_name);
+        
+        if (file_exists($path . '/_init.phtml'))
+            $view->render('_init.phtml');
+        $content = $view->render($language . '.phtml');
+
+        $alts = explode("\n--\n", $content);
+        shuffle($alts);
+        $text = array_pop($alts);
+        
+        $replacers = array(
+            '/([^\n])\n([^\n])/' => '${1} ${2}',
+            );
+        
+        return trim(preg_replace(array_keys($replacers), $replacers, $text), "\n\t\r ");
     }
 
 }

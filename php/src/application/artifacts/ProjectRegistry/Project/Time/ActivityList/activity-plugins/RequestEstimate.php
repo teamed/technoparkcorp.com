@@ -43,7 +43,8 @@ class Activity_Plugin_RequestEstimate extends Activity_Plugin_Abstract {
         
         // ask performer to estimate it    
         $this->_issue
-            ->askOnce('requestEstimate', ticket('PM/time/activity/requestEstimate'));
+            ->askOnce('requestEstimate', ticket('PM/time/activity/estimate/all', 
+                array('activity'=>$this->_activity)), 0);
     }
                             
 }

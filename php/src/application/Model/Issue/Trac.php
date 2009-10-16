@@ -52,8 +52,12 @@ class Model_Issue_Trac extends Model_Issue_Abstract {
         }
         
         // we posted it recently
-        if ($lastDate > time() - SECONDS_IN_DAY * $lag)
+        if ($lastDate > time() - SECONDS_IN_DAY * $lag) {
+            logg("No '{$code}' to ticket #{$this->_id} since we alread did it " . 
+                round((time() - $lastDate)/SECONDS_IN_HOUR, 1) . ' hours ago, at ' .
+                date('m/d/y h:i:s', $lastDate));
             return;
+        }
             
         $this->changelog->set('comment', "{{{\n#!comment\n" . md5($code) . "\n}}}\n" . $text);
     }
@@ -83,7 +87,7 @@ class Model_Issue_Trac extends Model_Issue_Abstract {
     
         // remember found ID in the class and return it
         $this->_id = array_pop($ids);
-        logg("Issue #{$this->_id} found in Trac for code '{$this->code}");
+        // logg("Issue #{$this->_id} found in Trac for code '{$this->code}");
         return $this->_id;
     }
         
@@ -94,7 +98,7 @@ class Model_Issue_Trac extends Model_Issue_Abstract {
      **/
     protected function _loadChangelog() {
         $log = $this->_proxy()->changeLog($this->_id);
-        logg("Issue #{$this->_id} has " . count($log) . ' changes in Trac');
+        // logg("Issue #{$this->_id} has " . count($log) . ' changes in Trac');
         
         $fields = array();
         $records = array();
