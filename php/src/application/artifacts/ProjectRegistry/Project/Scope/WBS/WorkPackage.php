@@ -84,6 +84,8 @@ class theWorkPackage implements Model_Artifact_Stateless {
      **/
     public function __get($name) {
         switch ($name) {
+            case 'metric':
+                return $this->_project->metrics[$this->_code];
             case 'cost':
                 return $this->_cost;
             case 'title':

@@ -18,7 +18,24 @@
 
     <h1>Work Package: "<?=$this->wp->code?>"</h1>
 
-    <p>Cost of Work Package: <b><?=$this->wp->cost?></b></p>
+    <? if (!$this->wp instanceof theWpAggregator): ?>
+        <p>
+            Current metric value: <?=$this->wp->metric->value?><br/>
+            Target value: 
+                <? if ($this->wp->metric->target): ?>
+                    <?=$this->wp->metric->target?>
+                    <? if ($this->wp->metric->visible): ?>
+                        (default: <?=$this->wp->metric->default?>)
+                    <? endif; ?>
+                <? else: ?>
+                    <i>no target</i>
+                <? endif; ?><br/>
+        </p>
+    <? endif; ?>
+
+    <p>
+        Cost of Work Package: <b><?=$this->wp->cost?></b>
+    </p>
 
     <?=$this->table()
         ->setSource($this->project->wbs->getWorkPackagesByPrefix($this->wp->code))

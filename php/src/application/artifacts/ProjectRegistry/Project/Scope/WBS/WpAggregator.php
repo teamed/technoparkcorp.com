@@ -62,7 +62,7 @@ class theWpAggregator extends theWorkPackage {
      * @return void
      **/
     public function addWorkPackage(theWorkPackage $wp) {
-        $this->_aggregatedWps[] = $wp;
+        $this->_aggregatedWps[$wp->code] = $wp;
         $this->_cost = null;
     }
     
@@ -86,7 +86,8 @@ class theWpAggregator extends theWorkPackage {
      * @return string
      **/
     protected function _getTitle() {
-        return count($this->_aggregatedWps) . ' work packages';
+        $cnt = count($this->_aggregatedWps);
+        return plural("{$cnt} Work Package[s]: ", $cnt) . implode(', ', array_keys($this->_aggregatedWps));
     }
 
 }

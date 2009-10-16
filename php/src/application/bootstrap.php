@@ -62,6 +62,8 @@ define('CONTENT_PATH', realpath(APPLICATION_PATH . '/../content'));
  *
  * @param string Message to log
  * @return void
+ * @category Supplementary
+ * @package Functions
  */
 function logg($message) {
     try {
@@ -70,3 +72,22 @@ function logg($message) {
         echo '<p>Log missed: ' . $message . '</p>';
     }
 }
+
+/**
+ * Return string with plural/singular inside
+ *
+ * @param string Input line with metas
+ * @param integer Variable to substitute
+ * @return string
+ * @category Supplementary
+ * @package Functions
+ */
+function plural($str, $var) {
+    $src = array('[s]', '[are]', '[do]', '[have]', '[were]', '[ies]', '[es]', '[people]');
+    $singular = array('', 'is', 'does', 'has', 'was', 'y', 'es', 'person');
+    $plural = array('s', 'are', 'do', 'have', 'were', 'ies', '', 'people');
+
+    return str_replace($src,
+        abs($var) != 1 ? $plural : $singular, $str);
+}
+

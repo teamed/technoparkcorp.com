@@ -117,9 +117,11 @@ class theWbs extends Model_Artifact_Bag implements Model_Artifact_Passive {
                 continue;
                 
             // bug($matches);
-            // we are right here, not below!
-            if (empty($matches[2]))
+            // we are right here, not below, not in sub-packages!
+            if (empty($matches[2])) {
                 $list[$matches[1] . '*'] = $wp;
+                continue;
+            }
                 
             if (!isset($list[$matches[1]]))
                 $list[$matches[1]] = new theWpAggregator($prefix . ($prefix ? theMetrics::SEPARATOR : false) . $matches[1], null, null);
@@ -139,7 +141,6 @@ class theWbs extends Model_Artifact_Bag implements Model_Artifact_Passive {
     public function findOrMakeWp($code) {
         try {
             return $this->_findWorkPackage($code);
-        } catch (WorkPackageNotFound $e) {
         } catch (WorkPackageNotFound $e) {
             // just go forward
         }
