@@ -30,10 +30,10 @@ class Model_Issue_Trac extends Model_Issue_Abstract {
      *
      * @param string Code of the message
      * @param string Text of the message
-     * @param integer How many days before we can ask again
+     * @param integer|null How many days before we can ask again, NULL means - never ask again
      * @return void
      **/
-    public function askOnce($code, $text, $lag = 5) {
+    public function askOnce($code, $text, $lag = null) {
         $lastDate = false;
         foreach ($this->changelog->get('comment')->getChanges() as $change) {
             // not from me
@@ -50,6 +50,10 @@ class Model_Issue_Trac extends Model_Issue_Abstract {
                 
             $lastDate = max($lastDate, $change->date);
         }
+        
+        // if we can ask just once - and we already asked - skip
+        if ($lastDate && is_null($lag))
+            return;
         
         // we posted it recently
         if ($lastDate > time() - SECONDS_IN_DAY * $lag) {

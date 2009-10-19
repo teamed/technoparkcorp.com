@@ -21,19 +21,20 @@
  */
 class Helper_SharedDoc extends FaZend_View_Helper {
 
-    const SEPARATOR = ':';
-
     /**
      * Builds a link of a shared document
      *
      * @param string Link to use
      * @param theStakeholder Who will access it
+     * @param boolean Clean all links to this document
      * @return string
      */
-    public function sharedDoc($doc, theStakeholder $stakeholder) {
+    public function sharedDoc($document, theStakeholder $stakeholder, $clean = true) {
 
+        $shortcut = Model_Shortcut::create($stakeholder->getEmail(), $document, $clean);
+        
         return $this->getView()->longUrl(array(
-            'doc'=>Model_Pages_Encoder::encode($doc . self::SEPARATOR . $stakeholder->getEmail())), 'shared', true);
+            'doc'=>$shortcut->getHash()), 'shared', true);
 
     }
 

@@ -18,35 +18,21 @@
  *
  */
 
+require_once 'FaZend/Test/TestCase.php';
+
 /**
- * Request estimate
- * 
- * @package Activity_Plugin
+ * Model_Shortcut test
+ *
+ * @package test
  */
-class Activity_Plugin_RequestEstimate extends Activity_Plugin_Abstract {
+class ShortcutTest extends FaZend_Test_TestCase {
 
-    /**
-     * Execute it
-     *
-     * @return boolean
-     **/
-    public function execute() {
-        if ($this->_activity->isMilestone())
-            return;
+    public function testMechanismWorks() {
+        $shortcut = Model_Shortcut::create('test@example.com', 'projects/test/Scope', true);
+        $hash = $shortcut->getHash();
+        $shortcut1 = Model_Shortcut::findByHash($hash);
         
-        // make sure it exists
-        $this->_activity->makeAlive();
-
-        // if it is already estimated - skip
-        if ($this->_activity->isCostEstimated() && $this->_activity->isDurationEstimated())
-            return;
-        
-        // ask performer to estimate it - first ask
-        if ($this->_issue->askOnce(
-            'requestEstimate', 
-            ticket('PM/time/activity/estimate/all', array('activity'=>$this->_activity)), 
-            null))
-            return;
+        $this->assertEquals($shortcut1->getHash(), $hash);
     }
-                            
+
 }

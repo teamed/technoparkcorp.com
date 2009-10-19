@@ -142,6 +142,16 @@ abstract class Model_Issue_Abstract {
     }
 
     /**
+     * Send this message just once to the ticke
+     *
+     * @param string Code of the message
+     * @param string Text of the message
+     * @param integer|null How many days before we can ask again, NULL means - never ask again
+     * @return void
+     **/
+    abstract public function askOnce($code, $text, $lag = null);
+    
+    /**
      * Load changelog
      *
      * @return void

@@ -157,16 +157,17 @@ class PanelController extends FaZend_Controller_Action {
      */
     public function sharedAction() {
 
-        require_once 'helpers/SharedDoc.php';
-        list($doc, $email) = explode(Helper_SharedDoc::SEPARATOR, Model_Pages_Encoder::decode($this->_getParam('doc')));
+        $shortcut = Model_Shortcut::findByHash($this->_getParam('doc')));
         
         // access control
-        if (Model_User::getCurrentUser()->email != $email)
+        if (Model_User::getCurrentUser()->email != $shortcut->user)
             return $this->_forward('restrict', null, null, 
-                array('msg'=>'Sorry, the document "' . $doc . '" is not shared with you, but only with ' . $email));
+                array('msg'=>
+                    'Sorry, the document "' . $shortcut->document . 
+                    '" is not shared with you, but only with ' . $shortcut->user));
         
         // build document and show it
-        $this->_buildDocument($doc);
+        $this->_buildDocument($shortcut->document);
 
     }
 
