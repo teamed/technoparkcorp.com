@@ -196,32 +196,33 @@ div.right {
     margin: 0px;
 }
 
-    div.article div.right div.steps {
+    div.right ul.steps {
         font-size: 11px;
         line-height: 1.5em;
         width: auto;
         padding: 0px;
     }
 
-        div.step {
+        div.right ul.steps li {
             line-height: 1.4em;
             font-size: 0.9em;
             padding-top: 15px;
             padding-bottom: 15px;
             border-bottom: 1px solid <?=Model_Colors::LIGHT_GRAY?>;
+            list-style: none;
         }
 
-            div.step a {
+            div.right ul.steps li a {
                 text-decoration: none;
             }
 
-            div.concepts a,
-            div.step a {
+            p.concepts a,
+            div.right ul.steps li a {
                 color: <?=Model_Colors::BLUE?>;
                 background-color: transparent;
             }
 
-            div.step a:visited {
+            div.right ul.steps li a:visited {
                 color: <?=Model_Colors::DARK_GRAY?>;
                 background-color: transparent;
             }
@@ -243,21 +244,21 @@ div.right {
                         background-color: transparent;
                     }
 
-                div.livechat a.label {
-                    position: absolute; 
-                    top: 85px; 
-                    left: 67px; 
-                    color: <?=Model_Colors::BLACK?>;
-                    background-color: transparent;
-                }
-
-                    div.livechat a.label:hover {
-                        color: <?=Model_Colors::BLUE?>;
-                        border-bottom: 1px dotted <?=Model_Colors::BLUE?>;
+                    div.livechat a.label {
+                        position: absolute; 
+                        top: 85px; 
+                        left: 67px; 
+                        color: <?=Model_Colors::BLACK?>;
                         background-color: transparent;
                     }
 
-    div.right div.term {
+                        div.livechat a.label:hover {
+                            color: <?=Model_Colors::BLUE?>;
+                            border-bottom: 1px dotted <?=Model_Colors::BLUE?>;
+                            background-color: transparent;
+                        }
+
+    div.right p.term {
         font-size: 80%;
         line-height: 1.5em;
         width: auto;
@@ -265,12 +266,16 @@ div.right {
     }
 
 /* list of concepts at the bottom */
-div.concepts {
+ul.concepts {
     font-size: 11px;
     line-height: 1.5em;
     padding: 10px;    
     width: 405px;
 }
+
+    ul.concepts li {
+        list-style: none;
+    }
 
 /* boxed element */
 div.article .boxed {

@@ -4,17 +4,17 @@
 ?>
 
 <!-- Login line -->
-<div class="ll">
+<p class="ll">
            <span style="margin-left: 39px;">Welcome, Dear Visitor! |
                <a href="<?=$this->url(array(), 'panel', true)?>">thePanel 2.0</a></span>
           <?=FaZend_Form::create('Search')->setAction($this->staticUrl('system/search'))?>
-</div>
+</p>
 
 <!-- Show page path -->
-<div class="path">
+<p class="path">
     <?=$this->navigation()->breadcrumbs()
         ->setLinkLast(true)?>
-</div>
+</p>
 
 <!-- Left vertical DIV -->
 <div class="lft divinline">
@@ -49,36 +49,36 @@
     </div>
 
     <? if ($this->article->concepts): ?>
-        <div class="concepts">
+        <ul class="concepts">
         <? foreach ($this->article->concepts as $concept): ?>
-            <div class="concept">
+            <li>
                 <a href="<?=$this->staticUrl($concept->page)?>"><?=$concept->title?></a>
-            </div>
+            </li>
         <? endforeach; ?>    
-        </div>
+        </ul>
     <? endif; ?>
 
     <? if ($this->article->showRightColumn): ?> 
         <div class="right">
-            <div class="steps">
+            <ul class="steps">
 
                 <?=$this->render('static/liveperson.phtml')?>
 
                 <? if ($this->article->steps): ?>
                     <? foreach($this->article->steps as $step):?>
-                        <div class="step">
+                        <li>
                             <a href="<?=$this->staticUrl($step->page)?>"><?=$step->title?></a>
-                        </div>
+                        </li>
                     <? endforeach; ?>
                 <? endif; ?>
             
-            </div>
+            </ul>
                             
             <? if ($this->article->term):?>
-                <div class="term">
+                <p class="term">
                     Citation from our software development contract:
                     <?=$this->article->term?>
-                </div>
+                </p>
             <? endif; ?>
 
         </div>
@@ -88,7 +88,7 @@
 </div>    
 
 <!-- wide line at the bottom of the page -->
-<div class="wl">
+<p class="wl">
     <span>
         <script type='text/javascript' src='http://w.sharethis.com/button/sharethis.js#tabs=post%2Cemail%2Cweb&amp;charset=utf-8&amp;style=rotate&amp;publisher=bd1d09bf-bb3e-433e-aa72-29bfdfa237d9&amp;headerbg=%237d8f9b&amp;inactivebg=%235a5a5a&amp;inactivefg=%23ffffff&amp;linkfg=%230093d0'></script>
     </span>    
@@ -97,5 +97,5 @@
         <a href="<?=$this->url(array('page'=>$this->article->page), 'pdf', true, false)?>">Download in PDF</a> | 
         Last update on <span style="color:<?=Model_Colors::BLUE?>"><?=$this->article->updated?></span>
     </span>
-</div>
+</p>
 

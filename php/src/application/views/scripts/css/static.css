@@ -143,7 +143,7 @@ div.lft div.menu {
     }
 
 /* path line */    
-div.path {
+p.path {
     position: relative;
     height: 20px;
     padding: 4px 0px 1px 226px;
@@ -153,21 +153,21 @@ div.path {
 }
 
     /* links in path line */
-    div.path a {
+    p.path a {
         text-decoration: none;
         color: <?=Model_Colors::LIGHT_GRAY?>;
         background-color: transparent;
     }
 
 /* search input field - this span holds the content */
-div.ll form {
+p.ll form {
     position: absolute; 
     top: 13px; 
     left: 543px; 
 }
 
     /* input field for search */
-    div.ll form input.srch {
+    p.ll form input.srch {
         <?=$this->squeezePNG('search-field.png')?>
         border: none; 
         position: absolute;
@@ -181,7 +181,7 @@ div.ll form {
     }
 
     /* search field submit button */
-    div.ll form input.btn {
+    p.ll form input.btn {
         <?=$this->squeezePNG('search-button.png')?> 
         cursor: pointer; 
         border: none; 
@@ -191,7 +191,7 @@ div.ll form {
    }
 
 /* wide line, at the bottom of static content */
-div.wl {
+p.wl {
     line-height: 1.4em; 
     height: 20px; 
     padding: 8px 32px 0px 31px; 
@@ -202,7 +202,7 @@ div.wl {
 }
 
     /* revision field in wide line */
-    div.wl span.rev {
+    p.wl span.rev {
         position: absolute; 
         right: 31px;
     }

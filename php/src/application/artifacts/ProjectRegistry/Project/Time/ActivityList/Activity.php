@@ -251,7 +251,7 @@ class theActivity {
      * @return string
      */
     protected function _getDoc() {
-        return 'projects/' . $this->project->name . '/WBS/' . $this->wp . '/' . $this->code;
+        return 'projects/' . $this->project->name . '/Scope/WBS/' . $this->wp . '/' . $this->code;
     }
     
     /**

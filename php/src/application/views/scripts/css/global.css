@@ -42,40 +42,41 @@ div.wrapper {
 }
 
 /* top line with links */
-div.tl {
+p.tl {
     margin-top: 68px;
     <?=$this->squeezePNG('topline.png')?>
 }
 
-    div.tl a {
+    p.tl a {
         position: relative;
         display: inline-block;
         top: 33px;
         margin-right: 37px; 
+        color: transparent;
     }
 
-    div.tl a.t5 {
+    p.tl a.t5 {
         <?=$this->squeezePNG('contacts.png')?>
     }
 
-    div.tl a.t4 {
+    p.tl a.t4 {
         <?=$this->squeezePNG('innovations.png')?>
     }
         
-    div.tl a.t3 {
+    p.tl a.t3 {
         <?=$this->squeezePNG('stories.png')?>
     }
         
-    div.tl a.t2 {
+    p.tl a.t2 {
         <?=$this->squeezePNG('process.png')?>
     }
 
-    div.tl a.t1 {
+    p.tl a.t1 {
         margin-left: 37px; 
         <?=$this->squeezePNG('about.png')?>
     }
 
-    div.tl div.up {
+    p.tl div.up {
         position: absolute; 
         right: 38px; 
         top: 108px; 
@@ -83,33 +84,34 @@ div.tl {
     }
 
 /* bottom line with links */
-div.bl {
+p.bl {
     margin-left: 7px;
     <?=$this->squeezePNG('bottomline.png')?>
     position: relative;
 }
 
-    div.bl a {
+    p.bl a {
         position: relative;
         display: inline;
         top: 20px;
         margin-right: 37px; 
+        color: transparent;
     }
 
-    div.bl a.t1 {
+    p.bl a.t1 {
         margin-left: 31px; 
         <?=$this->squeezePNG('site-map.png')?>
     }
 
-    div.bl a.t2 {
+    p.bl a.t2 {
         <?=$this->squeezePNG('legal-notes.png')?>
     }
 
-    div.bl a.t3 {
+    p.bl a.t3 {
         <?=$this->squeezePNG('privacy-policy.png')?>
     }
 
-    div.bl span.rev {
+    p.bl span.rev {
         color: white; 
         background-color: inherit; 
         position: absolute; 
@@ -118,7 +120,7 @@ div.bl {
     }
 
 /* login line */
-div.ll {
+p.ll {
     position: relative;
     font-size: 90%; 
     line-height: 48px;
@@ -127,7 +129,7 @@ div.ll {
     margin-left: -7px;
 }
 
-    div.ll a {
+    p.ll a {
         text-decoration: none;
         color: <?=Model_Colors::BLACK?>;
     }
@@ -148,7 +150,7 @@ a.logo {
 }
 
 /* bottom sub text */
-div.sub {
+p.sub {
     line-height: 1.5em; 
     font-size: 90%; 
     margin-left: 39px; 
@@ -156,7 +158,7 @@ div.sub {
     position: relative;
 }
 
-    div.sub a.iso {
+    p.sub a.iso {
         <?=$this->squeezePNG('iso9001.png')?> 
         position: absolute; 
         top: 5px; 

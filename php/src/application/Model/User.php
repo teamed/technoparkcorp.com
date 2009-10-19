@@ -124,8 +124,12 @@ class Model_User extends FaZend_StdObject {
      * @return Zend_Session_Namespace
      */
     protected static function _session() {
-        if (!isset(self::$_session))
-            self::$_session = new Zend_Session_Namespace('panel2');
+        if (!isset(self::$_session)) {
+            if (defined('CLI_ENVIRONMENT'))
+                self::$_session = new FaZend_StdObject();
+            else
+                self::$_session = new Zend_Session_Namespace('panel2');
+        }
         return self::$_session;
     }
     
