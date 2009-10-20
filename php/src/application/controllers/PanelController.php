@@ -157,13 +157,18 @@ class PanelController extends FaZend_Controller_Action {
      */
     public function sharedAction() {
 
-        $shortcut = Model_Shortcut::findByHash($this->_getParam('doc')));
+        try {
+            $shortcut = Model_Shortcut::findByHash($this->_getParam('doc'));
+        } catch (Model_Shortcut_NotFoundException $e) {
+            return $this->_forward('restrict', null, null, 
+                array('msg'=>'The link you are using is not valid any more'));
+        }
         
         // access control
         if (Model_User::getCurrentUser()->email != $shortcut->user)
             return $this->_forward('restrict', null, null, 
                 array('msg'=>
-                    'Sorry, the document "' . $shortcut->document . 
+                    'Sorry, this document "' . $shortcut->document . 
                     '" is not shared with you, but only with ' . $shortcut->user));
         
         // build document and show it

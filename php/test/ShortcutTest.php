@@ -19,13 +19,14 @@
  */
 
 require_once 'FaZend/Test/TestCase.php';
+require_once 'AbstractProjectTest.php';
 
 /**
  * Model_Shortcut test
  *
  * @package test
  */
-class ShortcutTest extends FaZend_Test_TestCase {
+class ShortcutTest extends AbstractProjectTest {
 
     public function testMechanismWorks() {
         $shortcut = Model_Shortcut::create('test@example.com', 'projects/test/Scope', true);

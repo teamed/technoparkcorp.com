@@ -49,6 +49,7 @@ class Model_Shortcut extends FaZend_Db_Table_ActiveRow_shortcut {
         $shortcut = new Model_Shortcut();
         $shortcut->user = $user;
         $shortcut->document = $document;
+        $shortcut->author = Model_User::getCurrentUser()->getEmail();
         $shortcut->save();
         
         return $shortcut;

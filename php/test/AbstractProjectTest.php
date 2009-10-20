@@ -35,6 +35,8 @@ class AbstractProjectTest extends FaZend_Test_TestCase {
         $this->project->name = $name;
         
         $this->project->reload();
+        
+        Model_User::logIn(Model_Project_Test::PM);
     }
 
 }
