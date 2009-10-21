@@ -53,17 +53,18 @@ class Model_Issue_Trac extends Model_Issue_Abstract {
         
         // if we can ask just once - and we already asked - skip
         if ($lastDate && is_null($lag))
-            return;
+            return false;
         
         // we posted it recently
         if ($lastDate > time() - SECONDS_IN_DAY * $lag) {
             logg("No '{$code}' to ticket #{$this->_id} since we already did it " . 
                 round((time() - $lastDate)/SECONDS_IN_HOUR, 1) . ' hours ago, at ' .
                 date('m/d/y h:i:s', $lastDate));
-            return;
+            return false;
         }
             
         $this->changelog->set('comment', "{{{\n#!comment\n" . md5($code) . "\n}}}\n" . $text);
+        return true;
     }
 
     /**
@@ -81,7 +82,7 @@ class Model_Issue_Trac extends Model_Issue_Abstract {
             return false;
         
         // get list of IDs with this code (we expect JUST ONE)
-        $ids = $this->_proxy()->query('code=' . $this->code);
+        $ids = $this->_proxy()->query('code=' . Model_Pages_Encoder::encode($this->code));
         
         // nothing or something strange
         if (count($ids) != 1) {
@@ -195,8 +196,11 @@ class Model_Issue_Trac extends Model_Issue_Abstract {
     protected function _translateFromTrac($name, $value, $author, $date) {
         switch ($name) {
             
-            // we ignore them
             case 'code':
+                $value = Model_Pages_Encoder::decode($value);
+                break;
+            
+            // we ignore them
             case 'cc':
             case 'keywords':
             case 'milestone':
@@ -301,6 +305,10 @@ class Model_Issue_Trac extends Model_Issue_Abstract {
         foreach ($pairs as $name=>&$value) {
             switch ($name) {
 
+                case 'code':
+                    $value = Model_Pages_Encoder::encode($value);
+                    break;
+
                 case 'type':
                     switch ($value) {
                         case Model_Issue_Changelog_Field_Type::TASK:
@@ -367,7 +375,6 @@ class Model_Issue_Trac extends Model_Issue_Abstract {
                 case 'owner':
                 case 'reporter':
                 case 'cost':
-                case 'code':
                 case 'action':
                     break;
 

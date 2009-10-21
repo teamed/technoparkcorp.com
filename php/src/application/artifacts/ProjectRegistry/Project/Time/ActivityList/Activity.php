@@ -70,6 +70,13 @@ class theActivity {
     protected $_duration;
     
     /**
+     * When it should start
+     *
+     * @var integer
+     */
+    protected $_start;
+    
+    /**
      * Assigned performer (doesn't mean that he/she AGREED to perform the activity)
      *
      * @var theStatekholder
@@ -179,6 +186,17 @@ class theActivity {
     }
 
     /**
+     * Set start
+     *
+     * @param integer When it should start
+     * @return $this
+     */
+    public function setStart($start) {
+        $this->_start = $start;
+        return $this;
+    }
+
+    /**
      * Set performer
      *
      * @param theStakeholder Stakeholder to be assigned here
@@ -243,6 +261,25 @@ class theActivity {
      */
     protected function _getId() {
         return Model_Pages_Encoder::encode($this->name);
+    }
+
+    /**
+     * Start date
+     *
+     * @return Zend_Date
+     */
+    protected function _getStartDate() {
+        return new Zend_Date($this->_start);
+    }
+
+    /**
+     * Description of activity
+     *
+     * @return string
+     * @todo Implement it through criteria
+     */
+    protected function _getDescription() {
+        return $this->sow;
     }
 
     /**

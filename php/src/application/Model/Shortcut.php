@@ -25,20 +25,27 @@
  */
 class Model_Shortcut extends FaZend_Db_Table_ActiveRow_shortcut {
 
+    const PREFIX_LENGTH = 3;
+    const PLUS = 3;
+    const MULTIPLY = 7;
+
     /**
      * Create new link
      *
-     * @param Model_User User to get an access to the document
      * @param string Document to see
+     * @param array List of emails to get an access to the document
+     * @param array Associative array of params
      * @param boolean Shall we clean all previous links to this document?
      * @return Model_Shortcut
      **/
-    public static function create($user, $document, $clean) {
+    public static function create($document, array $emails, array $params, $clean) {
         
         validate()
-            ->emailAddress($user, array())
             ->type($document, 'string')
             ->type($clean, 'boolean');
+
+        foreach ($emails as $email)
+            validate()->emailAddress($email, array());
 
         if ($clean) {
             $sql = self::retrieve()->table()->getAdapter()->quoteInto('document = ?', $document);
@@ -47,9 +54,10 @@ class Model_Shortcut extends FaZend_Db_Table_ActiveRow_shortcut {
         }
                 
         $shortcut = new Model_Shortcut();
-        $shortcut->user = $user;
+        $shortcut->emails = serialize($emails);
         $shortcut->document = $document;
         $shortcut->author = Model_User::getCurrentUser()->getEmail();
+        $shortcut->params = serialize($params);
         $shortcut->save();
         
         return $shortcut;
@@ -63,6 +71,7 @@ class Model_Shortcut extends FaZend_Db_Table_ActiveRow_shortcut {
      * @return Model_Shortcut
      **/
     public static function findByHash($hash) {
+        $hash = substr($hash, self::PREFIX_LENGTH) / self::MULTIPLY - self::PLUS;
         return self::retrieve()
             ->where('id = ?', $hash)
             ->setRowClass('Model_Shortcut')
@@ -75,7 +84,26 @@ class Model_Shortcut extends FaZend_Db_Table_ActiveRow_shortcut {
      * @return string
      **/
     public function getHash() {
-        return strval($this);
+        return substr(md5(time()), 0, self::PREFIX_LENGTH) . // just a random prefix
+            ((intval(strval($this)) + self::PLUS) * self::MULTIPLY);
+    }
+
+    /**
+     * Get params
+     *
+     * @return array
+     **/
+    public function getParams() {
+        return unserialize($this->params);
+    }
+
+    /**
+     * Get list of emails
+     *
+     * @return array
+     **/
+    public function getEmails() {
+        return unserialize($this->emails);
     }
 
 }

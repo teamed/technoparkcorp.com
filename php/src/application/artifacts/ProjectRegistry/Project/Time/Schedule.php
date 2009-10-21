@@ -44,7 +44,7 @@ class theSchedule extends Model_Artifact_Bag implements Model_Artifact_Passive {
         
         // set start
         foreach ($this->activities as $activity) {
-            $activity->start = time();
+            $activity->setStart(time());
         }
     }
     

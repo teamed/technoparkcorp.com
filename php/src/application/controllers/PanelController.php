@@ -163,28 +163,33 @@ class PanelController extends FaZend_Controller_Action {
             return $this->_forward('restrict', null, null, 
                 array('msg'=>'The link you are using is not valid any more'));
         }
-        
+
         // access control
-        if (Model_User::getCurrentUser()->email != $shortcut->user)
+        if (!in_array(Model_User::getCurrentUser()->email, $shortcut->getEmails()))
             return $this->_forward('restrict', null, null, 
                 array('msg'=>
                     'Sorry, this document "' . $shortcut->document . 
-                    '" is not shared with you, but only with ' . $shortcut->user));
+                    '" is not shared with you, but only with ' . implode(', ', $shortcut->getEmails())));
         
         // build document and show it
-        $this->_buildDocument($shortcut->document);
+        $this->_buildDocument($shortcut->document, $shortcuts->getParams());
 
     }
 
     /**
      * Build document content
      *
+     * @param string Name of the document to render
+     * @param array Associative array of params to pass to the view
      * @return string HTML
      **/
-    protected function _buildDocument($doc) {
+    protected function _buildDocument($doc, array $params = array()) {
         $view = clone $this->view;
 
         $view->doc = $this->view->doc = $doc;
+        
+        // pass params to the view
+        $view->assign($params);
 
         // configure it, set the active document for further references
         $this->_pages->setActiveDocument($doc);

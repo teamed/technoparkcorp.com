@@ -41,7 +41,7 @@ class Activity_Plugin_RequestEstimate extends Activity_Plugin_Abstract {
         if ($this->_activity->isCostEstimated() && $this->_activity->isDurationEstimated())
             return;
         
-        // ask performer to estimate it - first ask
+        // ask performer to estimate it - first ask (and never ask again)
         if ($this->_issue->askOnce(
             'requestEstimate', 
             ticket('PM/time/activity/estimate/all', array('activity'=>$this->_activity)), 
