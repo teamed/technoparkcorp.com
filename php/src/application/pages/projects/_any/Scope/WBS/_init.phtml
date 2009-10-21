@@ -1,13 +1,24 @@
 <?
+    $wpName = str_replace('-', theMetrics::SEPARATOR, $this->segment());
+    if (strpos($wpName, theActivity::SEPARATOR) !== false)
+        list($wpName, $activityName) = explode(theActivity::SEPARATOR, $wpName);
+
     try {
-        $this->wp = $this->project->wbs->findOrMakeWp($this->segments(4, 0, theMetrics::SEPARATOR));
+        $this->wp = $this->project->wbs->findOrMakeWp($wpName);
     } catch (WorkPackageCantBeMade $e) {
+        FaZend_Exception::raise('WrongWorkPackageName', 
+            "Work package not found with name '{$wpName}', {$e->getMessage()}",
+            'AccessRestrictedException');
+    }
+    
+    if (isset($activityName)) {
         try {
-            $activityName = $this->segments(4, -1, theMetrics::SEPARATOR) . theActivity::SEPARATOR . $this->segment();
-            $this->activity = $this->project->activityList->activities->findByName($activityName);
-        } catch (ActivityNotFound $e1) {
+                $this->activity = $this->project->activityList->activities
+                    ->findByName($wpName . theActivity::SEPARATOR . $activityName);
+        } catch (ActivityNotFound $e) {
             FaZend_Exception::raise('WrongActivityName', 
-                "Activity/WP not found with name '{$activityName}'. {$e->getMessage()}. {$e1->getMessage()}.");
+                "Activity not found with name '{$activityName}', {$e->getMessage()}",
+                'AccessRestrictedException');
         }
     }
     
@@ -43,10 +54,12 @@
         ->addColumn('cost', 'Cost')
         ->addColumn('title', 'Statement of work')
         
-        ->addOption('code', '{suffix}')
+        ->addOption('code', '../{url}')
         ?>
         
     <h2>Synopsis</h2>
+    
+    <?=ticket('PM/scope/WBS/' . $this->wp->code)?>
         
 <!-- activity to show -->
 <? else: ?>
