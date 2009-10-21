@@ -41,8 +41,33 @@ class theActivityCriteria extends ArrayIterator {
      * @return $this
      */
     public function when($condition) {
-        $this[] = call_user_func_array('sprintf', func_get_args());
+        $this[] = new theCriteriaCondition(call_user_func_array('sprintf', func_get_args()));
         return $this;
+    }
+
+    /**
+     * Return criteria in HTML form
+     *
+     * @param theProject What is the source of metrics
+     * @return string
+     **/
+    public function asHtml(theProject $project) {
+        $html = '<p>Criteria is successful if and only if (all of the below are true):</p><ul>';
+
+        $metrics = array();
+        foreach ($this as $when) {
+            $true = $when->isTrue($project);
+            $html .= '<li><span class="formula">' . $when->asHtml($project, $metrics) . '</span>' . 
+                ' (<span style="color: ' . ($true ? Model_Colors::GREEN : Model_Colors::RED) . '">' . 
+                ($true ? 'true' : 'false') . '</span>)</li>';
+        }
+        $html .= '</ul>';
+        
+        foreach ($metrics as $var=>$metric)
+            $html .= "<h2>Variable <span class='formula'>$var = {$metric->value}</span></h2>" . 
+                ticket('PM/integration/metrics/' . $metric->name, array('metric'=>$metric));
+        
+        return $html;
     }
 
 }

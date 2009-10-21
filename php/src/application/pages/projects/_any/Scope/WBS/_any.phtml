@@ -25,7 +25,7 @@
 ?>
 
 <!-- work package to show -->
-<? if (isset($this->wp)): ?>
+<? if (!isset($this->activity)): ?>
 
     <h1>Work Package: "<?=$this->wp->code?>"</h1>
 
@@ -64,13 +64,14 @@
 <!-- activity to show -->
 <? else: ?>
 
-    <h1>Activity: "<?=$this->activity->name?>"</h1>
+    <? if (isset($this->criteria)): ?>
+        <? $criteria = $this->criteria ?>
+    <? else: ?>
+        <? $criteria = $this->activity->criteria ?>
+    <? endif; ?>
 
-    <p>
-        Cost: <?=$this->activity->cost?><br/>
-        SOW: <?=$this->activity->sow?><br/>
-        Criteria: <?=$this->activity->criteria?><br/>
-        Predecessors: <?=$this->activity->predecessors?>
-    </p>
+    <h1>Activity</h1>
+
+    <?=$this->activity->criteria->asHtml($this->project)?>
 
 <? endif; ?>

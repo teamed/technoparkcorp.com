@@ -92,8 +92,7 @@ class PanelController extends FaZend_Controller_Action {
 
         // permission check for current user
         if (!$this->_pages->isAllowed($doc)) {
-            return $this->_forward('restrict', null, null, 
-                array('msg'=>'Sorry, the document "' . $doc . '" is not available for you'));
+            return $this->_restrict('Sorry, the document "' . $doc . '" is not available for you');
         }
         
         $this->_buildDocument($doc);
@@ -160,16 +159,13 @@ class PanelController extends FaZend_Controller_Action {
         try {
             $shortcut = Model_Shortcut::findByHash($this->_getParam('doc'));
         } catch (Model_Shortcut_NotFoundException $e) {
-            return $this->_forward('restrict', null, null, 
-                array('msg'=>'The link you are using is not valid any more'));
+            return $this->_restrict('The link you are using is not valid any more');
         }
 
         // access control
         if (!in_array(Model_User::getCurrentUser()->email, $shortcut->getEmails()))
-            return $this->_forward('restrict', null, null, 
-                array('msg'=>
-                    'Sorry, this document "' . $shortcut->document . 
-                    '" is not shared with you, but only with ' . implode(', ', $shortcut->getEmails())));
+            return $this->_restrict('Sorry, this document "' . $shortcut->document . 
+                    '" is not shared with you, but only with ' . implode(', ', $shortcut->getEmails()));
         
         // build document and show it
         $this->_buildDocument($shortcut->document, $shortcuts->getParams());
@@ -200,23 +196,38 @@ class PanelController extends FaZend_Controller_Action {
         $scripts = array();
         $path = $this->_pages->resolvePath($doc, $scripts);
 
-        /**
-         *  @todo this should be improved
-         */
-        $this->view->document = '';
-        foreach ($scripts as $script) {
-            $view->addScriptPath(dirname($script));
-            $this->view->document .= $view->render(pathinfo($script, PATHINFO_BASENAME));
-        }
+        try {
+            /**
+             *  @todo this should be improved
+             */
+            $this->view->document = '';
+            foreach ($scripts as $script) {
+                $view->addScriptPath(dirname($script));
+                $this->view->document .= $view->render(pathinfo($script, PATHINFO_BASENAME));
+            }
 
-        // reconfigure VIEW in order to render this particular document file
-        $view->addScriptPath(dirname($path));
-        $this->view->document .= $view->render(pathinfo($path, PATHINFO_BASENAME));
+            // reconfigure VIEW in order to render this particular document file
+            $view->addScriptPath(dirname($path));
+            $this->view->document .= $view->render(pathinfo($path, PATHINFO_BASENAME));
+
+        } catch (AccessRestrictedException $e) {
+            return $this->_restrict($e->getMessage());
+        }
 
         // if execution inside this view is completed - show only the result
         if ($view->formaCompleted)
             $this->view->document = '<pre class="log">' . $view->formaCompleted . '</pre>';
         
+    }
+    
+    /**
+     * Restrict access
+     *
+     * @return void
+     **/
+    protected function _restrict($message) {
+        return $this->_forward('restrict', null, null, 
+            array('msg'=>$message));
     }
 
 }

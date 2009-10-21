@@ -71,7 +71,7 @@ class Model_Ticket {
         try {
             return $this->_render();
         } catch (Exception $e) {
-            return $e->getMessage();
+            return '[' . $this->_name . '/' . $this->_getLanguage() . '.phtml:missed]';
         }
     }
     
@@ -81,7 +81,7 @@ class Model_Ticket {
      * @return string
      **/
     public function _render() {
-        $language = 'en';
+        $language = $this->_getLanguage();
 
         $view = clone Zend_Registry::getInstance()->get('view');
         $view->assign($this->_params);
@@ -100,6 +100,15 @@ class Model_Ticket {
             );
         
         return trim(preg_replace(array_keys($replacers), $replacers, $text), "\n\t\r ");
+    }
+    
+    /**
+     * What is the current language to talk in?
+     *
+     * @return string Two letter code of language
+     **/
+    protected function _getLanguage() {
+        return 'en';
     }
 
 }

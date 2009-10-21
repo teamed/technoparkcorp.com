@@ -92,10 +92,8 @@ class theWorkPackage implements Model_Artifact_Stateless {
                 return $this->_title;
             case 'code':
                 return $this->_code;
-            case 'suffix':
-                if (strpos($this->_code, theMetrics::SEPARATOR) === false)
-                    return $this->_code;
-                return substr(strrchr($this->_code, theMetrics::SEPARATOR), 1);
+            case 'url':
+                return str_replace(theMetrics::SEPARATOR, '-', $this->_code);
         }
     }
     

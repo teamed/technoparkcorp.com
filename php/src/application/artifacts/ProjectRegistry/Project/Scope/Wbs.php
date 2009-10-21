@@ -140,7 +140,11 @@ class theWbs extends Model_Artifact_Bag implements Model_Artifact_Passive {
      **/
     public function findOrMakeWp($code) {
         try {
-            return $this->_findWorkPackage($code);
+            $wp = $this->_findWorkPackage($code);
+            if (!$wp)
+                FaZend_Exception::raise('WorkPackageNotFound', 
+                    "Metric {$code} doesn't have a work package");
+            return $wp;
         } catch (WorkPackageNotFound $e) {
             // just go forward
         }
@@ -167,7 +171,7 @@ class theWbs extends Model_Artifact_Bag implements Model_Artifact_Passive {
      *
      * @param string Name of the work package
      * @return theWorkPackage
-     * @throws WorkPackageNotFound, MetricDoesntMatch
+     * @throws WorkPackageNotFound
      **/
     protected function _findWorkPackage($code) {
         $wps = $this->getArrayCopy();
@@ -184,8 +188,10 @@ class theWbs extends Model_Artifact_Bag implements Model_Artifact_Passive {
         }
         
         $wp = $metric->getWorkPackage();
-        if ($wp)
-            $this->_attachItem($wp->code, $wp, 'setWbs');
+        if (!$wp)
+            return false;
+            
+        $this->_attachItem($wp->code, $wp, 'setWbs');
         return $wp;
     }
 

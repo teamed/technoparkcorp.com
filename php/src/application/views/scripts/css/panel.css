@@ -98,6 +98,12 @@ select {
             background: <?=Model_Colors::BLUE?>;
         }
 
+span.formula {
+    font-family: Times;
+    font-size: 1.3em;
+    font-style: italic;
+}
+
 /* flash message line */
 p.flash {
     color: <?=Model_Colors::RED?>;
