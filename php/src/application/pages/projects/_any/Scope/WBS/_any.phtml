@@ -70,7 +70,8 @@
         <? $criteria = $this->activity->criteria ?>
     <? endif; ?>
 
-    <h1>Activity</h1>
+    <h1>Activity (<?=$this->activity->criteria->isTrue($this->project) ? 
+        'completed' : 'not completed yet' ?>)</h1>
 
     <?=$this->activity->criteria->asHtml($this->project)?>
 

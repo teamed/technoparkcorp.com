@@ -46,6 +46,19 @@ class theActivityCriteria extends ArrayIterator {
     }
 
     /**
+     * Is it true now?
+     *
+     * @param theProject What is the source of metrics
+     * @return boolean
+     **/
+    public function isTrue(theProject $project) {
+        foreach ($this as $when)
+            if (!$when->isTrue($project))
+                return false;
+        return true;
+    }
+    
+    /**
      * Return criteria in HTML form
      *
      * @param theProject What is the source of metrics

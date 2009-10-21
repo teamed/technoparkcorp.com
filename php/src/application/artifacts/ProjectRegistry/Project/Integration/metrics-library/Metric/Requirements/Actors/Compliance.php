@@ -31,7 +31,7 @@ class Metric_Requirements_Actors_Compliance extends Metric_Abstract {
      * @return void
      **/
     public function reload() {
-        $this->_value = 1;
+        $this->_value = 0.22;
     }
                 
 }
