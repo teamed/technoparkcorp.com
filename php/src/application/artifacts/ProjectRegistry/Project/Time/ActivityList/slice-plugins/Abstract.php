@@ -102,6 +102,16 @@ abstract class Slice_Plugin_Abstract implements Iterator, Countable {
     }
     
     /**
+     * Create one new milestone
+     *
+     * @param string Code of new milestone
+     * @return theMilestone
+     **/
+    public function addMilestone($code) {
+        return $this->_activities->addMilestone($code);
+    }
+    
+    /**
      * Iterator::current()
      *
      * @return theActivity

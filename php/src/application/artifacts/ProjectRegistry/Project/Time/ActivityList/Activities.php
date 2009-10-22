@@ -54,7 +54,7 @@ class theActivities extends ArrayIterator implements Model_Artifact_Stateless, M
         // ask all work packages to add their activities
         foreach ($this->_project->wbs as $wp) {
             $wp->split($this);
-            logg('WP ' . $wp->code . ' added ' . count($this));
+            // logg('WP ' . $wp->code . ' added ' . count($this));
         }
     }
 
@@ -119,4 +119,29 @@ class theActivities extends ArrayIterator implements Model_Artifact_Stateless, M
         FaZend_Exception::raise('ActivityNotFound', 'Activity not found with name: ' . $name);
     }
 
+    /**
+     * Add one activity
+     *
+     * @param theActivity Activity to add
+     * @return theActivity
+     **/
+    public final function add(theActivity $activity) {
+        $this[] = $activity;
+        return $activity;
+    }
+    
+    /**
+     * Delete one activity
+     *
+     * @param theActivity Activity to delete
+     * @return void
+     **/
+    public final function delete(theActivity $toKill) {
+        foreach ($this as $key=>$activity) {
+            if ($activity->equalsTo($toKill)) {
+                unset($this[$key]);
+            }
+        }
+    }
+    
 }

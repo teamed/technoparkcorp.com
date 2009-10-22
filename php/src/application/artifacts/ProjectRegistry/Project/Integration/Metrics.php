@@ -73,9 +73,10 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive {
 
             $this->_attachMetric($metricName, $className);
             $new++;
+            // logg('Reloaded ' . $metricName);
         }
         
-        logg('Reloaded ' . count($this) . ' metrics in ' . $this->ps()->parent->name);
+        // logg('Reloaded ' . count($this) . ' metrics in ' . $this->ps()->parent->name);
     }
 
     /**
@@ -120,7 +121,7 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive {
         $class->setName($name);
         $this->_attachItem($name, $class, 'setMetrics');
 
-        return $this[$name];       
+        return $class;       
     }
     
     /**

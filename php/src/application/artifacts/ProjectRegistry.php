@@ -47,12 +47,6 @@ class theProjectRegistry extends Model_Artifact implements Model_Artifact_Passiv
             $p->name = Model_Project_Test::NAME;
             $this->_attachItem($p->name, $p);            
         }
-
-        // reload them all
-        foreach ($this as $project) {
-            if (!$project->isLoaded())
-                $project->reload();
-        }
     }
 
     /**

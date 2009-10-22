@@ -49,11 +49,7 @@ class Slice_Plugin_Simple extends Slice_Plugin_Abstract {
      * @return void
      **/
     public final function delete(theActivity $toKill) {
-        foreach ($this->_activities as $key=>$activity) {
-            if ($activity->equalsTo($toKill)) {
-                unset($this->_activities[$key]);
-            }
-        }
+        $this->_activities->delete($toKill);
     }
     
     /**
@@ -64,8 +60,20 @@ class Slice_Plugin_Simple extends Slice_Plugin_Abstract {
      **/
     public final function add($code) {
         $activity = theActivity::factory($this->_activities, $this->_wp->code, $code);
-        $this->_activities[] = $activity;
+        $this->_activities->add($activity);
         return $activity;
+    }
+    
+    /**
+     * Create one new milestone
+     *
+     * @param string Code of new milestone
+     * @return theMilestone
+     **/
+    public final function addMilestone($code) {
+        $milestone = theMilestone::factoryMilestone($this->_activities, $this->_wp->code, $code);
+        $this->_activities->add($milestone);
+        return $milestone;
     }
     
     /**

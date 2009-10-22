@@ -54,24 +54,33 @@ class Model_Artifact extends ArrayIterator
      * @return $this
      */
     protected function _attach($name, Model_Artifact_Interface $artifact, $property = null) {
-        if (!isset($this->$name)) 
-            $this->$name = $artifact;
-        $this->_initialize($this->$name, $property);
+        if (isset($this->$name))
+            FaZend_Exception::raise('Model_Artifact_PropertyAlreadyExists',
+                "Can't attach '{$name}' again");
+        $this->$name = $artifact;
+        $this->_initialize($artifact, $property);
         return $this;
     }
     
     /**
      * Attach sub-artifact if it's not here already, as an item in array
      *
-     * @param string Key of the array
+     * @param string|false Key of the array
      * @param Model_Artifact_Interface The artifact to attach
      * @param string Property to set with $this
      * @return $this
      */
     protected function _attachItem($key, Model_Artifact_Interface $artifact, $property = null) {
-        if (!isset($this[$key]))
+        if (isset($this[$key]))
+            FaZend_Exception::raise('Model_Artifact_PropertyAlreadyExists',
+                "Can't attach item '{$key}' again");
+
+        if ($key === false)
+            $this[] = $artifact;
+        else
             $this[$key] = $artifact;
-        $this->_initialize($this[$key], $property);
+            
+        $this->_initialize($artifact, $property);
         return $this;
     }
     
