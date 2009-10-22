@@ -1,1 +1,49 @@
+<? $this->includeCSS('pages/projects/_any/Time/GanttChart/table.css') ?>
+
 <h1>Gantt Chart</h1>
+
+<? $finish = $this->project->schedule->finish->setWeekday(7) ?>
+<? $start = Zend_Date::now()
+    ->setWeekday(1)
+    ->setHour(0)
+    ->setMinute(0) ?>
+
+<p>Start on <?=$start->get(Zend_Date::DATE_SHORT)?>, finish estimated on <?=$finish->get(Zend_Date::DATE_SHORT)?>.</p>
+
+<table class="chart">
+<tr>
+    <th>Activity</th>
+    <th>Cost</th>
+    <th>Days</th>
+    <th>Preds</th>
+
+    <? for ($d = clone $start; $d < $finish; $d->add(1, Zend_Date::WEEK)): ?>
+        <th><?=$d->get(Zend_Date::WEEK)?></th>
+    <? endfor; ?>
+</tr>
+<? foreach ($this->project->schedule->activities as $activity): ?>
+<tr>
+    <td><?=$activity->sow?></td>
+    <td><?=$activity->cost?></td>
+    <td><?=$activity->duration?></td>
+    <td><?=count($activity->predecessors)?></td>
+    
+    <? for ($d = clone $start; $d < $finish; $d->add(1, Zend_Date::WEEK)): ?>
+        <? $weekEnd = clone $d; $weekEnd->add(1, Zend_Date::WEEK)?>
+        <td
+        <? if (
+            // start of this week is inside the activity
+            ($d->isLater($activity->start) && $d->isEarlier($activity->finish))
+            // end of this week is inside the activity
+            || ($weekEnd->isLater($activity->start) && $weekEnd->isEarlier($activity->finish))
+            // start and end are inside this week
+            || ($activity->start->isLater($d) && $activity->finish->isEarlier($weekEnd))
+            ): ?>
+            class="<?=$activity->cost ? 'busy' : 'milestone'?>"
+        <? endif; ?>
+        ></td>
+    <? endfor; ?>
+
+</tr>
+<? endforeach; ?>
+</table>

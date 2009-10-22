@@ -1,0 +1,12 @@
+table.chart {
+    font-size: 0.8em;
+    line-height: 1em;
+}
+
+    table.chart td.busy {
+        background-color: <?=Model_Colors::GREEN?>;
+    }
+
+    table.chart td.milestone {
+        background-color: <?=Model_Colors::RED?>;
+    }

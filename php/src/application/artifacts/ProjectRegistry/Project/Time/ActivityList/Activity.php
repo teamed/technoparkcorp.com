@@ -27,6 +27,8 @@ class theActivity {
 
     const SEPARATOR = '.';
 
+    const DEFAULT_PRICE_PER_HOUR_USD = 2;
+
     /**
      * Holder of this activity
      *
@@ -61,20 +63,6 @@ class theActivity {
      * @var Model_Cost
      */
     protected $_cost;
-    
-    /**
-     * Our estimate of duration, days
-     *
-     * @var integer
-     */
-    protected $_duration;
-    
-    /**
-     * When it should start
-     *
-     * @var integer
-     */
-    protected $_start;
     
     /**
      * Assigned performer (doesn't mean that he/she AGREED to perform the activity)
@@ -160,7 +148,8 @@ class theActivity {
         if (property_exists($this, $var))
             return $this->$var;
         
-        FaZend_Exception::raise('Activity_PropertyOrMethodNotFound', "Can't find what is '$name'");
+        FaZend_Exception::raise('Activity_PropertyOrMethodNotFound', 
+            "Can't find what is '$name' in '{$this->name}' activity");
     }
 
     /**
@@ -182,17 +171,6 @@ class theActivity {
      */
     public function setCost(Model_Cost $cost) {
         $this->_cost = clone $cost;
-        return $this;
-    }
-
-    /**
-     * Set start
-     *
-     * @param integer When it should start
-     * @return $this
-     */
-    public function setStart($start) {
-        $this->_start = $start;
         return $this;
     }
 
@@ -264,15 +242,6 @@ class theActivity {
     }
 
     /**
-     * Start date
-     *
-     * @return Zend_Date
-     */
-    protected function _getStartDate() {
-        return new Zend_Date($this->_start);
-    }
-
-    /**
      * Description of activity
      *
      * @return string
@@ -289,6 +258,41 @@ class theActivity {
      */
     protected function _getDoc() {
         return 'projects/' . $this->project->name . '/Scope/WBS/' . str_replace(theMetrics::SEPARATOR, '-', $this->code);
+    }
+    
+    /**
+     * Get estimated start of the activity
+     *
+     * @return Zend_Date
+     */
+    protected function _getStart() {
+        return $this->predecessors->calculateStart($this);
+    }
+
+    /**
+     * Get estimated finish of the activity
+     *
+     * @return Zend_Date
+     * @todo Shall be done properly and shall take into account performer and his/her price
+     */
+    protected function _getFinish() {
+        $finish = $this->start;
+        $finish->add($this->duration, Zend_Date::DAY);
+        return $finish;
+    }
+    
+    /**
+     * Get estimated duration of the activity
+     *
+     * @return int In calendar days
+     * @todo Shall be done properly and shall take into account performer and his/her price
+     */
+    protected function _getDuration() {
+        // if it's a milestone or just unkown cost
+        if (!$this->cost)
+            return 0;
+        
+        return ceil(($this->cost->usd / self::DEFAULT_PRICE_PER_HOUR_USD) / 4);
     }
     
     /**

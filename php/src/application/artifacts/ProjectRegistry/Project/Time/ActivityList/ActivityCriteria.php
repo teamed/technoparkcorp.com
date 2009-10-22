@@ -52,9 +52,10 @@ class theActivityCriteria extends ArrayIterator {
      * @return boolean
      **/
     public function isTrue(theProject $project) {
-        foreach ($this as $when)
+        foreach ($this as $when) {
             if (!$when->isTrue($project))
                 return false;
+        }
         return true;
     }
     
@@ -65,7 +66,7 @@ class theActivityCriteria extends ArrayIterator {
      * @return string
      **/
     public function asHtml(theProject $project) {
-        $html = '<p>Criteria is successful if and only if (all of the below are true):</p><ul>';
+        $html = '<p>All of the below shall be true:</p><ul>';
 
         $metrics = array();
         foreach ($this as $when) {
@@ -77,7 +78,7 @@ class theActivityCriteria extends ArrayIterator {
         $html .= '</ul>';
         
         foreach ($metrics as $var=>$metric)
-            $html .= "<h2>Variable <span class='formula'>$var = {$metric->value}</span></h2>" . 
+            $html .= "<h2>Variable <span class='formula'><b>$var</b> = {$metric->value}</span></h2>" . 
                 ticket('PM/integration/metrics/' . $metric->name, array('metric'=>$metric));
         
         return $html;

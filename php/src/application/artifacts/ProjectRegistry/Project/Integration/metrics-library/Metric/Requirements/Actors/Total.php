@@ -60,6 +60,8 @@ class Metric_Requirements_Actors_Total extends Metric_Abstract {
             'sow' => 'Identify actors',
             'minCost' => '10 USD'));
             
+        $slice->afterEachOther();
+            
         $i = 1;
         foreach ($slice->codeRegex('/^a[\d]+$/')->afterMilestone() as $milestone) {
             $milestone->criteria

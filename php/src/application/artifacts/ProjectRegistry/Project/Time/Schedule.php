@@ -41,11 +41,40 @@ class theSchedule extends Model_Artifact_Bag implements Model_Artifact_Passive {
      */
     public function reload() {
         $this->_attach('activities', clone $this->ps()->parent->activityList->activities);
+    }
+    
+    /**
+     * Getter dispatcher
+     *
+     * @param string Name of property to get
+     * @return mixed
+     **/
+    public function __get($name) {
+        $method = '_get' . ucfirst($name);
+        if (method_exists($this, $method))
+            return $this->$method();
+            
+        $var = '_' . $name;
+        if (property_exists($this, $var))
+            return $this->$var;
         
-        // set start
+        FaZend_Exception::raise('Schedule_PropertyOrMethodNotFound', 
+            "Can't find what is '$name' in Schedule");
+    }
+
+    /**
+     * Get finish date of schedule
+     *
+     * @return Zend_Date
+     **/
+    protected function _getFinish() {
+        $finish = new Zend_Date();
+        // find the latest finish
         foreach ($this->activities as $activity) {
-            $activity->setStart(time());
+            if ($finish->compare($activity->finish) == -1)
+                $finish = $activity->finish;
         }
+        return $finish;
     }
     
 }

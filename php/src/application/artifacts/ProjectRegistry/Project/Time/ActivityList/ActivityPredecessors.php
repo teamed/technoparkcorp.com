@@ -42,12 +42,28 @@ class theActivityPredecessors extends ArrayIterator {
      *
      * @param theActivity Predecessor
      * @param string Type of link
-     * @param integer Lag in hours
+     * @param integer Lag in calendar days
      * @return $this
      */
     public function add(theActivity $predecessor, $type = theActivityPredecessor::FINISH_TO_START, $lag = 0) {
         $this[] = theActivityPredecessor::factory($predecessor, $type, $lag);
         return $this;
+    }
+    
+    /**
+     * Calculate start of this activity
+     *
+     * @param theActivity We shall use it as a basis, to calculate ITS start
+     * @return Zend_Date
+     **/
+    public function calculateStart(theActivity $activity) {
+        $start = new Zend_Date();
+        foreach ($this as $pred) {
+            $predStart = $pred->calculateStart($activity);
+            if ($predStart->isLater($start))
+                $start = $predStart;
+        }
+        return $start;
     }
 
 }

@@ -45,7 +45,7 @@ class theActivityPredecessor extends ArrayIterator {
     protected $_type;
     
     /**
-     * Hours
+     * Days!
      *
      * @var integer
      */
@@ -77,6 +77,35 @@ class theActivityPredecessor extends ArrayIterator {
         $predecessor->_type = $type;
         $predecessor->_lag = $lag;
         return $predecessor;
+    }
+
+    /**
+     * Calculate start of this activity
+     *
+     * @param theActivity We shall use it as a basis, to calculate ITS start
+     * @return Zend_Date
+     **/
+    public function calculateStart(theActivity $activity) {
+        switch ($this->_type) {
+            case self::FINISH_TO_START:
+                $start = $this->_activity->finish;
+                break;
+            case self::FINISH_TO_FINISH:
+                $start = $this->_activity->finish;
+                $start->sub($activity->duration, Zend_Date::DAY);
+                break;
+            case self::START_TO_START:
+                $start = $this->_activity->start;
+                break;
+            case self::START_TO_FINISH:
+                $start = $this->_activity->start;
+                $start->sub($activity->duration, Zend_Date::DAY);
+                break;
+        }
+        
+        $start->add($this->_lag, Zend_Date::DAY);
+        
+        return $start;
     }
 
 }
