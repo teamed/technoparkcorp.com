@@ -19,22 +19,38 @@
  */
 
 /**
- * One milestone
+ * One abstract wiki storage of pages
  *
- * @package Artifacts
+ * @package Model
  */
-class theMilestone extends theActivity {
+abstract class Model_Wiki_Abstract {
 
     /**
-     * Factory method
+	 * Create a new wiki holder
      *
-     * @param theActivities Holder of this activity
-     * @param theWorkPackage Originator of the activity
-     * @param string Unique code for this work package
-     * @return theMilestone
-     **/
-    public static function factoryMilestone(theActivities $activities, $wp, $code) {
-        return new theMilestone($activities, $wp, $code);
+     * @param string Type of tracker in string
+     * @param mixed Connection/configuration parameters
+     * @return Model_Wiki_Abstract
+     */
+	public static function factory($type, $params) {
+        $className = 'Model_Wiki_' . ucfirst($type);
+        return Model_Flyweight::factory($className, $params);
     }
 
+    /**
+     * Retrieve all wiki entities
+     *
+     * @return Model_Wiki_Entity_Abstract[]
+     **/
+    abstract public function retrieveAll();
+    
+    /**
+     * Get type of tracker, e.g. 'trac'
+     *
+     * @return string
+     **/
+    public function getType() {
+        return str_replace('Model_Wiki_', '', get_class($this));
+    }
+        
 }

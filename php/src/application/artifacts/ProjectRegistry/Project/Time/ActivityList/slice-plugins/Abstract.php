@@ -181,6 +181,16 @@ abstract class Slice_Plugin_Abstract implements Iterator, Countable {
     protected function _isInside(theActivity $activity) {
         return true;
     }
+    
+    /**
+     * Find activity by code
+     *
+     * @param string Name/code of activity
+     * @return theActivity
+     **/
+    protected function _findByName($name) {
+        return $this->_activities->findByName($code);
+    }
         
     /**
      * Get next available code for activity

@@ -1,0 +1,9 @@
+<h1>Quality of Service (QOS)</h1>
+
+<?=$this->table()
+    ->setSource($this->project->srs->qos)
+    ->addColumn('name', 'Name')
+    ->addColumn('description', 'Description')
+    ->addColumn('attributes', 'Attributes')
+    ?>
+    

@@ -59,6 +59,9 @@ class Slice_Plugin_Simple extends Slice_Plugin_Abstract {
      * @return theActivity
      **/
     public final function add($code) {
+        if (!isset($this->_wp))
+            FaZend_Exception::raise('SimplePluginInvalidInitialization');
+            
         $activity = theActivity::factory($this->_activities, $this->_wp->code, $code);
         $this->_activities->add($activity);
         return $activity;
@@ -71,6 +74,9 @@ class Slice_Plugin_Simple extends Slice_Plugin_Abstract {
      * @return theMilestone
      **/
     public final function addMilestone($code) {
+        if (!isset($this->_wp))
+            FaZend_Exception::raise('SimplePluginInvalidInitialization');
+            
         $milestone = theMilestone::factoryMilestone($this->_activities, $this->_wp->code, $code);
         $this->_activities->add($milestone);
         return $milestone;
@@ -83,6 +89,8 @@ class Slice_Plugin_Simple extends Slice_Plugin_Abstract {
      * @return boolean
      **/
     protected function _isInside(theActivity $activity) {
+        if (!isset($this->_wp))
+            return true;
         return $activity->belongsTo($this->_wp);
     }
         

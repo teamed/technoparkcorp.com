@@ -1,0 +1,9 @@
+<h1>Actors</h1>
+
+<?=$this->table()
+    ->setSource($this->project->srs->actors)
+    ->addColumn('name', 'Name')
+    ->addColumn('description', 'Description')
+    ->addColumn('attributes', 'Attributes')
+    ?>
+    

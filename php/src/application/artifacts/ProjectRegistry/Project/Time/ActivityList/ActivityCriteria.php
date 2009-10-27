@@ -84,4 +84,16 @@ class theActivityCriteria extends ArrayIterator {
         return $html;
     }
 
+    /**
+     * Return a list of all metrics involved here, that affect this activity
+     *
+     * @return string[]
+     **/
+    public function getAffectors() {
+        $metrics = array();
+        foreach ($this as $when) {
+            $metrics += $when->getAffectors();
+        }
+        return array_unique($metrics);
+    }
 }

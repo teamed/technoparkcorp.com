@@ -113,4 +113,14 @@ class Model_Project extends Shared_Project {
         return Model_Issue_Tracker_Abstract::factory('trac', $this);
     }
     
+    /**
+     * Wiki holder for this project
+     *
+     * @return Model_Wiki_Abstract
+     * @todo Should be configurable
+     **/
+    public function getWiki() {
+        return Model_Wiki_Abstract::factory('trac', $this);
+    }
+    
 }

@@ -27,7 +27,7 @@ class theActivity {
 
     const SEPARATOR = '.';
 
-    const DEFAULT_PRICE_PER_HOUR_USD = 2;
+    const DEFAULT_PRICE_PER_HOUR_USD = 15;
 
     /**
      * Holder of this activity
@@ -150,6 +150,15 @@ class theActivity {
         
         FaZend_Exception::raise('Activity_PropertyOrMethodNotFound', 
             "Can't find what is '$name' in '{$this->name}' activity");
+    }
+    
+    /**
+     * Show activity as a string
+     *
+     * @return string
+     **/
+    public function __toString() {
+        return $this->name;
     }
 
     /**

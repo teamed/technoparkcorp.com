@@ -19,22 +19,11 @@
  */
 
 /**
- * One milestone
+ * One wiki entity in Trac
  *
- * @package Artifacts
+ * @package Model
  */
-class theMilestone extends theActivity {
+class Model_Wiki_Entity_Trac extends Model_Wiki_Entity_Abstract {
 
-    /**
-     * Factory method
-     *
-     * @param theActivities Holder of this activity
-     * @param theWorkPackage Originator of the activity
-     * @param string Unique code for this work package
-     * @return theMilestone
-     **/
-    public static function factoryMilestone(theActivities $activities, $wp, $code) {
-        return new theMilestone($activities, $wp, $code);
-    }
 
 }

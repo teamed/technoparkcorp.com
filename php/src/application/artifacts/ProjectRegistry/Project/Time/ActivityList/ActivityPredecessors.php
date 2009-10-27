@@ -57,7 +57,7 @@ class theActivityPredecessors extends ArrayIterator {
      * @return Zend_Date
      **/
     public function calculateStart(theActivity $activity) {
-        $start = new Zend_Date();
+        $start = new FaZend_Date();
         foreach ($this as $pred) {
             $predStart = $pred->calculateStart($activity);
             if ($predStart->isLater($start))

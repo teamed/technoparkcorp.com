@@ -19,22 +19,28 @@
  */
 
 /**
- * One milestone
+ * List of attributes for one entity
  *
- * @package Artifacts
+ * @package Model
  */
-class theMilestone extends theActivity {
+class Model_Wiki_Entity_Attributes extends ArrayIterator {
 
     /**
-     * Factory method
+     * Set attribute
      *
-     * @param theActivities Holder of this activity
-     * @param theWorkPackage Originator of the activity
-     * @param string Unique code for this work package
-     * @return theMilestone
+     * @return $this
      **/
-    public static function factoryMilestone(theActivities $activities, $wp, $code) {
-        return new theMilestone($activities, $wp, $code);
+    public function set($name) {
+        $this[strtolower($name)] = true;
+    }
+
+    /**
+     * Convert them all to string
+     *
+     * @return string
+     **/
+    public function __toString() {
+        return implode(', ', array_keys($this->getArrayCopy()));
     }
 
 }

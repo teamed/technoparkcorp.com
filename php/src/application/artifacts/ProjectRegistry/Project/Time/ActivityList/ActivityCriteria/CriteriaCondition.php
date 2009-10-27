@@ -25,6 +25,8 @@
  */
 class theCriteriaCondition extends ArrayIterator {
 
+    const REGEX = '/\[([\w\d\/]+)\]/';
+
     /**
      * Raw text condition
      *
@@ -59,7 +61,7 @@ class theCriteriaCondition extends ArrayIterator {
      **/
     public function isTrue(theProject $project) {
         $formula = $this->_text;
-        if (preg_match_all('/\[([\w\d\/]+)\]/', $formula, $matches)) {
+        if (preg_match_all(self::REGEX, $formula, $matches)) {
             foreach ($matches[0] as $id=>$match) {
                 try {
                     $metric = $project->metrics[$matches[1][$id]];
@@ -83,7 +85,7 @@ class theCriteriaCondition extends ArrayIterator {
     public function asHtml(theProject $project, array &$variables) {
 
         $text = $this->_text;
-        if (!preg_match_all('/\[([\w\d\/]+)\]/', $text, $matches))
+        if (!preg_match_all(self::REGEX, $text, $matches))
             return $text;
             
         foreach ($matches[0] as $id=>$match) {
@@ -98,6 +100,16 @@ class theCriteriaCondition extends ArrayIterator {
         }
         
         return $text;
+    }
+    
+    /**
+     * Get full list of metrics that are here
+     *
+     * @return string[]
+     **/
+    public function getAffectors() {
+        preg_match_all(self::REGEX, $this->_text, $matches);
+        return $matches[1];
     }
 
     /**
