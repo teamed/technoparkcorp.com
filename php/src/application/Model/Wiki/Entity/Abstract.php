@@ -26,13 +26,6 @@
 abstract class Model_Wiki_Entity_Abstract {
 
     /**
-     * Wiki page storage
-     * 
-     * @var Model_Wiki_Abstract
-     */
-    protected $_wiki = null;
-
-    /**
      * Name of the entity
      * 
      * @var string
@@ -61,8 +54,7 @@ abstract class Model_Wiki_Entity_Abstract {
      * @param string Text description of it
      * @return void
      */
-	public function __construct(Model_Wiki_Abstract $wiki, $name, $description) {
-	    $this->_wiki = $wiki;
+	public function __construct($name, $description) {
 	    $this->_name = $name;
 	    $this->_description = $description;
 	    

@@ -35,13 +35,6 @@ class Model_Wiki_Trac extends Model_Wiki_Abstract {
     protected $_project;
     
     /**
-     * Client for Trac
-     *
-     * @var Zend_XmlRpc_Client
-     */
-    protected $_xmlRpc;
-    
-    /**
      * List of entities found
      *
      * @var Model_Wiki_Entity_Abstract[]
@@ -86,27 +79,11 @@ class Model_Wiki_Trac extends Model_Wiki_Abstract {
      * @return Zend_XmlRpc_Client
      **/
     public function getXmlRpcWikiProxy() {
-        if (isset($this->_xmlRpc))
-            return $this->_xmlRpc;
-            
         // this is the URL of trac hack XMLRPC
-        $uri = self::URI . '/' . $this->_project->name . '/xmlrpc';
-
-        // configure HTTP connector
-        $httpClient = new Zend_Http_Client($uri, array());
-        
-        // current user gets access
-        $login = Model_User::getCurrentUser()->email;
-        $password = $this->_project->getStakeholderPassword($login);
-        $httpClient->setAuth($login, $password);
-
-        // make connection
-        $client = new Zend_XmlRpc_Client($uri, $httpClient);
-
-        // get this particular proxy locator
-        $this->_xmlRpc = $client->getProxy('wiki');
-            
-        return $this->_xmlRpc;
+        return Model_Client_Rpc::factory(
+            $this->_project, 
+            self::URI . '/' . $this->_project->name . '/xmlrpc', 
+            'wiki');
     }
 
     /**
@@ -145,7 +122,9 @@ class Model_Wiki_Trac extends Model_Wiki_Abstract {
             // already here
             if (isset($this->_entities[$name]))
                 continue;
-            $this->_entities[$name] = Model_Flyweight::factory('Model_Wiki_Entity_Trac', $this, $name, 
+            $this->_entities[$name] = Model_Flyweight::factory(
+                'Model_Wiki_Entity_Trac', 
+                $name, 
                 $filterTagsOut->filter($matches[4][$id]));
             
             // attribs specified?

@@ -19,42 +19,37 @@
  */
 
 /**
- * Trac tracker
+ * XML RPC client 
  *
  * @package Model
  */
-class Model_Issue_Tracker_Trac extends Model_Issue_Tracker_Abstract {
-
-    const URI = 'http://trac.fazend.com';
+class Model_Client_Rpc {
 
     /**
-     * The project related to this Trac
+	 * Create new proxy
      *
-     * @var Model_Project
-     */
-    protected $_project;
-    
-    /**
-	 * Construct the class
-     *
-     * @param Model_Project The project, owner of this trac
-     * @return void
-     */
-	public function __construct(Model_Project $project) {
-	    $this->_project = $project;
-	}
-
-    /**
-     * Get XML RPC client instance
-     *
+     * @param Model_Project The project
+     * @param string URL
+     * @param string Name of proxy
      * @return Zend_XmlRpc_Client
-     **/
-    public function getXmlRpcTicketProxy() {
-        // this is the URL of trac hack XMLRPC
-        return Model_Client_Rpc::factory(
-            $this->_project,
-            self::URI . '/' . $this->_project->name . '/xmlrpc',
-            'ticket');
+     */
+	public static function factory(Model_Project $project, $uri, $proxy = null) {
+        // configure HTTP connector
+        $httpClient = Model_Flyweight::factory('Zend_Http_Client', $uri, array());
+        
+        // current user gets access
+        $login = Model_User::getCurrentUser()->email;
+        $password = $project->getStakeholderPassword($login);
+        $httpClient->setAuth($login, $password);
+
+        // make connection
+        $client = Model_Flyweight::factory('Zend_XmlRpc_Client', $uri, $httpClient);
+
+        // get this particular proxy locator
+        if ($proxy)
+            return $client->getProxy($proxy);
+            
+        return $client;
     }
 
 }

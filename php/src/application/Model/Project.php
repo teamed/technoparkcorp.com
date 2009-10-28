@@ -123,4 +123,16 @@ class Model_Project extends Shared_Project {
         return Model_Wiki_Abstract::factory('trac', $this);
     }
     
+    /**
+     * Pan facade for source code
+     *
+     * @return Zend_XmlRpc_Client
+     * @todo Should be configurable
+     **/
+    public function getPan() {
+        return Model_Client_Rpc::factory(
+            $this,
+            'http://linux.fazend.com/p/' . $this->_project->name . '/trunk/__fz/xmlrpc');
+    }
+    
 }
