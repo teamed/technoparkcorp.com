@@ -70,7 +70,8 @@ class Helper_Forma extends FaZend_View_Helper {
      * @return Helper_Forma
      */
     public function addField($type, $name = null) {
-        $field = Model_Form_Field::factory($type, $this);
+        require_once 'helpers/Forma/Field.php';
+        $field = Helper_Forma_Field::factory($type, $this);
         $this->_fields[$this->_uniqueName($name)] = $field;
         return $field;
     }
