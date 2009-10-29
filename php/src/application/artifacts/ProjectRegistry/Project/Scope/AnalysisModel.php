@@ -19,24 +19,24 @@
  */
 
 /**
- * Software requirements specification
+ * Analysis Model
  *
  * @package Artifacts
  */
-class theSrs extends Model_Artifact_Bag implements Model_Artifact_Passive {
+class theAnalysisModel extends Model_Artifact_Bag implements Model_Artifact_Passive {
     
     /**
-     * Load all entities into SRS
+     * Load all entities into the Model
      *
      * @return void
      **/
     public function reload() {
-        // clear all existing WPs
-        foreach ($this as $key=>$metric)
+        // clear all existing components
+        foreach ($this as $key=>$component)
             unset($this[$key]);
 
-        foreach ($this->ps()->parent->fzProject()->getWiki()->retrieveAll() as $entity)
-            $this[$entity->name] = $entity;
+        foreach ($this->ps()->parent->fzProject()->getPan('analysis')->getComponents() as $component)
+            $this[$component] = new theComponent($component, theComponent::TYPE_CLASS);
     }
     
     /**
@@ -65,59 +65,6 @@ class theSrs extends Model_Artifact_Bag implements Model_Artifact_Passive {
         
         FaZend_Exception::raise('PropertyOrMethodNotFound', 
             "Can't find what is '$name' in " . get_class($this));        
-    }
-
-    /**
-     * Get list of actors
-     *
-     * @return Model_Wiki_Entity_Abstract[]
-     **/
-    protected function _getActors() {
-        return $this->_getByRegex('/^Actor[A-Z][\w\d]+$/');
-    }
-    
-    /**
-     * Get list of interfaces
-     *
-     * @return Model_Wiki_Entity_Abstract[]
-     **/
-    protected function _getInterfaces() {
-        return $this->_getByRegex('/^If[A-Z][\w\d]+$/');
-    }
-    
-    /**
-     * Get list of functional requirements
-     *
-     * @return Model_Wiki_Entity_Abstract[]
-     **/
-    protected function _getFunctional() {
-        return $this->_getByRegex('/^R[\d]+(\.\d+)*$/');
-    }
-    
-    /**
-     * Get list of quality of service requirments
-     *
-     * @return Model_Wiki_Entity_Abstract[]
-     **/
-    protected function _getQos() {
-        return $this->_getByRegex('/^QOS[\d]+(\.\d+)*$/');
-    }
-    
-    /**
-     * Get entities by regexp
-     *
-     * Returns a list of entities, which names match given regexp
-     *
-     * @param string Prefix
-     * @return array
-     **/
-    protected function _getByRegex($regex) {
-        $list = new ArrayIterator();
-        foreach ($this as $key=>$entity) {
-            if (preg_match($regex, $key))
-                $list[$key] = $entity;
-        }
-        return $list;
     }
 
 }
