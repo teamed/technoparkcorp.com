@@ -42,6 +42,10 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
      * @return void
      **/
     public function reload() {
+        $autoloader = Zend_Loader_Autoloader::getInstance();
+        $autoloader->registerNamespace('Deliverables_');
+        set_include_path(get_include_path() . PATH_SEPARATOR . dirname(__FILE__) . '/Deliverables/types');
+
         // clear all existing deliverables
         foreach ($this as $key=>$metric)
             unset($this[$key]);
@@ -51,8 +55,6 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
         $loaders = DeliverablesLoaders_Abstract::retrieveAll($this);
         foreach ($loaders as $loader)
             $loader->load();
-            
-        // bug($this->getArrayCopy());
     }
     
     /**
@@ -81,8 +83,17 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
         
         // deduct trailing 'S' and return by this type
         switch ($name) {
+            case 'classes':
+                $type = substr($name, 0, -2);
+                break;
+
             case 'actors':
             case 'interfaces':
+            case 'packages':
+            case 'files':
+            case 'useCases':
+            case 'issues':
+            case 'testCases':
                 $type = substr($name, 0, -1);
                 break;
 
@@ -96,7 +107,7 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
                     "Can't find what is '$name' in " . get_class($this));        
         }
         
-        return $this->_getByType($type);
+        return $this->_getByType(self::_convertType($type));
     }
 
     /**
@@ -108,8 +119,8 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
      * @return Deliverables_Abstract
      **/
     public static function factory($type, $name, $description) {
-        require_once dirname(__FILE__) . '/Deliverables/types/Abstract.php';
-        return Deliverables_Abstract::factory($type, $name, $description);
+        $className = 'Deliverables_' . ucfirst(self::_convertType($type));
+        return new $className($name, $description);        
     }
      
     /**
@@ -135,6 +146,24 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
                 $list[] = $deliverable;
         }
         return $list;
+    }
+    
+    /**
+     * Convert from text to PHP name suffix
+     *
+     * @return string
+     **/
+    public static function _convertType($type) {
+        switch ($type) {
+            case 'functional':
+            case 'qos':
+                return 'requirement_' . ucfirst($type);
+
+            case 'testCase':
+                return 'class_' . ucfirst($type);
+        }
+        
+        return $type;
     }
 
 }
