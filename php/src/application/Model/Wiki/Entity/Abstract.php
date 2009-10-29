@@ -44,7 +44,7 @@ abstract class Model_Wiki_Entity_Abstract {
      *
      * @var string[]
      */
-    protected $_attributes;
+    protected $_attributes = array();
     
     /**
 	 * Constructor
@@ -57,8 +57,18 @@ abstract class Model_Wiki_Entity_Abstract {
 	public function __construct($name, $description) {
 	    $this->_name = $name;
 	    $this->_description = $description;
-	    
-	    $this->_attributes = new Model_Wiki_Entity_Attributes();
+    }
+
+    /**
+     * Is it a name of entity? Get its prefix
+     *
+     * @param string Name of some entity
+     * @return string Prefix recognized
+     **/
+    public static function getEntityPrefix($name) {
+        if (!preg_match('/^(R|QOS)\d+(?:\.\d+)*|(If|Actor)[A-Z]\w+$/', $name, $matches))
+            return false;
+        return $matches[1] ? $matches[1] : $matches[2];
     }
 
     /**
@@ -78,6 +88,38 @@ abstract class Model_Wiki_Entity_Abstract {
         
         FaZend_Exception::raise('Model_Wiki_PropertyOrMethodNotFound', 
             "Can't find what is '$name' in " . get_class($this));        
+    }
+    
+    /**
+     * Derive all known attributes
+     *
+     * @param theDeliverableAttributes This class will be filled with values
+     * @return void
+     **/
+    public function deriveAttributes(theDeliverableAttributes $attributes) {
+        $attributes['test'] = 'test';
+    }
+    
+    /**
+     * Get type of this entity
+     *
+     * @return string
+     **/
+    protected function _getType() {
+        $prefix = strtolower(self::getEntityPrefix($this->_name));
+        switch ($prefix) {
+            case 'actor':
+                return 'actor';
+            case 'r':
+                return 'functional';
+            case 'qos':
+                return 'qos';
+            case 'if':
+                return 'interface';
+            default:
+                FaZend_Exception::raise('Model_Wiki_InvalidType', 
+                    "Type of '{$this->_name}' is unknown ('{$prefix}') in " . get_class($this));        
+        }
     }
 
 }

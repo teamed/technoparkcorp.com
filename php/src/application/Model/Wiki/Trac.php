@@ -117,7 +117,7 @@ class Model_Wiki_Trac extends Model_Wiki_Abstract {
         
         foreach ($matches[2] as $id=>$name) {
             // it's not an entity
-            if (!$this->_isEntityName($name))
+            if (Model_Wiki_Entity_Abstract::getEntityPrefix($name) === false)
                 continue;
             // already here
             if (isset($this->_entities[$name]))
@@ -130,22 +130,14 @@ class Model_Wiki_Trac extends Model_Wiki_Abstract {
             // attribs specified?
             if ($matches[3][$id]) {
                 $attribs = explode(',', $matches[3][$id]);
+                $a = $this->_entities[$name]->attributes;
                 foreach ($attribs as $attrib)
-                    $this->_entities[$name]->attributes->set($attrib);
+                    $a[strtolower(trim($attrib))] = true;
             }
             
             $this->_parsePage($matches[1][$id]);
         }
         
-    }
-
-    /**
-     * Is it a name of entity?
-     *
-     * @return boolean
-     **/
-    protected function _isEntityName($name) {
-        return preg_match('/^(R|QOS)\d+(\.\d+)*|(If|Actor)[A-Z]\w+$/', $name);
     }
 
     /**

@@ -19,28 +19,10 @@
  */
 
 /**
- * List of attributes for one entity
+ * One actor
  *
- * @package Model
+ * @package Artifacts
  */
-class Model_Wiki_Entity_Attributes extends ArrayIterator {
-
-    /**
-     * Set attribute
-     *
-     * @return $this
-     **/
-    public function set($name) {
-        $this[strtolower($name)] = true;
-    }
-
-    /**
-     * Convert them all to string
-     *
-     * @return string
-     **/
-    public function __toString() {
-        return implode(', ', array_keys($this->getArrayCopy()));
-    }
-
+class Deliverables_Actor extends Deliverables_Abstract {
+        
 }

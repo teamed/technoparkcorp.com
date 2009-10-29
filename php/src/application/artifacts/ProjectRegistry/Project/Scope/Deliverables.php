@@ -46,8 +46,13 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
         foreach ($this as $key=>$metric)
             unset($this[$key]);
 
-        foreach ($this->ps()->parent->fzProject()->getWiki()->retrieveAll() as $entity)
-            $this[$entity->name] = $entity;
+        // execute ALL loaders one after another
+        require_once dirname(__FILE__) . '/Deliverables/loaders/Abstract.php';
+        $loaders = DeliverablesLoaders_Abstract::retrieveAll($this);
+        foreach ($loaders as $loader)
+            $loader->load();
+            
+        // bug($this->getArrayCopy());
     }
     
     /**
@@ -74,59 +79,60 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
         if (property_exists($this, $var))
             return $this->$var;
         
-        FaZend_Exception::raise('PropertyOrMethodNotFound', 
-            "Can't find what is '$name' in " . get_class($this));        
+        // deduct trailing 'S' and return by this type
+        switch ($name) {
+            case 'actors':
+            case 'interfaces':
+                $type = substr($name, 0, -1);
+                break;
+
+            case 'functional':
+            case 'qos':
+                $type = $name;
+                break;
+            
+            default:
+                FaZend_Exception::raise('Model_Wiki_PropertyOrMethodNotFound', 
+                    "Can't find what is '$name' in " . get_class($this));        
+        }
+        
+        return $this->_getByType($type);
     }
 
     /**
-     * Get list of actors
+     * Create new deliverable
      *
-     * @return Model_Wiki_Entity_Abstract[]
+     * @param string Type of it
+     * @param string Name of the deliverable
+     * @param string Text description of it
+     * @return Deliverables_Abstract
      **/
-    protected function _getActors() {
-        return $this->_getByRegex('/^Actor[A-Z][\w\d]+$/');
+    public static function factory($type, $name, $description) {
+        require_once dirname(__FILE__) . '/Deliverables/types/Abstract.php';
+        return Deliverables_Abstract::factory($type, $name, $description);
     }
-    
+     
     /**
-     * Get list of interfaces
+     * Add new deliverable to the class
      *
-     * @return Model_Wiki_Entity_Abstract[]
+     * @param Deliverables_Abstract The element to add
+     * @return void
      **/
-    protected function _getInterfaces() {
-        return $this->_getByRegex('/^If[A-Z][\w\d]+$/');
+    public function add(Deliverables_Abstract $deliverable) {
+        $this[] = $deliverable;
     }
-    
+     
     /**
-     * Get list of functional requirements
+     * Get entities by type
      *
-     * @return Model_Wiki_Entity_Abstract[]
+     * @param string Type
+     * @return ArrayIterator
      **/
-    protected function _getFunctional() {
-        return $this->_getByRegex('/^R[\d]+(\.\d+)*$/');
-    }
-    
-    /**
-     * Get list of quality of service requirments
-     *
-     * @return Model_Wiki_Entity_Abstract[]
-     **/
-    protected function _getQos() {
-        return $this->_getByRegex('/^QOS[\d]+(\.\d+)*$/');
-    }
-    
-    /**
-     * Get entities by regexp
-     *
-     * Returns a list of entities, which names match given regexp
-     *
-     * @param string Prefix
-     * @return array
-     **/
-    protected function _getByType($regex) {
+    protected function _getByType($type) {
         $list = new ArrayIterator();
-        foreach ($this as $key=>$entity) {
-            if (preg_match($regex, $key))
-                $list[$key] = $entity;
+        foreach ($this as $deliverable) {
+            if ($deliverable->type == $type)
+                $list[] = $deliverable;
         }
         return $list;
     }

@@ -1,7 +1,7 @@
 <h1>Functional Requirements</h1>
 
 <?=$this->table()
-    ->setSource($this->project->srs->functional)
+    ->setSource($this->project->deliverables->functional)
     ->addColumn('name', 'Name')
     ->addColumn('description', 'Description')
     ->addColumn('attributes', 'Attributes')

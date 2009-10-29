@@ -1,7 +1,7 @@
 <h1>Interfaces</h1>
 
 <?=$this->table()
-    ->setSource($this->project->srs->interfaces)
+    ->setSource($this->project->deliverables->interfaces)
     ->addColumn('name', 'Name')
     ->addColumn('description', 'Description')
     ->addColumn('attributes', 'Attributes')

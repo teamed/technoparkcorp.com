@@ -126,13 +126,15 @@ class Model_Project extends Shared_Project {
     /**
      * Pan facade for source code
      *
+     * @param string Name of the proxy to use, if necessary
      * @return Zend_XmlRpc_Client
      * @todo Should be configurable
      **/
-    public function getPan() {
+    public function getPan($proxy = null) {
         return Model_Client_Rpc::factory(
             $this,
-            'http://linux.fazend.com/p/' . $this->_project->name . '/trunk/__fz/xmlrpc');
+            'http://linux.fazend.com/p/' . $this->name . '/trunk/__fz/xmlrpc',
+            $proxy);
     }
     
 }
