@@ -13,9 +13,12 @@ CREATE TABLE IF NOT EXISTS `payment` (
     `original` VARCHAR(20) COMMENT 'Payment amount with currency',
     `amount` INT NOT NULL COMMENT 'Payment amount in USD cents',
 
+    `reason` VARCHAR(250) NOT NULL COMMENT 'Reason of payment, unique',
+
     `details` MEDIUMTEXT NOT NULL COMMENT 'Details of the payment made',
     
-    PRIMARY KEY (`id`)
+    PRIMARY KEY (`id`),
+    UNIQUE(`reason`),
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 

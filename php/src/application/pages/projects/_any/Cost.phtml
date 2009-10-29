@@ -1,2 +1,7 @@
 <h1>Cost Management</h1>
 
+<?=$this->bar()
+    ->setStyle('stairs')
+    ->addLink('Payments', 'List of payments made')
+    ->addLink('Statement/' . Model_User::getCurrentUser()->email, 'My statement (' . Model_User::getCurrentUser()->email . ')')
+    ?>

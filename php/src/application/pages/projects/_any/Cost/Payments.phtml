@@ -1,0 +1,15 @@
+<h1>Payments in the Project</h1>
+
+<?=$this->bar()
+    ->addLink('generic', 'Create new project payment')
+    ->addLink('specific', 'Pay one of project stakeholders')
+    ?>
+
+<?=$this->table()
+    ->setSource($this->project->payments->retrieveStatement())
+    ->addColumn('created', 'Created')
+    ->addColumn('user', 'User email')
+    ->addColumn('original', 'Original')
+    ->addColumn('getCost', 'USD')
+    // ->addColumn('balance', 'Balance')
+    ?>

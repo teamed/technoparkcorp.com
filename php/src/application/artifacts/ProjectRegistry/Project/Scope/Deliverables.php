@@ -46,7 +46,10 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
         $autoloader->registerNamespace('Deliverables_');
         set_include_path(get_include_path() . PATH_SEPARATOR . dirname(__FILE__) . '/Deliverables/types');
 
-        // clear all existing deliverables
+        // clean traceability links
+        $this->traceability->clean(); 
+
+        // clean all existing deliverables
         foreach ($this as $key=>$metric)
             unset($this[$key]);
 
@@ -63,6 +66,7 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
      * @return boolean
      **/
     public function isLoaded() {
+        return true;
         return (bool)count($this);
     }
     
@@ -164,6 +168,15 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
         }
         
         return $type;
+    }
+    
+    /**
+     * Get traceability object from the project
+     *
+     * @return theTraceability
+     **/
+    protected function _getTraceability() {
+        return $this->ps()->parent->traceability;
     }
 
 }

@@ -1,0 +1,26 @@
+<h1>Pay one of stakeholders</h1>
+
+<?=$this->forma()
+
+    ->addField('text', 'user')
+        ->fieldLabel('User to pay')
+        ->fieldRequired()
+        
+    ->addField('text', 'original')
+        ->fieldLabel('Original amount')
+        ->fieldRequired()
+        ->fieldAttrib('maxlength', 10)
+        ->fieldAttrib('size', 10)
+        
+    ->addField('textarea', 'details')
+        ->fieldLabel('Details of payment')
+        ->fieldRequired()
+        ->fieldAttrib('cols', 40)
+        ->fieldAttrib('rows', 5)
+
+    ->addField('hidden', 'context')
+        ->fieldValue($this->project->name)
+        
+    ->addField('submit')
+        ->fieldAction($this->project->payments, 'createSpecific')
+    ?>

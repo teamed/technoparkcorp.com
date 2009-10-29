@@ -84,13 +84,13 @@ final class Model_Cost {
             $currency = $matches[2];
         }
         
-        $this->_cents = (int)($value * 100);
         // we should implement it properly
         $this->_currency = Model_Flyweight::factory('Zend_Currency', 'en_US', $currency)
             ->setFormat(array(
                 'precision' => 2, // cents to show
                 'display' => Zend_Currency::USE_SHORTNAME,
                 'position' => Zend_Currency::RIGHT));
+        $this->_cents = (int)($value * 100) * $this->_getRate($this->_currency);
     }
 
     /**
@@ -196,6 +196,27 @@ final class Model_Cost {
         if ($orEqual)
             return $this->_cents <= $cost->cents;
         return $this->_cents < $cost->cents;
+    }
+    
+    /**
+     * Get conversion rate for the given currency
+     *
+     * @param Zend_Currency Currency to work with
+     * @return float
+     * @todo Implement through www.foxrate.org
+     **/
+    protected function _getRate(Zend_Currency $currency) {
+        $symbol = $currency->getShortName();
+        switch ($symbol) {
+            case 'USD':
+                return 1;
+            case 'EUR':
+                return 1.48;
+            case 'GBP':
+                return 1.9;
+        }
+        FaZend_Exception::raise('Model_Cost_UnknownCurrency',
+            "Unknown currency symbol: '{$symbol}'");
     }
 
 }
