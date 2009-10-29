@@ -130,9 +130,8 @@ class Model_Wiki_Trac extends Model_Wiki_Abstract {
             // attribs specified?
             if ($matches[3][$id]) {
                 $attribs = explode(',', $matches[3][$id]);
-                $a = $this->_entities[$name]->attributes;
                 foreach ($attribs as $attrib)
-                    $a[strtolower(trim($attrib))] = true;
+                    $this->_entities[$name]->setAttribute(strtolower(trim($attrib)));
             }
             
             $this->_parsePage($matches[1][$id]);

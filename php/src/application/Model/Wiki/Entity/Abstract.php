@@ -91,13 +91,48 @@ abstract class Model_Wiki_Entity_Abstract {
     }
     
     /**
+     * Set one attribute
+     *
+     * @return $this
+     **/
+    public function setAttribute($name, $value = true) {
+        $this->_attributes[$name] = $value;
+        return $this;
+    }
+    
+    /**
      * Derive all known attributes
      *
      * @param theDeliverableAttributes This class will be filled with values
      * @return void
      **/
-    public function deriveAttributes(theDeliverableAttributes $attributes) {
-        $attributes['test'] = 'test';
+    public function deriveDetails(Deliverables_Abstract $deliverable) {
+        foreach (array_keys(array_filter($this->_attributes)) as $attrib) {
+            switch (true) {
+                case $attrib == 'out':
+                    $deliverable->setOutOfScope();
+                    break;
+                    
+                case $attrib == 'must':
+                    $deliverable->setImportance(5);
+                    break;
+                    
+                case preg_match('/^i(\d+)$/i', $attrib, $matches):
+                    $deliverable->setImportance($matches[1]);
+                    break;
+                    
+                case preg_match('/^c(\d+)$/i', $attrib, $matches):
+                    $deliverable->setComplexity($matches[1]);
+                    break;
+
+                default:
+                    $deliverable->setProtocol(
+                        $deliverable->protocol . 
+                        ($deliverable->protocol ? '; ' : false) . 
+                        "Attribute '{$attrib}' ignored since it's not recognized");
+                    
+            }
+        }
     }
     
     /**
