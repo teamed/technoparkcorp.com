@@ -79,6 +79,8 @@ abstract class DeliverablesLoaders_Abstract {
             $name = pathinfo($file->getFilename(), PATHINFO_FILENAME);
             if ($name == 'Abstract')
                 continue;
+            if (!preg_match('/^\w+$/', $name))
+                continue;
             $list[] = self::factory($name, $deliverables);
         }
         return $list;

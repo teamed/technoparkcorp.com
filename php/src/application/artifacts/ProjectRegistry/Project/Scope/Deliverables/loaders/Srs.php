@@ -33,7 +33,7 @@ class DeliverablesLoaders_Srs extends DeliverablesLoaders_Abstract {
     public function load() {
         foreach ($this->_deliverables->ps()->parent->fzProject()->getWiki()->retrieveAll() as $entity) {
             $deliverable = theDeliverables::factory($entity->type, $entity->name, $entity->description);
-            $entity->deriveAttributes($deliverable->attributes);
+            $entity->deriveDetails($deliverable);
             
             $this->_deliverables->add($deliverable);
         }
