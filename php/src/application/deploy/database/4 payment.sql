@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS `payment` (
     `details` MEDIUMTEXT NOT NULL COMMENT 'Details of the payment made',
     
     PRIMARY KEY (`id`),
-    UNIQUE(`reason`),
+    UNIQUE(`reason`)
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
