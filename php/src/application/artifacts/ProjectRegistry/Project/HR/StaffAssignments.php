@@ -39,7 +39,7 @@ class theStaffAssignments extends ArrayIterator implements Model_Artifact_Statel
      **/
     public function reload() {
         foreach (array_keys($this->_project()->getStakeholders()) as $email)
-            $this[$email] = Model_Flyweight::factory('theStakeholder', $this, $email);
+            $this[$email] = FaZend_Flyweight::factory('theStakeholder', $this, $email);
     }    
     
     /**
@@ -68,9 +68,9 @@ class theStaffAssignments extends ArrayIterator implements Model_Artifact_Statel
                 
         // if just one email - return it as string
         if (count($list) == 1)
-            return Model_Flyweight::factory('theStakeholder', $this, array_pop($list));
+            return FaZend_Flyweight::factory('theStakeholder', $this, array_pop($list));
             
-        return Model_Flyweight::factory('theProjectRole', $this, $name);
+        return FaZend_Flyweight::factory('theProjectRole', $this, $name);
     }
 
     /**
@@ -97,7 +97,7 @@ class theStaffAssignments extends ArrayIterator implements Model_Artifact_Statel
         // if nothing found - throw an exception
         validate()->true(count($list) > 0, "Role '{$role}' is not found in project '{$this->_project()->name}'");
                 
-        return Model_Flyweight::factory('theStakeholder', $this, array_pop($list));
+        return FaZend_Flyweight::factory('theStakeholder', $this, array_pop($list));
     }
 
     /**
@@ -109,7 +109,7 @@ class theStaffAssignments extends ArrayIterator implements Model_Artifact_Statel
     public function retrieveRolesByStakeholder(theStakeholder $person) {
         $roles = $this->_project()->getRolesByStakeholder((string)$person);
         foreach ($roles as &$role)
-            $role = Model_Flyweight::factory('theProjectRole', $this, $role);
+            $role = FaZend_Flyweight::factory('theProjectRole', $this, $role);
         return $roles;
     }
     

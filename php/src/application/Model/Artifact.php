@@ -41,6 +41,7 @@ class Model_Artifact extends ArrayIterator
             self::$_root = new Model_Artifact();
             self::$_root->projectRegistry = new theProjectRegistry();
             self::$_root->projectRegistry->reload();
+            self::$_root->supplierRegistry = new theSupplierRegistry();
         }
         return self::$_root;
     }

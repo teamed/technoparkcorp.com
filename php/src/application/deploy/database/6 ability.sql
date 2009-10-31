@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS `ability` (
     `price` VARCHAR(10) NOT NULL COMMENT 'Price per hour in this role',
 
     PRIMARY KEY (`id`),
-    UNIQUE(`performer`, `role`),
+    UNIQUE(`supplier`, `role`),
 
     CONSTRAINT `fk_ability_supplier` FOREIGN KEY (`supplier`) REFERENCES `supplier` (`id`) ON UPDATE CASCADE
 

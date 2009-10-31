@@ -34,7 +34,7 @@ abstract class Model_Wiki_Abstract {
      */
 	public static function factory($type, $params) {
         $className = 'Model_Wiki_' . ucfirst($type);
-        return Model_Flyweight::factory($className, $params);
+        return FaZend_Flyweight::factory($className, $params);
     }
 
     /**

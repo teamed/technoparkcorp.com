@@ -34,7 +34,7 @@ abstract class Model_Issue_Tracker_Abstract extends FaZend_StdObject {
      */
 	public static function factory($type, $params) {
         $className = 'Model_Issue_Tracker_' . ucfirst($type);
-        return Model_Flyweight::factory($className, $params);
+        return FaZend_Flyweight::factory($className, $params);
     }
 
     /**
@@ -45,7 +45,7 @@ abstract class Model_Issue_Tracker_Abstract extends FaZend_StdObject {
      **/
     public function find($id) {
         $className = 'Model_Issue_' . $this->getType();
-        return Model_Flyweight::factory($className, $this, $id);
+        return FaZend_Flyweight::factory($className, $this, $id);
     }
     
     /**

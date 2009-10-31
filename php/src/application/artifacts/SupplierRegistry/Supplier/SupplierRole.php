@@ -18,38 +18,27 @@
  *
  */
 
+
 /**
- * XML RPC client 
+ * Role for a supplier
  *
- * @package Model
+ * @package Artifacts
  */
-class Model_Client_Rpc {
+class theSupplierRole extends FaZend_Db_Table_ActiveRow_ability {
 
     /**
-	 * Create new proxy
+     * Return them all, taggable
      *
-     * @param Model_Project The project
-     * @param string URL
-     * @param string Name of proxy
-     * @return Zend_XmlRpc_Client
+     * @return theSupplierRole
      */
-	public static function factory(Model_Project $project, $uri, $proxy = null) {
-        // configure HTTP connector
-        $httpClient = FaZend_Flyweight::factory('Zend_Http_Client', $uri, array());
-        
-        // current user gets access
-        $login = Model_User::getCurrentUser()->email;
-        $password = $project->getStakeholderPassword($login);
-        $httpClient->setAuth($login, $password);
-
-        // make connection
-        $client = FaZend_Flyweight::factory('Zend_XmlRpc_Client', $uri, $httpClient);
-
-        // get this particular proxy locator
-        if ($proxy)
-            return $client->getProxy($proxy);
-            
-        return $client;
+    public static function retrieveAll() {
+        return self::retrieve(false)
+            ->from('ability', array(
+                'role',
+                'weight'=>new Zend_Db_Expr('COUNT(id)')))
+            ->group('role')
+            ->setRowClass('theSupplierRole')
+            ->fetchAll();
     }
 
 }

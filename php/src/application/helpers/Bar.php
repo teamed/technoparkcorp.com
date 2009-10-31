@@ -26,7 +26,7 @@ class Helper_Bar extends FaZend_View_Helper {
      *
      * @var array
      */
-    protected $_links = array();
+    protected $_links;
 
     /**
      * Style
@@ -41,6 +41,7 @@ class Helper_Bar extends FaZend_View_Helper {
      * @return Helper_Bar
      */
     public function bar() {
+        $this->_links = array();
         return $this;
     }
 

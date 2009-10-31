@@ -122,7 +122,7 @@ class Model_Wiki_Trac extends Model_Wiki_Abstract {
             // already here
             if (isset($this->_entities[$name]))
                 continue;
-            $this->_entities[$name] = Model_Flyweight::factory(
+            $this->_entities[$name] = FaZend_Flyweight::factory(
                 'Model_Wiki_Entity_Trac', 
                 $name, 
                 $filterTagsOut->filter($matches[4][$id]));

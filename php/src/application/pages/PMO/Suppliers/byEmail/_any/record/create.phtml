@@ -1,0 +1,16 @@
+<h1>Create new Record for <?=$this->supplier->name?></h1>
+
+<?=$this->forma()
+
+    ->addField('textarea', 'text')
+        ->fieldLabel('Text message')
+        ->fieldRequired()
+        ->fieldAttrib('rows', 50)
+        ->fieldAttrib('cols', 60)
+        
+    ->addField('file', 'file')
+        ->fieldLabel('File to attach')
+
+    ->addField('submit')
+        ->fieldAction($this->registry, 'createRecord')
+    ?>

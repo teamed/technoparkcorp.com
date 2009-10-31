@@ -85,7 +85,7 @@ final class Model_Cost {
         }
         
         // we should implement it properly
-        $this->_currency = Model_Flyweight::factory('Zend_Currency', 'en_US', $currency)
+        $this->_currency = FaZend_Flyweight::factory('Zend_Currency', 'en_US', $currency)
             ->setFormat(array(
                 'precision' => 2, // cents to show
                 'display' => Zend_Currency::USE_SHORTNAME,

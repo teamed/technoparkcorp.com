@@ -1,0 +1,11 @@
+ul.cloud {
+    margin-top: 20px !important;
+    margin-left: 0 !important;
+    width: 600px;
+}
+
+    ul.cloud li {
+        list-style: none;
+        display: inline;
+        margin-right: 20px;
+    }

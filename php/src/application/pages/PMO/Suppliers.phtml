@@ -1,0 +1,45 @@
+<? $this->includeCSS('pages/PMO/Suppliers.css') ?>
+
+<h1>Database of Suppliers</h1>
+
+<?=$this->bar()
+    ->addLink('create', 'Add new Supplier to the database')
+    ->addLink('everybody', 'Full list of Suppliers')
+    ?>
+
+<?
+    
+    $tags = array();
+    foreach ($this->registry->getRoles() as $role)
+        $tags[] = new Zend_Tag_Item(array(
+            'title' => strval($role->role),
+            'weight' => intval($role->weight),
+            'url' => $this->panelUrl('byRole/' . $role->role),
+            ));
+        
+    $cloud = new Zend_Tag_Cloud(array(
+        'tags' => $tags,
+        'cloudDecorator' => array(
+            'decorator' => 'htmlCloud',
+            'options' => array(
+                'separator' => '',
+                'htmlTags' => array(
+                    'ul' => array(
+                        'class' => 'cloud'
+                    )
+                )
+            )
+        ),
+        'tagDecorator' => array(
+            'decorator' => 'htmlTag',
+            'options' => array(
+                'fontSizeUnit' => 'em',
+                'minFontSize' => 1,
+                'maxFontSize' => 3
+            )
+        )
+    ));
+
+?>
+
+<?=$cloud?>

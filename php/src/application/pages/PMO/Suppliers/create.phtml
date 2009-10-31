@@ -1,0 +1,19 @@
+<h1>Add new Supplier to the Database</h1>
+
+<?=$this->forma()
+
+    ->addField('text', 'email')
+        ->fieldLabel('Email')
+        ->fieldRequired()
+        ->fieldAttrib('maxlength', 120)
+        ->fieldAttrib('size', 40)
+        
+    ->addField('text', 'name')
+        ->fieldLabel('Full name')
+        ->fieldRequired()
+        ->fieldAttrib('maxlength', 80)
+        ->fieldAttrib('size', 30)
+
+    ->addField('submit')
+        ->fieldAction($this->registry, 'createSupplier')
+    ?>

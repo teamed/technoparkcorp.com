@@ -1,0 +1,23 @@
+<h1><?=$this->supplier->name?></h1>
+
+<?=$this->bar()
+    ->addLink('ability/create', 'Add new Ability')
+    ?>
+
+<?=$this->table()
+    ->setSource($this->supplier->abilities)
+    ->addColumn('role', 'Role')
+    ->addColumn('price', 'Price')
+    ?>
+
+<?=$this->bar()
+    ->addLink('record/create', 'Add new Record')
+    ?>
+
+<?=$this->table()
+    ->setSource($this->supplier->records)
+    ->addColumn('created', 'Date')
+    ->addColumn('author', 'Created by')
+    ->addColumn('text', 'Text')
+    ->addColumn('hasFile', 'Attachment')
+    ?>

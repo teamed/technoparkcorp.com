@@ -5,7 +5,9 @@
 CREATE TABLE IF NOT EXISTS `record` (
     
     `id` INT NOT NULL AUTO_INCREMENT COMMENT 'Unique ID of this record',
+    `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'When it was created',    
     `supplier` INT NOT NULL COMMENT 'Id of the supplier',
+
     `text` LONGTEXT NOT NULL COMMENT 'Text description of the record',
     `author` VARCHAR(150) NOT NULL COMMENT 'Email of the author (or just a name)',
     `file` VARCHAR(255) COMMENT 'Relative file name',
