@@ -14,6 +14,11 @@
         ->fieldAttrib('maxlength', 80)
         ->fieldAttrib('size', 30)
 
+    ->addField('select', 'country')
+        ->fieldLabel('Country of permanent location')
+        ->fieldRequired()
+        ->fieldOptions(Zend_Locale::getTranslationList('territory', null, 2), true)
+
     ->addField('submit')
         ->fieldAction($this->registry, 'createSupplier')
     ?>

@@ -8,6 +8,18 @@
     ->setSource($this->supplier->abilities)
     ->addColumn('role', 'Role')
     ->addColumn('price', 'Price')
+    ->addOption('del', 'ability/{__id}/delete')
+    ?>
+
+<?=$this->bar()
+    ->addLink('skill/create', 'Add new Skill')
+    ?>
+
+<?=$this->table()
+    ->setSource($this->supplier->skills)
+    ->addColumn('name', 'Title')
+    ->addColumn('level', 'Level')
+    ->addOption('del', 'skill/{__id}/delete')
     ?>
 
 <?=$this->bar()

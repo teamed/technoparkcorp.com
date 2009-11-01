@@ -14,7 +14,7 @@
         $tags[] = new Zend_Tag_Item(array(
             'title' => strval($role->role),
             'weight' => intval($role->weight),
-            'url' => $this->panelUrl('byRole/' . $role->role),
+            'url' => $this->link('byRole/' . $role->role),
             ));
         
     $cloud = new Zend_Tag_Cloud(array(

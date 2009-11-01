@@ -5,12 +5,18 @@
     ->addField('textarea', 'text')
         ->fieldLabel('Text message')
         ->fieldRequired()
-        ->fieldAttrib('rows', 50)
+        ->fieldAttrib('rows', 5)
         ->fieldAttrib('cols', 60)
         
+    ->addField('select', 'approved')
+        ->fieldLabel('Text message')
+        ->fieldRequired()
+        ->fieldAttrib('rows', 5)
+        ->fieldAttrib('cols', 60)
+
     ->addField('file', 'file')
         ->fieldLabel('File to attach')
 
     ->addField('submit')
-        ->fieldAction($this->registry, 'createRecord')
+        ->fieldAction($this->supplier, 'createRecord')
     ?>

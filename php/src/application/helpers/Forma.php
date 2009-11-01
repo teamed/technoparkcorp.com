@@ -133,7 +133,7 @@ class Helper_Forma extends FaZend_View_Helper {
      * @return boolean Processed without errors?
      */
     protected function _process(Zend_Form $form, &$log) {
-
+        // start logging everything into a new logger
         FaZend_Log::getInstance()->addWriter('Memory', 'forma');
 
         // HTTP POST request holder
@@ -160,32 +160,40 @@ class Helper_Forma extends FaZend_View_Helper {
 
         try {
 
+            // run through all required paramters. required by method
             foreach ($rMethod->getParameters() as $param) {
-                $methodArgs[$param->name] = $this->_getPostParam($param);
+                // get value of this parameter from form
+                $methodArgs[$param->name] = $this->_getFormParam($form, $param);
+                // this is necessary for logging (see below)
                 $mnemos[] = (is_scalar($methodArgs[$param->name]) ? $methodArgs[$param->name] : get_class($methodArgs[$param->name]));
             }
 
+            // log this operation
             logg('Calling ' . $rMethod->getDeclaringClass()->name . '::' . $method .
                 '(\'' . implode("', '", $mnemos) . '\')');
 
             // execute the target method
             call_user_func_array(array($class, $method), $methodArgs);
             
+            // it's done, if we're here and no exception has been thrown
             $result = true;
 
         } catch (Exception $e) {
 
+            // add error message to the submit button we pressed
             $submit->addError($e->getMessage());
 
+            // and the result is false
             $result = false;
 
         }
 
+        // save log into INPUT variable, by reference (see function definition above)
         $log = FaZend_Log::getInstance()->getWriter('forma')->getLog();
         FaZend_Log::getInstance()->removeWriter('forma');
 
+        // return boolean result
         return $result;
-
     }
 
     /**
@@ -193,24 +201,26 @@ class Helper_Forma extends FaZend_View_Helper {
      *
      * Retrieve param using POST data and form configuration
      *
+     * @param Zend_Form The form to get params from
+     * @param ReflectionParameter What parameter we are looking for...
      * @return class
      * @throws Helper_Forma_ParamNotFound
      */
-    protected function _getPostParam(ReflectionParameter $param) {
-        // HTTP POST request holder
-        $request = Zend_Controller_Front::getInstance()->getRequest();
-
-        $post = $request->getPost($param->name);
-        if (!$post) {
+    protected function _getFormParam(Zend_Form $form, ReflectionParameter $param) {
+        // this is a name of element in the form, which we expect to send to the method
+        $name = $param->name;
+        
+        // maybe this element is absent in the form?
+        if (!isset($form->$name)) {
             if ($param->isOptional())
                 return $param->getDefaultValue();
             else
                 FaZend_Exception::raise('Helper_Forma_ParamNotFound',
-                    "Field '{$param->name}' not found in forma, but is required by action");
+                    "Field '{$name}' not found in forma, but is required by action");
         }
 
-        return $this->_fields[$param->name]->getMethodParam($param);
-
+        // get the value of this element from the form
+        return $form->$name->getValue();
     }
 
 }

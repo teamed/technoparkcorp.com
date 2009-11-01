@@ -44,10 +44,8 @@ class Helper_Forma_FieldHidden extends Helper_Forma_Field {
      * @return void
      */
     protected function _configureFormElement(Zend_Form_Element $element) {
-        $element
-            ->setValue($this->_value)
-            ->setDecorators(array())
-            ->addDecorator('ViewHelper');
+        $element->setDecorators(array())
+            ->setValue($this->_value);
     }
 
 }

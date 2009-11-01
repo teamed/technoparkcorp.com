@@ -34,7 +34,7 @@
 final class Model_Cost {
 
     /**
-     * The value, in cents
+     * The value, in cents, in original currency (NOT in USD!)
      *
      * @var integer
      */
@@ -90,7 +90,7 @@ final class Model_Cost {
                 'precision' => 2, // cents to show
                 'display' => Zend_Currency::USE_SHORTNAME,
                 'position' => Zend_Currency::RIGHT));
-        $this->_cents = (int)($value * 100) * $this->_getRate($this->_currency);
+        $this->_cents = (int)($value * 100);
     }
 
     /**
@@ -99,7 +99,7 @@ final class Model_Cost {
      * @return string
      **/
     public function __toString() {
-        return $this->_currency->toCurrency($this->usd);
+        return $this->_currency->toCurrency($this->_cents / 100);
     }
 
     /**
@@ -123,7 +123,7 @@ final class Model_Cost {
      * @todo implement it properly, getting conversion rates somewhere
      **/
     protected function _getCents() {
-        return $this->_cents;
+        return $this->_cents * $this->_getRate($this->_currency);
     }
     
     /**

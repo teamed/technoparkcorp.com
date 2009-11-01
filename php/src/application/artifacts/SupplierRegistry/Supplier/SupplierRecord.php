@@ -46,10 +46,14 @@ class theSupplierRecord extends FaZend_Db_Table_ActiveRow_record implements Mode
         $record->author = Model_User::getCurrentUser()->email;
 
         if (!is_null($file)) {
-            $suffix = '/' . $supplier->email . '/' . basename($file);
-            $newPath = self::STATIC_FILES_DIR . $suffix;
-            copy($file, $newPath);
-            $record->file = $suffix;
+            if (APPLICATION_ENV == 'production') {
+                $suffix = '/' . $supplier->email . '/' . basename($file);
+                $newPath = self::STATIC_FILES_DIR . $suffix;
+                copy($file, $newPath);
+                $record->file = $suffix;
+            } else {
+                $record->file = $file;
+            }
         }
         
         $record->save();
@@ -65,8 +69,18 @@ class theSupplierRecord extends FaZend_Db_Table_ActiveRow_record implements Mode
     public static function retrieveBySupplier(theSupplier $supplier) {
         return self::retrieve()
             ->where('supplier = ?', (string)$supplier)
+            ->order('created DESC')
             ->setRowClass('theSupplierRecord')
             ->fetchAll();
+    }
+
+    /**
+     * This record has file?
+     *
+     * @return boolean
+     **/
+    public function hasFile() {
+        return !empty($this->file);
     }
 
 }

@@ -35,6 +35,9 @@ class theSupplierAbility extends FaZend_Db_Table_ActiveRow_ability implements Mo
      * @return theSupplierAbility
      **/
     public static function create(theSupplier $supplier, $role, Model_Cost $price) {
+        validate()
+            ->false(self::hasAbility($supplier, $role), "Supplier '{$supplier->email}' already has '{$role}' ability");
+            
         $ability = new theSupplierAbility();
         $ability->supplier = $supplier;
         $ability->role = $role;
@@ -54,6 +57,21 @@ class theSupplierAbility extends FaZend_Db_Table_ActiveRow_ability implements Mo
             ->where('supplier = ?', (string)$supplier)
             ->setRowClass('theSupplierAbility')
             ->fetchAll();
+    }
+    
+    /**
+     * Supplier already has this given role?
+     *
+     * @param theSupplier Owner of the ability
+     * @param string Role name
+     * @return theSupplierAbility[]
+     */
+    public static function hasAbility(theSupplier $supplier, $role) {
+        return (bool)self::retrieve()
+            ->where('supplier = ?', (string)$supplier)
+            ->where('role = ?', $role)
+            ->setSilenceIfEmpty()
+            ->fetchRow();
     }
 
 }

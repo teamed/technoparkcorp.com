@@ -28,7 +28,7 @@ class Helper_PanelUrl extends FaZend_View_Helper {
      * @return string HTML URL
      */
     public function panelUrl($doc = false) {
-        return $this->getView()->url(array('doc'=>($doc ? $doc : $this->getView()->doc)), 'panel', true, false);
+        return $this->getView()->url(array('doc' => ($doc ? $doc : $this->getView()->doc)), 'panel', true, false);
     }
 
 }

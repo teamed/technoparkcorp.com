@@ -14,6 +14,12 @@
         ->fieldAttrib('maxlength', 10)
         ->fieldAttrib('size', 10)
 
+    ->addField('textarea', 'reason')
+        ->fieldLabel('Why are you doing this?')
+        ->fieldRequired()
+        ->fieldAttrib('cols', 50)
+        ->fieldAttrib('rows', 5)
+        
     ->addField('submit')
         ->fieldAction($this->supplier, 'createAbility')
     ?>

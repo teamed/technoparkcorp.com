@@ -50,10 +50,11 @@ class theSupplierRegistry implements Model_Artifact_Interface {
      *
      * @param string Email of the supplier
      * @param string Full name of he/she
+     * @param string ISO-3166 two-letter country code
      * @return theSupplier
      **/
-    public function createSupplier($email, $name) {
-        return theSupplier::create($email, $name);
+    public function createSupplier($email, $name, $country) {
+        return theSupplier::create($email, $name, $country);
     }
     
     /**

@@ -26,7 +26,7 @@ class Helper_Table extends FaZend_View_Helper {
      *
      * @var array
      */
-    protected $_columns = array();
+    protected $_columns;
 
     /**
      * Links with names
@@ -35,14 +35,28 @@ class Helper_Table extends FaZend_View_Helper {
      *
      * @var array
      */
-    protected $_links = array();
+    protected $_links;
 
     /**
      * Name of column that was added lately
      *
      * @var string
      */
-    protected $_predecessor = false;
+    protected $_predecessor;
+
+    /**
+     * Html table helper instance
+     *
+     * @var FaZend_View_Helper_HtmlTable
+     */
+    protected $_table;
+    
+    /**
+     * Id of the next table to show
+     *
+     * @var integer
+     */
+    protected static $_tableId = 0;
 
     /**
      * Builds the html table
@@ -50,17 +64,13 @@ class Helper_Table extends FaZend_View_Helper {
      * @return Helper_Table
      */
     public function table() {
+        // just get next table
+        $this->_table = $this->getView()->htmlTable(self::$_tableId++);
+        $this->_links = array();
+        $this->_columns = array();
+        $this->_predecessor = false;
+        
         return $this;
-    }
-
-    /**
-     * Get htmlTable helper
-     *
-     * @return value
-     */
-    public function __get($name) {
-        if ($name == '_table')
-            return $this->getView()->htmlTable('panel2');
     }
 
     /**
@@ -105,15 +115,20 @@ class Helper_Table extends FaZend_View_Helper {
      * @return Helper_Table
      */
     public function addColumn($name, $header = null) {
+        // remember the name of this column added
         $this->_columns[] = $name;
 
+        // add column to the htmlTable()
         $this->_table->addColumn($name, $this->_predecessor);
 
+        // reconfigure header, if the name is given
         if (!is_null($header))
             $this->_table->setColumnTitle($name, $header);
 
+        // set predecessor to make sure we allocate them consequently
         $this->_predecessor = $name;
 
+        // return itself, to allow fluent interface
         return $this;
     }
 
@@ -125,20 +140,26 @@ class Helper_Table extends FaZend_View_Helper {
      * @return Helper_Table
      */
     public function addOption($name, $link) {
+        // this params will be sent to the htmlTable() helper
         $urlParams = array('doc'=>array($this, 'resolveDocumentName'));
 
+        // add the link to this helper
         $this->_links[$name] = $link;
 
         // user func call params
         $params = array($name, null, null, $urlParams, 'panel', true, false);
 
+        // it will automatically understand whether the option should
+        // stay in 'OPTIONS' column, or should be attached to the data column
         if (in_array($name, $this->_columns))
             $func = 'addColumnLink';
         else
             $func = 'addOption';
 
+        // attach option to the htmlTable helper
         call_user_func_array(array($this->_table, $func), $params);
 
+        // return itself, to allow fluent interface
         return $this;
     }
 

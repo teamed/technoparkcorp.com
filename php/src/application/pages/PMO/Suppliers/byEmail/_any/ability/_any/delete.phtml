@@ -1,0 +1,16 @@
+<h1>Delete <?=$this->ability->role?> role of <?=$this->supplier->name?></h1>
+
+<?=$this->forma()
+
+    ->addField('hidden', 'ability')
+        ->fieldValue($this->ability)
+        
+    ->addField('textarea', 'reason')
+        ->fieldLabel('Why are you doing this?')
+        ->fieldRequired()
+        ->fieldAttrib('cols', 50)
+        ->fieldAttrib('rows', 5)
+
+    ->addField('submit')
+        ->fieldAction($this->supplier, 'deleteAbility')
+    ?>

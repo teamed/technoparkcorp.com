@@ -1,0 +1,24 @@
+<h1>Create new Skill for <?=$this->supplier->name?></h1>
+
+<?=$this->forma()
+
+    ->addField('text', 'name')
+        ->fieldLabel('Title of the skill')
+        ->fieldRequired()
+        ->fieldAttrib('maxlength', 100)
+        ->fieldAttrib('size', 30)
+        
+    ->addField('select', 'level')
+        ->fieldLabel('Level')
+        ->fieldRequired()
+        ->fieldOptions(theSupplierSkill::getDefaultLevels())
+
+    ->addField('textarea', 'reason')
+        ->fieldLabel('Why are you doing this?')
+        ->fieldRequired()
+        ->fieldAttrib('cols', 50)
+        ->fieldAttrib('rows', 5)
+
+    ->addField('submit')
+        ->fieldAction($this->supplier, 'createSkill')
+    ?>

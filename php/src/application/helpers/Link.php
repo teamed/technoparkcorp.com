@@ -25,19 +25,26 @@ class Helper_Link extends FaZend_View_Helper {
      * Builds a link
      *
      * @param string Link to use
-     * @param string Title to show in HTML
+     * @param string|null Title to show in HTML (NULL means that we need just HREF)
      * @param boolean Build it in form of a paragraph
      * @return Helper_Table
      */
-    public function link($link, $title, $inPar = true) {
+    public function link($link, $title = null, $inPar = true) {
 
         $resolvedLink = Model_Pages::resolveLink($link);
 
         // if this link is not allowed for current user
-        if (!Model_Pages::getInstance()->isAllowed($resolvedLink))
+        if (!Model_Pages::getInstance()->isAllowed($resolvedLink)) {
+            if (is_null($title))
+                return '#unresolved';
             return ($inPar ? '' : '...');
+        }
+        
+        $uri = $this->getView()->panelUrl($resolvedLink);
+        if (is_null($title))
+            return $uri;
 
-        $html = '<a href="' . $this->getView()->panelUrl($resolvedLink) . '">' .
+        $html = '<a href="' . $uri . '">' .
         $this->getView()->escape($title) . '</a>';
 
         return ($inPar ? '<p>' . $html . '</p>' : $html);

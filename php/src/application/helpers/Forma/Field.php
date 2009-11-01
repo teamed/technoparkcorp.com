@@ -110,16 +110,6 @@ abstract class Helper_Forma_Field {
     }
 
     /**
-     * Returns method parameter
-     *
-     * @param ReflectionParameter The parameter required by some method
-     * @return mixed
-     */
-    public function getMethodParam(ReflectionParameter $param) {
-        return Zend_Controller_Front::getInstance()->getRequest()->getPost($param->name);
-    }
-
-    /**
      * Form method gateway
      *
      * @return string
@@ -139,8 +129,12 @@ abstract class Helper_Forma_Field {
         if (strpos($method, 'field') !== 0)
             return call_user_func_array(array($this->_helper, $method), $args);
 
+        // ->fieldRequired(...) will be converted to _setRequired(...)
         $func = '_set' . substr($method, 5);
-
+        if (!method_exists($this, $func))
+            FaZend_Exception::raise('Helper_Forma_InvalidOption', 
+                "Method '{$method}' is not defined in " . get_class($this));
+            
         call_user_func_array(array($this, $func), $args);
 
         return $this;
