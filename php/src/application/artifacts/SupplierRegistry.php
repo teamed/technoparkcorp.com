@@ -18,72 +18,72 @@
  *
  */
 
-
 /**
  * Collection of suppliers
  *
  * @package Artifacts
  */
-class theSupplierRegistry implements Model_Artifact_Interface {
+class theSupplierRegistry extends Model_Artifact {
 
     /**
-     * Getter dispatcher
+     * TEMPORARY, delete it when using FaZend_POS
      *
-     * @param string Name of property to get
-     * @return string
+     * @return void
      **/
-    public function __get($name) {
-        $method = '_get' . ucfirst($name);
-        if (method_exists($this, $method))
-            return $this->$method();
-            
-        $var = '_' . $name;
-        if (property_exists($this, $var))
-            return $this->$var;
+    protected function _init() {
+        $this->_attachItem(Model_Project_Test::PM, new theSupplier('Mr. Tester'));
+    }
+
+    /**
+     * Return a list of needed people
+     *
+     * Array returned will have objects:
+     * 
+     *   ->role => 'programmer' // role required
+     *   ->required => 5 // how many people required
+     *   ->have => 4 // how many people we have
+     *
+     * @return array
+     **/
+    protected function _getWanted() {
+        // this is going to be a result array
+        $wanted = array();
         
-        FaZend_Exception::raise('PropertyOrMethodNotFound', 
-            "Can't find what is '$name' in " . get_class($this));        
+        // get RAW data from projects and build result
+        $raw = $this->_getWantedByProjects();
+        foreach ($raw as $required) {
+            if (!isset($wanted[$required['role']])) {
+                $wanted[$required['role']] = FaZend_StdObject::create()
+                    ->set('role', $required['role'])
+                    ->set('required', 0)
+                    ->set('have', count($this->retrieveByRole(
+                        $required['role'], 
+                        new Model_Cost($required['price']), 
+                        $required['skills'])));
+            }
+
+            $wanted[$required['role']]->required++;
+        }
+        
+        return $wanted;
     }
     
     /**
-     * Create new supplier and return him/her
+     * Return a list of needed people from project registry
      *
-     * @param string Email of the supplier
-     * @param string Full name of he/she
-     * @param string ISO-3166 two-letter country code
-     * @return theSupplier
-     **/
-    public function createSupplier($email, $name, $country) {
-        return theSupplier::create($email, $name, $country);
-    }
-    
-    /**
-     * Find one supplier by email
+     * Array returned will have arrays:
+     * 
+     * array(
+     *  'role' => 'programmer' // role
+     *  'skills => array('PHP', 'XML') // list of skills required
+     *  'price' => '15 USD' // maximum price
+     * )
      *
-     * @param string Email address of the supplier to find
-     * @return theSupplier
+     * @return array
      **/
-    public static function findByEmail($email) {
-        return theSupplier::findByEmail($email);
+    protected function _getWantedByProjects() {
+        $ini = new Zend_Config_Ini(dirname(__FILE__) . '/SupplierRegistry/wanted.ini', 'wanted');
+        return $ini->toArray();
     }
-    
-    /**
-     * Get full list of suppliers
-     *
-     * @return theSupplier[]
-     **/
-    public function getEverybody() {
-        return theSupplier::retrieveAll();
-    }
-    
-    /**
-     * Get full list of supplier roles
-     *
-     * @return theSupplierRole[]
-     **/
-    public function getRoles() {
-        return theSupplierRole::retrieveAll();
-    }
-    
     
 }
