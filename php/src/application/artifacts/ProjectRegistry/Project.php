@@ -71,4 +71,13 @@ class theProject extends Model_Artifact implements Model_Artifact_Passive {
         return Model_Project::findProjectByName($this->name);
     }
     
+    /**
+     * Show project as a string
+     *
+     * @return string
+     **/
+    public function __toString() {
+        return $this->name;
+    }
+    
 }

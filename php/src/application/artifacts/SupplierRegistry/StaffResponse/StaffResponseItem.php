@@ -19,62 +19,33 @@
  */
 
 /**
- * One supplier
+ * One response for staff
  *
  * @package Artifacts
  */
-class theSupplier extends Model_Artifact {
+class theStaffResponseItem {
 
     /**
-     * Email
+     * Supplier suggested
+     *
+     * @var theSupplier
+     */
+    protected $_supplier;
+    
+    /**
+     * Quality of this supplier (0..100)
+     *
+     * @var integer
+     */
+    protected $_quality;
+    
+    /**
+     * Explanation of this choice
      *
      * @var string
      */
-    protected $_email;
+    protected $_reason;
     
-    /**
-     * Full name
-     *
-     * @var string
-     */
-    protected $_name;
-    
-    /**
-     * List of skills
-     *
-     * @var theSupplierSkills
-     */
-    protected $_skills;
-    
-    /**
-     * List of roles
-     *
-     * @var theSupplierRole[]
-     */
-    protected $_roles = array();
-    
-    /**
-     * List of attachments
-     *
-     * @var Model_Artifact_Attachments
-     */
-    protected $_attachments;
-    
-    /**
-     * Construct the class
-     *
-     * @param string Email
-     * @param string Name
-     * @return void
-     */
-    public function __construct($email, $name) {
-        $this->setEmail($email);
-        $this->setName($name);
-        
-        $this->_skills = new theSupplierSkills();
-        $this->_attachments = new Model_Artifact_Attachments();
-    }
-
     /**
      * Getter dispatcher
      *
@@ -90,53 +61,43 @@ class theSupplier extends Model_Artifact {
         if (property_exists($this, $var))
             return $this->$var;
         
-        FaZend_Exception::raise('Supplier_PropertyOrMethodNotFound', 
+        FaZend_Exception::raise('StaffResponseItem_PropertyOrMethodNotFound', 
             "Can't find what is '$name' in " . get_class($this));
     }
     
     /**
-     * Set email
+     * Set supplier
      *
-     * @param string Email
+     * @param theSupplier
      * @return void
      **/
-    public function setEmail($email) {
+    public function setSupplier(theSupplier $supplier) {
+        $this->_supplier = $supplier;
+        return $this;
+    }
+
+    /**
+     * Set quality
+     *
+     * @param integer Quality
+     * @return void
+     **/
+    public function setQuality($quality) {
         validate()
-            ->emailAddress($email, array(), "Invalid format of supplier's email: {$email}")
-        $this->_email = $email;
+            ->type($quality, 'integer', "Quality must be INTEGER")
+            ->true($quality <= 100 && $quality >= 0, "Quality must be in [0..100] interval, {$quality} provided");
+        $this->_quality = $quality;
         return $this;
     }
 
     /**
-     * Set name
+     * Set reason
      *
-     * @param string Full name of supplier
+     * @param string Reason
      * @return void
      **/
-    public function setName($name) {
-        $this->_name = $name;
-        return $this;
-    }
-
-    /**
-     * Add skill
-     *
-     * @param theSupplierSkill Skill required, with grade
-     * @return void
-     **/
-    public function addSkill(theSupplierSkill $skill) {
-        $this->_skills[] = $skill;
-        return $this;
-    }
-
-    /**
-     * Add role
-     *
-     * @param theSupplierRole Role to add
-     * @return void
-     **/
-    public function addRole(theSupplierRole $role) {
-        $this->_roles[] = $role;
+    public function setReason($reason) {
+        $this->_reason = $reason;
         return $this;
     }
 

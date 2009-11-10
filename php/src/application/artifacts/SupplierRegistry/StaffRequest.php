@@ -42,9 +42,9 @@ class theStaffRequest {
     /**
      * List of skills required
      *
-     * @var theSupplierSkill[]
+     * @var theSupplierSkills
      */
-    protected $_skills = array();
+    protected $_skills;
     
     /**
      * List of activities
@@ -59,6 +59,15 @@ class theStaffRequest {
      * @var integer
      */
     protected $_threshold = 75;
+
+    /**
+     * Construct the class
+     *
+     * @return void
+     */
+    public function __construct($email, $name) {
+        $this->_skills = new theSupplierSkills();
+    }
 
     /**
      * Getter dispatcher
@@ -135,6 +144,41 @@ class theStaffRequest {
     public function addActivity(theActivity $activity) {
         $this->_activity[] = $activity;
         return $this;
+    }
+    
+    /**
+     * Total duration in days of this request
+     *
+     * @return integer
+     **/
+    protected function _getDuration() {
+        $duration = 0;
+        foreach ($this->_activities as $activity)
+            $duration += $activity->duration;
+        return $duration;
+    }
+
+    /**
+     * Total cost of this request
+     *
+     * @return Model_Cost
+     **/
+    protected function _getCost() {
+        $cost = new Model_Cost();
+        foreach ($this->_activities as $activity)
+            $cost->add($activity->cost);
+        return $cost;
+    }
+
+    /**
+     * Response
+     *
+     * @return theStaffResponse
+     **/
+    protected function _getResponse() {
+        $response = new theStaffResponse();
+        
+        return $response;
     }
 
 }

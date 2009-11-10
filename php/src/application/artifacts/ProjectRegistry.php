@@ -58,4 +58,27 @@ class theProjectRegistry extends Model_Artifact implements Model_Artifact_Passiv
         return false;
     }
     
+    /**
+     * Return a list of needed people
+     *
+     * @return theStaffRequest[]
+     **/
+    public function getStaffRequests() {
+        $ini = new Zend_Config_Ini(dirname(__FILE__) . '/ProjectRegistry/wanted.ini', 'wanted');
+        $requests = new ArrayIterator();
+        foreach ($ini as $person) {
+            $request = new theStaffRequest();
+            
+            $project = $this[$person->project];
+            $request->setProject($project);
+            $request->setRole($project->staffAssignments->createRole($person->role));
+            
+            foreach ($person->skills as $skill=>$grade)
+                $request->addSkill(new theSupplierSkill($skill, intval($grade)));
+            
+            $requests[] = $request;
+        }
+        return $requests;
+    }
+    
 }

@@ -56,6 +56,15 @@ class theSupplierSkill {
     }
 
     /**
+     * Show it as a string
+     *
+     * @return void
+     **/
+    public function __toString() {
+        return $this->_name . '(' . $this->_grade . '%)';
+    }
+
+    /**
      * Get list of default levels
      *
      * @return array

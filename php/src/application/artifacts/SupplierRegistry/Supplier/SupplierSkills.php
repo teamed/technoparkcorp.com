@@ -19,19 +19,22 @@
  */
 
 /**
- * One response for staff
+ * Skills for a supplier, with a grade
  *
  * @package Artifacts
  */
-class theStaffResponse extends ArrayIterator {
+class theSupplierSkills extends ArrayIterator {
 
     /**
-     * Show as a string
+     * Show it as a string
      *
-     * @return string
+     * @return void
      **/
     public function __toString() {
-        return 'response';
+        $skills = array();
+        foreach ($this as $skill)
+            $skills[] = strval($skill);
+        return implode('; ', $skills);
     }
 
 }

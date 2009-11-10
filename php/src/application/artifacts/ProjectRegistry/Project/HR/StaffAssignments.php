@@ -70,7 +70,7 @@ class theStaffAssignments extends ArrayIterator implements Model_Artifact_Statel
         if (count($list) == 1)
             return FaZend_Flyweight::factory('theStakeholder', $this, array_pop($list));
             
-        return FaZend_Flyweight::factory('theProjectRole', $this, $name);
+        return $this->createRole($name);
     }
 
     /**
@@ -109,8 +109,17 @@ class theStaffAssignments extends ArrayIterator implements Model_Artifact_Statel
     public function retrieveRolesByStakeholder(theStakeholder $person) {
         $roles = $this->_project()->getRolesByStakeholder((string)$person);
         foreach ($roles as &$role)
-            $role = FaZend_Flyweight::factory('theProjectRole', $this, $role);
+            $role = $this->createRole($role);
         return $roles;
+    }
+    
+    /**
+     * Create project role object
+     *
+     * @return theProjectRole
+     **/
+    public function createRole($name) {
+        return FaZend_Flyweight::factory('theProjectRole', $this, $name);
     }
     
     /**
