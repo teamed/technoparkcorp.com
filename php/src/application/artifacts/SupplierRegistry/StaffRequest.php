@@ -19,80 +19,46 @@
  */
 
 /**
- * One supplier
+ * One request for staff
  *
  * @package Artifacts
  */
-class theSupplier extends Model_Artifact {
+class theStaffRequest {
 
     /**
-     * Create new supplier
+     * Project
      *
-     * @param string Email of the supplier
-     * @param string Full name of he/she
-     * @param string ISO-3166 two-letter country code
-     * @param string USP
-     * @return theSupplier
-     **/
-    public static function factory($email, $name, $country, $usp) {
-            ->false(empty($name), "Name of supplier may not be empty")
-            ->countryCode($country, "Invalid country code, two-letters ISO 3166 required");
-        
-        $supplier = new theSupplier();
-        $supplier->email = $email;
-        $supplier->name = $name;
-        $supplier->country = $country;
-        $supplier->save();
-        return $supplier;
-    }
-
-    /**
-     * Email
-     *
-     * @var string
+     * @var theProject
      */
-    protected $_email;
+    protected $_project;
     
     /**
-     * Full name
+     * Role in the project
      *
-     * @var string
+     * @var theProjectRole
      */
-    protected $_name;
+    protected $_role;
     
     /**
-     * List of skills
+     * List of skills required
      *
      * @var theSupplierSkill[]
      */
     protected $_skills = array();
     
     /**
-     * List of roles
+     * List of activities
      *
-     * @var theSupplierRole[]
+     * @var theActivity[]
      */
-    protected $_roles = array();
+    protected $_activities = array();
     
     /**
-     * List of attachments
+     * Quality threshold we can accept
      *
-     * @var Model_Artifact_Attachments
+     * @var integer
      */
-    protected $_attachments;
-    
-    /**
-     * Construct the class
-     *
-     * @param string Email
-     * @param string Name
-     * @return void
-     */
-    public function __construct($email, $name) {
-        $this->setEmail($email);
-        $this->setName($name);
-        $this->_attachments = new Model_Artifact_Attachments();
-    }
+    protected $_threshold = 75;
 
     /**
      * Getter dispatcher
@@ -109,31 +75,43 @@ class theSupplier extends Model_Artifact {
         if (property_exists($this, $var))
             return $this->$var;
         
-        FaZend_Exception::raise('Supplier_PropertyOrMethodNotFound', 
+        FaZend_Exception::raise('StaffRequest_PropertyOrMethodNotFound', 
             "Can't find what is '$name' in " . get_class($this));
     }
     
     /**
-     * Set email
+     * Set project
      *
-     * @param string Email
+     * @param theProject Project which requires staff
      * @return void
      **/
-    public function setEmail($email) {
-        validate()
-            ->emailAddress($email, array(), "Invalid format of supplier's email: {$email}")
-        $this->_email = $email;
+    public function setProject(theProject $project) {
+        $this->_project = $project;
         return $this;
     }
 
     /**
-     * Set name
+     * Set role
      *
-     * @param string Full name of supplier
+     * @param theProjectRole Project which requires staff
      * @return void
      **/
-    public function setName($name) {
-        $this->_name = $name;
+    public function setRole(theProjectRole $role) {
+        $this->_role = $role;
+        return $this;
+    }
+
+    /**
+     * Set threshold
+     *
+     * @param integer Threshold
+     * @return void
+     **/
+    public function setThreshold($threshold) {
+        validate()
+            ->type($threshold, 'integer', "Threshold must be INTEGER")
+            ->true($threshold <= 100 && $threshold >= 0, "Threshold must be in [0..100] interval, {$threshold} provided");
+        $this->_threshold = $threshold;
         return $this;
     }
 
@@ -149,13 +127,13 @@ class theSupplier extends Model_Artifact {
     }
 
     /**
-     * Add role
+     * Add activity
      *
-     * @param theSupplierRole Role to add
+     * @param theActivity Activity that is planned for this person
      * @return void
      **/
-    public function addRole(theSupplierRole $role) {
-        $this->_roles[] = $role;
+    public function addActivity(theActivity $activity) {
+        $this->_activity[] = $activity;
         return $this;
     }
 

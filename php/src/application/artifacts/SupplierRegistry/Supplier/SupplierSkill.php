@@ -18,48 +18,43 @@
  *
  */
 
-
 /**
- * One skill for a supplier
+ * One skill for a supplier, with a grade
  *
  * @package Artifacts
  */
-class theSupplierSkill extends FaZend_Db_Table_ActiveRow_skill implements Model_Artifact_Interface {
+class theSupplierSkill {
+
+    /**
+     * Name of the skill
+     *
+     * @var string
+     */
+    protected $_name;
+    
+    /**
+     * Grade
+     *
+     * @var integer
+     */
+    protected $_grade;
 
     /**
      * Create new skill
      *
-     * @param theSupplier Owner of the skill
      * @param string Text name of the skill
-     * @param integer Level of the skill
-     * @return theSupplierSkill
+     * @param integer Grade of the skill
+     * @return void
      **/
-    public static function create(theSupplier $supplier, $name, $level) {
+    public function __construct($name, $grade) {
         validate()
-            ->type($level, 'integer', "Skill level must be INTEGER")
-            ->true($level <= 100 && $level >= 0, "Level must be in [0..100] interval, {$level} provided");
+            ->type($grade, 'integer', "Skill grade must be INTEGER")
+            ->true($grade <= 100 && $grade >= 0, "Grade must be in [0..100] interval, {$grade} provided");
         
-        $skill = new theSupplierSkill();
-        $skill->supplier = $supplier;
-        $skill->name = $name;
-        $skill->level = $level;
-        $skill->save();
-        return $skill;
+        $this->_name = $name;
+        $this->_grade = $grade;
     }
 
-    /**
-     * Return all skills for the given supplier
-     *
-     * @param theSupplier Owner of the skill
-     * @return theSupplierSkill[]
-     */
-    public static function retrieveBySupplier(theSupplier $supplier) {
-        return self::retrieve()
-            ->where('supplier = ?', (string)$supplier)
-            ->setRowClass('theSupplierSkill')
-            ->fetchAll();
-    }
-    
     /**
      * Get list of default levels
      *

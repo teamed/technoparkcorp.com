@@ -18,27 +18,37 @@
  *
  */
 
-
 /**
  * Role for a supplier
  *
  * @package Artifacts
  */
-class theSupplierRole extends FaZend_Db_Table_ActiveRow_ability {
+class theSupplierRole {
 
     /**
-     * Return them all, taggable
+     * Name of the role
      *
-     * @return theSupplierRole
+     * @var string
      */
-    public static function retrieveAll() {
-        return self::retrieve(false)
-            ->from('ability', array(
-                'role',
-                'weight'=>new Zend_Db_Expr('COUNT(id)')))
-            ->group('role')
-            ->setRowClass('theSupplierRole')
-            ->fetchAll();
-    }
+    protected $_name;
+    
+    /**
+     * Price per hour
+     *
+     * @var Model_Cost
+     */
+    protected $_price;
 
+    /**
+     * Create new role
+     *
+     * @param string Text name of the role
+     * @param Model_Cost Price per hour
+     * @return void
+     **/
+    public function __construct($name, Model_Cost $price) {
+        $this->_name = $name;
+        $this->_price = $price;
+    }
+    
 }
