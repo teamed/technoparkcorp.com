@@ -28,6 +28,9 @@
  */
 class Model_Pages extends Zend_Navigation {
 
+    /**
+     * This constant is used in /pages scripts
+     */
     const ADMIN = 'director@tpc2.com';
 
     /**
@@ -52,19 +55,18 @@ class Model_Pages extends Zend_Navigation {
     protected $_acl;
 
     /**
-     * Instance getter
+     * Instance getter, singleton pattern
      *
      * @return Model_Pages
      */
     public static function getInstance() {
         if (!isset(self::$_instance))
             self::$_instance = new Model_Pages();
-
         return self::$_instance;
     }
 
     /**
-     * Set the View
+     * Set the View, dependency injection
      *
      * @param Zend_View View to use
      * @return void
@@ -89,11 +91,10 @@ class Model_Pages extends Zend_Navigation {
     /**
      * Set active document
      *
-     * @param string Document name
+     * @param string Document name, absolute path of the page
      * @return void
      */
     public function setActiveDocument($doc) {
-
         // the document will be activated, if it physically exists
         $this->_activateDocument($doc);
 
@@ -104,6 +105,21 @@ class Model_Pages extends Zend_Navigation {
     }
 
     /**
+     * This page has PHTML script?
+     *
+     * @param string Absolute name of the page, without leading slash
+     * @return boolean
+     **/
+    public function hasScript($page) {
+        try {
+            $this->resolvePath($page);
+            return true;
+        } catch (Model_Pages_DocumentNotFound $e) {
+            return false;
+        }
+    }
+
+    /**
      * Resolve path by document name
      *
      * @param string Document name
@@ -111,8 +127,10 @@ class Model_Pages extends Zend_Navigation {
      * @return string PHTML absolute path name
      */
     public function resolvePath($doc, array &$scripts = array()) {
+        // all pages are located in this directory and its sub-dirs
         $path = APPLICATION_PATH . '/pages';
 
+        // go through all segments of the document name
         foreach (explode('/', $doc . '.phtml') as $segment) {
             $path .= '/';
 
@@ -127,7 +145,7 @@ class Model_Pages extends Zend_Navigation {
 
         if (!file_exists($path))
             FaZend_Exception::raise('Model_Pages_DocumentNotFound',
-                "Document $doc not found, path: $path");
+                "Document '{$doc}' was not found, path: '{$path}'");
 
         return $path;
     }
@@ -151,10 +169,11 @@ class Model_Pages extends Zend_Navigation {
      * @return string
      */
     public static function resolveLink($link, $row = null, $key = null) {
+        // if it's empty - leave it like it is
         if (!$link)
             return $link;
 
-        // replace meta-s
+        // replace meta-s, if the ROW is provided
         if (!is_null($row)) {
             if (preg_match_all('/\{(.*?)\}/', $link, $matches)) {
                 foreach ($matches[0] as $id=>$match) {
@@ -172,17 +191,20 @@ class Model_Pages extends Zend_Navigation {
                     $link = str_replace($match, $value, $link);
                 }
             }
-
         }
 
+        // if the link is again empty - return it as empty
         if (!$link)
             return $link;
             
+        // remove leading slash if it's an absolute path, 
+        // or make it absolute from relative
         if ($link[0] == '/')
             $link = substr($link, 1);
         else
             $link = self::getInstance()->findOneBy('active', true)->title . '/' . $link;
 
+        // return the document name, which can be used in panelUrl() helper
         return $link;
     }
 
@@ -198,8 +220,9 @@ class Model_Pages extends Zend_Navigation {
         // the document will be activated, if it physically exists
         $this->_activateDocument($doc);
 
+        // maybe this document is still unknown?
         if (!$this->getAcl()->has($doc)) {
-            FaZend_Log::info('Document \'' . $doc . '\' doesn\'t exist in ACL');
+            FaZend_Log::info("Document '{$doc}' doesn't exist in ACL");
             return false;
         }
 
@@ -208,10 +231,12 @@ class Model_Pages extends Zend_Navigation {
             $email = Model_User::me()->email;
 
         // recursively check parent
-        if (strpos($doc, '/') !== false) {
-            if (!$this->isAllowed(substr($doc, 0, strrpos($doc, '/')), $email, $privileges))
-                return false;
-        }
+        // DELETE IT!
+        // if (strpos($doc, '/') !== false) {
+        //     if (!$this->isAllowed(substr($doc, 0, strrpos($doc, '/')), $email, $privileges)) {
+        //         return false;
+        //     }
+        // }
         
         return $this->getAcl()->isAllowed($email, $doc, $privileges);
     }
@@ -224,7 +249,6 @@ class Model_Pages extends Zend_Navigation {
      * @return void
      */
     protected function _init(Zend_Navigation_Container $container = null, $path = '.') {
-
         // first level or recursion? initialize it
         if (is_null($container)) {
             $container = $this;
@@ -261,9 +285,9 @@ class Model_Pages extends Zend_Navigation {
                 continue;
 
             // notify about unknown format
-            if (!preg_match('/^([a-zA-Z0-9\.]+)\.phtml$/', $file, $matches))
+            if (!preg_match('/^([a-zA-Z0-9\.\@]+)\.phtml$/', $file, $matches))
                 FaZend_Exception::raise('Model_Pages_IncorrectFormat',
-                    "File $id has invalid format in $fullPath: '" . $file . "'");
+                    "Line #$id has invalid format in $fullPath: '" . $file . "', .phtml file name expected");
                 
             $container->addPage($this->_createPage($prefix . $matches[1]));
         }
@@ -271,19 +295,53 @@ class Model_Pages extends Zend_Navigation {
         // parse _access.phtml file and build ACL
         $this->_parseAccesses($fullPath, $container, $prefix);
 
-        // call directories
-        foreach ($container->getPages() as $pg) {
-
-            $dir = $fullPath . '/' . $pg->label;
-            if (file_exists($dir) && is_dir($dir)) 
-                $this->_init($pg, $path . '/' . $pg->label);
-
-            $anyDir = $fullPath . '/_any';
-            if (file_exists($anyDir) && is_dir($anyDir))
-                $this->_init($pg, $path . '/_any');
-
+        // call all directories for additional pages, if they exist there
+        foreach (scandir($fullPath) as $dir) {
+            if ($dir[0] == '.')
+                continue;
+            $pagePath = $fullPath . '/' . $dir;
+            
+            // we need ONLY directories
+            if (!is_dir($pagePath))
+                continue;
+                
+            // try to find the page with this directory name
+            $page = $container->findOneBy('label', $dir);
+            
+            // if the page is NOT found, maybe we need to create it?
+            if (!$page) {
+                // we should do this ONLY if the directory has some files inside
+                if (($dir != '_any') && $this->_hasPages($pagePath)) {
+                    $pageName = $prefix . $dir;
+                    // create this artificial page, variable $page will be used later!
+                    $page = $this->_createPage($pageName);
+                    
+                    // add this artificial page to the holder
+                    $container->addPage($page);
+                    $this->_addResource($pageName);
+                } else
+                    continue;
+            }
+            
+            // initialize the sub-pages
+            $this->_init($page, $path . '/' . $dir);
         }
-
+    }
+    
+    /**
+     * This directory has pages inside?
+     *
+     * @param string Absolute directory path
+     * @return boolean
+     **/
+    protected function _hasPages($path) {
+        $files = scandir($path);
+        foreach ($files as $file) {
+            if ($file[0] == '.')
+                continue;
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -293,7 +351,6 @@ class Model_Pages extends Zend_Navigation {
      * @return string
      */
     protected function _parse($file) {
-
         // if there is not VIEW - don't parse the file
         if (is_null($this->_view))
             return file_get_contents($file);
@@ -302,7 +359,6 @@ class Model_Pages extends Zend_Navigation {
         $this->_view->setScriptPath(dirname($file));
         $parsed = $this->_view->render(basename($file));
         return $parsed;
-
     }
 
     /**
@@ -316,6 +372,7 @@ class Model_Pages extends Zend_Navigation {
     public function _parseAccesses($dir, Zend_Navigation_Container $pages, $prefix) {
         $accessFile = $dir . '/_access.phtml';
 
+        // create access lines from file or leave them empty
         if (!file_exists($accessFile))
             $lines = array();
         else
@@ -323,28 +380,37 @@ class Model_Pages extends Zend_Navigation {
 
         $rights = array();
 
+        // current directory to apply access rights to
         $current = false;
+        
+        // iterate through all lines of the file
         foreach ($lines as $id=>$line) {
             $line = trim($line, "\t\n\r ");
 
+            // skip empty lines
             if (!$line)
                 continue;
+                
+            // skip comments
+            if ($line[0] == '#')
+                continue;
 
+            // new page section, e.g. [PMO]
             if (preg_match('/^\[(.*?)\]$/', $line, $matches)) {
                 $current = $matches[1];
-
-                if (!$pages->findBy('title', $prefix . $current))
+                if (!$pages->findBy('title', $prefix . $current)) {
                     FaZend_Exception::raise('Model_Pages_IncorrectFileFormat',
-                        "Line $id, page $current in not in the directory $dir: $line" .  implode(', ', $pages));
-
+                        "Line #{$id}, page '{$current}' in not in the directory {$dir}: '{$line}'" .  
+                        implode(', ', $pages));
+                }
                 continue;
             }
 
+            // if access rights are specified - like in proper format
             if (preg_match('/^(.*?)\s?\=\s?(r|rw|)$/', $line, $matches)) {
-
                 if (!$current)
-                    FaZend_Exception::raise('Model_Pages_IncorrectFileFormat',
-                        "Line $id in file $accessFile is not related to any page: $line");
+                    FaZend_Exception::raise('Model_Pages_UnattachedLine',
+                        "Line #{$id} in file '{$accessFile}' is not related to any page: '{$line}'");
 
                 if (!isset($rights[$current]))
                     $rights[$current] = array();
@@ -353,8 +419,8 @@ class Model_Pages extends Zend_Navigation {
                 continue;
             }
 
-            FaZend_Exception::raise('Model_Pages_IncorrectFileFormat',
-                "Line $id in file $accessFile has invalid format: $line");
+            FaZend_Exception::raise('Model_Pages_IncorrectLineFormat',
+                "Line #{$id} in file '{$accessFile}' has invalid format: '{$line}'");
         }
 
         // create resources
@@ -379,9 +445,9 @@ class Model_Pages extends Zend_Navigation {
      * @return void
      */
     protected function _grant($email, $page, $access = 'r') {
-
         assert(preg_match('/^r|rw|$/', $access));
 
+        // get local copy of ACL object
         $acl = $this->getAcl();
 
         // create a role if it is absent
@@ -392,9 +458,11 @@ class Model_Pages extends Zend_Navigation {
         if (!$acl->has($page))
             $this->_addResource($page);
 
+        // allow access to everybody?
         if ($email == '*')
             $email = null;
 
+        // if no access specified - we deny access
         if (!$access) {
             $acl->deny($email, $page);
         } else {
@@ -402,7 +470,6 @@ class Model_Pages extends Zend_Navigation {
                 $acl->allow($email, $page, 'w');
             $acl->allow($email, $page, null);
         }
-
     }
 
     /**
@@ -423,7 +490,6 @@ class Model_Pages extends Zend_Navigation {
      * @return boolean Found or not?
      */
     protected function _activateDocument($doc) {
-
         // if it's already here - skip it
         if ($this->getAcl()->has($doc))
             // bug($this->_acl);
@@ -437,7 +503,7 @@ class Model_Pages extends Zend_Navigation {
 
         try {
             // here we can get an exception, if the file is not found
-            $path = $this->resolvePath($doc);
+            $this->resolvePath($doc);
         } catch (Model_Pages_DocumentNotFound $e) {
             FaZend_Log::info($e->getMessage());
             return false;
@@ -448,7 +514,6 @@ class Model_Pages extends Zend_Navigation {
 
         $parentContainer->addPage($this->_createPage($doc));
         return true;
-
     }
 
     /**

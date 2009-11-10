@@ -27,7 +27,10 @@ class Model_Artifact extends ArrayIterator
     implements Model_Artifact_Interface {
 
     /**
-     * root
+     * Root of all artifacts
+     *
+     * @var Model_Artifact
+     * @todo should be implemented in FaZend, not here
      */
     protected static $_root = null;
 
@@ -39,9 +42,8 @@ class Model_Artifact extends ArrayIterator
     public static function root() {
         if (is_null(self::$_root)) {
             self::$_root = new Model_Artifact();
-            self::$_root->projectRegistry = new theProjectRegistry();
-            self::$_root->projectRegistry->reload();
-            self::$_root->supplierRegistry = new theSupplierRegistry();
+            self::$_root->_attach('projectRegistry', new theProjectRegistry());
+            self::$_root->_attach('supplierRegistry', new theSupplierRegistry());
         }
         return self::$_root;
     }
