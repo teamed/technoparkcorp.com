@@ -12,13 +12,19 @@
 
     <? $id = 'header_' . md5($page->title); ?>
 
-    <span id="<?=$id?>" class="page">
-        <a href="<?=$this->panelUrl($page->title)?>"
-            title="go to <?=$this->escape($page->title)?>"><?=$this->escape(cutLongLine($page->label, 20))?></a><? if ($page->parent->count() > 1): ?><span
-            onclick="selector($('#<?=$id?>'), '<?=$page->title?>')"
-            title="click to change">&darr;</span>
-        <? endif; ?>
-    </span>
+    <? $label = $this->escape(cutLongLine($page->label, 20)) ?>
+    <? if (Model_Pages::getInstance()->hasScript($page->title)): ?>
+        <span id="<?=$id?>" class="page">
+            <a href="<?=$this->panelUrl($page->title)?>"
+                title="go to <?=$this->escape($page->title)?>"><?=$label?></a
+                ><? if ($page->parent->count() > 1): ?><span
+                onclick="selector($('#<?=$id?>'), '<?=$page->title?>')"
+                title="click to change">&darr;</span>
+            <? endif; ?>
+        </span>
+    <? else: ?>
+        <?=$label?>
+    <? endif; ?>
 
 <? endforeach; ?>
 
