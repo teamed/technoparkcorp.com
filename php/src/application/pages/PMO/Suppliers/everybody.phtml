@@ -1,10 +1,10 @@
 <h1>Everybody</h1>
 
 <?=$this->table()
-    ->setSource($this->registry->getEverybody())
-    ->addColumn('email', 'Email')
+    ->setSource($this->registry)
+    ->addColumn('__key', 'Email')
     ->addColumn('name', 'Full name')
-    ->addColumn('countryName', 'Country')
+    ->addColumn('country', 'Country')
     
     ->addOption('email', '../byEmail/{email}')
     ?>

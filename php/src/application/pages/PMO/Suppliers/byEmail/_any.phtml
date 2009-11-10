@@ -1,4 +1,12 @@
-<h1><?=$this->supplier->name?></h1>
+<div style="float:left; margin-right: 20px;">
+    <?=$this->icon('supplier')?>
+</div>
+
+<p>
+    <b><?=$this->supplier->name?></b>, <?=Zend_Locale::getTranslation($this->supplier->country, 'territory')?><br/>
+    <a href="mailto:<?=$this->supplier->email?>"><?=$this->supplier->email?></a>
+    </p>
+<p style="clear:both;"></p>
 
 <?=$this->bar()
     ->addLink('ability/create', 'Add new Ability')

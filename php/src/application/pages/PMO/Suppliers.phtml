@@ -10,12 +10,17 @@
 <?
     
     $tags = array();
-    foreach ($this->registry->getRoles() as $role)
+    foreach ($this->registry->wanted as $wanted) {
+        $color = hexdec(substr(Model_Colors::BLUE, 1));
+        $delta = (1 - $wanted->have / $wanted->required) * 0x2F;
+        $color = $color + 0x010000 * $delta + 0x000100 * $delta + $delta;
+        $color = sprintf('#%06x', $color);
         $tags[] = new Zend_Tag_Item(array(
-            'title' => strval($role->role),
-            'weight' => intval($role->weight),
-            'url' => $this->link('byRole/' . $role->role),
+            'title' => "<span style='color: {$color};'>" . str_replace(' ', '&nbsp;', $wanted->role) . '</span>',
+            'weight' => $wanted->required,
+            'url' => $this->link('byRole/' . $wanted->role),
             ));
+    }
         
     $cloud = new Zend_Tag_Cloud(array(
         'tags' => $tags,
@@ -34,8 +39,8 @@
             'decorator' => 'htmlTag',
             'options' => array(
                 'fontSizeUnit' => 'em',
-                'minFontSize' => 1,
-                'maxFontSize' => 3
+                'minFontSize' => 2,
+                'maxFontSize' => 4
             )
         )
     ));
