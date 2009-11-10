@@ -1,15 +1,20 @@
 
 [projects]
-<?=Model_Pages::ADMIN?> = r
-<?=Model_Project_Test::PM?> = r
+    <?=Model_Pages::ADMIN?> = r
+    <?=Model_Project_Test::PM?> = r
 
 [wobots]
-<?=Model_Pages::ADMIN?> = rw
-<?=Model_Project_Test::PM?> = r
+    <?=Model_Pages::ADMIN?> = rw
+    <?=Model_Project_Test::PM?> = r
 
-[PMO]
-<?=Model_Pages::ADMIN?> = rw
-<?=Model_Project_Test::PM?> = r
-
-[Finances]
-<?=Model_Pages::ADMIN?> = rw
+<? foreach (Model_Process::retrieveAll() as $process): ?>
+    [<?=$process?>]
+    <?=Model_Pages::ADMIN?> = rw
+    <?=Model_Project_Test::PM?> = r
+    <? if (!$process->projectExists()): ?>
+        <? continue; ?>
+    <? endif; ?>
+    <? foreach ($process->getProject()->getStakeholders() as $stakeholder=>$password): ?>
+        <?=$stakeholder?> = rw
+    <? endforeach; ?>
+<? endforeach; ?>
