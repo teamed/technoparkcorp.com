@@ -87,7 +87,6 @@ class PanelController extends FaZend_Controller_Action {
      * @return void
      */
     public function indexAction() {
-
         $doc = $this->_getParam('doc');
 
         // permission check for current user
@@ -95,8 +94,11 @@ class PanelController extends FaZend_Controller_Action {
             return $this->_restrict('Sorry, the document "' . $doc . '" is not available for you');
         }
         
-        $this->_buildDocument($doc);
-
+        try {
+            $this->_buildDocument($doc);
+        } catch (Model_Pages_DocumentNotFound $e) {
+            return $this->_restrict('Sorry, the document "' . $doc . '" is not found');
+        }
     }
 
     /**
@@ -115,7 +117,6 @@ class PanelController extends FaZend_Controller_Action {
      * @return void
      */
     public function optsAction() {
-
         $title = $this->getRequest()->getPost('title');
 
         // this is required in order to INIT the list of pages
@@ -134,7 +135,6 @@ class PanelController extends FaZend_Controller_Action {
         }
 
         $this->_returnJSON($list);
-
     }
 
     /**
@@ -143,10 +143,8 @@ class PanelController extends FaZend_Controller_Action {
      * @return void
      */
     public function redirectorAction() {
-
         $doc = $this->getRequest()->getPost('document');
         $this->_helper->redirector->gotoRoute(array('doc'=>$doc), 'panel', true, false);
-
     }
 
     /**
@@ -155,7 +153,6 @@ class PanelController extends FaZend_Controller_Action {
      * @return void
      */
     public function sharedAction() {
-
         try {
             $shortcut = Model_Shortcut::findByHash($this->_getParam('doc'));
         } catch (Model_Shortcut_NotFoundException $e) {
@@ -169,7 +166,6 @@ class PanelController extends FaZend_Controller_Action {
         
         // build document and show it
         $this->_buildDocument($shortcut->document, $shortcuts->getParams());
-
     }
 
     /**
@@ -217,7 +213,6 @@ class PanelController extends FaZend_Controller_Action {
         // if execution inside this view is completed - show only the result
         if ($view->formaCompleted)
             $this->view->document = '<pre class="log">' . $view->formaCompleted . '</pre>';
-        
     }
     
     /**
