@@ -43,7 +43,6 @@ abstract class Model_Wobot implements Model_Wobot_Interface {
      * The method is called from CLI executor.
      *
      * @return Model_Wobot[]
-     * @todo Implement it properly, should use /wobots directory
      */
     public static function retrieveAll() {
         self::$_wobots = new ArrayIterator();
@@ -147,6 +146,7 @@ abstract class Model_Wobot implements Model_Wobot_Interface {
     /**
      * Create decision
      *
+     * @param string Absolute file name of PHP file with decision class
      * @return Model_Decision
      **/
     public function decisionFactory($file) {

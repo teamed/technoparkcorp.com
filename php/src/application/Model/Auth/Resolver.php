@@ -50,6 +50,14 @@ class Model_Auth_Resolver implements Zend_Auth_Adapter_Http_Resolver_Interface {
      */
     public function resolve($username, $realm) {
 
+        /** 
+         * get full list of all stakeholders from all projects
+         * together with their passwords. it's going to be an 
+         * associative array, with keys as emails and values as
+         * arrays of passwords
+         *
+         * @see Shared_Project for better details
+         */
         $users = Shared_Project::retrieveAllStakeholders();
 
         // user not found in general
