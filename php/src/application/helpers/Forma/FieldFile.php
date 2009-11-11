@@ -28,6 +28,18 @@ require_once 'helpers/Forma/Field.php';
 class Helper_Forma_FieldFile extends Helper_Forma_Field {
 
     /**
+     * Get value from the form element
+     *
+     * @param Zend_Form_Element The element to work with
+     * @return mixed
+     **/
+    public function deriveValue(Zend_Form_Element $element) {
+        if ($element->isReceived())
+            return $element->getFileName();
+        return null;
+    }
+
+    /**
      * Create and return form element
      *
      * @param string Name of the element

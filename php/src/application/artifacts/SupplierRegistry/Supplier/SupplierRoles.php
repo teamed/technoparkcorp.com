@@ -19,11 +19,11 @@
  */
 
 /**
- * Skills for a supplier, with a grade
+ * List of roles for a supplier
  *
  * @package Artifacts
  */
-class theSupplierSkills extends ArrayIterator {
+class theSupplierRoles extends ArrayIterator {
 
     /**
      * Show it as a string
@@ -31,37 +31,23 @@ class theSupplierSkills extends ArrayIterator {
      * @return void
      **/
     public function __toString() {
-        $skills = array();
-        foreach ($this as $skill)
-            $skills[] = strval($skill);
-        return implode('; ', $skills);
+        $roles = array();
+        foreach ($this as $role)
+            $roles[] = strval($role);
+        return implode('; ', $roles);
     }
 
     /**
-     * How compliant this supplier is to the given skill?
+     * This supplier has this given role?
      *
-     * @param theSupplierSkill Skill to be compliant to
-     * @return integer Percents in [0..100] interval
-     **/
-    public function getCompliance(theSupplierSkill $skill) {
-        foreach ($this as $exists)
-            if ($exists->isSameSkill($skill))
-                return $exists->getCompliance($skill);
-        return 0;
-    }
-
-    /**
-     * This list of skills has this given skill?
-     *
-     * @param theSupplierSkill Skill to be compliant to
+     * @param string Role
      * @return boolean
      **/
-    public function hasSkill(theSupplierSkill $skill) {
+    public function hasRole($role) {
         foreach ($this as $exists)
-            if ($exists->isSameSkill($skill))
+            if ($exists->name == $role)
                 return true;
         return false;
     }
 
-    
 }

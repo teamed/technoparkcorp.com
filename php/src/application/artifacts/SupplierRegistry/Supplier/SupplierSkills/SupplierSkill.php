@@ -48,6 +48,7 @@ class theSupplierSkill {
      **/
     public function __construct($name, $grade) {
         validate()
+            ->regex($name, '/^[\w\d]+$/', "Skill name should contain only numbers and letters, but '{$name}' provided")
             ->type($grade, 'integer', "Skill grade must be INTEGER")
             ->true($grade <= 100 && $grade >= 0, "Grade must be in [0..100] interval, {$grade} provided");
         
@@ -61,9 +62,28 @@ class theSupplierSkill {
      * @return void
      **/
     public function __toString() {
-        return $this->_name . '(' . $this->_grade . '%)';
+        return $this->_name . '/' . $this->_grade . '%';
     }
 
+    /**
+     * Getter dispatcher
+     *
+     * @param string Name of property to get
+     * @return mixed
+     **/
+    public function __get($name) {
+        $method = '_get' . ucfirst($name);
+        if (method_exists($this, $method))
+            return $this->$method();
+            
+        $var = '_' . $name;
+        if (property_exists($this, $var))
+            return $this->$var;
+        
+        FaZend_Exception::raise('Supplier_PropertyOrMethodNotFound', 
+            "Can't find what is '$name' in " . get_class($this));
+    }
+    
     /**
      * Get list of default levels
      *
@@ -76,6 +96,26 @@ class theSupplierSkill {
             75 => 'intermediate',
             100 => 'professional',
         );
+    }
+
+    /**
+     * How compliant this skill is to the given skill?
+     *
+     * @param theSupplierSkill Skill to be compliant to
+     * @return integer Percents in [0..100] interval
+     **/
+    public function getCompliance(theSupplierSkill $skill) {
+        return 100 - abs($this->grade - $skill->grade);
+    }
+
+    /**
+     * Is it the same skill?
+     *
+     * @param theSupplierSkill Skill to be compliant to
+     * @return boolean
+     **/
+    public function isSameSkill(theSupplierSkill $skill) {
+        return $this->name == $skill->name;
     }
 
 }

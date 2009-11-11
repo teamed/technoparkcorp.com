@@ -151,7 +151,6 @@ abstract class Model_Decision implements Model_Decision_Interface {
      * @return string|false Result of decision made (FALSE = no decission)
      */
     public function make() {
-
         FaZend_Log::getInstance()->addWriter('Memory', 'decision');
 
         try {
@@ -173,7 +172,6 @@ abstract class Model_Decision implements Model_Decision_Interface {
         Model_Decision_History::create($this->_wobot, $this, $decision, $log);
         
         return $decision;
-        
     }
 
     /**

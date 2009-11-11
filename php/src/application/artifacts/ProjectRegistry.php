@@ -66,8 +66,8 @@ class theProjectRegistry extends Model_Artifact implements Model_Artifact_Passiv
     public function getStaffRequests() {
         $ini = new Zend_Config_Ini(dirname(__FILE__) . '/ProjectRegistry/wanted.ini', 'wanted');
         $requests = new ArrayIterator();
-        foreach ($ini as $person) {
-            $request = new theStaffRequest();
+        foreach ($ini as $id=>$person) {
+            $request = new theStaffRequest($id);
             
             $project = $this[$person->project];
             $request->setProject($project);
@@ -76,9 +76,20 @@ class theProjectRegistry extends Model_Artifact implements Model_Artifact_Passiv
             foreach ($person->skills as $skill=>$grade)
                 $request->addSkill(new theSupplierSkill($skill, intval($grade)));
             
-            $requests[] = $request;
+            $requests[$id] = $request;
         }
         return $requests;
+    }
+    
+    /**
+     * Return a unique staff request
+     *
+     * @param string ID of the request to return
+     * @return theStaffRequest
+     **/
+    public function getStaffRequestById($id) {
+        $requests = $this->getStaffRequests();
+        return $requests[$id];
     }
     
 }

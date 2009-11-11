@@ -26,6 +26,13 @@
 class theStaffRequest {
 
     /**
+     * Unique ID of the staff request
+     *
+     * @var string
+     */
+    protected $_id;
+
+    /**
      * Project
      *
      * @var theProject
@@ -63,9 +70,11 @@ class theStaffRequest {
     /**
      * Construct the class
      *
+     * @param string Unique ID of the request
      * @return void
      */
-    public function __construct($email, $name) {
+    public function __construct($id) {
+        $this->_id = $id;
         $this->_skills = new theSupplierSkills();
     }
 
@@ -84,7 +93,7 @@ class theStaffRequest {
         if (property_exists($this, $var))
             return $this->$var;
         
-        FaZend_Exception::raise('StaffRequest_PropertyOrMethodNotFound', 
+        FaZend_Exception::raise('PropertyOrMethodNotFound', 
             "Can't find what is '$name' in " . get_class($this));
     }
     
@@ -177,8 +186,32 @@ class theStaffRequest {
      **/
     protected function _getResponse() {
         $response = new theStaffResponse();
-        
+        foreach (Model_Artifact::root()->supplierRegistry as $supplier) {
+            if (!$supplier->roles->hasRole($this->role))
+                continue;
+            
+            // start logging everything that happens later
+            FaZend_Log::getInstance()->addWriter('Memory', 'staffResponse');
+
+            $qualities = array();
+            foreach ($this->skills as $skill) {
+                if (!$supplier->skills->hasSkill($skill)) {
+                    logg("Skill '{$skill}' is absent");
+                    $qualities[] = 0;
+                    continue;
+                }
+                $compliance = $supplier->skills->getCompliance($skill);
+                $qualities[] = $compliance;
+                logg("Compliance to skill '{$skill}' is {$compliance}%");
+            }
+
+            $item = new theStaffResponseItem();
+            $item->setSupplier($supplier)
+                ->setQuality(intval(array_sum($qualities) / count($qualities)))
+                ->setReason(FaZend_Log::getInstance()->getWriterAndRemove('staffResponse')->getLog());
+            $response[] = $item;
+        }
         return $response;
     }
-
+    
 }

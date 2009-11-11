@@ -31,7 +31,34 @@ class theSupplierRegistry extends Model_Artifact {
      * @return void
      **/
     protected function _init() {
-        $this->_attachItem(Model_Project_Test::PM, new theSupplier('Mr. Tester'));
+        if (APPLICATION_ENV !== 'production') {
+            $this->createSupplier(Model_Project_Test::PM, 'Mr John Tester', 'US')
+                ->createSkill('PHP', 75)
+                ->createSkill('jQuery', 25)
+                ->createRole('Programmer', '13EUR');
+
+            $this->createSupplier('test@example.com', 'Mr Alex Peterson', 'UA')
+                ->createSkill('PHP', 75)
+                ->createSkill('XML', 15)
+                ->createSkill('ZendFramework', 85)
+                ->createSkill('jQuery', 25)
+                ->createRole('Programmer', '13EUR');
+        }
+    }
+    
+    /**
+     * Create new supplier
+     *
+     * @param string Email of supplier to add
+     * @param string Full name of supplier to add
+     * @param string Country of supplier to add
+     * @return theSupplier
+     **/
+    public function createSupplier($email, $name, $country) {
+        $supplier = new theSupplier($email, $name);
+        $supplier->setCountry($country);
+        $this->_attachItem($email, $supplier);
+        return $supplier;
     }
 
 }

@@ -79,7 +79,19 @@ class Helper_Table extends FaZend_View_Helper {
      * @return string HTML
      */
     public function __toString() {
+        try {
+            return (string)$this->_render();
+        } catch (Exception $e) {
+            return get_class($this) . ' throws ' . get_class($e) . ': ' . $e->getMessage();
+        }
+    }
 
+    /**
+     * Converts it to HTML
+     *
+     * @return string HTML
+     */
+    protected function _render() {
         $this->_table->showColumns($this->_columns);
         $this->_table->setNoDataMessage('');
 
@@ -97,7 +109,9 @@ class Helper_Table extends FaZend_View_Helper {
      * @return Helper_Table
      */
     public function setSource(Iterator $iterator) {
-
+        validate()
+            ->instanceOf($iterator, 'Iterator', "Source should be an instance of Iterator");
+            
         FaZend_Paginator::addPaginator($iterator, $this->getView(), 1, 'paginator');
 
         // in other words - NO paging

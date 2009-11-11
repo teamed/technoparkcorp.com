@@ -8,16 +8,10 @@
         ->fieldAttrib('maxlength', 100)
         ->fieldAttrib('size', 30)
         
-    ->addField('select', 'level')
-        ->fieldLabel('Level')
+    ->addField('select', 'grade')
+        ->fieldLabel('Grade')
         ->fieldRequired()
         ->fieldOptions(theSupplierSkill::getDefaultLevels())
-
-    ->addField('textarea', 'reason')
-        ->fieldLabel('Why are you doing this?')
-        ->fieldRequired()
-        ->fieldAttrib('cols', 50)
-        ->fieldAttrib('rows', 5)
 
     ->addField('submit')
         ->fieldAction($this->supplier, 'createSkill')

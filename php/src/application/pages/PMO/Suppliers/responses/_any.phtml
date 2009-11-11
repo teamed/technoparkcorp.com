@@ -1,0 +1,32 @@
+<? $request = $this->root->projectRegistry->getStaffRequestById($this->segment()) ?>
+
+<h1>Staff Response for '<?=$request->role?>' in '<?=$request->project?>'</h1>
+
+<p>
+    Skills: <?=$request->skills?><br/>
+    Duration: <?=$request->duration?><br/>
+    Cost: <?=$request->cost?><br/>
+    Quality Threshold: <?=$request->threshold?>%
+</p>
+
+<? $index = 0; ?>
+<? foreach ($request->response as $item): ?>
+
+    <? if ($index++ < 3): ?>
+
+        <p><span style="color:<?=($item->quality > $request->threshold ? Model_Colors::GREEN : Model_Colors::RED)?>;
+            font-size:2em;font-weight:bold;"><?=$item->quality?>%</span>: 
+            <b><?=$this->link('/PMO/Suppliers/byEmail/' . $item->supplier->email, $item->supplier->name, false)?></b>,
+            <?=$item->supplier->countryName?>
+            (<a href="mailto:<?=$item->supplier->email?>"><?=$item->supplier->email?></a>)</p>
+        <pre><?=$item->reason?></pre>
+
+    <? else: ?>
+    
+        <p><?=$item->quality?>%: <b><?=$item->supplier->name?></b>,
+        <?=$item->supplier->countryName?>
+        (<?=$item->supplier->email?>)</p>
+    
+    <? endif; ?>
+
+<? endforeach; ?>

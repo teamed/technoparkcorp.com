@@ -3,41 +3,20 @@
 </div>
 
 <p>
-    <b><?=$this->supplier->name?></b>, <?=Zend_Locale::getTranslation($this->supplier->country, 'territory')?><br/>
+    <b><?=$this->supplier->name?></b>, <?=$this->supplier->countryName?><br/>
     <a href="mailto:<?=$this->supplier->email?>"><?=$this->supplier->email?></a>
     </p>
 <p style="clear:both;"></p>
 
 <?=$this->bar()
-    ->addLink('ability/create', 'Add new Ability')
-    ?>
-
-<?=$this->table()
-    ->setSource($this->supplier->abilities)
-    ->addColumn('role', 'Role')
-    ->addColumn('price', 'Price')
-    ->addOption('del', 'ability/{__id}/delete')
-    ?>
-
-<?=$this->bar()
+    ->addLink('ability/create', 'Add new Role')
     ->addLink('skill/create', 'Add new Skill')
-    ?>
-
-<?=$this->table()
-    ->setSource($this->supplier->skills)
-    ->addColumn('name', 'Title')
-    ->addColumn('level', 'Level')
-    ->addOption('del', 'skill/{__id}/delete')
-    ?>
-
-<?=$this->bar()
     ->addLink('record/create', 'Add new Record')
     ?>
 
 <?=$this->table()
-    ->setSource($this->supplier->records)
-    ->addColumn('created', 'Date')
-    ->addColumn('author', 'Created by')
-    ->addColumn('text', 'Text')
+    ->setSource($this->supplier->attachments)
+    ->addColumn('name', 'Name')
+    ->addColumn('description', 'Description')
     ->addColumn('hasFile', 'Attachment')
     ?>

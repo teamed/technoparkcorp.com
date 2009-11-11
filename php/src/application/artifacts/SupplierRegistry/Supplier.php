@@ -40,6 +40,13 @@ class theSupplier extends Model_Artifact {
     protected $_name;
     
     /**
+     * Country of location
+     *
+     * @var string
+     */
+    protected $_country;
+    
+    /**
      * List of skills
      *
      * @var theSupplierSkills
@@ -51,7 +58,7 @@ class theSupplier extends Model_Artifact {
      *
      * @var theSupplierRole[]
      */
-    protected $_roles = array();
+    protected $_roles;
     
     /**
      * List of attachments
@@ -72,6 +79,7 @@ class theSupplier extends Model_Artifact {
         $this->setName($name);
         
         $this->_skills = new theSupplierSkills();
+        $this->_roles = new theSupplierRoles();
         $this->_attachments = new Model_Artifact_Attachments();
     }
 
@@ -102,7 +110,7 @@ class theSupplier extends Model_Artifact {
      **/
     public function setEmail($email) {
         validate()
-            ->emailAddress($email, array(), "Invalid format of supplier's email: {$email}")
+            ->emailAddress($email, array(), "Invalid format of supplier's email: {$email}");
         $this->_email = $email;
         return $this;
     }
@@ -115,6 +123,19 @@ class theSupplier extends Model_Artifact {
      **/
     public function setName($name) {
         $this->_name = $name;
+        return $this;
+    }
+
+    /**
+     * Set country
+     *
+     * @param string Two-letters name of the country
+     * @return void
+     **/
+    public function setCountry($country) {
+        validate()
+            ->countryCode($country, "Invalid format of supplier's country: {$country}");
+        $this->_country = $country;
         return $this;
     }
 
@@ -140,4 +161,58 @@ class theSupplier extends Model_Artifact {
         return $this;
     }
 
+    /**
+     * Add attachment
+     *
+     * @param Model_Artifact_Attachments_Attachment Attachment to add
+     * @return void
+     **/
+    public function addAttachment(Model_Artifact_Attachments_Attachment $attachment) {
+        $this->_attachments[] = $attachment;
+        return $this;
+    }
+
+    /**
+     * Create role, interface for PAGES
+     *
+     * @param string Name of the role
+     * @param string Price
+     * @return void
+     **/
+    public function createRole($role, $price) {
+        return $this->addRole(new theSupplierRole($role, new Model_Cost($price)));
+    }
+    
+    /**
+     * Create skill, interface for PAGES
+     *
+     * @param string Name of the skill
+     * @param string Grade
+     * @return void
+     **/
+    public function createSkill($name, $grade) {
+        return $this->addSkill(new theSupplierSkill($name, intval($grade)));
+    }
+    
+    /**
+     * Create attachment, interface for PAGES
+     *
+     * @param string Name of the attachment
+     * @param string Description
+     * @param string Absolute file name
+     * @return void
+     **/
+    public function createAttachment($name, $description, $file) {
+        return $this->addAttachment(new Model_Artifact_Attachments_Attachment($name, $description, $file));
+    }
+    
+    /**
+     * Returns country full name
+     *
+     * @return string
+     **/
+    protected function _getCountryName() {
+        return Zend_Locale::getTranslation($this->country, 'territory');
+    }
+    
 }

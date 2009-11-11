@@ -58,7 +58,7 @@ class Helper_Forma extends FaZend_View_Helper {
         try {
             return (string)$this->_render();
         } catch (Exception $e) {
-            return get_class($e) . ': ' . $e->getMessage();
+            return get_class($this) . ' throws ' . get_class($e) . ': ' . $e->getMessage();
         }
     }
 
@@ -220,7 +220,7 @@ class Helper_Forma extends FaZend_View_Helper {
         }
 
         // get the value of this element from the form
-        return $form->$name->getValue();
+        return $this->_fields[$name]->deriveValue($form->$name);
     }
 
 }

@@ -77,7 +77,19 @@ class Helper_Bar extends FaZend_View_Helper {
      * @return string
      */
     public function __toString() {
+        try {
+            return (string)$this->_render();
+        } catch (Exception $e) {
+            return get_class($this) . ' throws ' . get_class($e) . ': ' . $e->getMessage();
+        }
+    }
 
+    /**
+     * Render the helper
+     *
+     * @return string
+     */
+    protected function _render() {
         $htmls = array();
 
         foreach ($this->_links as $link) {

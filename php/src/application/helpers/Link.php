@@ -30,7 +30,6 @@ class Helper_Link extends FaZend_View_Helper {
      * @return Helper_Table
      */
     public function link($link, $title = null, $inPar = true) {
-
         $resolvedLink = Model_Pages::resolveLink($link);
 
         // if this link is not allowed for current user

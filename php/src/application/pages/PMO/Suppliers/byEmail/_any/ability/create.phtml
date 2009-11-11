@@ -1,4 +1,4 @@
-<h1>Create new Ability for <?=$this->supplier->name?></h1>
+<h1>Create New Role for <?=$this->supplier->name?></h1>
 
 <?=$this->forma()
 
@@ -14,12 +14,6 @@
         ->fieldAttrib('maxlength', 10)
         ->fieldAttrib('size', 10)
 
-    ->addField('textarea', 'reason')
-        ->fieldLabel('Why are you doing this?')
-        ->fieldRequired()
-        ->fieldAttrib('cols', 50)
-        ->fieldAttrib('rows', 5)
-        
     ->addField('submit')
-        ->fieldAction($this->supplier, 'createAbility')
+        ->fieldAction($this->supplier, 'createRole')
     ?>

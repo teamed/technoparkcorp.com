@@ -154,13 +154,22 @@ abstract class Helper_Forma_Field {
     }
 
     /**
+     * Get value from the form element
+     *
+     * @param Zend_Form_Element The element to work with
+     * @return mixed
+     **/
+    public function deriveValue(Zend_Form_Element $element) {
+        return $element->getValue();
+    }
+
+    /**
      * Configure form element
      *
      * @param Zend_Form_Element The element to configure
      * @return void
      */
     protected function _configureFormElement(Zend_Form_Element $element) {
-
         $element->setDecorators(array())
             ->addDecorator('ViewHelper')
             ->addDecorator('Errors')
@@ -184,7 +193,6 @@ abstract class Helper_Forma_Field {
         foreach ($this->_attribs as $name=>$value) {
             $element->setAttrib($name, $value);
         }
-
     }
 
     /**

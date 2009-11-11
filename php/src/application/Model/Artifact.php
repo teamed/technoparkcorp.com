@@ -35,6 +35,26 @@ class Model_Artifact extends ArrayIterator
     protected static $_root = null;
 
     /**
+     * Construct the class
+     *
+     * @return void
+     * @todo remove it, it should be in POS
+     */
+    public function __construct() {
+        parent::__construct();
+        $this->_init();
+    }
+
+    /**
+     * Override it
+     *
+     * @return void
+     * @todo remove it, it should be in POS
+     **/
+    protected function _init() {
+    }
+
+    /**
      * Root of the entire hierarchy
      *
      * @return Model_Artifact

@@ -19,38 +19,19 @@
  */
 
 /**
- * One response for staff
+ * One artifact, which is a collection of external files
  *
  * @package Artifacts
  */
-class theStaffResponse extends ArrayIterator {
+class Model_Artifact_Attachments extends ArrayIterator implements Model_Artifact_Stateless {
 
     /**
-     * Show as a string
+     * Get location of all attachments
      *
-     * @return string
+     * @return string Absolute directory name
      **/
-    public function __toString() {
-        if (!count($this))
-            return 'nobody';
-        
-        $quality = 0;
-        foreach ($this as $response) {
-            $quality = max($quality, $response->quality);
-        }
-        return $quality . '%';
+    public static function getLocation() {
+        return APPLICATION_PATH . '/../../attachments';
     }
     
-    /**
-     * Hook adding function in order to sort the array on-fly
-     *
-     * @param mixed Index in array
-     * @param mixed Value to add
-     * @return void
-     **/
-    public function offsetSet($index, $value) {
-        parent::offsetSet($index, $value);
-        $this->uasort(create_function('$a, $b', 'return $a->quality < $b->quality;'));
-    }
-
 }

@@ -7,7 +7,19 @@
     ->addLink('everybody', 'Full list of Suppliers')
     ?>
 
-<?
+<?=$this->table()
+    ->setSource($this->root->projectRegistry->getStaffRequests())
+    ->addColumn('project', 'Project')
+    ->addColumn('role', 'Role')
+    ->addColumn('skills', 'Skills required')
+    ->addColumn('duration', 'Days')
+    ->addColumn('cost', 'Cost')
+    ->addColumn('threshold', 'Threshold')
+    ->addColumn('response', 'Response')
+    ->addOption('response', 'responses/{id}')
+    ?>
+
+<!--
     
     $tags = array();
     foreach ($this->registry->wanted as $wanted) {
@@ -22,7 +34,7 @@
             ));
     }
         
-    $cloud = new Zend_Tag_Cloud(array(
+    echo new Zend_Tag_Cloud(array(
         'tags' => $tags,
         'cloudDecorator' => array(
             'decorator' => 'htmlCloud',
@@ -45,6 +57,4 @@
         )
     ));
 
-?>
-
-<?=$cloud?>
+-->

@@ -134,8 +134,24 @@ class Model_Pages extends Zend_Navigation {
         foreach (explode('/', $doc . '.phtml') as $segment) {
             $path .= '/';
 
-            if (!file_exists($path . $segment))
-                $segment = preg_replace('/^.*?(\.phtml)?$/', '_any${1}', $segment);
+            // there is NO such path and we should try to change the
+            // segment to _any or try something else
+            if (!file_exists($path . $segment)) {
+                // change it to _any
+                $segmentReplacer = preg_replace('/^.*?(\.phtml)?$/', '_any${1}', $segment);
+                // maybe it's the last segment and it's PHTML
+                // but we don't have such a script, instead we have
+                // a directory with this name. this condition is to
+                // be considered ONLY for the last segment in a row
+                if (strpos($segment, '.phtml') !== false) {
+                    $segmentDir = preg_replace('/\.phtml$/', '', $segment);
+                    if (file_exists($path . $segmentDir) && is_dir($path . $segmentDir)) {
+                        $segmentReplacer = $segmentDir;
+                    }
+                }
+                // replace the segment with this name (_any or name of the dir)
+                $segment = $segmentReplacer;
+            }
 
             $path .= $segment;
 
@@ -143,9 +159,11 @@ class Model_Pages extends Zend_Navigation {
                 $scripts[] = $path . '/_init.phtml';
         }
 
-        if (!file_exists($path))
+        // PHTML script or directory is NOT found
+        if (!file_exists($path)) {
             FaZend_Exception::raise('Model_Pages_DocumentNotFound',
                 "Document '{$doc}' was not found, path: '{$path}'");
+        }
 
         return $path;
     }
@@ -492,13 +510,12 @@ class Model_Pages extends Zend_Navigation {
     protected function _activateDocument($doc) {
         // if it's already here - skip it
         if ($this->getAcl()->has($doc))
-            // bug($this->_acl);
             return true;
             
-        // we should active the parent first, if we can
+        // we should activate the parent first, if we can
         if (strpos($doc, '/')) {
-            if (!$this->_activateDocument($parent = substr($doc, 0, strrpos($doc, '/'))))
-                return false;
+            $parent = substr($doc, 0, strrpos($doc, '/'));
+            $this->_activateDocument($parent);
         }
 
         try {

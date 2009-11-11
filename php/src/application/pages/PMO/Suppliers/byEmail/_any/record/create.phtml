@@ -2,21 +2,22 @@
 
 <?=$this->forma()
 
-    ->addField('textarea', 'text')
+    ->addField('text', 'name')
+        ->fieldLabel('Title of the attachment')
+        ->fieldRequired()
+        ->fieldAttrib('maxlength', 100)
+        ->fieldAttrib('size', 30)
+    
+    ->addField('textarea', 'description')
         ->fieldLabel('Text message')
         ->fieldRequired()
         ->fieldAttrib('rows', 5)
         ->fieldAttrib('cols', 60)
         
-    ->addField('select', 'approved')
-        ->fieldLabel('Text message')
-        ->fieldRequired()
-        ->fieldAttrib('rows', 5)
-        ->fieldAttrib('cols', 60)
-
     ->addField('file', 'file')
         ->fieldLabel('File to attach')
+        ->fieldRequired(false)
 
     ->addField('submit')
-        ->fieldAction($this->supplier, 'createRecord')
+        ->fieldAction($this->supplier, 'createAttachment')
     ?>
