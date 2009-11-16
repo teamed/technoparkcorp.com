@@ -55,6 +55,32 @@ class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap {
         // FaZend_User::setCurrentUser(Model_User::me());
     }
 
+    /**
+     * Localize, if necessary
+     *
+     * @return void
+     */
+    protected function _initLocalization() {
+        $locale = new Zend_Locale();
+        Zend_Registry::set('Zend_Locale', $locale);
+        
+        $translate = new Zend_Translate(
+            'gettext', 
+            realpath(APPLICATION_PATH . '/../languages'), 
+            null,
+            array(
+                'ignore' => '.',
+                'scan' => Zend_Translate::LOCALE_FILENAME,
+            )
+        );
+        Zend_Registry::set('Zend_Translate', $translate);
+        
+        if (!$translate->isAvailable($locale->getLanguage())) {
+            // not available languages are rerouted to another language
+            $translate->setLocale('en');
+        }
+    }
+    
 }
 
 // total amount of seconds in day
@@ -81,12 +107,16 @@ function logg($message) {
 }
 
 /**
- * Get ticket and return it's string value
+ * Translate string
  *
+ * @param string Translate this string and return it's translated value
  * @return string
  */
-function ticket($name, array $params = array()) {
-    return (string) Model_Ticket::factory($name, $params);
+function _($name) {
+    $str = Zend_Registry::get('Zend_Translate')->_($name);
+    if (func_num_args() > 1)
+        $str = call_user_func_array('sprintf', func_get_args());
+    return $str;
 }
 
 /**

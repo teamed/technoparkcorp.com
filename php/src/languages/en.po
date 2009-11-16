@@ -18,5 +18,5 @@ msgstr ""
 
 #: /code/panel2/php/src/application/pages/projects.phtml:1
 msgid "Full list of projects:"
-msgstr ""
+msgstr "Full list of projects:"
 
