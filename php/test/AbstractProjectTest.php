@@ -25,7 +25,7 @@ require_once 'FaZend/Test/TestCase.php';
  *
  * @package test
  */
-class AbstractProjectTest extends FaZend_Test_TestCase {
+abstract class AbstractProjectTest extends FaZend_Test_TestCase {
 
     public function setUp() {
         parent::setUp();

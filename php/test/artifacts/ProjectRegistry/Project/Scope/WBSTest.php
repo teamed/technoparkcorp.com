@@ -29,13 +29,8 @@ require_once 'AbstractProjectTest.php';
 class WBSTest extends AbstractProjectTest {
 
     public function testGeneralMechanismWorks() {
-        $wbs = $this->project->WBS;
+        $wbs = $this->project->wbs;
         logg(count($wbs) . ' work packages in WBS');
-    }
-
-    public function testActivitiesAreAvailable() {
-        $list = $this->project->WBS->getActivities();
-        logg(count($list) . ' activities found from WBS');
     }
 
 }

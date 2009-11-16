@@ -33,7 +33,6 @@ class StaffAssignmentsTest extends AbstractProjectTest {
         logg('Change Control Board in test project: ' . $CCB);
         
         $this->project->staffAssignments->hasRole('PM');
-        $this->project->staffAssignments->getEverybody();
     }
 
 }
