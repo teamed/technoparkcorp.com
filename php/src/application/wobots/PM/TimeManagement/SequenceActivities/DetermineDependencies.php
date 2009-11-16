@@ -33,26 +33,6 @@ class DetermineDependencies extends Model_Decision_PM {
      */
     protected function _make() {
         
-        validate()
-            ->false($this->project->objectives->isApproved(), 'Objectives are not approved yet');
-
-        $list = $this->project->activityList;
-        $unclear = $this->project->activityList->getWithUnclearDependencies();
-
-        logg(count($unclear) . ' activities require dependencies determination');
-
-        // draw a network diagram
-        $this->_logger->svg($list->svg()
-            ->styleNetworkDiagram()
-            ->highlight($unclear)));
-
-        logg('Here is the list of them:');
-
-        $this->_logger->table()
-            ->setSource($unclear);
-            
-        // select one activity
-        // and send it for clearance to the performer
         
     }
     
