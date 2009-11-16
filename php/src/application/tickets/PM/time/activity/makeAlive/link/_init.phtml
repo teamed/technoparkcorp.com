@@ -1,7 +1,0 @@
-<? 
-    $this->uri = $this->sharedDoc()
-        ->setDocument($this->activity->doc) 
-        ->addEmail($this->activity->performer->getEmail())
-        ->addParam('criteria', $this->activity->criteria);
-?>
-
