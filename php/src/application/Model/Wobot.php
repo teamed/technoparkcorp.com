@@ -50,7 +50,8 @@ abstract class Model_Wobot implements Model_Wobot_Interface {
         // list all wobot names
         foreach (self::_getAllNames() as $name) {
             $wobotClass = __CLASS__ . '_' . $name;
-            foreach ($wobotClass::getAllNames() as $wobotName)
+            eval("\$names = $wobotClass::getAllNames()");
+            foreach ($names as $wobotName)
                 self::$_wobots[$wobotName] = self::factory($wobotName);
         }
             
