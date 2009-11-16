@@ -1,0 +1,22 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: thePanel2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-11-16 17:38+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Yegor Bugayenko <egor@technoparkcorp.com>\n"
+"Language-Team: tpc <team@tpc2.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: UNITED STATES\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Basepath: /code/panel2/php/src/application\n"
+"X-Poedit-KeywordsList: _\n"
+"X-Poedit-SearchPath-0: /code/panel2/php/src/application\n"
+
+#: /code/panel2/php/src/application/pages/projects.phtml:1
+msgid "Full list of projects:"
+msgstr ""
+
