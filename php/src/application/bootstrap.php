@@ -30,10 +30,8 @@ class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap {
      * @return void
      */
     protected function _initAutoLoader() {
-
         $autoloader = Zend_Loader_Autoloader::getInstance();
         $autoloader->pushAutoloader(new Model_Loader_Artifacts(), 'the');
-
     }
 
     /**
@@ -46,6 +44,15 @@ class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap {
         
         Model_Project::setClassName('Model_Project');
         Shared_Cache::setLifecycle(5 * 60); // 5 hours cache lifecycle
+    }
+
+    /**
+     * Initialize POS
+     *
+     * @return void
+     */
+    protected function _initPos() {
+        // FaZend_User::setCurrentUser(Model_User::me());
     }
 
 }
@@ -100,3 +107,11 @@ function plural($str, $var) {
         abs($var) != 1 ? $plural : $singular, $str);
 }
 
+// patch for PHP 5.2
+if (!function_exists('lcfirst')) {
+    function lcfirst($str) {
+        if (!isset($str[0]))
+            return $str;
+        return strtolower($str[0]) . substr($str, 1);
+    }
+}
