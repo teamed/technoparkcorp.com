@@ -26,20 +26,6 @@
 class theWbs extends Model_Artifact_Bag implements Model_Artifact_Passive {
     
     /**
-     * Returns a list of activities to be done now, according to current WBS
-     *
-     * @return theActivities
-     **/
-    public function getActivities() {
-        $activities = new theActivities();
-        $splitter = new theActivitySplitter($this, $activities);
-        foreach ($this as $wp) {
-            $splitter->dispatch($wp);
-        }
-        return $activities;
-    }
-    
-    /**
      * Load work packages into the WBS, before iteration
      *
      * @return void

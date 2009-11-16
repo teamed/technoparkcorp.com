@@ -35,7 +35,7 @@ class Model_Wobot_PM extends Model_Wobot {
      */
     private static $_names = array(
         'a-p' => 'Alex Safonov', // a.safonov is his email
-        'r-z' => 'Roman Satin', // r.satin is his email
+        'q-z' => 'Roman Satin', // r.satin is his email
     );
 
     /**

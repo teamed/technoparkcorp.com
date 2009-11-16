@@ -26,6 +26,21 @@
 class Model_Process {
 
     /**
+     * List of names of all processes
+     *
+     * @var string[]
+     */
+    protected static $_names = array(
+        'PMO',
+        'Finance',
+        'Security',
+        'HR',
+        'QA',
+        'Marketing',
+        'Sales'
+    );
+    
+    /**
      * Name of the process
      *
      * @var string
@@ -39,21 +54,21 @@ class Model_Process {
      */
     public static function retrieveAll() {
         $processes = new ArrayIterator();
-
-        $names = array(
-            'PMO',
-            'Finance',
-            'Security',
-            'HR',
-            'QA',
-            'Marketing',
-            'Sales'
-        );
-        
-        foreach ($names as $name)
+        foreach (self::$_names as $name)
             $processes[] = new self($name);
-
         return $processes;
+    }
+    
+    /**
+     * Find process by name
+     *
+     * @param string Name of the process
+     * @return Model_Process
+     */
+    public static function findByName($name) {
+        if (!in_array($name, self::$_names))
+            FaZend_Exception::raise('Model_Process_NotFound', "Process '$name' not found");
+        return new self($name);
     }
     
     /**

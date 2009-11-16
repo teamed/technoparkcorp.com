@@ -69,7 +69,6 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history {
      * @return string
      */
     public static function findNextDecision(Model_Wobot $wobot, array $files) {
-
         // keep them in alphabetic order always, to make sure we
         // execute them all, and don't lose any one
         sort($files);
@@ -104,7 +103,6 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history {
 
         // nothing found in the list - return first element
         return $first;
-
     }
 
     /**

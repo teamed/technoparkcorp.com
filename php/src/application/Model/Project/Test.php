@@ -50,7 +50,7 @@ class Model_Project_Test extends Model_Project {
         $pwd = md5(rand());
         
         $authz = '[' . self::NAME . ":/]\n" . self::PM . " = rw\n";
-        foreach (array('SystemAnalyst', 'Architect') as $role)
+        foreach (array('SystemAnalyst', 'Architect', 'CCB') as $role)
             $authz .= '[' . self::NAME . ':' . Model_Project::ROLE_AUTHZ_PREFIX . "$role]\n" . self::PM . " = rw\n";
         
         return self::$_instanceTest = new Model_Project_Test(

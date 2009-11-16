@@ -33,11 +33,11 @@ class SynchronizeActivities extends Model_Decision_PM {
      */
     protected function _make() {
         
-        validate()
-            ->false($this->_project->objectives->isApproved(), 'Objectives are not approved yet');
+        // validate()
+        //     ->false($this->_project->objectives->isApproved(), 'Objectives are not approved yet');
 
         // synchronize with work orders
-        $this->project->schedule->synchronize();        
+        // $this->project->schedule->synchronize();        
 
     }
     

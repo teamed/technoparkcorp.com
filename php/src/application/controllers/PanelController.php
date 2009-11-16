@@ -38,7 +38,6 @@ class PanelController extends FaZend_Controller_Action {
      * @return void
      */
     public function preDispatch() {
-        
         // in testing environment you do EVERYTHING under this role
         // in order to avoid conflicts with real documents in
         // real environment (fazend for example)
@@ -67,18 +66,11 @@ class PanelController extends FaZend_Controller_Action {
             Model_User::logIn($identity);
         }
 
-        // root of the entire artifact tree
-        $this->view->root = Model_Artifact::root();
-
-        // intiate pages builder
-        Model_Pages::getInstance()->setView($this->view);
-
         // change layout of the view
         Zend_Layout::getMvcInstance()->setLayout('panel');
 
         // get pages instance for the controller to user later
         $this->_pages = Model_Pages::getInstance();
-
     }
 
     /**
@@ -176,43 +168,13 @@ class PanelController extends FaZend_Controller_Action {
      * @return string HTML
      **/
     protected function _buildDocument($doc, array $params = array()) {
-        $view = clone $this->view;
-
-        $view->doc = $this->view->doc = $doc;
-        
-        // pass params to the view
-        $view->assign($params);
-
-        // configure it, set the active document for further references
-        $this->_pages->setActiveDocument($doc);
-
         $this->view->headTitle($doc . ' -- ' );
 
-        // convert document name into absolute PATH
-        $scripts = array();
-        $path = $this->_pages->resolvePath($doc, $scripts);
-
         try {
-            /**
-             *  @todo this should be improved
-             */
-            $this->view->document = '';
-            foreach ($scripts as $script) {
-                $view->addScriptPath(dirname($script));
-                $this->view->document .= $view->render(pathinfo($script, PATHINFO_BASENAME));
-            }
-
-            // reconfigure VIEW in order to render this particular document file
-            $view->addScriptPath(dirname($path));
-            $this->view->document .= $view->render(pathinfo($path, PATHINFO_BASENAME));
-
+            $this->view->document = $this->_pages->buildDocumentHtml($doc, $params);
         } catch (AccessRestrictedException $e) {
             return $this->_restrict($e->getMessage());
         }
-
-        // if execution inside this view is completed - show only the result
-        if ($view->formaCompleted)
-            $this->view->document = '<pre class="log">' . $view->formaCompleted . '</pre>';
     }
     
     /**

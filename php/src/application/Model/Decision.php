@@ -78,16 +78,14 @@ abstract class Model_Decision implements Model_Decision_Interface {
      * Selects the next decision to be executed
      *
      * @param Model_Wobot Wobot, the initiator
-     * @return Model_Decision
+     * @return string Absolute name of PHP file
      */
     public static function nextForWobot(Model_Wobot $wobot) {
-
         // get list of all files in this wobot
         $files = self::getDecisionFiles($wobot);
 
         // find next decision to be made
         return Model_Decision_History::findNextDecision($wobot, $files);
-
     }
 
     /**

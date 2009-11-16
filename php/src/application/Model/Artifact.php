@@ -19,11 +19,44 @@
  */
 
 /**
+ * This is temporary structure required while POS is in development
+ *
+ * You just set USE_POS to false and you won't have any persistence of objects 
+ */
+define('USE_POS', false);
+if (defined(USE_POS)) {
+    class tempArtifact extends FaZend_POS_Array {
+    }
+} else {
+    class tempArtifact extends ArrayIterator {
+
+        /**
+         * To be implemented in FaZend_POS_Abstract
+         *
+         * @var object
+         */
+        private $__ps;
+
+        /**
+         * To be implemented in FaZend_POS_Abstract
+         *
+         * @return object
+         */
+        public function ps() {
+            if (!isset($this->__ps))
+                $this->__ps = new FaZend_StdObject();
+            return $this->__ps;
+        }
+
+    }
+}
+
+/**
  * One simple artifact
  *
  * @package Model
  */
-class Model_Artifact extends ArrayIterator 
+class Model_Artifact extends tempArtifact 
     implements Model_Artifact_Interface {
 
     /**
@@ -129,24 +162,6 @@ class Model_Artifact extends ArrayIterator
         // reload it if it's empty now and requires loading
         if (($artifact instanceof Model_Artifact_Passive) && !$artifact->isLoaded())
             $artifact->reload();
-    }
-    
-    /**
-     * To be implemented in FaZend_POS_Abstract
-     *
-     * @var object
-     */
-    private $__ps;
-    
-    /**
-     * To be implemented in FaZend_POS_Abstract
-     *
-     * @return object
-     */
-    public function ps() {
-        if (!isset($this->__ps))
-            $this->__ps = new FaZend_StdObject();
-        return $this->__ps;
     }
     
 }

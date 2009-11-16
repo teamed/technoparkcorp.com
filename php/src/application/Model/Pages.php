@@ -66,18 +66,6 @@ class Model_Pages extends Zend_Navigation {
     }
 
     /**
-     * Set the View, dependency injection
-     *
-     * @param Zend_View View to use
-     * @return void
-     */
-    public function setView(Zend_View $view) {
-        // save it locally, but a clone, in order to avoid conflicts
-        // with the main execution stream
-        $this->_view = clone $view;
-    }
-
-    /**
      * Get instance of ACL
      *
      * @return Zend_Acl
@@ -260,6 +248,46 @@ class Model_Pages extends Zend_Navigation {
     }
 
     /**
+     * Build document content
+     *
+     * @param string Name of the document to render
+     * @param array Associative array of params to pass to the view
+     * @return string HTML
+     **/
+    public function buildDocumentHtml($doc, array $params = array()) {
+        $view = clone $this->_view;
+        $view->doc = $doc;
+        
+        // pass params to the view
+        $view->assign($params);
+
+        // configure it, set the active document for further references
+        $this->setActiveDocument($doc);
+
+        // convert document name into absolute PATH
+        $scripts = array();
+        $path = $this->resolvePath($doc, $scripts);
+
+        $html = '';
+        /**
+         *  @todo this should be improved
+         */
+        foreach ($scripts as $script) {
+            $view->addScriptPath(dirname($script));
+            $html .= $view->render(pathinfo($script, PATHINFO_BASENAME));
+        }
+
+        // reconfigure VIEW in order to render this particular document file
+        $view->addScriptPath(dirname($path));
+        $html .= $view->render(pathinfo($path, PATHINFO_BASENAME));
+
+        // if execution inside this view is completed - show only the result
+        if ($view->formaCompleted)
+            $html = '<pre class="log">' . $view->formaCompleted . '</pre>';
+        return $html;
+    }
+    
+    /**
      * Initializer
      *
      * @param Zend_Navigation_Container
@@ -370,8 +398,11 @@ class Model_Pages extends Zend_Navigation {
      */
     protected function _parse($file) {
         // if there is not VIEW - don't parse the file
-        if (is_null($this->_view))
-            return file_get_contents($file);
+        if (is_null($this->_view)) {
+            $this->_view = clone Zend_Registry::getInstance()->view;
+            // root of the entire artifact tree
+            $this->_view->root = Model_Artifact::root();
+        }
 
         // parse this particular file
         $this->_view->setScriptPath(dirname($file));
@@ -438,7 +469,7 @@ class Model_Pages extends Zend_Navigation {
             }
 
             FaZend_Exception::raise('Model_Pages_IncorrectLineFormat',
-                "Line #{$id} in file '{$accessFile}' has invalid format: '{$line}'");
+                "Line #{$id} in file '{$accessFile}' has invalid format: '{$line}' " . htmlspecialchars($line));
         }
 
         // create resources

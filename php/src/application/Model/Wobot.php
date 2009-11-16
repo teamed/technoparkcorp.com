@@ -50,7 +50,13 @@ abstract class Model_Wobot implements Model_Wobot_Interface {
         // list all wobot names
         foreach (self::_getAllNames() as $name) {
             $wobotClass = __CLASS__ . '_' . $name;
-            eval("\$names = $wobotClass::getAllNames()");
+            
+            if (!method_exists($wobotClass, 'getAllNames')) {
+                FaZend_Exception::raise('Model_Wobot_InvalidChild',
+                    "Class '$wobotClass' has to implement 'getAllNames'");
+            }
+            
+            eval("\$names = $wobotClass::getAllNames();");
             foreach ($names as $wobotName)
                 self::$_wobots[$wobotName] = self::factory($wobotName);
         }
@@ -141,7 +147,7 @@ abstract class Model_Wobot implements Model_Wobot_Interface {
      * @return string The decision just made
      */
     public function execute() {
-        return Model_Decision::nextForWobot($this)->execute();
+        return $this->decisionFactory(Model_Decision::nextForWobot($this))->make();
     }
 
     /**
