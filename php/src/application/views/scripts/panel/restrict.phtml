@@ -1,4 +1,4 @@
-<h1>Access restricted</h1>
+<h1><?=_('Access restricted')?></h1>
 
 <? if (Model_Pages::getInstance()->getAcl()->hasRole(Model_User::me()->email)): ?>
 
@@ -6,12 +6,11 @@
         <? if ($this->message): ?>
             <?=$this->message?>
         <? else: ?>
-            Unknown reason of access restriction, refer to admin
+            <?=_('Unknown reason of access restriction, refer to admin')?>
         <? endif; ?>
     </p>
 
-    <p>This particular document is not available for you. Here is
-        a list of documents that you can access:</p>
+    <p><?=_('This particular document is not available for you. Here is a list of documents that you can access:')?></p>
 
     <p><?=$this->navigation(Model_Pages::getInstance())
         ->menu()

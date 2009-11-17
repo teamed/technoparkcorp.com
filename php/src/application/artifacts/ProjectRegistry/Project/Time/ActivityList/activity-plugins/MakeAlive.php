@@ -42,8 +42,7 @@ class Activity_Plugin_MakeAlive extends Activity_Plugin_Abstract {
         $this->_issue->changelog
             ->set('type', Model_Issue_Changelog_Field_Type::TASK)
             ->set('summary', $this->_activity->sow)
-            ->set('description', $this->_activity->description . "\n\n" . 
-                ticket(''));
+            ->set('description', $this->_activity->description . "\n\n");
     }
                             
 }

@@ -39,7 +39,6 @@ class Model_Shortcut extends FaZend_Db_Table_ActiveRow_shortcut {
      * @return Model_Shortcut
      **/
     public static function create($document, array $emails, array $params, $clean) {
-        
         validate()
             ->type($document, 'string')
             ->type($clean, 'boolean');
@@ -61,7 +60,16 @@ class Model_Shortcut extends FaZend_Db_Table_ActiveRow_shortcut {
         $shortcut->save();
         
         return $shortcut;
-        
+    }
+    
+    /**
+     * Get URL of the shortcut
+     *
+     * @return string
+     **/
+    public function getUrl() {
+        return Zend_Registry::getInstance()->view
+            ->serverUrl(array('doc'=>$this->getHash()), 'shared', true);
     }
     
     /**

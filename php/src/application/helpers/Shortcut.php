@@ -67,7 +67,7 @@ class Helper_Shortcut extends FaZend_View_Helper {
         try {
             return $this->_render();
         } catch (Exception $e) {
-            return $e->getMessage();
+            return get_class($e) . ' in ' . get_class($this) . ': ' . $e->getMessage();
         }
     }
     
@@ -77,11 +77,8 @@ class Helper_Shortcut extends FaZend_View_Helper {
      * @return string
      **/
     public function _render() {
-        
-        $shortcut = Model_Shortcut::create($document, $this->_emails, $this->_params, $this->_uniqueAccess);
-        
-        return $this->getView()->longUrl(array('doc'=>$shortcut->getHash()), 'shared', true);
-
+        return Model_Shortcut::create($document, $this->_emails, $this->_params, $this->_uniqueAccess)
+            ->getUrl();
     }
     
     /**

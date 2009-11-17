@@ -1,0 +1,71 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: thePanel2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-11-17 18:46+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Yegor Bugayenko <egor@technoparkcorp.com>\n"
+"Language-Team: tpc <team@tpc2.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Russian\n"
+"X-Poedit-Country: RUSSIAN FEDERATION\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Basepath: /code/panel2/php/src/application\n"
+"X-Poedit-KeywordsList: _\n"
+"X-Poedit-SearchPath-0: /code/panel2/php/src/application\n"
+
+#: /code/panel2/php/src/application/artifacts/ProjectRegistry/Project/Time/ActivityList/activity-plugins/RequestEstimate.php:45
+msgid "Could you please estimate this activity?"
+msgstr ""
+
+#: /code/panel2/php/src/application/controllers/PanelController.php:86
+#, php-format
+msgid "Sorry, the document \"%s\" is not available for you"
+msgstr "К сожалению, документ \"%s\" не доступен для Вас"
+
+#: /code/panel2/php/src/application/controllers/PanelController.php:92
+#, php-format
+msgid "Sorry, the document \"%s\" is not found"
+msgstr "К сожалению, документ \"%s\" не найден"
+
+#: /code/panel2/php/src/application/controllers/PanelController.php:151
+msgid "The link you are using is not valid any more"
+msgstr "Ссылка, которую Вы используете, более не работоспособна"
+
+#: /code/panel2/php/src/application/controllers/PanelController.php:156
+#, php-format
+msgid "Sorry, this document \"%s\" is not shared with you, but only with %s"
+msgstr "К сожалению, документ \"%s\" не доступем Вам, а доступен только %s"
+
+#: /code/panel2/php/src/application/pages/projects.phtml:1
+msgid "Full list of projects:"
+msgstr "Полный список проектов:"
+
+#: /code/panel2/php/src/application/pages/projects/_any.phtml:1
+#, php-format
+msgid "Project \"%s\""
+msgstr "Проект \"%s\""
+
+#: /code/panel2/php/src/application/views/scripts/panel/header.phtml:19
+#, php-format
+msgid "go to %s"
+msgstr "перейти к %s"
+
+#: /code/panel2/php/src/application/views/scripts/panel/header.phtml:22
+msgid "click to change"
+msgstr "изменить"
+
+#: /code/panel2/php/src/application/views/scripts/panel/restrict.phtml:1
+msgid "Access restricted"
+msgstr "Доступ закрыт"
+
+#: /code/panel2/php/src/application/views/scripts/panel/restrict.phtml:9
+msgid "Unknown reason of access restriction, refer to admin"
+msgstr "Неизвестная причина отказа в доступе, обратитесь к администратору сайта"
+
+#: /code/panel2/php/src/application/views/scripts/panel/restrict.phtml:13
+msgid "This particular document is not available for you. Here is a list of documents that you can access:"
+msgstr "Данный документ Вам недоступен, вот полный перечень документов, с которыми Вы можете работать:"
+

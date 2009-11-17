@@ -79,7 +79,7 @@ class theActivityCriteria extends ArrayIterator {
         
         foreach ($metrics as $var=>$metric)
             $html .= "<h2>Variable <span class='formula'><b>$var</b> = {$metric->value}</span></h2>" . 
-                ticket('PM/integration/metrics/' . $metric->name, array('metric'=>$metric));
+                '<p>' . $metric->name . '</p>';
         
         return $html;
     }

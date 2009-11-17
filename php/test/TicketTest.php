@@ -29,9 +29,8 @@ require_once 'AbstractProjectTest.php';
 class TicketTest extends AbstractProjectTest {
 
     public function testSampleMechanismWorks() {
-        $str = ticket('PM/time/activity/estimate/all', array(
-            'activity'=>$this->project->activityList->activities->findByName('requirements/actors/total.a0')));
-        logg($str);
+        $this->assertEquals('is test', _('is %s', 'test'), "Simple string failed");
+        $this->assertEquals('test15', _(array('test%d', 'test%d'), 15));
     }
 
 }

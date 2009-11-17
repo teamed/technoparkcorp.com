@@ -42,10 +42,7 @@ class Activity_Plugin_RequestEstimate extends Activity_Plugin_Abstract {
             return;
         
         // ask performer to estimate it - first ask (and never ask again)
-        if ($this->_issue->askOnce(
-            'requestEstimate', 
-            ticket('PM/time/activity/estimate/all', array('activity'=>$this->_activity)), 
-            null))
+        if ($this->_issue->askOnce('requestEstimate', _('Could you please estimate this activity?'), null))
             return;
     }
                             

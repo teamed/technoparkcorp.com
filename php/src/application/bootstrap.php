@@ -67,7 +67,7 @@ class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap {
         $translate = new Zend_Translate(
             'gettext', 
             realpath(APPLICATION_PATH . '/../languages'), 
-            null,
+            'ru',
             array(
                 'ignore' => '.',
                 'scan' => Zend_Translate::LOCALE_FILENAME,
@@ -112,10 +112,18 @@ function logg($message) {
  * @param string Translate this string and return it's translated value
  * @return string
  */
-function _($name) {
-    $str = Zend_Registry::get('Zend_Translate')->_($name);
+function _($str) {
+    // if array specified - we get a random line from it
+    if (is_array($str))
+        $str = $str[array_rand($str)];
+    
+    // translate this string
+    $str = Zend_Registry::get('Zend_Translate')->_($str);
+    
+    // pass it to sprintf
     if (func_num_args() > 1)
-        $str = call_user_func_array('sprintf', func_get_args());
+        $str = call_user_func_array('sprintf', array_merge(array($str), array_slice(func_get_args(), 1)));
+        
     return $str;
 }
 
