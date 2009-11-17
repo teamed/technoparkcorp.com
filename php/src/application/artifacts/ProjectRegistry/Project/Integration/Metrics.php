@@ -162,7 +162,8 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive {
         }
 
         if (!isset($metric))
-            FaZend_Exception::raise('MetricNotFound', "Metric '{$name}' not found");
+            FaZend_Exception::raise('MetricNotFound', 
+                "Metric '{$name}' not found (" . count($this) . ' total in collection)');
 
         $pattern = implode(self::SEPARATOR, array_slice($exp, $i));
         if (!$metric->isMatched($pattern))
