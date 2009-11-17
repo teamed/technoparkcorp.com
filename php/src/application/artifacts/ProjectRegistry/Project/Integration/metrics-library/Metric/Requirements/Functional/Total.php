@@ -63,7 +63,6 @@ class Metric_Requirements_Functional_Total extends Metric_Abstract {
      * @return void
      **/
     public function reload() {
-        
         if ($this->_getOption('level') !== null) {
             $max = max(array_keys($this->_pricePerRequirement));
             validate()
@@ -82,7 +81,6 @@ class Metric_Requirements_Functional_Total extends Metric_Abstract {
         // make sure all levels are loaded
         foreach (array_keys($this->_levelCode) as $level)
             $this->_pingPattern('level/' . $level);
-            
     }
         
     /**
