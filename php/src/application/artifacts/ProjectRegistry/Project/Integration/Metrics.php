@@ -54,7 +54,6 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive {
         $added = array();
         $new = 0;
         foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path)) as $file) {
-            
             // skip abstract classes
             if ($file->getFileName() == 'Abstract.php')
                 continue;
@@ -82,7 +81,9 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive {
     /**
      * Get metric even if it doesn't exist in array
      *
+     * @param string Full name of metric, e.g. 'requirements/useCases/total'
      * @return Metric_Abstract
+     * @throws MetricNotFound
      **/
     public function offsetGet($name) {
         $metrics = $this->getArrayCopy();
@@ -91,8 +92,8 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive {
         }
 
         // top level metric can't be used in patterning
-        if (!strpos($name, self::SEPARATOR))
-            FaZend_Exception::raise('MetricNotFound', "Metric '$name' not found");
+        if (strpos($name, self::SEPARATOR) === false)
+            FaZend_Exception::raise('MetricNotFound', "Metric '{$name}' not found in collection");
         
         return $this->_findMetric($name);
     }
@@ -144,6 +145,10 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive {
     /**
      * Find metric and create it, if possible
      *
+     * Method is called from offsetGet() when it's not possible to find a metric
+     * in existing array. We have to create a metric dynamically. If it's possible.
+     *
+     * @see offsetGet()
      * @return Metric_Abstract
      * @throws MetricNotFound
      **/
@@ -158,12 +163,11 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive {
                 $metric = $this[$parent];
                 break;
             }
-            
         }
 
         if (!isset($metric))
             FaZend_Exception::raise('MetricNotFound', 
-                "Metric '{$name}' not found (" . count($this) . ' total in collection)');
+                "Metric '{$name}' not found for parent '{$parent}' (" . count($this) . ' total in collection)');
 
         $pattern = implode(self::SEPARATOR, array_slice($exp, $i));
         if (!$metric->isMatched($pattern))
