@@ -45,11 +45,13 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive {
         // here we have all project metrics
         $path = dirname(__FILE__) . '/metrics-library';        
 
-        bug(1);
         // enable this directory for class loading
         $autoloader = Zend_Loader_Autoloader::getInstance();
         $autoloader->registerNamespace('Metric_');
         set_include_path(get_include_path() . PATH_SEPARATOR . $path);
+
+        // get collection into array before manipulations with actual collection
+        $exists = $this->getArrayCopy();
 
         $regexp = '/^' . preg_quote($path, '/') . '((?:\/\w+)*?)\/(\w+)\.php$/';        
         $added = array();
@@ -68,14 +70,13 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive {
             $added[] = $metricName;
             
             // don't add it again, if it exists
-            if (isset($this[$metricName]))
+            if (isset($exists[$metricName]))
                 continue;
 
             $this->_attachMetric($metricName, $className);
             $new++;
             // logg('Reloaded ' . $metricName);
         }
-        bug(array_keys($this->getArrayCopy()));
         
         // logg('Reloaded ' . count($this) . ' metrics in ' . $this->ps()->parent->name);
     }
@@ -157,11 +158,14 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive {
     protected function _findMetric($name) {
         $exp = explode(self::SEPARATOR, $name);
         
+        // get collection into array
+        $exists = $this->getArrayCopy();
+        
         // go from end to start
         for ($i=count($exp)-1; $i>0; $i--) {
             $parent = implode(self::SEPARATOR, array_slice($exp, 0, $i));
             
-            if (isset($this[$parent])) {
+            if (isset($exists[$parent])) {
                 $metric = $this[$parent];
                 break;
             }
@@ -169,10 +173,9 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive {
 
         // if the requirement is not found up to the top-level element
         if (!isset($metric)) {
-            $arr = $this->getArrayCopy();
             FaZend_Exception::raise('MetricNotFound', 
                 "Metric '{$name}' not found for parent '{$parent}', " . count($this) . ' total in collection: ' . 
-                    implode(', ', array_keys($arr)));
+                    implode(', ', array_keys($exists)));
         }
 
         $pattern = implode(self::SEPARATOR, array_slice($exp, $i));
