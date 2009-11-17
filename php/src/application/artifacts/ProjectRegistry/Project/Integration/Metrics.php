@@ -45,6 +45,7 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive {
         // here we have all project metrics
         $path = dirname(__FILE__) . '/metrics-library';        
 
+        bug(1);
         // enable this directory for class loading
         $autoloader = Zend_Loader_Autoloader::getInstance();
         $autoloader->registerNamespace('Metric_');
