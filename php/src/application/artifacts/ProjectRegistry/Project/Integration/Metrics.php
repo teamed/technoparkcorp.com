@@ -165,9 +165,14 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive {
             }
         }
 
-        if (!isset($metric))
+        // if the requirement is not found up to the top-level element
+        if (!isset($metric)) {
+            $arr = $this->getArrayCopy();
+            
             FaZend_Exception::raise('MetricNotFound', 
-                "Metric '{$name}' not found for parent '{$parent}' (" . count($this) . ' total in collection)');
+                "Metric '{$name}' not found for parent '{$parent}' (" . count($this) . ' total in collection)' . 
+                    implode(', ', array_keys($arr)));
+        }
 
         $pattern = implode(self::SEPARATOR, array_slice($exp, $i));
         if (!$metric->isMatched($pattern))
