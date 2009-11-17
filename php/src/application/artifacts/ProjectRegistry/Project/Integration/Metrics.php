@@ -33,7 +33,7 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive {
      * @return boolean
      **/
     public function isLoaded() {
-        return (bool)count($this);
+        return count($this) > 1;
     }
     
     /**
