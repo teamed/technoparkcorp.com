@@ -41,6 +41,13 @@ class Model_Pages extends Zend_Navigation {
     protected static $_instance;
 
     /**
+     * Location of all pages
+     *
+     * @var string
+     */
+    protected $_pagesPath;
+
+    /**
      * The view to use when parsing PTHML special files
      *
      * @var Zend_View
@@ -60,8 +67,10 @@ class Model_Pages extends Zend_Navigation {
      * @return Model_Pages
      */
     public static function getInstance() {
-        if (!isset(self::$_instance))
+        if (!isset(self::$_instance)) {
             self::$_instance = new Model_Pages();
+            self::$_instance->_pagesPath = APPLICATION_PATH . '/pages';
+        }
         return self::$_instance;
     }
 
@@ -116,7 +125,7 @@ class Model_Pages extends Zend_Navigation {
      */
     public function resolvePath($doc, array &$scripts = array()) {
         // all pages are located in this directory and its sub-dirs
-        $path = APPLICATION_PATH . '/pages';
+        $path = $this->_pagesPath;
 
         // go through all segments of the document name
         foreach (explode('/', $doc . '.phtml') as $segment) {
@@ -302,7 +311,7 @@ class Model_Pages extends Zend_Navigation {
             $this->_acl->deny();
         }
 
-        $fullPath = APPLICATION_PATH . '/pages/' . $path;
+        $fullPath = $this->_pagesPath . '/' . $path;
 
         if (file_exists($fullPath . '/_folders.phtml')) {
             $files = explode("\n", $this->_parse($fullPath . '/_folders.phtml'));
@@ -391,23 +400,26 @@ class Model_Pages extends Zend_Navigation {
     }
 
     /**
-     * Parse file as view script
+     * Parse PHTML file as view script
      *
-     * @param string Absolute file name
-     * @return string
+     * @param string Absolute file name (PHTML file)
+     * @return string Parsed content, processed through VIEW
      */
     protected function _parse($file) {
         // if there is not VIEW - don't parse the file
         if (is_null($this->_view)) {
+            // clone view from the system-wide object
             $this->_view = clone Zend_Registry::getInstance()->view;
+            
             // root of the entire artifact tree
             $this->_view->root = Model_Artifact::root();
+            
+            // add location of pages to the script path
+            $this->_view->addScriptPath($this->_pagesPath);
         }
 
         // parse this particular file
-        $this->_view->setScriptPath(dirname($file));
-        $parsed = $this->_view->render(basename($file));
-        return $parsed;
+        return $this->_view->render(substr($file, strlen($this->_pagesPath)));
     }
 
     /**

@@ -110,9 +110,10 @@ class Model_Artifact extends tempArtifact
      * @return $this
      */
     protected function _attach($name, Model_Artifact_Interface $artifact, $property = null) {
-        if (isset($this->$name))
+        if (isset($this->$name)) {
             FaZend_Exception::raise('Model_Artifact_PropertyAlreadyExists',
-                "Can't attach '{$name}' again");
+                "Can't attach '{$name}' again to " . get_class($this));
+        }
         $this->$name = $artifact;
         $this->_initialize($artifact, $property);
         return $this;
@@ -127,9 +128,10 @@ class Model_Artifact extends tempArtifact
      * @return $this
      */
     protected function _attachItem($key, Model_Artifact_Interface $artifact, $property = null) {
-        if (isset($this[$key]))
+        if (isset($this[$key])) {
             FaZend_Exception::raise('Model_Artifact_PropertyAlreadyExists',
-                "Can't attach item '{$key}' again");
+                "Can't attach item '{$key}' again to " . get_class($this));
+        }
 
         if ($key === false)
             $this[] = $artifact;
@@ -156,7 +158,8 @@ class Model_Artifact extends tempArtifact
             else
                 $artifact->$property = $this;
         } elseif (!is_null($property)) {
-            FaZend_Exception::raise('InvalidChildArtifact', 'Artifact ' . get_class($artifact) . ' is not stateless');
+            FaZend_Exception::raise('InvalidChildArtifact', 
+                'Artifact ' . get_class($artifact) . ' is not stateless');
         }
             
         // reload it if it's empty now and requires loading
