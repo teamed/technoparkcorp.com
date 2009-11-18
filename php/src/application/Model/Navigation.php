@@ -19,7 +19,7 @@
  */
 
 /**
- * Navigation map
+ * Navigation map for static part of the site
  *
  * @package Controllers
  */

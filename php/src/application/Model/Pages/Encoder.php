@@ -35,10 +35,7 @@ class Model_Pages_Encoder {
      * @return string
      */
     public static function encode($text) {
-
-        $text = wordwrap(trim(base64_encode($text . self::SALT), '='), 8, '-', true);
-        return $text;
-
+        return wordwrap(trim(base64_encode($text . self::SALT), '='), 8, '-', true);
     }
 
     /**
@@ -48,7 +45,6 @@ class Model_Pages_Encoder {
      * @return string
      */
     public static function decode($text) {
-
         $text = base64_decode(str_replace('-', '', $text));
         
         // security check
@@ -56,7 +52,6 @@ class Model_Pages_Encoder {
             FaZend_Exception::raise('Model_Pages_Encoder_InvalidSalt', "Wrong security salt in '{$text}'");
             
         return substr($text, 0, -strlen(self::SALT));
-
     }
 
 }
