@@ -49,7 +49,6 @@ class Model_Navigation {
      * @return void
      */
     public static function populateNavigation(&$container, $activePage) {
-
         if (self::_cache()->test('map')) {
         
             // we already have this set of pages in cache
@@ -72,7 +71,6 @@ class Model_Navigation {
 
         // mark active page as "active"
         self::_markActivePage($container, $activePage);
-
     }
 
     /**
@@ -86,7 +84,6 @@ class Model_Navigation {
      * @return void
      */
     protected static function _addMenuPages($container, $path = CONTENT_PATH, $prefix = '') {
-
         // get full list of XML files in content directory
         foreach (glob($path . '/*.xml') as $file) {
 
@@ -125,7 +122,6 @@ class Model_Navigation {
             if (is_dir($path . '/' . $label))
                 self::_addMenuPages($page, $path . '/' . $label, $fullLabel);
         }
-
     }
 
     /**
@@ -136,7 +132,6 @@ class Model_Navigation {
      * @return void
      */
     protected static function _markActivePage($container, $activePage) {
-
         // page label "about/facts" will be converted to ("about", "facts")
         $sections = explode('/', $activePage);
 
@@ -148,7 +143,6 @@ class Model_Navigation {
             // set it as active
             $page->active = true;
         }
-
     }
 
     /**
@@ -157,7 +151,6 @@ class Model_Navigation {
      * @return Zend_Cache
      */
     protected static function _cache() {
-
         if (self::$_cache != false)
             return self::$_cache;
 
@@ -178,7 +171,6 @@ class Model_Navigation {
             'file_name_prefix' => 'panel2navigation'));
 
         return self::$_cache;
-
     }
 
 }

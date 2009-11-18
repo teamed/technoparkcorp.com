@@ -24,6 +24,23 @@
  * @package Model
  */
 class Model_Client_Rpc {
+    
+    /**
+     * XmlRpcClient class name, dependency injected
+     *
+     * @var string
+     */
+    protected static $_xmlRpcClientClass = 'Zend_XmlRpc_Client';
+    
+    /**
+     * Set the name of class for XmlRpcClient
+     *
+     * @param string Class name
+     * @return void
+     **/
+    public static function setXmlRpcClientClass($class) {
+        self::$_xmlRpcClientClass = $class;
+    }
 
     /**
 	 * Create new proxy
@@ -43,7 +60,7 @@ class Model_Client_Rpc {
         $httpClient->setAuth($login, $password);
 
         // make connection
-        $client = FaZend_Flyweight::factory('Zend_XmlRpc_Client', $uri, $httpClient);
+        $client = FaZend_Flyweight::factory(self::$_xmlRpcClientClass, $uri, $httpClient);
 
         // get this particular proxy locator
         if ($proxy)

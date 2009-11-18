@@ -89,6 +89,7 @@ class Model_Wiki_Trac extends Model_Wiki_Abstract {
     /**
      * Parse one page and find all entities in it
      *
+     * @param string Name of the page
      * @return void
      **/
     protected function _parsePage($page) {
@@ -112,8 +113,8 @@ class Model_Wiki_Trac extends Model_Wiki_Abstract {
 
         $html = $filterStripTags->filter($filterHtml->filter($this->getXmlRpcWikiProxy()->getPageHTML($page)));
             
-        preg_match_all('/<p><a\shref=\"' . preg_quote($this->_getWikiUrl(), '/') . 
-            '([\w\d\.\-]+)\">([\w\d\.]+)\??<\/a>(?:\[([\w\,]+)\])?:\s?(.*?)<\/p>/', $html, $matches);
+        preg_match_all('/<p><a\s+href=\"' . preg_quote($this->_getWikiUrl(), '/') . 
+            '([\w\d\.\-]+)\">([\w\d\.]+)\??<\/a>\s*(?:\[([\w\,]+)\])?:\s?(.*?)<\/p>/', $html, $matches);
         
         foreach ($matches[2] as $id=>$name) {
             // it's not an entity

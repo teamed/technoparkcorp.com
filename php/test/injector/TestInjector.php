@@ -65,7 +65,7 @@ class TestInjector {
         // in order to avoid conflicts with real documents in
         // real environment (fazend for example)
         require_once 'Mocks/Model/Project.php';
-        Model_User::logIn(mock_Project::PM);
+        Model_User::logIn(mock_Model_Project::PM);
     }
 
     /**
@@ -74,11 +74,12 @@ class TestInjector {
      * @return void
      **/
     protected function _injectAccessRights() {
+        require_once 'Mocks/Model/Project.php';
         $acl = Model_Pages::getInstance()->getAcl();
-        $acl->addRole(mock_Project::PM);
+        $acl->addRole(mock_Model_Project::PM);
         
         // give access to everything!
-        $acl->allow(mock_Project::PM);
+        $acl->allow(mock_Model_Project::PM);
     }
 
     /**
@@ -98,7 +99,7 @@ class TestInjector {
      **/
     protected function _injectSuppliers() {
         $registry = Model_Artifact::root()->supplierRegistry;
-        $registry->createSupplier(mock_Project::PM, 'Mr John Tester', 'US')
+        $registry->createSupplier(mock_Model_Project::PM, 'Mr John Tester', 'US')
             ->createSkill('PHP', 75)
             ->createSkill('jQuery', 25)
             ->createRole('Programmer', '13EUR');

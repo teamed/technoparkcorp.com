@@ -66,7 +66,6 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
      * @return boolean
      **/
     public function isLoaded() {
-        return true;
         return (bool)count($this);
     }
     

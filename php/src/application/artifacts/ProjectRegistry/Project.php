@@ -46,11 +46,12 @@ class theProject extends Model_Artifact implements Model_Artifact_Passive {
             ->_attach('milestones', new theMilestones())
             ->_attach('objectives', new theObjectives())
             ->_attach('wbs', new theWbs())
-            ->_attach('deliverables', new theDeliverables())
             ->_attach('traceability', new theTraceability())
+            ->_attach('deliverables', new theDeliverables())
             ->_attach('payments', new thePayments(), 'project')
             ->_attach('activityList', new theActivityList())
-            ->_attach('schedule', new theSchedule());
+            ->_attach('schedule', new theSchedule())
+            ;
     }
     
     /**

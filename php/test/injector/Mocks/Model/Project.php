@@ -23,7 +23,7 @@
  *
  * @package Model
  */
-class mock_Project extends Model_Project {
+class mock_Model_Project extends Model_Project {
 
     const NAME = 'test';
     const OWNER = 'yegor256@yahoo.com';
@@ -36,31 +36,41 @@ class mock_Project extends Model_Project {
      *
      * @var Model_Project_Test
      */
-    protected static $_instanceTest;
+    protected static $_instance;
 
     /**
-     * Create and return a test project instance
+     * Create test project class
      *
-     * @return Model_Project_Test
+     * @return void
      **/
-    public static function make() {
-        if (isset(self::$_instanceTest))
-            return self::$_instanceTest;
-        
+    public function __construct() {
         $pwd = md5(rand());
         
         $authz = '[' . self::NAME . ":/]\n" . self::PM . " = rw\n";
         foreach (array('SystemAnalyst', 'Architect', 'CCB') as $role)
             $authz .= '[' . self::NAME . ':' . Model_Project::ROLE_AUTHZ_PREFIX . "$role]\n" . self::PM . " = rw\n";
         
-        return self::$_instanceTest = new self(
-            1, // id
+        parent::__construct(1, // id
             self::NAME, // project name
             new Shared_User(1, self::OWNER, self::OWNER_PWD), // project owner
             $authz, // authz file
                 self::PM . ' = ' . self::PM_PWD . "\n" . 
                 self::OWNER . '=' . self::OWNER_PWD . "\n" // passwd file
-            );
+            );     
+        
+        require_once 'Mocks/Model/Client/Rpc.php';
+        Model_Client_Rpc::setXmlRpcClientClass('mock_Model_Client_Rpc');   
+    }
+
+    /**
+     * Create and return a test project instance
+     *
+     * @return mock_Project
+     **/
+    public static function getInstance() {
+        if (!isset(self::$_instance))
+            self::$_instance = new self();
+        return self::$_instance;
     }
 
 }

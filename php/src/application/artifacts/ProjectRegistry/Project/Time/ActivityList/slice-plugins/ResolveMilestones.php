@@ -54,9 +54,10 @@ class Slice_Plugin_ResolveMilestones extends Slice_Plugin_Abstract {
          * </code>
          */
         $metrics = $this->_getKidMetrics($milestone);
-        if (!count($metrics))
+        if (!count($metrics)) {
             FaZend_Exception::raise('ResolveMilestoneCantResolve',
                 "Milestone '{$milestone}' can't be resolved, because no metrics impact it!");
+        }
         
         /**
          * We build a matrix where vertically goes metrics/work packages
@@ -85,9 +86,10 @@ class Slice_Plugin_ResolveMilestones extends Slice_Plugin_Abstract {
          * option to make milestone criteria TRUE with the values
          * from the matrix.
          */
-        if (!$this->_isMatrixPositive($matrix, $milestone))
+        if (!$this->_isMatrixPositive($matrix, $milestone)) {
             FaZend_Exception::raise('ResolveMilestoneCantResolve',
                 "Milestone '{$milestone}' can't be resolved, it's never positive!");
+        }
                 
         /**
          * Find the most close "vertical" combination where milestone is positive

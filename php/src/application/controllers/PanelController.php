@@ -40,7 +40,6 @@ class PanelController extends FaZend_Controller_Action {
     public function preDispatch() {
         // if the user is not logged in - try to log him/her in
         if (!Model_User::isLoggedIn()) {
-            bug(1);
             // show as much information as possible
             $adapter = new Model_Auth_Adapter(array(
                 'accept_schemes' => 'basic',

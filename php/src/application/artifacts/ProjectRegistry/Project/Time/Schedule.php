@@ -41,8 +41,8 @@ class theSchedule extends Model_Artifact_Bag implements Model_Artifact_Passive {
      */
     public function reload() {
         $this->_attach('activities', clone $this->ps()->parent->activityList->activities);
-        
-        $this->activities->getSlice()->resolveMilestones();
+        // todo: implement it later
+        // $this->activities->getSlice()->resolveMilestones();
     }
     
     /**

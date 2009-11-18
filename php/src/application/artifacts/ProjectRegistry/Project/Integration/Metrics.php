@@ -89,10 +89,8 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive {
      * @throws MetricNotFound
      **/
     public function offsetGet($name) {
-        $metrics = $this->getArrayCopy();
-        if (isset($metrics[$name])) {
-            return $metrics[$name];
-        }
+        if (parent::offsetExists($name))
+            return parent::offsetGet($name);
 
         // top level metric can't be used in patterning
         if (strpos($name, self::SEPARATOR) === false)
@@ -158,30 +156,29 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive {
     protected function _findMetric($name) {
         $exp = explode(self::SEPARATOR, $name);
         
-        // get collection into array
-        $exists = $this->getArrayCopy();
-        
         // go from end to start
         for ($i=count($exp)-1; $i>0; $i--) {
             $parent = implode(self::SEPARATOR, array_slice($exp, 0, $i));
             
-            if (isset($exists[$parent])) {
-                $metric = $exists[$parent];
+            if (parent::offsetExists($parent)) {
+                $metric = $this[$parent];
                 break;
             }
         }
 
         // if the requirement is not found up to the top-level element
         if (!isset($metric)) {
+            $exists = $this->getArrayCopy();
             FaZend_Exception::raise('MetricNotFound', 
-                "Metric '{$name}' not found for parent '{$parent}', " . count($this) . ' total in collection: ' . 
+                "Metric '{$name}' not found for parent '{$parent}', " . count($exists) . ' total in collection: ' . 
                     implode(', ', array_keys($exists)));
         }
 
         $pattern = implode(self::SEPARATOR, array_slice($exp, $i));
-        if (!$metric->isMatched($pattern))
+        if (!$metric->isMatched($pattern)) {
             FaZend_Exception::raise('MetricDoesntMatch',
-                "Metric '{$name}' doesn't match you pattern: '{$pattern}'");
+                "Metric '{$name}' doesn't match pattern '{$pattern}' in metric '{$metric->name}'");
+        }
             
         return $this->_attachMetric($name, $metric->cloneByPattern($pattern));
     }

@@ -19,26 +19,44 @@
  */
 
 /**
- * One project in the project registry
+ * One mock for all client calls (to Trac, Wiki and Pan)
  *
- * @package Artifacts
+ * @package injector
  */
-class mock_theProject extends theProject {
+class mock_Model_Client_Rpc {
 
     /**
-     * Name
+     * Get proxy
      *
-     * @var string
-     */
-    public $name = mock_Model_Project::NAME;
+     * @return object
+     **/
+    public function getProxy($name) {
+        return $this;
+    }
 
     /**
-     * Create test project on fly
-     * 
-     * @return Model_Project
-     */
-    public function fzProject() {
-        return mock_Model_Project::getInstance();
+     * Get full list of wiki pages
+     *
+     * @return array
+     **/
+    public function getAllPages() {
+        $pages = array();
+        foreach (scandir(dirname(__FILE__) . '/wiki') as $file) {
+            if ($file[0] == '.')
+                continue;
+            $pages[] = pathinfo($file, PATHINFO_FILENAME);
+        }
+        return $pages;
     }
-    
+
+    /**
+     * Get wiki page in HTML
+     *
+     * @param sting Name of the page
+     * @return string
+     **/
+    public function getPageHTML($name) {
+        return file_get_contents(dirname(__FILE__) . '/wiki/' . $name . '.html');
+    }
+
 }
