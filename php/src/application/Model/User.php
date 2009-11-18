@@ -26,18 +26,11 @@
 class Model_User extends FaZend_StdObject {
 
     /**
-     * Current user email
+     * Current user
      *
      * @var Model_User
      */
     protected static $_currentUser = null;
-
-    /**
-     * Session var cache
-     *
-     * @var Zend_Session_Namespace
-     */
-    protected static $_session = null;
 
     /**
      * The email of the user
@@ -71,10 +64,11 @@ class Model_User extends FaZend_StdObject {
      * @return Model_User
      * @throw FaZend_User_NotLoggedIn
      */
-    public static function getCurrentUser () {
-        if (!isset(self::$_currentUser))
-            FaZend_Exception::raise('FaZend_User_NotLoggedIn', 'user is not logged in');
-
+    public static function getCurrentUser() {
+        if (!isset(self::$_currentUser)) {
+            FaZend_Exception::raise('FaZend_User_NotLoggedIn', 
+                'User is not logged in');
+        }
         return self::$_currentUser;    
     }
 
@@ -86,7 +80,6 @@ class Model_User extends FaZend_StdObject {
      */
     public static function logIn($email) {
         self::$_currentUser = new Model_User($email);
-        self::_session()->user = $email;
     }
 
     /**
@@ -95,18 +88,7 @@ class Model_User extends FaZend_StdObject {
      * @return boolean
      */
     public static function isLoggedIn() {
-        if (isset(self::$_currentUser) && (bool)self::$_currentUser)
-            return true;
-
-        if (self::_session()->user) {
-            try {
-                Model_User::setCurrentUserByEmail(self::_session()->user);
-                return true;
-            } catch (Shared_User_NotFoundException $e) {
-                return false;
-            }
-        }
-
+        return isset(self::$_currentUser) && (bool)self::$_currentUser;
     }
 
     /**
@@ -114,23 +96,8 @@ class Model_User extends FaZend_StdObject {
      *
      * @return string
      **/
-    public function _getEmail() {
+    protected function _getEmail() {
         return $this->_email;
     }
 
-    /**
-     * Get session var
-     *
-     * @return Zend_Session_Namespace
-     */
-    protected static function _session() {
-        if (!isset(self::$_session)) {
-            if (defined('CLI_ENVIRONMENT'))
-                self::$_session = new FaZend_StdObject();
-            else
-                self::$_session = new Zend_Session_Namespace('panel2');
-        }
-        return self::$_session;
-    }
-    
 }

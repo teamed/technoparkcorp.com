@@ -26,27 +26,6 @@
 class theSupplierRegistry extends Model_Artifact {
 
     /**
-     * TEMPORARY, delete it when using FaZend_POS
-     *
-     * @return void
-     **/
-    protected function _init() {
-        if (APPLICATION_ENV !== 'production') {
-            $this->createSupplier(Model_Project_Test::PM, 'Mr John Tester', 'US')
-                ->createSkill('PHP', 75)
-                ->createSkill('jQuery', 25)
-                ->createRole('Programmer', '13EUR');
-
-            $this->createSupplier('test@example.com', 'Mr Alex Peterson', 'UA')
-                ->createSkill('PHP', 75)
-                ->createSkill('XML', 15)
-                ->createSkill('ZendFramework', 85)
-                ->createSkill('jQuery', 25)
-                ->createRole('Programmer', '13EUR');
-        }
-    }
-    
-    /**
      * Create new supplier
      *
      * @param string Email of supplier to add

@@ -457,7 +457,7 @@ class Model_Pages extends Zend_Navigation {
                 continue;
 
             // new page section, e.g. [PMO]
-            if (preg_match('/^\[(.*?)\]$/', $line, $matches)) {
+            if (preg_match('/^\[([\w\d]+)\]$/', $line, $matches)) {
                 $current = $matches[1];
                 if (!$pages->findBy('title', $prefix . $current)) {
                     FaZend_Exception::raise('Model_Pages_IncorrectFileFormat',
@@ -469,7 +469,7 @@ class Model_Pages extends Zend_Navigation {
 
             // if access rights are specified - like in proper format
             if (preg_match('/^(.*?)\s?\=\s?(r|rw|)$/', $line, $matches)) {
-                if (!$current)
+                if ($current === false)
                     FaZend_Exception::raise('Model_Pages_UnattachedLine',
                         "Line #{$id} in file '{$accessFile}' is not related to any page: '{$line}'");
 

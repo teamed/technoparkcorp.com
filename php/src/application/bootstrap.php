@@ -81,6 +81,21 @@ class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap {
         }
     }
     
+    /**
+     * Inject testing elements into the application
+     *
+     * Will be executed ONLY if it is not a production server
+     *
+     * @return void
+     */
+    protected function _initTestInjection() {
+        if (APPLICATION_ENV == 'production')
+            return;
+        require_once APPLICATION_PATH . '/../../test/injector/TestInjector.php';
+        $injector = new TestInjector();
+        $injector->inject();
+    }
+
 }
 
 // total amount of seconds in day

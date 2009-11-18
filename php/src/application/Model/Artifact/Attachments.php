@@ -26,12 +26,31 @@
 class Model_Artifact_Attachments extends ArrayIterator implements Model_Artifact_Stateless {
 
     /**
+     * Location of attachments
+     *
+     * @var string
+     */
+    protected static $_location = null;
+
+    /**
      * Get location of all attachments
      *
      * @return string Absolute directory name
      **/
     public static function getLocation() {
-        return APPLICATION_PATH . '/../../attachments';
+        if (self::$_location === null)
+            self::$_location = APPLICATION_PATH . '/../../attachments';
+        return self::$_location;
+    }
+    
+    /**
+     * Set location of all attachments
+     *
+     * @param string New location
+     * @return string Absolute directory name
+     **/
+    public static function setLocation($location) {
+        self::$_location = $location;
     }
     
 }

@@ -33,19 +33,14 @@ class theProjectRegistry extends Model_Artifact implements Model_Artifact_Passiv
      */
     public function reload() {
         foreach (Model_Project::retrieveAll() as $project) {
+            // if we DON'T manage this project - skip it
             if (!$project->isManaged())
                 continue;
             
+            // create new instance and add it to registry
             $p = new theProject();
             $p->name = $project->name;
-            
-            $this->_attachItem($project->name, $p);            
-        }
-        
-        if (APPLICATION_ENV !== 'production') {
-            $p = new theProject();
-            $p->name = Model_Project_Test::NAME;
-            $this->_attachItem($p->name, $p);            
+            $this->add($p);
         }
     }
 
@@ -56,6 +51,16 @@ class theProjectRegistry extends Model_Artifact implements Model_Artifact_Passiv
      */
     public function isLoaded() {
         return false;
+    }
+    
+    /**
+     * Add new project to the registry
+     *
+     * @param theProject Project to add
+     * @return void
+     **/
+    public function add(theProject $project) {
+        $this->_attachItem($project->name, $project);            
     }
     
     /**

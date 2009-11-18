@@ -51,7 +51,7 @@ class Model_Wobot_PM extends Model_Wobot {
      * @return void
      */
     protected function __construct($context = null) {
-        $this->_project = Model_Project::findProjectByName($context);
+        $this->_project = $context;
     }
 
     /**
@@ -68,12 +68,14 @@ class Model_Wobot_PM extends Model_Wobot {
     }
 
     /**
-     * Calculate context
+     * Calculate context (name of the project)
      *
      * @return string
      */
     public function getContext() {
-        return (string)$this->_project->name;
+        if (is_string($this->_project))
+            return $this->_project;
+        return (string)$this->_getProject()->name;
     }
 
     /**
@@ -93,9 +95,10 @@ class Model_Wobot_PM extends Model_Wobot {
      */
     public function getHumanName() {
         foreach (self::$_names as $regexp=>$name)
-            if (preg_match('/^[' . $regexp . ']/i', $this->_project->name))
+            if (preg_match('/^[' . $regexp . ']/i', $this->getContext()))
                 return $name;
-        FaZend_Exception::raise('Model_Wobot_NameNotFound', "Can find human name for project: '{$this->_project->name}'");
+        FaZend_Exception::raise('Model_Wobot_NameNotFound', 
+            "Can find human name for project: '{$this->_project->name}'");
     }
 
     /**
@@ -105,8 +108,19 @@ class Model_Wobot_PM extends Model_Wobot {
      **/
     public function decisionFactory($file) {
         $decision = parent::decisionFactory($file);
-        $decision->setProject(Model_Artifact::root()->projectRegistry[$this->_project->name]);
+        $decision->setProject(Model_Artifact::root()->projectRegistry[$this->getContext()]);
         return $decision;
     }
 
+    /**
+     * Lazy loader of project information
+     *
+     * @return Model_Project
+     */
+    protected function _getProject() {
+        if (!$this->_project instanceof Model_Project)
+            $this->_project = Model_Artifact::root()->projectRegistry[$this->_project]->fzProject();
+        return $this->_project;
+    }
+    
 }

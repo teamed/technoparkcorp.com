@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: thePanel2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-17 18:46+0100\n"
+"POT-Creation-Date: 2009-11-18 14:35+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Yegor Bugayenko <egor@technoparkcorp.com>\n"
 "Language-Team: tpc <team@tpc2.com>\n"
@@ -20,21 +20,21 @@ msgstr ""
 msgid "Could you please estimate this activity?"
 msgstr ""
 
-#: /code/panel2/php/src/application/controllers/PanelController.php:86
+#: /code/panel2/php/src/application/controllers/PanelController.php:81
 #, php-format
 msgid "Sorry, the document \"%s\" is not available for you"
 msgstr "К сожалению, документ \"%s\" не доступен для Вас"
 
-#: /code/panel2/php/src/application/controllers/PanelController.php:92
+#: /code/panel2/php/src/application/controllers/PanelController.php:87
 #, php-format
 msgid "Sorry, the document \"%s\" is not found"
 msgstr "К сожалению, документ \"%s\" не найден"
 
-#: /code/panel2/php/src/application/controllers/PanelController.php:151
+#: /code/panel2/php/src/application/controllers/PanelController.php:146
 msgid "The link you are using is not valid any more"
 msgstr "Ссылка, которую Вы используете, более не работоспособна"
 
-#: /code/panel2/php/src/application/controllers/PanelController.php:156
+#: /code/panel2/php/src/application/controllers/PanelController.php:151
 #, php-format
 msgid "Sorry, this document \"%s\" is not shared with you, but only with %s"
 msgstr "К сожалению, документ \"%s\" не доступем Вам, а доступен только %s"
@@ -68,4 +68,9 @@ msgstr "Неизвестная причина отказа в доступе, о
 #: /code/panel2/php/src/application/views/scripts/panel/restrict.phtml:13
 msgid "This particular document is not available for you. Here is a list of documents that you can access:"
 msgstr "Данный документ Вам недоступен, вот полный перечень документов, с которыми Вы можете работать:"
+
+#: /code/panel2/php/src/application/views/scripts/panel/restrict.phtml:24
+#, php-format
+msgid "You don't have enough access permissions to access this management panel, although your email (<tt>%s</tt>) is registered in one of the projects we manage. Refer to the sponsor or the project manager of your project for obtaining required access rights. Sorry for any inconveniences."
+msgstr "У Вас недостаточно прав доступа к нашей панели управления проектами, хотя Ваш емейл (<tt>%s</tt>) и зарегистрирован в одном из наших проектов. Обратитесь к спонсору проекта или к проджект менеджеру для получения прав доступа. Приносим извинения за неудобства."
 

@@ -18,29 +18,20 @@
  *
  */
 
-require_once 'FaZend/Test/TestCase.php';
-
 /**
- * Model_Wobot test
+ * One project in the project registry
  *
- * @package test
+ * @package Artifacts
  */
-class WobotTest extends FaZend_Test_TestCase {
+class mock_theProject extends theProject {
 
-    public function testRetrieveAllWorks() {
-        $wobots = Model_Wobot::retrieveAll();
-        $this->assertTrue(count($wobots) > 0, 'No wobots, why?');
+    /**
+     * Create test project on fly
+     * 
+     * @return Model_Project
+     */
+    public function fzProject() {
+        return mock_Project::make($this->name);
     }
-
-    public function testFactoryMethodWorks() {
-        $this->wobot = Model_Wobot::factory('PM.' . mock_Project::NAME);
-        
-        $this->assertEquals('PM', $this->wobot->getName(), 'Wobot name is not PM, why?');
-        $this->assertEquals(mock_Project::NAME, $this->wobot->getContext(), 'Context is not equal to project name, why?');
-    }
-
-    public function testWobotCanBeExecuted() {
-        $this->wobot->execute();
-    }
-
+    
 }

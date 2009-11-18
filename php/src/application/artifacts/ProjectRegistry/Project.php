@@ -19,7 +19,7 @@
  */
 
 /**
- * One project
+ * One project in the project registry
  *
  * @package Artifacts
  */
@@ -68,7 +68,7 @@ class theProject extends Model_Artifact implements Model_Artifact_Passive {
      * @return Model_Project
      */
     public function fzProject() {
-        return Model_Project::findProjectByName($this->name);
+        return Model_Project::findByName($this->name);
     }
     
     /**

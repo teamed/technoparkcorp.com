@@ -62,7 +62,7 @@ class Model_Artifact_Attachments_Attachment implements Model_Artifact_Stateless 
             $this->_fileName = Zend_Date::now('en')->get(YEAR) . '/' . Zend_Date::now('en')->get(MONTH) . '/' . pathinfo($file, PATHINFO_BASENAME);
         
             // move file into special file storage
-            if (APPLICATION_ENV === 'production')
+            if (Model_Artifact_Attachments::getLocation() !== false)
                 copy($file, Model_Artifact_Attachments::getLocation() . '/' . $this->_fileName);
         }
     }

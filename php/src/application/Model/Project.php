@@ -28,17 +28,6 @@ class Model_Project extends Shared_Project {
     const ROLE_AUTHZ_PREFIX = '/role/';
 
     /**
-     * Finds project by its name or create one if it's a test project
-     *
-     * @return Model_Project
-     **/
-    public static function findProjectByName($name) {
-        if (($name === Model_Project_Test::NAME) && (APPLICATION_ENV !== 'production'))
-            return Model_Project_Test::make();
-        return self::findByName($name);
-    }
-
-    /**
      * This project is managed by wobots?
      *
      * The project is managed if one of it's stakeholders is '*@wobot.net',
@@ -48,8 +37,7 @@ class Model_Project extends Shared_Project {
      * @return boolean
      */
     public function isManaged() {
-        $email = Model_Wobot::factory('PM.' . $this->name)->getEmail();
-        return in_array($email, $this->getWobots());
+        return in_array(Model_Wobot::factory('PM.' . $this->name)->getEmail(), $this->getWobots());
     }
 
 

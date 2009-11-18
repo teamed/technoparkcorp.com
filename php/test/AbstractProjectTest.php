@@ -27,16 +27,4 @@ require_once 'FaZend/Test/TestCase.php';
  */
 abstract class AbstractProjectTest extends FaZend_Test_TestCase {
 
-    public function setUp() {
-        parent::setUp();
-        
-        $name = Model_Project_Test::NAME;
-        $this->project = new theProject();
-        $this->project->name = $name;
-        
-        $this->project->reload();
-        
-        Model_User::logIn(Model_Project_Test::PM);
-    }
-
 }
