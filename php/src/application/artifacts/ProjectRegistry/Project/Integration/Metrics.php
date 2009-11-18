@@ -166,7 +166,7 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive {
             $parent = implode(self::SEPARATOR, array_slice($exp, 0, $i));
             
             if (isset($exists[$parent])) {
-                $metric = $this[$parent];
+                $metric = $exists[$parent];
                 break;
             }
         }

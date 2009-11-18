@@ -19,7 +19,9 @@
  */
 
 /**
- * Wobots executor
+ * Wobots executor, to be called by CRONTAB every minute
+ *
+ * Executes one DECISION of every wobot and returns zero.
  *
  * @package CLI
  */

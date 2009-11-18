@@ -38,12 +38,6 @@ class PanelController extends FaZend_Controller_Action {
      * @return void
      */
     public function preDispatch() {
-        // in testing environment you do EVERYTHING under this role
-        // in order to avoid conflicts with real documents in
-        // real environment (fazend for example)
-        if (APPLICATION_ENV !== 'production')
-            Model_User::logIn('tester@tpc2.com');
-
         // if the user is not logged in - try to log him/her in
         if (!Model_User::isLoggedIn()) {
             // show as much information as possible
