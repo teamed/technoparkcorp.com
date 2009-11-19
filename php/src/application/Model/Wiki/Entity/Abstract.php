@@ -60,13 +60,26 @@ abstract class Model_Wiki_Entity_Abstract {
     }
 
     /**
+     * Is it entity?
+     *
+     * @param string Name of some object, which MIGHT be an entity
+     * @return boolean
+     **/
+    public static function isEntity($name) {
+        // is it CamelCase?
+        if (preg_match('/^([A-Z][a-z]+)+$/', $name))
+            return true;
+        return self::getEntityPrefix($name) !== false;
+    }
+
+    /**
      * Is it a name of entity? Get its prefix
      *
      * @param string Name of some entity
      * @return string Prefix recognized
      **/
     public static function getEntityPrefix($name) {
-        if (!preg_match('/^(R|QOS)\d+(?:\.\d+)*|(If|Actor)[A-Z]\w+$/', $name, $matches))
+        if (!preg_match('/^(R|QOS|UC)\d+(?:\.\d+)*|(If|Actor)[A-Z]\w+$/', $name, $matches))
             return false;
         return $matches[1] ? $matches[1] : $matches[2];
     }
@@ -147,13 +160,14 @@ abstract class Model_Wiki_Entity_Abstract {
                 return 'actor';
             case 'r':
                 return 'functional';
+            case 'uc':
+                return 'useCase';
             case 'qos':
                 return 'qos';
             case 'if':
                 return 'interface';
             default:
-                FaZend_Exception::raise('Model_Wiki_InvalidType', 
-                    "Type of '{$this->_name}' is unknown ('{$prefix}') in " . get_class($this));        
+                return 'object';
         }
     }
 

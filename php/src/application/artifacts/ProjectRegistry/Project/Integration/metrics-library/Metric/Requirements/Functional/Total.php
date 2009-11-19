@@ -69,13 +69,17 @@ class Metric_Requirements_Functional_Total extends Metric_Abstract {
                 ->true(isset($this->_pricePerRequirement[$this->_getOption('level')]));
 
             $this->_value = 0;
+            foreach ($this->_project->deliverables->functional as $requirement) {
+                if (substr_count($requirement, '.') == $this->_levelCode[$this->_getOption('level')])
+                    $this->_value++;
+            }
             
             $increment = pow($this->_project->metrics['requirements/functional/total']->target, 1/4);
             $this->_default = round(pow($increment, 1+$this->_levelCode[$this->_getOption('level')]));
             return;
         }
         
-        $this->_value = 7;
+        $this->_value = count($this->_project->deliverables->functional);
         $this->_default = 300;
 
         // make sure all levels are loaded

@@ -56,7 +56,12 @@ class mock_Model_Client_Rpc {
      * @return string
      **/
     public function getPageHTML($name) {
-        return file_get_contents(dirname(__FILE__) . '/wiki/' . $name . '.html');
+        $html = file_get_contents(dirname(__FILE__) . '/wiki/' . $name . '.html');
+        $html = preg_replace(
+            '/\{(.*?)\}/', 
+            '<a href="http://trac.fazend.com/test/wiki/${1}">${1}</a>', 
+            $html);
+        return $html;
     }
 
 }

@@ -88,6 +88,10 @@ class TestInjector {
      * @return void
      **/
     protected function _injectTestProject() {
+        // it should work with mocked RPC
+        require_once 'Mocks/Model/Client/Rpc.php';
+        // Model_Client_Rpc::setXmlRpcClientClass('mock_Model_Client_Rpc');   
+
         require_once 'Mocks/artifacts/ProjectRegistry/Project.php';
         Model_Artifact::root()->projectRegistry->add(new mock_theProject());            
     }

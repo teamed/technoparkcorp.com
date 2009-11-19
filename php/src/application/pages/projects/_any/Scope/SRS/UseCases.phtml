@@ -1,7 +1,7 @@
-<h1><?=_('Quality of Service (QOS)')?></h1>
+<h1><?=_('Use Cases')?></h1>
 
 <?=$this->table()
-    ->setSource($this->project->deliverables->qos)
+    ->setSource($this->project->deliverables->useCases)
     ->addColumn('name', _('Name'))
     ->addColumn('description', _('Description'))
     ->addColumn('attributes', _('Attributes'))

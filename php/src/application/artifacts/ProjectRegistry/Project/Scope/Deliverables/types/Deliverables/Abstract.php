@@ -59,6 +59,15 @@ abstract class Deliverables_Abstract {
     }
 
     /**
+     * Convert it to string
+     *
+     * @return string
+     **/
+    public function __toString() {
+        return $this->_name;
+    }
+    
+    /**
      * Getter dispatcher
      *
      * @param string Name of property to get

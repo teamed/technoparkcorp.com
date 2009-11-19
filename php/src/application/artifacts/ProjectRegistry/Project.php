@@ -41,14 +41,14 @@ class theProject extends Model_Artifact implements Model_Artifact_Passive {
     public function reload() {
         $this
             ->_attach('staffAssignments', new theStaffAssignments(), 'project')
-            ->_attach('metrics', new theMetrics())
             ->_attach('workOrders', new theWorkOrders(), 'project')
             ->_attach('milestones', new theMilestones())
             ->_attach('objectives', new theObjectives())
-            ->_attach('wbs', new theWbs())
             ->_attach('traceability', new theTraceability())
             ->_attach('deliverables', new theDeliverables())
             ->_attach('payments', new thePayments(), 'project')
+            ->_attach('metrics', new theMetrics())
+            ->_attach('wbs', new theWbs())
             ->_attach('activityList', new theActivityList())
             ->_attach('schedule', new theSchedule())
             ;

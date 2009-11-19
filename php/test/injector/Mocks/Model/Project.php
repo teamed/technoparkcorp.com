@@ -57,9 +57,6 @@ class mock_Model_Project extends Model_Project {
                 self::PM . ' = ' . self::PM_PWD . "\n" . 
                 self::OWNER . '=' . self::OWNER_PWD . "\n" // passwd file
             );     
-        
-        require_once 'Mocks/Model/Client/Rpc.php';
-        Model_Client_Rpc::setXmlRpcClientClass('mock_Model_Client_Rpc');   
     }
 
     /**

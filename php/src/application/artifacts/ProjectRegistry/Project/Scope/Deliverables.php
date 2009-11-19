@@ -90,6 +90,10 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
                 $type = substr($name, 0, -2);
                 break;
 
+            case 'glossary':
+                $type = 'object';
+                break;
+
             case 'actors':
             case 'interfaces':
             case 'packages':

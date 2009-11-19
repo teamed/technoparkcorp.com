@@ -33,7 +33,7 @@ class Metric_Requirements_Actors_Total extends Metric_Abstract {
      * @return void
      **/
     public function reload() {
-        $this->_value = 1;
+        $this->_value = count($this->_project->deliverables->actors);
     }
         
     /**
