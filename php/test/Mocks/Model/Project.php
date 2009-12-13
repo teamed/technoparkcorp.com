@@ -23,7 +23,7 @@
  *
  * @package Model
  */
-class mock_Model_Project extends Model_Project {
+class Mocks_Model_Project extends Model_Project {
 
     const NAME = 'test';
     const OWNER = 'yegor256@yahoo.com';

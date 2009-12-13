@@ -23,14 +23,14 @@
  *
  * @package Artifacts
  */
-class mock_theProject extends theProject {
+class Mock_theProject extends theProject {
 
     /**
      * Name
      *
      * @var string
      */
-    public $name = mock_Model_Project::NAME;
+    public $name = Mocks_Model_Project::NAME;
 
     /**
      * Create test project on fly
@@ -38,7 +38,7 @@ class mock_theProject extends theProject {
      * @return Model_Project
      */
     public function fzProject() {
-        return mock_Model_Project::getInstance();
+        return Mocks_Model_Project::getInstance();
     }
     
 }

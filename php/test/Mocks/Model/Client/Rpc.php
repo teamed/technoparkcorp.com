@@ -23,7 +23,7 @@
  *
  * @package injector
  */
-class mock_Model_Client_Rpc {
+class Mocks_Model_Client_Rpc {
 
     /**
      * Get proxy

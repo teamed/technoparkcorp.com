@@ -58,7 +58,7 @@ class Injector extends FaZend_Test_Injector {
         Model_Artifact_Attachments::setLocation(false);
 
         // we should use POS?
-        define('USE_POS', class_exists('FaZend_POS', false));
+        defined('USE_POS') or define('USE_POS', class_exists('FaZend_POS', false));
 
         if (USE_POS)
             FaZend_POS::$userId = 1;
@@ -85,7 +85,10 @@ class Injector extends FaZend_Test_Injector {
     protected function _injectAccessRights() {
         require_once 'Mocks/Model/Project.php';
         $acl = Model_Pages::getInstance()->getAcl();
-        $acl->addRole(mock_Model_Project::PM);
+        
+        // allow test person to access everything
+        if (!$acl->hasRole(mock_Model_Project::PM))
+            $acl->addRole(mock_Model_Project::PM);
         
         // give access to everything!
         $acl->allow(mock_Model_Project::PM);
@@ -97,6 +100,9 @@ class Injector extends FaZend_Test_Injector {
      * @return void
      **/
     protected function _injectTestProject() {
+        // disable any activities with any LIVE projects
+        Model_Project::setWeAreManaging(false);
+
         // it should work with mocked RPC
         require_once 'Mocks/Model/Client/Rpc.php';
         Model_Client_Rpc::setXmlRpcClientClass('mock_Model_Client_Rpc');   
