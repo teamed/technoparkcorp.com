@@ -29,7 +29,7 @@ set_include_path(get_include_path() . PATH_SEPARATOR .
  * @see bootstrap.php
  * @package test
  */
-class TestInjector extends FaZend_Test_Injector {
+class Injector extends FaZend_Test_Injector {
 
     /**
      * Make all injections necessary
@@ -53,8 +53,9 @@ class TestInjector extends FaZend_Test_Injector {
     protected function _injectMiscellaneous() {
         // disable file moving after uploading
         Model_Artifact_Attachments::setLocation(false);
-        
-        FaZend_POS::$userId = 1;
+
+        if (class_exists('FaZend_POS'))
+            FaZend_POS::$userId = 1;
     }
 
     /**

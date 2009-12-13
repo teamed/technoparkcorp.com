@@ -1,3 +1,9 @@
+Don't forget:
+    - reorganize ticket database regularly
+    - document all meetings in trac
+    - risks are trac items
+    - defects shall be connected to components
+    - 
 
 business model
 requirements
