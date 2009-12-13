@@ -54,8 +54,9 @@ class mock_Model_Project extends Model_Project {
             self::NAME, // project name
             new Shared_User(1, self::OWNER, self::OWNER_PWD), // project owner
             $authz, // authz file
-                self::PM . ' = ' . self::PM_PWD . "\n" . 
-                self::OWNER . '=' . self::OWNER_PWD . "\n" // passwd file
+            self::PM . ' = ' . self::PM_PWD . "\n" . 
+                self::OWNER . '=' . self::OWNER_PWD . "\n", // passwd file
+            false // trac.ini
             );     
     }
 

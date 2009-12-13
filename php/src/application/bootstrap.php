@@ -39,10 +39,11 @@ class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap {
      *
      * @return void
      */
-    protected function _initSharedLib() {
-        $this->bootstrap('Fazend');
-        
+    protected function _initSharedLib() {        
+        require_once 'Model/Project.php';
         Model_Project::setClassName('Model_Project');
+
+        require_once 'Shared/Cache.php';
         Shared_Cache::setLifecycle(5 * 60); // 5 hours cache lifecycle
     }
 

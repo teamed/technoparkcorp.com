@@ -23,10 +23,9 @@
  *
  * You just set USE_POS to false and you won't have any persistence of objects 
  */
-if (class_exists('FaZend_POS')) {
-    define('USE_POS', true);
-}
-if (defined('USE_POS')) {
+defined('USE_POS') or define('USE_POS', false);
+
+if (USE_POS) {
     class tempArtifact extends FaZend_POS_Array {
     }
 } else {
@@ -97,7 +96,7 @@ class Model_Artifact extends tempArtifact
         if (!is_null(self::$_root))
             return self::$_root;
             
-        if (defined('USE_POS'))
+        if (USE_POS)
             self::$_root = FaZend_POS::root();
         else
             self::$_root = new Model_Artifact();
@@ -124,7 +123,7 @@ class Model_Artifact extends tempArtifact
      * @return $this
      */
     protected function _attach($name, Model_Artifact_Interface $artifact, $property = null) {
-        if (!defined('USE_POS') && isset($this->$name)) {
+        if (!USE_POS && isset($this->$name)) {
             FaZend_Exception::raise('Model_Artifact_PropertyAlreadyExists',
                 "Can't attach '{$name}' again to " . get_class($this));
         }
@@ -142,7 +141,7 @@ class Model_Artifact extends tempArtifact
      * @return $this
      */
     protected function _attachItem($key, Model_Artifact_Interface $artifact, $property = null) {
-        if (!defined('USE_POS') && isset($this[$key])) {
+        if (!USE_POS && isset($this[$key])) {
             FaZend_Exception::raise('Model_Artifact_PropertyAlreadyExists',
                 "Can't attach item '{$key}' again to " . get_class($this));
         }
@@ -165,7 +164,7 @@ class Model_Artifact extends tempArtifact
      * @return void
      */
     protected static function _initialize($root, Model_Artifact_Interface $artifact, $property) {
-        if (!defined('USE_POS') && is_null($property) && !($artifact instanceof Model_Artifact_Stateless)) {
+        if (!USE_POS && is_null($property) && !($artifact instanceof Model_Artifact_Stateless)) {
             $artifact->ps()->parent = $root; // TODO: this should be removed and implemented in FaZend
         } elseif (!is_null($property) && ($artifact instanceof Model_Artifact_Stateless)) {
             if (method_exists($artifact, $property))

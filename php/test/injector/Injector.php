@@ -51,10 +51,16 @@ class Injector extends FaZend_Test_Injector {
      * @return void
      **/
     protected function _injectMiscellaneous() {
+        // clean Shared cache, if necessary
+        // Shared_Cache::getInstance('Shared_SOAP_Gateway')->clean();
+        
         // disable file moving after uploading
         Model_Artifact_Attachments::setLocation(false);
 
-        if (class_exists('FaZend_POS'))
+        // we should use POS?
+        define('USE_POS', class_exists('FaZend_POS', false));
+
+        if (USE_POS)
             FaZend_POS::$userId = 1;
     }
 

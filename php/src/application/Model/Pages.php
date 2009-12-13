@@ -476,7 +476,7 @@ class Model_Pages extends Zend_Navigation {
                 if (!isset($rights[$current]))
                     $rights[$current] = array();
                     
-                $rights[$current][$matches[1]] = ($matches[2] ? ($matches[2] == 'rw' ? array('r', 'w'): 'r') : false);
+                $rights[$current][$matches[1]] = ($matches[2] ? ($matches[2] == 'rw' ? 'rw' : 'r') : false);
                 continue;
             }
 
