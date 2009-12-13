@@ -28,7 +28,6 @@ class Helper_Segment extends FaZend_View_Helper {
      * @return string|int
      */
     public function segment($num = null) {
-
         $exp = explode('/', $this->getView()->doc);
 
         if (is_null($num))
@@ -43,7 +42,6 @@ class Helper_Segment extends FaZend_View_Helper {
             $segment = (int)$segment;
 
         return $segment;
-
     }
 
 }
