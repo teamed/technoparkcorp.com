@@ -98,6 +98,10 @@ select {
             background: <?=Model_Colors::BLUE?>;
         }
 
+    input.file {
+        border: none;
+    }
+    
 span.formula {
     font-family: Times;
     font-size: 1.3em;
