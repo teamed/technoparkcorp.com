@@ -74,7 +74,7 @@ class Injector extends FaZend_Test_Injector {
         // in order to avoid conflicts with real documents in
         // real environment (fazend for example)
         require_once 'Mocks/Model/Project.php';
-        Model_User::logIn(mock_Model_Project::PM);
+        Model_User::logIn(Mocks_Model_Project::PM);
     }
 
     /**
@@ -87,11 +87,11 @@ class Injector extends FaZend_Test_Injector {
         $acl = Model_Pages::getInstance()->getAcl();
         
         // allow test person to access everything
-        if (!$acl->hasRole(mock_Model_Project::PM))
-            $acl->addRole(mock_Model_Project::PM);
+        if (!$acl->hasRole(Mocks_Model_Project::PM))
+            $acl->addRole(Mocks_Model_Project::PM);
         
         // give access to everything!
-        $acl->allow(mock_Model_Project::PM);
+        $acl->allow(Mocks_Model_Project::PM);
     }
 
     /**
@@ -105,10 +105,10 @@ class Injector extends FaZend_Test_Injector {
 
         // it should work with mocked RPC
         require_once 'Mocks/Model/Client/Rpc.php';
-        Model_Client_Rpc::setXmlRpcClientClass('mock_Model_Client_Rpc');   
+        Model_Client_Rpc::setXmlRpcClientClass('Mocks_Model_Client_Rpc');   
 
         require_once 'Mocks/artifacts/ProjectRegistry/Project.php';
-        Model_Artifact::root()->projectRegistry->add(new mock_theProject());            
+        Model_Artifact::root()->projectRegistry->add(new Mocks_theProject());            
     }
 
     /**
@@ -118,7 +118,7 @@ class Injector extends FaZend_Test_Injector {
      **/
     protected function _injectSuppliers() {
         $registry = Model_Artifact::root()->supplierRegistry;
-        $registry->createSupplier(mock_Model_Project::PM, 'Mr John Tester', 'US')
+        $registry->createSupplier(Mocks_Model_Project::PM, 'Mr John Tester', 'US')
             ->createSkill('PHP', 75)
             ->createSkill('jQuery', 25)
             ->createRole('Programmer', '13EUR');

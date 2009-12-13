@@ -23,7 +23,7 @@
  *
  * @package Artifacts
  */
-class Mock_theProject extends theProject {
+class Mocks_theProject extends theProject {
 
     /**
      * Name
