@@ -18,9 +18,6 @@
  *
  */
 
-set_include_path(get_include_path() . PATH_SEPARATOR . 
-    realpath(dirname(__FILE__)));
-
 /**
  * This class injects test components into a workable system
  *
@@ -30,6 +27,8 @@ set_include_path(get_include_path() . PATH_SEPARATOR .
  * @package test
  */
 class Injector extends FaZend_Test_Injector {
+
+    protected static $_done = false;
 
     /**
      * Make all injections necessary
@@ -59,9 +58,6 @@ class Injector extends FaZend_Test_Injector {
 
         // we should use POS?
         defined('USE_POS') or define('USE_POS', class_exists('FaZend_POS', false));
-
-        if (USE_POS)
-            FaZend_POS::$userId = 1;
     }
 
     /**
@@ -87,8 +83,7 @@ class Injector extends FaZend_Test_Injector {
         $acl = Model_Pages::getInstance()->getAcl();
         
         // allow test person to access everything
-        if (!$acl->hasRole(Mocks_Model_Project::PM))
-            $acl->addRole(Mocks_Model_Project::PM);
+        $acl->addRole(Mocks_Model_Project::PM);
         
         // give access to everything!
         $acl->allow(Mocks_Model_Project::PM);
@@ -116,19 +111,19 @@ class Injector extends FaZend_Test_Injector {
      *
      * @return void
      **/
-    protected function _injectSuppliers() {
-        $registry = Model_Artifact::root()->supplierRegistry;
-        $registry->createSupplier(Mocks_Model_Project::PM, 'Mr John Tester', 'US')
-            ->createSkill('PHP', 75)
-            ->createSkill('jQuery', 25)
-            ->createRole('Programmer', '13EUR');
-
-        $registry->createSupplier('test@example.com', 'Mr Alex Peterson', 'UA')
-            ->createSkill('PHP', 75)
-            ->createSkill('XML', 15)
-            ->createSkill('ZendFramework', 85)
-            ->createSkill('jQuery', 25)
-            ->createRole('Programmer', '13EUR');    
-    }
+    // protected function _injectSuppliers() {
+    //     $registry = Model_Artifact::root()->supplierRegistry;
+    //     $registry->createSupplier(Mocks_Model_Project::PM, 'Mr John Tester', 'US')
+    //         ->createSkill('PHP', 75)
+    //         ->createSkill('jQuery', 25)
+    //         ->createRole('Programmer', '13EUR');
+    // 
+    //     $registry->createSupplier('test@example.com', 'Mr Alex Peterson', 'UA')
+    //         ->createSkill('PHP', 75)
+    //         ->createSkill('XML', 15)
+    //         ->createSkill('ZendFramework', 85)
+    //         ->createSkill('jQuery', 25)
+    //         ->createRole('Programmer', '13EUR');    
+    // }
 
 }

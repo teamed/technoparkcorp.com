@@ -19,23 +19,22 @@
  */
 
 require_once 'FaZend/Test/TestCase.php';
+require_once 'AbstractProjectTest.php';
 
 /**
  * Model_Project test
  *
  * @package test
  */
-class ProjectTest extends FaZend_Test_TestCase {
+class ProjectTest extends AbstractProjectTest {
 
     public function testRetrieveAllWorks() {
         $projects = Model_Project::retrieveAll();
         $this->assertTrue(count($projects) > 0, 'No projects, why?...');
-
-        $this->project = array_shift($projects);
     }
 
     public function testGetStakeholdersByRoleWorks() {
-        $list = $this->project->getStakeholdersByRole('CCB');
+        $list = $this->_project->getStakeholdersByRole('CCB');
     }
 
 }

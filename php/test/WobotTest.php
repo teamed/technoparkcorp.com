@@ -33,10 +33,10 @@ class WobotTest extends FaZend_Test_TestCase {
     }
 
     public function testFactoryMethodWorks() {
-        $this->wobot = Model_Wobot::factory('PM.' . mock_Project::NAME);
+        $this->wobot = Model_Wobot::factory('PM.' . Mocks_Model_Project::NAME);
         
         $this->assertEquals('PM', $this->wobot->getName(), 'Wobot name is not PM, why?');
-        $this->assertEquals(mock_Project::NAME, $this->wobot->getContext(), 'Context is not equal to project name, why?');
+        $this->assertEquals(Mocks_Model_Project::NAME, $this->wobot->getContext(), 'Context is not equal to project name, why?');
     }
 
     public function testWobotCanBeExecuted() {

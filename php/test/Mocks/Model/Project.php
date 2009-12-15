@@ -23,7 +23,8 @@
  *
  * @package Model
  */
-class Mocks_Model_Project extends Model_Project {
+class Mocks_Model_Project extends Model_Project 
+{
 
     const NAME = 'test';
     const OWNER = 'yegor256@yahoo.com';
@@ -43,7 +44,8 @@ class Mocks_Model_Project extends Model_Project {
      *
      * @return void
      **/
-    public function __construct() {
+    public function __construct() 
+    {
         $pwd = md5(rand());
         
         $authz = '[' . self::NAME . ":/]\n" . self::PM . " = rw\n";
@@ -65,7 +67,8 @@ class Mocks_Model_Project extends Model_Project {
      *
      * @return mock_Project
      **/
-    public static function getInstance() {
+    public static function getInstance() 
+    {
         if (!isset(self::$_instance))
             self::$_instance = new self();
         return self::$_instance;

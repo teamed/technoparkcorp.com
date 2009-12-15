@@ -29,7 +29,7 @@ require_once 'AbstractProjectTest.php';
 class ActivityListTest extends AbstractProjectTest {
 
     public function testGeneralMechanismWorks() {
-        $list = $this->project->activityList;
+        $list = $this->_project->activityList;
         logg(count($list) . ' activities in the list');
     }
 

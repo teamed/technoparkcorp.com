@@ -29,7 +29,7 @@ require_once 'AbstractProjectTest.php';
 class WBSTest extends AbstractProjectTest {
 
     public function testGeneralMechanismWorks() {
-        $wbs = $this->project->wbs;
+        $wbs = $this->_project->wbs;
         logg(count($wbs) . ' work packages in WBS');
     }
 
