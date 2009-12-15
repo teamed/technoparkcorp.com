@@ -19,10 +19,21 @@
  */
 
 /**
- * One issue in issue-tracking system
+ * Interface to wiki SRS in Trac, at Fazend.com platform
  *
  * @package Model
  */
-class Model_Issue {
-
+class Model_Asset_Srs_Fazend_Trac extends Model_Asset_Defects_Abstract 
+{
+    
+    /**
+     * Get one ticket by ID
+     *
+     * @return Model_Issue_Abstract
+     **/
+    public function findById($id) 
+    {
+        return FaZend_Flyweight::factory('Model_Issue_Trac', $this, $id);
+    }
+    
 }

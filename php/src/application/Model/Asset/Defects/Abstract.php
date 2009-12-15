@@ -19,11 +19,17 @@
  */
 
 /**
- * One wiki entity in Trac
+ * Interface to defects tracking system
  *
  * @package Model
  */
-class Model_Wiki_Entity_Trac extends Model_Wiki_Entity_Abstract {
-
-
+abstract class Model_Asset_Defects_Abstract extends Model_Asset_Abstract {
+    
+    /**
+     * Get one ticket by ID
+     *
+     * @return Model_Issue_Abstract
+     **/
+    abstract public function findById($id);
+    
 }

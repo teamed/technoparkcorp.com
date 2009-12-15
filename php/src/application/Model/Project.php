@@ -26,6 +26,23 @@
 class Model_Project extends Shared_Project {
     
     const ROLE_AUTHZ_PREFIX = '/role/';
+    
+    /**
+     * We manage anything? If set to FALSE - none of the projects are managed
+     *
+     * @var boolean
+     */
+    protected static $_weAreManaging = true;
+    
+    /**
+     * Shall we manage any projects?
+     *
+     * @param boolean Shall we?
+     * @return void
+     **/
+    public static function setWeAreManaging($weAreManaging = true) {
+        self::$_weAreManaging = $weAreManaging;
+    }
 
     /**
      * This project is managed by wobots?
@@ -37,6 +54,8 @@ class Model_Project extends Shared_Project {
      * @return boolean
      */
     public function isManaged() {
+        if (!self::$_weAreManaging)
+            return false;
         return in_array(Model_Wobot::factory('PM.' . $this->name)->getEmail(), $this->getWobots());
     }
 
@@ -92,37 +111,24 @@ class Model_Project extends Shared_Project {
     }
     
     /**
-     * Issue tracker for this project
+     * Get one asset
      *
-     * @return Model_Issue_Tracker_Abstract
+     * @return Model_Asset_Abstract
      * @todo Should be configurable
      **/
-    public function getTracker() {
-        return Model_Issue_Tracker_Abstract::factory('trac', $this);
-    }
-    
-    /**
-     * Wiki holder for this project
-     *
-     * @return Model_Wiki_Abstract
-     * @todo Should be configurable
-     **/
-    public function getWiki() {
-        return Model_Wiki_Abstract::factory('trac', $this);
-    }
-    
-    /**
-     * Pan facade for source code
-     *
-     * @param string Name of the proxy to use, if necessary
-     * @return Zend_XmlRpc_Client
-     * @todo Should be configurable
-     **/
-    public function getPan($proxy = null) {
-        return Model_Client_Rpc::factory(
-            $this,
-            'http://linux.fazend.com/p/' . $this->name . '/trunk/__fz/xmlrpc',
-            $proxy);
+    public function getAsset($name) {
+        // we will be able later to configure which project
+        // is using which holder of data
+        $assets = array(
+            'Srs' => 'Fazend/Trac',
+            'Defects' => 'Fazend/Trac',
+            'Code' => 'Fazend/Pan',
+            );
+
+        // create a class according to the information above
+        $className = "Model_Asset_{$name}_{$assets[$name]}";
+
+        return new $className($this);
     }
     
 }

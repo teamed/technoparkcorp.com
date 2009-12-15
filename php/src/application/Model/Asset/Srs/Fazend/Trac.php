@@ -1,6 +1,5 @@
 <?php
 /**
- *
  * Copyright (c) 2008, TechnoPark Corp., Florida, USA
  * All rights reserved. THIS IS PRIVATE SOFTWARE.
  *
@@ -19,38 +18,22 @@
  */
 
 /**
- * One abstract wiki storage of pages
+ * Interface to wiki SRS in Trac, at Fazend.com platform
  *
  * @package Model
  */
-abstract class Model_Wiki_Abstract {
-
-    /**
-	 * Create a new wiki holder
-     *
-     * @param string Type of tracker in string
-     * @param mixed Connection/configuration parameters
-     * @return Model_Wiki_Abstract
-     */
-	public static function factory($type, $params) {
-        $className = 'Model_Wiki_' . ucfirst($type);
-        return FaZend_Flyweight::factory($className, $params);
-    }
-
-    /**
-     * Retrieve all wiki entities
-     *
-     * @return Model_Wiki_Entity_Abstract[]
-     **/
-    abstract public function retrieveAll();
+class Model_Asset_Srs_Fazend_Trac extends Model_Asset_Srs_Abstract
+{
     
     /**
-     * Get type of tracker, e.g. 'trac'
+     * Get full list of SRS entities
      *
-     * @return string
+     * @return mixed[]
      **/
-    public function getType() {
-        return str_replace('Model_Wiki_', '', get_class($this));
+    public function getEntities() 
+    {
+        $wiki = new Shared_Wiki($this->_project);
+        return $wiki->retrieveAll();
     }
-        
+    
 }

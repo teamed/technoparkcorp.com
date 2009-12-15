@@ -142,8 +142,12 @@ class Model_Artifact extends tempArtifact
      */
     protected function _attachItem($key, Model_Artifact_Interface $artifact, $property = null) {
         if (!USE_POS && isset($this[$key])) {
+            $keys = array();
+            foreach ($this as $k=>$val)
+                $keys[] = $k;
             FaZend_Exception::raise('Model_Artifact_PropertyAlreadyExists',
-                "Can't attach item '{$key}' again to " . get_class($this));
+                "Can't attach item '{$key}' again to " . get_class($this) . 
+                '[' . implode(', ', $keys) . ']');
         }
 
         if ($key === false)
