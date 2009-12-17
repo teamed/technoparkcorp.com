@@ -1,4 +1,14 @@
-<? $supplier = $this->root->supplierRegistry[$this->segment()] ?>
+<? $statement = $this->root->statements[$this->segment()] ?>
 
-<h1>Statement for <?=$supplier?></h1>
+<h1>Statement for <?=$statement->supplier?></h1>
 
+<p>Balance: <b><?=$statement->balance?></b></p>
+
+<?=$this->table()
+    ->setSource($statement)
+    ->addColumn('created', 'Date')
+    ->addColumn('amount', 'Amount')
+    ->addColumn('context', 'Context')
+    ->addColumn('reason', 'Reason')
+    ->addColumn('details', 'Details')
+    ?>

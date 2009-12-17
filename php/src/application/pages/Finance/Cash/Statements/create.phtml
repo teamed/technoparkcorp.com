@@ -1,0 +1,32 @@
+<h1>Create new payment</h1>
+
+<?=$this->forma()
+
+    ->addField('text', 'original')
+        ->fieldLabel('Original amount')
+        ->fieldRequired()
+        ->fieldAttrib('maxlength', 10)
+        ->fieldAttrib('size', 10)
+        
+    ->addField('textarea', 'details')
+        ->fieldLabel('Details of payment')
+        ->fieldRequired()
+        ->fieldAttrib('cols', 40)
+        ->fieldAttrib('rows', 5)
+
+    ->addField('text', 'context')
+        ->fieldLabel('Context')
+        
+    ->addField('text', 'supplier')
+        ->fieldLabel('Supplier\'s email')
+        ->fieldAttrib('size', 25)
+
+    ->addField('text', 'rate')
+        ->fieldLabel('Rate per hour')
+        ->fieldAttrib('size', 15)
+
+    ->addField('submit')
+        ->fieldAttrib('class', 'btn')
+        ->fieldAction('thePayment', 'create')
+    ?>
+    

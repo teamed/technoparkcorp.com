@@ -27,5 +27,56 @@
 class thePayment extends FaZend_Db_Table_ActiveRow_payment
 {
 
+    /**
+     * Create new payment
+     *
+     * @param string Email of the supplier
+     * @param string Active rate at the moment of payment, like '12 USD'
+     * @param string Original amount of payment, like '125 EUR'
+     * @param string Context, for example name of project
+     * @param string Details of the payment
+     * @return FaZend_Db_Table_ActiveRow_payment
+     **/
+    public static function create($supplier, $rate, $original, $context, $details) 
+    {
+        validate()
+            ->emailAddress($supplier, array());
+        
+        $payment = new thePayment();
+        $payment->supplier = $supplier;
+        $payment->context = $context;
+        $payment->details = $details;
+        $payment->rate = $rate;
+        $payment->original = $original;
+        
+        $payment->amount = (integer)Model_Cost::factory($original)->cents;
+        
+        $payment->save();
+        return $payment;
+    }
+        
+    /**
+     * Get full list of payments in the project
+     *
+     * @param theStatement The statement to get payments from
+     * @return thePayment[]
+     **/
+    public static function retrieveByStatement(theStatement $statement) 
+    {
+        return thePayment::retrieve()
+            ->where('supplier = ?', $statement->supplier)
+            ->order('created')
+            ->setRowClass('thePayment')
+            ->fetchAll();
+    }
     
+    /**
+     * Get amount in USD
+     *
+     * @return Model_Cost
+     **/
+    public function getCost() {
+        return Model_Cost::factory($this->amount / 100);
+    }
+           
 }

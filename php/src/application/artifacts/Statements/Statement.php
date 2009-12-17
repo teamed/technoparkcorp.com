@@ -24,8 +24,58 @@
  *
  * @package Artifacts
  */
-class theStatement
+class theStatement extends ArrayIterator
 {
+    
+    /**
+     * Name of supplier (email)
+     *
+     * @var string
+     **/
+    protected $_supplier;
+    
+    /**
+     * Construct the class
+     *
+     * @param string Email of supplier
+     * @return void
+     */
+    public function __construct($supplier) {
+        parent::__construct();
+        $this->_supplier = $supplier;
+    }
+    
+    /**
+     * Getter dispatcher
+     *
+     * @param string Name of property to get
+     * @return mixed
+     **/
+    public function __get($name) 
+    {
+        $method = '_get' . ucfirst($name);
+        if (method_exists($this, $method))
+            return $this->$method();
+            
+        $var = '_' . $name;
+        if (property_exists($this, $var))
+            return $this->$var;
+        
+        FaZend_Exception::raise('Statement_PropertyOrMethodNotFound', 
+            "Can't find what is '$name' in " . get_class($this));
+    }
+
+    /**
+     * Rewind the array and fill it with data
+     *
+     * @return void
+     **/
+    public function rewind() 
+    {
+        foreach (thePayment::retrieveByStatement($this) as $payment)
+            $this[] = $payment;
+        return parent::rewind();
+    }
 
     /**
      * Get full list of statements
@@ -34,7 +84,35 @@ class theStatement
      **/
     public static function retrieveAll() 
     {
-        return array();
+        $emails = thePayment::retrieve(false)
+            ->from('payment', array('supplier'))
+            ->group('supplier')
+            ->fetchAll();
+        
+        $list = array();
+        foreach ($emails as $email)
+            $list[] = new theStatement($email->supplier);
+        return $list;
+    }
+    
+    /**
+     * Calculate balance
+     *
+     * @return Model_Cost
+     **/
+    protected function _getBalance() 
+    {
+        return 13;
+    }
+    
+    /**
+     * Calculate total volume
+     *
+     * @return Model_Cost
+     **/
+    protected function _getVolume() 
+    {
+        return 13;
     }
     
 }

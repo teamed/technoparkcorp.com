@@ -35,7 +35,7 @@ class theStatements extends ArrayIterator implements Model_Artifact_Passive, Mod
     public function reload() 
     {
         foreach (theStatement::retrieveAll() as $statement) {
-            $this[] = $statement;
+            $this[$statement->supplier] = $statement;
         }
     }
 
@@ -48,5 +48,5 @@ class theStatements extends ArrayIterator implements Model_Artifact_Passive, Mod
     {
         return count($this) > 0;
     }
-        
+    
 }
