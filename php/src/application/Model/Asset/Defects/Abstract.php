@@ -23,7 +23,8 @@
  *
  * @package Model
  */
-abstract class Model_Asset_Defects_Abstract extends Model_Asset_Abstract {
+abstract class Model_Asset_Defects_Abstract extends Model_Asset_Abstract 
+{
     
     /**
      * Get one ticket by ID

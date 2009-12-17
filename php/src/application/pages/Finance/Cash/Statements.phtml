@@ -1,1 +1,9 @@
 <h1>Statements</h1>
+
+<?=$this->table()
+    ->setSource($this->root->statements)
+    ->addColumn('__key', 'Email')
+    ->addColumn('balance', 'Balance')
+    ->addOption('target', '{id}')
+    ?>
+    

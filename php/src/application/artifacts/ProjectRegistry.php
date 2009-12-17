@@ -24,19 +24,21 @@
  *
  * @package Artifacts
  */
-class theProjectRegistry extends Model_Artifact implements Model_Artifact_Passive {
+class theProjectRegistry extends Model_Artifact implements Model_Artifact_Passive 
+{
 
     /**
      * Load all projects
      * 
      * @return void
      */
-    public function reload() {
+    public function reload() 
+    {
         foreach (Model_Project::retrieveAll() as $project) {
             // if we DON'T manage this project - skip it
             if (!$project->isManaged())
                 continue;
-            
+                
             // create new instance and add it to registry
             $p = new theProject();
             $p->name = $project->name;
@@ -45,12 +47,13 @@ class theProjectRegistry extends Model_Artifact implements Model_Artifact_Passiv
     }
 
     /**
-     * Is it loaded?
+     * Is it loaded with all current projects?
      * 
      * @return boolean
      */
-    public function isLoaded() {
-        return false;
+    public function isLoaded() 
+    {
+        return count($this) > 0;
     }
     
     /**
@@ -59,7 +62,8 @@ class theProjectRegistry extends Model_Artifact implements Model_Artifact_Passiv
      * @param theProject Project to add
      * @return void
      **/
-    public function add(theProject $project) {
+    public function add(theProject $project) 
+    {
         $this->_attachItem($project->name, $project);            
     }
     
@@ -68,7 +72,8 @@ class theProjectRegistry extends Model_Artifact implements Model_Artifact_Passiv
      *
      * @return theStaffRequest[]
      **/
-    public function getStaffRequests() {
+    public function getStaffRequests() 
+    {
         $ini = new Zend_Config_Ini(dirname(__FILE__) . '/ProjectRegistry/wanted.ini', 'wanted');
         $requests = new ArrayIterator();
         foreach ($ini as $id=>$person) {
@@ -92,7 +97,8 @@ class theProjectRegistry extends Model_Artifact implements Model_Artifact_Passiv
      * @param string ID of the request to return
      * @return theStaffRequest
      **/
-    public function getStaffRequestById($id) {
+    public function getStaffRequestById($id) 
+    {
         $requests = $this->getStaffRequests();
         return $requests[$id];
     }

@@ -23,9 +23,15 @@
  *
  * @package Model
  */
-class Model_Project extends Shared_Project {
+class Model_Project extends Shared_Project 
+{
     
     const ROLE_AUTHZ_PREFIX = '/role/';
+    
+    // don't rename them, they are names of directories under Model/Asset
+    const ASSET_SRS = 'Srs';
+    const ASSET_DEFECTS = 'Defects';
+    const ASSET_CODE = 'Code';
     
     /**
      * We manage anything? If set to FALSE - none of the projects are managed
@@ -40,7 +46,8 @@ class Model_Project extends Shared_Project {
      * @param boolean Shall we?
      * @return void
      **/
-    public static function setWeAreManaging($weAreManaging = true) {
+    public static function setWeAreManaging($weAreManaging = true) 
+    {
         self::$_weAreManaging = $weAreManaging;
     }
 
@@ -53,7 +60,8 @@ class Model_Project extends Shared_Project {
      *
      * @return boolean
      */
-    public function isManaged() {
+    public function isManaged() 
+    {
         if (!self::$_weAreManaging)
             return false;
         return in_array(Model_Wobot::factory('PM.' . $this->name)->getEmail(), $this->getWobots());
@@ -65,7 +73,8 @@ class Model_Project extends Shared_Project {
      *
      * @return string[]
      */
-    public function getWobots() {
+    public function getWobots() 
+    {
         $list = array();
         foreach ($this->getStakeholders() as $email=>$password) {
             if (preg_match('/^(.*@' . preg_quote(Model_Wobot::EMAIL_DOMAIN) . ')$/', $email, $matches))
@@ -90,7 +99,8 @@ class Model_Project extends Shared_Project {
      * @param string Name of the role
      * @return string[]
      */
-    public function getStakeholdersByRole($role) {
+    public function getStakeholdersByRole($role) 
+    {
         // array_filter will remove people with FALSE (no access)
         return array_keys(array_filter($this->getAccessRights(self::ROLE_AUTHZ_PREFIX . $role)));
     }
@@ -101,7 +111,8 @@ class Model_Project extends Shared_Project {
      * @param string Name of the role
      * @return string[]
      */
-    public function getRolesByStakeholder($email) {
+    public function getRolesByStakeholder($email) 
+    {
         $roles = array();
         foreach ($this->getAllowedPaths($email) as $path) {
             if (preg_match('/^' . preg_quote(self::ROLE_AUTHZ_PREFIX, '/') . '(\w+)$/', $path, $matches))
@@ -116,13 +127,14 @@ class Model_Project extends Shared_Project {
      * @return Model_Asset_Abstract
      * @todo Should be configurable
      **/
-    public function getAsset($name) {
+    public function getAsset($name) 
+    {
         // we will be able later to configure which project
         // is using which holder of data
         $assets = array(
-            'Srs' => 'Fazend/Trac',
-            'Defects' => 'Fazend/Trac',
-            'Code' => 'Fazend/Pan',
+            self::ASSET_SRS => 'Fazend_Trac',
+            self::ASSET_DEFECTS => 'Fazend_Trac',
+            self::ASSET_CODE => 'Fazend_Pan',
             );
 
         // create a class according to the information above

@@ -23,7 +23,8 @@
  * 
  * @package Activity_Plugin
  */
-abstract class Activity_Plugin_Abstract {
+abstract class Activity_Plugin_Abstract 
+{
 
     /**
      * Activity to work with
@@ -53,7 +54,8 @@ abstract class Activity_Plugin_Abstract {
      * @param theActivity Activity to work with
      * @return void
      **/
-    public static function factory($name, theActivity $activity) {
+    public static function factory($name, theActivity $activity) 
+    {
         if (!isset(self::$_loader)) {
             self::$_loader = new Zend_Loader_PluginLoader(array('Activity_Plugin_' => dirname(__FILE__)));
         }
@@ -68,9 +70,10 @@ abstract class Activity_Plugin_Abstract {
      * @param theActivity Activity to work with
      * @return void
      **/
-    public function __construct(theActivity $activity) {
+    public function __construct(theActivity $activity) 
+    {
         $this->_activity = $activity;
-        $this->_issue = $activity->project->fzProject()->getTracker()->find($activity->name);
+        $this->_issue = $activity->project->fzProject()->getAsset(Model_Project::ASSET_DEFECTS)->findById($activity->name);
     }
                             
 }

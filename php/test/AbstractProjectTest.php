@@ -25,15 +25,19 @@ require_once 'FaZend/Test/TestCase.php';
  *
  * @package test
  */
-abstract class AbstractProjectTest extends FaZend_Test_TestCase {
+abstract class AbstractProjectTest extends FaZend_Test_TestCase 
+{
 
     /**
      * Setup this class for testing of a test project
      *
      * @return void
      **/
-    public function setUp() {
+    public function setUp() 
+    {
         parent::setUp();
+        
+        // get the test project out of registry
         $this->_project = Model_Artifact::root()->projectRegistry[Mocks_Model_Project::NAME];
         
         // make sure it is the thing we're looking for

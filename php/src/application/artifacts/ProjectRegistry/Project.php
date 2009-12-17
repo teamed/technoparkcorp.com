@@ -23,7 +23,8 @@
  *
  * @package Artifacts
  */
-class theProject extends Model_Artifact implements Model_Artifact_Passive {
+class theProject extends Model_Artifact implements Model_Artifact_Passive 
+{
 
     /**
      * Unique name of this project, to be set from registry
@@ -38,7 +39,8 @@ class theProject extends Model_Artifact implements Model_Artifact_Passive {
      * 
      * @return void
      */
-    public function reload() {
+    public function reload() 
+    {
         $this
             ->_attach('staffAssignments', new theStaffAssignments(), 'project')
             ->_attach('workOrders', new theWorkOrders(), 'project')
@@ -59,8 +61,9 @@ class theProject extends Model_Artifact implements Model_Artifact_Passive {
      * 
      * @return boolean
      */
-    public function isLoaded() {
-        return false;
+    public function isLoaded() 
+    {
+        return isset($this->staffAssignments);
     }
     
     /**
@@ -68,7 +71,8 @@ class theProject extends Model_Artifact implements Model_Artifact_Passive {
      * 
      * @return Model_Project
      */
-    public function fzProject() {
+    public function fzProject() 
+    {
         return Model_Project::findByName($this->name);
     }
     
@@ -77,7 +81,8 @@ class theProject extends Model_Artifact implements Model_Artifact_Passive {
      *
      * @return string
      **/
-    public function __toString() {
+    public function __toString() 
+    {
         return $this->name;
     }
     

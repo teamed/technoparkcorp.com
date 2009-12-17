@@ -42,6 +42,17 @@ abstract class Model_Asset_Abstract
     public function __construct(Model_Project $project) 
     {
         $this->_project = $project;
+        $this->_init();
+    }
+
+    /**
+     * Initializer
+     *
+     * @return void
+     **/
+    protected function _init() 
+    {
+        // ...
     }
     
 }

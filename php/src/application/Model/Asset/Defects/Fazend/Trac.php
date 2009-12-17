@@ -23,8 +23,15 @@
  *
  * @package Model
  */
-class Model_Asset_Srs_Fazend_Trac extends Model_Asset_Defects_Abstract 
+class Model_Asset_Defects_Fazend_Trac extends Model_Asset_Defects_Abstract 
 {
+
+    /**
+     * Trac from Shared lib
+     *
+     * @var Shared_Trac
+     **/
+    protected $_trac;
     
     /**
      * Get one ticket by ID
@@ -36,4 +43,23 @@ class Model_Asset_Srs_Fazend_Trac extends Model_Asset_Defects_Abstract
         return FaZend_Flyweight::factory('Model_Issue_Trac', $this, $id);
     }
     
+    /**
+     * Get proxy
+     *
+     * @return ...
+     **/
+    public function getXmlProxy() {
+        return $this->_trac->getXmlProxy();
+    }
+    
+    /**
+     * Initializer
+     *
+     * @return void
+     **/
+    protected function _init() 
+    {
+        $this->_trac = new Shared_Trac($this->_project);
+    }
+
 }

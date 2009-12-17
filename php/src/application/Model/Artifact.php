@@ -77,8 +77,8 @@ if (USE_POS) {
  *
  * @package Model
  */
-class Model_Artifact extends tempArtifact 
-    implements Model_Artifact_Interface {
+class Model_Artifact extends tempArtifact implements Model_Artifact_Interface 
+{
 
     /**
      * Root of all artifacts
@@ -92,26 +92,29 @@ class Model_Artifact extends tempArtifact
      *
      * @return Model_Artifact
      */
-    public static function root() {
+    public static function root() 
+    {
         if (!is_null(self::$_root))
             return self::$_root;
             
         if (USE_POS)
-            self::$_root = FaZend_POS::root();
+            $root = FaZend_POS::root();
         else
-            self::$_root = new Model_Artifact();
+            $root = new Model_Artifact();
         
         foreach (array(
             'projectRegistry' => new theProjectRegistry(),
             'supplierRegistry' => new theSupplierRegistry(),
+            'statements' => new theStatements(),
             ) as $name=>$artifact) {
-            if (!isset(self::$_root->$name)) {
-                self::$_root->$name = $artifact;
-                self::_initialize(self::$_root, $artifact, null);
+            // we need this validation for POS
+            if (!isset($root->name)) {
+                // add them to the root, one by one
+                $root->$name = $artifact;
+                self::_initialize($root, $artifact, null);
             }
         }
-        
-        return self::$_root;
+        return self::$_root = $root;
     }
 
     /**
@@ -121,13 +124,17 @@ class Model_Artifact extends tempArtifact
      * @param Model_Artifact_Interface The artifact to attach
      * @param string Property to set with $this
      * @return $this
+     * @param Model_Artifact_PropertyAlreadyExists
      */
-    protected function _attach($name, Model_Artifact_Interface $artifact, $property = null) {
+    protected function _attach($name, Model_Artifact_Interface $artifact, $property = null) 
+    {
         if (!USE_POS && isset($this->$name)) {
             FaZend_Exception::raise('Model_Artifact_PropertyAlreadyExists',
                 "Can't attach '{$name}' again to " . get_class($this));
         }
         $this->$name = $artifact;
+        
+        // initialize the artifact, if necessary
         self::_initialize($this, $artifact, $property);
         return $this;
     }
@@ -139,22 +146,26 @@ class Model_Artifact extends tempArtifact
      * @param Model_Artifact_Interface The artifact to attach
      * @param string Property to set with $this
      * @return $this
+     * @throws Model_Artifact_KeyAlreadyExists
      */
-    protected function _attachItem($key, Model_Artifact_Interface $artifact, $property = null) {
+    protected function _attachItem($key, Model_Artifact_Interface $artifact, $property = null) 
+    {
         if (!USE_POS && isset($this[$key])) {
             $keys = array();
             foreach ($this as $k=>$val)
                 $keys[] = $k;
-            FaZend_Exception::raise('Model_Artifact_PropertyAlreadyExists',
+            FaZend_Exception::raise('Model_Artifact_KeyAlreadyExists',
                 "Can't attach item '{$key}' again to " . get_class($this) . 
                 '[' . implode(', ', $keys) . ']');
         }
 
+        // attach as "new" element to the array or as associative value
         if ($key === false)
             $this[] = $artifact;
         else
             $this[$key] = $artifact;
             
+        // initialize the artifact, if necessary
         self::_initialize($this, $artifact, $property);
         return $this;
     }
@@ -166,17 +177,21 @@ class Model_Artifact extends tempArtifact
      * @param Model_Artifact_Interface The artifact to attach
      * @param string Property to set with $this
      * @return void
+     * @throws Model_Artifact_InvalidChildArtifact
      */
-    protected static function _initialize($root, Model_Artifact_Interface $artifact, $property) {
+    protected static function _initialize($root, Model_Artifact_Interface $artifact, $property) 
+    {
         if (!USE_POS && is_null($property) && !($artifact instanceof Model_Artifact_Stateless)) {
-            $artifact->ps()->parent = $root; // TODO: this should be removed and implemented in FaZend
+            if (method_exists($artifact, 'ps')) {
+                $artifact->ps()->parent = $root; // TODO: this should be removed and implemented in FaZend
+            }
         } elseif (!is_null($property) && ($artifact instanceof Model_Artifact_Stateless)) {
             if (method_exists($artifact, $property))
                 $artifact->$property($root);
             else
                 $artifact->$property = $root;
         } elseif (!is_null($property)) {
-            FaZend_Exception::raise('InvalidChildArtifact', 
+            FaZend_Exception::raise('Model_Artifact_InvalidChildArtifact', 
                 'Artifact ' . get_class($artifact) . ' is not stateless');
         }
             

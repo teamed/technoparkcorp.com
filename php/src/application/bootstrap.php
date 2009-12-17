@@ -22,14 +22,16 @@
  *
  * @package application
  */
-class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap {
+class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap 
+{
 
     /**
      * Initialize autoloader for artifacts
      *
      * @return void
      */
-    protected function _initAutoLoader() {
+    protected function _initAutoLoader() 
+    {
         $autoloader = Zend_Loader_Autoloader::getInstance();
         $autoloader->pushAutoloader(new Model_Loader_Artifacts(), 'the');
     }
@@ -39,7 +41,8 @@ class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap {
      *
      * @return void
      */
-    protected function _initSharedLib() {        
+    protected function _initSharedLib() 
+    {        
         require_once 'Model/Project.php';
         Model_Project::setClassName('Model_Project');
 
@@ -52,8 +55,18 @@ class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap {
      *
      * @return void
      */
-    protected function _initPos() {
+    protected function _initPos() 
+    {
+        // do it after fazend only
+        $this->bootstrap('Fazend');
+        
         // FaZend_User::setCurrentUser(Model_User::me());
+        
+        // initialize root
+        Model_Artifact::root();
+
+        // initialize ACL list
+        Model_Pages::getInstance();
     }
 
     /**
@@ -61,7 +74,8 @@ class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap {
      *
      * @return void
      */
-    protected function _initLocalization() {
+    protected function _initLocalization() 
+    {
         $locale = new Zend_Locale();
         Zend_Registry::set('Zend_Locale', $locale);
         
@@ -99,7 +113,8 @@ define('CONTENT_PATH', realpath(APPLICATION_PATH . '/../content'));
  * @category Supplementary
  * @package Functions
  */
-function logg($message) {
+function logg($message) 
+{
     try {
         FaZend_Log::info($message);
     } catch (Zend_Log_Exception $e) {
@@ -115,7 +130,8 @@ if (!function_exists('_')) {
      * @param string Translate this string and return it's translated value
      * @return string
      */
-    function _($str) {
+    function _($str) 
+    {
         // if array specified - we get a random line from it
         if (is_array($str))
             $str = $str[array_rand($str)];
@@ -140,7 +156,8 @@ if (!function_exists('_')) {
  * @category Supplementary
  * @package Functions
  */
-function plural($str, $var) {
+function plural($str, $var) 
+{
     $src = array('[s]', '[are]', '[do]', '[have]', '[were]', '[ies]', '[es]', '[people]');
     $singular = array('', 'is', 'does', 'has', 'was', 'y', 'es', 'person');
     $plural = array('s', 'are', 'do', 'have', 'were', 'ies', '', 'people');
@@ -151,7 +168,8 @@ function plural($str, $var) {
 
 // patch for PHP 5.2
 if (!function_exists('lcfirst')) {
-    function lcfirst($str) {
+    function lcfirst($str) 
+    {
         if (!isset($str[0]))
             return $str;
         return strtolower($str[0]) . substr($str, 1);

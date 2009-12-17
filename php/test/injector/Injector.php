@@ -26,7 +26,8 @@
  * @see bootstrap.php
  * @package test
  */
-class Injector extends FaZend_Test_Injector {
+class Injector extends FaZend_Test_Injector 
+{
 
     protected static $_done = false;
 
@@ -35,7 +36,9 @@ class Injector extends FaZend_Test_Injector {
      *
      * @return void
      **/
-    public function inject() {
+    public function inject() 
+    {
+        // bug('injector');
         $rc = new ReflectionClass($this);
         foreach ($rc->getMethods() as $method) {
             if (preg_match('/^\_inject/', $method->getName())) {
@@ -49,10 +52,14 @@ class Injector extends FaZend_Test_Injector {
      *
      * @return void
      **/
-    protected function _injectMiscellaneous() {
+    protected function _injectMiscellaneous() 
+    {
         // clean Shared cache, if necessary
         // Shared_Cache::getInstance('Shared_SOAP_Gateway')->clean();
-        
+
+        // don't go into real Shared resources
+	    Shared_XmlRpc::setXmlRpcClientClass('Mocks_Shared_XmlRpc');
+
         // disable file moving after uploading
         Model_Artifact_Attachments::setLocation(false);
 
@@ -65,28 +72,12 @@ class Injector extends FaZend_Test_Injector {
      *
      * @return void
      **/
-    protected function _injectTesterLogin() {
+    protected function _injectTesterLogin() 
+    {
         // in testing environment you do EVERYTHING under this role
         // in order to avoid conflicts with real documents in
         // real environment (fazend for example)
-        require_once 'Mocks/Model/Project.php';
         Model_User::logIn(Mocks_Model_Project::PM);
-    }
-
-    /**
-     * Tester has rights to access any/all pages
-     *
-     * @return void
-     **/
-    protected function _injectAccessRights() {
-        require_once 'Mocks/Model/Project.php';
-        $acl = Model_Pages::getInstance()->getAcl();
-        
-        // allow test person to access everything
-        $acl->addRole(Mocks_Model_Project::PM);
-        
-        // give access to everything!
-        $acl->allow(Mocks_Model_Project::PM);
     }
 
     /**
@@ -94,16 +85,30 @@ class Injector extends FaZend_Test_Injector {
      *
      * @return void
      **/
-    protected function _injectTestProject() {
+    protected function _injectTestProject() 
+    {
         // disable any activities with any LIVE projects
         Model_Project::setWeAreManaging(false);
 
-        // it should work with mocked RPC
-        require_once 'Mocks/Model/Client/Rpc.php';
-        Model_Client_Rpc::setXmlRpcClientClass('Mocks_Model_Client_Rpc');   
+        // initialize root
+        Model_Artifact::root();
 
         require_once 'Mocks/artifacts/ProjectRegistry/Project.php';
-        Model_Artifact::root()->projectRegistry->add(new Mocks_theProject());            
+        Model_Artifact::root()->projectRegistry->add($p = new Mocks_theProject());            
+    }
+
+    /**
+     * Tester has rights to access any/all pages
+     *
+     * @return void
+     **/
+    protected function _injectAccessRights() 
+    {
+        // initialize ACL
+        $acl = Model_Pages::getInstance()->getAcl();
+        
+        // give access to everything for the testing user
+        $acl->allow(Mocks_Model_Project::PM);
     }
 
     /**

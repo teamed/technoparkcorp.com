@@ -23,7 +23,8 @@
  *
  * @package wobots
  */
-class RequestEstimate extends Model_Decision_PM {
+class RequestEstimate extends Model_Decision_PM 
+{
 
     /**
      * Request estimate
@@ -31,7 +32,8 @@ class RequestEstimate extends Model_Decision_PM {
      * @return string|false
      * @throws FaZend_Validator_Failure If something happens 
      */
-    protected function _make() {
+    protected function _make() 
+    {
         
         // validate()
             // ->false($this->_project->objectives->ps()->isApproved(), 'Objectives are not approved yet');
@@ -40,7 +42,7 @@ class RequestEstimate extends Model_Decision_PM {
         foreach ($this->_project->schedule->activities as $activity) {
             // the activity is too far in the future, there is 
             // no necessity to request estimates now
-            if ($activity->start > time() + SECONDS_IN_DAY * 20)
+            if ($activity->start->isEarlier(Zend_Date::now()->add(20, Zend_Date::SECOND)))
                 continue;
                
             // if it is already estimated? 

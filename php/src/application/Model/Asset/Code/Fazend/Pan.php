@@ -23,7 +23,8 @@
  *
  * @package Model
  */
-class Model_Asset_Code_Fazend_Pan implements Model_Asset_Code_Interface {
+class Model_Asset_Code_Fazend_Pan extends Model_Asset_Code_Abstract 
+{
     
     
 }

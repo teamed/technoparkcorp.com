@@ -24,7 +24,8 @@
  * @see http://fazend.com/a/2009-12-WikiNotation.html
  * @package Artifacts
  */
-class Metric_Requirements_Compliance extends Metric_Abstract {
+class Metric_Requirements_Compliance extends Metric_Abstract 
+{
 
     /**
      * Forwarders
@@ -40,7 +41,8 @@ class Metric_Requirements_Compliance extends Metric_Abstract {
      *
      * @return void
      **/
-    public function reload() {
+    public function reload() 
+    {
         if ($this->_getOption('element'))
             return $this->_value = rand(0, 1);
         
@@ -53,8 +55,11 @@ class Metric_Requirements_Compliance extends Metric_Abstract {
             'qos' => 3,
             );
             
+        $compliance = array();
         $this->_value = 0;
         foreach (array_keys($types) as $type) {
+            if (!isset($compliance[$type]))
+                $compliance[$type] = array();
             foreach ($this->_project->deliverables->$type as $requirement) {
                 $compliance[$type][$requirement->name] = 
                     $this->_project->metrics['requirements/compliance/' . $requirement->name]->value;
@@ -62,7 +67,10 @@ class Metric_Requirements_Compliance extends Metric_Abstract {
         }
         
         foreach ($types as $type=>$weight) {
-            $compliance[$type] = $weight * (array_sum($compliance[$type]) / count($compliance[$type]));
+            if (count($compliance[$type]) > 0)
+                $compliance[$type] = $weight * (array_sum($compliance[$type]) / count($compliance[$type]));
+            else
+                $compliance[$type] = 0;
         }
         
         $this->_value = round(array_sum($compliance) / array_sum($types), 2);

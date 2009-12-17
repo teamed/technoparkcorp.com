@@ -23,7 +23,8 @@
  * 
  * @package Model
  */
-class Model_Process {
+class Model_Process 
+{
 
     /**
      * List of names of all processes
@@ -52,7 +53,8 @@ class Model_Process {
      *
      * @return Model_Process[]
      */
-    public static function retrieveAll() {
+    public static function retrieveAll() 
+    {
         $processes = new ArrayIterator();
         foreach (self::$_names as $name)
             $processes[] = new self($name);
@@ -65,7 +67,8 @@ class Model_Process {
      * @param string Name of the process
      * @return Model_Process
      */
-    public static function findByName($name) {
+    public static function findByName($name) 
+    {
         if (!in_array($name, self::$_names))
             FaZend_Exception::raise('Model_Process_NotFound', "Process '$name' not found");
         return new self($name);
@@ -76,7 +79,8 @@ class Model_Process {
      *
      * @return void
      */
-    public function __construct($name) {
+    public function __construct($name) 
+    {
         $this->_name = $name;
     }
 
@@ -85,7 +89,8 @@ class Model_Process {
      *
      * @return string
      */
-    public function __toString() {
+    public function __toString() 
+    {
         return $this->_name;
     }
     
@@ -94,7 +99,8 @@ class Model_Process {
      *
      * @return Model_Project
      **/
-    public function getProject() {
+    public function getProject() 
+    {
         return Model_Project::findByName($this->_name);
     }
 
@@ -103,7 +109,8 @@ class Model_Process {
      *
      * @return boolean
      **/
-    public function projectExists() {
+    public function projectExists() 
+    {
         try {
             $this->getProject();
             return true;

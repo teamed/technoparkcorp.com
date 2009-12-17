@@ -19,28 +19,42 @@
  */
 
 /**
- * One project in the project registry
+ * One mock for all client calls (to Trac, Wiki and Pan)
  *
- * @package Artifacts
+ * @package Mocks
  */
-class Mocks_theProject extends theProject 
+class Mocks_Shared_XmlRpc 
 {
 
     /**
-     * Name
+     * Get proxy
      *
-     * @var string
-     */
-    public $name = Mocks_Model_Project::NAME;
+     * @return object
+     **/
+    public function getProxy($name) 
+    {
+        return $this;
+    }
 
     /**
-     * Create test project on fly
-     * 
-     * @return Model_Project
-     */
-    public function fzProject() 
+     * Get full list of wiki pages
+     *
+     * @return array
+     **/
+    public function getAllPages() 
     {
-        return Mocks_Model_Project::getInstance();
+        return array();
     }
-    
+
+    /**
+     * Get wiki page in HTML
+     *
+     * @param sting Name of the page
+     * @return string
+     **/
+    public function getPageHTML($name) 
+    {
+        return '';
+    }
+
 }

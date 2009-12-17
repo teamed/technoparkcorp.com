@@ -23,15 +23,17 @@
  *
  * @package Artifacts
  */
-class DeliverablesLoaders_Srs extends DeliverablesLoaders_Abstract {
+class DeliverablesLoaders_Srs extends DeliverablesLoaders_Abstract 
+{
     
     /**
      * Load all deliverables
      *
      * @return void
      **/
-    public function load() {
-        foreach ($this->_deliverables->ps()->parent->fzProject()->getWiki()->retrieveAll() as $entity) {
+    public function load() 
+    {
+        foreach ($this->_deliverables->ps()->parent->fzProject()->getAsset(Model_Project::ASSET_SRS)->getEntities() as $entity) {
             $deliverable = theDeliverables::factory($entity->type, $entity->name, $entity->description);
             $entity->deriveDetails($deliverable);
             

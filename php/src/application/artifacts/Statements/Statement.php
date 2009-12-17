@@ -18,29 +18,23 @@
  *
  */
 
+
 /**
- * One project in the project registry
+ * One fin statement
  *
  * @package Artifacts
  */
-class Mocks_theProject extends theProject 
+class theStatement
 {
 
     /**
-     * Name
+     * Get full list of statements
      *
-     * @var string
-     */
-    public $name = Mocks_Model_Project::NAME;
-
-    /**
-     * Create test project on fly
-     * 
-     * @return Model_Project
-     */
-    public function fzProject() 
+     * @return theStatement[]
+     **/
+    public static function retrieveAll() 
     {
-        return Mocks_Model_Project::getInstance();
+        return array();
     }
     
 }

@@ -26,13 +26,15 @@ require_once 'AbstractProjectTest.php';
  *
  * @package test
  */
-class StaffAssignmentsTest extends AbstractProjectTest {
+class StaffAssignmentsTest extends AbstractProjectTest 
+{
 
-    public function testGeneralMechanismWorks() {
-        $CCB = $this->project->staffAssignments->CCB;
+    public function testGeneralMechanismWorks() 
+    {
+        $CCB = $this->_project->staffAssignments->CCB;
         logg('Change Control Board in test project: ' . $CCB);
         
-        $this->project->staffAssignments->hasRole('PM');
+        $this->_project->staffAssignments->hasRole('PM');
     }
 
 }

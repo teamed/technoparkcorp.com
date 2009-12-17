@@ -23,7 +23,8 @@
  *
  * @package Artifacts
  */
-class theStaffAssignments extends ArrayIterator implements Model_Artifact_Stateless, Model_Artifact_Passive {
+class theStaffAssignments extends ArrayIterator implements Model_Artifact_Stateless, Model_Artifact_Passive 
+{
 
     /**
      * The holder of this staff assignments
@@ -37,7 +38,8 @@ class theStaffAssignments extends ArrayIterator implements Model_Artifact_Statel
      *
      * @return void
      **/
-    public function reload() {
+    public function reload() 
+    {
         foreach (array_keys($this->_project()->getStakeholders()) as $email)
             $this[$email] = FaZend_Flyweight::factory('theStakeholder', $this, $email);
     }    
@@ -47,7 +49,8 @@ class theStaffAssignments extends ArrayIterator implements Model_Artifact_Statel
      *
      * @return boolean
      **/
-    public function isLoaded() {
+    public function isLoaded() 
+    {
         return (bool)count($this);
     }
     
@@ -60,7 +63,8 @@ class theStaffAssignments extends ArrayIterator implements Model_Artifact_Statel
      * @return theProjectRole|theStakeholder One stakeholder or one role
      * @throws Exception If the role is not found
      **/
-    public function __get($name) {
+    public function __get($name) 
+    {
         $list = $this->_project()->getStakeholdersByRole($name);
         
         // if nothing found - throw an exception
@@ -81,7 +85,8 @@ class theStaffAssignments extends ArrayIterator implements Model_Artifact_Statel
      *
      * @return boolean
      **/
-    public function hasRole($role) {
+    public function hasRole($role) 
+    {
         return (bool)count($this->_project()->getStakeholdersByRole($role));
     }    
     
@@ -91,7 +96,8 @@ class theStaffAssignments extends ArrayIterator implements Model_Artifact_Statel
      * @return theStakeholder One stakeholder for this role
      * @throws Exception If the role is not found
      **/
-    public function findRandomStakeholderByRole(theProjectRole $role) {
+    public function findRandomStakeholderByRole(theProjectRole $role) 
+    {
         $list = $this->_project()->getStakeholdersByRole((string)$role);
         
         // if nothing found - throw an exception
@@ -106,7 +112,8 @@ class theStaffAssignments extends ArrayIterator implements Model_Artifact_Statel
      * @param theStakeholder The person
      * @return theProjectRole[] List of roles
      **/
-    public function retrieveRolesByStakeholder(theStakeholder $person) {
+    public function retrieveRolesByStakeholder(theStakeholder $person) 
+    {
         $roles = $this->_project()->getRolesByStakeholder((string)$person);
         foreach ($roles as &$role)
             $role = $this->createRole($role);
@@ -118,7 +125,8 @@ class theStaffAssignments extends ArrayIterator implements Model_Artifact_Statel
      *
      * @return theProjectRole
      **/
-    public function createRole($name) {
+    public function createRole($name) 
+    {
         return FaZend_Flyweight::factory('theProjectRole', $this, $name);
     }
     
@@ -127,7 +135,8 @@ class theStaffAssignments extends ArrayIterator implements Model_Artifact_Statel
      *
      * @return theStakeholder
      **/
-    public function getActiveStakeholder() {
+    public function getActiveStakeholder() 
+    {
         return $this[Model_User::getCurrentUser()->email];
     }
     
@@ -136,7 +145,8 @@ class theStaffAssignments extends ArrayIterator implements Model_Artifact_Statel
      *
      * @return Model_Project
      **/
-    protected function _project() {
+    protected function _project() 
+    {
         return $this->project->fzProject();
     }
     

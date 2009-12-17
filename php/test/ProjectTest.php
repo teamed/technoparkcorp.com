@@ -26,15 +26,18 @@ require_once 'AbstractProjectTest.php';
  *
  * @package test
  */
-class ProjectTest extends AbstractProjectTest {
+class ProjectTest extends AbstractProjectTest 
+{
 
-    public function testRetrieveAllWorks() {
+    public function testRetrieveAllWorks() 
+    {
         $projects = Model_Project::retrieveAll();
-        $this->assertTrue(count($projects) > 0, 'No projects, why?...');
     }
 
-    public function testGetStakeholdersByRoleWorks() {
-        $list = $this->_project->getStakeholdersByRole('CCB');
+    public function testGetStakeholdersByRoleWorks() 
+    {
+        $project = Mocks_Model_Project::getInstance();
+        $list = $project->getStakeholdersByRole('CCB');
     }
 
 }

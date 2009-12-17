@@ -18,29 +18,14 @@
  *
  */
 
+
 /**
- * One project in the project registry
+ * One payment
  *
  * @package Artifacts
  */
-class Mocks_theProject extends theProject 
+class thePayment extends FaZend_Db_Table_ActiveRow_payment
 {
 
-    /**
-     * Name
-     *
-     * @var string
-     */
-    public $name = Mocks_Model_Project::NAME;
-
-    /**
-     * Create test project on fly
-     * 
-     * @return Model_Project
-     */
-    public function fzProject() 
-    {
-        return Mocks_Model_Project::getInstance();
-    }
     
 }

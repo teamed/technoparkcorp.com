@@ -23,7 +23,8 @@
  *
  * @package Model
  */
-class Model_Issue_Trac extends Model_Issue_Abstract {
+class Model_Issue_Trac extends Model_Issue_Abstract 
+{
 
     /**
      * Send this message just once to the ticke
@@ -33,7 +34,8 @@ class Model_Issue_Trac extends Model_Issue_Abstract {
      * @param integer|null How many days before we can ask again, NULL means - never ask again
      * @return void
      **/
-    public function askOnce($code, $text, $lag = null) {
+    public function askOnce($code, $text, $lag = null) 
+    {
         $lastDate = false;
         foreach ($this->changelog->get('comment')->getChanges() as $change) {
             // not from me
@@ -72,7 +74,8 @@ class Model_Issue_Trac extends Model_Issue_Abstract {
      *
      * @return integer ID of this issue in Trac
      **/
-    public function exists() {
+    public function exists() 
+    {
         // if TRAC id already exists in the class - we are sure that issue exists in trac
         if ($this->_id)
             return true;
@@ -82,7 +85,7 @@ class Model_Issue_Trac extends Model_Issue_Abstract {
             return false;
         
         // get list of IDs with this code (we expect JUST ONE)
-        $ids = $this->_proxy()->query('code=' . Model_Pages_Encoder::encode($this->code));
+        $ids = $this->_tracker->getXmlProxy()->query('code=' . Model_Pages_Encoder::encode($this->code));
         
         // nothing or something strange
         if (count($ids) != 1) {
@@ -101,8 +104,9 @@ class Model_Issue_Trac extends Model_Issue_Abstract {
      *
      * @return void
      **/
-    protected function _loadChangelog() {
-        $log = $this->_proxy()->changeLog($this->_id);
+    protected function _loadChangelog() 
+    {
+        $log = $this->_tracker->getXmlProxy()->changeLog($this->_id);
         // logg("Issue #{$this->_id} has " . count($log) . ' changes in Trac');
         
         $fields = array();
@@ -112,7 +116,7 @@ class Model_Issue_Trac extends Model_Issue_Abstract {
             $fields[$record[2]] = true;
         }
 
-        $details = $this->_proxy()->get($this->_id);
+        $details = $this->_tracker->getXmlProxy()->get($this->_id);
         
         foreach ($details[3] as $k=>$v) {
             if (!isset($fields[$k]))
@@ -140,7 +144,8 @@ class Model_Issue_Trac extends Model_Issue_Abstract {
      *
      * @return void
      **/
-    protected function _saveChangelog() {
+    protected function _saveChangelog() 
+    {
         $pairs = $this->_changelog->whatToSave();
         
         // nothing was changed?
@@ -154,7 +159,7 @@ class Model_Issue_Trac extends Model_Issue_Abstract {
             $pairs['code'] = $this->code;
 
             // create new ticket in trac
-            $this->_id = $this->_proxy()->create(
+            $this->_id = $this->_tracker->getXmlProxy()->create(
                 (string)$this->_changelog->get('summary')->getValue(),
                 (string)$this->_changelog->get('description')->getValue(),
                 $this->_translateToTrac($pairs),
@@ -165,7 +170,7 @@ class Model_Issue_Trac extends Model_Issue_Abstract {
         } else {
             
             $pairs['action'] = 'leave';
-            $this->_proxy()->update(
+            $this->_tracker->getXmlProxy()->update(
                 $this->_id, 
                 isset($pairs['comment']) ? $pairs['comment'] : '',
                 $this->_translateToTrac($pairs),
@@ -176,15 +181,6 @@ class Model_Issue_Trac extends Model_Issue_Abstract {
     }
 
     /**
-     * Return XML RPC proxy for tickets in Trac
-     *
-     * @return Zend_XmlRpc_Client
-     **/
-    protected function _proxy() {
-        return $this->_tracker->getXmlRpcTicketProxy();
-    }
-    
-    /**
      * Translate what we got from Trac to our changelog-suitable pair
      *
      * @param string Name of the field
@@ -193,7 +189,8 @@ class Model_Issue_Trac extends Model_Issue_Abstract {
      * @param string Date of change of the field
      * @return array
      **/
-    protected function _translateFromTrac($name, $value, $author, $date) {
+    protected function _translateFromTrac($name, $value, $author, $date) 
+    {
         switch ($name) {
             
             case 'code':
@@ -301,7 +298,8 @@ class Model_Issue_Trac extends Model_Issue_Abstract {
      * @param array List of pairs to be sent to trac
      * @return array
      **/
-    protected function _translateToTrac(array $pairs) {
+    protected function _translateToTrac(array $pairs) 
+    {
         foreach ($pairs as $name=>&$value) {
             switch ($name) {
 

@@ -26,7 +26,8 @@
  *
  * @package Model
  */
-class Model_Pages extends Zend_Navigation {
+class Model_Pages extends Zend_Navigation 
+{
 
     /**
      * This constant is used in /pages scripts
@@ -66,7 +67,8 @@ class Model_Pages extends Zend_Navigation {
      *
      * @return Model_Pages
      */
-    public static function getInstance() {
+    public static function getInstance() 
+    {
         if (!isset(self::$_instance)) {
             self::$_instance = new Model_Pages();
             self::$_instance->_pagesPath = APPLICATION_PATH . '/pages';
@@ -79,7 +81,8 @@ class Model_Pages extends Zend_Navigation {
      *
      * @return Zend_Acl
      */
-    public function getAcl() {
+    public function getAcl() 
+    {
         if (!isset($this->_acl))
             $this->_init();
         return $this->_acl;
@@ -91,7 +94,8 @@ class Model_Pages extends Zend_Navigation {
      * @param string Document name, absolute path of the page
      * @return void
      */
-    public function setActiveDocument($doc) {
+    public function setActiveDocument($doc) 
+    {
         // the document will be activated, if it physically exists
         $this->_activateDocument($doc);
 
@@ -107,7 +111,8 @@ class Model_Pages extends Zend_Navigation {
      * @param string Absolute name of the page, without leading slash
      * @return boolean
      **/
-    public function hasScript($page) {
+    public function hasScript($page) 
+    {
         try {
             $this->resolvePath($page);
             return true;
@@ -123,7 +128,8 @@ class Model_Pages extends Zend_Navigation {
      * @param array List of INIT scripts, will be filled
      * @return string PHTML absolute path name
      */
-    public function resolvePath($doc, array &$scripts = array()) {
+    public function resolvePath($doc, array &$scripts = array()) 
+    {
         // all pages are located in this directory and its sub-dirs
         $path = $this->_pagesPath;
 
@@ -183,7 +189,8 @@ class Model_Pages extends Zend_Navigation {
      * @param array|object Source of data for resolving the link metas
      * @return string
      */
-    public static function resolveLink($link, $row = null, $key = null) {
+    public static function resolveLink($link, $row = null, $key = null) 
+    {
         // if it's empty - leave it like it is
         if (!$link)
             return $link;
@@ -231,7 +238,8 @@ class Model_Pages extends Zend_Navigation {
      * @param string Privileges to apply
      * @return boolean
      */
-    public function isAllowed($doc, $email = null, $privileges = 'r') {
+    public function isAllowed($doc, $email = null, $privileges = 'r') 
+    {
         // the document will be activated, if it physically exists
         $this->_activateDocument($doc);
 
@@ -263,7 +271,8 @@ class Model_Pages extends Zend_Navigation {
      * @param array Associative array of params to pass to the view
      * @return string HTML
      **/
-    public function buildDocumentHtml($doc, array $params = array()) {
+    public function buildDocumentHtml($doc, array $params = array()) 
+    {
         $view = clone $this->_view;
         $view->doc = $doc;
         
@@ -303,7 +312,8 @@ class Model_Pages extends Zend_Navigation {
      * @param string Directory to search pages for
      * @return void
      */
-    protected function _init(Zend_Navigation_Container $container = null, $path = '.') {
+    protected function _init(Zend_Navigation_Container $container = null, $path = '.') 
+    {
         // first level or recursion? initialize it
         if (is_null($container)) {
             $container = $this;
@@ -389,7 +399,8 @@ class Model_Pages extends Zend_Navigation {
      * @param string Absolute directory path
      * @return boolean
      **/
-    protected function _hasPages($path) {
+    protected function _hasPages($path) 
+    {
         $files = scandir($path);
         foreach ($files as $file) {
             if ($file[0] == '.')
@@ -405,7 +416,8 @@ class Model_Pages extends Zend_Navigation {
      * @param string Absolute file name (PHTML file)
      * @return string Parsed content, processed through VIEW
      */
-    protected function _parse($file) {
+    protected function _parse($file) 
+    {
         // if there is not VIEW - don't parse the file
         if (is_null($this->_view)) {
             // clone view from the system-wide object
@@ -419,7 +431,8 @@ class Model_Pages extends Zend_Navigation {
         }
 
         // parse this particular file
-        return $this->_view->render(substr($file, strlen($this->_pagesPath)));
+        $content = $this->_view->render(substr($file, strlen($this->_pagesPath)));
+        return $content;
     }
 
     /**
@@ -430,7 +443,8 @@ class Model_Pages extends Zend_Navigation {
      * @param string Prefix name of the page
      * @return void
      */
-    public function _parseAccesses($dir, Zend_Navigation_Container $pages, $prefix) {
+    public function _parseAccesses($dir, Zend_Navigation_Container $pages, $prefix) 
+    {
         $accessFile = $dir . '/_access.phtml';
 
         // create access lines from file or leave them empty
@@ -440,7 +454,7 @@ class Model_Pages extends Zend_Navigation {
             $lines = explode("\n", $this->_parse($accessFile));
 
         $rights = array();
-
+        
         // current directory to apply access rights to
         $current = false;
         
@@ -505,7 +519,8 @@ class Model_Pages extends Zend_Navigation {
      * @param string Access type (false|r|rw|w)
      * @return void
      */
-    protected function _grant($email, $page, $access = 'r') {
+    protected function _grant($email, $page, $access = 'r') 
+    {
         assert(preg_match('/^r|rw|$/', $access));
 
         // get local copy of ACL object
@@ -539,7 +554,8 @@ class Model_Pages extends Zend_Navigation {
      * @param string Page name
      * @return void
      */
-    protected function _addResource($page) {
+    protected function _addResource($page) 
+    {
         $this->getAcl()->addResource($page, strpos($page, '/') !== false ?
             substr($page, 0, strrpos($page, '/')) : null);
     }
@@ -550,7 +566,8 @@ class Model_Pages extends Zend_Navigation {
      * @param string Full name of the document
      * @return boolean Found or not?
      */
-    protected function _activateDocument($doc) {
+    protected function _activateDocument($doc) 
+    {
         // if it's already here - skip it
         if ($this->getAcl()->has($doc))
             return true;
@@ -582,7 +599,8 @@ class Model_Pages extends Zend_Navigation {
      * @param string Name of the page to be created
      * @return Zend_Navigation_Page
      */
-    protected function _createPage($doc) {
+    protected function _createPage($doc) 
+    {
         return new Zend_Navigation_Page_Uri(array(
             'label' => (strrpos($doc, '/') ? substr(strrchr($doc, '/'), 1) : $doc),
             'title' => $doc,

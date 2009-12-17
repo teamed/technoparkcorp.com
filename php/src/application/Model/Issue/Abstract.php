@@ -23,12 +23,13 @@
  *
  * @package Model
  */
-abstract class Model_Issue_Abstract {
+abstract class Model_Issue_Abstract 
+{
 
     /**
      * Tracker
      * 
-     * @var Model_Issue_Tracker_Abstract
+     * @var Model_Asset_Defects_Abstract
      */
     protected $_tracker = null;
 
@@ -56,11 +57,12 @@ abstract class Model_Issue_Abstract {
     /**
 	 * Constructor
      *
-     * @param Model_Issue_Tracker_Abstract Tracker instance
+     * @param Model_Asset_Defects_Abstract Tracker instance
      * @param string Unique code of the issue
      * @return void
      */
-	public function __construct(Model_Issue_Tracker_Abstract $tracker, $code) {
+	public function __construct(Model_Asset_Defects_Abstract $tracker, $code) 
+	{
 	    $this->_tracker = $tracker;
 	    $this->_code = $code;
     }
@@ -70,7 +72,8 @@ abstract class Model_Issue_Abstract {
      *
      * @return void
      */
-	public function __destruct() {
+	public function __destruct() 
+	{
 	    try {
             if (isset($this->_changelog))
 	            $this->_saveChangelog();
@@ -85,7 +88,8 @@ abstract class Model_Issue_Abstract {
      * @param string Name of property to get
      * @return string
      **/
-    public function __get($name) {
+    public function __get($name) 
+    {
         $method = '_get' . ucfirst($name);
         if (method_exists($this, $method))
             return $this->$method();
@@ -110,7 +114,8 @@ abstract class Model_Issue_Abstract {
      *
      * @return boolean
      **/
-    public function isCostEstimated() {
+    public function isCostEstimated() 
+    {
         return $this->changelog->get('cost') && $this->changelog->get('cost')->getValue();
     }
 
@@ -119,7 +124,8 @@ abstract class Model_Issue_Abstract {
      *
      * @return boolean
      **/
-    public function isDurationEstimated() {
+    public function isDurationEstimated() 
+    {
         return $this->changelog->get('duration') && $this->changelog->get('duration')->getValue();
     }
 
@@ -128,7 +134,8 @@ abstract class Model_Issue_Abstract {
      *
      * @return boolean
      **/
-    public function isClosed() {
+    public function isClosed() 
+    {
         return ($this->changelog->get('status')->getValue() != Model_Issue_Changelog_Field_Status::OPEN);
     }
 
@@ -137,7 +144,8 @@ abstract class Model_Issue_Abstract {
      *
      * @return boolean
      **/
-    public function isAssigned() {
+    public function isAssigned() 
+    {
         return (bool)$this->changelog->get('owner')->getValue();
     }
 
@@ -170,7 +178,8 @@ abstract class Model_Issue_Abstract {
      *
      * @return Model_Issue_Changelog_Changelog
      **/
-    protected function _getChangelog() {
+    protected function _getChangelog() 
+    {
         if (isset($this->_changelog))
             return $this->_changelog;
             

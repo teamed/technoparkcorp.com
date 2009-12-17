@@ -18,29 +18,35 @@
  *
  */
 
+
 /**
- * One project in the project registry
+ * Collection of fin statements
  *
  * @package Artifacts
  */
-class Mocks_theProject extends theProject 
+class theStatements extends ArrayIterator implements Model_Artifact_Passive, Model_Artifact_Interface
 {
 
     /**
-     * Name
-     *
-     * @var string
+     * Load all statements
+     * 
+     * @return void
      */
-    public $name = Mocks_Model_Project::NAME;
+    public function reload() 
+    {
+        foreach (theStatement::retrieveAll() as $statement) {
+            $this[] = $statement;
+        }
+    }
 
     /**
-     * Create test project on fly
+     * Is it loaded with all current statements?
      * 
-     * @return Model_Project
+     * @return boolean
      */
-    public function fzProject() 
+    public function isLoaded() 
     {
-        return Mocks_Model_Project::getInstance();
+        return count($this) > 0;
     }
-    
+        
 }
