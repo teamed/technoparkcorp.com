@@ -39,13 +39,10 @@ class thePayments implements Model_Artifact_Stateless {
      * @param string Original amount of payment, like '125 EUR'
      * @param string Context, for example name of project
      * @param string Details of the payment
-     * @return FaZend_Db_Table_ActiveRow_payment
+     * @return thePayment
      **/
     public function createSpecific($user, $original, $context, $details) {
-        $payment = $this->createGeneric($original, $context, $details);
-        $payment->user = $user;
-        $payment->save();
-        return $payment;
+        return thePayment::create($user, null, $original, $context, $details);
     }
         
     /**
@@ -54,33 +51,10 @@ class thePayments implements Model_Artifact_Stateless {
      * @param string Original amount of payment, like '125 EUR'
      * @param string Context, for example name of project
      * @param string Details of the payment
-     * @return FaZend_Db_Table_ActiveRow_payment
+     * @return thePayment
      **/
     public function createGeneric($original, $context, $details) {
-        $payment = new thePayment();
-        $payment->user = null;
-        $payment->context = $context;
-        $payment->details = $details;
-        $payment->rate = null;
-        $payment->original = $original;
-        
-        $payment->amount = (integer)Model_Cost::factory($original)->cents;
-        
-        $payment->save();
-        return $payment;
-    }
-        
-    /**
-     * Get statement
-     *
-     * @return array
-     **/
-    public function retrieveStatement() {
-        return thePayment::retrieve()
-            ->where('context = ?', $this->project->name)
-            ->order('created')
-            ->setRowClass('thePayment')
-            ->fetchAll();
+        return thePayment::create(null, null, $original, $context, $details);
     }
         
 }

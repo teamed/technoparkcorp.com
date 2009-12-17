@@ -25,13 +25,4 @@
  */
 class thePayment extends FaZend_Db_Table_ActiveRow_payment {
 
-    /**
-     * Get amount in USD
-     *
-     * @return Model_Cost
-     **/
-    public function getCost() {
-        return Model_Cost::factory($this->amount / 100);
-    }
-        
 }
