@@ -57,4 +57,57 @@ class Mocks_Shared_XmlRpc
         return '';
     }
 
+    /**
+     * Trac query
+     *
+     * @param sting Query to make
+     * @return string
+     **/
+    public function query($query) 
+    {
+        return array();
+    }
+
+    /**
+     * Trac create ticket
+     *
+     * @return integer Ticket ID
+     **/
+    public function create($summary, $description, $params, $smth) 
+    {
+        return 1;
+    }
+
+    /**
+     * Trac update one ticket
+     *
+     * @return void
+     **/
+    public function update($id, $summary, $params, $smth) 
+    {
+        // ...
+    }
+
+    /**
+     * Get ticket change log
+     *
+     * @param integer Ticket ID
+     * @return array
+     **/
+    public function changeLog($id) 
+    {
+        return array();
+    }
+
+    /**
+     * Get ticket info
+     *
+     * @param integer Ticket ID
+     * @return array
+     **/
+    public function get($id) 
+    {
+        return array();
+    }
+
 }
