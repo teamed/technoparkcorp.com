@@ -23,7 +23,8 @@
  *
  * @package Artifacts
  */
-class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive {
+class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive 
+{
 
     const SEPARATOR = '/';
 
@@ -32,7 +33,8 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive {
      *
      * @return boolean
      **/
-    public function isLoaded() {
+    public function isLoaded() 
+    {
         return count($this) > 1;
     }
     
@@ -41,7 +43,8 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive {
      *
      * @return void
      **/
-    public function reload() {
+    public function reload() 
+    {
         // here we have all project metrics
         $path = dirname(__FILE__) . '/metrics-library';        
 
@@ -75,10 +78,10 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive {
 
             $this->_attachMetric($metricName, $className);
             $new++;
-            // logg('Reloaded ' . $metricName);
+            logg('Reloaded ' . $metricName);
         }
         
-        // logg('Reloaded ' . count($this) . ' metrics in ' . $this->ps()->parent->name);
+        logg('Reloaded ' . count($this) . ' metrics in ' . $this->ps()->parent->name);
     }
 
     /**
@@ -88,7 +91,8 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive {
      * @return Metric_Abstract
      * @throws MetricNotFound
      **/
-    public function offsetGet($name) {
+    public function offsetGet($name) 
+    {
         if (parent::offsetExists($name))
             return parent::offsetGet($name);
 
@@ -105,7 +109,8 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive {
      * @param string ID of the metric to find
      * @return Metric_Abstract
      **/
-    public function findById($id) {
+    public function findById($id) 
+    {
         return $this[Model_Pages_Encoder::decode($id)];
     }
     
@@ -116,7 +121,8 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive {
      * @param string|Metric_Abstract Name of the class, like 'Metric_Requirements_Total'
      * @return Metric_Abstract
      **/
-    protected function _attachMetric($name, $class) {
+    protected function _attachMetric($name, $class) 
+    {
         if (!($class instanceof Metric_Abstract))
             $class = new $class();
             
@@ -132,7 +138,8 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive {
      * @param string Class name like 'Metric_Code_Sloc'
      * @return string Metric name like 'code/sloc'
      */
-    protected function _classToName($className) {
+    protected function _classToName($className) 
+    {
         $exp = array_filter(explode('_', $className));
         
         validate()->true(array_shift($exp) == 'Metric', "Metric class name shall start with Metric: '$className'");
@@ -153,12 +160,14 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive {
      * @return Metric_Abstract
      * @throws MetricNotFound
      **/
-    protected function _findMetric($name) {
-        $exp = explode(self::SEPARATOR, $name);
+    protected function _findMetric($name) 
+    {
+        // break down the name of the metric onto parts
+        $parts = explode(self::SEPARATOR, $name);
         
         // go from end to start
-        for ($i=count($exp)-1; $i>0; $i--) {
-            $parent = implode(self::SEPARATOR, array_slice($exp, 0, $i));
+        for ($i = count($parts)-1; $i > 0; $i--) {
+            $parent = implode(self::SEPARATOR, array_slice($parts, 0, $i));
             
             if (parent::offsetExists($parent)) {
                 $metric = $this[$parent];
@@ -174,7 +183,7 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive {
                     implode(', ', array_keys($exists)));
         }
 
-        $pattern = implode(self::SEPARATOR, array_slice($exp, $i));
+        $pattern = implode(self::SEPARATOR, array_slice($parts, $i));
         if (!$metric->isMatched($pattern)) {
             FaZend_Exception::raise('MetricDoesntMatch',
                 "Metric '{$name}' doesn't match pattern '{$pattern}' in metric '{$metric->name}'");
