@@ -26,9 +26,11 @@ require_once 'AbstractProjectTest.php';
  *
  * @package test
  */
-class TicketTest extends AbstractProjectTest {
+class TicketTest extends AbstractProjectTest 
+{
 
-    public function testSampleMechanismWorks() {
+    public function testSampleMechanismWorks() 
+    {
         // $this->assertEquals('is test', _('is %s', 'test'), "Simple string failed");
         // $this->assertEquals('test15', _(array('test%d', 'test%d'), 15));
     }
