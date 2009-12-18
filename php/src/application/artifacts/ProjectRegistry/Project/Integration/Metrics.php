@@ -29,13 +29,6 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
     const SEPARATOR = '/';
     
     /**
-     * We're currently loading metrics?
-     *
-     * @var boolean
-     **/
-    protected static $_loading = false;
-
-    /**
      * Is it reloaded?
      *
      * @return boolean
@@ -52,8 +45,6 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
      **/
     public function reload() 
     {
-        self::$_loading = true;
-        
         // here we have all project metrics
         $path = dirname(__FILE__) . '/metrics-library';        
 
@@ -63,11 +54,12 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
         set_include_path(get_include_path() . PATH_SEPARATOR . $path);
 
         // get collection into array before manipulations with actual collection
-        $exists = $this->getArrayCopy();
+        // $exists = $this->getArrayCopy();
 
-        $regexp = '/^' . preg_quote($path, '/') . '((?:\/\w+)*?)\/(\w+)\.php$/';        
-        $added = array();
-        $new = 0;
+        // by means of this REGEX we extract the relative name of the file
+        $regexp = '/^' . preg_quote($path, '/') . '((?:\/\w+)*?\/\w+)\.php$/';        
+
+        // go through the list of all files in "metrics-library"
         foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path)) as $file) {
             // skip abstract classes
             if ($file->getFileName() == 'Abstract.php')
@@ -77,42 +69,12 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
             if (!preg_match($regexp, $file->getPathName(), $matches))
                 continue;
                 
-            $className = str_replace('/', '_', trim($matches[1], '/')) . '_' . $matches[2];
-            $metricName = $this->_classToName($className);
-            $added[] = $metricName;
-            
-            // don't add it again, if it exists
-            if (isset($exists[$metricName]))
-                continue;
-
-            $this->_attachMetric($metricName, $className);
-            $new++;
-            logg('Reloaded ' . $metricName);
+            // we explicitly ask the class to load this metric
+            // @see offsetGet()
+            $this[$this->_fileToName(trim($matches[1], '/'))];
         }
-        
-        logg('Reloaded ' . count($this) . ' metrics in ' . $this->ps()->parent->name);
-        self::$_loading = false;
     }
 
-    /**
-     * Get metric even if it doesn't exist in array
-     *
-     * @param string Full name of metric, e.g. 'requirements/useCases/total'
-     * @return Metric_Abstract
-     * @throws MetricNotFound
-     **/
-    public function offsetGet($name) 
-    {
-        if (/*self::$_loading || */parent::offsetExists($name))
-            return parent::offsetGet($name);
-
-        // top level metric can't be used in patterning
-        if (strpos($name, self::SEPARATOR) === false)
-            FaZend_Exception::raise('MetricNotFound', "Metric '{$name}' not found in collection");
-        
-        return $this->_findMetric($name);
-    }
-    
     /**
      * Find metric by ID
      *
@@ -125,41 +87,28 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
     }
     
     /**
-     * Attach one metric to the collection
+     * Get metric even if it doesn't exist in array
      *
-     * @param string Name of the metric, like 'requirements/total'
-     * @param string|Metric_Abstract Name of the class, like 'Metric_Requirements_Total'
+     * Here we catch any attempts to get a metric out of collection. We
+     * either return an existing metric, or we're trying to load it.
+     *
+     * @param string Full name of metric, e.g. 'requirements/useCases/total'
      * @return Metric_Abstract
+     * @throws MetricNotFound
      **/
-    protected function _attachMetric($name, $class) 
+    public function offsetGet($name) 
     {
-        if (!($class instanceof Metric_Abstract))
-            $class = new $class();
-            
-        $class->setName($name);
-        $this->_attachItem($name, $class, 'setMetrics');
+        // if the metric is in array - we just return it
+        if (parent::offsetExists($name))
+            return parent::offsetGet($name);
 
-        return $class;       
+        // top level metric can't be used in patterning
+        // if (strpos($name, self::SEPARATOR) === false)
+            // FaZend_Exception::raise('MetricNotFound', "Metric '{$name}' not found in collection");
+        
+        return $this->_findMetric($name);
     }
     
-    /**
-     * Convert metric class name to metric name
-     *
-     * @param string Class name like 'Metric_Code_Sloc'
-     * @return string Metric name like 'code/sloc'
-     */
-    protected function _classToName($className) 
-    {
-        $exp = array_filter(explode('_', $className));
-        
-        validate()->true(array_shift($exp) == 'Metric', "Metric class name shall start with Metric: '$className'");
-        
-        foreach ($exp as &$sector)
-            // PHP 5.3 only: lcfirst()
-            $sector = lcfirst($sector);
-        return implode(self::SEPARATOR, $exp);
-    }
-            
     /**
      * Find metric and create it, if possible
      *
@@ -172,35 +121,96 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
      **/
     protected function _findMetric($name) 
     {
+        // maybe we can load it straight away?
+        if ($this->_attachMetric($name))
+            return $this[$name];
+
         // break down the name of the metric onto parts
         $parts = explode(self::SEPARATOR, $name);
         
         // go from end to start
         for ($i = count($parts)-1; $i > 0; $i--) {
-            $parent = implode(self::SEPARATOR, array_slice($parts, 0, $i));
+            $parentName = implode(self::SEPARATOR, array_slice($parts, 0, $i));
             
-            // if (parent::offsetExists($parent)) {
-            if (isset($this[$parent])) {
-                $metric = $this[$parent];
+            if ($this->_attachMetric($parentName)) {
+                $parent = $this[$parentName];
                 break;
             }
         }
 
         // if the requirement is not found up to the top-level element
-        if (!isset($metric)) {
+        if (!isset($parent) || !$parent) {
             $exists = $this->getArrayCopy();
             FaZend_Exception::raise('MetricNotFound', 
-                "Metric '{$name}' not found for parent '{$parent}', " . count($exists) . ' total in collection: ' . 
+                "Metric '{$name}' not found for parent '{$parentName}', " . count($exists) . ' total in collection: ' . 
                     implode(', ', array_keys($exists)));
         }
 
         $pattern = implode(self::SEPARATOR, array_slice($parts, $i));
-        if (!$metric->isMatched($pattern)) {
+        if (!$parent->isMatched($pattern)) {
             FaZend_Exception::raise('MetricDoesntMatch',
-                "Metric '{$name}' doesn't match pattern '{$pattern}' in metric '{$metric->name}'");
+                "Metric '{$name}' doesn't match pattern '{$pattern}' in metric '{$parent->name}'");
         }
             
-        return $this->_attachMetric($name, $metric->cloneByPattern($pattern));
+        $this->_attachMetric($name, $parent->cloneByPattern($pattern));
+        return $this[$name];
     }
 
+    /**
+     * Load and attach one metric to the collection
+     *
+     * @param string Name of the metric, like 'requirements/total'
+     * @param null|Metric_Abstract
+     * @return boolean Attached or not?
+     **/
+    protected function _attachMetric($name, Metric_Abstract $metric = null) 
+    {
+        // don't add it again, if it exists
+        if (isset($this[$name]))
+            return true;
+            
+        if (is_null($metric)) {
+            $className = $this->_nameToClass($name);
+            if (!class_exists($className))
+                return false;
+            $metric = new $className;
+        }
+
+        $metric->setName($name);
+        $this->_attachItem($name, $metric, 'setMetrics');
+        
+        logg('New metric attached: ' . $name);
+        return true;
+    }
+    
+    /**
+     * Convert metric file name to metric name
+     *
+     * @param string Class name like 'Metric/Code/Sloc.php'
+     * @return string Metric name like 'code/sloc'
+     */
+    protected function _fileToName($fileName) 
+    {
+        $parts = explode('/', $fileName);
+        validate()->true(array_shift($parts) == 'Metric', 
+            "Metric file name shall start with Metric: '{$fileName}'");
+        foreach ($parts as &$sector)
+            $sector = lcfirst($sector);
+        return implode(self::SEPARATOR, $parts);
+    }
+    
+    /**
+     * Convert metric name to classs name
+     *
+     * @param string Metric name like 'code/sloc'
+     * @return string Class name like 'Metric_Code_Sloc'
+     */
+    protected function _nameToClass($name) 
+    {
+        $parts = explode(self::SEPARATOR, $name);
+        foreach ($parts as &$sector)
+            $sector = ucfirst($sector);
+        return 'Metric_' . implode('_', $parts);
+    }
+            
 }
