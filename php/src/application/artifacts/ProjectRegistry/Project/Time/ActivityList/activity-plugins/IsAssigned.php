@@ -18,6 +18,8 @@
  *
  */
 
+require_once 'artifacts/ProjectRegistry/Project/Time/ActivityList/activity-plugins/Abstract.php';
+
 /**
  * Activity is assigned to a certain person
  * 

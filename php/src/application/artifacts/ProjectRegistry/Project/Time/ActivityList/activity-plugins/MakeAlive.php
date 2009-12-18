@@ -18,6 +18,8 @@
  *
  */
 
+require_once 'artifacts/ProjectRegistry/Project/Time/ActivityList/activity-plugins/Abstract.php';
+
 /**
  * Make sure that issue exists for this activity
  * 
