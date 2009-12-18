@@ -27,6 +27,13 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
 {
 
     const SEPARATOR = '/';
+    
+    /**
+     * We're currently loading metrics?
+     *
+     * @var boolean
+     **/
+    protected static $_loading = false;
 
     /**
      * Is it reloaded?
@@ -45,6 +52,8 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
      **/
     public function reload() 
     {
+        self::$_loading = true;
+        
         // here we have all project metrics
         $path = dirname(__FILE__) . '/metrics-library';        
 
@@ -82,6 +91,7 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
         }
         
         logg('Reloaded ' . count($this) . ' metrics in ' . $this->ps()->parent->name);
+        self::$_loading = false;
     }
 
     /**
@@ -93,7 +103,7 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
      **/
     public function offsetGet($name) 
     {
-        if (parent::offsetExists($name))
+        if (self::$_loading || parent::offsetExists($name))
             return parent::offsetGet($name);
 
         // top level metric can't be used in patterning
