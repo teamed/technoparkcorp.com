@@ -40,9 +40,11 @@ class theStatement extends ArrayIterator
      * @param string Email of supplier
      * @return void
      */
-    public function __construct($supplier) {
+    public function __construct($supplier) 
+    {
         parent::__construct();
         $this->_supplier = $supplier;
+        $this->rewind();
     }
     
     /**
@@ -102,7 +104,7 @@ class theStatement extends ArrayIterator
      **/
     protected function _getBalance() 
     {
-        return 13;
+        return thePayment::getStatementBalance($this);
     }
     
     /**
@@ -112,7 +114,7 @@ class theStatement extends ArrayIterator
      **/
     protected function _getVolume() 
     {
-        return 13;
+        return thePayment::getStatementVolume($this);
     }
     
 }

@@ -2,12 +2,14 @@
 
 <h1>Statement for <?=$statement->supplier?></h1>
 
-<p>Balance: <b><?=$statement->balance?></b></p>
+<p>Balance: <b><?=$statement->balance?></b>,
+    Volume: <b><?=$statement->volume?></b> 
+    (<?=count($statement)?> payments).</p>
 
 <?=$this->table()
     ->setSource($statement)
     ->addColumn('created', 'Date')
-    ->addColumn('amount', 'Amount')
+    ->addColumn('getUsd', 'Amount')
     ->addColumn('context', 'Context')
     ->addColumn('reason', 'Reason')
     ->addColumn('details', 'Details')

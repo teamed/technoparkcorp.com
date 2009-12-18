@@ -58,15 +58,7 @@ class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap
     protected function _initPos() 
     {
         // do it after fazend only
-        $this->bootstrap('Fazend');
-        
-        // FaZend_User::setCurrentUser(Model_User::me());
-        
-        // initialize root
-        Model_Artifact::root();
-
-        // initialize ACL list
-        Model_Pages::getInstance();
+        // $this->bootstrap('Fazend');
     }
 
     /**

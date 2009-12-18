@@ -19,16 +19,20 @@
  *
  * @package helpers
  */
-class Helper_PanelUrl extends FaZend_View_Helper {
+class Helper_PanelUrl extends FaZend_View_Helper 
+{
 
     /**
-     * Builds the static URL
+     * Builds the URL for a panel document
      *
      * @param string string|false New url to use or current (if FALSE)
-     * @return string HTML URL
+     * @return string URL
      */
-    public function panelUrl($doc = false) {
-        return $this->getView()->url(array('doc' => ($doc ? $doc : $this->getView()->doc)), 'panel', true, false);
+    public function panelUrl($doc = false) 
+    {
+        return $this->getView()->url(array(
+                'doc' => ($doc ? $doc : $this->getView()->doc)
+            ), 'panel', true, false);
     }
 
 }

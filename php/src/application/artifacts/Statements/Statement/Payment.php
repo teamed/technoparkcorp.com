@@ -34,10 +34,11 @@ class thePayment extends FaZend_Db_Table_ActiveRow_payment
      * @param string Active rate at the moment of payment, like '12 USD'
      * @param string Original amount of payment, like '125 EUR'
      * @param string Context, for example name of project
+     * @param string Reason of the payment
      * @param string Details of the payment
      * @return FaZend_Db_Table_ActiveRow_payment
      **/
-    public static function create($supplier, $rate, $original, $context, $details) 
+    public static function create($supplier, $rate, $original, $context, $reason, $details) 
     {
         validate()
             ->emailAddress($supplier, array());
@@ -45,6 +46,7 @@ class thePayment extends FaZend_Db_Table_ActiveRow_payment
         $payment = new thePayment();
         $payment->supplier = $supplier;
         $payment->context = $context;
+        $payment->reason = $reason;
         $payment->details = $details;
         $payment->rate = $rate;
         $payment->original = $original;
@@ -71,11 +73,43 @@ class thePayment extends FaZend_Db_Table_ActiveRow_payment
     }
     
     /**
+     * Get total volume of the given statement
+     *
+     * @param theStatement The statement to analyze
+     * @return Model_Cost
+     **/
+    public static function getStatementVolume(theStatement $statement) 
+    {
+        return Model_Cost::factory(thePayment::retrieve()
+            ->columns(array('volume'=>new Zend_Db_Expr('SUM(IF(amount>0,amount,0))/100')))
+            ->where('supplier = ?', $statement->supplier)
+            ->group('supplier')
+            ->fetchRow()
+            ->volume . ' USD');
+    }
+    
+    /**
+     * Get balance of the given statement
+     *
+     * @param theStatement The statement to analyze
+     * @return Model_Cost
+     **/
+    public static function getStatementBalance(theStatement $statement) 
+    {
+        return Model_Cost::factory(thePayment::retrieve()
+            ->columns(array('balance'=>new Zend_Db_Expr('SUM(amount)/100')))
+            ->where('supplier = ?', $statement->supplier)
+            ->group('supplier')
+            ->fetchRow()
+            ->balance . ' USD');
+    }
+    
+    /**
      * Get amount in USD
      *
      * @return Model_Cost
      **/
-    public function getCost() {
+    public function getUsd() {
         return Model_Cost::factory($this->amount / 100);
     }
            
