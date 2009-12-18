@@ -24,29 +24,154 @@
  *
  * @package Artifacts
  */
-class theStatements extends ArrayIterator implements Model_Artifact_Passive, Model_Artifact_Interface
+class theStatements implements ArrayAccess, Iterator, Countable, Model_Artifact_Interface
 {
+    
+    /**
+     * Rowset from theStatement
+     *
+     * @var theStatement[]
+     **/
+    protected $_rowset = null;
 
     /**
-     * Load all statements
+     * Statement exists?
      * 
-     * @return void
+     * The method is required by ArrayAccess interface, don't delete it.
+     *
+     * @param string Name of the statement (email)
+     * @return boolean
      */
-    public function reload() 
+    public function offsetExists($email) 
     {
-        foreach (theStatement::retrieveAll() as $statement) {
-            $this[$statement->supplier] = $statement;
+        try {
+            $this->offsetGet($email);
+            return true;
+        } catch (Exception $e) {
+            return false;
         }
     }
 
     /**
-     * Is it loaded with all current statements?
+     * Get one statement
      * 
+     * The method is required by ArrayAccess interface, don't delete it.
+     *
+     * @param string Name of the statement (email)
      * @return boolean
      */
-    public function isLoaded() 
+    public function offsetGet($email) 
     {
-        return count($this) > 0;
+        return theStatement::findBySupplier($email);
+    }
+
+    /**
+     * This method is required by ArrayAccess, but is forbidden
+     * 
+     * The method is required by ArrayAccess interface, don't delete it.
+     *
+     * @return void
+     */
+    public function offsetSet($email, $value) 
+    {
+        FaZend_Exception::raise('StatementsException', "Statements are not editable directly");
+    }
+
+    /**
+     * This method is required by ArrayAccess, but is forbidden
+     * 
+     * The method is required by ArrayAccess interface, don't delete it.
+     *
+     * @return void
+     */
+    public function offsetUnset($email) 
+    {
+        FaZend_Exception::raise('StatementsException', "Statements are not editable directly");
+    }
+
+    /**
+     * Return current element
+     * 
+     * The method is required by Iterator interface, don't delete it.
+     *
+     * @return theStatement
+     */
+    public function current() 
+    {
+        return $this->_getRowset()->current();
+    }
+    
+    /**
+     * Return next
+     * 
+     * The method is required by Iterator interface, don't delete it.
+     *
+     * @return theStatement
+     */
+    public function next() 
+    {
+        return $this->_getRowset()->next();
+    }
+    
+    /**
+     * Return key
+     * 
+     * The method is required by Iterator interface, don't delete it.
+     *
+     * @return theStatement
+     */
+    public function key() 
+    {
+        return $this->_getRowset()->key();
+    }
+    
+    /**
+     * Is valid?
+     * 
+     * The method is required by Iterator interface, don't delete it.
+     *
+     * @return boolean
+     */
+    public function valid() 
+    {
+        return $this->_getRowset()->valid();
+    }
+    
+    /**
+     * Rewind
+     * 
+     * The method is required by Iterator interface, don't delete it.
+     *
+     * @return theStatement
+     */
+    public function rewind() 
+    {
+        return $this->_getRowset()->rewind();
+    }
+    
+    /**
+     * Count them
+     * 
+     * The method is required by Countable interface, don't delete it.
+     *
+     * @return theStatement
+     */
+    public function count() 
+    {
+        return $this->_getRowset()->count();
+    }
+    
+    /**
+     * Returns rowset with statements
+     *
+     * @return theStatement[]
+     **/
+    protected function _getRowset() 
+    {
+        if (!isset($this->_rowset))
+            $this->_rowset = theStatement::retrieveAll();
+        return $this->_rowset;
+        
     }
     
 }

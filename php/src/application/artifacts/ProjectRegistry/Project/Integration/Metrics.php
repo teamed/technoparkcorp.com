@@ -29,6 +29,13 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
     const SEPARATOR = '/';
     
     /**
+     * Autoloader of metrics
+     *
+     * @var Zend_Loader_Autoloader
+     **/
+    protected static $_autoloader = null;
+    
+    /**
      * Is it reloaded?
      *
      * @return boolean
@@ -47,14 +54,6 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
     {
         // here we have all project metrics
         $path = dirname(__FILE__) . '/metrics-library';        
-
-        // enable this directory for class loading
-        $autoloader = Zend_Loader_Autoloader::getInstance();
-        $autoloader->registerNamespace('Metric_');
-        set_include_path(get_include_path() . PATH_SEPARATOR . $path);
-
-        // get collection into array before manipulations with actual collection
-        // $exists = $this->getArrayCopy();
 
         // by means of this REGEX we extract the relative name of the file
         $regexp = '/^' . preg_quote($path, '/') . '((?:\/\w+)*?\/\w+)\.php$/';        
@@ -101,11 +100,7 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
         // if the metric is in array - we just return it
         if (parent::offsetExists($name))
             return parent::offsetGet($name);
-
-        // top level metric can't be used in patterning
-        // if (strpos($name, self::SEPARATOR) === false)
-            // FaZend_Exception::raise('MetricNotFound', "Metric '{$name}' not found in collection");
-        
+        // otherwise we find it and attach
         return $this->_findMetric($name);
     }
     
@@ -171,7 +166,16 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
             
         if (is_null($metric)) {
             $className = $this->_nameToClass($name);
-            if (!class_exists($className))
+
+            if (is_null(self::$_autoloader)) {
+                // enable this directory for class loading
+                self::$_autoloader = Zend_Loader_Autoloader::getInstance();
+                self::$_autoloader->registerNamespace('Metric_');
+                set_include_path(get_include_path() . PATH_SEPARATOR . 
+                    dirname(__FILE__) . '/metrics-library');
+            }
+
+            if (!@self::$_autoloader->autoload($className, false))
                 return false;
             $metric = new $className;
         }
@@ -212,5 +216,5 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
             $sector = ucfirst($sector);
         return 'Metric_' . implode('_', $parts);
     }
-            
+    
 }

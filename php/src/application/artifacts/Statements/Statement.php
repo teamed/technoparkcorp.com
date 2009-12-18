@@ -24,28 +24,15 @@
  *
  * @package Artifacts
  */
-class theStatement extends ArrayIterator
+class theStatement extends Zend_Db_Table_Row implements ArrayAccess, Iterator, Countable
 {
     
     /**
-     * Name of supplier (email)
+     * Rowset with payments
      *
-     * @var string
+     * @var thePayment[]
      **/
-    protected $_supplier;
-    
-    /**
-     * Construct the class
-     *
-     * @param string Email of supplier
-     * @return void
-     */
-    public function __construct($supplier) 
-    {
-        parent::__construct();
-        $this->_supplier = $supplier;
-        $this->rewind();
-    }
+    protected $_rowset;
     
     /**
      * Getter dispatcher
@@ -68,15 +55,19 @@ class theStatement extends ArrayIterator
     }
 
     /**
-     * Rewind the array and fill it with data
+     * Find statement by supplier
      *
-     * @return void
+     * @param string Email of the supplier
+     * @return theStatement
      **/
-    public function rewind() 
+    public static function findBySupplier($email) 
     {
-        foreach (thePayment::retrieveByStatement($this) as $payment)
-            $this[] = $payment;
-        return parent::rewind();
+        return thePayment::retrieve(false)
+            ->from('payment', array('supplier'))
+            ->group('supplier')
+            ->where('supplier = ?', $email)
+            ->setRowClass('theStatement')
+            ->fetchRow();
     }
 
     /**
@@ -86,15 +77,11 @@ class theStatement extends ArrayIterator
      **/
     public static function retrieveAll() 
     {
-        $emails = thePayment::retrieve(false)
+        return thePayment::retrieve(false)
             ->from('payment', array('supplier'))
             ->group('supplier')
+            ->setRowClass('theStatement')
             ->fetchAll();
-        
-        $list = array();
-        foreach ($emails as $email)
-            $list[] = new theStatement($email->supplier);
-        return $list;
     }
     
     /**
@@ -117,4 +104,149 @@ class theStatement extends ArrayIterator
         return thePayment::getStatementVolume($this);
     }
     
+    /**
+     * Get email of supplier
+     *
+     * @return string
+     **/
+    protected function _getSupplier() 
+    {
+        return parent::__get('supplier');
+    }
+    
+    /**
+     * Payment exists?
+     * 
+     * The method is required by ArrayAccess interface, don't delete it.
+     *
+     * @param integer Id of the payment
+     * @return boolean
+     */
+    public function offsetExists($id) 
+    {
+        $payment = $this->offsetGet($id);
+        return $payment->exists();
+    }
+
+    /**
+     * Get one statement
+     * 
+     * The method is required by ArrayAccess interface, don't delete it.
+     *
+     * @param integer Id of the payment
+     * @return boolean
+     */
+    public function offsetGet($id) 
+    {
+        return new thePayment(intval($id));
+    }
+
+    /**
+     * This method is required by ArrayAccess, but is forbidden
+     * 
+     * The method is required by ArrayAccess interface, don't delete it.
+     *
+     * @return void
+     */
+    public function offsetSet($email, $value) 
+    {
+        FaZend_Exception::raise('StatementException', "Statements are not editable directly");
+    }
+
+    /**
+     * This method is required by ArrayAccess, but is forbidden
+     * 
+     * The method is required by ArrayAccess interface, don't delete it.
+     *
+     * @return void
+     */
+    public function offsetUnset($email) 
+    {
+        FaZend_Exception::raise('StatementException', "Statements are not editable directly");
+    }
+
+    /**
+     * Return current element
+     * 
+     * The method is required by Iterator interface, don't delete it.
+     *
+     * @return theStatement
+     */
+    public function current() 
+    {
+        return $this->_getRowset()->current();
+    }
+    
+    /**
+     * Return next
+     * 
+     * The method is required by Iterator interface, don't delete it.
+     *
+     * @return theStatement
+     */
+    public function next() 
+    {
+        return $this->_getRowset()->next();
+    }
+    
+    /**
+     * Return key
+     * 
+     * The method is required by Iterator interface, don't delete it.
+     *
+     * @return theStatement
+     */
+    public function key() 
+    {
+        return $this->_getRowset()->key();
+    }
+    
+    /**
+     * Is valid?
+     * 
+     * The method is required by Iterator interface, don't delete it.
+     *
+     * @return boolean
+     */
+    public function valid() 
+    {
+        return $this->_getRowset()->valid();
+    }
+    
+    /**
+     * Rewind
+     * 
+     * The method is required by Iterator interface, don't delete it.
+     *
+     * @return theStatement
+     */
+    public function rewind() 
+    {
+        return $this->_getRowset()->rewind();
+    }
+    
+    /**
+     * Count them
+     * 
+     * The method is required by Countable interface, don't delete it.
+     *
+     * @return theStatement
+     */
+    public function count() 
+    {
+        return $this->_getRowset()->count();
+    }
+    
+    /**
+     * Get rowset with payments
+     *
+     * @return thePayment[]
+     **/
+    protected function _getRowset() 
+    {
+        if (!isset($this->_rowset))
+            $this->_rowset = thePayment::retrieveByStatement($this);
+        return $this->_rowset;
+    }
+
 }

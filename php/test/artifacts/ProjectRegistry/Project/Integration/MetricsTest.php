@@ -29,8 +29,8 @@ require_once 'AbstractProjectTest.php';
 class MetricsTest extends AbstractProjectTest {
 
     public function testGeneralMechanismWorks() {
-        // $defects = $this->_project->metrics['defects/total']->value;
-        // logg($defects . ' defects found');
+        $defects = $this->_project->metrics['defects/total']->value;
+        logg($defects . ' defects found');
     }
 
     public function testGetAllWorks() {
