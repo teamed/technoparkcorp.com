@@ -103,7 +103,7 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
      **/
     public function offsetGet($name) 
     {
-        if (self::$_loading || parent::offsetExists($name))
+        if (/*self::$_loading || */parent::offsetExists($name))
             return parent::offsetGet($name);
 
         // top level metric can't be used in patterning
@@ -179,7 +179,8 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
         for ($i = count($parts)-1; $i > 0; $i--) {
             $parent = implode(self::SEPARATOR, array_slice($parts, 0, $i));
             
-            if (parent::offsetExists($parent)) {
+            // if (parent::offsetExists($parent)) {
+            if (isset($this[$parent])) {
                 $metric = $this[$parent];
                 break;
             }
