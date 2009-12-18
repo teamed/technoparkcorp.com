@@ -423,6 +423,9 @@ class Model_Pages extends Zend_Navigation
             // clone view from the system-wide object
             $this->_view = clone Zend_Registry::getInstance()->view;
             
+            // disable all filters
+            $this->_view->setFilter(null);
+            
             // root of the entire artifact tree
             $this->_view->root = Model_Artifact::root();
             
