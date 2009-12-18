@@ -23,7 +23,7 @@
  *
  * @package Model
  */
-class Model_Project extends Shared_Project 
+class Model_Project extends Shared_Project
 {
     
     const ROLE_AUTHZ_PREFIX = '/role/';
