@@ -14,11 +14,11 @@
 # @copyright Copyright (c) TechnoPark Corp., 2001-2008
 # @version $Id$
 
-AuthUserFile /home/beta/public_html/public/.htpasswd
-AuthGroupFile /dev/null
-AuthName "thePanel2.beta"
-AuthType Basic
-Require valid-user
+#AuthUserFile /home/beta/public_html/public/.htpasswd
+#AuthGroupFile /dev/null
+#AuthName "thePanel2.beta"
+#AuthType Basic
+#Require valid-user
 
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} -s [OR]
