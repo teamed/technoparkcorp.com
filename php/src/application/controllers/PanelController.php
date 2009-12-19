@@ -43,7 +43,9 @@ class PanelController extends FaZend_Controller_Action {
             // show as much information as possible
             $adapter = new Model_Auth_Adapter(array(
                 'accept_schemes' => 'basic',
-                'realm' => 'thePanel 2.0 ' . FaZend_Revision::get() . '/' . count(Model_Project::retrieveAll())));
+                'realm' => 'thePanel 2.0 beta'
+                 // . FaZend_Revision::get() . '/' . count(Model_Project::retrieveAll())
+                 ));
 
             $adapter->setBasicResolver(new Model_Auth_Resolver());
             $adapter->setRequest($this->getRequest());
