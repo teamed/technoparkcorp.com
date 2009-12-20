@@ -140,8 +140,10 @@ function _t($str)
     $str = Zend_Registry::get('Zend_Translate')->_($str);
 
     // pass it to sprintf
-    if (func_num_args() > 1)
-        $str = call_user_func_array('sprintf', array_merge(array($str), array_slice(func_get_args(), 1)));
+    if (func_num_args() > 1) {
+        $args = func_get_args();
+        $str = call_user_func_array('sprintf', array_merge(array($str), array_slice($args, 1)));
+    }
     
     return $str;
 }
