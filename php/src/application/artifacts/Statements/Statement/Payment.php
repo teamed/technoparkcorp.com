@@ -73,6 +73,32 @@ class thePayment extends FaZend_Db_Table_ActiveRow_payment
     }
     
     /**
+     * Get total volume
+     *
+     * @return Model_Cost
+     **/
+    public static function getVolume() 
+    {
+        return Model_Cost::factory(thePayment::retrieve()
+            ->columns(array('volume'=>new Zend_Db_Expr('SUM(IF(amount>0,amount,0))/100')))
+            ->fetchRow()
+            ->volume . ' USD');
+    }
+    
+    /**
+     * Get total balance
+     *
+     * @return Model_Cost
+     **/
+    public static function getBalance() 
+    {
+        return Model_Cost::factory(thePayment::retrieve()
+            ->columns(array('balance'=>new Zend_Db_Expr('SUM(amount)/100')))
+            ->fetchRow()
+            ->balance . ' USD');
+    }
+    
+    /**
      * Get total volume of the given statement
      *
      * @param theStatement The statement to analyze

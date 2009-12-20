@@ -35,6 +35,46 @@ class theStatements implements ArrayAccess, Iterator, Countable, Model_Artifact_
     protected $_rowset = null;
 
     /**
+     * Getter dispatcher
+     *
+     * @param string Name of property to get
+     * @return mixed
+     **/
+    public function __get($name) 
+    {
+        $method = '_get' . ucfirst($name);
+        if (method_exists($this, $method))
+            return $this->$method();
+            
+        $var = '_' . $name;
+        if (property_exists($this, $var))
+            return $this->$var;
+        
+        FaZend_Exception::raise('Statements_PropertyOrMethodNotFound', 
+            "Can't find what is '$name' in " . get_class($this));
+    }
+
+    /**
+     * Calculate balance
+     *
+     * @return Model_Cost
+     **/
+    protected function _getBalance() 
+    {
+        return thePayment::getBalance($this);
+    }
+    
+    /**
+     * Calculate total volume
+     *
+     * @return Model_Cost
+     **/
+    protected function _getVolume() 
+    {
+        return thePayment::getVolume($this);
+    }
+    
+    /**
      * Statement exists?
      * 
      * The method is required by ArrayAccess interface, don't delete it.

@@ -1,11 +1,16 @@
+<? $statements = $this->root->statements ?>
+
 <h1>Statements</h1>
 
 <?=$this->bar()
     ->addLink('create', 'Create new payment')
     ?>
 
+<p>Balance: <b><?=$statements->balance?></b>,
+    Volume: <b><?=$statements->volume?></b>.</p>
+
 <?=$this->table()
-    ->setSource($this->root->statements)
+    ->setSource($statements)
     ->addColumn('supplier', 'Email')
     ->addColumn('balance', 'Balance')
     ->addColumn('volume', 'Volume')
