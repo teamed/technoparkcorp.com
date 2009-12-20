@@ -91,8 +91,12 @@ class theStatement extends Zend_Db_Table_Row implements ArrayAccess, Iterator, C
      **/
     public function sendByEmail() 
     {
+        validate()
+            ->true($this->balance->usd > 0, "Can't email empty of negative statement ({$this->balance})");
+            
         FaZend_Email::create()
             ->set('body', $this->asText)
+            ->set('subject', 'TechnoPark Corp. is ready to pay ' . $this->balance)
             ->set('toEmail', $this->supplier)
             ->set('toName', $this->supplier)
             ->set('fromEmail', 'finance@tpc2.com')

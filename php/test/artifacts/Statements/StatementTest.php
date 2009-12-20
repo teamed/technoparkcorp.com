@@ -54,4 +54,19 @@ class theStatementTest extends FaZend_Test_TestCase
         $this->assertTrue(strlen($statement->asText) > 0, 'Statement asText() is empty, why?');
     }
 
+    public function testSendByEmailWorks() 
+    {
+        require_once 'Mocks/artifacts/Statements/Statement.php';
+        $statement = Mocks_theStatement::get();
+        $balance = $statement->balance->usd;
+        
+        // make it positive
+        if ($balance <= 0) {
+            require_once 'Mocks/artifacts/Statements/Statement/Payment.php';
+            Mocks_thePayment::make($statement->supplier, -$balance + 50);
+        }
+            
+        $statement->sendByEmail();
+    }
+
 }
