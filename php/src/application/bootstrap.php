@@ -114,29 +114,28 @@ function logg($message)
     }
 }
 
-// in PHP 5.2 function re-declaration will lead to runtime error for LINT
-if (!function_exists('_')) {
-    /**
-     * Translate string
-     *
-     * @param string Translate this string and return it's translated value
-     * @return string
-     */
-    function _($str) 
-    {
-        // if array specified - we get a random line from it
-        if (is_array($str))
-            $str = $str[array_rand($str)];
+/**
+ * Translate string
+ *
+ * @param string Translate this string and return it's translated value
+ * @return string
+ */
+function _t($str) 
+{
+    // if array specified - we get a random line from it
+    if (is_array($str))
+        $str = $str[array_rand($str)];
+
+    $str = preg_replace('/\n\t\r/', ' ', $str);
+
+    // translate this string
+    $str = Zend_Registry::get('Zend_Translate')->_($str);
+
+    // pass it to sprintf
+    if (func_num_args() > 1)
+        $str = call_user_func_array('sprintf', array_merge(array($str), array_slice(func_get_args(), 1)));
     
-        // translate this string
-        $str = Zend_Registry::get('Zend_Translate')->_($str);
-    
-        // pass it to sprintf
-        if (func_num_args() > 1)
-            $str = call_user_func_array('sprintf', array_merge(array($str), array_slice(func_get_args(), 1)));
-        
-        return $str;
-    }
+    return $str;
 }
 
 /**

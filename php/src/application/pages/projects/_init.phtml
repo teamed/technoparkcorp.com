@@ -1,7 +1,7 @@
 <?
     if (!isset($this->root->projectRegistry[$this->segment(1)]))
         FaZend_Exception::raise('AccessRestrictedException',
-            _('Selected project "%s" is not found in registry', $this->segment(1)));
+            _t('Selected project "%s" is not found in registry', $this->segment(1)));
         
     $this->project = $this->root->projectRegistry[$this->segment(1)];
 ?>

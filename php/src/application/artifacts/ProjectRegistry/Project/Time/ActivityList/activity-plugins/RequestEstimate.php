@@ -44,7 +44,7 @@ class Activity_Plugin_RequestEstimate extends Activity_Plugin_Abstract {
             return;
         
         // ask performer to estimate it - first ask (and never ask again)
-        if ($this->_issue->askOnce('requestEstimate', _('Could you please estimate this activity?'), null))
+        if ($this->_issue->askOnce('requestEstimate', 'Could you please estimate this activity?', null))
             return;
     }
                             

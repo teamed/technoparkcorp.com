@@ -1,9 +1,9 @@
-<h1><?=_('Quality of Service (QOS)')?></h1>
+<h1><?=_t('Quality of Service (QOS)')?></h1>
 
 <?=$this->table()
     ->setSource($this->project->deliverables->qos)
-    ->addColumn('name', _('Name'))
-    ->addColumn('description', _('Description'))
-    ->addColumn('attributes', _('Attributes'))
+    ->addColumn('name', _t('Name'))
+    ->addColumn('description', _t('Description'))
+    ->addColumn('attributes', _t('Attributes'))
     ?>
     

@@ -16,10 +16,10 @@
     <? if (Model_Pages::getInstance()->hasScript($page->title)): ?>
         <span id="<?=$id?>" class="page">
             <a href="<?=$this->panelUrl($page->title)?>"
-                title="<?=_('go to %s', $this->escape($page->title))?>"><?=$label?></a
+                title="<?=_t('go to %s', $this->escape($page->title))?>"><?=$label?></a
                 ><? if ($page->parent->count() > 1): ?><span
                 onclick="selector($('#<?=$id?>'), '<?=$page->title?>')"
-                title="<?=_('click to change')?>">&darr;</span>
+                title="<?=_t('click to change')?>">&darr;</span>
             <? endif; ?>
         </span>
     <? else: ?>

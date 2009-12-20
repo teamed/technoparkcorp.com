@@ -1,9 +1,9 @@
-<h1><?=_('Glossary')?></h1>
+<h1><?=_t('Glossary')?></h1>
 
 <?=$this->table()
     ->setSource($this->project->deliverables->glossary)
-    ->addColumn('name', _('Name'))
-    ->addColumn('description', _('Description'))
-    ->addColumn('attributes', _('Attributes'))
+    ->addColumn('name', _t('Name'))
+    ->addColumn('description', _t('Description'))
+    ->addColumn('attributes', _t('Attributes'))
     ?>
     

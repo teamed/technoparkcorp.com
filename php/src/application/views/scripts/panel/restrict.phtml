@@ -1,4 +1,4 @@
-<h1><?=_('Access restricted')?></h1>
+<h1><?=_t('Access restricted')?></h1>
 
 <? if (Model_Pages::getInstance()->getAcl()->hasRole(Model_User::me()->email)): ?>
 
@@ -6,11 +6,12 @@
         <? if ($this->message): ?>
             <?=$this->message?>
         <? else: ?>
-            <?=_('Unknown reason of access restriction, refer to admin')?>
+            <?=_t('Unknown reason of access restriction, refer to admin')?>
         <? endif; ?>
     </p>
 
-    <p><?=_('This particular document is not available for you. Here is a list of documents that you can access:')?></p>
+    <p><?=_t('This particular document is not available for you. 
+    Here is a list of documents that you can access:')?></p>
 
     <p><?=$this->navigation(Model_Pages::getInstance())
         ->menu()
@@ -21,7 +22,10 @@
         
 <? else: ?>
 
-    <p><?=_('You don\'t have enough access permissions to access this management panel, although your email (<tt>%s</tt>) is registered in one of the projects we manage. Refer to the sponsor or the project manager of your project for obtaining required access rights. Sorry for any inconveniences.',
+    <p><?=_t('You don\'t have enough access permissions to access this management panel, 
+        although your email (<tt>%s</tt>) is registered in one of the projects we manage. 
+        Refer to the sponsor or the project manager of your project for obtaining 
+        required access rights. Sorry for any inconveniences.',
         Model_User::me()->email)?></p>
 
 <? endif; ?>
