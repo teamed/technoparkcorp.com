@@ -74,11 +74,17 @@ class theProjectRegistry extends Model_Artifact implements Model_Artifact_Passiv
      **/
     public function getStaffRequests() 
     {
-        $ini = new Zend_Config_Ini(dirname(__FILE__) . '/ProjectRegistry/wanted.ini', APPLICATION_ENV);
+        $ini = new Zend_Config_Ini(dirname(__FILE__) . '/ProjectRegistry/wanted.ini', 
+            APPLICATION_ENV);
         $requests = new ArrayIterator();
         foreach ($ini as $id=>$person) {
             $request = new theStaffRequest($id);
             
+            if (!isset($this[$person->project])) {
+                logg("We don't manage project: {$person->project}");
+                continue;
+            }
+                
             $project = $this[$person->project];
             $request->setProject($project);
             $request->setRole($project->staffAssignments->createRole($person->role));
