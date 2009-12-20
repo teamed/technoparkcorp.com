@@ -41,6 +41,17 @@ class Model_User
     protected $_email;
     
     /**
+     * Set session namespace explicitly
+     *
+     * @param mixed Session to use
+     * @return void
+     **/
+    public static function setSession($session) 
+    {
+        self::$_session = $session;
+    }
+    
+    /**
      * Construct the object
      *
      * @return void

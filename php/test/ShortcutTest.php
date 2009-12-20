@@ -26,9 +26,11 @@ require_once 'AbstractProjectTest.php';
  *
  * @package test
  */
-class ShortcutTest extends AbstractProjectTest {
+class ShortcutTest extends AbstractProjectTest 
+{
 
-    public function testMechanismWorks() {
+    public function testMechanismWorks() 
+    {
         $shortcut = Model_Shortcut::create(
             'projects/test/Scope', 
             array('test@example.com'), 

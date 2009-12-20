@@ -77,6 +77,7 @@ class Injector extends FaZend_Test_Injector
         // in testing environment you do EVERYTHING under this role
         // in order to avoid conflicts with real documents in
         // real environment (fazend for example)
+        Model_User::setSession(new FaZend_StdObject());
         Model_User::logIn(Mocks_Model_Project::PM);
     }
 
