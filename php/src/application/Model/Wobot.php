@@ -28,7 +28,7 @@
  */
 abstract class Model_Wobot implements Model_Wobot_Interface {
 
-    const EMAIL_DOMAIN = 'wobot.net'; // domain to be used in all wobot's emails
+    const EMAIL_DOMAIN = 'tpc2.com'; // domain to be used in all wobot's emails
     
     /**
      * List of wobots
