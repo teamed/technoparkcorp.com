@@ -23,7 +23,8 @@
  *
  * @package Artifacts
  */
-class theStaffResponseItem {
+class theStaffResponseItem 
+{
 
     /**
      * Supplier suggested
@@ -52,7 +53,8 @@ class theStaffResponseItem {
      * @param string Name of property to get
      * @return mixed
      **/
-    public function __get($name) {
+    public function __get($name) 
+    {
         $method = '_get' . ucfirst($name);
         if (method_exists($this, $method))
             return $this->$method();
@@ -71,7 +73,8 @@ class theStaffResponseItem {
      * @param theSupplier
      * @return void
      **/
-    public function setSupplier(theSupplier $supplier) {
+    public function setSupplier(theSupplier $supplier) 
+    {
         $this->_supplier = $supplier;
         return $this;
     }
@@ -82,7 +85,8 @@ class theStaffResponseItem {
      * @param integer Quality
      * @return void
      **/
-    public function setQuality($quality) {
+    public function setQuality($quality) 
+    {
         validate()
             ->type($quality, 'integer', "Quality must be INTEGER")
             ->true($quality <= 100 && $quality >= 0, "Quality must be in [0..100] interval, {$quality} provided");
@@ -96,7 +100,8 @@ class theStaffResponseItem {
      * @param string Reason
      * @return void
      **/
-    public function setReason($reason) {
+    public function setReason($reason) 
+    {
         $this->_reason = $reason;
         return $this;
     }

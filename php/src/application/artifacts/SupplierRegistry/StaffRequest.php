@@ -23,7 +23,8 @@
  *
  * @package Artifacts
  */
-class theStaffRequest {
+class theStaffRequest
+{
 
     /**
      * Unique ID of the staff request
@@ -49,9 +50,9 @@ class theStaffRequest {
     /**
      * List of skills required
      *
-     * @var theSupplierSkills
+     * @var array
      */
-    protected $_skills;
+    protected $_skills = array();
     
     /**
      * List of activities
@@ -73,9 +74,9 @@ class theStaffRequest {
      * @param string Unique ID of the request
      * @return void
      */
-    public function __construct($id) {
+    public function __construct($id) 
+    {
         $this->_id = $id;
-        $this->_skills = new theSupplierSkills();
     }
 
     /**
@@ -84,7 +85,8 @@ class theStaffRequest {
      * @param string Name of property to get
      * @return mixed
      **/
-    public function __get($name) {
+    public function __get($name) 
+    {
         $method = '_get' . ucfirst($name);
         if (method_exists($this, $method))
             return $this->$method();
@@ -103,7 +105,8 @@ class theStaffRequest {
      * @param theProject Project which requires staff
      * @return void
      **/
-    public function setProject(theProject $project) {
+    public function setProject(theProject $project) 
+    {
         $this->_project = $project;
         return $this;
     }
@@ -114,7 +117,8 @@ class theStaffRequest {
      * @param theProjectRole Project which requires staff
      * @return void
      **/
-    public function setRole(theProjectRole $role) {
+    public function setRole(theProjectRole $role) 
+    {
         $this->_role = $role;
         return $this;
     }
@@ -125,7 +129,8 @@ class theStaffRequest {
      * @param integer Threshold
      * @return void
      **/
-    public function setThreshold($threshold) {
+    public function setThreshold($threshold) 
+    {
         validate()
             ->type($threshold, 'integer', "Threshold must be INTEGER")
             ->true($threshold <= 100 && $threshold >= 0, "Threshold must be in [0..100] interval, {$threshold} provided");
@@ -136,11 +141,16 @@ class theStaffRequest {
     /**
      * Add skill
      *
-     * @param theSupplierSkill Skill required, with grade
+     * @param string Skill required, with grade
+     * @param importance 0..100
      * @return void
      **/
-    public function addSkill(theSupplierSkill $skill) {
-        $this->_skills[] = $skill;
+    public function addSkill($skill, $grade) 
+    {
+        validate()
+            ->true($grade <= 100 && $grade >= 0, "Grade must be in [0..100] interval, {$grade} provided");
+            
+        $this->_skills[$skill] = $grade;
         return $this;
     }
 
@@ -150,7 +160,8 @@ class theStaffRequest {
      * @param theActivity Activity that is planned for this person
      * @return void
      **/
-    public function addActivity(theActivity $activity) {
+    public function addActivity(theActivity $activity) 
+    {
         $this->_activity[] = $activity;
         return $this;
     }
@@ -160,7 +171,8 @@ class theStaffRequest {
      *
      * @return integer
      **/
-    protected function _getDuration() {
+    protected function _getDuration() 
+    {
         $duration = 0;
         foreach ($this->_activities as $activity)
             $duration += $activity->duration;
@@ -172,46 +184,12 @@ class theStaffRequest {
      *
      * @return Model_Cost
      **/
-    protected function _getCost() {
+    protected function _getCost() 
+    {
         $cost = new Model_Cost();
         foreach ($this->_activities as $activity)
             $cost->add($activity->cost);
         return $cost;
     }
 
-    /**
-     * Response
-     *
-     * @return theStaffResponse
-     **/
-    protected function _getResponse() {
-        $response = new theStaffResponse();
-        foreach (Model_Artifact::root()->supplierRegistry as $supplier) {
-            if (!$supplier->roles->hasRole($this->role))
-                continue;
-            
-            // start logging everything that happens later
-            FaZend_Log::getInstance()->addWriter('Memory', 'staffResponse');
-
-            $qualities = array();
-            foreach ($this->skills as $skill) {
-                if (!$supplier->skills->hasSkill($skill)) {
-                    logg("Skill '{$skill}' is absent");
-                    $qualities[] = 0;
-                    continue;
-                }
-                $compliance = $supplier->skills->getCompliance($skill);
-                $qualities[] = $compliance;
-                logg("Compliance to skill '{$skill}' is {$compliance}%");
-            }
-
-            $item = new theStaffResponseItem();
-            $item->setSupplier($supplier)
-                ->setQuality(intval(array_sum($qualities) / count($qualities)))
-                ->setReason(FaZend_Log::getInstance()->getWriterAndRemove('staffResponse')->getLog());
-            $response[] = $item;
-        }
-        return $response;
-    }
-    
 }

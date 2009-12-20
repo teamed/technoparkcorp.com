@@ -23,7 +23,8 @@
  *
  * @package Artifacts
  */
-class theStaffResponse extends ArrayIterator {
+class theStaffResponse extends ArrayIterator
+{
 
     /**
      * Show as a string
@@ -48,7 +49,8 @@ class theStaffResponse extends ArrayIterator {
      * @param mixed Value to add
      * @return void
      **/
-    public function offsetSet($index, $value) {
+    public function offsetSet($index, $value) 
+    {
         parent::offsetSet($index, $value);
         $this->uasort(create_function('$a, $b', 'return $a->quality < $b->quality;'));
     }
