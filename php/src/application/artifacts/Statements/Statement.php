@@ -121,10 +121,11 @@ class theStatement extends Zend_Db_Table_Row implements ArrayAccess, Iterator, C
             "Full list of tasks completed and payments made is below:\n\n";
         
         foreach ($this as $payment) {
-            $text .= sprintf("%10s: %12s, %s\n",
+            $text .= sprintf("%10s: %12s   %s\n",
                 FaZend_Date::make($payment->created)->get(Zend_Date::DATE_SHORT), 
                 $payment->usd,
-                $payment->details);
+                ($payment->reason ? "[{$payment->context}/{$payment->reason}] " : false) .
+                    $payment->details);
         }
         
         $text .= 
