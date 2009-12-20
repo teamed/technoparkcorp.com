@@ -23,7 +23,8 @@
  *
  * @package Model
  */
-class Model_Shortcut extends FaZend_Db_Table_ActiveRow_shortcut {
+class Model_Shortcut extends FaZend_Db_Table_ActiveRow_shortcut
+{
 
     const PREFIX_LENGTH = 3;
     const PLUS = 3;
@@ -38,7 +39,8 @@ class Model_Shortcut extends FaZend_Db_Table_ActiveRow_shortcut {
      * @param boolean Shall we clean all previous links to this document?
      * @return Model_Shortcut
      **/
-    public static function create($document, array $emails, array $params, $clean) {
+    public static function create($document, array $emails, array $params, $clean) 
+    {
         validate()
             ->type($document, 'string')
             ->type($clean, 'boolean');
@@ -55,7 +57,7 @@ class Model_Shortcut extends FaZend_Db_Table_ActiveRow_shortcut {
         $shortcut = new Model_Shortcut();
         $shortcut->emails = serialize($emails);
         $shortcut->document = $document;
-        $shortcut->author = Model_User::getCurrentUser()->getEmail();
+        $shortcut->author = Model_User::getCurrentUser()->email;
         $shortcut->params = serialize($params);
         $shortcut->save();
         
@@ -67,7 +69,8 @@ class Model_Shortcut extends FaZend_Db_Table_ActiveRow_shortcut {
      *
      * @return string
      **/
-    public function getUrl() {
+    public function getUrl() 
+    {
         return Zend_Registry::getInstance()->view
             ->serverUrl(array('doc'=>$this->getHash()), 'shared', true);
     }
@@ -78,7 +81,8 @@ class Model_Shortcut extends FaZend_Db_Table_ActiveRow_shortcut {
      * @param string Hash
      * @return Model_Shortcut
      **/
-    public static function findByHash($hash) {
+    public static function findByHash($hash) 
+    {
         $hash = substr($hash, self::PREFIX_LENGTH) / self::MULTIPLY - self::PLUS;
         return self::retrieve()
             ->where('id = ?', $hash)
@@ -91,7 +95,8 @@ class Model_Shortcut extends FaZend_Db_Table_ActiveRow_shortcut {
      *
      * @return string
      **/
-    public function getHash() {
+    public function getHash() 
+    {
         return substr(md5(time()), 0, self::PREFIX_LENGTH) . // just a random prefix
             ((intval(strval($this)) + self::PLUS) * self::MULTIPLY);
     }
@@ -101,7 +106,8 @@ class Model_Shortcut extends FaZend_Db_Table_ActiveRow_shortcut {
      *
      * @return array
      **/
-    public function getParams() {
+    public function getParams() 
+    {
         return unserialize($this->params);
     }
 
@@ -110,7 +116,8 @@ class Model_Shortcut extends FaZend_Db_Table_ActiveRow_shortcut {
      *
      * @return array
      **/
-    public function getEmails() {
+    public function getEmails() 
+    {
         return unserialize($this->emails);
     }
 
