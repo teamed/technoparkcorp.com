@@ -47,4 +47,11 @@ class theStatementTest extends FaZend_Test_TestCase
         $this->assertTrue(count($statement) > 0, 'Statement is empty, why?');
     }
 
+    public function testAsTextWorks() 
+    {
+        require_once 'Mocks/artifacts/Statements/Statement.php';
+        $statement = Mocks_theStatement::get();
+        $this->assertTrue(strlen($statement->asText) > 0, 'Statement asText() is empty, why?');
+    }
+
 }

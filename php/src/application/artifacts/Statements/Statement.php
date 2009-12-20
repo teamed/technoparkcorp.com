@@ -85,6 +85,52 @@ class theStatement extends Zend_Db_Table_Row implements ArrayAccess, Iterator, C
     }
     
     /**
+     * Send this statement by email to the supplier
+     *
+     * @return void
+     **/
+    public function sendByEmail() 
+    {
+        FaZend_Email::create()
+            ->set('body', $this->asText)
+            ->set('toEmail', $this->supplier)
+            ->set('toName', $this->supplier)
+            ->set('fromEmail', 'finance@tpc2.com')
+            ->set('fromName', 'TechnoPark Corp.')
+            ->send();
+        logg("Statement sent to " . $this->supplier . ' for ' . $this->balance);
+    }
+    
+    /**
+     * Get it as text
+     *
+     * @return string
+     **/
+    protected function _getAsText() 
+    {
+        $text = 
+            "Dear Vendor,\n\n" . 
+            "You've been working recently in projects of TechnoPark Corp., and earned\n" .
+            "some money ({$this->balance}). We're ready to pay them immediately, if you let us know your\n".
+            "bank details or the email you're using in PayPal. Actually, PayPal is more\n" .
+            "convenient for us and faster for you.\n\n" .
+            "Full list of tasks completed and payments made is below:\n\n";
+        
+        foreach ($this as $payment) {
+            $text .= sprintf("%10s: %12s, %s\n",
+                FaZend_Date::make($payment->created)->get(Zend_Date::DATE_SHORT), 
+                $payment->usd,
+                $payment->details);
+        }
+        
+        $text .= 
+            "\nTotal to pay now: {$this->balance}. Please reply to this email with the information\n" .
+            "required, and we will proceed with the payment. Thanks for working with us!\n";
+            
+        return $text;
+    }
+    
+    /**
      * Calculate balance
      *
      * @return Model_Cost

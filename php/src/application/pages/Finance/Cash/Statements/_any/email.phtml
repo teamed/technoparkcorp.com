@@ -1,6 +1,8 @@
 <? $statement = $this->root->statements[$this->segment(-1)] ?>
 
-<h1>Statement was emailed</h1>
+<h1>Send Statement by Email</h1>
+
+<p>Balance: <b><?=$statement->balance?></b>.</p>
 
 <?=$this->forma()
     ->addField('text', 'email')
@@ -16,5 +18,5 @@
     ?>
    
 <pre> 
-<?=$statement->text?>
+<?=$statement->asText?>
 </pre>

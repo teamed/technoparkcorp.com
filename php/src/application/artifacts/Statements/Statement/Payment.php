@@ -131,11 +131,30 @@ class thePayment extends FaZend_Db_Table_ActiveRow_payment
     }
     
     /**
+     * Getter dispatcher
+     *
+     * @param string Name of property to get
+     * @return mixed
+     **/
+    public function __get($name) 
+    {
+        $method = '_get' . ucfirst($name);
+        if (method_exists($this, $method))
+            return $this->$method();
+            
+        $var = '_' . $name;
+        if (property_exists($this, $var))
+            return $this->$var;
+        
+        return parent::__get($name);
+    }
+
+    /**
      * Get amount in USD
      *
      * @return Model_Cost
      **/
-    public function getUsd() {
+    protected function _getUsd() {
         return Model_Cost::factory($this->amount / 100);
     }
            
