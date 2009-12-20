@@ -1,0 +1,20 @@
+<? $statement = $this->root->statements[$this->segment(-1)] ?>
+
+<h1>Statement was emailed</h1>
+
+<?=$this->forma()
+    ->addField('text', 'email')
+        ->fieldLabel('Email of the supplier')
+        ->fieldValue($statement->supplier)
+        ->fieldRequired(false)
+        ->fieldAttrib('disabled', 'disabled')
+        ->fieldAttrib('size', 25)
+    
+    ->addField('submit')
+        ->fieldAttrib('class', 'btn')
+        ->fieldAction($statement, 'sendByEmail')
+    ?>
+   
+<pre> 
+<?=$statement->text?>
+</pre>
