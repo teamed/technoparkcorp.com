@@ -15,13 +15,19 @@
         ->fieldAttrib('rows', 5)
 
     ->addField('text', 'context')
+        ->fieldRequired(false)
         ->fieldLabel('Context')
         
+    ->addField('text', 'reason')
+        ->fieldRequired(false)
+        ->fieldLabel('Reason of payment')
+
     ->addField('text', 'supplier')
         ->fieldLabel('Supplier\'s email')
         ->fieldAttrib('size', 25)
 
     ->addField('text', 'rate')
+        ->fieldRequired(false)
         ->fieldLabel('Rate per hour')
         ->fieldAttrib('size', 15)
 
