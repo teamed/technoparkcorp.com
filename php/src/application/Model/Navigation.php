@@ -165,7 +165,7 @@ class Model_Navigation
             'logging' => false,
             'ignore_user_abort' => true), array(
 
-            'cache_dir' => TEMP_PATH . '/panel2nav',
+            'cache_dir' => TEMP_PATH,
             'hashed_directory_level' => 0,
             'read_control' => true,
             'file_locking' => true,
