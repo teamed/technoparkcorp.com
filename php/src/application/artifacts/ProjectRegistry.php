@@ -81,7 +81,7 @@ class theProjectRegistry extends Model_Artifact implements Model_Artifact_Passiv
             $request = new theStaffRequest($id);
             
             if (!isset($this[$person->project])) {
-                logg("We don't manage project: {$person->project}");
+                logg("We aren't managing project: {$person->project}");
                 continue;
             }
                 
