@@ -1,11 +1,6 @@
 <? $this->includeCSS('pages/PMO/Suppliers.css') ?>
 
-<h1>Database of Suppliers</h1>
-
-<?=$this->bar()
-    ->addLink('create', 'Add new Supplier to the database')
-    ->addLink('everybody', 'Full list of Suppliers')
-    ?>
+<h1>Staff Requests for Suppliers</h1>
 
 <?=$this->table()
     ->setSource($this->root->projectRegistry->getStaffRequests())
