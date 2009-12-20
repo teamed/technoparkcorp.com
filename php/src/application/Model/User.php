@@ -23,14 +23,15 @@
  *
  * @package Model
  */
-class Model_User extends FaZend_StdObject {
+class Model_User
+{
 
     /**
-     * Current user
+     * Session namespace
      *
-     * @var Model_User
+     * @var Zend_Session_Namespace
      */
-    protected static $_currentUser = null;
+    protected static $_session = null;
 
     /**
      * The email of the user
@@ -44,7 +45,8 @@ class Model_User extends FaZend_StdObject {
      *
      * @return void
      **/
-    protected function __construct($email) {
+    public function __construct($email) 
+    {
         $this->_email = $email;
     }
 
@@ -52,9 +54,10 @@ class Model_User extends FaZend_StdObject {
      * Returns current user (email)
      *
      * @return Model_User
-     * @throw FaZend_User_NotLoggedIn
+     * @throws FaZend_User_NotLoggedIn
      */
-    public static function me() {
+    public static function me() 
+    {
         return self::getCurrentUser();
     }
     
@@ -62,14 +65,16 @@ class Model_User extends FaZend_StdObject {
      * Returns current user
      *
      * @return Model_User
-     * @throw FaZend_User_NotLoggedIn
+     * @throws FaZend_User_NotLoggedIn
      */
-    public static function getCurrentUser() {
-        if (!isset(self::$_currentUser)) {
+    public static function getCurrentUser() 
+    {
+        $email = self::_session()->email;
+        if (!$email) {
             FaZend_Exception::raise('FaZend_User_NotLoggedIn', 
                 'User is not logged in');
         }
-        return self::$_currentUser;    
+        return FaZend_Flyweight::factory('Model_User', $email);    
     }
 
     /**
@@ -78,8 +83,9 @@ class Model_User extends FaZend_StdObject {
      * @param string Email of the user
      * @return void
      */
-    public static function logIn($email) {
-        self::$_currentUser = new Model_User($email);
+    public static function logIn($email) 
+    {
+        self::_session()->email = $email;
     }
 
     /**
@@ -87,17 +93,33 @@ class Model_User extends FaZend_StdObject {
      *
      * @return boolean
      */
-    public static function isLoggedIn() {
-        return isset(self::$_currentUser) && (bool)self::$_currentUser;
+    public static function isLoggedIn() 
+    {
+        return (bool)self::_session()->email;
     }
 
     /**
-     * Get email
+     * Getter dispatcher
      *
+     * @param string Name of the variable
      * @return string
      **/
-    protected function _getEmail() {
-        return $this->_email;
+    public function __get($name) 
+    {
+        if ($name == 'email')
+            return $this->_email;
+    }
+    
+    /**
+     * Create and return session
+     *
+     * @return Zend_Session_Namespace
+     **/
+    protected static function _session() 
+    {
+        if (is_null(self::$_session))
+            self::$_session = new Zend_Session_Namespace('panel2');
+        return self::$_session;
     }
 
 }

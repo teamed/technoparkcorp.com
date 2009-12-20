@@ -23,7 +23,8 @@
  *
  * @package Model
  */
-class Model_Auth_Adapter extends Zend_Auth_Adapter_Http {
+class Model_Auth_Adapter extends Zend_Auth_Adapter_Http 
+{
 
     /**
      * Basic Authentication
@@ -33,13 +34,11 @@ class Model_Auth_Adapter extends Zend_Auth_Adapter_Http {
      * @return Zend_Auth_Result
      */
     protected function _basicAuth($header) {
-
         do {
             $authResult = parent::_basicAuth($header);
         } while (!$authResult->isValid() && $this->getBasicResolver()->hasMore());
 
         return $authResult;
-
     }
 
 }

@@ -23,7 +23,8 @@
  *
  * @package Model
  */
-class Model_Auth_Resolver implements Zend_Auth_Adapter_Http_Resolver_Interface {
+class Model_Auth_Resolver implements Zend_Auth_Adapter_Http_Resolver_Interface 
+{
 
     /**
      * Email of the user which tried to login last time
@@ -42,14 +43,13 @@ class Model_Auth_Resolver implements Zend_Auth_Adapter_Http_Resolver_Interface {
     /**
      * Get user password
      *
-     * @param  string $username Username
-     * @param  string $realm    Authentication Realm
-     * @throws Zend_Auth_Adapter_Http_Resolver_Exception
+     * @param  string Username
+     * @param  string Authentication Realm (ignored in the method)
      * @return string|false User's shared secret, if the user is found in the
      *         realm, false otherwise.
      */
-    public function resolve($username, $realm) {
-
+    public function resolve($username, $realm) 
+    {
         /** 
          * get full list of all stakeholders from all projects
          * together with their passwords. it's going to be an 
@@ -82,7 +82,6 @@ class Model_Auth_Resolver implements Zend_Auth_Adapter_Http_Resolver_Interface {
         $this->_id--;
 
         return $users[$this->_email][$this->_id];
-
     }
 
     /**
@@ -90,7 +89,8 @@ class Model_Auth_Resolver implements Zend_Auth_Adapter_Http_Resolver_Interface {
      *
      * @return boolean
      */
-    public function hasMore() {
+    public function hasMore() 
+    {
         return (bool)$this->_id;
     }
 

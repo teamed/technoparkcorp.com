@@ -23,7 +23,8 @@
  *
  * @package Controllers
  */
-class PanelController extends FaZend_Controller_Action {
+class PanelController extends FaZend_Controller_Action
+{
 
     /**
      * Session namespace
@@ -37,15 +38,14 @@ class PanelController extends FaZend_Controller_Action {
      *
      * @return void
      */
-    public function preDispatch() {
-        // if the user is not logged in - try to log him/her in
+    public function preDispatch()
+    {
+        // if the user is not logged in - try to log him in
         if (!Model_User::isLoggedIn()) {
             // show as much information as possible
             $adapter = new Model_Auth_Adapter(array(
                 'accept_schemes' => 'basic',
-                'realm' => 'thePanel 2.0 beta'
-                 // . FaZend_Revision::get() . '/' . count(Model_Project::retrieveAll())
-                 ));
+                'realm' => 'thePanel 2.0 beta'));
 
             $adapter->setBasicResolver(new Model_Auth_Resolver());
             $adapter->setRequest($this->getRequest());
@@ -74,7 +74,8 @@ class PanelController extends FaZend_Controller_Action {
      *
      * @return void
      */
-    public function indexAction() {
+    public function indexAction() 
+    {
         $doc = $this->_getParam('doc');
 
         // permission check for current user
@@ -94,7 +95,8 @@ class PanelController extends FaZend_Controller_Action {
      *
      * @return void
      */
-    public function restrictAction() {
+    public function restrictAction() 
+    {
         $this->view->message = ($this->_hasParam('msg') ? 
             $this->_getParam('msg') : false);
     }
@@ -104,7 +106,8 @@ class PanelController extends FaZend_Controller_Action {
      *
      * @return void
      */
-    public function optsAction() {
+    public function optsAction() 
+    {
         $title = $this->getRequest()->getPost('title');
 
         // this is required in order to INIT the list of pages
@@ -130,7 +133,8 @@ class PanelController extends FaZend_Controller_Action {
      *
      * @return void
      */
-    public function redirectorAction() {
+    public function redirectorAction() 
+    {
         $doc = $this->getRequest()->getPost('document');
         $this->_helper->redirector->gotoRoute(array('doc'=>$doc), 'panel', true, false);
     }
@@ -140,7 +144,8 @@ class PanelController extends FaZend_Controller_Action {
      *
      * @return void
      */
-    public function sharedAction() {
+    public function sharedAction() 
+    {
         try {
             $shortcut = Model_Shortcut::findByHash($this->_getParam('doc'));
         } catch (Model_Shortcut_NotFoundException $e) {
@@ -164,7 +169,8 @@ class PanelController extends FaZend_Controller_Action {
      * @param array Associative array of params to pass to the view
      * @return string HTML
      **/
-    protected function _buildDocument($doc, array $params = array()) {
+    protected function _buildDocument($doc, array $params = array()) 
+    {
         $this->view->headTitle($doc . ' -- ' );
 
         try {
@@ -179,7 +185,8 @@ class PanelController extends FaZend_Controller_Action {
      *
      * @return void
      **/
-    protected function _restrict($message) {
+    protected function _restrict($message) 
+    {
         return $this->_forward('restrict', null, null, 
             array('msg'=>$message));
     }
