@@ -32,7 +32,7 @@ class Model_Pages extends Zend_Navigation
     /**
      * This constant is used in /pages scripts
      */
-    const ADMIN = 'director@tpc2.com';
+    const ADMIN = 'yegor256@yahoo.com';
 
     /**
      * Instance
