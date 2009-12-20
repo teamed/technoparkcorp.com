@@ -74,7 +74,7 @@ class theProjectRegistry extends Model_Artifact implements Model_Artifact_Passiv
      **/
     public function getStaffRequests() 
     {
-        $ini = new Zend_Config_Ini(dirname(__FILE__) . '/ProjectRegistry/wanted.ini', 'wanted');
+        $ini = new Zend_Config_Ini(dirname(__FILE__) . '/ProjectRegistry/wanted.ini', APPLICATION_ENV);
         $requests = new ArrayIterator();
         foreach ($ini as $id=>$person) {
             $request = new theStaffRequest($id);
