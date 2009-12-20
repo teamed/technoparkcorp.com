@@ -74,7 +74,7 @@ class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap
         $translate = new Zend_Translate(
             'gettext', 
             realpath(APPLICATION_PATH . '/../languages'), 
-            'ru',
+            null,
             array(
                 'ignore' => '.',
                 'scan' => Zend_Translate::LOCALE_FILENAME,

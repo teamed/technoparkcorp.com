@@ -65,6 +65,9 @@ class Injector extends FaZend_Test_Injector
 
         // we should use POS?
         defined('USE_POS') or define('USE_POS', class_exists('FaZend_POS', false));
+
+        // just to try the translation
+        Zend_Registry::get('Zend_Translate')->setLocale(new Zend_Locale('ru'));
     }
 
     /**
