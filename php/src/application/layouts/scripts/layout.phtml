@@ -4,17 +4,18 @@
     $this->includeCSS('global.css');
     $this->includeJQuery();
 
-    // set charset
-    $this->headMeta()->appendHttpEquiv('Content-Type', 'text/html; charset=' . $this->article->charset);
-
-    // set title
-    $this->headTitle($this->article->title, Zend_View_Helper_Placeholder_Container_Abstract::SET);
-
-    // keywords
-    $this->headMeta()->appendName('keywords', $this->article->keywords);
-
-    // description
-    $this->headMeta()->appendName('description', $this->article->description);
+    if ($this->article instanceof Model_Article) {
+        // set charset
+        $this->headMeta()->appendHttpEquiv('Content-Type', 'text/html; charset=' . $this->article->charset);
+        // set title
+        $this->headTitle($this->article->title, Zend_View_Helper_Placeholder_Container_Abstract::SET);
+        // keywords
+        $this->headMeta()->appendName('keywords', $this->article->keywords);
+        // description
+        $this->headMeta()->appendName('description', $this->article->description);
+    } else {
+        $this->headMeta()->appendHttpEquiv('Content-Type', 'text/html; charset=utf-8');
+    }
 
 ?><?=$this->doctype()?>
 <html xmlns="http://www.w3.org/1999/xhtml"> 
