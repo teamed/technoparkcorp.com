@@ -6,12 +6,13 @@
     ->setSource($this->root->projectRegistry->getStaffRequests())
     ->addColumn('project', 'Project')
     ->addColumn('role', 'Role')
-    ->addColumn('skills', 'Skills required')
+    ->addColumn('skillsHtml', 'Skills required')
     ->addColumn('duration', 'Days')
     ->addColumn('cost', 'Cost')
     ->addColumn('threshold', 'Threshold')
     ->addColumn('response', 'Response')
-    ->addOption('response', 'responses/{id}')
+    
+    ->addOption('response', 'requests/{id}')
     ?>
 
 <!--

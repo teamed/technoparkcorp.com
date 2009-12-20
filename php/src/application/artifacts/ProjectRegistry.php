@@ -84,7 +84,7 @@ class theProjectRegistry extends Model_Artifact implements Model_Artifact_Passiv
             $request->setRole($project->staffAssignments->createRole($person->role));
             
             foreach ($person->skills as $skill=>$grade)
-                $request->addSkill(new theSupplierSkill($skill, intval($grade)));
+                $request->addSkill($skill, $grade);
             
             $requests[$id] = $request;
         }

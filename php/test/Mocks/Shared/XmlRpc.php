@@ -65,7 +65,36 @@ class Mocks_Shared_XmlRpc
      **/
     public function query($query) 
     {
-        return array();
+        switch (true) {
+            // get all tickets about suppliers
+            case $query == Model_Asset_Suppliers_Fazend_Trac::QUERY_ALL:
+                $list = array(
+                    Mocks_Shared_Trac_Ticket::get(false, array(
+                        'supplier' => 'test@example.com',
+                        )),
+                    Mocks_Shared_Trac_Ticket::get(false, array(
+                        'supplier' => 'test2@example.com',
+                        )),
+                    );
+                break;
+                    
+            // get tickets about one supplier provided
+            case substr($query, 0, strlen(Model_Asset_Suppliers_Fazend_Trac::QUERY_SINGLE)) ==
+                Model_Asset_Suppliers_Fazend_Trac::QUERY_SINGLE:
+                $list = array(
+                    Mocks_Shared_Trac_Ticket::get(false, array(
+                        'supplier' => substr($query, -strlen(Model_Asset_Suppliers_Fazend_Trac::QUERY_SINGLE)),
+                        'skills' => 'PHP, jQuery',
+                        'role' => 'Programmer',
+                        )),
+                    );
+                break;
+        }
+        
+        $ids = array();
+        foreach ($list as $ticket)
+            $ids[] = $ticket->getId();
+        return $ids;
     }
 
     /**
@@ -107,7 +136,7 @@ class Mocks_Shared_XmlRpc
      **/
     public function get($id) 
     {
-        return array();
+        return Mocks_Shared_Trac_Ticket::get($id);
     }
 
 }

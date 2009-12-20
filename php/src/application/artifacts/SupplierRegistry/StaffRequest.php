@@ -192,4 +192,25 @@ class theStaffRequest
         return $cost;
     }
 
+    /**
+     * Get list of skills in HTML
+     *
+     * @return string Html
+     **/
+    protected function _getSkillsHtml() 
+    {
+        arsort($this->_skills);
+        return implode(', ', array_keys($this->_skills));
+    }
+
+    /**
+     * Get response
+     *
+     * @return theStaffResponse
+     **/
+    protected function _getResponse() 
+    {
+        return Model_Artifact::root()->supplierRegistry->resolve($this);
+    }
+
 }

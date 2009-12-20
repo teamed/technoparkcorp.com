@@ -32,6 +32,7 @@ class Model_Project extends Shared_Project
     const ASSET_SRS = 'Srs';
     const ASSET_DEFECTS = 'Defects';
     const ASSET_CODE = 'Code';
+    const ASSET_SUPPLIERS = 'Suppliers';
     
     /**
      * We manage anything? If set to FALSE - none of the projects are managed
@@ -135,6 +136,7 @@ class Model_Project extends Shared_Project
             self::ASSET_SRS => 'Fazend_Trac',
             self::ASSET_DEFECTS => 'Fazend_Trac',
             self::ASSET_CODE => 'Fazend_Pan',
+            self::ASSET_SUPPLIERS => 'Fazend_Trac',
             );
 
         // create a class according to the information above

@@ -58,7 +58,8 @@ class Injector extends FaZend_Test_Injector
         // Shared_Cache::getInstance('Shared_SOAP_Gateway')->clean();
 
         // don't go into real Shared resources
-	    Shared_XmlRpc::setXmlRpcClientClass('Mocks_Shared_XmlRpc');
+        Shared_XmlRpc::setXmlRpcClientClass('Mocks_Shared_XmlRpc');
+        Shared_Trac::setTicketClass('Mocks_Shared_Trac_Ticket');
 
         // disable file moving after uploading
         Model_Artifact_Attachments::setLocation(false);

@@ -23,7 +23,8 @@
  *
  * @package Artifacts
  */
-class theSupplier extends Model_Artifact {
+class theSupplier extends Model_Artifact
+{
 
     /**
      * Email
@@ -40,47 +41,28 @@ class theSupplier extends Model_Artifact {
     protected $_name;
     
     /**
-     * Country of location
-     *
-     * @var string
-     */
-    protected $_country;
-    
-    /**
      * List of skills
      *
-     * @var theSupplierSkills
+     * @var string[]
      */
-    protected $_skills;
+    protected $_skills = array();
     
     /**
      * List of roles
      *
-     * @var theSupplierRole[]
+     * @var string[]
      */
-    protected $_roles;
-    
-    /**
-     * List of attachments
-     *
-     * @var Model_Artifact_Attachments
-     */
-    protected $_attachments;
+    protected $_roles = array();
     
     /**
      * Construct the class
      *
      * @param string Email
-     * @param string Name
      * @return void
      */
-    public function __construct($email, $name) {
+    public function __construct($email) 
+    {
         $this->setEmail($email);
-        $this->setName($name);
-        
-        $this->_skills = new theSupplierSkills();
-        $this->_roles = new theSupplierRoles();
-        $this->_attachments = new Model_Artifact_Attachments();
     }
 
     /**
@@ -89,7 +71,8 @@ class theSupplier extends Model_Artifact {
      * @param string Name of property to get
      * @return mixed
      **/
-    public function __get($name) {
+    public function __get($name) 
+    {
         $method = '_get' . ucfirst($name);
         if (method_exists($this, $method))
             return $this->$method();
@@ -108,7 +91,8 @@ class theSupplier extends Model_Artifact {
      * @param string Email
      * @return void
      **/
-    public function setEmail($email) {
+    public function setEmail($email) 
+    {
         validate()
             ->emailAddress($email, array(), "Invalid format of supplier's email: {$email}");
         $this->_email = $email;
@@ -121,98 +105,69 @@ class theSupplier extends Model_Artifact {
      * @param string Full name of supplier
      * @return void
      **/
-    public function setName($name) {
+    public function setName($name) 
+    {
         $this->_name = $name;
-        return $this;
-    }
-
-    /**
-     * Set country
-     *
-     * @param string Two-letters name of the country
-     * @return void
-     **/
-    public function setCountry($country) {
-        validate()
-            ->countryCode($country, "Invalid format of supplier's country: {$country}");
-        $this->_country = $country;
         return $this;
     }
 
     /**
      * Add skill
      *
-     * @param theSupplierSkill Skill required, with grade
+     * @param string Skill provided
      * @return void
      **/
-    public function addSkill(theSupplierSkill $skill) {
-        $this->_skills[] = $skill;
+    public function addSkill($skill) 
+    {
+        if (!$this->hasSkill($skill))
+            $this->_skills[] = $skill;
         return $this;
     }
 
     /**
      * Add role
      *
-     * @param theSupplierRole Role to add
+     * @param string Role to add
      * @return void
      **/
-    public function addRole(theSupplierRole $role) {
-        $this->_roles[] = $role;
+    public function addRole($role) 
+    {
+        if (!$this->hasRole($role))
+            $this->_roles[] = $role;
         return $this;
+    }
+    
+    /**
+     * The supplier has this role
+     *
+     * @param string Role
+     * @return boolean
+     **/
+    public function hasRole($role) 
+    {
+        return in_array($role, $this->_roles);
     }
 
     /**
-     * Add attachment
+     * The supplier has this skill?
      *
-     * @param Model_Artifact_Attachments_Attachment Attachment to add
-     * @return void
+     * @param string Skill
+     * @return boolean
      **/
-    public function addAttachment(Model_Artifact_Attachments_Attachment $attachment) {
-        $this->_attachments[] = $attachment;
-        return $this;
+    public function hasSkill($skill) 
+    {
+        return in_array($skill, $this->_skills);
     }
 
     /**
-     * Create role, interface for PAGES
+     * How compliant he is to the given skill
      *
-     * @param string Name of the role
-     * @param string Price
-     * @return void
+     * @param string Skill
+     * @return integer 0..100
      **/
-    public function createRole($role, $price) {
-        return $this->addRole(new theSupplierRole($role, new Model_Cost($price)));
+    public function getCompliance($skill) 
+    {
+        return $this->hasSkill($skill) * 100;
     }
-    
-    /**
-     * Create skill, interface for PAGES
-     *
-     * @param string Name of the skill
-     * @param string Grade
-     * @return void
-     **/
-    public function createSkill($name, $grade) {
-        return $this->addSkill(new theSupplierSkill($name, intval($grade)));
-    }
-    
-    /**
-     * Create attachment, interface for PAGES
-     *
-     * @param string Name of the attachment
-     * @param string Description
-     * @param string Absolute file name
-     * @return void
-     **/
-    public function createAttachment($name, $description, $file) {
-        return $this->addAttachment(new Model_Artifact_Attachments_Attachment($name, $description, $file));
-    }
-    
-    /**
-     * Returns country full name
-     *
-     * @return string
-     **/
-    protected function _getCountryName() {
-        return Zend_Locale::getTranslation($this->country, 'territory');
-    }
-    
+
 }
