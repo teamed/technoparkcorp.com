@@ -117,6 +117,14 @@ function logg($message)
 /**
  * Translate string
  *
+ * You can use with any amount of params, like you're doing it with
+ * sprintf() function, e.g.:
+ *
+ * <code>
+ * $s = _t('Your email is: %s', $email);
+ * $s = _t('Your account #%d balance is %0.2f', $accNo, $balance)
+ * </code>
+ *
  * @param string Translate this string and return it's translated value
  * @return string
  */

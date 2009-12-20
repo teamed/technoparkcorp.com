@@ -23,15 +23,16 @@
  *
  * @package Controllers
  */
-class StaticController extends FaZend_Controller_Action {
+class StaticController extends FaZend_Controller_Action
+{
 
     /**
      * Default and the only action for this controller
      *
      * @return void
      */
-    public function indexAction() {
-
+    public function indexAction() 
+    {
         try {
             // try to create an article with the give PAGE address
             $article = $this->view->article = Model_Article::createByLabel($this->_getParam('page'));
@@ -80,7 +81,8 @@ class StaticController extends FaZend_Controller_Action {
      *
      * @return void
      **/
-    public function pdfAction() {
+    public function pdfAction() 
+    {
         $article = Model_Article::createByLabel($this->_getParam('page'));
         $pdf = $article->asPdf();
 

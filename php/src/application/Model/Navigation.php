@@ -23,7 +23,8 @@
  *
  * @package Controllers
  */
-class Model_Navigation {
+class Model_Navigation
+{
     
     const USE_CACHE = true;
 
@@ -48,14 +49,12 @@ class Model_Navigation {
      * @param string File path with XML files
      * @return void
      */
-    public static function populateNavigation(&$container, $activePage) {
+    public static function populateNavigation(&$container, $activePage)
+    {
         if (self::_cache()->test('map')) {
-        
             // we already have this set of pages in cache
             $container->setPages(self::_cache()->load('map'));
-    
         } else {
-            
             // kill LUCENE search index
             Model_Article::lucene(true);
 
@@ -66,7 +65,6 @@ class Model_Navigation {
             self::_cache()->save($container->getPages(), 'map');
             
             logg('Indexed ' . Model_Article::lucene()->numDocs() . ' articles in Lucene');
-
         }
 
         // mark active page as "active"
@@ -83,7 +81,8 @@ class Model_Navigation {
      * @param string File path with XML files
      * @return void
      */
-    protected static function _addMenuPages($container, $path = CONTENT_PATH, $prefix = '') {
+    protected static function _addMenuPages($container, $path = CONTENT_PATH, $prefix = '') 
+    {
         // get full list of XML files in content directory
         foreach (glob($path . '/*.xml') as $file) {
 
@@ -131,7 +130,8 @@ class Model_Navigation {
      * @param string Page path
      * @return void
      */
-    protected static function _markActivePage($container, $activePage) {
+    protected static function _markActivePage($container, $activePage) 
+    {
         // page label "about/facts" will be converted to ("about", "facts")
         $sections = explode('/', $activePage);
 
@@ -150,7 +150,8 @@ class Model_Navigation {
      *
      * @return Zend_Cache
      */
-    protected static function _cache() {
+    protected static function _cache() 
+    {
         if (self::$_cache != false)
             return self::$_cache;
 
@@ -164,7 +165,7 @@ class Model_Navigation {
             'logging' => false,
             'ignore_user_abort' => true), array(
 
-            'cache_dir' => sys_get_temp_dir(),
+            'cache_dir' => TEMP_PATH . '/panel2nav',
             'hashed_directory_level' => 0,
             'read_control' => true,
             'file_locking' => true,

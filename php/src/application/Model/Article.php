@@ -39,7 +39,8 @@
  *
  * @package Controllers
  */
-class Model_Article {
+class Model_Article 
+{
 
     /**
      * XML text for the article, if given
@@ -75,7 +76,8 @@ class Model_Article {
      * @return void
      * @throws Model_Article_NotFound
      */
-    protected function __construct() {
+    protected function __construct() 
+    {
     }
 
     /**
@@ -86,15 +88,14 @@ class Model_Article {
      * @return Model_Article
      * @throws Model_Article_NotFound
      */
-    public static function createFromFile($file, $page) {
-
+    public static function createFromFile($file, $page) 
+    {
         $article = new Model_Article();
 
         $article->_page = $page;
         $article->_xml = Model_XML::loadFile($file);
 
         return $article;
-
     }
 
     /**
@@ -104,8 +105,8 @@ class Model_Article {
      * @return Model_Article
      * @throws Model_Article_NotFound
      */
-    public static function createByLabel($page) {
-
+    public static function createByLabel($page) 
+    {
         $xmlFile = '/' . $page;
 
         if (!file_exists(CONTENT_PATH . '/' . $xmlFile . '.xml')) {
@@ -129,7 +130,6 @@ class Model_Article {
         } else {
         }
         */   
-
     }
     
     /**
@@ -138,8 +138,8 @@ class Model_Article {
      * @param boolean Shall we kill the existing index and start over?
      * @return Zend_Search_Lucene
      */
-    public static function lucene($refresh = false) {
-        
+    public static function lucene($refresh = false) 
+    {
         if (!isset(self::$_lucene)) {        
             $path = TEMP_PATH . '/panel2lucene';
             if (file_exists($path) && !$refresh)
@@ -152,7 +152,6 @@ class Model_Article {
         }
         
         return self::$_lucene;
-        
     }
 
     /**
@@ -162,7 +161,8 @@ class Model_Article {
      *
      * @return void
      */
-    public function luceneIndex() {        
+    public function luceneIndex() 
+    {        
         $doc = new Zend_Search_Lucene_Document();
         $doc->addField(Zend_Search_Lucene_Field::Text('page', $this->page));
         foreach (array('label', 'title', 'description', 'keywords', 'text') as $field)
@@ -176,7 +176,8 @@ class Model_Article {
      * @return PDF
      * @todo To be implemented later
      **/
-    public function asPdf() {
+    public function asPdf() 
+    {
         $pdf = new Zend_Pdf();
         
         // to be implemented!
@@ -190,8 +191,8 @@ class Model_Article {
      * @param string Name of the key, mapped to _$key method, like: $this->title ---> $this->getTitle()
      * @return string
      */
-    public function __get($key) {
-
+    public function __get($key) 
+    {
         // maybe we already calculated it before?
         if (isset($this->_cache[$key]))
             return $this->_cache[$key];
@@ -215,7 +216,8 @@ class Model_Article {
      *
      * @return string
      */
-    protected function _getUpdated() {
+    protected function _getUpdated() 
+    {
         if (file_exists(CONTENT_PATH . '/' . $this->_page . '.xml'))
             return date('d-M-y', filemtime(CONTENT_PATH . '/' . $this->_page . '.xml'));
 
@@ -227,7 +229,8 @@ class Model_Article {
      *
      * @return string
      */
-    protected function _getText() {
+    protected function _getText() 
+    {
         if ($this->_xml->text)
             return (string)$this->_xml->text;
 
@@ -239,7 +242,8 @@ class Model_Article {
      *
      * @return string
      */
-    protected function _getLabel() {
+    protected function _getLabel() 
+    {
         if (!$this->_xml->label)
             return $this->page;
 
@@ -251,7 +255,8 @@ class Model_Article {
      *
      * @return boolean
      */
-    protected function _getVisible() {
+    protected function _getVisible() 
+    {
         if ($this->_xml->invisible)
             return false;
 
@@ -263,7 +268,8 @@ class Model_Article {
      *
      * @return string
      */
-    protected function _getTitle() {
+    protected function _getTitle() 
+    {
         return trim(ucwords((string)$this->_xml->title));
     }    
 
@@ -277,8 +283,8 @@ class Model_Article {
      *
      * @return string|false
      */
-    protected function _getKeywords() {
-
+    protected function _getKeywords() 
+    {
         if ($this->_xml->keywords)
             return ucwords(trim((string)$this->_xml->keywords));
 
@@ -304,8 +310,8 @@ class Model_Article {
      *
      * @return string|false
      */
-    protected function _getDescription() {
-
+    protected function _getDescription() 
+    {
         if ($this->_xml->description)
             return trim(preg_replace("/[\t\n\r]+/", ' ', (string)$this->_xml->description));
 
@@ -316,7 +322,6 @@ class Model_Article {
 
         // no text, no description
         return '...';
-
     }    
 
     /**
@@ -324,13 +329,12 @@ class Model_Article {
      *
      * @return string
      */
-    protected function _getCharset() {
-
+    protected function _getCharset() 
+    {
         if ($this->_xml->charset)
             return (string)$this->_xml->charset;
 
         return 'UTF-8';    
-
     }    
 
     /**
@@ -338,13 +342,12 @@ class Model_Article {
      *
      * @return boolean
      */
-    protected function _getShowRightColumn() {
-        
+    protected function _getShowRightColumn() 
+    {
         if ($this->_xml->hideRightColumn)
             return false;
 
         return true;
-
     }
 
     /**
@@ -352,13 +355,12 @@ class Model_Article {
      *
      * @return string
      */
-    protected function _getPublished() {
-        
+    protected function _getPublished() 
+    {
         if ($this->_xml->date)
             return (string)$this->_xml->date;
 
         return false;
-
     }
 
     /**
@@ -366,13 +368,12 @@ class Model_Article {
      *
      * @return string
      */
-    protected function _getIntro() {
-        
+    protected function _getIntro() 
+    {
         if (!$this->_xml->intro)
             return $this->title;
 
         return (string)$this->_xml->intro;
-
     }
 
     /**
@@ -380,8 +381,8 @@ class Model_Article {
      *
      * @return stdObject[]
      */
-    protected function _getConcepts() {
-        
+    protected function _getConcepts() 
+    {
         if (!$this->_xml->concepts)
             return false;
 
@@ -394,7 +395,6 @@ class Model_Article {
         }
 
         return $result;
-
     }
 
     /**
@@ -402,8 +402,8 @@ class Model_Article {
      *
      * @return string
      */
-    protected function _getTerm() {
-        
+    protected function _getTerm() 
+    {
         if (!$this->_xml->term)
             return false;
 
@@ -414,7 +414,6 @@ class Model_Article {
             return $term . ' is missed';
 
         return (string)$terms->$term;
-
     }
 
     /**
@@ -423,8 +422,8 @@ class Model_Article {
      * @param integer Maximum amount of steps to get
      * @return stdObject[]
      */
-    protected function _getSteps($maximum = 3) {
-
+    protected function _getSteps($maximum = 3) 
+    {
         $next = (string)$this->_xml->next;
         if (!$next || ($maximum < 1))
             return array($this->_createStep(null));
@@ -439,7 +438,6 @@ class Model_Article {
 
         // add this new step ON TOP of the list
         return array_merge(array($this->_createStep($article->page, $article->intro)), $steps);
-
     }
 
     /**
@@ -449,8 +447,8 @@ class Model_Article {
      * @param string Title
      * @return stdObject
      */
-    protected function _createStep($page = null, $title = null) {
-
+    protected function _createStep($page = null, $title = null) 
+    {
         $step = new FaZend_StdObject();
 
         if (!is_null($page)) {
@@ -462,7 +460,6 @@ class Model_Article {
         }
 
         return $step;
-
     }
 
 }
