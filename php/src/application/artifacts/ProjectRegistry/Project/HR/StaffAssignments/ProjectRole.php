@@ -23,7 +23,8 @@
  *
  * @package Artifacts
  */
-class theProjectRole implements Model_Artifact_Stateless {
+class theProjectRole implements Model_Artifact_Stateless
+{
 
     /**
      * Staff assignments object from the project
