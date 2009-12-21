@@ -18,6 +18,8 @@
  *
  */
 
+require_once 'artifacts/ProjectRegistry/Project/Time/ActivityList/slice-plugins/Abstract.php';
+
 /**
  * Simple plugin, nothing to do
  * 

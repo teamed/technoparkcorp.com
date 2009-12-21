@@ -18,6 +18,8 @@
  *
  */
 
+require_once 'artifacts/ProjectRegistry/Project/Time/ActivityList/slice-plugins/Abstract.php';
+
 /**
  * Sum cost of all activities until you reach given one (sum it ALSO)
  * 

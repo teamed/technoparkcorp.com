@@ -18,6 +18,8 @@
  *
  */
 
+require_once 'artifacts/ProjectRegistry/Project/Time/ActivityList/slice-plugins/Abstract.php';
+
 /**
  * Resolve milestones by finding their predecessors and interlinking them
  * 
