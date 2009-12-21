@@ -17,6 +17,8 @@
  * @version $Id$
  *
  */
+ 
+require_once 'artifacts/ProjectRegistry/Project/Scope/Deliverables/loaders/Abstract.php';
 
 /**
  * Load all elements from SRS
