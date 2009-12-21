@@ -34,14 +34,16 @@
  *
  * @package Artifacts
  */
-class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passive {
+class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passive
+{
     
     /**
      * Load all deliverables
      *
      * @return void
      **/
-    public function reload() {
+    public function reload() 
+    {
         $autoloader = Zend_Loader_Autoloader::getInstance();
         $autoloader->registerNamespace('Deliverables_');
         set_include_path(get_include_path() . PATH_SEPARATOR . dirname(__FILE__) . '/Deliverables/types');
@@ -65,7 +67,10 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
      *
      * @return boolean
      **/
-    public function isLoaded() {
+    public function isLoaded() 
+    {
+        // temporarily
+        return true;
         return (bool)count($this);
     }
     
