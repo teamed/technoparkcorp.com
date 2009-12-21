@@ -23,7 +23,8 @@
  *
  * @package Artifacts
  */
-class theStakeholder implements Model_Artifact_Stateless {
+class theStakeholder implements Model_Artifact_Stateless
+{
 
     /**
      * Staff assignments object from the project
@@ -46,7 +47,8 @@ class theStakeholder implements Model_Artifact_Stateless {
      * @param string Email of the stakeholder
      * @return void
      **/
-    public final function __construct(theStaffAssignments $staffAssignments, $email) {
+    public final function __construct(theStaffAssignments $staffAssignments, $email) 
+    {
         validate()->emailAddress($email, array());
         $this->_staffAssignments = $staffAssignments;
         $this->_email = $email;
@@ -57,7 +59,8 @@ class theStakeholder implements Model_Artifact_Stateless {
      *
      * @return string
      **/
-    public function __toString() {
+    public function __toString() 
+    {
         return $this->getEmail();
     }
 
@@ -66,7 +69,8 @@ class theStakeholder implements Model_Artifact_Stateless {
      *
      * @return string
      **/
-    public function getEmail() {
+    public function getEmail() 
+    {
         return $this->_email;
     }
 
@@ -75,7 +79,8 @@ class theStakeholder implements Model_Artifact_Stateless {
      *
      * @return theProjectRole[]
      **/
-    public function getRoles() {
+    public function getRoles() 
+    {
         return $this->_staffAssignments->retrieveRolesByStakeholder($this);
     }
 
@@ -84,7 +89,8 @@ class theStakeholder implements Model_Artifact_Stateless {
      *
      * @return string
      **/
-    public function getRolesString() {
+    public function getRolesString() 
+    {
         return implode(', ', $this->getRoles());
     }
 
