@@ -41,6 +41,13 @@ class theSupplier extends Model_Artifact
     protected $_name;
     
     /**
+     * Rate
+     *
+     * @var Model_Cost
+     */
+    protected $_rate;
+    
+    /**
      * List of skills
      *
      * @var string[]
@@ -96,6 +103,18 @@ class theSupplier extends Model_Artifact
         validate()
             ->emailAddress($email, array(), "Invalid format of supplier's email: {$email}");
         $this->_email = $email;
+        return $this;
+    }
+
+    /**
+     * Set rate
+     *
+     * @param Model_Cost Rate
+     * @return void
+     **/
+    public function setRate(Model_Cost $rate) 
+    {
+        $this->_rate = $rate;
         return $this;
     }
 

@@ -130,7 +130,8 @@ class theStatement extends Zend_Db_Table_Row implements ArrayAccess, Iterator, C
         
         $text .= 
             "\nTotal to pay now: {$this->balance}. Please reply to this email with the information\n" .
-            "required, and we will proceed with the payment. Thanks for working with us!\n";
+            "required, and we will proceed with the payment. If we made some mistakes in the\n" .
+            "calculations above, please let us know and we fix them. Thanks for working with us!\n";
             
         return $text;
     }

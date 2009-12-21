@@ -114,7 +114,9 @@ class Model_Pages extends Zend_Navigation
     public function hasScript($page) 
     {
         try {
-            $this->resolvePath($page);
+            $path = $this->resolvePath($page);
+            if (is_dir($path))
+                return false;
             return true;
         } catch (Model_Pages_DocumentNotFound $e) {
             return false;
@@ -126,7 +128,7 @@ class Model_Pages extends Zend_Navigation
      *
      * @param string Document name
      * @param array List of INIT scripts, will be filled
-     * @return string PHTML absolute path name
+     * @return string PHTML absolute path name or directory name
      */
     public function resolvePath($doc, array &$scripts = array()) 
     {

@@ -4,11 +4,18 @@
 <h1>Staff Response for '<?=$request->role?>' in '<?=$request->project?>'</h1>
 
 <p>
-    Skills: <?=$request->skillsHtml?><br/>
-    Duration: <?=$request->duration?><br/>
-    Cost: <?=$request->cost?><br/>
+    Skills required: <?=$request->skillsHtml?><br/>
+    Estimated engagement duration: <?=$request->duration?> days<br/>
+    Cost expected: <?=$request->cost?><br/>
     Quality Threshold: <?=$request->threshold?>%
 </p>
+
+<p>Already in the project:</p>
+<ul>
+<? foreach ($request->project->staffAssignments->retrieveStakeholdersByRole($request->role) as $stakeholder): ?>
+    <li><?=$stakeholder?></li>
+<? endforeach; ?>
+</ul>
 
 <? $index = 0; ?>
 <? foreach ($response as $item): ?>
@@ -17,8 +24,9 @@
 
         <p><span style="color:<?=($item->quality > $request->threshold ? Model_Colors::GREEN : Model_Colors::RED)?>;
             font-size:2em;font-weight:bold;"><?=$item->quality?>%</span>: 
-            <b><?=$this->link('/PMO/Suppliers/byEmail/' . $item->supplier->email, $item->supplier->name, false)?></b>
-            (<a href="mailto:<?=$item->supplier->email?>"><?=$item->supplier->email?></a>)</p>
+            <b><?=$item->supplier->name?></b>
+            (<a href="mailto:<?=$item->supplier->email?>"><?=$item->supplier->email?></a>), 
+            <?=$item->supplier->rate?></p>
         <pre><?=$item->reason?></pre>
 
     <? else: ?>

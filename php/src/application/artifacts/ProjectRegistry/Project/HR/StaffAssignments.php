@@ -21,6 +21,9 @@
 /**
  * Project staff assignments
  *
+ * It's an associative array (it behaves like one), where keys are emails
+ * and values are instances of theStakeholder class.
+ *
  * @package Artifacts
  */
 class theStaffAssignments extends ArrayIterator implements Model_Artifact_Stateless, Model_Artifact_Passive 
@@ -118,6 +121,20 @@ class theStaffAssignments extends ArrayIterator implements Model_Artifact_Statel
         foreach ($roles as &$role)
             $role = $this->createRole($role);
         return $roles;
+    }
+    
+    /**
+     * Get list of stakeholders for the given role
+     *
+     * @param theProjectRole The role
+     * @return theStakeholder[] List of stakeholders
+     **/
+    public function retrieveStakeholdersByRole(theProjectRole $role) 
+    {
+        $emails = $this->_project()->getStakeholdersByRole((string)$role);
+        foreach ($emails as &$email)
+            $email = $this[$email];
+        return $emails;
     }
     
     /**

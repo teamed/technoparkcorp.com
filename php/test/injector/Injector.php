@@ -48,6 +48,17 @@ class Injector extends FaZend_Test_Injector
     }
 
     /**
+     * Make sure we don't do any actual connections to fazend
+     *
+     * @return void
+     **/
+    protected function _injectSoapClient() 
+    {
+        // this class will catch all calls to fazend
+        Shared_Soap_Gateway::setSoapClient(Mocks_Shared_Soap_Client::get());
+    }
+        
+    /**
      * Minor config options
      *
      * @return void

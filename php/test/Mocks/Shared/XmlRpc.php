@@ -68,24 +68,28 @@ class Mocks_Shared_XmlRpc
         switch (true) {
             // get all tickets about suppliers
             case $query == Model_Asset_Suppliers_Fazend_Trac::QUERY_ALL:
-                $list = array(
-                    Mocks_Shared_Trac_Ticket::get(false, array(
-                        'supplier' => 'test@example.com',
-                        )),
-                    Mocks_Shared_Trac_Ticket::get(false, array(
-                        'supplier' => 'test2@example.com',
-                        )),
-                    );
+                $list = array();
+                for ($i = 0; $i<5; $i++) {
+                    $list[] = Mocks_Shared_Trac_Ticket::get(false, array(
+                        'supplier' => "test{$i}@example.com",
+                        ));
+                }
                 break;
                     
             // get tickets about one supplier provided
             case substr($query, 0, strlen(Model_Asset_Suppliers_Fazend_Trac::QUERY_SINGLE)) ==
                 Model_Asset_Suppliers_Fazend_Trac::QUERY_SINGLE:
+                
+                $skills = array('PHP', 'jQuery', 'XML', 'Java', 'EJB');
+                $roles = array('Programmer', 'Tester', 'Architect', 'Designer');
+                shuffle($skills);
+                
                 $list = array(
                     Mocks_Shared_Trac_Ticket::get(false, array(
                         'supplier' => substr($query, -strlen(Model_Asset_Suppliers_Fazend_Trac::QUERY_SINGLE)),
-                        'skills' => 'PHP, jQuery',
-                        'role' => 'Programmer',
+                        'skills' => implode(', ', array_slice($skills, 0, 3)),
+                        'role' => $roles[array_rand($roles)],
+                        'rate' => rand(8, 20) . ' EUR',
                         )),
                     );
                 break;
