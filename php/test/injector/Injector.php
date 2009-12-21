@@ -55,6 +55,7 @@ class Injector extends FaZend_Test_Injector
     protected function _injectSoapClient() 
     {
         // this class will catch all calls to fazend
+        require_once 'Shared/Soap/Gateway.php';
         Shared_Soap_Gateway::setSoapClient(Mocks_Shared_Soap_Client::get());
     }
         
