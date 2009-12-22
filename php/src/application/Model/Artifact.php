@@ -19,103 +19,12 @@
  */
 
 /**
- * This is temporary structure required while POS is in development
- *
- * You just set USE_POS to false and you won't have any persistence of objects 
- */
-defined('USE_POS') or define('USE_POS', false);
-
-if (USE_POS) {
-    class tempArtifact extends FaZend_POS_Array {
-    }
-} else {
-    class tempArtifact extends ArrayIterator {
-
-        /**
-         * To be implemented in FaZend_POS_Abstract
-         *
-         * @var object
-         */
-        private $__ps;
-
-        /**
-         * To be implemented in FaZend_POS_Abstract
-         *
-         * @return object
-         */
-        public function ps() {
-            if (!isset($this->__ps))
-                $this->__ps = new FaZend_StdObject();
-            return $this->__ps;
-        }
-
-        /**
-         * Construct the class
-         *
-         * @return void
-         * @todo remove it, it should be in POS
-         */
-        public function __construct() {
-            parent::__construct();
-            $this->_init();
-        }
-
-        /**
-         * Override it
-         *
-         * @return void
-         * @todo remove it, it should be in POS
-         **/
-        protected function _init() {
-        }
-
-    }
-}
-
-/**
  * One simple artifact
  *
  * @package Model
  */
-class Model_Artifact extends tempArtifact implements Model_Artifact_Interface 
+class Model_Artifact extends FaZend_Pos_Abstract implements Model_Artifact_Interface 
 {
-
-    /**
-     * Root of all artifacts
-     *
-     * @var Model_Artifact
-     */
-    protected static $_root = null;
-
-    /**
-     * Root of the entire hierarchy
-     *
-     * @return Model_Artifact
-     */
-    public static function root() 
-    {
-        if (!is_null(self::$_root))
-            return self::$_root;
-            
-        if (USE_POS)
-            $root = FaZend_POS::root();
-        else
-            $root = new Model_Artifact();
-        
-        foreach (array(
-            'projectRegistry' => new theProjectRegistry(),
-            'supplierRegistry' => new theSupplierRegistry(),
-            'statements' => new theStatements(),
-            ) as $name=>$artifact) {
-            // we need this validation for POS
-            if (!isset($root->name)) {
-                // add them to the root, one by one
-                $root->$name = $artifact;
-                self::_initialize($root, $artifact, null);
-            }
-        }
-        return self::$_root = $root;
-    }
 
     /**
      * Attach sub-artifact if it's not here already
@@ -128,14 +37,14 @@ class Model_Artifact extends tempArtifact implements Model_Artifact_Interface
      */
     protected function _attach($name, Model_Artifact_Interface $artifact, $property = null) 
     {
-        if (!USE_POS && isset($this->$name)) {
-            FaZend_Exception::raise('Model_Artifact_PropertyAlreadyExists',
-                "Can't attach '{$name}' again to " . get_class($this));
-        }
+        // don't attach again, if it's already here
+        if (isset($this->$name))
+            return $this;
+            
         $this->$name = $artifact;
         
         // initialize the artifact, if necessary
-        self::_initialize($this, $artifact, $property);
+        self::initialize($this, $artifact, $property);
         return $this;
     }
     
@@ -150,15 +59,9 @@ class Model_Artifact extends tempArtifact implements Model_Artifact_Interface
      */
     protected function _attachItem($key, Model_Artifact_Interface $artifact, $property = null) 
     {
-        if (!USE_POS && isset($this[$key])) {
-            $keys = array();
-            foreach ($this as $k=>$val)
-                $keys[] = $k;
-            FaZend_Exception::raise('Model_Artifact_KeyAlreadyExists',
-                "Can't attach item '{$key}' again to " . get_class($this) . 
-                '[' . implode(', ', $keys) . ']');
-        }
-
+        if (isset($this[$key]))
+            return $this;
+            
         // attach as "new" element to the array or as associative value
         if ($key === false)
             $this[] = $artifact;
@@ -166,7 +69,7 @@ class Model_Artifact extends tempArtifact implements Model_Artifact_Interface
             $this[$key] = $artifact;
             
         // initialize the artifact, if necessary
-        self::_initialize($this, $artifact, $property);
+        self::initialize($this, $artifact, $property);
         return $this;
     }
     
@@ -179,12 +82,10 @@ class Model_Artifact extends tempArtifact implements Model_Artifact_Interface
      * @return void
      * @throws Model_Artifact_InvalidChildArtifact
      */
-    protected static function _initialize($root, Model_Artifact_Interface $artifact, $property) 
+    public static function initialize($root, Model_Artifact_Interface $artifact, $property) 
     {
-        if (!USE_POS && is_null($property) && !($artifact instanceof Model_Artifact_Stateless)) {
-            if (method_exists($artifact, 'ps')) {
-                $artifact->ps()->parent = $root; // TODO: this should be removed and implemented in FaZend
-            }
+        if (is_null($property) && !($artifact instanceof Model_Artifact_Stateless)) {
+            // do nothing
         } elseif (!is_null($property) && ($artifact instanceof Model_Artifact_Stateless)) {
             if (method_exists($artifact, $property))
                 $artifact->$property($root);

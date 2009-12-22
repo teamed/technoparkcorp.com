@@ -124,6 +124,9 @@ class Injector extends FaZend_Test_Injector
         // initialize ACL
         $acl = Model_Pages::getInstance()->getAcl();
         
+        // add this role to ACL
+        $acl->addRole(Mocks_Model_Project::PM);
+        
         // give access to everything for the testing user
         $acl->allow(Mocks_Model_Project::PM);
     }

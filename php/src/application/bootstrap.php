@@ -59,6 +59,9 @@ class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap
     {
         // do it after fazend only
         // $this->bootstrap('Fazend');
+        
+        // make sure all artifacts are attached to OUR root
+        FaZend_Pos_Abstract::setRootClass('Model_Artifact_Root');
     }
 
     /**
