@@ -47,5 +47,10 @@ class WobotTest extends FaZend_Test_TestCase
         $wobot = Model_Wobot::factory('PM.' . Mocks_Model_Project::NAME);
         $wobot->execute();
     }
+    
+    public function tearDown()
+    {
+        FaZend_Pos_Abstract::root()->ps()->saveAll();
+    }
 
 }

@@ -23,14 +23,16 @@
  *
  * @package Artifacts
  */
-class theSchedule extends Model_Artifact_Bag implements Model_Artifact_Passive {
+class theSchedule extends Model_Artifact_Bag implements Model_Artifact_Passive 
+{
 
     /**
      * It is loaded already?
      *
      * @return boolean
      */
-    public function isLoaded() {
+    public function isLoaded() 
+    {
         return isset($this->activities);
     }
     
@@ -39,7 +41,8 @@ class theSchedule extends Model_Artifact_Bag implements Model_Artifact_Passive {
      *
      * @return void
      */
-    public function reload() {
+    public function reload() 
+    {
         $this->_attach('activities', clone $this->ps()->parent->activityList->activities);
         // todo: implement it later
         // $this->activities->getSlice()->resolveMilestones();
@@ -51,7 +54,8 @@ class theSchedule extends Model_Artifact_Bag implements Model_Artifact_Passive {
      * @param string Name of property to get
      * @return mixed
      **/
-    public function __get($name) {
+    public function __get($name) 
+    {
         $method = '_get' . ucfirst($name);
         if (method_exists($this, $method))
             return $this->$method();
@@ -59,9 +63,8 @@ class theSchedule extends Model_Artifact_Bag implements Model_Artifact_Passive {
         $var = '_' . $name;
         if (property_exists($this, $var))
             return $this->$var;
-        
-        FaZend_Exception::raise('Schedule_PropertyOrMethodNotFound', 
-            "Can't find what is '$name' in Schedule");
+            
+        return parent::__get($name);
     }
 
     /**
@@ -69,7 +72,8 @@ class theSchedule extends Model_Artifact_Bag implements Model_Artifact_Passive {
      *
      * @return Zend_Date
      **/
-    protected function _getFinish() {
+    protected function _getFinish() 
+    {
         $finish = new Zend_Date();
         // find the latest finish
         foreach ($this->activities as $activity) {

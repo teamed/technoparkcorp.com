@@ -30,9 +30,9 @@ class Model_Artifact_Root extends FaZend_Pos_Root {
      *
      * @return void
      */
-    protected function _init() 
+    public function init() 
     {
-        parent::_init();
+        parent::init();
         
         foreach (array(
             'projectRegistry' => new theProjectRegistry(),
@@ -43,8 +43,8 @@ class Model_Artifact_Root extends FaZend_Pos_Root {
             if (!isset($this->name)) {
                 // add them to the root, one by one
                 $this->$name = $artifact;
-                Model_Artifact::initialize($this, $artifact, null);
             }
+            Model_Artifact::initialize($this, $this->$name, null);
         }
     }
 

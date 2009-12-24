@@ -38,10 +38,9 @@ class Model_Artifact extends FaZend_Pos_Abstract implements Model_Artifact_Inter
     protected function _attach($name, Model_Artifact_Interface $artifact, $property = null) 
     {
         // don't attach again, if it's already here
-        if (isset($this->$name))
-            return $this;
-            
-        $this->$name = $artifact;
+        if (!isset($this->$name)) {
+            $this->$name = $artifact;
+        }
         
         // initialize the artifact, if necessary
         self::initialize($this, $artifact, $property);
@@ -59,14 +58,13 @@ class Model_Artifact extends FaZend_Pos_Abstract implements Model_Artifact_Inter
      */
     protected function _attachItem($key, Model_Artifact_Interface $artifact, $property = null) 
     {
-        if (isset($this[$key]))
-            return $this;
-            
-        // attach as "new" element to the array or as associative value
-        if ($key === false)
-            $this[] = $artifact;
-        else
-            $this[$key] = $artifact;
+        if (!isset($this[$key])) {
+            // attach as "new" element to the array or as associative value
+            if ($key === false)
+                $this[] = $artifact;
+            else
+                $this[$key] = $artifact;
+        }
             
         // initialize the artifact, if necessary
         self::initialize($this, $artifact, $property);
