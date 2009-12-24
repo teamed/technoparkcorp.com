@@ -118,7 +118,7 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
     {
         // maybe we can load it straight away?
         if ($this->_attachMetric($name))
-            return $this[$name];
+            return parent::offsetGet($name);
 
         // break down the name of the metric onto parts
         $parts = explode(self::SEPARATOR, $name);
@@ -128,7 +128,7 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
             $parentName = implode(self::SEPARATOR, array_slice($parts, 0, $i));
             
             if ($this->_attachMetric($parentName)) {
-                $parent = $this[$parentName];
+                $parent = parent::offsetGet($parentName);
                 break;
             }
         }
@@ -148,7 +148,7 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
         }
             
         $this->_attachMetric($name, $parent->cloneByPattern($pattern));
-        return $this[$name];
+        return parent::offsetGet($name);
     }
 
     /**

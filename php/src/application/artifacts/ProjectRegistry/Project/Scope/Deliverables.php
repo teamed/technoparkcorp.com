@@ -130,7 +130,8 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
      * @param string Text description of it
      * @return Deliverables_Abstract
      **/
-    public static function factory($type, $name, $description) {
+    public static function factory($type, $name, $description) 
+    {
         $className = 'Deliverables_' . ucfirst(self::_convertType($type));
         return new $className($name, $description);        
     }
@@ -141,7 +142,8 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
      * @param Deliverables_Abstract The element to add
      * @return void
      **/
-    public function add(Deliverables_Abstract $deliverable) {
+    public function add(Deliverables_Abstract $deliverable) 
+    {
         $this[] = $deliverable;
     }
      
@@ -151,7 +153,8 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
      * @param string Type
      * @return ArrayIterator
      **/
-    protected function _getByType($type) {
+    protected function _getByType($type) 
+    {
         $list = new ArrayIterator();
         foreach ($this as $deliverable) {
             if ($deliverable->type == $type)
@@ -165,7 +168,8 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
      *
      * @return string
      **/
-    public static function _convertType($type) {
+    public static function _convertType($type) 
+    {
         switch ($type) {
             case 'functional':
             case 'qos':
@@ -183,7 +187,8 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
      *
      * @return theTraceability
      **/
-    protected function _getTraceability() {
+    protected function _getTraceability() 
+    {
         return $this->ps()->parent->traceability;
     }
 

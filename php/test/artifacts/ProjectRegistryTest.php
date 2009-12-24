@@ -21,31 +21,25 @@
 require_once 'FaZend/Test/TestCase.php';
 
 /**
- * Model_Wobot test
+ * Test theProjectRegistry class
  *
  * @package test
  */
-class WobotTest extends FaZend_Test_TestCase 
+class theProjectRegistryTest extends FaZend_Test_TestCase
 {
 
-    public function testRetrieveAllWorks() 
+    public function testCollectionOfProjectsWorks() 
     {
-        $wobots = Model_Wobot::retrieveAll();
-        $this->assertTrue(count($wobots) > 0, 'No wobots, why?');
+        $registry = Model_Artifact::root()->projectRegistry;
+        $count = 0;
+        foreach ($registry as $project) {
+            $count++;
+        }
+        $this->assertTrue($count > 0, 'No projects found, why?');
     }
 
-    public function testFactoryMethodWorks() 
+    public function testGetStaffRequestsWorks() 
     {
-        $wobot = Model_Wobot::factory('PM.' . Mocks_Model_Project::NAME);
-        
-        $this->assertEquals('PM', $wobot->getName(), 'Wobot name is not PM, why?');
-        $this->assertEquals(Mocks_Model_Project::NAME, $wobot->getContext(), 'Context is not equal to project name, why?');
+        $requests = Model_Artifact::root()->projectRegistry->getStaffRequests();
     }
-
-    public function testWobotCanBeExecuted() 
-    {
-        $wobot = Model_Wobot::factory('PM.' . Mocks_Model_Project::NAME);
-        $wobot->execute();
-    }
-
 }

@@ -23,14 +23,16 @@
  *
  * @package Artifacts
  */
-class theWbs extends Model_Artifact_Bag implements Model_Artifact_Passive {
+class theWbs extends Model_Artifact_Bag implements Model_Artifact_Passive
+{
     
     /**
      * Load work packages into the WBS, before iteration
      *
      * @return void
      **/
-    public function reload() {
+    public function reload() 
+    {
         // clear all existing WPs
         foreach ($this as $key=>$metric)
             unset($this[$key]);
@@ -45,7 +47,8 @@ class theWbs extends Model_Artifact_Bag implements Model_Artifact_Passive {
      *
      * @return boolean
      **/
-    public function isLoaded() {
+    public function isLoaded() 
+    {
         return (bool)count($this);
     }
     
@@ -54,7 +57,8 @@ class theWbs extends Model_Artifact_Bag implements Model_Artifact_Passive {
      *
      * @return theWorkPackage
      **/
-    public function offsetGet($name) {
+    public function offsetGet($name) 
+    {
         $wp = $this->_findWorkPackage($name);
         if (is_null($wp)) {
             FaZend_Exception::raise('WorkPackageAbsent', 
@@ -69,7 +73,8 @@ class theWbs extends Model_Artifact_Bag implements Model_Artifact_Passive {
      * @param array|string Name or list of names - regular expressions
      * @return Model_Cost
      **/
-    public function sum($regexs = '') {
+    public function sum($regexs = '') 
+    {
         if (!is_array($regexs))
             $regexs = array($regexs);
             
@@ -92,7 +97,8 @@ class theWbs extends Model_Artifact_Bag implements Model_Artifact_Passive {
      *
      * @return theWorkPackage[]
      **/
-    public function getWorkPackagesByPrefix($prefix = '') {
+    public function getWorkPackagesByPrefix($prefix = '') 
+    {
         $list = new ArrayIterator();
         foreach ($this as $wp) {
             
@@ -124,7 +130,8 @@ class theWbs extends Model_Artifact_Bag implements Model_Artifact_Passive {
      * @return theWorkPackage
      * @throws WorkPackageCantBeMade
      **/
-    public function findOrMakeWp($code) {
+    public function findOrMakeWp($code) 
+    {
         try {
             $wp = $this->_findWorkPackage($code);
             if (!$wp)
@@ -159,7 +166,8 @@ class theWbs extends Model_Artifact_Bag implements Model_Artifact_Passive {
      * @return theWorkPackage
      * @throws WorkPackageNotFound
      **/
-    protected function _findWorkPackage($code) {
+    protected function _findWorkPackage($code) 
+    {
         $wps = $this->getArrayCopy();
         if (isset($wps[$code])) {
             return $wps[$code];

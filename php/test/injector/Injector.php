@@ -18,6 +18,8 @@
  *
  */
 
+require_once 'Mocks/artifacts/ProjectRegistry/Project.php';
+
 /**
  * This class injects test components into a workable system
  *
@@ -110,8 +112,9 @@ class Injector extends FaZend_Test_Injector
         // initialize root
         Model_Artifact::root();
 
-        require_once 'Mocks/artifacts/ProjectRegistry/Project.php';
-        Model_Artifact::root()->projectRegistry->add($p = new Mocks_theProject());            
+        if (!isset(Model_Artifact::root()->projectRegistry[Mocks_Model_Project::NAME])) {
+            Model_Artifact::root()->projectRegistry->add($p = new Mocks_theProject());            
+        }
     }
 
     /**
@@ -125,7 +128,8 @@ class Injector extends FaZend_Test_Injector
         $acl = Model_Pages::getInstance()->getAcl();
         
         // add this role to ACL
-        $acl->addRole(Mocks_Model_Project::PM);
+        if (!$acl->hasRole(Mocks_Model_Project::PM))
+            $acl->addRole(Mocks_Model_Project::PM);
         
         // give access to everything for the testing user
         $acl->allow(Mocks_Model_Project::PM);

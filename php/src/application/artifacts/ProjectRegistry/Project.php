@@ -27,14 +27,6 @@ class theProject extends Model_Artifact implements Model_Artifact_Passive
 {
 
     /**
-     * Unique name of this project, to be set from registry
-     *
-     * @var string
-     * @todo kill it, we should get this name from ps()->name
-     */
-    public $name = null;
-
-    /**
      * Initialize project
      * 
      * @return void

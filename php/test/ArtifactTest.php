@@ -21,31 +21,22 @@
 require_once 'FaZend/Test/TestCase.php';
 
 /**
- * Model_Wobot test
+ * Model_Artifact test
  *
  * @package test
  */
-class WobotTest extends FaZend_Test_TestCase 
+class ArtifactTest extends FaZend_Test_TestCase 
 {
 
-    public function testRetrieveAllWorks() 
-    {
-        $wobots = Model_Wobot::retrieveAll();
-        $this->assertTrue(count($wobots) > 0, 'No wobots, why?');
+    public function setUp() {
+        parent::setUp();
+        // delete all existing objects
+        // $this->_dbAdapter->query("DELETE FROM fzObject");
     }
 
-    public function testFactoryMethodWorks() 
+    public function testSimplePosOperationsWork() 
     {
-        $wobot = Model_Wobot::factory('PM.' . Mocks_Model_Project::NAME);
-        
-        $this->assertEquals('PM', $wobot->getName(), 'Wobot name is not PM, why?');
-        $this->assertEquals(Mocks_Model_Project::NAME, $wobot->getContext(), 'Context is not equal to project name, why?');
-    }
-
-    public function testWobotCanBeExecuted() 
-    {
-        $wobot = Model_Wobot::factory('PM.' . Mocks_Model_Project::NAME);
-        $wobot->execute();
+        // Model_Artifact::root()->test = 'test';
     }
 
 }

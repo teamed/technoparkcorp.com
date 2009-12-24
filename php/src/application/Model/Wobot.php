@@ -26,7 +26,8 @@
  *
  * @package Model
  */
-abstract class Model_Wobot implements Model_Wobot_Interface {
+abstract class Model_Wobot implements Model_Wobot_Interface
+{
 
     const EMAIL_DOMAIN = 'tpc2.com'; // domain to be used in all wobot's emails
     
@@ -44,7 +45,8 @@ abstract class Model_Wobot implements Model_Wobot_Interface {
      *
      * @return Model_Wobot[]
      */
-    public static function retrieveAll() {
+    public static function retrieveAll() 
+    {
         self::$_wobots = new ArrayIterator();
         
         // list all wobot names
@@ -53,7 +55,7 @@ abstract class Model_Wobot implements Model_Wobot_Interface {
             
             if (!method_exists($wobotClass, 'getAllNames')) {
                 FaZend_Exception::raise('Model_Wobot_InvalidChild',
-                    "Class '$wobotClass' has to implement 'getAllNames'");
+                    "Class '{$wobotClass}' has to implement '::getAllNames()'");
             }
             
             eval("\$names = $wobotClass::getAllNames();");
@@ -70,7 +72,8 @@ abstract class Model_Wobot implements Model_Wobot_Interface {
      * @param string Wobot name including context, like PM.ABC
      * @return Model_Wobot
      */
-    public static function factory($name) {
+    public static function factory($name) 
+    {
         if (isset(self::$_wobots[$name]))
             return self::$_wobots[$name];
             
@@ -85,7 +88,8 @@ abstract class Model_Wobot implements Model_Wobot_Interface {
      *
      * @return string
      */
-    public function __toString() {
+    public function __toString() 
+    {
         return $this->getFullName();
     }
 
@@ -94,7 +98,8 @@ abstract class Model_Wobot implements Model_Wobot_Interface {
      *
      * @return string
      */
-    public function getFullName() {
+    public function getFullName() 
+    {
         return $this->getName() . '.' . $this->getContext();
     }
 
@@ -103,7 +108,8 @@ abstract class Model_Wobot implements Model_Wobot_Interface {
      *
      * @return string
      */
-    public function getName() {
+    public function getName() 
+    {
         return str_replace(__CLASS__ . '_', '', get_class($this));
     }
 
@@ -112,7 +118,8 @@ abstract class Model_Wobot implements Model_Wobot_Interface {
      *
      * @return string
      */
-    public function getEmailPrefix() {
+    public function getEmailPrefix() 
+    {
         return strtolower($this->getName());
     }
 
@@ -121,7 +128,8 @@ abstract class Model_Wobot implements Model_Wobot_Interface {
      *
      * @return string
      */
-    public function getEmail() {
+    public function getEmail() 
+    {
         return $this->getEmailPrefix() . '@' . self::EMAIL_DOMAIN;
     }
 
@@ -137,7 +145,8 @@ abstract class Model_Wobot implements Model_Wobot_Interface {
      *
      * @return string
      */
-    public function getContext() {
+    public function getContext() 
+    {
         return '';
     }
 
@@ -146,7 +155,8 @@ abstract class Model_Wobot implements Model_Wobot_Interface {
      *
      * @return string The decision just made
      */
-    public function execute() {
+    public function execute() 
+    {
         return $this->decisionFactory(Model_Decision::nextForWobot($this))->make();
     }
 
@@ -156,7 +166,8 @@ abstract class Model_Wobot implements Model_Wobot_Interface {
      * @param string Absolute file name of PHP file with decision class
      * @return Model_Decision
      **/
-    public function decisionFactory($file) {
+    public function decisionFactory($file) 
+    {
         return Model_Decision::factory($file, $this);
     }
 
@@ -165,7 +176,8 @@ abstract class Model_Wobot implements Model_Wobot_Interface {
      *
      * @return string[]
      **/
-    protected static function _getAllNames() {
+    protected static function _getAllNames() 
+    {
         $dir = APPLICATION_PATH . '/wobots';
         $list = array();
         foreach (scandir($dir) as $file) {

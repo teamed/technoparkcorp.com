@@ -28,15 +28,15 @@ require_once 'AbstractProjectTest.php';
  */
 class MetricsTest extends AbstractProjectTest {
 
-    public function testGeneralMechanismWorks() {
+    public function testMetricsAreAccessibleInStorage() {
         $defects = $this->_project->metrics['defects/total']->value;
         logg($defects . ' defects found');
     }
 
-    public function testGetAllWorks() {
+    public function testFullRetrievalOfMetricsWork() {
         $list = $this->_project->metrics;
         logg(count($list) . ' metrics found');
-        $metric = current($list);
+        $metric = next($list);
         
         logg('Value: ' . $metric->value);
         logg('Default: ' . $metric->default);

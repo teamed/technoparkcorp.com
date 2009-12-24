@@ -124,7 +124,7 @@ abstract class Metric_Abstract
      * @return void
      **/
     public final function setTarget($target) {
-        $this->_project->objectives[$this->_name] = $value;
+        $this->_project->objectives[$this->_name] = $target;
         return $this;
     }
         

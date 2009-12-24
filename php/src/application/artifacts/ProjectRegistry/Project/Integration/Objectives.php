@@ -23,6 +23,7 @@
  *
  * @package Artifacts
  */
-class theObjectives extends Model_Artifact {
+class theObjectives extends Model_Artifact 
+{
         
 }

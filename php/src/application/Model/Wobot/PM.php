@@ -49,8 +49,13 @@ class Model_Wobot_PM extends Model_Wobot {
      * Initializer
      *
      * @return void
+     * @throws Model_Wobot_PM_ProjectMissed
      */
-    protected function __construct($context = null) {
+    protected function __construct($context = null) 
+    {
+        if (!isset(Model_Artifact::root()->projectRegistry[$context]))
+            FaZend_Exception::raise('Model_Wobot_PM_ProjectMissed', 
+                "Project '$context' is absent, can't initialize wobot");
         $this->_project = $context;
     }
 
@@ -59,7 +64,8 @@ class Model_Wobot_PM extends Model_Wobot {
      *
      * @return string[]
      **/
-    public static function getAllNames() {
+    public static function getAllNames() 
+    {
         $list = array();
         foreach (Model_Artifact::root()->projectRegistry as $name=>$project) {
             $list[] = 'PM.' . $name;
@@ -72,7 +78,8 @@ class Model_Wobot_PM extends Model_Wobot {
      *
      * @return string
      */
-    public function getContext() {
+    public function getContext() 
+    {
         if (is_string($this->_project))
             return $this->_project;
         return (string)$this->_getProject()->name;
@@ -83,7 +90,8 @@ class Model_Wobot_PM extends Model_Wobot {
      *
      * @return string
      */
-    public function getEmailPrefix() {
+    public function getEmailPrefix() 
+    {
         $exp = explode(' ', strtolower($this->getHumanName()));
         return $exp[0][0] . '.' . $exp[1];
     }
@@ -93,7 +101,8 @@ class Model_Wobot_PM extends Model_Wobot {
      *
      * @return string
      */
-    public function getHumanName() {
+    public function getHumanName() 
+    {
         foreach (self::$_names as $regexp=>$name)
             if (preg_match('/^[' . $regexp . ']/i', $this->getContext()))
                 return $name;
@@ -106,7 +115,8 @@ class Model_Wobot_PM extends Model_Wobot {
      *
      * @return Model_Decision
      **/
-    public function decisionFactory($file) {
+    public function decisionFactory($file) 
+    {
         $decision = parent::decisionFactory($file);
         $decision->setProject(Model_Artifact::root()->projectRegistry[$this->getContext()]);
         return $decision;
@@ -117,7 +127,8 @@ class Model_Wobot_PM extends Model_Wobot {
      *
      * @return Model_Project
      */
-    protected function _getProject() {
+    protected function _getProject() 
+    {
         if (!$this->_project instanceof Model_Project)
             $this->_project = Model_Artifact::root()->projectRegistry[$this->_project]->fzProject();
         return $this->_project;

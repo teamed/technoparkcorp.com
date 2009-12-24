@@ -18,7 +18,6 @@
  *
  */
 
-
 /**
  * Collection of projects
  *
