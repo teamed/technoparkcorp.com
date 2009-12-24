@@ -23,7 +23,7 @@
  *
  * @package Artifacts
  */
-class theSupplier extends Model_Artifact
+class theSupplier
 {
 
     /**
