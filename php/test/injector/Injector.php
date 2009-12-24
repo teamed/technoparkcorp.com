@@ -78,9 +78,6 @@ class Injector extends FaZend_Test_Injector
         // disable file moving after uploading
         Model_Artifact_Attachments::setLocation(false);
 
-        // we should use POS?
-        defined('USE_POS') or define('USE_POS', class_exists('FaZend_POS', false));
-
         // just to try the translation
         Zend_Registry::get('Zend_Translate')->setLocale(new Zend_Locale('ru'));
     }
@@ -134,25 +131,5 @@ class Injector extends FaZend_Test_Injector
         // give access to everything for the testing user
         $acl->allow(Mocks_Model_Project::PM);
     }
-
-    /**
-     * Injects a few suppliers to the DB
-     *
-     * @return void
-     **/
-    // protected function _injectSuppliers() {
-    //     $registry = Model_Artifact::root()->supplierRegistry;
-    //     $registry->createSupplier(Mocks_Model_Project::PM, 'Mr John Tester', 'US')
-    //         ->createSkill('PHP', 75)
-    //         ->createSkill('jQuery', 25)
-    //         ->createRole('Programmer', '13EUR');
-    // 
-    //     $registry->createSupplier('test@example.com', 'Mr Alex Peterson', 'UA')
-    //         ->createSkill('PHP', 75)
-    //         ->createSkill('XML', 15)
-    //         ->createSkill('ZendFramework', 85)
-    //         ->createSkill('jQuery', 25)
-    //         ->createRole('Programmer', '13EUR');    
-    // }
 
 }
