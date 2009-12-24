@@ -52,7 +52,8 @@ class theProjectRegistry extends Model_Artifact implements Model_Artifact_Passiv
      */
     public function isLoaded() 
     {
-        return count($this) > 0;
+        // always requires reloading
+        return false;
     }
     
     /**
