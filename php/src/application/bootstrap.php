@@ -30,10 +30,13 @@ class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap
      *
      * @return void
      */
-    protected function _initAutoLoader() 
+    protected function _initAutoLoaders() 
     {
         $autoloader = Zend_Loader_Autoloader::getInstance();
         $autoloader->pushAutoloader(new Model_Loader_Artifacts(), 'the');
+        
+        // metrics have their own loader
+        theMetrics::initAutoloader();
     }
 
     /**

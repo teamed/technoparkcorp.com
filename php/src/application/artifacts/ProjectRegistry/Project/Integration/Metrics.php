@@ -34,6 +34,20 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
      * @var Zend_Loader_Autoloader
      **/
     protected static $_autoloader = null;
+
+    /**
+     * Initialize autoloader of metrics, to be called from bootstrap
+     *
+     * @return void
+     **/
+    public static function initAutoloader() 
+    {
+        // enable this directory for class loading
+        self::$_autoloader = Zend_Loader_Autoloader::getInstance();
+        self::$_autoloader->registerNamespace('Metric_');
+        set_include_path(get_include_path() . PATH_SEPARATOR . 
+            dirname(__FILE__) . '/metrics-library');
+    }
     
     /**
      * Is it reloaded?
@@ -168,11 +182,8 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
             $className = $this->_nameToClass($name);
 
             if (is_null(self::$_autoloader)) {
-                // enable this directory for class loading
-                self::$_autoloader = Zend_Loader_Autoloader::getInstance();
-                self::$_autoloader->registerNamespace('Metric_');
-                set_include_path(get_include_path() . PATH_SEPARATOR . 
-                    dirname(__FILE__) . '/metrics-library');
+                FaZend_Exception::raise('MetricAutoloaderNotInitialized',
+                    "You should call ::initAutoloader() in your bootstrap");
             }
 
             if (!@self::$_autoloader->autoload($className, false))

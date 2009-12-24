@@ -55,7 +55,9 @@ class theProject extends Model_Artifact implements Model_Artifact_Passive
      */
     public function isLoaded() 
     {
-        return isset($this->staffAssignments);
+        // always reload
+        return false;
+        // return isset($this->staffAssignments);
     }
     
     /**

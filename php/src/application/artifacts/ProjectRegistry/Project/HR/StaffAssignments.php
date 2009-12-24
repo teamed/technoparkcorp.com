@@ -54,7 +54,8 @@ class theStaffAssignments extends ArrayIterator implements Model_Artifact_Statel
      **/
     public function isLoaded() 
     {
-        return (bool)count($this);
+        // always reload
+        return false;
     }
     
     /**

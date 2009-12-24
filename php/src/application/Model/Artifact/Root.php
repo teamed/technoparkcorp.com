@@ -33,7 +33,7 @@ class Model_Artifact_Root extends FaZend_Pos_Root {
     public function init() 
     {
         parent::init();
-        
+
         foreach (array(
             'projectRegistry' => new theProjectRegistry(),
             'supplierRegistry' => new theSupplierRegistry(),
