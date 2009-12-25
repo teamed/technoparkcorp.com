@@ -40,6 +40,7 @@ class Model_Artifact extends FaZend_Pos_Abstract implements Model_Artifact_Inter
         // don't attach again, if it's already here
         if (!isset($this->$name)) {
             $this->$name = $artifact;
+            logg($this->ps()->path . "->{$name} attached");
         } else {
             // We need this in order to get the POS object, and work with it
             // later. Otherwise, we will have $artifact, which is NOT in POS
@@ -68,6 +69,7 @@ class Model_Artifact extends FaZend_Pos_Abstract implements Model_Artifact_Inter
                 $this[] = $artifact;
             else
                 $this[$key] = $artifact;
+            logg($this->ps()->path . "[{$key}] attached");
         } else {
             // We need this in order to get the POS object, and work with it
             // later. Otherwise, we will have $artifact, which is NOT in POS
