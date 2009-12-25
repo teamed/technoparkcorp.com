@@ -19,7 +19,8 @@
  *
  * @package helpers
  */
-class Helper_Publish extends FaZend_View_Helper {
+class Helper_Publish extends FaZend_View_Helper
+{
 
     /**
      * Document to be published
@@ -48,7 +49,8 @@ class Helper_Publish extends FaZend_View_Helper {
      * @param Model_Artifact The artifact to publish
      * @return Helper_Publish
      */
-    public function publish(Model_Artifact_Interface $doc) {
+    public function publish(Model_Artifact_Interface $doc)
+    {
         $this->_doc = $doc;
         $this->_loadAcl();
         return $this;
@@ -59,7 +61,8 @@ class Helper_Publish extends FaZend_View_Helper {
      *
      * @return string HTML
      */
-    public function __toString() {
+    public function __toString() 
+    {
         try {
             return $this->_render();
         } catch (Exception $e) {
@@ -72,8 +75,8 @@ class Helper_Publish extends FaZend_View_Helper {
      *
      * @return string HTML
      */
-    protected function _render() {
-        
+    protected function _render() 
+    {
         // include CSS specific for this helper
         $this->getView()->includeCSS('helper/publish.css');
         
@@ -89,7 +92,8 @@ class Helper_Publish extends FaZend_View_Helper {
         $links = array();        
         foreach ($this->_pages as $page) {            
             if ($this->_acl->isAllowed(Model_User::me()->email, $page->tag, $privileges))
-                $links[$page->tag] = '<a href="' . $this->getView()->panelUrl() . '?' . $page->tag .  '">' . $page->tag . '</a>';
+                $links[$page->tag] = '<a href="' . $this->getView()->panelUrl($current) . 
+                '?' . $page->tag .  '">' . $page->tag . '</a>';
         }
         
         $request = Zend_Controller_Front::getInstance()->getRequest();
@@ -99,7 +103,8 @@ class Helper_Publish extends FaZend_View_Helper {
                     $pageHtml = $this->_executePage($page);
                     $links[$page->tag] = '<b>' . $links[$page->tag] . '</b>';
                 } else {
-                    $pageHtml = '<p class="error">You don\' have enough access permissions to access this page (' . $page->tag . ')</p>';
+                    $pageHtml = '<p class="error">You don\' have enough access ' . 
+                    'permissions to access this page (' . $page->tag . ')</p>';
                 }
             }
         }
@@ -110,7 +115,6 @@ class Helper_Publish extends FaZend_View_Helper {
             ($privileges == 'rw' ? '<sup title="you can read/write" style="cursor:pointer;"><small>rw</small></sup>: ' : false) . 
             implode('&#32;&middot;&#32;', $links) . '</div>' . 
             (isset($pageHtml) ? "<div class='publisher'>" . $pageHtml . '</div>' : false);
-        
     }
     
     /**
@@ -119,7 +123,8 @@ class Helper_Publish extends FaZend_View_Helper {
      * @param FaZend_StdObject Page resource
      * @return string HTML
      **/
-    protected function _executePage(FaZend_StdObject $page) {
+    protected function _executePage(FaZend_StdObject $page) 
+    {
         return $this->getView()->render($page->path);
     }
     
@@ -128,7 +133,8 @@ class Helper_Publish extends FaZend_View_Helper {
      *
      * @return void
      **/
-    protected function _loadAcl() {
+    protected function _loadAcl() 
+    {
         $this->_acl = new Zend_Acl();
         $this->_acl->deny();
 
@@ -189,7 +195,6 @@ class Helper_Publish extends FaZend_View_Helper {
                     break;
             }
         }
-        
     }
 
 }
