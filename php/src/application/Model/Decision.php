@@ -161,22 +161,21 @@ abstract class Model_Decision implements Model_Decision_Interface
         FaZend_Log::getInstance()->addWriter('Memory', 'decision');
 
         try {
-            
             logg('Starting decision: ' . $this->_file);
             $decision = $this->_make();
             logg('Decision execution finished (' . pathinfo($this->_file, PATHINFO_FILENAME) . ')');
-
         } catch (Exception $e) {
             // some error inside - we skip the process
             FaZend_Log::err($e->getMessage());
-            $decision = false;
+            $decision = 'ERROR: ' . $e->getMessage();
             logg('Decision execution aborted');
         }
         
         $log = FaZend_Log::getInstance()->getWriterAndRemove('decision')->getLog();
         
-        // protocol this decision
-        Model_Decision_History::create($this->_wobot, $this, $decision, $log);
+        // protocol this decision, if something was said
+        if ($decision)
+            Model_Decision_History::create($this->_wobot, $this, $decision, $log);
         
         return $decision;
     }
