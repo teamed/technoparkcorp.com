@@ -52,8 +52,6 @@ abstract class Model_Wobot implements Model_Wobot_Interface
     {
         self::$_wobots = new ArrayIterator();
         
-        logg("Projects in registry: " . implode(', ', 
-            array_keys(iterator_to_array(FaZend_Pos_Abstract::root()->projectRegistry))));
         // list all wobot names
         foreach (self::_getAllNames() as $name) {
             $wobotClass = __CLASS__ . '_' . $name;
@@ -67,7 +65,7 @@ abstract class Model_Wobot implements Model_Wobot_Interface
             foreach ($names as $wobotName)
                 self::$_wobots[$wobotName] = self::factory($wobotName);
         }
-        logg("Wobots found: " . implode(', ', array_keys(self::$_wobots->getArrayCopy())));
+        // logg("Wobots found: " . implode(', ', array_keys(self::$_wobots->getArrayCopy())));
             
         return self::$_wobots;
     }
