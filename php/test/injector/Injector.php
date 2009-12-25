@@ -59,6 +59,9 @@ class Injector extends FaZend_Test_Injector
         // this class will catch all calls to fazend
         require_once 'Shared/Soap/Gateway.php';
         Shared_Soap_Gateway::setSoapClient(Mocks_Shared_Soap_Client::get());
+        
+        // no cache, since there are NO real SOAP calls to FaZend
+        Shared_Soap_Gateway::setCacheEnabled(false);
     }
         
     /**
@@ -110,7 +113,7 @@ class Injector extends FaZend_Test_Injector
         Model_Artifact::root();
 
         if (!isset(Model_Artifact::root()->projectRegistry[Mocks_Model_Project::NAME])) {
-            Model_Artifact::root()->projectRegistry->add($p = new Mocks_theProject());            
+            Model_Artifact::root()->projectRegistry->add(Mocks_Model_Project::NAME, new Mocks_theProject());            
         }
     }
 

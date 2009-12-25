@@ -77,10 +77,15 @@ abstract class Model_Wobot implements Model_Wobot_Interface
         if (isset(self::$_wobots[$name]))
             return self::$_wobots[$name];
             
-        $exp = explode('.', $name);
+        if (strpos($name, '.') !== false) {
+            list($type, $context) = explode('.', $name);
+        } else {
+            $type = $name;
+            $context = null;
+        }
 
-        $className = __CLASS__ . '_' . $exp[0];
-        return self::$_wobots[$name] = new $className(isset($exp[1]) ? $exp[1] : null);
+        $className = __CLASS__ . '_' . $type;
+        return self::$_wobots[$name] = new $className($context);
     }
 
     /**

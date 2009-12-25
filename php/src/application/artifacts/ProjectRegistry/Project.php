@@ -25,7 +25,7 @@
  */
 class theProject extends Model_Artifact implements Model_Artifact_Passive 
 {
-
+    
     /**
      * Initialize project
      * 
@@ -33,19 +33,7 @@ class theProject extends Model_Artifact implements Model_Artifact_Passive
      */
     public function reload() 
     {
-        $this
-            ->_attach('staffAssignments', new theStaffAssignments(), 'project')
-            ->_attach('workOrders', new theWorkOrders(), 'project')
-            ->_attach('milestones', new theMilestones())
-            ->_attach('objectives', new theObjectives())
-            ->_attach('traceability', new theTraceability())
-            ->_attach('deliverables', new theDeliverables())
-            ->_attach('payments', new thePayments(), 'project')
-            ->_attach('metrics', new theMetrics())
-            ->_attach('wbs', new theWbs())
-            ->_attach('activityList', new theActivityList())
-            ->_attach('schedule', new theSchedule())
-            ;
+        $this->_passiveLoader()->reload();
     }
     
     /**
@@ -55,11 +43,28 @@ class theProject extends Model_Artifact implements Model_Artifact_Passive
      */
     public function isLoaded() 
     {
-        // always reload
-        return false;
-        // return isset($this->staffAssignments);
+        return $this->_passiveLoader()->isLoaded();
     }
     
+    /**
+     * Getter dispatcher
+     *
+     * @param string Name of property to get
+     * @return mixed
+     **/
+    public function __get($name) 
+    {
+        $method = '_get' . ucfirst($name);
+        if (method_exists($this, $method))
+            return $this->$method();
+            
+        $var = '_' . $name;
+        if (property_exists($this, $var))
+            return $this->$var;
+            
+        return parent::__get($name);
+    }
+
     /**
      * Get project from fazend
      * 
@@ -78,6 +83,44 @@ class theProject extends Model_Artifact implements Model_Artifact_Passive
     public function __toString() 
     {
         return $this->name;
+    }
+
+    /**
+     * Get name of the project
+     *
+     * @return string
+     **/
+    protected function _getName() 
+    {
+        return $this->ps()->name;
+    }
+    
+    /**
+     * Create class loader
+     *
+     * The method creates a standalone loader, which is responsible
+     * for adding elements to $this. Also this loader knows how to
+     * understand whether $this is loaded now or not.
+     *
+     * @return Model_Artifact_Passive_Loader
+     * @see isLoaded()
+     * @see reload()
+     **/
+    protected function _passiveLoader() 
+    {
+        return Model_Artifact_Passive_Loader::factory($this)
+            ->attach('staffAssignments', new theStaffAssignments(), 'project')
+            ->attach('workOrders', new theWorkOrders(), 'project')
+            ->attach('milestones', new theMilestones())
+            ->attach('objectives', new theObjectives())
+            ->attach('traceability', new theTraceability())
+            ->attach('deliverables', new theDeliverables())
+            ->attach('payments', new thePayments(), 'project')
+            ->attach('metrics', new theMetrics())
+            ->attach('wbs', new theWbs())
+            ->attach('activityList', new theActivityList())
+            ->attach('schedule', new theSchedule())
+            ;
     }
     
 }

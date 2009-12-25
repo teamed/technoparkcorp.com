@@ -40,11 +40,15 @@ class Model_Artifact extends FaZend_Pos_Abstract implements Model_Artifact_Inter
         // don't attach again, if it's already here
         if (!isset($this->$name)) {
             $this->$name = $artifact;
+        } else {
+            // We need this in order to get the POS object, and work with it
+            // later. Otherwise, we will have $artifact, which is NOT in POS
+            // yet, and it will cause problems with POS.
+            $artifact = $this->$name;
         }
         
-        // initialize the artifact, if necessary
-        self::initialize($this, $artifact, $property);
-        return $this;
+        // initialize the artifact, if necessary, and return $this
+        return self::initialize($this, $artifact, $property);
     }
     
     /**
@@ -64,23 +68,27 @@ class Model_Artifact extends FaZend_Pos_Abstract implements Model_Artifact_Inter
                 $this[] = $artifact;
             else
                 $this[$key] = $artifact;
+        } else {
+            // We need this in order to get the POS object, and work with it
+            // later. Otherwise, we will have $artifact, which is NOT in POS
+            // yet, and it will cause problems with POS.
+            $artifact = $this[$key];
         }
             
-        // initialize the artifact, if necessary
-        self::initialize($this, $artifact, $property);
-        return $this;
+        // initialize the artifact, if necessary, and return $this
+        return self::initialize($this, $artifact, $property);
     }
     
     /**
      * Initialize child artifact
      *
-     * @param mixed Root object
+     * @param Model_Artifact_Interface Root artifact
      * @param Model_Artifact_Interface The artifact to attach
      * @param string Property to set with $this
-     * @return void
+     * @return Model_Artifact_Interface Root
      * @throws Model_Artifact_InvalidChildArtifact
      */
-    public static function initialize($root, Model_Artifact_Interface $artifact, $property) 
+    public static function initialize(Model_Artifact_Interface $root, Model_Artifact_Interface $artifact, $property) 
     {
         if (is_null($property) && !($artifact instanceof Model_Artifact_Stateless)) {
             // do nothing
@@ -97,6 +105,8 @@ class Model_Artifact extends FaZend_Pos_Abstract implements Model_Artifact_Inter
         // reload it if it's empty now and requires loading
         if (($artifact instanceof Model_Artifact_Passive) && !$artifact->isLoaded())
             $artifact->reload();
+            
+        return $root;
     }
     
 }

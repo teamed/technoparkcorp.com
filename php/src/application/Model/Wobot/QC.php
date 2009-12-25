@@ -23,14 +23,16 @@
  *
  * @package Model
  */
-class Model_Wobot_QC extends Model_Wobot {
+class Model_Wobot_QC extends Model_Wobot
+{
 
     /**
      * Returns a list of all possible wobot names of this given type/class
      *
      * @return string[]
      **/
-    public static function getAllNames() {
+    public static function getAllNames() 
+    {
         $names = array();
         foreach (Model_Process::retrieveAll() as $process);
             $names[] = 'QC.' . strval($process);
@@ -50,7 +52,8 @@ class Model_Wobot_QC extends Model_Wobot {
      * @param string Name of the process
      * @return void
      */
-    protected function __construct($context = null) {
+    protected function __construct($context = null) 
+    {
         $this->_process = Model_Process::findByName($context);
     }
 
@@ -59,7 +62,8 @@ class Model_Wobot_QC extends Model_Wobot {
      *
      * @return string
      */
-    public function getContext() {
+    public function getContext() 
+    {
         return strval($this->_process);
     }
 
@@ -68,7 +72,8 @@ class Model_Wobot_QC extends Model_Wobot {
      *
      * @return string
      */
-    public function getHumanName() {
+    public function getHumanName() 
+    {
         return 'Mr. Quality';
     }
 

@@ -55,7 +55,7 @@ class Model_Project extends Shared_Project
     /**
      * This project is managed by wobots?
      *
-     * The project is managed if one of it's stakeholders is '*@wobot.net',
+     * The project is managed if one of it's stakeholders is '*@tpc2.com',
      * while the exact email depends on the particular project. Exact email
      * of the wobot you can get from Model_Wobot class, getEmail() method
      *
@@ -65,12 +65,16 @@ class Model_Project extends Shared_Project
     {
         if (!self::$_weAreManaging)
             return false;
-        return in_array(Model_Wobot::factory('PM.' . $this->name)->getEmail(), $this->getWobots());
+        return in_array(Model_Wobot::factory('PM.' . $this->name)->getEmail(),
+            $this->getWobots());
     }
 
 
     /**
-     * Get list of wobots (emails)
+     * Get list of wobots (emails), who have access to the project
+     *
+     * These emails are specified in FaZend platform, or maybe in some other
+     * place, outside of thePanel.
      *
      * @return string[]
      */

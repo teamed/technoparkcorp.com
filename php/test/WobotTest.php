@@ -48,9 +48,4 @@ class WobotTest extends FaZend_Test_TestCase
         $wobot->execute();
     }
     
-    public function tearDown()
-    {
-        FaZend_Pos_Abstract::root()->ps()->saveAll();
-    }
-
 }

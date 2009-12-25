@@ -41,9 +41,20 @@ abstract class AbstractProjectTest extends FaZend_Test_TestCase
         $this->_project = Model_Artifact::root()->projectRegistry[Mocks_Model_Project::NAME];
         
         // make sure it is the thing we're looking for
-        $this->assertTrue($this->_project instanceof Mocks_theProject, 'Invalid project type, why?');
+        $this->assertTrue($this->_project instanceof Mocks_theProject, 
+            'Invalid project type (' . get_class($this->_project) . '), why?');
         $this->assertTrue($this->_project->name == Mocks_Model_Project::NAME, 'Project name is not the testing one, why?');
         // $this->assertTrue($this->_project->isLoaded(), 'The project is not loaded, why?');
+    }
+
+    /**
+     * Save all changes made to POS
+     *
+     * @var void
+     */
+    public function tearDown()
+    {
+        FaZend_Pos_Abstract::root()->ps()->saveAll();
     }
 
 }

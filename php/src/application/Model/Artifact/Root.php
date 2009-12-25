@@ -23,7 +23,7 @@
  *
  * @package Artifacts
  */
-class Model_Artifact_Root extends FaZend_Pos_Root {
+class Model_Artifact_Root extends FaZend_Pos_Root implements Model_Artifact_Interface {
 
     /**
      * Initialize it

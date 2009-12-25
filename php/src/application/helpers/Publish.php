@@ -98,15 +98,17 @@ class Helper_Publish extends FaZend_View_Helper
         
         $request = Zend_Controller_Front::getInstance()->getRequest();
         foreach ($this->_pages as $page) {
-            if (isset($request->{$page->tag})) { 
-                if (isset($links[$page->tag])) {
-                    $pageHtml = $this->_executePage($page);
-                    $links[$page->tag] = '<b>' . $links[$page->tag] . '</b>';
-                } else {
-                    $pageHtml = '<p class="error">You don\' have enough access ' . 
-                    'permissions to access this page (' . $page->tag . ')</p>';
-                }
+            if (!isset($request->{$page->tag}))
+                continue;
+
+            if (isset($links[$page->tag])) {
+                $pageHtml = $this->_executePage($page);
+                $links[$page->tag] = '<b>' . $links[$page->tag] . '</b>';
+                break;
             }
+
+            $pageHtml = '<p class="error">You don\' have enough access ' . 
+            'permissions to access this page (' . $page->tag . ')</p>';
         }
 
         return '<div class="publish">' .
@@ -125,6 +127,7 @@ class Helper_Publish extends FaZend_View_Helper
      **/
     protected function _executePage(FaZend_StdObject $page) 
     {
+        $this->getView()->document = $this->_doc;
         return $this->getView()->render($page->path);
     }
     

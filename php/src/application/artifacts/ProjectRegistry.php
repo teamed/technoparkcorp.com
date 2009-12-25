@@ -39,9 +39,7 @@ class theProjectRegistry extends Model_Artifact implements Model_Artifact_Passiv
                 continue;
                 
             // create new instance and add it to registry
-            $p = new theProject();
-            $p->name = $project->name;
-            $this->add($p);
+            $this->add($project->name, new theProject());
         }
     }
 
@@ -59,12 +57,13 @@ class theProjectRegistry extends Model_Artifact implements Model_Artifact_Passiv
     /**
      * Add new project to the registry
      *
+     * @param string Name of the project to add
      * @param theProject Project to add
      * @return void
      **/
-    public function add(theProject $project) 
+    public function add($name, theProject $project) 
     {
-        $this->_attachItem($project->name, $project);            
+        $this->_attachItem($name, $project);            
     }
     
     /**

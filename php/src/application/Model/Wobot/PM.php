@@ -53,10 +53,12 @@ class Model_Wobot_PM extends Model_Wobot {
      */
     protected function __construct($context = null) 
     {
-        if (!isset(Model_Artifact::root()->projectRegistry[$context]))
+        try {
+            $this->_project = Model_Project::findByName($context);
+        } catch (Shared_Project_NotFoundException $e) {
             FaZend_Exception::raise('Model_Wobot_PM_ProjectMissed', 
-                "Project '$context' is absent, can't initialize wobot");
-        $this->_project = $context;
+                "Project '$context' is absent, can't initialize PM wobot");
+        }
     }
 
     /**
@@ -80,9 +82,7 @@ class Model_Wobot_PM extends Model_Wobot {
      */
     public function getContext() 
     {
-        if (is_string($this->_project))
-            return $this->_project;
-        return (string)$this->_getProject()->name;
+        return (string)$this->_project->name;
     }
 
     /**
@@ -92,22 +92,30 @@ class Model_Wobot_PM extends Model_Wobot {
      */
     public function getEmailPrefix() 
     {
-        $exp = explode(' ', strtolower($this->getHumanName()));
-        return $exp[0][0] . '.' . $exp[1];
+        return self::_humanToEmailPrefix($this->getHumanName());
     }
 
     /**
      * Get the full name of the human-wobot
      *
      * @return string
+     * @throws Model_Wobot_NameNotFound
      */
     public function getHumanName() 
     {
-        foreach (self::$_names as $regexp=>$name)
-            if (preg_match('/^[' . $regexp . ']/i', $this->getContext()))
-                return $name;
-        FaZend_Exception::raise('Model_Wobot_NameNotFound', 
-            "Can find human name for project: '{$this->_project->name}'");
+        return self::_projectToHumanName($this->getContext());
+    }
+
+    /**
+     * Get email of wobot by given project name
+     *
+     * @param string Project name
+     * @return string
+     **/
+    public static function getEmailByProjectName($projectName) 
+    {
+        return self::_humanToEmailPrefix(self::_projectToHumanName($projectName)) . 
+            '@' . self::EMAIL_DOMAIN;
     }
 
     /**
@@ -121,17 +129,34 @@ class Model_Wobot_PM extends Model_Wobot {
         $decision->setProject(Model_Artifact::root()->projectRegistry[$this->getContext()]);
         return $decision;
     }
+    
+    /**
+     * Convert project name to human name
+     *
+     * @param string Project name
+     * @return string Name of the wobot, like "John Smith"
+     * @throws Model_Wobot_NameNotFound
+     **/
+    protected static function _projectToHumanName($projectName) 
+    {
+        foreach (self::$_names as $regexp=>$name)
+            if (preg_match('/^[' . $regexp . ']/i', $projectName))
+                return $name;
+                
+        FaZend_Exception::raise('Model_Wobot_NameNotFound', 
+            "Can find human name for project: '{$projectName}'");
+    }
 
     /**
-     * Lazy loader of project information
+     * Convert human name to email prefix
      *
-     * @return Model_Project
-     */
-    protected function _getProject() 
+     * @param string Human name, like "John Smith"
+     * @return string Email prefix, like "j.smith"
+     **/
+    protected static function _humanToEmailPrefix($name) 
     {
-        if (!$this->_project instanceof Model_Project)
-            $this->_project = Model_Artifact::root()->projectRegistry[$this->_project]->fzProject();
-        return $this->_project;
+        list($first, $last) = explode(' ', strtolower($name));
+        return $first[0] . '.' . $last;
     }
-    
+
 }
