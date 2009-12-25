@@ -64,6 +64,10 @@ class Model_Wobot_PM extends Model_Wobot
             FaZend_Exception::raise('Model_Wobot_PM_ProjectMissed', 
                 "Project '{$context}' is absent, can't initialize PM wobot");
         }
+
+        validate()
+            ->true($this->_project->isManaged(), 
+                "Project {$context} is not managed, wobot can't be created");
     }
 
     /**
