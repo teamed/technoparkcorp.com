@@ -68,6 +68,16 @@ class Injector extends FaZend_Test_Injector
     }
 
     /**
+     * Configure LUCENE
+     *
+     * @return void
+     **/
+    protected function _injectLuceneConfig() 
+    {
+        Model_Article::setLucenePath(TEMP_PATH . '/panel2lucene.' . APPLICATION_ENV);
+    }
+
+    /**
      * Injects a tester logged in
      *
      * @return void

@@ -69,6 +69,13 @@ class Model_Article
      * @var Zend_Search_Lucene
      */
     protected static $_lucene = null;
+    
+    /**
+     * Directory name of the lucene storag
+     *
+     * @var string
+     **/
+    protected static $_lucenePath = null;
 
     /**
      * Create new article
@@ -78,6 +85,29 @@ class Model_Article
      */
     protected function __construct() 
     {
+    }
+    
+    /**
+     * Get directory name of the LUCENE storage
+     *
+     * @return string
+     **/
+    public static function getLucenePath() 
+    {
+        if (is_null(self::$_lucenePath))
+            self::$_lucenePath = TEMP_PATH . '/panel2lucene';
+        return self::$_lucenePath;
+    }
+
+    /**
+     * Set directory name of the LUCENE storage
+     *
+     * @param string Directory path
+     * @return void
+     **/
+    public static function setLucenePath($path) 
+    {
+        self::$_lucenePath = $path;
     }
 
     /**
@@ -141,7 +171,7 @@ class Model_Article
     public static function lucene($refresh = false) 
     {
         if (!isset(self::$_lucene) || $refresh) {        
-            $path = TEMP_PATH . '/panel2lucene';
+            $path = self::getLucenePath();
             if (file_exists($path) && !$refresh)
                 self::$_lucene = Zend_Search_Lucene::open($path);
             else
