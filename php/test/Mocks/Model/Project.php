@@ -49,7 +49,7 @@ class Mocks_Model_Project extends Model_Project
         $pwd = md5(rand());
         
         $authz = '[' . self::NAME . ":/]\n" . self::PM . " = rw\n";
-        foreach (array('SystemAnalyst', 'Architect', 'CCB') as $role)
+        foreach (array('PM', 'SystemAnalyst', 'Architect', 'CCB') as $role)
             $authz .= '[' . self::NAME . ':' . Model_Project::ROLE_AUTHZ_PREFIX . "$role]\n" . self::PM . " = rw\n";
         
         parent::__construct(1, // id
