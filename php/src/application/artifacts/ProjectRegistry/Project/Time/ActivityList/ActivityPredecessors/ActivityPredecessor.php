@@ -56,7 +56,8 @@ class theActivityPredecessor extends ArrayIterator {
      *
      * @return string
      */
-    public function __toString() {
+    public function __toString()
+    {
         $str = (string)$this->_activity->name;
         if (($this->_type !== self::FINISH_TO_START) || $this->_lag) 
             $str .= ':' . $this->_type . $this->_lag . 'hrs';
@@ -71,7 +72,8 @@ class theActivityPredecessor extends ArrayIterator {
      * @param integer Lag in hours
      * @return $this
      */
-    public static function factory(theActivity $activity, $type, $lag) {
+    public static function factory(theActivity $activity, $type, $lag)
+    {
         $predecessor = new self();
         $predecessor->_activity = $activity;
         $predecessor->_type = $type;
@@ -85,22 +87,32 @@ class theActivityPredecessor extends ArrayIterator {
      * @param theActivity We shall use it as a basis, to calculate ITS start
      * @return Zend_Date
      **/
-    public function calculateStart(theActivity $activity) {
+    public function calculateStart(theActivity $activity)
+    {
         switch ($this->_type) {
             case self::FINISH_TO_START:
                 $start = $this->_activity->finish;
                 break;
+
             case self::FINISH_TO_FINISH:
                 $start = $this->_activity->finish;
                 $start->sub($activity->duration, Zend_Date::DAY);
                 break;
+
             case self::START_TO_START:
                 $start = $this->_activity->start;
                 break;
+
             case self::START_TO_FINISH:
                 $start = $this->_activity->start;
                 $start->sub($activity->duration, Zend_Date::DAY);
                 break;
+                
+            default:
+                FaZend_Exception::raise(
+                    'ActivityPredecessorInvalidType',
+                    "Invalid type of predecessor: '{$this->_type}'"
+                    );
         }
         
         $start->add($this->_lag, Zend_Date::DAY);

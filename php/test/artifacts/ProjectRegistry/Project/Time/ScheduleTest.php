@@ -21,17 +21,21 @@
 require_once 'AbstractProjectTest.php';
 
 /**
- * Test activity list
+ * Test schedule
  *
  * @package test
  */
-class ActivityListTest extends AbstractProjectTest
+class ScheduleTest extends AbstractProjectTest
 {
 
-    public function testGeneralMechanismWorks()
+    public function testScheduleCanBeReloaded()
     {
-        $list = $this->_project->activityList;
-        logg(count($list) . ' activities in the list');
+        $schedule = $this->_project->schedule;
+        $schedule->reload();
+        $this->assertTrue(
+            $schedule->finish instanceof Zend_Date,
+            'Strange result from theSchedule::finish'
+            );
     }
 
 }

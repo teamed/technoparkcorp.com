@@ -128,6 +128,7 @@ class Model_Wobot_PM extends Model_Wobot
     /**
      * Create decision
      *
+     * @param string Absolute file name of PHP file
      * @return Model_Decision
      **/
     public function decisionFactory($file) 

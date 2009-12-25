@@ -23,14 +23,33 @@
  *
  * @package Artifacts
  */
-class theActivityPredecessors extends ArrayIterator {
+class theActivityPredecessors implements ArrayAccess, Iterator, Countable
+{
+
+    /**
+     * Predecessors
+     *
+     * @var ArrayIterator
+     **/
+    protected $_predecessors;
+    
+    /**
+     * Constructor
+     *
+     * @return void
+     **/
+    public function __construct() 
+    {
+        $this->_predecessors = new ArrayIterator();
+    }
 
     /**
      * Convert to string
      *
      * @return string
      */
-    public function __toString() {
+    public function __toString()
+    {
         $predecessors = array();
         foreach ($this as $p)
             $predecessors[] = (string)$p;
@@ -45,7 +64,8 @@ class theActivityPredecessors extends ArrayIterator {
      * @param integer Lag in calendar days
      * @return $this
      */
-    public function add(theActivity $predecessor, $type = theActivityPredecessor::FINISH_TO_START, $lag = 0) {
+    public function add(theActivity $predecessor, $type = theActivityPredecessor::FINISH_TO_START, $lag = 0)
+    {
         $this[] = theActivityPredecessor::factory($predecessor, $type, $lag);
         return $this;
     }
@@ -56,7 +76,8 @@ class theActivityPredecessors extends ArrayIterator {
      * @param theActivity We shall use it as a basis, to calculate ITS start
      * @return Zend_Date
      **/
-    public function calculateStart(theActivity $activity) {
+    public function calculateStart(theActivity $activity)
+    {
         $start = new FaZend_Date();
         foreach ($this as $pred) {
             $predStart = $pred->calculateStart($activity);
@@ -64,6 +85,106 @@ class theActivityPredecessors extends ArrayIterator {
                 $start = $predStart;
         }
         return $start;
+    }
+    
+    /**
+     * Method from Iterator interface
+     *
+     * @return void
+     **/
+    public function rewind() 
+    {
+        return $this->_predecessors->rewind();
+    }
+
+    /**
+     * Method from Iterator interface
+     *
+     * @return void
+     **/
+    public function next() 
+    {
+        return $this->_predecessors->next();
+    }
+
+    /**
+     * Method from Iterator interface
+     *
+     * @return void
+     **/
+    public function key() 
+    {
+        return $this->_predecessors->key();
+    }
+
+    /**
+     * Method from Iterator interface
+     *
+     * @return void
+     **/
+    public function valid() 
+    {
+        return $this->_predecessors->valid();
+    }
+
+    /**
+     * Method from Iterator interface
+     *
+     * @return void
+     **/
+    public function current() 
+    {
+        return $this->_predecessors->current();
+    }
+
+    /**
+     * Method from Countable interface
+     *
+     * @return void
+     **/
+    public function count() 
+    {
+        return $this->_predecessors->count();
+    }
+
+    /**
+     * Method from ArrayAccess interface
+     *
+     * @return void
+     **/
+    public function offsetGet($name) 
+    {
+        return $this->_predecessors->offsetGet($name);
+    }
+
+    /**
+     * Method from ArrayAccess interface
+     *
+     * @return void
+     **/
+    public function offsetSet($name, $value) 
+    {
+        return $this->_predecessors->offsetSet($name, $value);
+    }
+
+    /**
+     * Method from ArrayAccess interface
+     *
+     * @return void
+     **/
+    public function offsetExists($name) 
+    {
+        return $this->_predecessors->offsetExists($name);
+    }
+
+    /**
+     * Method from ArrayAccess interface
+     *
+     * @return void
+     **/
+    public function offsetUnset($name) 
+    {
+        return $this->_predecessors->offsetUnset($name);
     }
 
 }
