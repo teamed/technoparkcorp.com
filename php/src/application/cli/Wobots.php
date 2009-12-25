@@ -25,14 +25,16 @@
  *
  * @package CLI
  */
-class Wobots extends FaZend_Cli_Abstract {
+class Wobots extends FaZend_Cli_Abstract
+{
 
     /**
      * Executor of a command-line command
      *
      * @return int Exit code
      */
-    public function execute() {
+    public function execute()
+    {
         foreach (Model_Wobot::retrieveAll() as $wobot) {
             Model_User::logIn($wobot->getEmail());
             echo $wobot->execute();
