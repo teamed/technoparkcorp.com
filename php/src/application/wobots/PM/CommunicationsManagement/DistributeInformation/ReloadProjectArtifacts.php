@@ -58,7 +58,8 @@ class ReloadProjectArtifacts extends Model_Decision_PM
         
         // reload it
         $this->_project->$property->reload();
-        logg("Artifact reloaded: $property");
+        
+        return "Artifact reloaded: $property";
     }
     
 }
