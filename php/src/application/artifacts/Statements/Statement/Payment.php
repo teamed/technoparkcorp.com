@@ -106,12 +106,12 @@ class thePayment extends FaZend_Db_Table_ActiveRow_payment
      **/
     public static function getStatementVolume(theStatement $statement) 
     {
-        return Model_Cost::factory(thePayment::retrieve()
+        return Model_Cost::factory(intval(thePayment::retrieve()
             ->columns(array('volume'=>new Zend_Db_Expr('SUM(IF(amount>0,amount,0))/100')))
             ->where('supplier = ?', $statement->supplier)
             ->group('supplier')
             ->fetchRow()
-            ->volume . ' USD');
+            ->volume) . ' USD');
     }
     
     /**
@@ -122,12 +122,12 @@ class thePayment extends FaZend_Db_Table_ActiveRow_payment
      **/
     public static function getStatementBalance(theStatement $statement) 
     {
-        return Model_Cost::factory(thePayment::retrieve()
+        return Model_Cost::factory(intval(thePayment::retrieve()
             ->columns(array('balance'=>new Zend_Db_Expr('SUM(amount)/100')))
             ->where('supplier = ?', $statement->supplier)
             ->group('supplier')
             ->fetchRow()
-            ->balance . ' USD');
+            ->balance) . ' USD');
     }
     
     /**
