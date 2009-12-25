@@ -79,7 +79,10 @@ final class Model_Cost {
         
         if ($value && !is_numeric($value)) {
             if (!preg_match('/^([\-\+]?\d+(?:\.\d+)?)(?:\s?(\w{3}))?$/', str_replace(',', '', $value), $matches))
-                FaZend_Exception::raise('Model_Cost_InvalidFormat', "Invalid format: '{$value}'");
+                FaZend_Exception::raise(
+                    'Model_Cost_InvalidFormat', 
+                    "Invalid cost format: '{$value}'"
+                    );
             $value = $matches[1];
             $currency = $matches[2];
         }
