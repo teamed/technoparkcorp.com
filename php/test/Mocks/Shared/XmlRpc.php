@@ -89,7 +89,7 @@ class Mocks_Shared_XmlRpc
                         'supplier' => substr($query, -strlen(Model_Asset_Suppliers_Fazend_Trac::QUERY_SINGLE)),
                         'skills' => implode(', ', array_slice($skills, 0, 3)),
                         'role' => $roles[array_rand($roles)],
-                        'rate' => rand(8, 20) . ' EUR',
+                        'price' => rand(8, 20) . ' EUR',
                         )),
                     );
                 break;
