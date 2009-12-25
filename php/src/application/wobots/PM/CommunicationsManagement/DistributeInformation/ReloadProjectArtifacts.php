@@ -36,7 +36,29 @@ class ReloadProjectArtifacts extends Model_Decision_PM
      */
     protected function _make()
     {
-        //
+        $properties = array();
+        foreach ($this->_project->ps()->properties as $property) {
+            // if this is not a property, but an item?
+            if (!isset($this->_project->$property))
+                continue;
+                
+            // we're interested only in PASSIVE artifacts
+            if (!($this->_project->$property instanceof Model_Artifact_Passive))
+                continue;
+                
+            $properties[$property] = $this->_project->ps()->updated;
+        }
+        
+        logg('Passive artifacts found: ' . implode(', ', array_keys($properties)));
+        
+        // get the oldest one
+        uasort($properties, create_function('$a, $b', 'return $a->isEarlier($b);'));
+        $property = key($properties);
+        logg("Artifact selected for reloading: $property");
+        
+        // reload it
+        $this->_project->$property->reload();
+        logg("Artifact reloaded: $property");
     }
     
 }
