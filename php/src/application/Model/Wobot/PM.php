@@ -76,9 +76,8 @@ class Model_Wobot_PM extends Model_Wobot
     public static function getAllNames() 
     {
         $list = array();
-        foreach (Model_Artifact::root()->projectRegistry as $name=>$project) {
+        foreach (array_keys(iterator_to_array(Model_Artifact::root()->projectRegistry)) as $name)
             $list[] = 'PM.' . $name;
-        }
         return $list;
     }
 
