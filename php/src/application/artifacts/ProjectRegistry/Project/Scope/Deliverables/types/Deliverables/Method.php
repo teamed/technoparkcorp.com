@@ -18,6 +18,8 @@
  *
  */
 
+require_once 'artifacts/ProjectRegistry/Project/Scope/Deliverables/types/Deliverables/Abstract.php';
+
 /**
  * One method
  *

@@ -18,6 +18,8 @@
  *
  */
 
+require_once 'artifacts/ProjectRegistry/Project/Scope/Deliverables/types/Deliverables/Requirement.php';
+
 /**
  * One quality-of-service requirement
  *
