@@ -115,6 +115,9 @@ class Injector extends FaZend_Test_Injector
         if (!isset(Model_Artifact::root()->projectRegistry[Mocks_Model_Project::NAME])) {
             Model_Artifact::root()->projectRegistry->add(Mocks_Model_Project::NAME, new Mocks_theProject());            
         }
+        
+        // make sure it's done
+        FaZend_Pos_Abstract::root()->ps()->saveAll();
     }
 
     /**
