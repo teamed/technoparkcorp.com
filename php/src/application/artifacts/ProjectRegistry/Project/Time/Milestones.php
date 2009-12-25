@@ -23,6 +23,7 @@
  *
  * @package Artifacts
  */
-class theMilestones extends Model_Artifact {
+class theMilestones extends Model_Artifact
+{
 
 }
