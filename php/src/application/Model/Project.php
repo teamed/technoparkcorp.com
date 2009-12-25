@@ -65,8 +65,10 @@ class Model_Project extends Shared_Project
     {
         if (!self::$_weAreManaging)
             return false;
-        return in_array(Model_Wobot::factory('PM.' . $this->name)->getEmail(),
-            $this->getWobots());
+        return in_array(
+            Model_Wobot_PM::getEmailByProjectName($this->name),
+            $this->getWobots()
+            );
     }
 
 
@@ -78,11 +80,11 @@ class Model_Project extends Shared_Project
      *
      * @return string[]
      */
-    public function getWobots() 
+    public function getWobots()
     {
         $list = array();
         foreach ($this->getStakeholders() as $email=>$password) {
-            if (preg_match('/^.*@' . preg_quote(Model_Wobot::EMAIL_DOMAIN, '/') . '$/', $email))
+            if (preg_match('/^.*@' . preg_quote(Model_Wobot::EMAIL_DOMAIN, '/') . '$/i', $email))
                 $list[] = strtolower($email);
         }
         return $list;
