@@ -23,15 +23,33 @@
  *
  * @package Artifacts
  */
-class theActivityCriteria extends ArrayIterator {
+class theActivityCriteria implements ArrayAccess, Countable, Iterator
+{
+
+    /**
+     * List of criteria
+     *
+     * @var string
+     **/
+    protected $_criteria;
+
+    /**
+     * Construct the class
+     *
+     * @return void
+     */
+    public function __construct() {
+        $this->_criteria = new ArrayIterator();
+    }
 
     /**
      * Convert to string
      *
      * @return string
      */
-    public function __toString() {
-        return (string)implode('; ', $this->getArrayCopy());
+    public function __toString()
+    {
+        return (string)implode('; ', iterator_to_array($this));
     }
     
     /**
@@ -40,7 +58,8 @@ class theActivityCriteria extends ArrayIterator {
      * @param string Condition
      * @return $this
      */
-    public function when($condition) {
+    public function when($condition)
+    {
         $args = func_get_args();
         $this[] = new theCriteriaCondition(call_user_func_array('sprintf', $args));
         return $this;
@@ -52,7 +71,8 @@ class theActivityCriteria extends ArrayIterator {
      * @param theProject What is the source of metrics
      * @return boolean
      **/
-    public function isTrue(theProject $project) {
+    public function isTrue(theProject $project)
+    {
         foreach ($this as $when) {
             if (!$when->isTrue($project))
                 return false;
@@ -66,7 +86,8 @@ class theActivityCriteria extends ArrayIterator {
      * @param theProject What is the source of metrics
      * @return string
      **/
-    public function asHtml(theProject $project) {
+    public function asHtml(theProject $project)
+    {
         $html = '<p>All of the below shall be true:</p><ul>';
 
         $metrics = array();
@@ -90,11 +111,113 @@ class theActivityCriteria extends ArrayIterator {
      *
      * @return string[]
      **/
-    public function getAffectors() {
+    public function getAffectors()
+    {
         $metrics = array();
         foreach ($this as $when) {
             $metrics += $when->getAffectors();
         }
         return array_unique($metrics);
     }
+    
+    /**
+     * Method from Iterator interface
+     *
+     * @return void
+     **/
+    public function rewind() 
+    {
+        return $this->_criteria->rewind();
+    }
+
+    /**
+     * Method from Iterator interface
+     *
+     * @return void
+     **/
+    public function next() 
+    {
+        return $this->_criteria->next();
+    }
+
+    /**
+     * Method from Iterator interface
+     *
+     * @return void
+     **/
+    public function key() 
+    {
+        return $this->_criteria->key();
+    }
+
+    /**
+     * Method from Iterator interface
+     *
+     * @return void
+     **/
+    public function valid() 
+    {
+        return $this->_criteria->valid();
+    }
+
+    /**
+     * Method from Iterator interface
+     *
+     * @return void
+     **/
+    public function current() 
+    {
+        return $this->_criteria->current();
+    }
+
+    /**
+     * Method from Countable interface
+     *
+     * @return void
+     **/
+    public function count() 
+    {
+        return $this->_criteria->count();
+    }
+
+    /**
+     * Method from ArrayAccess interface
+     *
+     * @return void
+     **/
+    public function offsetGet($name) 
+    {
+        return $this->_criteria->offsetGet($name);
+    }
+
+    /**
+     * Method from ArrayAccess interface
+     *
+     * @return void
+     **/
+    public function offsetSet($name, $value) 
+    {
+        return $this->_criteria->offsetSet($name, $value);
+    }
+
+    /**
+     * Method from ArrayAccess interface
+     *
+     * @return void
+     **/
+    public function offsetExists($name) 
+    {
+        return $this->_criteria->offsetExists($name);
+    }
+
+    /**
+     * Method from ArrayAccess interface
+     *
+     * @return void
+     **/
+    public function offsetUnset($name) 
+    {
+        return $this->_criteria->offsetUnset($name);
+    }
+
 }

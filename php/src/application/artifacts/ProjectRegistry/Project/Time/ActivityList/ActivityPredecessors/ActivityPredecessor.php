@@ -23,7 +23,8 @@
  *
  * @package Artifacts
  */
-class theActivityPredecessor extends ArrayIterator {
+class theActivityPredecessor
+{
 
     const FINISH_TO_START = 'FS';
     const FINISH_TO_FINISH = 'FF';

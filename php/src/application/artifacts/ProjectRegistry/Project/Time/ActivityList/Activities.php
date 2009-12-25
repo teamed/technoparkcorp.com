@@ -23,7 +23,8 @@
  *
  * @package Artifacts
  */
-class theActivities extends ArrayIterator implements Model_Artifact_Stateless, Model_Artifact_Passive {
+class theActivities implements ArrayAccess, Iterator, Countable, Model_Artifact_Stateless, Model_Artifact_Passive
+{
 
     /**
      * Project, the owner of this list
@@ -31,14 +32,23 @@ class theActivities extends ArrayIterator implements Model_Artifact_Stateless, M
      * @var theProject
      */
     protected $_project;
+    
+    /**
+     * Activities
+     *
+     * @var theActivity[]
+     **/
+    protected $_activities;
 
     /**
      * Set project
      *
      * @return void
      **/
-    public function setActivityList(theActivityList $list) {
+    public function setActivityList(theActivityList $list)
+    {
         $this->_project = $list->ps()->parent;
+        $this->_activities = new ArrayIterator();
     }
 
     /**
@@ -46,7 +56,8 @@ class theActivities extends ArrayIterator implements Model_Artifact_Stateless, M
      *
      * @return void
      **/
-    public function reload() {
+    public function reload()
+    {
         // kill all existing activities
         foreach ($this as $key=>$value)
             unset($this[$key]);
@@ -63,7 +74,8 @@ class theActivities extends ArrayIterator implements Model_Artifact_Stateless, M
      *
      * @return boolean
      **/
-    public function isLoaded() {
+    public function isLoaded()
+    {
         return (bool)count($this);
     }
     
@@ -72,7 +84,8 @@ class theActivities extends ArrayIterator implements Model_Artifact_Stateless, M
      *
      * @return theProject
      **/
-    public function getProject() {
+    public function getProject()
+    {
         return $this->_project;
     }
     
@@ -144,4 +157,104 @@ class theActivities extends ArrayIterator implements Model_Artifact_Stateless, M
         }
     }
     
+    /**
+     * Method from Iterator interface
+     *
+     * @return void
+     **/
+    public function rewind() 
+    {
+        return $this->_activities->rewind();
+    }
+
+    /**
+     * Method from Iterator interface
+     *
+     * @return void
+     **/
+    public function next() 
+    {
+        return $this->_activities->next();
+    }
+
+    /**
+     * Method from Iterator interface
+     *
+     * @return void
+     **/
+    public function key() 
+    {
+        return $this->_activities->key();
+    }
+
+    /**
+     * Method from Iterator interface
+     *
+     * @return void
+     **/
+    public function valid() 
+    {
+        return $this->_activities->valid();
+    }
+
+    /**
+     * Method from Iterator interface
+     *
+     * @return void
+     **/
+    public function current() 
+    {
+        return $this->_activities->current();
+    }
+
+    /**
+     * Method from Countable interface
+     *
+     * @return void
+     **/
+    public function count() 
+    {
+        return $this->_activities->count();
+    }
+
+    /**
+     * Method from ArrayAccess interface
+     *
+     * @return void
+     **/
+    public function offsetGet($name) 
+    {
+        return $this->_activities->offsetGet($name);
+    }
+
+    /**
+     * Method from ArrayAccess interface
+     *
+     * @return void
+     **/
+    public function offsetSet($name, $value) 
+    {
+        return $this->_activities->offsetSet($name, $value);
+    }
+
+    /**
+     * Method from ArrayAccess interface
+     *
+     * @return void
+     **/
+    public function offsetExists($name) 
+    {
+        return $this->_activities->offsetExists($name);
+    }
+
+    /**
+     * Method from ArrayAccess interface
+     *
+     * @return void
+     **/
+    public function offsetUnset($name) 
+    {
+        return $this->_activities->offsetUnset($name);
+    }
+
 }
