@@ -39,9 +39,12 @@ abstract class Model_Wobot implements Model_Wobot_Interface
     protected static $_wobots = array();
 
     /**
-     * Get list of all wobots
+     * Get list of all wobots, of all types
      *
-     * The method is called from CLI executor.
+     * The method is called from CLI executor. This method uses other
+     * STATIC methods of Model_Wobot_* classes, named like:
+     * Model_Wobot_PM::getAllNames(). They should return names also as
+     * strings, in the same format: "type.context".
      *
      * @return Model_Wobot[]
      */
@@ -62,6 +65,7 @@ abstract class Model_Wobot implements Model_Wobot_Interface
             foreach ($names as $wobotName)
                 self::$_wobots[$wobotName] = self::factory($wobotName);
         }
+        logg("Wobots found: " . implode(', ', array_keys(self::$_wobots)));
             
         return self::$_wobots;
     }
@@ -74,14 +78,15 @@ abstract class Model_Wobot implements Model_Wobot_Interface
      */
     public static function factory($name) 
     {
+        // maybe it already exists?
         if (isset(self::$_wobots[$name]))
             return self::$_wobots[$name];
             
-        if (strpos($name, '.') !== false) {
-            list($type, $context) = explode('.', $name);
-        } else {
+        if (strpos($name, '.') === false) {
             $type = $name;
             $context = null;
+        } else {
+            list($type, $context) = explode('.', $name);
         }
 
         $className = __CLASS__ . '_' . $type;
