@@ -21,16 +21,21 @@
 require_once 'FaZend/Test/TestCase.php';
 
 /**
- * Test the decision
+ * Test all PM-related decisions
  *
  * @package test
  */
-class ReloadProjectArtifactsTest extends FaZend_Test_TestCase 
+class PMDecisionsTest extends FaZend_Test_TestCase 
 {
 
-    public function testDecisionCanBeMade() 
+    public function testDecisionsCanBeMade() 
     {
-        $decision = 1;
+        $wobot = Model_Wobot::factory('PM.' . Mocks_Model_Project::NAME);
+        
+        foreach (Model_Decision::getDecisionFiles($wobot) as $file) {
+            $decision = $wobot->decisionFactory($file);
+            $decision->make();
+        }
     }
     
 }
