@@ -66,7 +66,7 @@ class Model_Wobot_PM extends Model_Wobot
         }
 
         validate()
-            ->true($this->_project->isManaged(), 
+            ->true($this->_project->isManaged() || !Model_Project::getWeAreManaging(), 
                 "Project {$context} is not managed, wobot can't be created");
     }
 

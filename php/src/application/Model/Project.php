@@ -53,6 +53,16 @@ class Model_Project extends Shared_Project
     }
 
     /**
+     * Shall we manage any projects?
+     *
+     * @return boolean
+     **/
+    public static function getWeAreManaging() 
+    {
+        return self::$_weAreManaging;
+    }
+
+    /**
      * This project is managed by wobots?
      *
      * The project is managed if one of it's stakeholders is '*@tpc2.com',
