@@ -23,7 +23,8 @@
  *
  * @package Model
  */
-abstract class Model_Decision implements Model_Decision_Interface {
+abstract class Model_Decision implements Model_Decision_Interface
+{
 
     /**
      * File name of the decision
@@ -53,7 +54,8 @@ abstract class Model_Decision implements Model_Decision_Interface {
      * @param Model_Wobot Wobot calling this decision
      * @return void
      */
-    protected function __construct($file, Model_Wobot $wobot) {
+    protected function __construct($file, Model_Wobot $wobot)
+    {
         $this->_file = $file;
         $this->_wobot = $wobot;
     }
@@ -65,7 +67,8 @@ abstract class Model_Decision implements Model_Decision_Interface {
      * @param Model_Wobot Wobot, the initiator
      * @return Model_Decision
      */
-    public static function factory($file, Model_Wobot $wobot) {
+    public static function factory($file, Model_Wobot $wobot)
+    {
         if (!file_exists($file))
             $file = APPLICATION_PATH . '/wobots/' . $wobot->getName() . '/' . $file . '.php';
         
@@ -80,7 +83,8 @@ abstract class Model_Decision implements Model_Decision_Interface {
      * @param Model_Wobot Wobot, the initiator
      * @return string Absolute name of PHP file
      */
-    public static function nextForWobot(Model_Wobot $wobot) {
+    public static function nextForWobot(Model_Wobot $wobot)
+    {
         // get list of all files in this wobot
         $files = self::getDecisionFiles($wobot);
 
@@ -98,7 +102,8 @@ abstract class Model_Decision implements Model_Decision_Interface {
      * @param Model_Wobot The author of decisions
      * @return string[]
      */
-    public static function getDecisionFiles(Model_Wobot $wobot) {
+    public static function getDecisionFiles(Model_Wobot $wobot)
+    {
         $path = APPLICATION_PATH . '/wobots/' . $wobot->getName();
 
         // get through all files in the directory and collect PHP decisions
@@ -119,7 +124,8 @@ abstract class Model_Decision implements Model_Decision_Interface {
      * @param string File name
      * @return string
      */
-    public static function hash($file) {
+    public static function hash($file)
+    {
         return pathinfo($file, PATHINFO_FILENAME) . '/' . md5($file);
     }
     
@@ -130,7 +136,8 @@ abstract class Model_Decision implements Model_Decision_Interface {
      *
      * @return string
      */
-    public function getHash() {
+    public function getHash()
+    {
         return self::hash($this->_file);
     }
 
@@ -139,7 +146,8 @@ abstract class Model_Decision implements Model_Decision_Interface {
      *
      * @return Model_Decision_History
      **/
-    public function getHistory() {
+    public function getHistory()
+    {
         return Model_Decision_History::findByHash($this->getHash());
     }
 
@@ -148,7 +156,8 @@ abstract class Model_Decision implements Model_Decision_Interface {
      *
      * @return string|false Result of decision made (FALSE = no decission)
      */
-    public function make() {
+    public function make()
+    {
         FaZend_Log::getInstance()->addWriter('Memory', 'decision');
 
         try {

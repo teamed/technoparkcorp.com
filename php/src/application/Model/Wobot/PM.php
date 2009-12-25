@@ -23,7 +23,8 @@
  *
  * @package Model
  */
-class Model_Wobot_PM extends Model_Wobot {
+class Model_Wobot_PM extends Model_Wobot
+{
 
     /**
      * Names of wobots, dependins on the FIRST letter of project name
@@ -48,21 +49,27 @@ class Model_Wobot_PM extends Model_Wobot {
     /**
      * Initializer
      *
+     * @param string Project name, as context
      * @return void
      * @throws Model_Wobot_PM_ProjectMissed
      */
     protected function __construct($context = null) 
     {
+        validate()
+            ->false(is_null($context), "Project name can't be NULL");
+            
         try {
             $this->_project = Model_Project::findByName($context);
         } catch (Shared_Project_NotFoundException $e) {
             FaZend_Exception::raise('Model_Wobot_PM_ProjectMissed', 
-                "Project '$context' is absent, can't initialize PM wobot");
+                "Project '{$context}' is absent, can't initialize PM wobot");
         }
     }
 
     /**
      * Returns a list of all possible wobot names of this given type/class
+     *
+     * The list returned with contain names like "PM.test", "PM.project", etc.
      *
      * @return string[]
      **/

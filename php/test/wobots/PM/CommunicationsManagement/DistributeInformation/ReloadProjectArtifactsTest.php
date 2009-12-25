@@ -21,24 +21,16 @@
 require_once 'FaZend/Test/TestCase.php';
 
 /**
- * Test theStatements class
+ * Test the decision
  *
  * @package test
  */
-class theStatementsTest extends FaZend_Test_TestCase
+class ReloadProjectArtifactsTest extends FaZend_Test_TestCase 
 {
 
-    public function testGlobalVolumeAndBalanceWork() 
+    public function testDecisionCanBeMade() 
     {
-        $statements = Model_Artifact::root()->statements;
-        
-        $volume = $statements->volume;
-        $this->assertTrue($volume instanceof Model_Cost, 
-            'Volume is not as Model_Cost, why?');
-        
-        $balance = $statements->balance;
-        $this->assertTrue($balance instanceof Model_Cost, 
-            'Balance is not as Model_Cost, why?');
+        $decision = 1;
     }
-
+    
 }

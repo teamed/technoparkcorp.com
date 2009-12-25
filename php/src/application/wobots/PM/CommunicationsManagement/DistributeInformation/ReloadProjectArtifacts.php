@@ -18,27 +18,25 @@
  *
  */
 
-require_once 'FaZend/Test/TestCase.php';
-
 /**
- * Test theStatements class
+ * Reload project artifact(s)
  *
- * @package test
+ * This decision will find the oldest artifact that requires
+ * reloading and will reload it.
+ *
+ * @package wobots
  */
-class theStatementsTest extends FaZend_Test_TestCase
+class ReloadProjectArtifacts extends Model_Decision_PM
 {
 
-    public function testGlobalVolumeAndBalanceWork() 
+    /**
+     * Reload the oldest one
+     *
+     * @return string|false
+     */
+    protected function _make()
     {
-        $statements = Model_Artifact::root()->statements;
-        
-        $volume = $statements->volume;
-        $this->assertTrue($volume instanceof Model_Cost, 
-            'Volume is not as Model_Cost, why?');
-        
-        $balance = $statements->balance;
-        $this->assertTrue($balance instanceof Model_Cost, 
-            'Balance is not as Model_Cost, why?');
+        //
     }
-
+    
 }
