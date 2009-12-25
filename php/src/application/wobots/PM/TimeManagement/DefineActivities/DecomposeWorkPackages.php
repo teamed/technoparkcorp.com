@@ -23,7 +23,8 @@
  *
  * @package wobots
  */
-class DecomposeWorkPackages extends Model_Decision_PM {
+class DecomposeWorkPackages extends Model_Decision_PM
+{
 
     /**
      * Get WBS and decompose it into activities
@@ -31,8 +32,8 @@ class DecomposeWorkPackages extends Model_Decision_PM {
      * @return string|false
      * @throws FaZend_Validator_Failure If something happens 
      */
-    protected function _make() {
-        
+    protected function _make()
+    {
         // validate()
             // ->false($this->_project->objectives->ps()->isApproved(), 'Objectives are not approved yet');
 
@@ -40,7 +41,6 @@ class DecomposeWorkPackages extends Model_Decision_PM {
 
         return count($this->_project->wbs) . ' work packages are decomposed to ' . 
             count($this->_project->activityList->activities) . ' activities';
-
     }
     
 }

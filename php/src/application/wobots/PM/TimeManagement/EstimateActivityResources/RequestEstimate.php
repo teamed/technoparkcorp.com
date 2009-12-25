@@ -34,7 +34,6 @@ class RequestEstimate extends Model_Decision_PM
      */
     protected function _make() 
     {
-        
         // validate()
             // ->false($this->_project->objectives->ps()->isApproved(), 'Objectives are not approved yet');
 
@@ -50,11 +49,10 @@ class RequestEstimate extends Model_Decision_PM
                 continue;
             
             // request estimate for this activity
-            $activity->requestEstimate();
+            // $activity->requestEstimate();
         }
         
         return plural('Requested estimates for activit[ies]', $cnt);
-        
     }
     
 }

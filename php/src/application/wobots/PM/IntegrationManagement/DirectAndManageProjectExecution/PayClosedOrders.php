@@ -28,7 +28,8 @@
  *
  * @package wobots
  */
-class PayClosedOrders extends Model_Decision_PM {
+class PayClosedOrders extends Model_Decision_PM
+{
 
     /**
      * Make decision, close the first non-yet-closed order
@@ -36,8 +37,8 @@ class PayClosedOrders extends Model_Decision_PM {
      * @return string|false
      * @throws Exception If something happens 
      */
-    protected function _make() {
-        
+    protected function _make() 
+    {
         // go through the list of all orders
         // foreach ($this->_project->workOrders as $order) {
         //     
@@ -58,7 +59,6 @@ class PayClosedOrders extends Model_Decision_PM {
         //     return "Order {$order} was paid";
         //         
         // }
-
     }
     
 }

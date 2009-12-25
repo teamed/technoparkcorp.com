@@ -23,7 +23,8 @@
  *
  * @package wobots
  */
-class SynchronizeActivities extends Model_Decision_PM {
+class SynchronizeActivities extends Model_Decision_PM
+{
 
     /**
      * Synchronize between work orders and schedule
@@ -31,14 +32,13 @@ class SynchronizeActivities extends Model_Decision_PM {
      * @return string|false
      * @throws FaZend_Validator_Failure If something happens 
      */
-    protected function _make() {
-        
+    protected function _make()
+    {
         // validate()
         //     ->false($this->_project->objectives->isApproved(), 'Objectives are not approved yet');
 
         // synchronize with work orders
         // $this->project->schedule->synchronize();        
-
     }
     
 }

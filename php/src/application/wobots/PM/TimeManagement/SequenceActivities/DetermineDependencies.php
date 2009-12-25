@@ -23,7 +23,8 @@
  *
  * @package wobots
  */
-class DetermineDependencies extends Model_Decision_PM {
+class DetermineDependencies extends Model_Decision_PM
+{
 
     /**
      * Determine dependencies
