@@ -82,8 +82,8 @@ class Model_Project extends Shared_Project
     {
         $list = array();
         foreach ($this->getStakeholders() as $email=>$password) {
-            if (preg_match('/^(.*@' . preg_quote(Model_Wobot::EMAIL_DOMAIN) . ')$/', $email, $matches))
-                $list[] = strtolower($matches[1]);
+            if (preg_match('/^.*@' . preg_quote(Model_Wobot::EMAIL_DOMAIN, '/') . '$/', $email))
+                $list[] = strtolower($email);
         }
         return $list;
     }
