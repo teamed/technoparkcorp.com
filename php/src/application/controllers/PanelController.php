@@ -67,9 +67,6 @@ class PanelController extends FaZend_Controller_Action
 
         // get pages instance for the controller to user later
         $this->_pages = Model_Pages::getInstance();
-        
-        // set current user in POS
-        FaZend_Pos_Properties::setUserId(Model_User::me()->email);
     }
 
     /**

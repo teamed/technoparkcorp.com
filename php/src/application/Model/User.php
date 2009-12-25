@@ -97,6 +97,9 @@ class Model_User
     public static function logIn($email) 
     {
         self::_session()->email = $email;
+        
+        // set current user in POS
+        FaZend_Pos_Properties::setUserId($email);
     }
 
     /**

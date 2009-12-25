@@ -74,7 +74,9 @@ class Injector extends FaZend_Test_Injector
      **/
     protected function _injectLuceneConfig() 
     {
-        Model_Article::setLucenePath(TEMP_PATH . '/panel2lucene.' . APPLICATION_ENV);
+        // we should set this path to a writable directory
+        $path = TEMP_PATH . '/panel2lucene.' . APPLICATION_ENV;
+        Model_Article::setLucenePath($path);
     }
 
     /**
