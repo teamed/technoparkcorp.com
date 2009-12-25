@@ -68,7 +68,7 @@ class Model_Article
      *
      * @var Zend_Search_Lucene
      */
-    protected static $_lucene;
+    protected static $_lucene = null;
 
     /**
      * Create new article
@@ -140,7 +140,7 @@ class Model_Article
      */
     public static function lucene($refresh = false) 
     {
-        if (!isset(self::$_lucene)) {        
+        if (!isset(self::$_lucene) || $refresh) {        
             $path = TEMP_PATH . '/panel2lucene';
             if (file_exists($path) && !$refresh)
                 self::$_lucene = Zend_Search_Lucene::open($path);
@@ -214,14 +214,14 @@ class Model_Article
     /**
      * Returns formated time of page update
      *
-     * @return string
+     * @return Zend_Date
      */
     protected function _getUpdated() 
     {
         if (file_exists(CONTENT_PATH . '/' . $this->_page . '.xml'))
-            return date('d-M-y', filemtime(CONTENT_PATH . '/' . $this->_page . '.xml'));
+            return new Zend_Date(filemtime(CONTENT_PATH . '/' . $this->_page . '.xml'));
 
-        return date('d-M-y', time());    
+        return Zend_Date::now();    
     }
 
     /**
@@ -281,7 +281,7 @@ class Model_Article
      * function uses this file. Also, if the article/keywords is defined,
      * it is returned
      *
-     * @return string|false
+     * @return string
      */
     protected function _getKeywords() 
     {
@@ -308,7 +308,7 @@ class Model_Article
     /**
      * Returns the HTML description for the page
      *
-     * @return string|false
+     * @return string
      */
     protected function _getDescription() 
     {
@@ -353,12 +353,12 @@ class Model_Article
     /**
      * When the article was published
      *
-     * @return string
+     * @return Zend_Date|false
      */
     protected function _getPublished() 
     {
         if ($this->_xml->date)
-            return (string)$this->_xml->date;
+            return new Zend_Date($this->_xml->date);
 
         return false;
     }

@@ -65,7 +65,7 @@ abstract class Model_Wobot implements Model_Wobot_Interface
             foreach ($names as $wobotName)
                 self::$_wobots[$wobotName] = self::factory($wobotName);
         }
-        logg("Wobots found: " . implode(', ', array_keys(self::$_wobots)));
+        logg("Wobots found: " . implode(', ', array_keys(self::$_wobots->getArrayCopy())));
             
         return self::$_wobots;
     }
