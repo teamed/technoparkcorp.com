@@ -26,7 +26,7 @@
  *
  * @package Artifacts
  */
-class theStaffAssignments extends ArrayIterator implements Model_Artifact_Stateless, Model_Artifact_Passive 
+class theStaffAssignments implements ArrayAccess, Countable, Iterator, Model_Artifact_Stateless, Model_Artifact_Passive 
 {
 
     /**
@@ -35,6 +35,13 @@ class theStaffAssignments extends ArrayIterator implements Model_Artifact_Statel
      * @var theProject
      */
     public $project;
+    
+    /**
+     * Collection of stakeholders
+     *
+     * @var theStakeholder[]
+     **/
+    protected $_stakeholders;
 
     /**
      * Reload list of stakeholders
@@ -43,8 +50,9 @@ class theStaffAssignments extends ArrayIterator implements Model_Artifact_Statel
      **/
     public function reload() 
     {
+        $this->_stakeholders = new ArrayIterator();
         foreach (array_keys($this->_project()->getStakeholders()) as $email)
-            $this[$email] = FaZend_Flyweight::factory('theStakeholder', $this, $email);
+            $this->_stakeholders[$email] = FaZend_Flyweight::factory('theStakeholder', $this, $email);
     }    
     
     /**
@@ -166,6 +174,108 @@ class theStaffAssignments extends ArrayIterator implements Model_Artifact_Statel
     protected function _project() 
     {
         return $this->project->fzProject();
+    }
+    
+    /**
+    * Iterator interface required method
+     *
+     * @return void
+     **/
+    public function rewind() 
+    {
+        return $this->_stakeholders->rewind();
+    }
+    
+    /**
+    * Iterator interface required method
+     *
+     * @return void
+     **/
+    public function key() 
+    {
+        return $this->_stakeholders->key();
+    }
+    
+    /**
+    * Iterator interface required method
+     *
+     * @return void
+     **/
+    public function next() 
+    {
+        return $this->_stakeholders->next();
+    }
+    
+    /**
+     * Iterator interface required method
+     *
+     * @return void
+     **/
+    public function valid() 
+    {
+        return $this->_stakeholders->valid();
+    }
+    
+    /**
+     * Iterator interface required method
+     *
+     * @return void
+     **/
+    public function current() 
+    {
+        return $this->_stakeholders->current();
+    }
+    
+    /**
+     * Countable method
+     *
+     * @return void
+     **/
+    public function count() 
+    {
+        return $this->_stakeholders->count();
+    }
+    
+    /**
+     * ArrayAccess method
+     *
+     * @return void
+     **/
+    public function offsetGet($name) 
+    {
+        return $this->_stakeholders->offsetGet($name);
+    }
+    
+    /**
+     * ArrayAccess method
+     *
+     * @return void
+     **/
+    public function offsetSet($name, $value) 
+    {
+        FaZend_Exception::raise('StaffAssignmentsAreStatic',
+            "You can't change staffAssignments directly, only through FaZend");
+    }
+    
+    /**
+     * ArrayAccess method
+     *
+     * @return void
+     **/
+    public function offsetUnset($name) 
+    {
+        FaZend_Exception::raise('StaffAssignmentsAreStatic',
+            "You can't change staffAssignments directly, only through FaZend");
+    }
+    
+    /**
+     * ArrayAccess method
+     *
+     * @return void
+     **/
+    public function offsetExists($name) 
+    {
+        return $this->_stakeholders->offsetIsset($name);
     }
     
 }
