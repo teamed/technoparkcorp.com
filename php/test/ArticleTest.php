@@ -86,6 +86,20 @@ class ArticleTest extends FaZend_Test_TestCase
             'Model_Article::intro returned something strange, why?'
             );
 
+        $this->assertTrue(
+            is_array($article->concepts) || ($article->concepts === false), 
+            'Model_Article::concepts returned something strange, why?'
+            );
+
+        $this->assertTrue(
+            is_string($article->term) || ($article->term === false), 
+            'Model_Article::term returned something strange, why?'
+            );
+
+        $this->assertTrue(
+            is_array($article->steps), 
+            'Model_Article::steps returned something strange, why?'
+            );
     }
 
     public function testLuceneIndexationWorks() 

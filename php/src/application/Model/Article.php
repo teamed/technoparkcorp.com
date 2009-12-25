@@ -379,7 +379,7 @@ class Model_Article
     /**
      * List of concepts on the bottom
      *
-     * @return stdObject[]
+     * @return stdObject[]|false
      */
     protected function _getConcepts() 
     {
@@ -400,7 +400,7 @@ class Model_Article
     /**
      * Term, if it's set
      *
-     * @return string
+     * @return string|false
      */
     protected function _getTerm() 
     {
