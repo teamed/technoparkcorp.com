@@ -31,24 +31,6 @@ require_once 'Mocks/artifacts/ProjectRegistry/Project.php';
 class Injector extends FaZend_Test_Injector 
 {
 
-    protected static $_done = false;
-
-    /**
-     * Make all injections necessary
-     *
-     * @return void
-     **/
-    public function inject() 
-    {
-        // bug('injector');
-        $rc = new ReflectionClass($this);
-        foreach ($rc->getMethods() as $method) {
-            if (preg_match('/^\_inject/', $method->getName())) {
-                $this->{$method->getName()}();
-            }
-        }
-    }
-
     /**
      * Make sure we don't do any actual connections to fazend
      *
