@@ -52,6 +52,8 @@ class RequestEstimate extends Model_Decision_PM
             // $activity->requestEstimate();
         }
         
+        // now ignore it
+        return false;
         return plural('Requested estimates for activit[ies]', $cnt);
     }
     
