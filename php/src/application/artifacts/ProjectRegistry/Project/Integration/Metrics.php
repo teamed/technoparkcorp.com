@@ -151,6 +151,7 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
         $parts = explode(self::SEPARATOR, $name);
         
         // go from end to start
+        $parentName = '';
         for ($i = count($parts)-1; $i > 0; $i--) {
             $parentName = implode(self::SEPARATOR, array_slice($parts, 0, $i));
             
