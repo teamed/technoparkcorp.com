@@ -23,7 +23,7 @@
  *
  * @package Artifacts
  */
-class theSupplierRegistry implements ArrayAccess, Iterator, Countable, Model_Artifact_Interface
+class theSupplierRegistry implements ArrayAccess, Iterator, Countable, Model_Artifact_Passive, Model_Artifact_Interface
 {
 
     /**
@@ -33,6 +33,37 @@ class theSupplierRegistry implements ArrayAccess, Iterator, Countable, Model_Art
      **/
     protected $_suppliers;
 
+    /**
+     * Construct the class
+     *
+     * @return void
+     */
+    public function __construct() {
+        $this->_suppliers = new ArrayIterator();
+    }
+
+    /**
+     * The list is loaded?
+     *
+     * @return boolean
+     **/
+    public function isLoaded() 
+    {
+        return count($this->_suppliers) > 0;
+    }
+
+    /**
+     * Reload list of suppliers
+     *
+     * @return array
+     **/
+    public function reload() 
+    {
+        $asset = Model_Project::findByName('PMO')->getAsset(Model_Project::ASSET_SUPPLIERS);
+        foreach ($asset->retrieveAll() as $email)
+            $this->_suppliers[$email] = false;
+    }
+    
     /**
      * Resolve one staff request
      *
@@ -80,7 +111,7 @@ class theSupplierRegistry implements ArrayAccess, Iterator, Countable, Model_Art
      */
     public function offsetExists($email) 
     {
-        $this->_getSuppliers()->offsetExists($email);
+        $this->_suppliers->offsetExists($email);
     }
 
     /**
@@ -93,7 +124,7 @@ class theSupplierRegistry implements ArrayAccess, Iterator, Countable, Model_Art
      */
     public function offsetGet($email) 
     {
-        $suppliers = $this->_getSuppliers();
+        $suppliers = $this->_suppliers;
         if (!isset($suppliers[$email]))
             FaZend_Exception::raise('SupplierRegistryNotFound', 
                 "Supplier '{$email}' not found in list (" . count($suppliers) . ' total)');
@@ -154,7 +185,7 @@ class theSupplierRegistry implements ArrayAccess, Iterator, Countable, Model_Art
      */
     public function next() 
     {
-        $this->_getSuppliers()->next();
+        $this->_suppliers->next();
         $key = $this->key();
         if ($key)
             return $this->offsetGet($key);
@@ -170,7 +201,7 @@ class theSupplierRegistry implements ArrayAccess, Iterator, Countable, Model_Art
      */
     public function key() 
     {
-        return $this->_getSuppliers()->key();
+        return $this->_suppliers->key();
     }
     
     /**
@@ -182,7 +213,7 @@ class theSupplierRegistry implements ArrayAccess, Iterator, Countable, Model_Art
      */
     public function valid() 
     {
-        return $this->_getSuppliers()->valid();
+        return $this->_suppliers->valid();
     }
     
     /**
@@ -194,7 +225,7 @@ class theSupplierRegistry implements ArrayAccess, Iterator, Countable, Model_Art
      */
     public function rewind() 
     {
-        return $this->_getSuppliers()->rewind();
+        return $this->_suppliers->rewind();
     }
     
     /**
@@ -206,23 +237,7 @@ class theSupplierRegistry implements ArrayAccess, Iterator, Countable, Model_Art
      */
     public function count() 
     {
-        return $this->_getSuppliers()->count();
-    }
-    
-    /**
-     * Returns list of emails of suppliers
-     *
-     * @return ArrayIterator
-     **/
-    protected function _getSuppliers() 
-    {
-        if (!isset($this->_suppliers)) {
-            $this->_suppliers = new ArrayIterator();
-            $asset = Model_Project::findByName('PMO')->getAsset(Model_Project::ASSET_SUPPLIERS);
-            foreach ($asset->retrieveAll() as $email)
-                $this->_suppliers[$email] = false;
-        }
-        return $this->_suppliers;
+        return $this->_suppliers->count();
     }
     
 }
