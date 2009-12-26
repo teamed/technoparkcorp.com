@@ -95,7 +95,7 @@ class Model_Article
     public static function getLucenePath() 
     {
         if (is_null(self::$_lucenePath))
-            self::$_lucenePath = TEMP_PATH . '/panel2lucene';
+            self::setLucenePath(TEMP_PATH . '/panel2lucene');
         return self::$_lucenePath;
     }
 
@@ -104,9 +104,36 @@ class Model_Article
      *
      * @param string Directory path
      * @return void
+     * @throws Model_Article_InvalidLucenePath
      **/
     public static function setLucenePath($path) 
     {
+        // it is absent? we should create it
+        if (!file_exists($path)) {
+            if (!@mkdir($path)) {
+                FaZend_Exception::raise(
+                    'Model_Article_InvalidLucenePath',
+                    "Dir specified '{$path}' is absent and can't be created"
+                    );
+            }
+        }
+
+        // it's not a directory?
+        if (!is_dir($path)) {
+            FaZend_Exception::raise(
+                'Model_Article_InvalidLucenePath',
+                "Path specified '{$path}' is not a directory"
+                );
+        }
+        
+        // it's not writable? permissions problem?
+        if (!is_writable($path)) {
+            FaZend_Exception::raise(
+                'Model_Article_InvalidLucenePath',
+                "Path specified '{$path}' is not writable"
+                );
+        }
+        
         self::$_lucenePath = $path;
     }
 
@@ -166,12 +193,13 @@ class Model_Article
      * Return search engine instance
      *
      * @param boolean Shall we kill the existing index and start over?
-     * @return Zend_Search_Lucene
+     * @return Zend_Search_Lucene_Proxy
      */
     public static function lucene($refresh = false) 
     {
         if (!isset(self::$_lucene) || $refresh) {        
             $path = self::getLucenePath();
+            
             if (file_exists($path) && !$refresh)
                 self::$_lucene = Zend_Search_Lucene::open($path);
             else
