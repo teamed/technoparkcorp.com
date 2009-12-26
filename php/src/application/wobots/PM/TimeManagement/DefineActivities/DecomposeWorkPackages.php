@@ -37,9 +37,21 @@ class DecomposeWorkPackages extends Model_Decision_PM
         // validate()
             // ->false($this->_project->objectives->ps()->isApproved(), 'Objectives are not approved yet');
 
+        if (!$this->_project->wbs->isLoaded()) {
+            logg("WBS is not loaded yet, we won't do anything here");
+            return;
+        }
+        
+        if (!count($this->_project->wbs)) {
+            logg("WBS has zero work packages, we can't do anything");
+            return;
+        }
+
+        logg('There are ' . count($this->_project->wbs) . ' work packages');
+
         $this->_project->activityList->reload();
 
-        return count($this->_project->wbs) . ' work packages are decomposed to ' . 
+        return count($this->_project->wbs) . ' WPs were decomposed to ' . 
             count($this->_project->activityList->activities) . ' activities';
     }
     

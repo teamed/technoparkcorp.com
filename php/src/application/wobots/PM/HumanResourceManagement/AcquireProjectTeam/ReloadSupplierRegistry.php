@@ -43,7 +43,7 @@ class ReloadSupplierRegistry extends Model_Decision_PM
         // reload it
         $supplierRegistry->reload();
         
-        return 'Registry reloaded, now it has ' . count($supplierRegistry) . 'suppliers';
+        return 'Registry reloaded, now it has ' . count($supplierRegistry) . ' suppliers';
     }
     
 }
