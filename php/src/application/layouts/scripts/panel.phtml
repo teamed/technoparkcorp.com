@@ -54,7 +54,11 @@
     <div class="btm">
         <span>(c) <?=date('Y')?> TechnoPark Corp., 
         rev.<?=FaZend_Revision::get()?>, <?=$this->pageLoadTime()?><br/>
-        your IP: <?=$_SERVER['REMOTE_ADDR']?>, load avg: <?=implode(', ', sys_getloadavg())?></span>
+        your IP: <?=$_SERVER['REMOTE_ADDR']?>, load avg: 
+        <?=implode(', ', array_map(
+            create_function('$a', 'return round($a < 3 ? $a : "<span style=\'color:red;\'>$a</span>", 2);'), 
+            sys_getloadavg()
+            ))?></span>
     </div>
 
     <?=$this->headScript() ?>
