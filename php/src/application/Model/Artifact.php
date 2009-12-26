@@ -90,7 +90,10 @@ class Model_Artifact extends FaZend_Pos_Abstract implements Model_Artifact_Inter
      * @return Model_Artifact_Interface Root
      * @throws Model_Artifact_InvalidChildArtifact
      */
-    public static function initialize(Model_Artifact_Interface $root, Model_Artifact_Interface $artifact, $property) 
+    public static function initialize(
+        Model_Artifact_Interface $root, 
+        Model_Artifact_Interface $artifact, 
+        $property) 
     {
         if (is_null($property) && !($artifact instanceof Model_Artifact_Stateless)) {
             // do nothing

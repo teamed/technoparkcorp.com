@@ -64,7 +64,7 @@ class theProjectRegistry extends Model_Artifact implements Model_Artifact_Passiv
     public function add($name, theProject $project) 
     {
         $this->_attachItem($name, $project);            
-        $project->reload();
+        $this[$name]->reload();
     }
     
     /**

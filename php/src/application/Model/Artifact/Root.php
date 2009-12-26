@@ -50,6 +50,4 @@ class Model_Artifact_Root extends FaZend_Pos_Root implements Model_Artifact_Inte
         $this->projectRegistry->reload();
     }
 
-
-
 }
