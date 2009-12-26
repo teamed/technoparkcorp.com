@@ -35,4 +35,10 @@ class Decision_HistoryTest extends FaZend_Test_TestCase
         Model_Decision_History::retrieveByWobotNonEmpty($wobot);
     }
     
+    public function testHistoryRecordsCanBeDeleted() 
+    {
+        $wobot = Model_Wobot::factory('PM.' . Mocks_Model_Project::NAME);
+        Model_Decision_History::cleanByWobot($wobot);
+    }
+    
 }
