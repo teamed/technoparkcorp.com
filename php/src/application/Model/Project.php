@@ -132,7 +132,7 @@ class Model_Project extends Shared_Project
     {
         $roles = array();
         foreach ($this->getAllowedPaths($email) as $path) {
-            if (preg_match('/^' . preg_quote(self::ROLE_AUTHZ_PREFIX, '/') . '(\w+)$/if', $path, $matches))
+            if (preg_match('/^' . preg_quote(self::ROLE_AUTHZ_PREFIX, '/') . '(\w+)$/i', $path, $matches))
                 $roles[] = $matches[1];
         }
         return $roles;
