@@ -107,8 +107,9 @@ class Model_Artifact extends FaZend_Pos_Abstract implements Model_Artifact_Inter
         }
             
         // reload it if it's empty now and requires loading
-        if (($artifact instanceof Model_Artifact_Passive) && !$artifact->isLoaded())
-            $artifact->reload();
+        // we should NOT do it here!
+        // if (($artifact instanceof Model_Artifact_Passive) && !$artifact->isLoaded())
+        //     $artifact->reload();
             
         return $root;
     }
