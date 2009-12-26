@@ -38,7 +38,7 @@ class theSupplier
      *
      * @var string
      */
-    protected $_name;
+    protected $_name = 'unknown';
     
     /**
      * Rate
