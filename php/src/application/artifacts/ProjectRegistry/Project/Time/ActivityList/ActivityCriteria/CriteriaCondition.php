@@ -23,7 +23,8 @@
  *
  * @package Artifacts
  */
-class theCriteriaCondition extends ArrayIterator {
+class theCriteriaCondition
+{
 
     const REGEX = '/\[([\w\d\/]+)\]/';
 
@@ -39,7 +40,8 @@ class theCriteriaCondition extends ArrayIterator {
      *
      * @return string
      */
-    public function __toString() {
+    public function __toString()
+    {
         return $this->_text;
     }
     
@@ -49,7 +51,8 @@ class theCriteriaCondition extends ArrayIterator {
      * @param string Condition
      * @return $this
      */
-    public function __construct($text) {
+    public function __construct($text)
+    {
         $this->_text = $text;
     }
     
@@ -59,7 +62,8 @@ class theCriteriaCondition extends ArrayIterator {
      * @param theProject What is the source of metrics
      * @return boolean
      **/
-    public function isTrue(theProject $project) {
+    public function isTrue(theProject $project)
+    {
         $formula = $this->_text;
         if (preg_match_all(self::REGEX, $formula, $matches)) {
             foreach ($matches[0] as $id=>$match) {
@@ -82,8 +86,8 @@ class theCriteriaCondition extends ArrayIterator {
      * @param array List of metrics mentioned, it will be updated
      * @return string
      **/
-    public function asHtml(theProject $project, array &$variables) {
-
+    public function asHtml(theProject $project, array &$variables)
+    {
         $text = $this->_text;
         if (!preg_match_all(self::REGEX, $text, $matches))
             return $text;
@@ -107,7 +111,8 @@ class theCriteriaCondition extends ArrayIterator {
      *
      * @return string[]
      **/
-    public function getAffectors() {
+    public function getAffectors()
+    {
         preg_match_all(self::REGEX, $this->_text, $matches);
         return $matches[1];
     }
@@ -119,7 +124,8 @@ class theCriteriaCondition extends ArrayIterator {
      * @param Metric_Abstract The metric to add to the array
      * @return string
      **/
-    protected function _newVariable(&$variables, Metric_Abstract $metric) {
+    protected function _newVariable(&$variables, Metric_Abstract $metric)
+    {
         $name = 'A';
         foreach ($variables as $id=>$variable) {
             if ($variable == $metric)

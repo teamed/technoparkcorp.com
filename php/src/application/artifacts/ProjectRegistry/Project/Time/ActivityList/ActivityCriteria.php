@@ -38,7 +38,8 @@ class theActivityCriteria implements ArrayAccess, Countable, Iterator
      *
      * @return void
      */
-    public function __construct() {
+    public function __construct() 
+    {
         $this->_criteria = new ArrayIterator();
     }
 
@@ -49,7 +50,7 @@ class theActivityCriteria implements ArrayAccess, Countable, Iterator
      */
     public function __toString()
     {
-        return (string)implode('; ', iterator_to_array($this));
+        return (string)implode('; ', iterator_to_array($this->_criteria));
     }
     
     /**
