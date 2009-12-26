@@ -37,9 +37,10 @@ class Helper_Publish extends FaZend_View_Helper
     protected $_acl = null;
     
     /**
-     * List of publishing pages
+     * List of publishing pages, updated by _loadAcl()
      *
      * @var FaZend_StdObject[]
+     * @see _loadAcl()
      */
     protected $_pages = array();
 
@@ -52,6 +53,10 @@ class Helper_Publish extends FaZend_View_Helper
     public function publish(Model_Artifact $doc)
     {
         $this->_doc = $doc;
+
+        // inject it into view, in order to allow publish pages to work with it
+        $this->getView()->document = $this->_doc;
+        
         $this->_loadAcl();
         return $this;
     }
@@ -82,7 +87,7 @@ class Helper_Publish extends FaZend_View_Helper
         
         // current document
         $current = $this->getView()->doc;
-        
+
         // define privileges of current user on current page
         $privileges = 'r';
         if (Model_Pages::getInstance()->isAllowed($current, null, 'w'))
@@ -132,7 +137,6 @@ class Helper_Publish extends FaZend_View_Helper
      **/
     protected function _executePage(FaZend_StdObject $page) 
     {
-        $this->getView()->document = $this->_doc;
         return $this->getView()->render($page->path);
     }
     
@@ -171,7 +175,7 @@ class Helper_Publish extends FaZend_View_Helper
             if (preg_match('/^(?:\s?#.*|\s?)$/', $line))
                 continue;
 
-            if (!preg_match('/^(\w+)\s?=\s?(.*)$/', trim($line, "\t\r\n "), $matches))
+            if (!preg_match('/^\s?(\w+)\s?=\s?(.*)$/', trim($line, "\t\r\n "), $matches))
                 FaZend_Exception::raise('Helper_Publish_InvalidSyntax', "Error in access.pthml file, line #$id: $line");
             
             if (!$this->_acl->has($matches[1]))
