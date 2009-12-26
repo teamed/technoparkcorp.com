@@ -23,7 +23,8 @@
  *
  * @package Artifacts
  */
-class theSupplierRegistry implements ArrayAccess, Iterator, Countable, Model_Artifact_Passive, Model_Artifact_Interface
+class theSupplierRegistry extends Model_Artifact_Bag 
+    implements ArrayAccess, Iterator, Countable, Model_Artifact_Passive, Model_Artifact_Interface
 {
 
     /**
