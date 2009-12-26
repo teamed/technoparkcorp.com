@@ -86,11 +86,6 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
             // @see offsetGet()
             $this[$this->_fileToName(trim($matches[1], '/'))];
         }
-        
-        // reload them all
-        foreach ($this as $metric) {
-            $metric->reload();
-        }
     }
 
     /**
@@ -199,7 +194,10 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
         $metric->setName($name);
         $this->_attachItem($name, $metric, 'setMetrics');
         
-        logg('New metric attached: ' . $name);
+        // reload it explicitly
+        $this->[$name]->reload();
+        
+        logg('New metric attached and reloaded: ' . $name);
         return true;
     }
     
