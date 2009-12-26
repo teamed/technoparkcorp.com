@@ -124,7 +124,8 @@ class Helper_Publish extends FaZend_View_Helper
                 get_class($this->_doc) . '</tt>' .
             ($privileges == 'rw' ? '<sup title="you can read/write" style="cursor:pointer;"><small>rw</small></sup>: ' : false) . 
             implode('&#32;&middot;&#32;', $links) . 
-            '<span style="color:gray;margin-left:20px;font-size:0.8em;">updated ' . $age . ' ago</span>' .
+            '<span style="color:gray;margin-left:20px;font-size:0.8em;">' .
+                'v' . $this->_doc->ps()->updated . ', updated ' . $age . ' ago</span>' .
             '</div>' . 
             (isset($pageHtml) ? "<div class='publisher'>" . $pageHtml . '</div>' : false);
     }
