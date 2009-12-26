@@ -23,7 +23,8 @@
  *
  * @package Model
  */
-class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history {
+class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history
+{
 
     /**
      * Create new row
@@ -34,7 +35,8 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history {
      * @param string Log of the decision made
      * @return Model_Decision_History
      */
-    public static function create(Model_Wobot $wobot, Model_Decision $decision, $result, $log) {
+    public static function create(Model_Wobot $wobot, Model_Decision $decision, $result, $log)
+    {
         $row = new Model_Decision_History();
 
         $row->wobot = $wobot->getName();
@@ -52,7 +54,8 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history {
      *
      * @return Model_Decision_History
      **/
-    public static function findByHash($hash) {
+    public static function findByHash($hash)
+    {
         return self::retrieve()
             ->where('hash = ?', $hash)
             ->order('created DESC')
@@ -68,7 +71,8 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history {
      * @param array List of files that exist in the wobot
      * @return string
      */
-    public static function findNextDecision(Model_Wobot $wobot, array $files) {
+    public static function findNextDecision(Model_Wobot $wobot, array $files)
+    {
         // keep them in alphabetic order always, to make sure we
         // execute them all, and don't lose any one
         sort($files);
@@ -111,7 +115,8 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history {
      * @param Model_Wobot Wobot to work with
      * @return Model_Decision_History[]
      */
-    public static function retrieveByWobot(Model_Wobot $wobot) {
+    public static function retrieveByWobot(Model_Wobot $wobot)
+    {
         return self::retrieve()
             ->where('wobot = ?', $wobot->getName())
             ->where('context = ?', $wobot->getContext())
@@ -126,7 +131,8 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history {
      * @param Model_Wobot Wobot to work with
      * @return Model_Decision_History[]
      */
-    public static function retrieveByWobotNonEmpty(Model_Wobot $wobot) {
+    public static function retrieveByWobotNonEmpty(Model_Wobot $wobot)
+    {
         return self::retrieve()
             ->where('wobot = ?', $wobot->getName())
             ->where('context = ?', $wobot->getContext())
@@ -142,7 +148,8 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history {
      * @param Model_Wobot Wobot to work with
      * @return void
      */
-    public static function cleanByWobot(Model_Wobot $wobot) {
+    public static function cleanByWobot(Model_Wobot $wobot)
+    {
         self::retrieve()
             ->where('wobot = ?', $wobot->getName())
             ->where('context = ?', $wobot->getContext())
@@ -154,7 +161,8 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history {
      *
      * @return string
      */
-    public function getTitle() {
+    public function getTitle()
+    {
         $title = substr($this->hash, 0, strpos($this->hash, '/'));
         return preg_replace('/([A-Z])/', ' ${1}', $title);
     }
