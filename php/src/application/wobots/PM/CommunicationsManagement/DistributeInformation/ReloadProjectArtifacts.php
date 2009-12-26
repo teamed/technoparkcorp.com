@@ -21,8 +21,9 @@
 /**
  * Reload project artifact(s)
  *
- * This decision will find the oldest artifact that requires
- * reloading and will reload it.
+ * This decision will reload all project artifacts. Maybe in the
+ * future we will have to reload just the oldest one, but now we
+ * reload them all.
  *
  * @package wobots
  */
@@ -36,7 +37,7 @@ class ReloadProjectArtifacts extends Model_Decision_PM
      */
     protected function _make()
     {
-        $properties = array();
+        $reloaded = array();
         foreach ($this->_project->ps()->properties as $property) {
             // if this is not a property, but an item?
             if (!isset($this->_project->$property))
@@ -46,20 +47,12 @@ class ReloadProjectArtifacts extends Model_Decision_PM
             if (!($this->_project->$property instanceof Model_Artifact_Passive))
                 continue;
                 
-            $properties[$property] = $this->_project->ps()->updated;
+            $this->_project->$property->reload();
+            logg("Artifact reloaded: $property");
+            $reloaded[] = $property;
         }
         
-        logg('Passive artifacts found: ' . implode(', ', array_keys($properties)));
-        
-        // get the oldest one
-        uasort($properties, create_function('$a, $b', 'return $a->isEarlier($b);'));
-        $property = key($properties);
-        logg("Artifact selected for reloading: $property");
-        
-        // reload it
-        $this->_project->$property->reload();
-        
-        return "Artifact reloaded: $property";
+        return "Artifacts reloaded: " . implode(', ', $reloaded);
     }
     
 }
