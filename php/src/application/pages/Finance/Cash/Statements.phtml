@@ -6,8 +6,8 @@
     ->addLink('create', 'Create new payment')
     ?>
 
-<p>Balance: <b><?=$statements->balance?></b>,
-    Volume: <b><?=$statements->volume?></b>.</p>
+<p>Balance to pay: <b><?=$statements->balance?></b>,
+    volume: <?=$statements->volume?>.</p>
 
 <?=$this->table()
     ->setSource($statements)

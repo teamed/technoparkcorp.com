@@ -2,8 +2,8 @@
 
 <h1>Statement for <?=$statement->supplier?></h1>
 
-<p>Balance: <b><?=$statement->balance?></b>,
-    Volume: <b><?=$statement->volume?></b> 
+<p>Balance to pay: <b><?=$statement->balance?></b>,
+    volume: <?=$statement->volume?> 
     (<?=count($statement)?> payments).</p>
 
 <?=$this->table()
