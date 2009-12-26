@@ -140,7 +140,7 @@ class thePayment extends FaZend_Db_Table_ActiveRow_payment
     public static function getPaidInProjectToStakeholder(theStakeholder $stakeholder, theProject $project) 
     {
         $row = thePayment::retrieve()
-            ->columns(array('volume'=>new Zend_Db_Expr('SUM(IF(amount>0,amount,0))/100')))
+            ->columns(array('volume'=>new Zend_Db_Expr('SUM(amount)/100')))
             ->where('supplier = ?', $stakeholder->email)
             ->where('context = ?', $project->name)
             ->group('supplier')
