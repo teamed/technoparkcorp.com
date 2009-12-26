@@ -31,6 +31,8 @@ class theSupplierRegistryTest extends FaZend_Test_TestCase
     public function testCollectionOfSuppliersWorks() 
     {
         $registry = Model_Artifact::root()->supplierRegistry;
+        $registry->reload();
+        
         $count = 0;
         foreach ($registry as $supplier) {
             $count++;

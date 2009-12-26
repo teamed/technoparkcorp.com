@@ -32,6 +32,7 @@ class ScheduleTest extends AbstractProjectTest
     {
         $schedule = $this->_project->schedule;
         $schedule->reload();
+        
         $this->assertTrue(
             $schedule->finish instanceof Zend_Date,
             'Strange result from theSchedule::finish'

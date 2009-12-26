@@ -33,7 +33,8 @@
  * @package Artifacts
  */
 abstract class Metric_Abstract
-    implements Model_Artifact_Stateless, Model_Artifact_Passive {
+    implements Model_Artifact_Stateless, Model_Artifact_Passive
+{
 
     /**
      * Project where the metric is located
@@ -82,7 +83,8 @@ abstract class Metric_Abstract
      *
      * @return void
      **/
-    public function reload() {
+    public function reload()
+    {
         // you should override this method in child class
         FaZend_Exception::raise('MetricIsNotOverriden', 
             'Metric ' . get_class($this) . 'does not override reload(), it is wrong');
@@ -93,7 +95,8 @@ abstract class Metric_Abstract
      *
      * @return boolean
      **/
-    public final function isLoaded() {
+    public final function isLoaded()
+    {
         return isset($this->_value);
     }
         
@@ -103,7 +106,8 @@ abstract class Metric_Abstract
      * @param theMetrics Owner of this metric
      * @return void
      **/
-    public final function setMetrics(theMetrics $metrics) {
+    public final function setMetrics(theMetrics $metrics)
+    {
         $this->_project = $metrics->ps()->parent;
     }
         
@@ -113,7 +117,8 @@ abstract class Metric_Abstract
      * @param string Name of the metric
      * @return void
      **/
-    public final function setName($name) {
+    public final function setName($name)
+    {
         $this->_name = $name;
     }
         
@@ -123,7 +128,8 @@ abstract class Metric_Abstract
      * @param string Target
      * @return void
      **/
-    public final function setTarget($target) {
+    public final function setTarget($target)
+    {
         $this->_project->objectives[$this->_name] = $target;
         return $this;
     }
@@ -134,7 +140,8 @@ abstract class Metric_Abstract
      * @param string Name of the property
      * @return numeric
      **/
-    public final function __get($name) {
+    public final function __get($name)
+    {
         
         switch ($name) {
             case 'name':

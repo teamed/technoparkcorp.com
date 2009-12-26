@@ -43,7 +43,20 @@ class theSchedule extends Model_Artifact_Bag implements Model_Artifact_Passive
      */
     public function reload() 
     {
-        $this->_attach('activities', clone $this->ps()->parent->activityList->activities);
+        $activityList = $this->ps()->parent->activityList;
+        
+        if (!isset($activityList->activities)) {
+            $activityList->reload();
+            if (!isset($activityList->activities)) {
+                FaZend_Exception::raise(
+                    'ActivitiesNotFound',
+                    'Activities not found in ActivityList after reloading, why?'
+                    );
+            }
+        }
+        
+        $this->_attach('activities', clone $activityList->activities);
+        
         // todo: implement it later
         // $this->activities->getSlice()->resolveMilestones();
     }

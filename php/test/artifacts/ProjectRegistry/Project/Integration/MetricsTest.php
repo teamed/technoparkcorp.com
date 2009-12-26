@@ -26,14 +26,23 @@ require_once 'AbstractProjectTest.php';
  *
  * @package test
  */
-class MetricsTest extends AbstractProjectTest {
+class MetricsTest extends AbstractProjectTest
+{
+    
+    public function setUp()
+    {
+        parent::setUp();
+        $this->_project->metrics->reload();
+    }
 
-    public function testMetricsAreAccessibleInStorage() {
+    public function testMetricsAreAccessibleInStorage() 
+    {
         $defects = $this->_project->metrics['defects/total']->value;
         logg($defects . ' defects found');
     }
 
-    public function testFullRetrievalOfMetricsWork() {
+    public function testFullRetrievalOfMetricsWork()
+    {
         $list = $this->_project->metrics;
         logg(count($list) . ' metrics found');
         $metric = next($list);

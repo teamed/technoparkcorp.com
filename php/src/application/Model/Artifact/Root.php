@@ -46,6 +46,8 @@ class Model_Artifact_Root extends FaZend_Pos_Root implements Model_Artifact_Inte
             }
             Model_Artifact::initialize($this, $this->$name, null);
         }
+        
+        $this->projectRegistry->reload();
     }
 
 
