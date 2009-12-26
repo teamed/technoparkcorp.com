@@ -195,7 +195,7 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
         $this->_attachItem($name, $metric, 'setMetrics');
         
         // reload it explicitly
-        $this->[$name]->reload();
+        $this[$name]->reload();
         
         logg('New metric attached and reloaded: ' . $name);
         return true;
