@@ -1,0 +1,6 @@
+<p><?=$this->navigation(Model_Pages::getInstance())
+    ->menu()
+    ->setAcl(Model_Pages::getInstance()->getAcl())
+    ->setRole(Model_User::me()->email)
+    ->setMaxDepth(1)
+    ?></p>
