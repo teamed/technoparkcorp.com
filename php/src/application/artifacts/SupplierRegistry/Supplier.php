@@ -188,5 +188,5 @@ class theSupplier
     {
         return $this->hasSkill($skill) * 100;
     }
-
+    
 }

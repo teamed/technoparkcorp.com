@@ -2,8 +2,8 @@
 
 <?=$this->table()
     ->setSource($this->project->staffAssignments)
-    ->addColumn('getEmail', 'Stakeholder/Email')
-    ->addColumn('getRolesString', 'Roles assigned')
+    ->addColumn('email', 'Stakeholder/Email')
+    ->addColumn('rolesString', 'Roles assigned')
     ?>
     
 <p>Project access configuration file (<tt>authz</tt>) is used:</p>

@@ -55,13 +55,43 @@ class theStakeholder implements Model_Artifact_Stateless
     }
     
     /**
+     * Getter dispatcher
+     *
+     * @param string Name of property to get
+     * @return mixed
+     **/
+    public function __get($name) 
+    {
+        $method = '_get' . ucfirst($name);
+        if (method_exists($this, $method))
+            return $this->$method();
+            
+        $var = '_' . $name;
+        if (property_exists($this, $var))
+            return $this->$var;
+        
+        FaZend_Exception::raise('Stakeholder_PropertyOrMethodNotFound', 
+            "Can't find what is '$name' in " . get_class($this));
+    }
+    
+    /**
      * Show stakeholders in string
      *
      * @return string
      **/
     public function __toString() 
     {
-        return $this->getEmail();
+        return $this->email;
+    }
+
+    /**
+     * How much this supplier already get in the given project?
+     *
+     * @return Model_Cost
+     **/
+    public function getPaidInProject(theProject $project) 
+    {
+        return thePayment::getPaidInProjectToStakeholder($this, $project);
     }
 
     /**
@@ -69,7 +99,7 @@ class theStakeholder implements Model_Artifact_Stateless
      *
      * @return string
      **/
-    public function getEmail() 
+    protected function _getEmail() 
     {
         return $this->_email;
     }
@@ -79,7 +109,7 @@ class theStakeholder implements Model_Artifact_Stateless
      *
      * @return theProjectRole[]
      **/
-    public function getRoles() 
+    protected function _getRoles() 
     {
         return $this->_staffAssignments->retrieveRolesByStakeholder($this);
     }
@@ -89,9 +119,9 @@ class theStakeholder implements Model_Artifact_Stateless
      *
      * @return string
      **/
-    public function getRolesString() 
+    protected function _getRolesString() 
     {
-        return implode(', ', $this->getRoles());
+        return implode(', ', $this->roles);
     }
 
 }

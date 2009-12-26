@@ -13,7 +13,8 @@
 <p>Already in the project:</p>
 <ul>
 <? foreach ($request->project->staffAssignments->retrieveStakeholdersByRole($request->role) as $stakeholder): ?>
-    <li><?=$stakeholder?></li>
+    <li><?=$stakeholder?>:
+    <?=$stakeholder->getPaidInProject($request->project)?> paid already</li>
 <? endforeach; ?>
 </ul>
 

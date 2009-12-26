@@ -131,6 +131,29 @@ class thePayment extends FaZend_Db_Table_ActiveRow_payment
     }
     
     /**
+     * How much we paid already to this supplier in the given project
+     *
+     * @param theStakeholder
+     * @param theProject
+     * @return Model_Cost
+     **/
+    public static function getPaidInProjectToStakeholder(theStakeholder $stakeholder, theProject $project) 
+    {
+        $row = thePayment::retrieve()
+            ->columns(array('volume'=>new Zend_Db_Expr('SUM(IF(amount>0,amount,0))/100')))
+            ->where('supplier = ?', $stakeholder->email)
+            ->where('context = ?', $project->name)
+            ->group('supplier')
+            ->setSilenceIfEmpty()
+            ->fetchRow();
+            
+        if (!$row)
+            return Model_Cost::factory(0);
+            
+        return Model_Cost::factory(intval($row->volume) . ' USD');
+    }
+    
+    /**
      * Getter dispatcher
      *
      * @param string Name of property to get
