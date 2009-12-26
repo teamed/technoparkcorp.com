@@ -27,6 +27,19 @@ class theProject extends Model_Artifact implements Model_Artifact_Passive
 {
     
     /**
+     * Initialize it
+     *
+     * @return void
+     **/
+    public function init() 
+    {
+        parent::init();
+
+        // we don't need to keep versions in this artifact
+        $this->ps()->setIgnoreVersions();
+    }
+    
+    /**
      * Initialize project
      * 
      * @return void

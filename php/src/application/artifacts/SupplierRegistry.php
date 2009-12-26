@@ -39,7 +39,13 @@ class theSupplierRegistry extends Model_Artifact_Bag
      *
      * @return void
      */
-    public function __construct() {
+    public function init()
+    {
+        parent::init();
+
+        // we don't need to keep versions in this artifact
+        $this->ps()->setIgnoreVersions();
+        
         $this->_suppliers = new ArrayIterator();
     }
 

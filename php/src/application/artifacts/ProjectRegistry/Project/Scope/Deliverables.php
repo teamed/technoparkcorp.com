@@ -52,6 +52,19 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
     }
     
     /**
+     * Initialize it
+     *
+     * @return void
+     **/
+    public function init() 
+    {
+        parent::init();
+
+        // we don't need to keep versions in this artifact
+        $this->ps()->setIgnoreVersions();
+    }
+    
+    /**
      * Load all deliverables
      *
      * @return void
