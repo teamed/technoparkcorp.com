@@ -26,7 +26,7 @@
  *
  * @package Artifacts
  */
-class theStaffAssignments implements ArrayAccess, Countable, Iterator, Model_Artifact_Stateless, Model_Artifact_Passive 
+class theStaffAssignments implements ArrayAccess, Countable, Iterator, Model_Artifact_Stateless
 {
 
     /**
@@ -43,29 +43,6 @@ class theStaffAssignments implements ArrayAccess, Countable, Iterator, Model_Art
      **/
     protected $_stakeholders;
 
-    /**
-     * Reload list of stakeholders
-     *
-     * @return void
-     **/
-    public function reload() 
-    {
-        $this->_stakeholders = new ArrayIterator();
-        foreach (array_keys($this->_project()->getStakeholders()) as $email)
-            $this->_stakeholders[$email] = FaZend_Flyweight::factory('theStakeholder', $this, $email);
-    }    
-    
-    /**
-     * Is it loaded?
-     *
-     * @return boolean
-     **/
-    public function isLoaded() 
-    {
-        // always reload
-        return false;
-    }
-    
     /**
      * Dispatcher
      *
@@ -183,7 +160,7 @@ class theStaffAssignments implements ArrayAccess, Countable, Iterator, Model_Art
      **/
     public function rewind() 
     {
-        return $this->_stakeholders->rewind();
+        return $this->_getStakeholders()->rewind();
     }
     
     /**
@@ -193,7 +170,7 @@ class theStaffAssignments implements ArrayAccess, Countable, Iterator, Model_Art
      **/
     public function key() 
     {
-        return $this->_stakeholders->key();
+        return $this->_getStakeholders()->key();
     }
     
     /**
@@ -203,7 +180,7 @@ class theStaffAssignments implements ArrayAccess, Countable, Iterator, Model_Art
      **/
     public function next() 
     {
-        return $this->_stakeholders->next();
+        return $this->_getStakeholders()->next();
     }
     
     /**
@@ -213,7 +190,7 @@ class theStaffAssignments implements ArrayAccess, Countable, Iterator, Model_Art
      **/
     public function valid() 
     {
-        return $this->_stakeholders->valid();
+        return $this->_getStakeholders()->valid();
     }
     
     /**
@@ -223,7 +200,7 @@ class theStaffAssignments implements ArrayAccess, Countable, Iterator, Model_Art
      **/
     public function current() 
     {
-        return $this->_stakeholders->current();
+        return $this->_getStakeholders()->current();
     }
     
     /**
@@ -233,7 +210,7 @@ class theStaffAssignments implements ArrayAccess, Countable, Iterator, Model_Art
      **/
     public function count() 
     {
-        return $this->_stakeholders->count();
+        return $this->_getStakeholders()->count();
     }
     
     /**
@@ -243,7 +220,7 @@ class theStaffAssignments implements ArrayAccess, Countable, Iterator, Model_Art
      **/
     public function offsetGet($name) 
     {
-        return $this->_stakeholders->offsetGet($name);
+        return $this->_getStakeholders()->offsetGet($name);
     }
     
     /**
@@ -275,7 +252,22 @@ class theStaffAssignments implements ArrayAccess, Countable, Iterator, Model_Art
      **/
     public function offsetExists($name) 
     {
-        return $this->_stakeholders->offsetIsset($name);
+        return $this->_getStakeholders()->offsetIsset($name);
     }
+    
+    /**
+     * Reload list of stakeholders
+     *
+     * @return ArrayIterator
+     **/
+    protected function _getStakeholders() 
+    {
+        if (!isset($this->_stakeholders)) {
+            $this->_stakeholders = new ArrayIterator();
+            foreach (array_keys($this->_project()->getStakeholders()) as $email)
+                $this->_stakeholders[$email] = FaZend_Flyweight::factory('theStakeholder', $this, $email);
+        }
+        return $this->_stakeholders;
+    }    
     
 }
