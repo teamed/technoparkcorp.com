@@ -63,7 +63,7 @@
         <b><a href="<?=$page->href?>">
         <?=$page->article->title?></a></b>, 
         <?=$page->article->description?><br/>
-        <span>published on <?=$page->article->published?></span>
+        <span>published on <?=$page->article->published->get(Zend_Date::DATE_MEDIUM)?></span>
     </p>
 
 

@@ -95,7 +95,7 @@
 
     <span class="rev">
         <a href="<?=$this->url(array('page'=>$this->article->page), 'pdf', true, false)?>">Download in PDF</a> | 
-        Last update on <span style="color:<?=Model_Colors::BLUE?>"><?=$this->article->updated?></span>
+        Last update on <span style="color:<?=Model_Colors::BLUE?>"><?=$this->article->updated->get(Zend_Date::DATE_MEDIUM)?></span>
     </span>
 </p>
 
