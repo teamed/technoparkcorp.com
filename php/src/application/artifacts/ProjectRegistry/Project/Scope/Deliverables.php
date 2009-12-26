@@ -38,16 +38,26 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
 {
     
     /**
+     * Initialize autoloader, to be called from bootstrap
+     *
+     * @return void
+     **/
+    public static function initAutoloader() 
+    {
+        $autoloader = Zend_Loader_Autoloader::getInstance();
+        $autoloader->registerNamespace('Deliverables_');
+        set_include_path(get_include_path() . PATH_SEPARATOR . dirname(__FILE__) . '/Deliverables/types');
+
+        require_once dirname(__FILE__) . '/Deliverables/loaders/Abstract.php';
+    }
+    
+    /**
      * Load all deliverables
      *
      * @return void
      **/
     public function reload() 
     {
-        $autoloader = Zend_Loader_Autoloader::getInstance();
-        $autoloader->registerNamespace('Deliverables_');
-        set_include_path(get_include_path() . PATH_SEPARATOR . dirname(__FILE__) . '/Deliverables/types');
-
         // clean traceability links
         $this->traceability->clean(); 
 
@@ -56,7 +66,6 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
             unset($this[$key]);
 
         // execute ALL loaders one after another
-        require_once dirname(__FILE__) . '/Deliverables/loaders/Abstract.php';
         $loaders = DeliverablesLoaders_Abstract::retrieveAll($this);
         foreach ($loaders as $loader)
             $loader->load();

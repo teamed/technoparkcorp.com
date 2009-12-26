@@ -49,7 +49,7 @@ class Helper_Publish extends FaZend_View_Helper
      * @param Model_Artifact The artifact to publish
      * @return Helper_Publish
      */
-    public function publish(Model_Artifact_Interface $doc)
+    public function publish(Model_Artifact $doc)
     {
         $this->_doc = $doc;
         $this->_loadAcl();

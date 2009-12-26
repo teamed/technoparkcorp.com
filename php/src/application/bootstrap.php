@@ -35,8 +35,9 @@ class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap
         $autoloader = Zend_Loader_Autoloader::getInstance();
         $autoloader->pushAutoloader(new Model_Loader_Artifacts(), 'the');
         
-        // metrics have their own loader
+        // some artifacts have their own loader
         theMetrics::initAutoloader();
+        theDeliverables::initAutoloader();
     }
 
     /**
