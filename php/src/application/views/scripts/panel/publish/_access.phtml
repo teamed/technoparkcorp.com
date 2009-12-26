@@ -1,4 +1,6 @@
 versions = r
-revert = w
 stat = <?=Model_Pages::ADMIN?>
 
+<? if ($this->document instanceof Model_Artifact_Passive): ?>
+    reload = r
+<? endif; ?>
