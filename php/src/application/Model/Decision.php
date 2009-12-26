@@ -174,8 +174,7 @@ abstract class Model_Decision implements Model_Decision_Interface
         $log = FaZend_Log::getInstance()->getWriterAndRemove('decision')->getLog();
         
         // protocol this decision, if something was said
-        if ($decision)
-            Model_Decision_History::create($this->_wobot, $this, $decision, $log);
+        Model_Decision_History::create($this->_wobot, $this, $decision, $log);
         
         return $decision;
     }
