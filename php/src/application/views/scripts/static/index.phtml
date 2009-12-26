@@ -4,11 +4,11 @@
 ?>
 
 <!-- Login line -->
-<p class="ll">
-           <span style="margin-left: 39px;">Welcome, Dear Visitor! |
-               <a href="<?=$this->url(array(), 'panel', true)?>">thePanel 2.0</a></span>
-          <?=FaZend_Form::create('Search')->setAction($this->staticUrl('system/search'))?>
-</p>
+<div class="ll">
+    <span style="margin-left: 39px;">Welcome, Dear Visitor! |
+        <a href="<?=$this->url(array(), 'panel', true)?>">thePanel 2.0</a></span>
+    <?=FaZend_Form::create('Search')->setAction($this->staticUrl('system/search'))?>
+</div>
 
 <!-- Show page path -->
 <p class="path">

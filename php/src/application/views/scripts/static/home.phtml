@@ -6,7 +6,7 @@
     $news = Model_Article::createByLabel((string)$this->article->xml->front->right->news);
 
     // build a news line
-    $newsline = $news->updated . ': ' . cutLongLine($news->description, 200);
+    $newsline = $news->updated->get(Zend_Date::DATE_MEDIUM) . ': ' . cutLongLine($news->description, 200);
 
     // holder of data
     $front = $this->article->xml->front;

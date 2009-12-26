@@ -160,14 +160,14 @@ p.path {
     }
 
 /* search input field - this span holds the content */
-p.ll form {
+div.ll form {
     position: absolute; 
     top: 13px; 
     left: 543px; 
 }
 
     /* input field for search */
-    p.ll form input.srch {
+    div.ll form input.srch {
         <?=$this->squeezePNG('search-field.png')?>
         border: none; 
         position: absolute;
@@ -181,7 +181,7 @@ p.ll form {
     }
 
     /* search field submit button */
-    p.ll form input.btn {
+    div.ll form input.btn {
         <?=$this->squeezePNG('search-button.png')?> 
         cursor: pointer; 
         border: none; 

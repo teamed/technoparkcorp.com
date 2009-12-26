@@ -120,7 +120,7 @@ p.bl {
     }
 
 /* login line */
-p.ll {
+div.ll {
     position: relative;
     font-size: 90%; 
     line-height: 48px;
@@ -129,7 +129,7 @@ p.ll {
     margin-left: -7px;
 }
 
-    p.ll a {
+    div.ll a {
         text-decoration: none;
         color: <?=Model_Colors::BLACK?>;
     }
