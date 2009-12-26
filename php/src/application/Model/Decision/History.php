@@ -137,6 +137,19 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history {
     }
 
     /**
+     * Clean all decisions made by wobot
+     * 
+     * @param Model_Wobot Wobot to work with
+     * @return void
+     */
+    public static function cleanByWobot(Model_Wobot $wobot) {
+        self::retrieve()
+            ->where('wobot = ?', $wobot->getName())
+            ->where('context = ?', $wobot->getContext())
+            ->delete();
+    }
+
+    /**
      * Title of the decision
      *
      * @return string

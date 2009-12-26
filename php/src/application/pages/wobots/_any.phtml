@@ -3,7 +3,9 @@
 <?=$this->wobot?> (<?=$this->wobot->getHumanName()?>, <tt><?=$this->wobot->getEmail()?></tt>)
 
 <?=$this->bar()
-    ->addLink('decisions', 'Decisions')?>
+    ->addLink('decisions', 'Decisions')
+    ->addLink('clean', 'Clean')
+    ?>
 
 <?=$this->table()
     ->setSource(Model_Decision_History::retrieveByWobotNonEmpty($this->wobot))
