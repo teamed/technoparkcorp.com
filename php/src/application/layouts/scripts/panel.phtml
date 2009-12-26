@@ -56,7 +56,7 @@
         rev.<?=FaZend_Revision::get()?>, <?=$this->pageLoadTime()?><br/>
         your IP: <?=$_SERVER['REMOTE_ADDR']?>, load avg: 
         <?=implode(', ', array_map(
-            create_function('$a', 'return round($a < 3 ? $a : "<span style=\'color:red;\'>$a</span>", 2);'), 
+            create_function('$a', '$a = round($a, 2); return $a < 3 ? $a : "<span style=\'color:red;\'>$a</span>";'), 
             sys_getloadavg()
             ))?></span>
     </div>
