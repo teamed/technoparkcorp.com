@@ -125,12 +125,12 @@ abstract class Metric_Abstract
     /**
      * Save the target
      *
-     * @param string Target
+     * @param integer Target
      * @return void
      **/
     public final function setTarget($target)
     {
-        $this->_project->objectives[$this->_name] = $target;
+        $this->_project->objectives->setObjective($this->_name, $target);
         return $this;
     }
         

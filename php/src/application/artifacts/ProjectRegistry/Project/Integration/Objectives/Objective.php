@@ -19,29 +19,61 @@
  */
 
 /**
- * Project objectives
+ * Project objective
  *
  * @package Artifacts
  */
-class theObjectives extends Model_Artifact 
+class theObjective
 {
+        
+    /**
+     * Value of the objective
+     *
+     * @var string
+     **/
+    protected $_value;
     
     /**
-     * Set one objective
+     * Construct the class
      *
-     * @param string Name of the objective
      * @param integer Value of the objective
      * @return void
-     **/
-    public function setObjective($name, $value) 
+     */
+    public function __construct($value)
     {
-        validate()
-            ->true(is_numeric($value), "Value should be numeric only");
-        
-        if (!isset($this[$name]) || !($this[$name] instanceof theObjective))
-            $this[$name] = new theObjective($value);
-        else
-            $this[$name]->setValue($value);
+        $this->value = $value;
     }
         
+    /**
+     * Getter dispatcher
+     *
+     * @param string Name of property to get
+     * @return mixed
+     **/
+    public function __get($name) 
+    {
+        $method = '_get' . ucfirst($name);
+        if (method_exists($this, $method))
+            return $this->$method();
+            
+        $var = '_' . $name;
+        if (property_exists($this, $var))
+            return $this->$var;
+            
+        FaZend_Exception::raise(
+            'InvalidPropertyOfMethod',
+            "Can't find what is $name in " . get_class($this)
+            );
+    }
+
+    /**
+     * Get value of the objectiv
+     *
+     * @return integer
+     **/
+    protected function _getValue() 
+    {
+        return $this->_value;
+    }
+
 }

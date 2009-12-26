@@ -54,7 +54,7 @@ class theSupplierRegistry extends Model_Artifact_Bag
      **/
     public function isLoaded() 
     {
-        return count($this->_getSuppliers()) > 0;
+        return count($this) > 0;
     }
 
     /**

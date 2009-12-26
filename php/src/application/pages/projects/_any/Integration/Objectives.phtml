@@ -1,0 +1,11 @@
+<?=$this->publish($this->project->objectives)?>
+
+<h1>Project Objectives</h1>
+
+<?=$this->table()
+    ->setSource($this->project->objectives)
+    ->addColumn('__key', 'Name')
+    ->addColumn('value', 'Value')
+    ?>
+    
+    

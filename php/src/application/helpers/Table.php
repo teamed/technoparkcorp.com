@@ -19,7 +19,8 @@
  *
  * @package helpers
  */
-class Helper_Table extends FaZend_View_Helper {
+class Helper_Table extends FaZend_View_Helper
+{
 
     /**
      * Columns to show
@@ -63,7 +64,8 @@ class Helper_Table extends FaZend_View_Helper {
      *
      * @return Helper_Table
      */
-    public function table() {
+    public function table()
+    {
         // just get next table
         $this->_table = $this->getView()->htmlTable(self::$_tableId++);
         $this->_links = array();
@@ -78,7 +80,8 @@ class Helper_Table extends FaZend_View_Helper {
      *
      * @return string HTML
      */
-    public function __toString() {
+    public function __toString()
+    {
         try {
             return (string)$this->_render();
         } catch (Exception $e) {
@@ -91,7 +94,8 @@ class Helper_Table extends FaZend_View_Helper {
      *
      * @return string HTML
      */
-    protected function _render() {
+    protected function _render()
+    {
         $this->_table->showColumns($this->_columns);
         $this->_table->setNoDataMessage('');
 
@@ -108,7 +112,8 @@ class Helper_Table extends FaZend_View_Helper {
      * @param Iterator
      * @return Helper_Table
      */
-    public function setSource(Iterator $iterator) {
+    public function setSource(Iterator $iterator)
+    {
         validate()
             ->instanceOf($iterator, 'Iterator', "Source should be an instance of Iterator");
             
@@ -128,7 +133,8 @@ class Helper_Table extends FaZend_View_Helper {
      * @param string Header to show
      * @return Helper_Table
      */
-    public function addColumn($name, $header = null) {
+    public function addColumn($name, $header = null)
+    {
         // remember the name of this column added
         $this->_columns[] = $name;
 
@@ -153,7 +159,8 @@ class Helper_Table extends FaZend_View_Helper {
      * @param string Link to the operation
      * @return Helper_Table
      */
-    public function addOption($name, $link) {
+    public function addOption($name, $link)
+    {
         // this params will be sent to the htmlTable() helper
         $urlParams = array('doc'=>array($this, 'resolveDocumentName'));
 
@@ -188,7 +195,8 @@ class Helper_Table extends FaZend_View_Helper {
      * @param mixed Key of the row
      * @return string
      */
-    public function resolveDocumentName($name, $row, $key) {
+    public function resolveDocumentName($name, $row, $key)
+    {
         return Model_Pages::resolveLink($this->_links[$name], $row, $key);
     }
 
