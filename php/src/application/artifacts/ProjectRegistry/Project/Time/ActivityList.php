@@ -23,14 +23,16 @@
  *
  * @package Artifacts
  */
-class theActivityList extends Model_Artifact_Bag implements Model_Artifact_Passive {
+class theActivityList extends Model_Artifact_Bag implements Model_Artifact_Passive
+{
 
     /**
      * It is loaded already?
      *
      * @return boolean
      */
-    public function isLoaded() {
+    public function isLoaded()
+    {
         return isset($this->activities);
     }
     
@@ -39,8 +41,12 @@ class theActivityList extends Model_Artifact_Bag implements Model_Artifact_Passi
      *
      * @return void
      */
-    public function reload() {
+    public function reload()
+    {
         $this->_attach('activities', new theActivities(), 'setActivityList');
+        
+        // reload them immediately
+        $this->activities->reload();
     }
     
 }
