@@ -110,12 +110,17 @@ class Helper_Publish extends FaZend_View_Helper
             $pageHtml = '<p class="error">You don\' have enough access ' . 
             'permissions to access this page (' . $page->tag . ')</p>';
         }
-
+        
+        // when the document was updated last time
+        $age = $this->getView()->dateInterval($this->_doc->ps()->updated->get(Zend_Date::TIMESTAMP));
+        
         return '<div class="publish">' .
             '<tt' . ($this->_doc instanceof Model_Artifact_Passive ? " style='color:red;'" : false) . '>' . 
                 get_class($this->_doc) . '</tt>' .
             ($privileges == 'rw' ? '<sup title="you can read/write" style="cursor:pointer;"><small>rw</small></sup>: ' : false) . 
-            implode('&#32;&middot;&#32;', $links) . '</div>' . 
+            implode('&#32;&middot;&#32;', $links) . 
+            '<span style="color:gray;margin-left:20px">updated ' . $age . ' ago</span>' .
+            '</div>' . 
             (isset($pageHtml) ? "<div class='publisher'>" . $pageHtml . '</div>' : false);
     }
     
