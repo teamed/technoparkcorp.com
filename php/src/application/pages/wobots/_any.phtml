@@ -6,7 +6,7 @@
     ->addLink('decisions', 'Decisions')?>
 
 <?=$this->table()
-    ->setSource(Model_Decision_History::retrieveByWobot($this->wobot))
+    ->setSource(Model_Decision_History::retrieveByWobotNonEmpty($this->wobot))
 
     ->addColumn('created', 'Date')
     ->addColumn('getTitle', 'Title')

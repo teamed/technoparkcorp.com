@@ -121,6 +121,22 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history {
     }
 
     /**
+     * Retrieve all decisions for this particular wobot and context, non empty
+     * 
+     * @param Model_Wobot Wobot to work with
+     * @return Model_Decision_History[]
+     */
+    public static function retrieveByWobotNonEmpty(Model_Wobot $wobot) {
+        return self::retrieve()
+            ->where('wobot = ?', $wobot->getName())
+            ->where('context = ?', $wobot->getContext())
+            ->where('result <> ?', '')
+            ->order('created DESC')
+            ->setRowClass('Model_Decision_History')
+            ->fetchAll();
+    }
+
+    /**
      * Title of the decision
      *
      * @return string
