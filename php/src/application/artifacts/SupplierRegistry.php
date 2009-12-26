@@ -45,8 +45,6 @@ class theSupplierRegistry extends Model_Artifact_Bag
 
         // we don't need to keep versions in this artifact
         $this->ps()->setIgnoreVersions();
-        
-        $this->_suppliers = new ArrayIterator();
     }
 
     /**
@@ -56,7 +54,7 @@ class theSupplierRegistry extends Model_Artifact_Bag
      **/
     public function isLoaded() 
     {
-        return count($this->_suppliers) > 0;
+        return count($this->_getSuppliers()) > 0;
     }
 
     /**
@@ -66,6 +64,7 @@ class theSupplierRegistry extends Model_Artifact_Bag
      **/
     public function reload() 
     {
+        $this->_suppliers = new ArrayIterator();
         $asset = Model_Project::findByName('PMO')->getAsset(Model_Project::ASSET_SUPPLIERS);
         foreach ($asset->retrieveAll() as $email)
             $this->_suppliers[$email] = false;
@@ -118,7 +117,7 @@ class theSupplierRegistry extends Model_Artifact_Bag
      */
     public function offsetExists($email) 
     {
-        $this->_suppliers->offsetExists($email);
+        $this->_getSuppliers()->offsetExists($email);
     }
 
     /**
@@ -131,7 +130,7 @@ class theSupplierRegistry extends Model_Artifact_Bag
      */
     public function offsetGet($email) 
     {
-        $suppliers = $this->_suppliers;
+        $suppliers = $this->_getSuppliers();
         if (!isset($suppliers[$email]))
             FaZend_Exception::raise('SupplierRegistryNotFound', 
                 "Supplier '{$email}' not found in list (" . count($suppliers) . ' total)');
@@ -192,7 +191,7 @@ class theSupplierRegistry extends Model_Artifact_Bag
      */
     public function next() 
     {
-        $this->_suppliers->next();
+        $this->_getSuppliers()->next();
         $key = $this->key();
         if ($key)
             return $this->offsetGet($key);
@@ -208,7 +207,7 @@ class theSupplierRegistry extends Model_Artifact_Bag
      */
     public function key() 
     {
-        return $this->_suppliers->key();
+        return $this->_getSuppliers()->key();
     }
     
     /**
@@ -220,7 +219,7 @@ class theSupplierRegistry extends Model_Artifact_Bag
      */
     public function valid() 
     {
-        return $this->_suppliers->valid();
+        return $this->_getSuppliers()->valid();
     }
     
     /**
@@ -232,7 +231,7 @@ class theSupplierRegistry extends Model_Artifact_Bag
      */
     public function rewind() 
     {
-        return $this->_suppliers->rewind();
+        return $this->_getSuppliers()->rewind();
     }
     
     /**
@@ -244,7 +243,19 @@ class theSupplierRegistry extends Model_Artifact_Bag
      */
     public function count() 
     {
-        return $this->_suppliers->count();
+        return $this->_getSuppliers()->count();
+    }
+
+    /**
+     * Get a list of suppliers, internal holder
+     *
+     * @return theSupplier[]
+     **/
+    protected function _getSuppliers() 
+    {
+        if (!isset($this->_suppliers))
+            $this->_suppliers = new ArrayIterator();
+        return $this->_suppliers;
     }
     
 }
