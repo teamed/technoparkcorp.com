@@ -183,7 +183,7 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
      * Load and attach one metric to the collection
      *
      * @param string Name of the metric, like 'requirements/total'
-     * @param null|Metric_Abstract
+     * @param null|Metric_Abstract Metric class, if we already instantiated it
      * @return boolean Attached or not?
      **/
     protected function _attachMetric($name, Metric_Abstract $metric = null) 
