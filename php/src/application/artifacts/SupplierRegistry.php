@@ -64,10 +64,10 @@ class theSupplierRegistry extends Model_Artifact_Bag
      **/
     public function reload() 
     {
-        $suppliers = $this->_getSuppliers();
+        $this->_suppliers = new ArrayIterator();
         $asset = Model_Project::findByName('PMO')->getAsset(Model_Project::ASSET_SUPPLIERS);
         foreach ($asset->retrieveAll() as $email)
-            $suppliers[$email] = false;
+            $this->_suppliers[$email] = false;
     }
     
     /**
@@ -127,6 +127,7 @@ class theSupplierRegistry extends Model_Artifact_Bag
      *
      * @param string Supplier's email
      * @return theSupplier
+     * @see reload()
      */
     public function offsetGet($email) 
     {
@@ -175,11 +176,15 @@ class theSupplierRegistry extends Model_Artifact_Bag
      * 
      * The method is required by Iterator interface, don't delete it.
      *
+     * Lazy-loading mechanism is implemented here. We have only keys (as
+     * emails) and not real-life objects.
+     *
      * @return theSupplier
+     * @see reload()
      */
     public function current() 
     {
-        return $this->_getSuppliers()->current();
+        return $this->offsetGet($this->key());
     }
     
     /**
@@ -187,11 +192,23 @@ class theSupplierRegistry extends Model_Artifact_Bag
      * 
      * The method is required by Iterator interface, don't delete it.
      *
+     * The method is intentionally designed like this, in order to implement
+     * lazy-loading of suppliers in the array. When reload() creates an array
+     * of suppliers - it sets FALSE to all of them. And later we can build them
+     * using array keys as their emails. This lazy-loading mechanism also
+     * affects current() method.
+     *
      * @return theSupplier
+     * @see reload()
+     * @see current()
      */
     public function next() 
     {
-        return $this->_getSuppliers()->next();
+        $this->_getSuppliers()->next();
+        $key = $this->key();
+        if ($key)
+            return $this->offsetGet($key);
+        return false;
     }
     
     /**
