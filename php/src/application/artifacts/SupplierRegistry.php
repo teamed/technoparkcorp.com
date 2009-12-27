@@ -64,10 +64,10 @@ class theSupplierRegistry extends Model_Artifact_Bag
      **/
     public function reload() 
     {
-        $this->_suppliers = new ArrayIterator();
+        $suppliers = $this->_getSuppliers();
         $asset = Model_Project::findByName('PMO')->getAsset(Model_Project::ASSET_SUPPLIERS);
         foreach ($asset->retrieveAll() as $email)
-            $this->_suppliers[$email] = false;
+            $suppliers[$email] = false;
     }
     
     /**
@@ -179,7 +179,7 @@ class theSupplierRegistry extends Model_Artifact_Bag
      */
     public function current() 
     {
-        return $this->offsetGet($this->key());
+        return $this->_getSuppliers()->current();
     }
     
     /**
@@ -191,11 +191,7 @@ class theSupplierRegistry extends Model_Artifact_Bag
      */
     public function next() 
     {
-        $this->_getSuppliers()->next();
-        $key = $this->key();
-        if ($key)
-            return $this->offsetGet($key);
-        return false;
+        return $this->_getSuppliers()->next();
     }
     
     /**
