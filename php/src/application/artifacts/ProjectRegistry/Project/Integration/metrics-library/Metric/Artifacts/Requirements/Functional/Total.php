@@ -23,12 +23,13 @@
  * 
  * @package Artifacts
  */
-class Metric_Requirements_Functional_Total extends Metric_Abstract {
+class Metric_Artifacts_Requirements_Functional_Total extends Metric_Abstract {
 
     /**
      * Forwarders
      *
      * @var array
+     * @see Metric_Abstract::$_patterns
      */
     protected $_patterns = array(
         '/level\/(\w+)/' => 'level',
@@ -62,7 +63,8 @@ class Metric_Requirements_Functional_Total extends Metric_Abstract {
      *
      * @return void
      **/
-    public function reload() {
+    public function reload()
+    {
         if ($this->_getOption('level') !== null) {
             $max = max(array_keys($this->_pricePerRequirement));
             validate()
@@ -74,7 +76,7 @@ class Metric_Requirements_Functional_Total extends Metric_Abstract {
                     $this->_value++;
             }
             
-            $increment = pow($this->_project->metrics['requirements/functional/total']->target, 1/4);
+            $increment = pow($this->_project->metrics['artifacts/requirements/functional/total']->target, 1/4);
             $this->_default = round(pow($increment, 1+$this->_levelCode[$this->_getOption('level')]));
             return;
         }
@@ -92,7 +94,8 @@ class Metric_Requirements_Functional_Total extends Metric_Abstract {
      *
      * @return theWorkPackage
      **/
-    public function getWorkPackage() {
+    public function getWorkPackage()
+    {
         // if we already have too many requirements - skip this WP
         if ($this->delta < 0)
             return null;

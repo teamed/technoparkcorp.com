@@ -23,7 +23,8 @@
  * 
  * @package Artifacts
  */
-class Metric_Requirements_Actors_Total extends Metric_Abstract {
+class Metric_Artifacts_Requirements_Actors_Total extends Metric_Abstract
+{
 
     const PORTION = 0.12;
 
@@ -32,7 +33,8 @@ class Metric_Requirements_Actors_Total extends Metric_Abstract {
      *
      * @return void
      **/
-    public function reload() {
+    public function reload()
+    {
         $this->_value = count($this->_project->deliverables->actors);
     }
         
@@ -41,9 +43,10 @@ class Metric_Requirements_Actors_Total extends Metric_Abstract {
      *
      * @return theWorkPackage
      **/
-    public function getWorkPackage() {
+    public function getWorkPackage()
+    {
         return $this->_makeWp(
-            $this->_project->wbs->sum('requirements\/functional\/total')->multiply(self::PORTION), 
+            $this->_project->wbs->sum('artifacts/requirements\/functional\/total')->multiply(self::PORTION), 
             'Specify actors');
     }
         
@@ -53,8 +56,8 @@ class Metric_Requirements_Actors_Total extends Metric_Abstract {
      * @param Slice_Plugin_Abstract
      * @return void
      **/
-    protected function _split(Slice_Plugin_Abstract $slice) {
-        
+    protected function _split(Slice_Plugin_Abstract $slice)
+    {
         // split the activity onto smaller pieces
         $total = $slice->iterate('downCurve', array(
             'sow' => 'Identify actors',
@@ -65,14 +68,13 @@ class Metric_Requirements_Actors_Total extends Metric_Abstract {
         $i = 1;
         foreach ($slice->codeRegex('/^a[\d]+$/')->afterMilestone() as $milestone) {
             $milestone->criteria
-                ->when('[readiness] > %0.2f', 0.3 * $i++ / $total);
+                ->when('[aspects/readiness] > %0.2f', 0.3 * $i++ / $total);
         }
             
         foreach ($slice->onlyActivities() as $activity) {
             $activity->criteria
-                ->when('[requirements/actors/compliance] > %0.2f', $slice->sumUntil($activity)->divide($slice->sum()));
+                ->when('[artifacts/requirements/actors/compliance] > %0.2f', $slice->sumUntil($activity)->divide($slice->sum()));
         }
-        
     }
         
 }

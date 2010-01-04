@@ -23,15 +23,17 @@
  * 
  * @package Artifacts
  */
-class Metric_Requirements_Actors_Compliance extends Metric_Abstract {
+class Metric_Artifacts_Requirements_Actors_Compliance extends Metric_Abstract
+{
 
     /**
      * Load this metric
      *
      * @return void
      **/
-    public function reload() {
-        $this->_value = 0.22;
+    public function reload()
+    {
+        $this->_value = 0.99;
     }
                 
 }

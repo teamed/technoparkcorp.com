@@ -23,14 +23,16 @@
  * 
  * @package Artifacts
  */
-class Metric_Readiness extends Metric_Abstract {
+class Metric_Aspects_Readiness extends Metric_Abstract
+{
 
     /**
      * Load this metric
      *
      * @return void
      **/
-    public function reload() {
+    public function reload()
+    {
         $this->_value = 0.15;
     }
                 

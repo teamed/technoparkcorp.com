@@ -23,16 +23,18 @@
  * 
  * @package Artifacts
  */
-class Metric_Requirements_UseCases_Total extends Metric_Abstract {
+class Metric_Artifacts_Requirements_UseCases_Total extends Metric_Abstract
+{
 
     /**
      * Load this metric
      *
      * @return void
      **/
-    public function reload() {
+    public function reload()
+    {
         $this->_value = count($this->_project->deliverables->useCases);
-        $this->_default = round($this->_project->metrics['requirements/functional/total/level/first']->target / 10);
+        $this->_default = round($this->_project->metrics['artifacts/requirements/functional/total/level/first']->target / 10);
     }
         
 }

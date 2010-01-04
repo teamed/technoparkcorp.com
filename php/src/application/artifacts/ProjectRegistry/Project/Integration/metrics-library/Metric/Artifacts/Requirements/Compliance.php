@@ -24,7 +24,7 @@
  * @see http://fazend.com/a/2009-12-WikiNotation.html
  * @package Artifacts
  */
-class Metric_Requirements_Compliance extends Metric_Abstract 
+class Metric_Artifacts_Requirements_Compliance extends Metric_Abstract 
 {
 
     /**
@@ -62,7 +62,7 @@ class Metric_Requirements_Compliance extends Metric_Abstract
                 $compliance[$type] = array();
             foreach ($this->_project->deliverables->$type as $requirement) {
                 $compliance[$type][$requirement->name] = 
-                    $this->_project->metrics['requirements/compliance/' . $requirement->name]->value;
+                    $this->_project->metrics['artifacts/requirements/compliance/' . $requirement->name]->value;
             }
         }
         

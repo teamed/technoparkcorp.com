@@ -74,6 +74,17 @@ abstract class Metric_Abstract
     /**
      * List of patterns
      *
+     * Associative array where keys are REGEX patterns and values are
+     * coma-separated lists of variables to be assigned from REGEX found
+     * places. For example:
+     *
+     * <code>
+     *  '/codes/(\d{4})/(\w{4})' => 'digits, letters'
+     * </code>
+     *
+     * In this example, inside reload() you will be able to access vars
+     * by means of $this->_getOption('digits') or $this->_getOption('letters').
+     *
      * @var array
      */
     protected $_patterns;
@@ -142,7 +153,6 @@ abstract class Metric_Abstract
      **/
     public final function __get($name)
     {
-        
         switch ($name) {
             case 'name':
                 return $this->_name;
@@ -190,7 +200,8 @@ abstract class Metric_Abstract
      * @param integer Value to save
      * @return void
      **/
-    public final function __set($name, $value) {
+    public final function __set($name, $value)
+    {
         validate()->numeric($value, "You can only save NUMERIC values to metrics");
         
         switch ($name) {
@@ -208,7 +219,8 @@ abstract class Metric_Abstract
      * @param string Regex pattern
      * @return boolean
      **/
-    public final function isMatched($pattern) {
+    public final function isMatched($pattern)
+    {
         if (!isset($this->_patterns))
             return false;
         foreach (array_keys($this->_patterns) as $regex)
@@ -223,7 +235,8 @@ abstract class Metric_Abstract
      * @param string Regex pattern
      * @return Metric_Abstract
      **/
-    public final function cloneByPattern($pattern) {
+    public final function cloneByPattern($pattern)
+    {
         validate()->true(isset($this->_patterns));
         
         foreach ($this->_patterns as $regex=>$opts) {
@@ -253,7 +266,8 @@ abstract class Metric_Abstract
      * @param string Name of option
      * @return mixed|null
      **/
-    protected final function _getOption($name) {
+    protected final function _getOption($name)
+    {
         if (isset($this->_options[$name]))
             return $this->_options[$name];
         return null;
@@ -264,7 +278,8 @@ abstract class Metric_Abstract
      *
      * @return theWorkPackage|null The work package to achieve this metric target or null if not necessary to achieve
      **/
-    public function getWorkPackage() {
+    public function getWorkPackage()
+    {
         // you should override this method, if necessary
         return null;
     }
@@ -274,7 +289,8 @@ abstract class Metric_Abstract
      *
      * @return void
      **/
-    public function split(theActivities $list) {
+    public function split(theActivities $list)
+    {
         $wp = $this->_project->wbs[$this->_name];
         $activity = theActivity::factory($this->_project->activityList->activities, $this->_name, '1')
             ->setSow($wp->title)
@@ -290,7 +306,8 @@ abstract class Metric_Abstract
      *
      * @return void
      **/
-    protected function _split(Slice_Plugin_Abstract $slice) {
+    protected function _split(Slice_Plugin_Abstract $slice)
+    {
     }
     
     /**
@@ -300,7 +317,8 @@ abstract class Metric_Abstract
      * @param string Title of work package
      * @return theWorkPackage
      **/
-    protected final function _makeWp($cost, $title) {
+    protected final function _makeWp($cost, $title)
+    {
         if (!($cost instanceof Model_Cost))
             $cost = new Model_Cost($cost);
         return new theWorkPackage($this->_name, $cost, $title);
@@ -311,7 +329,8 @@ abstract class Metric_Abstract
      *
      * @return void
      **/
-    protected function _pingPattern($pattern) {
+    protected function _pingPattern($pattern)
+    {
         $this->_project->metrics[$this->_name . '/' . $pattern];
     }
         
