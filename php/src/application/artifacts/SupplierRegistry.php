@@ -123,6 +123,9 @@ class theSupplierRegistry extends Model_Artifact_Bag
             
             $asset->deriveByEmail($email, $supplier);
             $suppliers[$email] = $supplier;
+            
+            // make sure the registry is dirty now and will be saved to POS
+            $this->ps()->setDirty();
         }
 
         return $suppliers[$email];
