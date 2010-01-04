@@ -66,6 +66,9 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
      **/
     public function reload() 
     {
+        // remove all items from the array
+        $this->ps()->cleanArray();
+
         // here we have all project metrics
         $path = dirname(__FILE__) . '/metrics-library';        
 
