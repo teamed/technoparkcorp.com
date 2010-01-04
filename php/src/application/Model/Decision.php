@@ -161,7 +161,7 @@ abstract class Model_Decision implements Model_Decision_Interface
         FaZend_Log::getInstance()->addWriter('Memory', 'decision');
 
         try {
-            logg('Starting decision: ' . $this->_file);
+            logg('Starting decision (rev' . FaZend_Revision::get() . '): ' . $this->_file);
             $decision = $this->_make();
             logg('Decision execution finished (' . pathinfo($this->_file, PATHINFO_FILENAME) . ')');
         } catch (Exception $e) {

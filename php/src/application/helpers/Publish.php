@@ -125,7 +125,10 @@ class Helper_Publish extends FaZend_View_Helper
             ($privileges == 'rw' ? '<sup title="you can read/write" style="cursor:pointer;"><small>rw</small></sup>: ' : false) . 
             implode('&#32;&middot;&#32;', $links) . 
             '<span style="color:gray;margin-left:20px;font-size:0.8em;">' .
-                'v' . $this->_doc->ps()->version . ', updated ' . $age . ' ago</span>' .
+                'v' . $this->_doc->ps()->version . ', updated ' . $age . ' ago' . 
+                ($this->_doc instanceof Model_Artifact_Passive ? 
+                    ($this->_doc->isLoaded() ? false : ' (requires reloading)') : false) . 
+                '</span>' .
             '</div>' . 
             (isset($pageHtml) ? "<div class='publisher'>" . $pageHtml . '</div>' : false);
     }
