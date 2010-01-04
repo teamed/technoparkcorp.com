@@ -22,52 +22,33 @@
  * Collection of suppliers
  *
  * @package Artifacts
+ * @property _suppliers Holds a collection of suppliers
  */
 class theSupplierRegistry extends Model_Artifact_Bag 
     implements ArrayAccess, Iterator, Countable, Model_Artifact_Passive, Model_Artifact_Interface
 {
 
     /**
-     * List of suppliers emails
+     * The list is loaded? It is always loaded, meaning that only explicit reloading may reload it
      *
-     * @var ArrayIterator
-     **/
-    protected $_suppliers;
-
-    /**
-     * Construct the class
-     *
-     * @return void
-     */
-    public function init()
-    {
-        parent::init();
-
-        // we don't need to keep versions in this artifact
-        $this->ps()->setIgnoreVersions();
-    }
-
-    /**
-     * The list is loaded?
-     *
-     * @return boolean
+     * @return true
      **/
     public function isLoaded() 
     {
-        return count($this) > 0;
+        return true;
     }
 
     /**
      * Reload list of suppliers
      *
-     * @return array
+     * @return void
      **/
     public function reload() 
     {
-        $this->_suppliers = new ArrayIterator();
+        $suppliers = $this->_getSuppliers();
         $asset = Model_Project::findByName('PMO')->getAsset(Model_Project::ASSET_SUPPLIERS);
         foreach ($asset->retrieveAll() as $email)
-            $this->_suppliers[$email] = false;
+            $suppliers[$email] = false;
     }
     
     /**
@@ -204,11 +185,11 @@ class theSupplierRegistry extends Model_Artifact_Bag
      */
     public function next() 
     {
-        $this->_getSuppliers()->next();
-        $key = $this->key();
-        if ($key)
-            return $this->offsetGet($key);
-        return false;
+        // maybe it's the end
+        if (!$this->_getSuppliers()->next())
+            return false;
+            
+        return $this->offsetGet($this->key());
     }
     
     /**

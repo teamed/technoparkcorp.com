@@ -19,11 +19,27 @@
  */
 
 /**
- * One artifact, which is a bag
+ * One artifact, which is a bag -- versions are ignored
+ *
+ *
  *
  * @package Artifacts
  * @todo Should extend FaZend_POS_Bag
  */
-abstract class Model_Artifact_Bag extends Model_Artifact {
+abstract class Model_Artifact_Bag extends Model_Artifact
+{
+
+    /**
+     * Construct the class
+     *
+     * @return void
+     */
+    public function init()
+    {
+        parent::init();
+
+        // we don't need to keep versions in this artifact
+        $this->ps()->setIgnoreVersions();
+    }
 
 }
