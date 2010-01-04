@@ -23,7 +23,7 @@
  *
  * @package Model
  */
-class Model_Issue_Changelog_Field_Duration extends Model_Issue_Changelog_Field_Abstract {
+class Model_Asset_Defects_Issue_Changelog_Field_Duration extends Model_Asset_Defects_Issue_Changelog_Field_Abstract {
 
     /**
      * Validate new value

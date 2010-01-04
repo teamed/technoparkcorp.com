@@ -23,7 +23,7 @@
  *
  * @package Model
  */
-abstract class Model_Issue_Abstract 
+abstract class Model_Asset_Defects_Issue_Abstract 
 {
 
     /**
@@ -43,7 +43,7 @@ abstract class Model_Issue_Abstract
     /**
      * Changelog
      *
-     * @var Model_Issue_Changelog_Changelog
+     * @var Model_Asset_Defects_Issue_Changelog_Changelog
      */
     protected $_changelog;
 
@@ -98,7 +98,7 @@ abstract class Model_Issue_Abstract
         if (property_exists($this, $var))
             return $this->$var;
         
-        FaZend_Exception::raise('Model_Issue_PropertyOrMethodNotFound', 
+        FaZend_Exception::raise('Model_Asset_Defects_Issue_PropertyOrMethodNotFound', 
             "Can't find what is '$name'");        
     }
 
@@ -136,7 +136,7 @@ abstract class Model_Issue_Abstract
      **/
     public function isClosed() 
     {
-        return ($this->changelog->get('status')->getValue() != Model_Issue_Changelog_Field_Status::OPEN);
+        return ($this->changelog->get('status')->getValue() != Model_Asset_Defects_Issue_Changelog_Field_Status::OPEN);
     }
 
     /**
@@ -176,14 +176,14 @@ abstract class Model_Issue_Abstract
     /**
      * Get changelog for this issue
      *
-     * @return Model_Issue_Changelog_Changelog
+     * @return Model_Asset_Defects_Issue_Changelog_Changelog
      **/
     protected function _getChangelog() 
     {
         if (isset($this->_changelog))
             return $this->_changelog;
             
-        $this->_changelog = new Model_Issue_Changelog_Changelog();
+        $this->_changelog = new Model_Asset_Defects_Issue_Changelog_Changelog();
         
         // load it with real-life data from tracker
         if ($this->exists())

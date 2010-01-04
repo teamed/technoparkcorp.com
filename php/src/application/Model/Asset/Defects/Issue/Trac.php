@@ -23,7 +23,7 @@
  *
  * @package Model
  */
-class Model_Issue_Trac extends Model_Issue_Abstract 
+class Model_Asset_Defects_Issue_Trac extends Model_Asset_Defects_Issue_Abstract 
 {
 
     /**
@@ -208,10 +208,10 @@ class Model_Issue_Trac extends Model_Issue_Abstract
             case 'resolution':
                 switch ($value) {
                     case 'fixed':
-                        $this->_resolutionCache = Model_Issue_Changelog_Field_Status::FIXED;
+                        $this->_resolutionCache = Model_Asset_Defects_Issue_Changelog_Field_Status::FIXED;
                         break;
                     default: 
-                        $this->_resolutionCache = Model_Issue_Changelog_Field_Status::INVALID;
+                        $this->_resolutionCache = Model_Asset_Defects_Issue_Changelog_Field_Status::INVALID;
                         break;
                 }
                 break;
@@ -222,7 +222,7 @@ class Model_Issue_Trac extends Model_Issue_Abstract
                         $value = $this->resolutionCache;
                         break;
                     default: 
-                        $value = Model_Issue_Changelog_Field_Status::OPEN;
+                        $value = Model_Asset_Defects_Issue_Changelog_Field_Status::OPEN;
                         break;
                 }
                 break;
@@ -231,10 +231,10 @@ class Model_Issue_Trac extends Model_Issue_Abstract
             case 'type':
                 switch ($value) {
                     case 'task':
-                        $value = Model_Issue_Changelog_Field_Type::TASK;
+                        $value = Model_Asset_Defects_Issue_Changelog_Field_Type::TASK;
                         break;
                     default: 
-                        $value = Model_Issue_Changelog_Field_Type::DEFECT;
+                        $value = Model_Asset_Defects_Issue_Changelog_Field_Type::DEFECT;
                         break;
                 }
                 break;
@@ -243,16 +243,16 @@ class Model_Issue_Trac extends Model_Issue_Abstract
             case 'priority':
                 switch ($value) {
                     case 'minor':
-                        $value = Model_Issue_Changelog_Field_Priority::MINOR;
+                        $value = Model_Asset_Defects_Issue_Changelog_Field_Priority::MINOR;
                         break;
                     case 'critical':
-                        $value = Model_Issue_Changelog_Field_Priority::CRITICAL;
+                        $value = Model_Asset_Defects_Issue_Changelog_Field_Priority::CRITICAL;
                         break;
                     case 'blocker':
-                        $value = Model_Issue_Changelog_Field_Priority::BLOCKER;
+                        $value = Model_Asset_Defects_Issue_Changelog_Field_Priority::BLOCKER;
                         break;
                     default: 
-                        $value = Model_Issue_Changelog_Field_Priority::MAJOR;
+                        $value = Model_Asset_Defects_Issue_Changelog_Field_Priority::MAJOR;
                         break;
                 }
                 break;
@@ -279,7 +279,7 @@ class Model_Issue_Trac extends Model_Issue_Abstract
                 break;
 
             default:
-                FaZend_Exception::raise('Model_Issue_Trac_UnknownField',
+                FaZend_Exception::raise('Model_Asset_Defects_Issue_Trac_UnknownField',
                     "Unknown field came from Trac: '{$name}', value: '{$value}'");
         
         }
@@ -309,7 +309,7 @@ class Model_Issue_Trac extends Model_Issue_Abstract
 
                 case 'type':
                     switch ($value) {
-                        case Model_Issue_Changelog_Field_Type::TASK:
+                        case Model_Asset_Defects_Issue_Changelog_Field_Type::TASK:
                             $value = 'task';
                             break;
                         default: 
@@ -320,15 +320,15 @@ class Model_Issue_Trac extends Model_Issue_Abstract
 
                 case 'status':
                     switch ($value) {
-                        case Model_Issue_Changelog_Field_Status::OPEN:
+                        case Model_Asset_Defects_Issue_Changelog_Field_Status::OPEN:
                             $value = 'reopened'; // we open it again
                             $pairs['resolution'] = ''; // delete the resolution
                             break;
-                        case Model_Issue_Changelog_Field_Status::INVALID:
+                        case Model_Asset_Defects_Issue_Changelog_Field_Status::INVALID:
                             $pairs['resolution'] = 'invalid';
                             $value = 'closed';
                             break;
-                        case Model_Issue_Changelog_Field_Status::FIXED:
+                        case Model_Asset_Defects_Issue_Changelog_Field_Status::FIXED:
                             $pairs['resolution'] = 'fixed';
                             $value = 'closed';
                             break;
@@ -340,13 +340,13 @@ class Model_Issue_Trac extends Model_Issue_Abstract
 
                 case 'priority':
                     switch ($value) {
-                        case Model_Issue_Changelog_Field_Priority::MINOR:
+                        case Model_Asset_Defects_Issue_Changelog_Field_Priority::MINOR:
                             $value = 'minor';
                             break;
-                        case Model_Issue_Changelog_Field_Priority::CRITICAL:
+                        case Model_Asset_Defects_Issue_Changelog_Field_Priority::CRITICAL:
                             $value = 'critical';
                             break;
-                        case Model_Issue_Changelog_Field_Priority::BLOCKER:
+                        case Model_Asset_Defects_Issue_Changelog_Field_Priority::BLOCKER:
                             $value = 'blocker';
                             break;
                         default: 
@@ -377,7 +377,7 @@ class Model_Issue_Trac extends Model_Issue_Abstract
                     break;
 
                 default:
-                    FaZend_Exception::raise('Model_Issue_Trac_UnknownField',
+                    FaZend_Exception::raise('Model_Asset_Defects_Issue_Trac_UnknownField',
                         "Unknown field going into Trac: '{$name}', value: '{$value}'");
 
             }

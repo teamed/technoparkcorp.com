@@ -23,7 +23,7 @@
  *
  * @package Model
  */
-abstract class Model_Issue_Changelog_Field_Abstract {
+abstract class Model_Asset_Defects_Issue_Changelog_Field_Abstract {
 
     /**
      * List of values
@@ -60,7 +60,7 @@ abstract class Model_Issue_Changelog_Field_Abstract {
      **/
     public function setValue($value) {
         if (!$this->_validate($value))
-            FaZend_Exception::raise('Model_Issue_Changelog_Field_CantChange',
+            FaZend_Exception::raise('Model_Asset_Defects_Issue_Changelog_Field_CantChange',
                 "You can't change value of type " . get_class($this));
         $this->_addChange($value, null, null);
     }

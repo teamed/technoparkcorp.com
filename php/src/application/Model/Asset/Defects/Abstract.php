@@ -39,15 +39,14 @@ abstract class Model_Asset_Defects_Abstract extends Model_Asset_Abstract
     abstract public function findById($id);
     
     /**
-     * Get one ticket by ID
+     * Retrieve a list of tickets that satisfy the conditions
      *
-     * Returns an object that has the following methods:
-     *  - getId(): returns unique ID of the ticket
-     *  - getAttributes(): returns an array of attributes
-     *
-     * @param integer|string Unique number of the ticket
-     * @return mixed
+     * @param array Associative array of conditiions, where key is attribute and
+     *  value is a required value of the given attribute.
+     * @param array The same, but negative
+     * @return array
+     * @see findById() Tickets returned are objects, without types
      **/
-    abstract public function findById($id);
+    abstract public function retrieveBy(array $conditions = array(), array $negative = array());
     
 }

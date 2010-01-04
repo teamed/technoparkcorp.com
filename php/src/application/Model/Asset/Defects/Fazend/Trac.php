@@ -41,7 +41,7 @@ class Model_Asset_Defects_Fazend_Trac extends Model_Asset_Defects_Abstract
      **/
     public function findById($id) 
     {
-        return FaZend_Flyweight::factory('Model_Issue_Trac', $this, $id);
+        return FaZend_Flyweight::factory('Model_Asset_Defects_Issue_Trac', $this, $id);
     }
     
     /**
@@ -52,6 +52,26 @@ class Model_Asset_Defects_Fazend_Trac extends Model_Asset_Defects_Abstract
     public function getXmlProxy()
     {
         return $this->_trac->getXmlProxy();
+    }
+    
+    /**
+     * Retrieve a list of tickets that satisfy the conditions
+     *
+     * @param array Associative array of conditiions, where key is attribute and
+     *  value is a required value of the given attribute.
+     * @param array The same, but negative
+     * @return array
+     **/
+    public function retrieveBy(array $conditions = array(), array $negative = array())
+    {
+        $lemmas = array();
+        foreach (array('=' => $conditions, '!=' => $negative) as $sign=>$list) {
+            foreach ($list as $attrib=>$value) {
+                validate()->alnum($attrib, 'Attributes should be alnum only');
+                $lemmas[] = $attrib . $sign . "'" . addslashes($value) . "'";
+            }
+        }
+        return $this->_trac->query(implode('&', $lemmas));
     }
     
     /**

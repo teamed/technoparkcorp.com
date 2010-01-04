@@ -23,7 +23,7 @@
  *
  * @package Model
  */
-class Model_Issue_Changelog_Field_Status extends Model_Issue_Changelog_Field_Abstract {
+class Model_Asset_Defects_Issue_Changelog_Field_Status extends Model_Asset_Defects_Issue_Changelog_Field_Abstract {
 
     const OPEN = 1;
     const FIXED = 2;

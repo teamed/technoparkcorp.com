@@ -23,12 +23,12 @@
  *
  * @package Model
  */
-class Model_Issue_Changelog_Changelog {
+class Model_Asset_Defects_Issue_Changelog_Changelog {
 
     /**
      * List of fields
      *
-     * @var Model_Issue_Changelog_Field[]
+     * @var Model_Asset_Defects_Issue_Changelog_Field[]
      */
     protected $_fields = array();
 
@@ -38,7 +38,7 @@ class Model_Issue_Changelog_Changelog {
      * @return void
      **/
     public function __construct() {
-        foreach (Model_Issue_Changelog_Field_Abstract::getAllTypes() as $type)
+        foreach (Model_Asset_Defects_Issue_Changelog_Field_Abstract::getAllTypes() as $type)
             $this->_fields[$type] = false;
     }
     
@@ -60,11 +60,11 @@ class Model_Issue_Changelog_Changelog {
      **/
     public function get($name) {
         if (!$this->allowsField($name))
-            FaZend_Exception::raise('Model_Issue_Changelog_FieldNotFound',
+            FaZend_Exception::raise('Model_Asset_Defects_Issue_Changelog_FieldNotFound',
                 "There is no such field in changelog like '{$name}'");
                 
         if (!$this->_fields[$name]) {
-            $className = 'Model_Issue_Changelog_Field_' . ucfirst($name);
+            $className = 'Model_Asset_Defects_Issue_Changelog_Field_' . ucfirst($name);
             $this->_fields[$name] = new $className();
         }
         
