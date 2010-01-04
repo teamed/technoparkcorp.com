@@ -101,6 +101,8 @@ class theStatement extends Zend_Db_Table_Row implements ArrayAccess, Iterator, C
             ->set('toName', $this->supplier)
             ->set('fromEmail', 'finance@tpc2.com')
             ->set('fromName', 'TechnoPark Corp.')
+            ->set('ccEmail', 'finance@tpc2.com')
+            ->set('ccName', 'TechnoPark Corp.')
             ->send();
         logg("Statement sent to " . $this->supplier . ' for ' . $this->balance);
     }
