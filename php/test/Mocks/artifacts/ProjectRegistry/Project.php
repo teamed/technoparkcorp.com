@@ -27,17 +27,6 @@ class Mocks_theProject extends theProject
 {
 
     /**
-     * Initialize it
-     *
-     * @return void
-     **/
-    public function init() 
-    {
-        parent::init();
-        $this->name = Mocks_Model_Project::NAME;
-    }
-
-    /**
      * Create test project on fly
      * 
      * @return Model_Project
