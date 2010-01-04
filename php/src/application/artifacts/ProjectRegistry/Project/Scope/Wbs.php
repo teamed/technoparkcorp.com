@@ -33,9 +33,8 @@ class theWbs extends Model_Artifact_Bag implements Model_Artifact_Passive
      **/
     public function reload() 
     {
-        // clear all existing WPs
-        foreach ($this as $key=>$metric)
-            unset($this[$key]);
+        // remove all items from the array
+        $this->ps()->cleanArray();
         
         // add new from metrics
         foreach ($this->ps()->parent->metrics as $metric)
