@@ -27,11 +27,15 @@ class Mocks_theProject extends theProject
 {
 
     /**
-     * Name
+     * Initialize it
      *
-     * @var string
-     */
-    public $name = Mocks_Model_Project::NAME;
+     * @return void
+     **/
+    public function init() 
+    {
+        parent::init();
+        $this->name = Mocks_Model_Project::NAME;
+    }
 
     /**
      * Create test project on fly
