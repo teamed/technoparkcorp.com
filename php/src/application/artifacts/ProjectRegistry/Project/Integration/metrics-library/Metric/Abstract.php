@@ -161,9 +161,10 @@ abstract class Metric_Abstract
                 return Model_Pages_Encoder::encode($this->_name);
 
             case 'value':
-                if (!isset($this->_value)) {
+                if (!$this->isLoaded()) {
                     FaZend_Exception::raise('MetricReloadingException', 
-                        'Metric ' . get_class($this) . ' is not reloaded by reload(), why?');
+                        'Metric ' . get_class($this) . 
+                        '[' . $this->name . '] is not reloaded by reload(), why?');
                 }
                 return $this->_value;
                 

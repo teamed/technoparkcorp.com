@@ -22,6 +22,7 @@
  * Project stakeholder
  *
  * @package Artifacts
+ * @see theStaffAssignments
  */
 class theStakeholder implements Model_Artifact_Stateless
 {

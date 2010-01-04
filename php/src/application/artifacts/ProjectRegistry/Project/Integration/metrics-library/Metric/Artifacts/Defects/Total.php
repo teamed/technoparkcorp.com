@@ -48,9 +48,8 @@ class Metric_Artifacts_Defects_Total extends Metric_Abstract
      **/
     public function reload()
     {
-        foreach ($this->_patterns as $pattern) {
-            if (!preg_match('/^by\w+$/', $pattern))
-                continue;
+        // go to the metric required
+        foreach (new RegexIterator(new ArrayIterator($this->_patterns), '/^by\w+$/') as $pattern) {
             if (is_null($this->_getOption($pattern)))
                 continue;
 
@@ -64,6 +63,149 @@ class Metric_Artifacts_Defects_Total extends Metric_Abstract
         
         $tickets = $this->_project->fzProject()->getAsset(Model_Project::ASSET_DEFECTS)->retrieveBy();
         $this->_value = count($tickets);
+        
+        // load all kid metrics
+        foreach (new RegexIterator(new ArrayIterator($this->_patterns), '/^by\w+$/') as $pattern) {
+            $method = '_ping' . ucfirst($pattern);
+            if (!method_exists($this, $method))
+                FaZend_Exception::raise('Metric_Artifact_Defects_Total_InvalidClass',
+                    "Method '$method' is not implemented, why?");
+            $this->$method();
+        }
+    }
+    
+    /**
+     * Ping all patterns by all possible reporters
+     *
+     * @return void
+     **/
+    protected function _pingByReporter() 
+    {
+        foreach ($this->_project->staffAssignments as $stakeholder)
+            $this->_pingPattern('byReporter/' . $stakeholder->email);
+    }
+        
+    /**
+     * Ping all patterns by all possible defect owners
+     *
+     * @return void
+     **/
+    protected function _pingByOwner() 
+    {
+        foreach ($this->_project->staffAssignments as $stakeholder)
+            $this->_pingPattern('byOwner/' . $stakeholder->email);
+    }
+        
+    /**
+     * Ping all patterns by all possible ticket severities
+     *
+     * @return void
+     **/
+    protected function _pingBySeverity() 
+    {
+        // todo
+    }
+        
+    /**
+     * Ping all patterns by all possible ticket severities
+     *
+     * @return void
+     **/
+    protected function _pingByStatus() 
+    {
+        // todo
+    }
+        
+    /**
+     * Ping all patterns by all possible ticket severities
+     *
+     * @return void
+     **/
+    protected function _pingByMilestone() 
+    {
+        // todo
+    }
+        
+    /**
+     * Ping all patterns by all possible components
+     *
+     * @return void
+     **/
+    protected function _pingByComponent() 
+    {
+        // todo
+    }
+        
+    /**
+     * Reload the metric by the given reporter
+     *
+     * @param string Reporter's email
+     * @return void
+     **/
+    protected function _reloadByReporter($reporter) 
+    {
+        // todo
+        $this->_value = 1;
+    }
+        
+    /**
+     * Reload the metric by the given owner
+     *
+     * @param string Owner's email
+     * @return void
+     **/
+    protected function _reloadByOwner($owner) 
+    {
+        // todo
+        $this->_value = 1;
+    }
+        
+    /**
+     * Reload the metric by the given component
+     *
+     * @param string Name of the component
+     * @return void
+     **/
+    protected function _reloadByComponent($component) 
+    {
+        // todo
+        $this->_value = 1;
+    }
+        
+    /**
+     * Reload the metric by the given milestone
+     *
+     * @param string Name of milestone
+     * @return void
+     **/
+    protected function _reloadByMilestone($milestone) 
+    {
+        // todo
+        $this->_value = 1;
+    }
+        
+    /**
+     * Reload the metric by the given severity
+     *
+     * @param string Name of severity
+     * @return void
+     **/
+    protected function _reloadBySeverity($severity) 
+    {
+        // todo
+        $this->_value = 1;
+    }
+        
+    /**
+     * Reload the metric by the given status
+     *
+     * @param string Name of the status
+     * @return void
+     **/
+    protected function _reloadByStatus($status) 
+    {
+        // todo
+        $this->_value = 1;
     }
         
 }
