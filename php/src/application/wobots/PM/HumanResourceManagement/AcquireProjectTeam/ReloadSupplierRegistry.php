@@ -43,6 +43,9 @@ class ReloadSupplierRegistry extends Model_Decision_PM
         // reload it
         $supplierRegistry->reload();
         
+        foreach ($supplierRegistry as $supplier)
+            logg("Supplier {$supplier->email} found: {$supplier->rate}");
+        
         logg('There are ' . count($supplierRegistry) . ' suppliers in the registry, after reloading');
 
         return 'Registry reloaded, now it has ' . count($supplierRegistry) . ' suppliers';
