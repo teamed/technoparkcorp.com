@@ -29,7 +29,24 @@ abstract class Model_Asset_Defects_Abstract extends Model_Asset_Abstract
     /**
      * Get one ticket by ID
      *
-     * @return Model_Issue_Abstract
+     * Returns an object that has the following methods:
+     *  - getId(): returns unique ID of the ticket
+     *  - getAttributes(): returns an array of attributes
+     *
+     * @param integer|string Unique number of the ticket
+     * @return mixed
+     **/
+    abstract public function findById($id);
+    
+    /**
+     * Get one ticket by ID
+     *
+     * Returns an object that has the following methods:
+     *  - getId(): returns unique ID of the ticket
+     *  - getAttributes(): returns an array of attributes
+     *
+     * @param integer|string Unique number of the ticket
+     * @return mixed
      **/
     abstract public function findById($id);
     

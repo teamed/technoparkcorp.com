@@ -36,7 +36,8 @@ class Model_Asset_Defects_Fazend_Trac extends Model_Asset_Defects_Abstract
     /**
      * Get one ticket by ID
      *
-     * @return Model_Issue_Abstract
+     * @return mixed
+     * @see Model_Asset_Defects_Abstract::findById()
      **/
     public function findById($id) 
     {
@@ -48,7 +49,8 @@ class Model_Asset_Defects_Fazend_Trac extends Model_Asset_Defects_Abstract
      *
      * @return ...
      **/
-    public function getXmlProxy() {
+    public function getXmlProxy()
+    {
         return $this->_trac->getXmlProxy();
     }
     
