@@ -47,6 +47,9 @@ class theActivityList extends Model_Artifact_Bag implements Model_Artifact_Passi
         
         // reload them immediately
         $this->activities->reload();
+        
+        // make this artifact dirty, to save changes from activities
+        $this->ps()->setDirty();
     }
     
 }
