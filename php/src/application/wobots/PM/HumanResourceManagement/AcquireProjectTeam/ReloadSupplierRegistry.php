@@ -22,7 +22,8 @@
  * Reload supplier registry
  *
  * This decision will reload supplier registry, to make it
- * current.
+ * current. It should be performed regularly to make sure PMO
+ * has enough information about suppliers.
  *
  * @package wobots
  */
