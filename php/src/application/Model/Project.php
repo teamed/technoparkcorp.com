@@ -158,7 +158,9 @@ class Model_Project extends Shared_Project
         // create a class according to the information above
         $className = "Model_Asset_{$name}_{$assets[$name]}";
 
-        return new $className($this);
+        $asset = new $className($this);
+        
+        return $asset;
     }
     
 }

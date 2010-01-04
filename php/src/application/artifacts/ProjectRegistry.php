@@ -27,12 +27,37 @@ class theProjectRegistry extends Model_Artifact_Bag implements Model_Artifact_Pa
 {
 
     /**
+     * Extra projects to load
+     *
+     * @var array
+     **/
+    protected static $_extra = array();
+
+    /**
+     * Add extra project to the registry
+     *
+     * The project added by this method will always be in registry,
+     * no matter what we get from FaZend.
+     *
+     * @param string Name of if
+     * @param theProject the Project to add
+     * @return void
+     **/
+    public static function addExtra($name, theProject $project) 
+    {
+        self::$_extra[$name] = $project;
+    }
+
+    /**
      * Load all projects
      * 
      * @return void
      */
     public function reload() 
     {
+        // remove all items from the array
+        $this->ps()->cleanArray();
+        
         foreach (Model_Project::retrieveAll() as $project) {
             // if we DON'T manage this project - skip it
             if (!$project->isManaged())
@@ -41,6 +66,10 @@ class theProjectRegistry extends Model_Artifact_Bag implements Model_Artifact_Pa
             // create new instance and add it to registry
             $this->add($project->name, new theProject());
         }
+        
+        // add extras
+        foreach (self::$_extra as $name=>$project)
+            $this->add($name, $project);
     }
 
     /**

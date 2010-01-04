@@ -103,14 +103,12 @@ class Injector extends FaZend_Test_Injector
         // disable any activities with any LIVE projects
         Model_Project::setWeAreManaging(false);
 
-        // initialize root
-        Model_Artifact::root();
-
-        if (!isset(Model_Artifact::root()->projectRegistry[Mocks_Model_Project::NAME])) {
-            Model_Artifact::root()->projectRegistry->add(Mocks_Model_Project::NAME, new Mocks_theProject());            
-        }
+        // add it to registry
+        theProjectRegistry::addExtra(Mocks_Model_Project::NAME, new Mocks_theProject());
         
-        // make sure it's done
+        // we need this line because we should SAVE our
+        // test project to the POS registry, before any other
+        // tests get access to POS
         FaZend_Pos_Abstract::root()->ps()->saveAll();
     }
 

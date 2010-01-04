@@ -32,6 +32,8 @@ class MetricsTest extends AbstractProjectTest
     public function setUp()
     {
         parent::setUp();
+        
+        // explicitly reload them
         $this->_project->metrics->reload();
     }
 

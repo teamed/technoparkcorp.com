@@ -31,7 +31,7 @@ class Model_Asset_Defects_Fazend_TracTest extends AbstractProjectTest
     public function setUp() 
     {
         parent::setUp();
-        $project = Mocks_Model_Project::getInstance();
+        $project = $this->_project->fzProject();
         $this->_asset = $project->getAsset(Model_Project::ASSET_DEFECTS);
     }
 
