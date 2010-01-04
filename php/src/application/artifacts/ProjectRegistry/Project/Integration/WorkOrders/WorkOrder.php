@@ -28,7 +28,7 @@ class theWorkOrder implements Model_Artifact_Stateless {
     /**
      * Issue responsible for this order
      *
-     * @var Model_Issue_Abstract
+     * @var Model_Asset_Defects_Issue_Abstract
      */
     protected $_issue;
 
@@ -42,7 +42,7 @@ class theWorkOrder implements Model_Artifact_Stateless {
      **/
     public function __construct(theWorkOrders $workOrders, $decision, $id) {
         $this->_project = Model_Project::findByName($project->name);
-        $this->_issue = Model_Issue_Abstract::factory(
+        $this->_issue = Model_Asset_Defects_Issue_Abstract::factory(
             $this->_project->tracker, 
             $project->name, 
             $decision . ':' . $id);

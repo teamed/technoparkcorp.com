@@ -19,35 +19,32 @@
  */
 
 require_once 'FaZend/Test/TestCase.php';
-require_once 'AbstractProjectTest.php';
 
 /**
- * Test metrics management mechanism
+ * Model_Asset_Defects_Fazend_Trac test
  *
  * @package test
  */
-class MetricsTest extends AbstractProjectTest
+class Model_Asset_Defects_Fazend_TracTest extends AbstractProjectTest 
 {
-    
-    public function setUp()
+
+    public function setUp() 
     {
         parent::setUp();
-        $this->_project->metrics->reload();
+        $project = Mocks_Model_Project::getInstance();
+        $this->_asset = $project->getAsset(Model_Project::ASSET_DEFECTS);
     }
 
-    public function testMetricsAreAccessibleInStorage() 
+    public function testFindByIdWorks() 
     {
-        $defects = $this->_project->metrics['artifacts/defects/total']->value;
-        logg($defects . ' defects found');
+        $ticket = $this->_asset->findById(1);
+        $this->assertTrue($ticket->getId() = 1, 'Ticket was not found, why?');
     }
 
-    public function testFullRetrievalOfMetricsWork()
+    public function testRetrieveByWorks() 
     {
-        $list = $this->_project->metrics;
-        logg(count($list) . ' metrics found');
-        
-        foreach ($list as $name=>$metric)
-            logg("Metric [$name]: {$metric->value}, {$metric->default}, {$metric->target}, {$metric->delta}");
+        $tickets = $this->_asset->retrieveBy(array('id'=>1));
+        $this->assertTrue(count($tickets) > 0, 'No ticket were found, why?');
     }
 
 }

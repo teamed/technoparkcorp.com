@@ -42,7 +42,7 @@ class Activity_Plugin_MakeAlive extends Activity_Plugin_Abstract {
             return;
             
         $this->_issue->changelog
-            ->set('type', Model_Issue_Changelog_Field_Type::TASK)
+            ->set('type', Model_Asset_Defects_Issue_Changelog_Field_Type::TASK)
             ->set('summary', $this->_activity->sow)
             ->set('description', $this->_activity->description . "\n\n");
     }

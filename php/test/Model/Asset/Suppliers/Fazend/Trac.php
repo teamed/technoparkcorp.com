@@ -35,7 +35,6 @@ class Model_Asset_Suppliers_Fazend_TracTest extends AbstractProjectTest
         $this->_asset = $project->getAsset(Model_Project::ASSET_SUPPLIERS);
     }
 
-
     public function testRetrieveAllWorks() 
     {
         $emails = $this->_asset->retrieveAll();

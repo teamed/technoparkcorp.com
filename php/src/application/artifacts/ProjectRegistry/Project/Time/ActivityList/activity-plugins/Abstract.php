@@ -36,7 +36,7 @@ abstract class Activity_Plugin_Abstract
     /**
      * Issue
      *
-     * @var Model_Issue_Abstract
+     * @var Model_Asset_Defects_Issue_Abstract
      */
     protected $_issue;
 

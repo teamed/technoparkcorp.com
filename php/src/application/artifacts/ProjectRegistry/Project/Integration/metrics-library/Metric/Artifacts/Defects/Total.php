@@ -62,7 +62,7 @@ class Metric_Artifacts_Defects_Total extends Metric_Abstract
             return $this->$method($this->_getOption($pattern));
         }
         
-        $tickets = $this->_project->getAsset(Model_Asset::ASSET_DEFECTS)->retrieveBy();
+        $tickets = $this->_project->fzProject()->getAsset(Model_Project::ASSET_DEFECTS)->retrieveBy();
         $this->_value = count($tickets);
     }
         
