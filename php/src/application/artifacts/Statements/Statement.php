@@ -20,7 +20,7 @@
 
 
 /**
- * One fin statement
+ * One fin statement, sent to suppliers
  *
  * @package Artifacts
  */
