@@ -71,9 +71,11 @@ class Metric_Artifacts_Requirements_Actors_Total extends Metric_Abstract
                 ->when('[aspects/readiness] > %0.2f', 0.3 * $i++ / $total);
         }
             
-        foreach ($slice->onlyActivities() as $activity) {
-            $activity->criteria
-                ->when('[artifacts/requirements/actors/compliance] > %0.2f', $slice->sumUntil($activity)->divide($slice->sum()));
+        if ($slice->sum()) {
+            foreach ($slice->onlyActivities() as $activity) {
+                $activity->criteria
+                    ->when('[artifacts/requirements/actors/compliance] > %0.2f', $slice->sumUntil($activity)->divide($slice->sum()));
+            }
         }
     }
         
