@@ -201,12 +201,13 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
         // reload it explicitly
         try {
             $this[$name]->reload();
-            logg('New metric attached and reloaded: ' . $name);
-            return true;
         } catch (Exception $e) {
             logg("Metric [{$name}] failed to reloade, won't be attached; " .
                 get_class($e) . ': ' . $e->getMessage());
+            return false;
         }
+        logg('New metric attached and reloaded: ' . $name);
+        return true;
     }
     
     /**
