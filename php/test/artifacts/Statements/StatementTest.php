@@ -70,6 +70,7 @@ class theStatementTest extends FaZend_Test_TestCase
             Mocks_thePayment::make($statement->supplier, -$balance + 50);
         }
             
+        // test its sending
         $statement->sendByEmail();
     }
 
