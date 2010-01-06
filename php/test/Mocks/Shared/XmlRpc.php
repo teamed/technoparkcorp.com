@@ -105,7 +105,7 @@ class Mocks_Shared_XmlRpc
                 break;
                 
             // full list of tickets in test project
-            case empty($query):
+            case $query == Model_Asset_Defects_Fazend_Trac::QUERY_ALL:
                 $list = array(
                     Mocks_Shared_Trac_Ticket::get(false, array()),
                     Mocks_Shared_Trac_Ticket::get(false, array()),

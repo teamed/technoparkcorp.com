@@ -25,6 +25,8 @@
  */
 class Model_Asset_Defects_Fazend_Trac extends Model_Asset_Defects_Abstract 
 {
+    
+    const QUERY_ALL = 'order=priority';
 
     /**
      * Trac from Shared lib
@@ -74,7 +76,7 @@ class Model_Asset_Defects_Fazend_Trac extends Model_Asset_Defects_Abstract
         
         // we should not send empty queries to Trac
         if (!count($lemmas))
-            $lemmas[] = 'order=priority';
+            $lemmas[] = self::QUERY_ALL;
             
         return $this->_trac->query(implode('&', $lemmas));
     }
