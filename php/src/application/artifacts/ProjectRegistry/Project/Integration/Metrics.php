@@ -196,13 +196,15 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
         }
 
         $metric->setName($name);
-        $this->_attachItem($name, $metric, 'setMetrics');
         
-        // reload it explicitly
+        // attach and reload it explicitly
         try {
+            $this->_attachItem($name, $metric, 'setMetrics');
             $this[$name]->reload();
         } catch (Exception $e) {
-            logg("Metric [{$name}] failed to reloade, won't be attached; " .
+            // failure? remove it from collection!
+            unset($this[$name]);
+            logg("Metric [{$name}] failed to reload, won't be attached; " .
                 get_class($e) . ': ' . $e->getMessage());
             return false;
         }
