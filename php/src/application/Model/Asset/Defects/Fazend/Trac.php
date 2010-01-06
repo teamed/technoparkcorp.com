@@ -58,7 +58,7 @@ class Model_Asset_Defects_Fazend_Trac extends Model_Asset_Defects_Abstract
      * Retrieve a list of tickets that satisfy the conditions
      *
      * @param array Associative array of conditiions, where key is attribute and
-     *  value is a required value of the given attribute.
+     *              value is a required value of the given attribute.
      * @param array The same, but negative
      * @return array
      **/

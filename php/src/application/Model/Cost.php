@@ -31,7 +31,8 @@
  *
  * @package Model
  */
-final class Model_Cost {
+final class Model_Cost
+{
 
     /**
      * The value, in cents, in original currency (NOT in USD!)
@@ -53,7 +54,8 @@ final class Model_Cost {
      * @param string Text representation of the cost
      * @return void
      */
-    public function __construct($value = false) {
+    public function __construct($value = false)
+    {
         $this->set($value);
     }
 
@@ -163,10 +165,11 @@ final class Model_Cost {
     /**
      * Divide it
      *
-     * @param integer|Model_Cost Divider
-     * @return $this
+     * @param float|Model_Cost Divider
+     * @return $this|float
      **/
-    public function divide($div) {
+    public function divide($div)
+    {
         if ($div instanceof Model_Cost)
             return $this->_cents / $div->cents;
         $this->_cents /= $div;
