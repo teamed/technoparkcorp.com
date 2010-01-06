@@ -27,6 +27,16 @@ class Mocks_Shared_XmlRpc
 {
 
     /**
+     * Get mocked client
+     *
+     * @return void
+     **/
+    public function getHttpClient() 
+    {
+        return Mocks_Shared_HttpClient::get();
+    }
+
+    /**
      * Get proxy
      *
      * @return object
