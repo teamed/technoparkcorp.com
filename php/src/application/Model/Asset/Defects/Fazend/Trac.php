@@ -71,6 +71,11 @@ class Model_Asset_Defects_Fazend_Trac extends Model_Asset_Defects_Abstract
                 $lemmas[] = $attrib . $sign . "'" . addslashes($value) . "'";
             }
         }
+        
+        // we should not send empty queries to Trac
+        if (!count($lemmas))
+            $lemmas[] = 'order=priority';
+            
         return $this->_trac->query(implode('&', $lemmas));
     }
     
