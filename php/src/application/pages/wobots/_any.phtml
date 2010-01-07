@@ -4,7 +4,8 @@
 
 <?=$this->bar()
     ->addLink('decisions', 'Decisions')
-    ->addLink('clean', 'Clean entire history')
+    ->addLink('clean', _t('Clean entire history (%d)', 
+        count(Model_Decision_History::retrieveByWobot($this->wobot))))
     ?>
 
 <?=$this->table()
