@@ -47,6 +47,7 @@ class ReloadProjectArtifacts extends Model_Decision_PM
             if (!($this->_project->$property instanceof Model_Artifact_Passive))
                 continue;
                 
+            logg("Reloading of $property...");
             $this->_project->$property->reload();
             logg("Artifact reloaded: $property");
             $reloaded[] = $property;
