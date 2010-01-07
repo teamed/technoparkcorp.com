@@ -48,8 +48,13 @@ class DecomposeWorkPackages extends Model_Decision_PM
         }
 
         logg('There are ' . count($this->_project->wbs) . ' work packages');
+        logg('There are ' . count($this->_project->activityList->activities) . 
+            ' activities in the Activity List');
 
+        logg('We are reloading the Activity List...');
         $this->_project->activityList->reload();
+        logg('The Activity List now has ' . 
+            count($this->_project->activityList->activities) . ' activities');
 
         return count($this->_project->wbs) . ' WPs were decomposed to ' . 
             count($this->_project->activityList->activities) . ' activities';
