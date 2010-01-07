@@ -94,7 +94,8 @@ class theActivities implements ArrayAccess, Iterator, Countable, Model_Artifact_
      *
      * @return Slice_Plugin_Simple
      **/
-    public function getSlice() {
+    public function getSlice()
+    {
         require_once dirname(__FILE__) . '/slice-plugins/Abstract.php';
         return Slice_Plugin_Abstract::factory('simple', $this);
     }
@@ -105,7 +106,8 @@ class theActivities implements ArrayAccess, Iterator, Countable, Model_Artifact_
      * @param theWorkPackage Work package to narrow activities to
      * @return Slice_Plugin_Simple
      **/
-    public function getSliceByWp(theWorkPackage $wp) {
+    public function getSliceByWp(theWorkPackage $wp)
+    {
         return $this->getSlice()->setWp($wp);
     }
     
@@ -115,7 +117,8 @@ class theActivities implements ArrayAccess, Iterator, Countable, Model_Artifact_
      * @param string Alnum ID of the activity
      * @return theActivity
      **/
-    public function findById($id) {
+    public function findById($id)
+    {
         return $this->findByName(Model_Pages_Encoder::decode($id));
     }
 
@@ -125,7 +128,8 @@ class theActivities implements ArrayAccess, Iterator, Countable, Model_Artifact_
      * @param string Name of the activity
      * @return theActivity
      **/
-    public function findByName($name) {
+    public function findByName($name)
+    {
         foreach ($this as $activity)
             if ($activity->name == $name)
                 return $activity;
@@ -138,7 +142,8 @@ class theActivities implements ArrayAccess, Iterator, Countable, Model_Artifact_
      * @param theActivity Activity to add
      * @return theActivity
      **/
-    public final function add(theActivity $activity) {
+    public final function add(theActivity $activity)
+    {
         $this[] = $activity;
         return $activity;
     }
@@ -149,7 +154,8 @@ class theActivities implements ArrayAccess, Iterator, Countable, Model_Artifact_
      * @param theActivity Activity to delete
      * @return void
      **/
-    public final function delete(theActivity $toKill) {
+    public final function delete(theActivity $toKill)
+    {
         foreach ($this as $key=>$activity) {
             if ($activity->equalsTo($toKill)) {
                 unset($this[$key]);

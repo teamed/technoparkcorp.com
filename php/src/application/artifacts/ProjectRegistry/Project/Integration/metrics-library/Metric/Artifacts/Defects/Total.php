@@ -48,6 +48,7 @@ class Metric_Artifacts_Defects_Total extends Metric_Abstract
      **/
     public function reload()
     {
+        $this->_value = 1;
         // go to the metric required
         foreach (new RegexIterator(new ArrayIterator($this->_patterns), '/^by\w+$/') as $pattern) {
             if (is_null($this->_getOption($pattern)))
@@ -105,7 +106,8 @@ class Metric_Artifacts_Defects_Total extends Metric_Abstract
      **/
     protected function _pingBySeverity() 
     {
-        // todo
+        foreach ($this->_project->fzProject()->getAsset(Model_Project::ASSET_DEFECTS)->getSeverities() as $severity)
+            $this->_pingPattern('bySeverity/' . $severity);
     }
         
     /**
@@ -115,7 +117,8 @@ class Metric_Artifacts_Defects_Total extends Metric_Abstract
      **/
     protected function _pingByStatus() 
     {
-        // todo
+        foreach ($this->_project->fzProject()->getAsset(Model_Project::ASSET_DEFECTS)->getStatuses() as $status)
+            $this->_pingPattern('byStatus/' . $status);
     }
         
     /**
@@ -125,7 +128,8 @@ class Metric_Artifacts_Defects_Total extends Metric_Abstract
      **/
     protected function _pingByMilestone() 
     {
-        // todo
+        foreach ($this->_project->milestones as $milestone)
+            $this->_pingPattern('byMilestone/' . $milestone->name);
     }
         
     /**
@@ -135,7 +139,7 @@ class Metric_Artifacts_Defects_Total extends Metric_Abstract
      **/
     protected function _pingByComponent() 
     {
-        // todo
+        //
     }
         
     /**

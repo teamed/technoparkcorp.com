@@ -82,6 +82,26 @@ class Model_Asset_Defects_Fazend_Trac extends Model_Asset_Defects_Abstract
     }
     
     /**
+     * Get full list of all known ticket severities
+     *
+     * @return string[]
+     **/
+    public function getSeverities()
+    {
+        return $this->_trac->getSeverities();
+    }
+    
+    /**
+     * Get full list of all known ticket statuses
+     *
+     * @return string[]
+     **/
+    public function getStatuses()
+    {
+        return $this->_trac->getStatuses();
+    }
+    
+    /**
      * Initializer
      *
      * @return void

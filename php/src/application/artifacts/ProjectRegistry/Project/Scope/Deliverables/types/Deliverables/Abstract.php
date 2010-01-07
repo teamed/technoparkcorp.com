@@ -23,7 +23,8 @@
  *
  * @package Artifacts
  */
-abstract class Deliverables_Abstract {
+abstract class Deliverables_Abstract
+{
     
     /**
      * Name of this deliverable
@@ -53,7 +54,8 @@ abstract class Deliverables_Abstract {
      * @param string Text description of it
      * @return void
      */
-    public function __construct($name, $description) {
+    public function __construct($name, $description)
+    {
         $this->_name = $name;
         $this->_description = $description;
     }
@@ -63,7 +65,8 @@ abstract class Deliverables_Abstract {
      *
      * @return string
      **/
-    public function __toString() {
+    public function __toString()
+    {
         return $this->_name;
     }
     
@@ -73,7 +76,8 @@ abstract class Deliverables_Abstract {
      * @param string Name of property to get
      * @return string
      **/
-    public function __get($name) {
+    public function __get($name)
+    {
         $method = '_get' . ucfirst($name);
         if (method_exists($this, $method))
             return $this->$method();
@@ -93,7 +97,8 @@ abstract class Deliverables_Abstract {
      * @param string Value to set
      * @return string
      **/
-    public function __call($method, array $args) {
+    public function __call($method, array $args)
+    {
         if (substr($method, 0, 3) == 'set') {
             $property = '_' . lcfirst(substr($method, 3));
             if (property_exists($this, $property)) {
@@ -117,7 +122,8 @@ abstract class Deliverables_Abstract {
      *
      * @return string
      **/
-    protected function _getType() {
+    protected function _getType()
+    {
         return lcfirst(preg_replace('/^Deliverables_/', '', get_class($this)));
     }
     
@@ -126,7 +132,8 @@ abstract class Deliverables_Abstract {
      *
      * @return string
      **/
-    protected function _getAttributes() {
+    protected function _getAttributes()
+    {
         $reflector = new ReflectionObject($this);
         $data = array();
         foreach ($reflector->getProperties(ReflectionProperty::IS_PROTECTED) as $property) {

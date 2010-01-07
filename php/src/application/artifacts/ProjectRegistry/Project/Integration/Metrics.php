@@ -154,15 +154,20 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
         // if the requirement is not found up to the top-level element
         if (!isset($parent) || !$parent) {
             $exists = $this->getArrayCopy();
-            FaZend_Exception::raise('MetricNotFound', 
-                "Metric '{$name}' not found for parent '{$parentName}', " . count($exists) . ' total in collection: ' . 
-                    cutLongLine(implode(', ', array_keys($exists)), 100));
+            FaZend_Exception::raise(
+                'MetricNotFound', 
+                "Metric '{$name}' not found for parent '{$parentName}', " . 
+                count($exists) . ' total in collection: ' . 
+                cutLongLine(implode(', ', array_keys($exists)), 100)
+            );
         }
 
         $pattern = implode(self::SEPARATOR, array_slice($parts, $i));
         if (!$parent->isMatched($pattern)) {
-            FaZend_Exception::raise('MetricDoesntMatch',
-                "Metric '{$name}' doesn't match pattern '{$pattern}' in metric '{$parent->name}'");
+            FaZend_Exception::raise(
+                'MetricDoesntMatch',
+                "Metric '{$name}' doesn't match pattern '{$pattern}' in metric '{$parent->name}'"
+            );
         }
             
         $this->_attachMetric($name, $parent->cloneByPattern($pattern));
@@ -186,8 +191,10 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
             $className = $this->_nameToClass($name);
 
             if (is_null(self::$_autoloader)) {
-                FaZend_Exception::raise('MetricAutoloaderNotInitialized',
-                    "You should call ::initAutoloader() in your bootstrap");
+                FaZend_Exception::raise(
+                    'MetricAutoloaderNotInitialized',
+                    "You should call ::initAutoloader() in your bootstrap"
+                );
             }
 
             if (!@self::$_autoloader->autoload($className, false))
@@ -204,11 +211,13 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
         } catch (Exception $e) {
             // failure? remove it from collection!
             unset($this[$name]);
-            logg("Metric [{$name}] failed to reload, won't be attached; " .
-                get_class($e) . ': ' . $e->getMessage());
+            logg(
+                "Metric [{$name}] failed to reload, won't be attached; " .
+                get_class($e) . ': ' . $e->getMessage()
+            );
             return false;
         }
-        logg('New metric attached and reloaded: ' . $name);
+        logg("Metric [$name] reloaded: {$metric->value}");
         return true;
     }
     
@@ -221,8 +230,10 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
     protected function _fileToName($fileName) 
     {
         $parts = explode('/', $fileName);
-        validate()->true(array_shift($parts) == 'Metric', 
-            "Metric file name shall start with Metric: '{$fileName}'");
+        validate()->true(
+            array_shift($parts) == 'Metric', 
+            "Metric file name shall start with Metric: '{$fileName}'"
+        );
         foreach ($parts as &$sector)
             $sector = lcfirst($sector);
         return implode(self::SEPARATOR, $parts);

@@ -164,5 +164,15 @@ class Mocks_Shared_XmlRpc
     {
         return Mocks_Shared_Trac_Ticket::get($id);
     }
+    
+    /**
+     * Get full list of elements
+     *
+     * @return string[]
+     **/
+    public function getAll() 
+    {
+        return array('test1', 'test2');
+    }
 
 }

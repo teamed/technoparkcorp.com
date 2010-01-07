@@ -52,19 +52,6 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
     }
     
     /**
-     * Initialize it
-     *
-     * @return void
-     **/
-    public function init() 
-    {
-        parent::init();
-
-        // we don't need to keep versions in this artifact
-        $this->ps()->setIgnoreVersions();
-    }
-    
-    /**
      * Load all deliverables
      *
      * @return void
@@ -74,9 +61,8 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
         // clean traceability links
         $this->traceability->clean(); 
 
-        // clean all existing deliverables
-        foreach ($this as $key=>$metric)
-            unset($this[$key]);
+        // remove all items from the array
+        $this->ps()->cleanArray();
 
         // execute ALL loaders one after another
         $loaders = DeliverablesLoaders_Abstract::retrieveAll($this);
@@ -164,7 +150,7 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
      **/
     public function add(Deliverables_Abstract $deliverable) 
     {
-        $this[] = $deliverable;
+        $this[strval($deliverable)] = $deliverable;
     }
      
     /**
