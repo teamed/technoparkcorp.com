@@ -115,6 +115,9 @@ class Model_Artifact_Passive_Loader {
                 \$attach['artifact'], 
                 \$attach['property']);");
         }
+        
+        // make this artifact dirty, to save changes from activities
+        $this->_class->ps()->setDirty();
     }
 
 }

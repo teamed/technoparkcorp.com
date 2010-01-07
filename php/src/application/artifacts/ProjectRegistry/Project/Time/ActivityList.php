@@ -33,7 +33,7 @@ class theActivityList extends Model_Artifact_Bag implements Model_Artifact_Passi
      */
     public function isLoaded()
     {
-        return isset($this->activities);
+        return $this->_passiveLoader()->isLoaded();
     }
     
     /**
@@ -43,13 +43,24 @@ class theActivityList extends Model_Artifact_Bag implements Model_Artifact_Passi
      */
     public function reload()
     {
-        $this->_attach('activities', new theActivities(), 'setActivityList');
-        
-        // reload them immediately
-        $this->activities->reload();
-        
-        // make this artifact dirty, to save changes from activities
-        $this->ps()->setDirty();
+        $this->_passiveLoader()->reload();
+    }
+    
+    /**
+     * Create class loader
+     *
+     * The method creates a standalone loader, which is responsible
+     * for adding elements to $this. Also this loader knows how to
+     * understand whether $this is loaded now or not.
+     *
+     * @return Model_Artifact_Passive_Loader
+     * @see isLoaded()
+     * @see reload()
+     **/
+    protected function _passiveLoader() 
+    {
+        return Model_Artifact_Passive_Loader::factory($this)
+            ->attach('activities', new theActivities(), 'setActivityList');
     }
     
 }

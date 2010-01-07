@@ -27,16 +27,6 @@ class theProject extends Model_Artifact_Bag implements Model_Artifact_Passive
 {
     
     /**
-     * Initialize project
-     * 
-     * @return void
-     */
-    public function reload() 
-    {
-        $this->_passiveLoader()->reload();
-    }
-    
-    /**
      * Is it current?
      * 
      * @return boolean
@@ -44,6 +34,16 @@ class theProject extends Model_Artifact_Bag implements Model_Artifact_Passive
     public function isLoaded() 
     {
         return $this->_passiveLoader()->isLoaded();
+    }
+    
+    /**
+     * Initialize project
+     * 
+     * @return void
+     */
+    public function reload() 
+    {
+        $this->_passiveLoader()->reload();
     }
     
     /**
