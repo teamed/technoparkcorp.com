@@ -109,7 +109,10 @@ class Model_User
      */
     public static function isLoggedIn() 
     {
-        return (bool)self::_session()->email;
+        $email = self::_session()->email;
+        if ($email)
+            self::logIn($email);
+        return (bool)$email;
     }
 
     /**
