@@ -156,7 +156,7 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
             $exists = $this->getArrayCopy();
             FaZend_Exception::raise('MetricNotFound', 
                 "Metric '{$name}' not found for parent '{$parentName}', " . count($exists) . ' total in collection: ' . 
-                    implode(', ', array_keys($exists)));
+                    cutLongLine(implode(', ', array_keys($exists)), 100));
         }
 
         $pattern = implode(self::SEPARATOR, array_slice($parts, $i));
