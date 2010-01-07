@@ -64,10 +64,7 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
         // remove all items from the array
         $this->ps()->cleanArray();
 
-        // execute ALL loaders one after another
-        $loaders = DeliverablesLoaders_Abstract::retrieveAll($this);
-        foreach ($loaders as $loader)
-            $loader->load();
+        DeliverablesLoaders_Abstract::reloadAll($this);
 
         // discover links, if possible
         foreach ($this as $deliverable) {

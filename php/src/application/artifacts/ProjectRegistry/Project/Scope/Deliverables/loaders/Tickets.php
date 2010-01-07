@@ -36,14 +36,15 @@ class DeliverablesLoaders_Tickets extends DeliverablesLoaders_Abstract
      **/
     public function load() 
     {
-        $asset = $this->_deliverables->ps()->parent->fzProject()
-            ->getAsset(Model_Project::ASSET_DEFECTS);
+        $this->_loadFirst('srs');
+        
+        $project = $this->_deliverables->ps()->parent;
+        $asset = $project->fzProject()->getAsset(Model_Project::ASSET_DEFECTS);
             
         foreach ($asset->retrieveBy() as $id) {
             $ticket = $asset->findById($id);
             
             $changes = $ticket->changelog->get('comment')->getChanges();
-            // bug($changes);
             
             // we're building a list of deliverables mentioned in this ticket
             $mentioned = array();
@@ -61,20 +62,20 @@ class DeliverablesLoaders_Tickets extends DeliverablesLoaders_Abstract
             // make bi-directional links between them
             for ($i = 0; $i<count($mentioned); $i++) {
                 for ($j = $i+1; $j<count($mentioned); $j++) {
-                    $links[] = new theTraceabilityLink(
+                    $project->traceability->add(new theTraceabilityLink(
                         $project->deliverables[$mentioned[$i]],
                         $project->deliverables[$mentioned[$j]],
                         0.05,
                         1,
-                        'description says: ' . $this->_description
-                    );
-                    $links[] = new theTraceabilityLink(
+                        sprintf('mentioned in #%d: %s', $id, $ticket->changelog->get('summary')->getValue())
+                    ));
+                    $project->traceability->add(new theTraceabilityLink(
                         $project->deliverables[$mentioned[$j]],
                         $project->deliverables[$mentioned[$i]],
                         0.05,
                         1,
                         sprintf('mentioned in #%d: %s', $id, $ticket->changelog->get('summary')->getValue())
-                    );
+                    ));
                 }
             }
         }

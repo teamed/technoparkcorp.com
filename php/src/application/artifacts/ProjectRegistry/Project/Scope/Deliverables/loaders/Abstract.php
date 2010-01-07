@@ -39,6 +39,16 @@ abstract class DeliverablesLoaders_Abstract
      * @var Zend_Loader_PluginLoader
      */
     protected static $_loader;
+    
+    /**
+     * List of loaders waiting for loading
+     *
+     * Keys are their names and values are instances of classes. If the 
+     * instance is FALSE it means that it was loaded already.
+     *
+     * @var DeliverablesLoaders_Abstract[]
+     **/
+    protected static $_waiting = array();
      
     /**
      * Create new loader
@@ -96,5 +106,49 @@ abstract class DeliverablesLoaders_Abstract
      * @return void
      **/
     abstract public function load();
+    
+    /**
+     * Reload them all
+     *
+     * @param theDeliverables The holder which has to be filled with new items
+     * @return void
+     **/
+    public static function reloadAll(theDeliverables $deliverables) 
+    {
+        // execute ALL loaders one after another
+        $loaders = self::retrieveAll($deliverables);
+        
+        // mark them all as NOT-loaded yet
+        foreach ($loaders as $loader)
+            self::$_waiting[lcfirst(substr(get_class($loader), strlen('DeliverablesLoaders_')))] = $loader;
+            
+        while (count($load = array_filter(self::$_waiting)) > 0) {
+            foreach ($load as $name=>&$loader) {
+                try {
+                    $loader->load();
+                    self::$_waiting[$name] = false;
+                } catch (RequiresLoaderLoading $e) {
+                    // ignore it and go back again
+                }
+            }
+        }
+
+    }
+    
+    /**
+     * Make sure this loader is loaded before!
+     *
+     * @return void
+     * @throws RequiresLoaderLoading
+     **/
+    protected function _loadFirst($name) 
+    {
+        if (!self::$_waiting[$name])
+            return;
+        FaZend_Exception::raise(
+            'RequiresLoaderLoading', 
+            'DeliverablesLoaders_' . ucfirst($name)
+        );
+    }
     
 }

@@ -91,7 +91,7 @@ class Mocks_Shared_Trac_Ticket extends Shared_Trac_Ticket
                 1 => Model_User::me()->email,
                 2 => $field,
                 3 => false,
-                4 => 'some text about R1, UC1, ActorVisitor and others',
+                4 => 'some text about R1, UC1, ActorUser and others',
             );
         }
         return $changelog;
