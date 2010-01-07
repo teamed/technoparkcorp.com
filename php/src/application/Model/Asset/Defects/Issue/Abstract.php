@@ -59,12 +59,14 @@ abstract class Model_Asset_Defects_Issue_Abstract
      *
      * @param Model_Asset_Defects_Abstract Tracker instance
      * @param string Unique code of the issue
+     * @param integer ID of the ticket
      * @return void
      */
-	public function __construct(Model_Asset_Defects_Abstract $tracker, $code) 
+	public function __construct(Model_Asset_Defects_Abstract $tracker, $code, $id = null) 
 	{
 	    $this->_tracker = $tracker;
-	    $this->_code = $code;
+        $this->_code = $code;
+    	$this->_id = $id;
     }
 
     /**

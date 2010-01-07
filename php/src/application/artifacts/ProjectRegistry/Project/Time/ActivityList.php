@@ -44,6 +44,9 @@ class theActivityList extends Model_Artifact_Bag implements Model_Artifact_Passi
     public function reload()
     {
         $this->_passiveLoader()->reload();
+        
+        // reload them explicitly
+        $this->activities->reload();
     }
     
     /**

@@ -38,7 +38,7 @@ class Model_Asset_Defects_Fazend_TracTest extends AbstractProjectTest
     public function testFindByIdWorks() 
     {
         $ticket = $this->_asset->findById(1);
-        $this->assertTrue($ticket->getId() == 1, 'Ticket was not found, why?');
+        $this->assertTrue($ticket->id == 1, 'Ticket was not found, why?');
     }
 
     public function testRetrieveByWorks() 

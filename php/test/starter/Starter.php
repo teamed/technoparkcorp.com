@@ -49,5 +49,4 @@ class Starter extends FaZend_Test_Starter
         }
     }
         
-
 }

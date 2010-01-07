@@ -26,6 +26,8 @@
 abstract class Deliverables_Abstract
 {
     
+    const REGEX = '/(?:[A-Z][a-z]+){2,}|(?:UC|R|QOS)\d+(?:\.\d+)*/';
+    
     /**
      * Name of this deliverable
      *
@@ -126,7 +128,7 @@ abstract class Deliverables_Abstract
      **/
     public function discoverTraceabilityLinks(theProject $project, array &$links) 
     {
-        if (!preg_match_all('/(?:[A-Z][a-z]+){2,}|(?:UC|R|QOS)\d+(?:\.\d+)*/', $this->_description, $matches))
+        if (!preg_match_all(self::REGEX, $this->_description, $matches))
             return;
             
         foreach ($matches[0] as $match) {

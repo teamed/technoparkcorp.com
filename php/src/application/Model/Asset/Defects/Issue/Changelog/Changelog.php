@@ -23,7 +23,8 @@
  *
  * @package Model
  */
-class Model_Asset_Defects_Issue_Changelog_Changelog {
+class Model_Asset_Defects_Issue_Changelog_Changelog
+{
 
     /**
      * List of fields
@@ -37,7 +38,8 @@ class Model_Asset_Defects_Issue_Changelog_Changelog {
      *
      * @return void
      **/
-    public function __construct() {
+    public function __construct()
+    {
         foreach (Model_Asset_Defects_Issue_Changelog_Field_Abstract::getAllTypes() as $type)
             $this->_fields[$type] = false;
     }
@@ -48,7 +50,8 @@ class Model_Asset_Defects_Issue_Changelog_Changelog {
      * @param string Name of the field
      * @return boolean
      **/
-    public function allowsField($name) {
+    public function allowsField($name)
+    {
         return isset($this->_fields[$name]);
     }
 
@@ -58,7 +61,8 @@ class Model_Asset_Defects_Issue_Changelog_Changelog {
      * @param string Name of field
      * @return mixed
      **/
-    public function get($name) {
+    public function get($name)
+    {
         if (!$this->allowsField($name))
             FaZend_Exception::raise('Model_Asset_Defects_Issue_Changelog_FieldNotFound',
                 "There is no such field in changelog like '{$name}'");
@@ -78,7 +82,8 @@ class Model_Asset_Defects_Issue_Changelog_Changelog {
      * @param mixed Value to set
      * @return $this
      **/
-    public function set($name, $value) {
+    public function set($name, $value)
+    {
         $this->get($name)->setValue($value);
         return $this;
     }
@@ -92,7 +97,8 @@ class Model_Asset_Defects_Issue_Changelog_Changelog {
      * @param integer Date/time when this change happened
      * @return $this
      **/
-    public function load($name, $value, $author, $date) {
+    public function load($name, $value, $author, $date)
+    {
         $this->get($name)->load($value, $author, $date);
         return $this;
     }
@@ -104,7 +110,8 @@ class Model_Asset_Defects_Issue_Changelog_Changelog {
      *
      * @return array
      **/
-    public function whatToSave() {
+    public function whatToSave()
+    {
         $list = array();
         foreach ($this->_fields as $name=>$field) {
             if ($field && $field->wasChanged())

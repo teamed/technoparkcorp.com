@@ -105,6 +105,17 @@ class Injector extends FaZend_Test_Injector
 
         // add it to registry
         theProjectRegistry::addExtra(Mocks_Model_Project::NAME, new Mocks_theProject());
+
+        if (defined('CLI_ENVIRONMENT')) {
+            $project = FaZend_Pos_Abstract::root()->projectRegistry[Mocks_Model_Project::NAME];
+            foreach ($project->ps()->properties as $property) {
+                if (!isset($project->$property))
+                    continue;
+                if (!($project->$property instanceof Model_Artifact_Passive))
+                    continue;
+                $project->$property->reload();
+            }
+        }
         
         // we need this line because we should SAVE our
         // test project to the POS registry, before any other

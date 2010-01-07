@@ -23,7 +23,8 @@
  *
  * @package Model
  */
-abstract class Model_Asset_Defects_Issue_Changelog_Field_Abstract {
+abstract class Model_Asset_Defects_Issue_Changelog_Field_Abstract
+{
 
     /**
      * List of values
@@ -41,7 +42,8 @@ abstract class Model_Asset_Defects_Issue_Changelog_Field_Abstract {
      *
      * @return string[]
      **/
-    public static function getAllTypes() {
+    public static function getAllTypes()
+    {
         $list = array();
         foreach (glob(dirname(__FILE__) . '/*.php') as $file) {
             $type = strtolower(pathinfo($file, PATHINFO_FILENAME));
@@ -58,7 +60,8 @@ abstract class Model_Asset_Defects_Issue_Changelog_Field_Abstract {
      * @param mixed Value to set
      * @return $this
      **/
-    public function setValue($value) {
+    public function setValue($value)
+    {
         if (!$this->_validate($value))
             FaZend_Exception::raise('Model_Asset_Defects_Issue_Changelog_Field_CantChange',
                 "You can't change value of type " . get_class($this));
@@ -73,7 +76,8 @@ abstract class Model_Asset_Defects_Issue_Changelog_Field_Abstract {
      * @param integer Date/time of changes made
      * @return $this
      **/
-    public function load($value, $author, $date) {
+    public function load($value, $author, $date)
+    {
         $this->_validate($value);
         $this->_addChange($value, $author, $date);
     }
@@ -83,7 +87,8 @@ abstract class Model_Asset_Defects_Issue_Changelog_Field_Abstract {
      *
      * @return boolean
      **/
-    public function wasChanged() {
+    public function wasChanged()
+    {
         foreach ($this->_changes as $change)
             if (!$change->date)
                 return true;
@@ -95,7 +100,8 @@ abstract class Model_Asset_Defects_Issue_Changelog_Field_Abstract {
      *
      * @return mixed
      **/
-    public function getValue() {
+    public function getValue()
+    {
         if (!count($this->_changes))
             return null;
 
@@ -107,7 +113,8 @@ abstract class Model_Asset_Defects_Issue_Changelog_Field_Abstract {
      *
      * @return FaZend_StdObject[]
      **/
-    public function getChanges() {
+    public function getChanges()
+    {
         return $this->_changes;
     }
 
@@ -119,7 +126,8 @@ abstract class Model_Asset_Defects_Issue_Changelog_Field_Abstract {
      * @param integer Date/time of changes made
      * @return void
      **/
-    protected function _addChange($value, $author, $date) {
+    protected function _addChange($value, $author, $date)
+    {
         if ($this->getValue() == $value)
             return;
         $this->_changes[] = FaZend_StdObject::create()

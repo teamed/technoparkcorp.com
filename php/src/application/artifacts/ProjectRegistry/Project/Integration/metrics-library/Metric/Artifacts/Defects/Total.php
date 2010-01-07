@@ -49,6 +49,7 @@ class Metric_Artifacts_Defects_Total extends Metric_Abstract
     public function reload()
     {
         $this->_value = 1;
+        
         // go to the metric required
         foreach (new RegexIterator(new ArrayIterator($this->_patterns), '/^by\w+$/') as $pattern) {
             if (is_null($this->_getOption($pattern)))

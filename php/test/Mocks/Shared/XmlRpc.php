@@ -88,7 +88,7 @@ class Mocks_Shared_XmlRpc
     {
         switch (true) {
             // get all tickets about suppliers
-            case $query == Model_Asset_Suppliers_Fazend_Trac::QUERY_ALL:
+            case ($query == Model_Asset_Suppliers_Fazend_Trac::QUERY_ALL):
                 $list = array();
                 for ($i = 0; $i<5; $i++) {
                     $list[] = Mocks_Shared_Trac_Ticket::get(false, array(
@@ -98,8 +98,8 @@ class Mocks_Shared_XmlRpc
                 break;
                     
             // get tickets about one supplier provided
-            case substr($query, 0, strlen(Model_Asset_Suppliers_Fazend_Trac::QUERY_SINGLE)) ==
-                Model_Asset_Suppliers_Fazend_Trac::QUERY_SINGLE:
+            case (substr($query, 0, strlen(Model_Asset_Suppliers_Fazend_Trac::QUERY_SINGLE)) ==
+                Model_Asset_Suppliers_Fazend_Trac::QUERY_SINGLE):
                 
                 $skills = array('PHP', 'jQuery', 'XML', 'Java', 'EJB');
                 $roles = array('Programmer', 'Tester', 'Architect', 'Designer');
@@ -116,13 +116,20 @@ class Mocks_Shared_XmlRpc
                 break;
                 
             // full list of tickets in test project
-            case $query == Model_Asset_Defects_Fazend_Trac::QUERY_ALL:
+            case ($query == Model_Asset_Defects_Fazend_Trac::QUERY_ALL):
                 $list = array(
                     Mocks_Shared_Trac_Ticket::get(false, array()),
                     Mocks_Shared_Trac_Ticket::get(false, array()),
                     );
                 break;
                 
+            // one ticket
+            case preg_match('/^id=\'(\d+)\'$/', $query, $matches):
+                $list = array(
+                    Mocks_Shared_Trac_Ticket::get($matches[1]),
+                    );
+                break;
+
             default:
                 FaZend_Exception::raise('Mocks_Shared_XmlRpc_NotImplemnetedYet',
                     "We can't return anything for your request: '$query'");
@@ -162,7 +169,7 @@ class Mocks_Shared_XmlRpc
      **/
     public function changeLog($id) 
     {
-        return array();
+        return Mocks_Shared_Trac_Ticket::get($id)->getTracChangelog();
     }
 
     /**
@@ -173,7 +180,7 @@ class Mocks_Shared_XmlRpc
      **/
     public function get($id) 
     {
-        return Mocks_Shared_Trac_Ticket::get($id);
+        return Mocks_Shared_Trac_Ticket::get($id)->getTracDetails();
     }
     
     /**

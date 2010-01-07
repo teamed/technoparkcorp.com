@@ -112,7 +112,12 @@ class Model_Asset_Defects_Issue_Trac extends Model_Asset_Defects_Issue_Abstract
         $fields = array();
         $records = array();
         foreach ($log as $record) {
-            $records[] = array($record[2], $record[4], $record[1], $record[0]);
+            $records[] = array(
+                $record[2], // name of field
+                $record[4], // value
+                $record[1], // author
+                $record[0] // date of change
+            );
             $fields[$record[2]] = true;
         }
 

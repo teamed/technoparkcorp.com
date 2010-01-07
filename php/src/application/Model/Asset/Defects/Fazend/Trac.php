@@ -43,13 +43,13 @@ class Model_Asset_Defects_Fazend_Trac extends Model_Asset_Defects_Abstract
      **/
     public function findById($id) 
     {
-        return FaZend_Flyweight::factory('Model_Asset_Defects_Issue_Trac', $this, $id);
+        return FaZend_Flyweight::factory('Model_Asset_Defects_Issue_Trac', $this, false, $id);
     }
     
     /**
      * Get proxy
      *
-     * @return ...
+     * @return mixed
      **/
     public function getXmlProxy()
     {
@@ -78,7 +78,7 @@ class Model_Asset_Defects_Fazend_Trac extends Model_Asset_Defects_Abstract
         if (!count($lemmas))
             $lemmas[] = self::QUERY_ALL;
             
-        return $this->_trac->query(implode('&', $lemmas));
+        return $this->_trac->query(implode('&', $lemmas), false);
     }
     
     /**

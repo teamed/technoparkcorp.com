@@ -41,6 +41,16 @@ class theActivities implements ArrayAccess, Iterator, Countable, Model_Artifact_
     protected $_activities;
 
     /**
+     * Construct the class
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->_activities = new ArrayIterator();
+    }
+
+    /**
      * Set project
      *
      * @return void
@@ -48,7 +58,6 @@ class theActivities implements ArrayAccess, Iterator, Countable, Model_Artifact_
     public function setActivityList(theActivityList $list)
     {
         $this->_project = $list->ps()->parent;
-        $this->_activities = new ArrayIterator();
     }
 
     /**
@@ -62,7 +71,7 @@ class theActivities implements ArrayAccess, Iterator, Countable, Model_Artifact_
         // ask all work packages to add their activities
         foreach ($this->_project->wbs as $wp) {
             $wp->split($this);
-            // logg('WP ' . $wp->code . ' added ' . count($this));
+            //logg('WP ' . $wp->code . ' added ' . count($this));
         }
     }
 

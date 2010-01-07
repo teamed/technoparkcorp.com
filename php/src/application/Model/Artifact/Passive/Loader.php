@@ -102,20 +102,25 @@ class Model_Artifact_Passive_Loader
         
         if (!class_exists($mediator, false)) {
             eval(
-                "class {$mediator} extends {$className} {
-                    public static function load_{$mediator}(\$class) {
+                "class {$mediator} extends {$className}
+                {
+                    public static function load_{$mediator}(\$class)
+                    {
                         \$args = func_get_args();
                         array_shift(\$args);
                         call_user_func_array(array(\$class, '_attach'), \$args);
                     }
-                }");
+                }"
+            );
         }
             
         foreach ($this->_toAttach as $name=>$attach) {
-            eval("{$mediator}::load_{$mediator}(\$this->_class, 
+            eval(
+                "{$mediator}::load_{$mediator}(\$this->_class, 
                 '{$name}', 
                 \$attach['artifact'], 
-                \$attach['property']);");
+                \$attach['property']);"
+            );
         }
         
         // make this artifact dirty, to save changes from activities

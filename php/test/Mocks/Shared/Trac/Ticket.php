@@ -61,5 +61,40 @@ class Mocks_Shared_Trac_Ticket extends Shared_Trac_Ticket
     {
         return self::$_attributes[$this->getId()];
     }
+    
+    /**
+     * Get details in Trac-like array
+     *
+     * @return array
+     **/
+    public function getTracDetails() 
+    {
+        return array(
+            0 => false,
+            1 => Zend_Date::now()->getIso(),
+            2 => false,
+            3 => $this->getAttributes(),
+        );
+    }
+
+    /**
+     * Get details in Trac-like array
+     *
+     * @return array
+     **/
+    public function getTracChangelog() 
+    {
+        $changelog = array();
+        foreach (array('summary', 'comment', 'description') as $field) {
+            $changelog[] = array(
+                0 => Zend_Date::now()->getIso(),
+                1 => Model_User::me()->email,
+                2 => $field,
+                3 => false,
+                4 => 'some text about R1, UC1, ActorVisitor and others',
+            );
+        }
+        return $changelog;
+    }
 
 }

@@ -35,7 +35,9 @@ class DeliverablesLoaders_Srs extends DeliverablesLoaders_Abstract
      **/
     public function load() 
     {
-        foreach ($this->_deliverables->ps()->parent->fzProject()->getAsset(Model_Project::ASSET_SRS)->getEntities() as $entity) {
+        foreach ($this->_deliverables->ps()->parent->fzProject()
+            ->getAsset(Model_Project::ASSET_SRS)->getEntities() as $entity) {
+                
             $deliverable = theDeliverables::factory($entity->type, $entity->name, $entity->description);
             $entity->deriveDetails($deliverable);
             
