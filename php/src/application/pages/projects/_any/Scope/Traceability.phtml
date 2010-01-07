@@ -1,0 +1,11 @@
+<?=$this->publish($this->project->traceability)?>
+
+<h1>Traceability Matrix</h1>
+
+<?
+    $bar = $this->bar()->setStyle('stairs');
+    foreach ($this->project->traceability->getAllSourceTypes() as $type)
+        $bar->addLink($type, $type . '(s) trace to...');
+?>
+
+<?=$bar?>

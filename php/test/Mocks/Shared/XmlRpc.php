@@ -53,7 +53,13 @@ class Mocks_Shared_XmlRpc
      **/
     public function getAllPages() 
     {
-        return array();
+        $pages = array();
+        foreach (scandir(dirname(__FILE__) . '/wiki') as $file) {
+            if ($file[0] == '.')
+                continue;
+            $pages[] = pathinfo($file, PATHINFO_FILENAME);
+        }
+        return $pages;
     }
 
     /**
@@ -64,9 +70,14 @@ class Mocks_Shared_XmlRpc
      **/
     public function getPageHTML($name) 
     {
-        return '';
+        $html = file_get_contents(dirname(__FILE__) . '/wiki/' . $name . '.html');
+        $html = preg_replace(
+            '/\{(.*?)\}/', 
+            '<a href="http://trac.fazend.com/' . Mocks_Shared_Project::NAME . '/wiki/${1}">${1}</a>', 
+            $html);
+        return $html;
     }
-
+    
     /**
      * Trac query
      *

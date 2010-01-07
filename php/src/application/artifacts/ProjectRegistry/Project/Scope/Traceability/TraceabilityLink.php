@@ -23,7 +23,8 @@
  *
  * @package Artifacts
  */
-class theTraceabilityLink {
+class theTraceabilityLink
+{
     
     const SEPARATOR = ':';
     
@@ -43,6 +44,7 @@ class theTraceabilityLink {
      * TO what deliverable
      *
      * @var string
+     * @see $this->_from
      */
     protected $_to;
     
@@ -83,7 +85,8 @@ class theTraceabilityLink {
         $deep = 1, 
         $coverage = 1, 
         $explanation = null
-        ) {
+        )
+    {
         // initialize the class
         $this->_from = $from->type . self::SEPARATOR . $from->name; 
         $this->_to = $to->type . self::SEPARATOR . $to->name; 
@@ -98,7 +101,8 @@ class theTraceabilityLink {
      * @param string Name of property to get
      * @return string
      **/
-    public function __get($name) {
+    public function __get($name)
+    {
         $method = '_get' . ucfirst($name);
         if (method_exists($this, $method))
             return $this->$method();
@@ -109,6 +113,46 @@ class theTraceabilityLink {
         
         FaZend_Exception::raise('Model_Wiki_PropertyOrMethodNotFound', 
             "Can't find what is '$name' in " . get_class($this));        
+    }
+    
+    /**
+     * Get type of FROM
+     *
+     * @return string
+     */
+    protected function _getFromType()
+    {
+        return substr($this->_from, 0, strpos($this->_from, self::SEPARATOR));
+    }
+    
+    /**
+     * Get type of TO
+     *
+     * @return string
+     */
+    protected function _getToType()
+    {
+        return substr($this->_to, 0, strpos($this->_to, self::SEPARATOR));
+    }
+    
+    /**
+     * Get name of FROM
+     *
+     * @return string
+     */
+    protected function _getFromName()
+    {
+        return substr($this->_from, strpos($this->_from, self::SEPARATOR)+1);
+    }
+    
+    /**
+     * Get name of TO
+     *
+     * @return string
+     */
+    protected function _getToName()
+    {
+        return substr($this->_to, strpos($this->_to, self::SEPARATOR)+1);
     }
     
 }

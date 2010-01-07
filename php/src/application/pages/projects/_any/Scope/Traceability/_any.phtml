@@ -1,0 +1,15 @@
+<?=$this->publish($this->project->traceability)?>
+
+<? $class = $this->segment() ?>
+
+<h1>Traceability of class <tt><?=$class?></tt></h1>
+
+<? foreach ($this->project->traceability->getSourcesByType($class) as $source): ?>
+    <p><b><?=$source->name?></b> traces to:</p>
+    <ul>
+    <? foreach ($this->project->traceability->getLinksBySource($source) as $link): ?>
+        <li><?=$link->toName?> [<?=$link->deep?>/<?=$link->coverage?>] 
+            <span style="color:gray;"><?=$link->explanation?></span></li>
+    <? endforeach; ?>
+    </ul>
+<? endforeach; ?>

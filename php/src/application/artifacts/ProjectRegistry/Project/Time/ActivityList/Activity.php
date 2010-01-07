@@ -23,7 +23,8 @@
  *
  * @package Artifacts
  */
-class theActivity {
+class theActivity
+{
 
     const SEPARATOR = '.';
 

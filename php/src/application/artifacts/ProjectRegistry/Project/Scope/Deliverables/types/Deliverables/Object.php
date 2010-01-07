@@ -21,7 +21,7 @@
 require_once 'artifacts/ProjectRegistry/Project/Scope/Deliverables/types/Deliverables/Abstract.php';
 
 /**
- * One object of interest
+ * One object of interest (part of Glossary)
  *
  * @package Artifacts
  */

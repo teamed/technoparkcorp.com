@@ -58,10 +58,7 @@ class theActivities implements ArrayAccess, Iterator, Countable, Model_Artifact_
      **/
     public function reload()
     {
-        // kill all existing activities
-        foreach ($this as $key=>$value)
-            unset($this[$key]);
-            
+        $this->_activities = new ArrayIterator();
         // ask all work packages to add their activities
         foreach ($this->_project->wbs as $wp) {
             $wp->split($this);

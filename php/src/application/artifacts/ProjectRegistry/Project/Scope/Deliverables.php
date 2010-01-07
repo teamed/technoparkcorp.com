@@ -68,6 +68,14 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
         $loaders = DeliverablesLoaders_Abstract::retrieveAll($this);
         foreach ($loaders as $loader)
             $loader->load();
+
+        // discover links, if possible
+        foreach ($this as $deliverable) {
+            $links = array();
+            $deliverable->discoverTraceabilityLinks($this->ps()->parent, $links);
+            foreach ($links as $link)
+                $this->traceability->add($link);
+        }
     }
     
     /**

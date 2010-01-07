@@ -23,7 +23,8 @@
  *
  * @package Artifacts
  */
-class Model_Artifact_Passive_Loader {
+class Model_Artifact_Passive_Loader
+{
 
     /**
      * Class to load
@@ -56,7 +57,8 @@ class Model_Artifact_Passive_Loader {
      * @param Model_Artifact_Passive Class to load
      * @return void
      */
-    public function __construct(Model_Artifact_Passive $class) {
+    public function __construct(Model_Artifact_Passive $class)
+    {
         $this->_class = $class;
     }
 

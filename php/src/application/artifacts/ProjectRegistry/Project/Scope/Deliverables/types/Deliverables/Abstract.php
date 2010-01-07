@@ -94,7 +94,7 @@ abstract class Deliverables_Abstract
      * Call dispatcher
      *
      * @param string Name of the method
-     * @param string Value to set
+     * @param string List of args
      * @return string
      **/
     public function __call($method, array $args)
@@ -115,6 +115,30 @@ abstract class Deliverables_Abstract
         
         FaZend_Exception::raise('MethodNotFound', 
             "Can't find what is '$method' in " . get_class($this));        
+    }
+    
+    /**
+     * Discover links
+     *
+     * @param theProject Project to work with
+     * @param array List of links
+     * @return void
+     **/
+    public function discoverTraceabilityLinks(theProject $project, array &$links) 
+    {
+        if (!preg_match_all('/((?:[A-Z][a-z]+){2,})/', $this->_description, $matches))
+            return;
+        foreach ($matches[0] as $match) {
+            if (!isset($project->deliverables[$match]))
+                continue;
+            $links[] = new theTraceabilityLink(
+                $project->deliverables[$this->_name],
+                $project->deliverables[$match],
+                0.2,
+                1,
+                'description says: ' . $this->_description
+            );
+        }
     }
     
     /**

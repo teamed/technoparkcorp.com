@@ -23,17 +23,18 @@
  *
  * @package Artifacts
  */
-class theTraceability extends Model_Artifact_Bag {
+class theTraceability extends Model_Artifact_Bag
+{
     
     /**
      * Clean all traceability links
      *
      * @return void
      **/
-    public function clean() {
-        // clear all existing traceability links
-        foreach ($this as $key=>$metric)
-            unset($this[$key]);
+    public function clean()
+    {
+        // remove all items from the array
+        $this->ps()->cleanArray();
     }
     
     /**
@@ -42,11 +43,57 @@ class theTraceability extends Model_Artifact_Bag {
      * @param theTraceabilityLink The element to add
      * @return $this
      **/
-    public function add(theTraceabilityLink $link) {
+    public function add(theTraceabilityLink $link)
+    {
         $this[] = $link;
         return $this;
     }
+    
+    /**
+     * Get list of all known source types
+     *
+     * @return string[]
+     **/
+    public function getAllSourceTypes() 
+    {
+        $types = array();
+        foreach ($this as $link)
+            $types[$link->fromType] = true;
+        return array_keys($types);
+    }
      
+    /**
+     * Get list of deliverables, by given type 
+     *
+     * @param string Type, e.g. "interface" or "method"
+     * @return Deliverables_Abstract
+     **/
+    public function getSourcesByType($type) 
+    {
+        $deliverables = array();
+        foreach ($this as $link) {
+            if ($link->fromType == $type)
+                $deliverables[] = $this->ps()->parent->deliverables[$link->fromName];
+        }
+        return $deliverables;
+    }
+     
+    /**
+     * Get full list of links by the given source of traceability
+     *
+     * @param Deliverables_Abstract Source of traceability
+     * @return theTraceabilityLink[]
+     **/
+    public function getLinksBySource(Deliverables_Abstract $source) 
+    {
+        $links = array();
+        foreach ($this as $link) {
+            if ($source->name == $link->fromName)
+                $links[] = $link;
+        }
+        return $links;
+    }
+
     /**
      * Calculate average deep
      *
@@ -54,7 +101,8 @@ class theTraceability extends Model_Artifact_Bag {
      * @param string|array Name of deliverable or name of class who should cover
      * @return float
      **/
-    public function getDeep($destinations, $coverers) {
+    public function getDeep($froms, $tos)
+    {
         // todo
     }
      
@@ -65,7 +113,8 @@ class theTraceability extends Model_Artifact_Bag {
      * @param string|array Name of deliverable or name of class who should cover
      * @return float
      **/
-    public function getCoverage($destinations, $coverers) {
+    public function getCoverage($froms, $tos)
+    {
         // todo
     }
      
