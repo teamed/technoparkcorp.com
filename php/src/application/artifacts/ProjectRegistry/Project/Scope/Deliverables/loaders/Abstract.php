@@ -23,7 +23,8 @@
  *
  * @package Artifacts
  */
-abstract class DeliverablesLoaders_Abstract {
+abstract class DeliverablesLoaders_Abstract
+{
     
     /**
      * Where to load
@@ -46,7 +47,8 @@ abstract class DeliverablesLoaders_Abstract {
      * @param theDeliverables The holder which has to be filled with new items
      * @return DeliverablesLoaders_Abstract
      **/
-    public static function factory($name, theDeliverables $deliverables) {
+    public static function factory($name, theDeliverables $deliverables)
+    {
         if (!isset(self::$_loader)) {
             self::$_loader = new Zend_Loader_PluginLoader(array('DeliverablesLoaders_' => dirname(__FILE__)));
         }
@@ -61,7 +63,8 @@ abstract class DeliverablesLoaders_Abstract {
      * @param theDeliverables The holder which has to be filled with new items
      * @return void
      **/
-    protected function __construct(theDeliverables $deliverables) {
+    protected function __construct(theDeliverables $deliverables)
+    {
         $this->_deliverables = $deliverables;
     }
     
@@ -71,7 +74,8 @@ abstract class DeliverablesLoaders_Abstract {
      * @param theDeliverables The holder which has to be filled with new items
      * @return DeliverablesLoaders_Abstract[]
      **/
-    public static function retrieveAll(theDeliverables $deliverables) {
+    public static function retrieveAll(theDeliverables $deliverables)
+    {
         $list = array();
         foreach (new DirectoryIterator(dirname(__FILE__)) as $file) {
             if ($file->isDot())

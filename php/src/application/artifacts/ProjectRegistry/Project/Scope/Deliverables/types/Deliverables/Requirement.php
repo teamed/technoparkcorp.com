@@ -25,7 +25,8 @@ require_once 'artifacts/ProjectRegistry/Project/Scope/Deliverables/types/Deliver
  *
  * @package Artifacts
  */
-abstract class Deliverables_Requirement extends Deliverables_Abstract {
+abstract class Deliverables_Requirement extends Deliverables_Abstract
+{
         
     /**
      * This requirement is out of scope?
@@ -48,4 +49,34 @@ abstract class Deliverables_Requirement extends Deliverables_Abstract {
      */
     protected $_complexity = 1;
         
+    /**
+     * Discover links
+     *
+     * @param theProject Project to work with
+     * @param array List of links
+     * @return void
+     **/
+    public function discoverTraceabilityLinks(theProject $project, array &$links) 
+    {
+        parent::discoverTraceabilityLinks($project, $links);
+        
+        // except the last one
+        $sectors = array_slice(explode('.', $this->_name), 0, -1);
+        
+        foreach ($sectors as $id=>$sector) {
+            $parent = implode('.', array_slice($sectors, 0, $id+1));
+            
+            if (!isset($project->deliverables[$parent]))
+                continue;
+                
+            $links[] = new theTraceabilityLink(
+                $project->deliverables[$this->_name],
+                $project->deliverables[$parent],
+                0.5,
+                1,
+                'it is parent of ' . $this->_name
+            );
+        }
+    }
+    
 }
