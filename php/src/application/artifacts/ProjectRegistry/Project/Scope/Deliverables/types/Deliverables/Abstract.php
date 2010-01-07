@@ -126,8 +126,9 @@ abstract class Deliverables_Abstract
      **/
     public function discoverTraceabilityLinks(theProject $project, array &$links) 
     {
-        if (!preg_match_all('/((?:[A-Z][a-z]+){2,})/', $this->_description, $matches))
+        if (!preg_match_all('/(?:[A-Z][a-z]+){2,}|(?:UC|R|QOS)\d+(?:\.\d+)*/', $this->_description, $matches))
             return;
+            
         foreach ($matches[0] as $match) {
             if (!isset($project->deliverables[$match]))
                 continue;

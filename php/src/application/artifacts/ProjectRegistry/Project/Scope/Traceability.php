@@ -73,7 +73,7 @@ class theTraceability extends Model_Artifact_Bag
         $deliverables = array();
         foreach ($this as $link) {
             if ($link->fromType == $type)
-                $deliverables[] = $this->ps()->parent->deliverables[$link->fromName];
+                $deliverables[$link->fromName] = $this->ps()->parent->deliverables[$link->fromName];
         }
         return $deliverables;
     }
