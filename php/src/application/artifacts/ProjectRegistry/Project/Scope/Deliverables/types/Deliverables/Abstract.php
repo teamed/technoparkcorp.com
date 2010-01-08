@@ -134,6 +134,11 @@ abstract class Deliverables_Abstract
         foreach ($matches[0] as $match) {
             if (!isset($project->deliverables[$match]))
                 continue;
+            
+            // don't trace to itself
+            if ($this->_name == $match)
+                continue;
+                
             $links[] = new theTraceabilityLink(
                 $project->deliverables[$this->_name],
                 $project->deliverables[$match],

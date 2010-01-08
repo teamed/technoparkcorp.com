@@ -90,6 +90,12 @@ class theTraceabilityLink
         // initialize the class
         $this->_from = $from->type . self::SEPARATOR . $from->name; 
         $this->_to = $to->type . self::SEPARATOR . $to->name; 
+
+        validate()->false(
+            $this->_from == $this->_to,
+            "You can't trace to itself: [{$this->_to}]"
+        );
+        
         $this->_deep = $deep;
         $this->_coverage = $coverage;
         $this->_explanation = $explanation;
