@@ -95,7 +95,7 @@ class Model_Asset_Defects_Issue_Trac extends Model_Asset_Defects_Issue_Abstract
     
         // remember found ID in the class and return it
         $this->_id = array_pop($ids);
-        // logg("Issue #{$this->_id} found in Trac for code '{$this->code}");
+        logg("Issue #{$this->_id} found in Trac for code '{$this->code}");
         return $this->_id;
     }
         
@@ -107,7 +107,7 @@ class Model_Asset_Defects_Issue_Trac extends Model_Asset_Defects_Issue_Abstract
     protected function _loadChangelog() 
     {
         $log = $this->_tracker->getXmlProxy()->changeLog($this->_id);
-        // logg("Issue #{$this->_id} has " . count($log) . ' changes in Trac');
+        logg("Issue #{$this->_id} has " . count($log) . ' changes in Trac');
         
         $fields = array();
         $records = array();
@@ -141,7 +141,6 @@ class Model_Asset_Defects_Issue_Trac extends Model_Asset_Defects_Issue_Abstract
                 
             $this->_changelog->load($name, $value, $author, $date);
         }
-        // bug($this->_changelog);
     }
         
     /**
@@ -157,7 +156,6 @@ class Model_Asset_Defects_Issue_Trac extends Model_Asset_Defects_Issue_Abstract
         if (!count($pairs))
             return;
         
-        // bug($this->_translateToTrac($pairs));
         // maybe it's alive already?
         if (!$this->exists()) {
             // make sure it has the right code
