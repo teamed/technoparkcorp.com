@@ -278,8 +278,9 @@ class Model_Asset_Defects_Issue_Trac extends Model_Asset_Defects_Issue_Abstract
                 break;
         
             case 'duration':
-                $value = array_search($value, Shared_Trac::getDurationOptions());
-                if ($value === false)
+                // hm... somehow we should convert text to days
+                // $value = array_search($value, Shared_Trac::getDurationOptions());
+                // if ($value === false)
                     $value = 20; // 20 days if Trac value is not clear
                 break;
 
