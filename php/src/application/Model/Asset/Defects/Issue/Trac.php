@@ -362,11 +362,12 @@ class Model_Asset_Defects_Issue_Trac extends Model_Asset_Defects_Issue_Abstract
                     break;
                     
                 case 'duration':
-                    $options = Shared_Trac::getDurationOptions();
-                    if (isset($options[$value]))
-                        $value = $options[$value];
-                    else
-                        $value = array_pop($options);
+                    // $options = Shared_Trac::getDurationOptions();
+                    // if (isset($options[$value]))
+                    //     $value = $options[$value];
+                    // else
+                    //     $value = array_pop($options);
+                    $value = '2-3 days';
                     break;
 
                 case 'summary':
