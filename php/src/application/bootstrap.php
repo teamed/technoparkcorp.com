@@ -24,7 +24,7 @@
  */
 class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap 
 {
-
+    
     /**
      * Initialize autoloader for artifacts
      *
@@ -61,9 +61,6 @@ class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap
      */
     protected function _initPos() 
     {
-        // do it after fazend only
-        // $this->bootstrap('Fazend');
-        
         // make sure all artifacts are attached to OUR root
         FaZend_Pos_Abstract::setRootClass('Model_Artifact_Root');
     }
@@ -95,6 +92,20 @@ class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap
         }
     }
     
+    /**
+     * Make corrections to global logger
+     *
+     * @return void
+     **/
+    protected function _initGlobalLogger() 
+    {
+        // do it after fazend only
+        $this->bootstrap('Fazend');
+        
+        FaZend_Log::getInstance()->getWriter('ErrorLog')
+            ->addFilter(new Zend_Log_Filter_Priority(Zend_Log::CRIT));    
+    }
+
 }
 
 // total amount of seconds in day

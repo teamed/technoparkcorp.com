@@ -30,7 +30,7 @@ require_once 'Mocks/artifacts/ProjectRegistry/Project.php';
  */
 class Injector extends FaZend_Test_Injector 
 {
-
+    
     /**
      * Make sure we don't do any actual connections to fazend
      *
