@@ -23,7 +23,8 @@
  *
  * @package Artifacts
  */
-class theWorkOrders implements Model_Artifact_Stateless {
+class theWorkOrders implements Model_Artifact_Stateless
+{
 
     /**
      * The holder of this staff assignments
@@ -39,7 +40,8 @@ class theWorkOrders implements Model_Artifact_Stateless {
      * @param string|null ID of the order if required
      * @return void
      **/
-    public function get($decision, $id = null) {
+    public function get($decision, $id = null)
+    {
         if ($decision instanceof Model_Decision)
             $decision = get_class($decision);
         return new theWorkOrder($this, $decision, $id);
