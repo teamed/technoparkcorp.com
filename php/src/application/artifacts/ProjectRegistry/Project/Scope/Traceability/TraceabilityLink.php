@@ -96,6 +96,16 @@ class theTraceabilityLink
     }
     
     /**
+     * Convert it to string
+     *
+     * @return string
+     **/
+    public function __toString() 
+    {
+        return $this->_from . '->' . $this->_to;
+    }
+    
+    /**
      * Getter dispatcher
      *
      * @param string Name of property to get

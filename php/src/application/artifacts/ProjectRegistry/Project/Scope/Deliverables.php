@@ -156,6 +156,7 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
     public function add(Deliverables_Abstract $deliverable) 
     {
         $this[strval($deliverable)] = $deliverable;
+        logg("Deliverable attached: $deliverable");
     }
      
     /**
