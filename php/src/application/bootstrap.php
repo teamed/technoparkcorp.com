@@ -127,6 +127,10 @@ define('CONTENT_PATH', realpath(APPLICATION_PATH . '/../content'));
  */
 function logg($message) 
 {
+    if (func_num_args() > 1) {
+        $args = func_get_args();
+        $message = call_user_func_array('sprintf', array_merge(array($message), array_slice($args, 1)));
+    }
     try {
         FaZend_Log::info($message);
     } catch (Zend_Log_Exception $e) {
