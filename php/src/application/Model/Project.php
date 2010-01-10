@@ -32,6 +32,7 @@ class Model_Project extends Shared_Project
     const ASSET_SRS = 'Srs';
     const ASSET_DEFECTS = 'Defects';
     const ASSET_CODE = 'Code';
+    const ASSET_DESIGN = 'Design';
     const ASSET_SUPPLIERS = 'Suppliers';
     
     /**
@@ -152,6 +153,7 @@ class Model_Project extends Shared_Project
             self::ASSET_SRS => 'Fazend_Trac',
             self::ASSET_DEFECTS => 'Fazend_Trac',
             self::ASSET_CODE => 'Fazend_Pan',
+            self::ASSET_DESIGN => 'Fazend_Linux',
             self::ASSET_SUPPLIERS => 'Fazend_Trac',
             );
 
