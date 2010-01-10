@@ -59,9 +59,13 @@ class Model_Asset_Defects_Issue_Trac extends Model_Asset_Defects_Issue_Abstract
         
         // we posted it recently
         if ($lastDate > time() - SECONDS_IN_DAY * $lag) {
-            logg("No '{$code}' to ticket #{$this->_id} since we already did it " . 
-                round((time() - $lastDate)/SECONDS_IN_HOUR, 1) . ' hours ago, at ' .
-                date('m/d/y h:i:s', $lastDate));
+            logg(
+                "No '%s' to ticket #%d since we already did it %0.1f hours ago, at %s" .
+                $code, 
+                $this->_id, 
+                (time() - $lastDate)/SECONDS_IN_HOUR, 
+                date('m/d/y h:i:s', $lastDate)
+            );
             return false;
         }
             
@@ -89,13 +93,13 @@ class Model_Asset_Defects_Issue_Trac extends Model_Asset_Defects_Issue_Abstract
         
         // nothing or something strange
         if (count($ids) != 1) {
-            logg("Query to Trac for code '{$this->code}' returned " . count($ids) . ' tickets');
+            logg("Trac by code '%s' returned %d tickets", $this->code, count($ids));
             return $this->_id = false;
         }
     
         // remember found ID in the class and return it
         $this->_id = array_pop($ids);
-        logg("Issue #{$this->_id} found in Trac for code '{$this->code}");
+        logg("Issue #%d found in Trac for code '%s'", $this->_id, $this->code);
         return $this->_id;
     }
         
@@ -107,7 +111,7 @@ class Model_Asset_Defects_Issue_Trac extends Model_Asset_Defects_Issue_Abstract
     protected function _loadChangelog() 
     {
         $log = $this->_tracker->getXmlProxy()->changeLog($this->_id);
-        logg("Issue #{$this->_id} has " . count($log) . ' changes in Trac');
+        logg("Issue #%d has %d changes in Trac", $this->_id, count($log));
         
         $fields = array();
         $records = array();
@@ -168,18 +172,15 @@ class Model_Asset_Defects_Issue_Trac extends Model_Asset_Defects_Issue_Abstract
                 $this->_translateToTrac($pairs),
                 true);
             
-            logg("Trac ticket #{$this->_id} was created");
-            
+            logg('Trac ticket #%d was created', $this->_id);
         } else {
-            
             $pairs['action'] = 'leave';
             $this->_tracker->getXmlProxy()->update(
                 $this->_id, 
                 isset($pairs['comment']) ? $pairs['comment'] : '',
                 $this->_translateToTrac($pairs),
                 true);
-            logg("Trac ticket #{$this->_id} was updated");
-            
+            logg('Trac ticket #%d was updated', $this->_id);
         }
     }
 
@@ -191,6 +192,7 @@ class Model_Asset_Defects_Issue_Trac extends Model_Asset_Defects_Issue_Abstract
      * @param string Author of the field
      * @param string Date of change of the field
      * @return array
+     * @throws Model_Asset_Defects_Issue_Trac_UnknownField
      **/
     protected function _translateFromTrac($name, $value, $author, $date) 
     {
@@ -283,8 +285,10 @@ class Model_Asset_Defects_Issue_Trac extends Model_Asset_Defects_Issue_Abstract
                 break;
 
             default:
-                FaZend_Exception::raise('Model_Asset_Defects_Issue_Trac_UnknownField',
-                    "Unknown field came from Trac: '{$name}', value: '{$value}'");
+                FaZend_Exception::raise(
+                    'Model_Asset_Defects_Issue_Trac_UnknownField',
+                    "Unknown field came from Trac: '{$name}', value: '{$value}'"
+                );
         
         }
         
@@ -301,6 +305,7 @@ class Model_Asset_Defects_Issue_Trac extends Model_Asset_Defects_Issue_Abstract
      *
      * @param array List of pairs to be sent to trac
      * @return array
+     * @throws Model_Asset_Defects_Issue_Trac_UnknownField
      **/
     protected function _translateToTrac(array $pairs) 
     {
@@ -382,8 +387,10 @@ class Model_Asset_Defects_Issue_Trac extends Model_Asset_Defects_Issue_Abstract
                     break;
 
                 default:
-                    FaZend_Exception::raise('Model_Asset_Defects_Issue_Trac_UnknownField',
-                        "Unknown field going into Trac: '{$name}', value: '{$value}'");
+                    FaZend_Exception::raise(
+                        'Model_Asset_Defects_Issue_Trac_UnknownField',
+                        "Unknown field going into Trac: '{$name}', value: '{$value}'"
+                    );
 
             }
         }
