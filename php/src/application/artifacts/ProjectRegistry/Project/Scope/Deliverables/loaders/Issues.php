@@ -22,11 +22,11 @@ require_once 'artifacts/ProjectRegistry/Project/Scope/Deliverables/loaders/Abstr
 require_once 'artifacts/ProjectRegistry/Project/Scope/Deliverables/types/Deliverables/Abstract.php';
 
 /**
- * Load all tickets from defect tracking DB and find traceability in them
+ * Load all issues from defect tracking DB and find traceability in them
  *
  * @package Artifacts
  */
-class DeliverablesLoaders_Tickets extends DeliverablesLoaders_Abstract 
+class DeliverablesLoaders_Issues extends DeliverablesLoaders_Abstract 
 {
     
     /**
@@ -43,6 +43,14 @@ class DeliverablesLoaders_Tickets extends DeliverablesLoaders_Abstract
             
         foreach ($asset->retrieveBy() as $id) {
             $ticket = $asset->findById($id);
+    
+            // add it to the list of deliverables
+            $issueName = '#' .  $id;
+            $project->deliverables->add(theDeliverables::factory(
+                'issue', 
+                $issueName, 
+                $ticket->changelog->get('summary')->getValue()
+            ));
             
             $changes = $ticket->changelog->get('comment')->getChanges();
             
@@ -60,23 +68,14 @@ class DeliverablesLoaders_Tickets extends DeliverablesLoaders_Abstract
             $mentioned = array_keys($mentioned);
 
             // make bi-directional links between them
-            for ($i = 0; $i<count($mentioned); $i++) {
-                for ($j = $i+1; $j<count($mentioned); $j++) {
-                    $project->traceability->add(new theTraceabilityLink(
-                        $project->deliverables[$mentioned[$i]],
-                        $project->deliverables[$mentioned[$j]],
-                        0.05,
-                        1,
-                        sprintf('mentioned in #%d: %s', $id, $ticket->changelog->get('summary')->getValue())
-                    ));
-                    $project->traceability->add(new theTraceabilityLink(
-                        $project->deliverables[$mentioned[$j]],
-                        $project->deliverables[$mentioned[$i]],
-                        0.05,
-                        1,
-                        sprintf('mentioned in #%d: %s', $id, $ticket->changelog->get('summary')->getValue())
-                    ));
-                }
+            foreach ($mentioned as $name) {
+                $project->traceability->add(new theTraceabilityLink(
+                    $project->deliverables[$issueName],
+                    $project->deliverables[$name],
+                    0.05,
+                    1,
+                    "mentioned in {$issueName}: " . $ticket->changelog->get('summary')->getValue()
+                ));
             }
         }
     }

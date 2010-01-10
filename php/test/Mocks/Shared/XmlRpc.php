@@ -123,10 +123,17 @@ class Mocks_Shared_XmlRpc
                     );
                 break;
                 
-            // one ticket
+            // one ticket by ID
             case preg_match('/^id=\'(\d+)\'$/', $query, $matches):
                 $list = array(
                     Mocks_Shared_Trac_Ticket::get($matches[1]),
+                    );
+                break;
+
+            // one ticket by CODE
+            case preg_match('/^code=\'([\w\d\-]+)\'$/', $query, $matches):
+                $list = array(
+                    Mocks_Shared_Trac_Ticket::get(false, array()),
                     );
                 break;
 

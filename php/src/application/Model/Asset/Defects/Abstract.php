@@ -33,10 +33,19 @@ abstract class Model_Asset_Defects_Abstract extends Model_Asset_Abstract
      *  - getId(): returns unique ID of the ticket
      *  - getAttributes(): returns an array of attributes
      *
-     * @param integer|string Unique number of the ticket
+     * @param integer Unique number of the ticket
      * @return mixed
      **/
     abstract public function findById($id);
+    
+    /**
+     * Get one ticket by CODE (string)
+     *
+     * @param string Code of the ticket to find
+     * @return mixed
+     * @see findById()
+     **/
+    abstract public function findByCode($code);
     
     /**
      * Retrieve a list of ticket IDs that satisfy the conditions

@@ -47,6 +47,17 @@ class Model_Asset_Defects_Fazend_Trac extends Model_Asset_Defects_Abstract
     }
     
     /**
+     * Get one ticket by CODE
+     *
+     * @return mixed
+     * @see Model_Asset_Defects_Abstract::findByCode()
+     **/
+    public function findByCode($code) 
+    {
+        return FaZend_Flyweight::factory('Model_Asset_Defects_Issue_Trac', $this, $code);
+    }
+    
+    /**
      * Get proxy
      *
      * @return mixed

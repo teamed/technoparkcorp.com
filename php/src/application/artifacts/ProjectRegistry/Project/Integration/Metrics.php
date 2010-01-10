@@ -130,6 +130,7 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
      * @see offsetGet()
      * @return Metric_Abstract
      * @throws MetricNotFound
+     * @throws MetricDoesntMatch
      **/
     protected function _findMetric($name) 
     {
@@ -170,7 +171,13 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
             );
         }
             
-        $this->_attachMetric($name, $parent->cloneByPattern($pattern));
+        if (!$this->_attachMetric($name, $parent->cloneByPattern($pattern))) {
+            FaZend_Exception::raise(
+                'MetricNotFound', 
+                "Metric '{$name}' not found for pattern '{$pattern}'"
+            );
+        }
+        
         return parent::offsetGet($name);
     }
 
@@ -197,6 +204,7 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
                 );
             }
 
+            // no such class?
             if (!@self::$_autoloader->autoload($className, false))
                 return false;
             $metric = new $className;

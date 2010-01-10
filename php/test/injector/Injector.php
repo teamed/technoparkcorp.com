@@ -32,6 +32,17 @@ class Injector extends FaZend_Test_Injector
 {
     
     /**
+     * Inject extra logger
+     *
+     * @return void
+     **/
+    protected function _injectTestLogger() 
+    {
+        // log errors in ALL environments
+        // ...
+    }
+    
+    /**
      * Make sure we don't do any actual connections to fazend
      *
      * @return void

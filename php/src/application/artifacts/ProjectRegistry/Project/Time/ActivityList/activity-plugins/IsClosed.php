@@ -25,7 +25,8 @@ require_once 'artifacts/ProjectRegistry/Project/Time/ActivityList/activity-plugi
  * 
  * @package Activity_Plugin
  */
-class Activity_Plugin_IsClosed extends Activity_Plugin_Abstract {
+class Activity_Plugin_IsClosed extends Activity_Plugin_Abstract
+{
 
     /**
      * Execute it

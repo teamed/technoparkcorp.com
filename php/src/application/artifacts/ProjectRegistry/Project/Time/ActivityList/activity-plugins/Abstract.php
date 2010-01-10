@@ -73,7 +73,8 @@ abstract class Activity_Plugin_Abstract
     public function __construct(theActivity $activity) 
     {
         $this->_activity = $activity;
-        $this->_issue = $activity->project->fzProject()->getAsset(Model_Project::ASSET_DEFECTS)->findById($activity->name);
+        $this->_issue = $activity->project->fzProject()
+            ->getAsset(Model_Project::ASSET_DEFECTS)->findByCode($activity->name);
     }
                             
 }

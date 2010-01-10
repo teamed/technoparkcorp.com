@@ -8,6 +8,9 @@
 
 <p>Protocol:</p>
 
-<pre>
-<?=$decision->protocol?>
-</pre>
+<!-- very long PRE cause problems for browser -->
+<? foreach (array_chunk(explode("\n", $decision->protocol), 50) as $chunk): ?>
+    <pre>
+        <?=implode("\n", $chunk)?>
+    </pre>
+<? endforeach; ?>

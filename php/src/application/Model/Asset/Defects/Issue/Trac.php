@@ -85,7 +85,7 @@ class Model_Asset_Defects_Issue_Trac extends Model_Asset_Defects_Issue_Abstract
             return false;
         
         // get list of IDs with this code (we expect JUST ONE)
-        $ids = $this->_tracker->getXmlProxy()->query('code=' . Model_Pages_Encoder::encode($this->code));
+        $ids = $this->_tracker->getXmlProxy()->query("code='" . Model_Pages_Encoder::encode($this->code) . "'");
         
         // nothing or something strange
         if (count($ids) != 1) {

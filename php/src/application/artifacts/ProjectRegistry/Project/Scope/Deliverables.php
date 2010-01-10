@@ -136,8 +136,8 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
     /**
      * Create new deliverable
      *
-     * @param string Type of it
-     * @param string Name of the deliverable
+     * @param string Type of it, which will be added to "Deliverables_"
+     * @param string Name of the deliverable, unique!
      * @param string Text description of it
      * @return Deliverables_Abstract
      **/
@@ -152,11 +152,19 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
      *
      * @param Deliverables_Abstract The element to add
      * @return void
+     * @throws DuplicateDeliverable
      **/
     public function add(Deliverables_Abstract $deliverable) 
     {
+        // check against double adding
+        if (isset($this[strval($deliverable)]))
+            FaZend_Exception::raise(
+                'DuplicateDeliverable',
+                "Deliverable {$deliverable} is already in the list"
+            );
+                
         $this[strval($deliverable)] = $deliverable;
-        logg("Deliverable attached: $deliverable");
+        logg("Deliverable attached: $deliverable ({$deliverable->type})");
     }
      
     /**

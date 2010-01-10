@@ -34,11 +34,12 @@ abstract class Model_Asset_Defects_Issue_Abstract
     protected $_tracker = null;
 
     /**
-     * Code of the issue, unique in the tracker
+     * Code of the issue, unique in the tracker (NULL if ID is specified)
      * 
      * @var string
+     * @see $this->_id
      */
-    protected $_code;
+    protected $_code = null;
     
     /**
      * Changelog
@@ -51,6 +52,7 @@ abstract class Model_Asset_Defects_Issue_Abstract
      * Unique ID of the ticket in tracker
      *
      * @var integer
+     * @see $this->_code
      */
     protected $_id = null;
     
@@ -61,9 +63,20 @@ abstract class Model_Asset_Defects_Issue_Abstract
      * @param string Unique code of the issue
      * @param integer ID of the ticket
      * @return void
+     * @throws Exception If parameters are invalid
      */
 	public function __construct(Model_Asset_Defects_Abstract $tracker, $code, $id = null) 
 	{
+	    validate()
+	        ->true(
+	            is_null($id) || is_integer($id), 
+	            "Issue ID should be NULL or integer, {$id} provided"
+	        )
+	        ->true(
+	            (empty($code) && !is_null($id)) || (is_null($id) && is_string($code)), 
+	            "Either CODE ({$code}) or ID ({$id}) please"
+	        );
+	    
 	    $this->_tracker = $tracker;
         $this->_code = $code;
     	$this->_id = $id;
@@ -80,6 +93,7 @@ abstract class Model_Asset_Defects_Issue_Abstract
             if (isset($this->_changelog))
 	            $this->_saveChangelog();
 	    } catch (Exception $e) {
+	        // @todo Do something here!
 	        bug($e);
         }
     }
@@ -89,6 +103,7 @@ abstract class Model_Asset_Defects_Issue_Abstract
      *
      * @param string Name of property to get
      * @return string
+     * @throws Model_Asset_Defects_Issue_PropertyOrMethodNotFound
      **/
     public function __get($name) 
     {
@@ -100,8 +115,10 @@ abstract class Model_Asset_Defects_Issue_Abstract
         if (property_exists($this, $var))
             return $this->$var;
         
-        FaZend_Exception::raise('Model_Asset_Defects_Issue_PropertyOrMethodNotFound', 
-            "Can't find what is '$name'");        
+        FaZend_Exception::raise(
+            'Model_Asset_Defects_Issue_PropertyOrMethodNotFound', 
+            "Can't find what is '$name' in " . get_class($this)
+        );        
     }
 
     /**

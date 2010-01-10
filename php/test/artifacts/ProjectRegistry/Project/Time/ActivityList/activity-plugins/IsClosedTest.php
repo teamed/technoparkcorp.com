@@ -18,28 +18,24 @@
  *
  */
 
-require_once 'artifacts/ProjectRegistry/Project/Time/ActivityList/activity-plugins/Abstract.php';
+require_once 'AbstractProjectTest.php';
 
 /**
- * Activity order exist
- * 
- * @package Activity_Plugin
+ * Test activity list
+ *
+ * @package test
  */
-class Activity_Plugin_IsIssueExist extends Activity_Plugin_Abstract
+class IsClosedTest extends AbstractProjectTest
 {
 
-    /**
-     * Execute it
-     *
-     * @return boolean
-     **/
-    public function execute()
+    public function testActivityFlagIsReadable()
     {
-        // milestones can't become alive in tracker
-        if ($this->_activity->isMilestone())
-            return false;
-            
-        return (bool)$this->_issue->exists();
+        $this->_project->activityList->activities->rewind();
+        $activity = $this->_project->activityList->activities->current();
+        $this->assertTrue($activity instanceof theActivity, "Activity is not an instance of theActivity, but of " . get_class($activity));
+    
+        $flag = $activity->isClosed();
+        $this->assertTrue(is_bool($flag), "Flag is not boolean, why?");
     }
-                            
+
 }

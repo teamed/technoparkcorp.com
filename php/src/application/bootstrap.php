@@ -102,8 +102,10 @@ class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap
         // do it after fazend only
         $this->bootstrap('Fazend');
         
-        FaZend_Log::getInstance()->getWriter('ErrorLog')
-            ->addFilter(new Zend_Log_Filter_Priority(Zend_Log::CRIT));    
+        // filter out all INFO messages
+        if (APPLICATION_ENV === 'production')
+            FaZend_Log::getInstance()->getWriter('ErrorLog')
+                ->addFilter(new Zend_Log_Filter_Priority(Zend_Log::ERR));    
     }
 
 }
