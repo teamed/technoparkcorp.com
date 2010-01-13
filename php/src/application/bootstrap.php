@@ -82,6 +82,7 @@ class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap
             array(
                 'ignore' => '.',
                 'scan' => Zend_Translate::LOCALE_FILENAME,
+                'disableNotices' => true,
             )
         );
         Zend_Registry::set('Zend_Translate', $translate);
@@ -118,61 +119,6 @@ define('SECONDS_IN_MINUTE', 60);
 define('CONTENT_PATH', realpath(APPLICATION_PATH . '/../content'));
 
 /**
- * Simplified access point to FaZend_Log
- *
- * @param string Message to log
- * @return void
- * @category Supplementary
- * @package Functions
- */
-function logg($message) 
-{
-    if (func_num_args() > 1) {
-        $args = func_get_args();
-        $message = call_user_func_array('sprintf', array_merge(array($message), array_slice($args, 1)));
-    }
-    try {
-        FaZend_Log::info($message);
-    } catch (Zend_Log_Exception $e) {
-        echo '<p>Log missed: ' . $message . '</p>';
-    }
-}
-
-/**
- * Translate string
- *
- * You can use with any amount of params, like you're doing it with
- * sprintf() function, e.g.:
- *
- * <code>
- * $s = _t('Your email is: %s', $email);
- * $s = _t('Your account #%d balance is %0.2f', $accNo, $balance)
- * </code>
- *
- * @param string Translate this string and return it's translated value
- * @return string
- */
-function _t($str) 
-{
-    // if array specified - we get a random line from it
-    if (is_array($str))
-        $str = $str[array_rand($str)];
-
-    $str = preg_replace('/\n\t\r/', ' ', $str);
-
-    // translate this string
-    $str = Zend_Registry::get('Zend_Translate')->_($str);
-
-    // pass it to sprintf
-    if (func_num_args() > 1) {
-        $args = func_get_args();
-        $str = call_user_func_array('sprintf', array_merge(array($str), array_slice($args, 1)));
-    }
-    
-    return $str;
-}
-
-/**
  * Return string with plural/singular inside
  *
  * @param string Input line with metas
@@ -189,14 +135,4 @@ function plural($str, $var)
 
     return str_replace($src,
         abs($var) != 1 ? $plural : $singular, $str);
-}
-
-// patch for PHP 5.2
-if (!function_exists('lcfirst')) {
-    function lcfirst($str) 
-    {
-        if (!isset($str[0]))
-            return $str;
-        return strtolower($str[0]) . substr($str, 1);
-    }
 }
