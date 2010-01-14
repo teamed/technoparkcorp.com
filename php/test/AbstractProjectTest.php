@@ -28,11 +28,6 @@ require_once 'FaZend/Test/TestCase.php';
 abstract class AbstractProjectTest extends FaZend_Test_TestCase 
 {
 
-    /**
-     * Setup this class for testing of a test project
-     *
-     * @return void
-     **/
     public function setUp() 
     {
         parent::setUp();
@@ -49,14 +44,9 @@ abstract class AbstractProjectTest extends FaZend_Test_TestCase
             'The project is not loaded, why?');
     }
 
-    /**
-     * Save all changes made to POS
-     *
-     * @var void
-     */
-    // public function tearDown()
-    // {
-    //     FaZend_Pos_Abstract::root()->ps()->saveAll();
-    // }
+    public function tearDown()
+    {
+        FaZend_Pos_Abstract::root()->ps()->saveAll();
+    }
 
 }

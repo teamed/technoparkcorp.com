@@ -26,6 +26,7 @@
 class Model_Artifact_Root extends FaZend_Pos_Root implements Model_Artifact_Interface
 {
 
+    public static $cnt = 0;
     /**
      * Initialize it
      *
@@ -34,6 +35,7 @@ class Model_Artifact_Root extends FaZend_Pos_Root implements Model_Artifact_Inte
     public function init() 
     {
         parent::init();
+        self::$cnt++;
 
         foreach (array(
             'projectRegistry' => new theProjectRegistry(),
@@ -48,6 +50,13 @@ class Model_Artifact_Root extends FaZend_Pos_Root implements Model_Artifact_Inte
             Model_Artifact::initialize($this, $this->$name, null);
         }
         
+        // if (self::$cnt > 11)
+        //     die();
+        // if (self::$cnt > 10) {
+        //     throw new Exception('oops');
+        // }
+            
+        logg('initted ' . self::$cnt . ': ' . spl_object_hash($this));
         $this->projectRegistry->reload();
     }
 

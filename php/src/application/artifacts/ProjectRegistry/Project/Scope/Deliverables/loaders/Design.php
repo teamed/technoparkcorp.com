@@ -35,7 +35,9 @@ class DeliverablesLoaders_Design extends DeliverablesLoaders_Abstract
      **/
     public function load() 
     {
-        foreach ($this->_deliverables->ps()->parent->fzProject()
+        $project = $this->_deliverables->ps()->parent;
+
+        foreach ($project->fzProject()
             ->getAsset(Model_Project::ASSET_DESIGN)->getComponents() as $component) {
                 
             $deliverable = theDeliverables::factory(
@@ -43,7 +45,19 @@ class DeliverablesLoaders_Design extends DeliverablesLoaders_Abstract
                 $component->name, 
                 $component->description
             );
-            $this->_deliverables->add($deliverable);
+            $project->deliverables->add($deliverable);
+            
+            foreach ($component->traces as $trace) {
+                if (!isset($project->deliverables[$trace]))
+                    continue;
+                $project->traceability->add(new theTraceabilityLink(
+                    $deliverable,
+                    $project->deliverables[$trace],
+                    0.75,
+                    1,
+                    "@see {$trace}"
+                ));
+            }
         }
     }
     

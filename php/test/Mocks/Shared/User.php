@@ -46,5 +46,15 @@ class Mocks_Shared_User extends Shared_User
         return self::$_user = Shared_User::create(1, 'test@example.com', 'pwd');
     }
 
+    /**
+     * Get live owner of the TEST project
+     *
+     * @return Shared_User
+     **/
+    public static function getLive() 
+    {
+        return Mocks_Shared_User::create(2, 'yegor256@yahoo.com', 'violetta');
+    }
+
 }
 

@@ -199,5 +199,29 @@ class Mocks_Shared_XmlRpc
     {
         return array('test1', 'test2');
     }
+    
+    /**
+     * Get list of components
+     *
+     * @return array[]
+     * @see Model_Asset_Design_Fazend_Linux
+     **/
+    public function getAnalysis() 
+    {
+        return array(
+            array(
+                'name' => 'System',
+                'fullName' => 'FaZend.System',
+                'type' => 'package',
+                'traces' => array('#1', 'FaZend.System.MyClass'),
+                ),
+            array(
+                'name' => 'MyClass',
+                'fullName' => 'FaZend.System.MyClass',
+                'type' => 'class',
+                'traces' => array('#2', 'FaZend.System'),
+                ),
+            );
+    }
 
 }

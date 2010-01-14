@@ -23,11 +23,36 @@ require_once 'FaZend/Test/TestCase.php';
 class Model_Asset_Design_Fazend_LinuxTest extends AbstractProjectTest 
 {
 
+    public function setUp()
+    {
+        $this->_asset = $this->_project->fzProject()->getAsset(Model_Project::ASSET_DESIGN);
+    }
+
     public function testWeCanRetrieveAllComponents() 
     {
-        $asset = $this->_project->fzProject()->getAsset(Model_Project::ASSET_DESIGN);
-        $components = $asset->();
-        $this->assertTrue(count($emails) > 0, 'No emails in PMO trac??');
+        $components = $this->_asset->getComponents();
+        $this->assertTrue(count($components) > 0, 'No components in Trac, why?');
+    }
+    
+    public function testRealLifeCallWorks() 
+    {
+        if (!defined('TEST_REAL_CONNECTIONS'))
+            return $this->markTestIncomplete();
+            
+        Shared_XmlRpc::setXmlRpcClientClass('Zend_XmlRpc_Client');
+        Mocks_Shared_Project::setLive();
+        try {
+            $components = $this->_asset->getComponents();
+        } catch (Exception $e) {
+            $failure = true;
+        }
+        Mocks_Shared_Project::setTest();
+        Shared_XmlRpc::setXmlRpcClientClass('Mocks_Shared_XmlRpc');
+        
+        if (isset($failure))
+            $this->fail("Failed to get components: " . $e->getMessage());
+        
+        $this->assertTrue(count($components) > 0, 'No components in Trac, why?');
     }
 
 }

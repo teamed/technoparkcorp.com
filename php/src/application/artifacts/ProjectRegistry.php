@@ -32,6 +32,13 @@ class theProjectRegistry extends Model_Artifact_Bag implements Model_Artifact_Pa
      * @var array
      **/
     protected static $_extra = array();
+    
+    /**
+     * The registry is loaded already?
+     *
+     * @return boolean
+     **/
+    protected static $_isFresh = false;
 
     /**
      * Add extra project to the registry
@@ -70,6 +77,8 @@ class theProjectRegistry extends Model_Artifact_Bag implements Model_Artifact_Pa
         // add extras
         foreach (self::$_extra as $name=>$project)
             $this->add($name, $project);
+            
+        self::$_isFresh = true;
     }
 
     /**
@@ -79,8 +88,8 @@ class theProjectRegistry extends Model_Artifact_Bag implements Model_Artifact_Pa
      */
     public function isLoaded() 
     {
-        // always requires reloading
-        return false;
+        // we should reload it only once per script
+        return self::$_isFresh;
     }
     
     /**

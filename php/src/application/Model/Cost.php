@@ -63,8 +63,9 @@ final class Model_Cost
      * Create class
      *
      * @return Model_Cost
-     **/
-    public static function factory($value) {
+     */
+    public static function factory($value)
+    {
         return new Model_Cost($value);
     }
 
@@ -74,8 +75,8 @@ final class Model_Cost
      * @param string Text representation of the cost
      * @return void
      */
-    public function set($value) {
-        
+    public function set($value)
+    {
         $currency = 'USD';
         $value = (string)$value;
         
@@ -102,8 +103,9 @@ final class Model_Cost
      * Show this value as a string
      *
      * @return string
-     **/
-    public function __toString() {
+     */
+    public function __toString()
+    {
         return $this->_currency->toCurrency($this->_cents / 100);
     }
 
@@ -111,8 +113,9 @@ final class Model_Cost
      * Getter dispatcher
      *
      * @return mixed
-     **/
-    public function __get($name) {
+     */
+    public function __get($name)
+    {
         switch ($name) {
             case 'usd':
                 return $this->_getCents() / 100;
@@ -126,17 +129,20 @@ final class Model_Cost
      *
      * @return integer
      * @todo implement it properly, getting conversion rates somewhere
-     **/
-    protected function _getCents() {
+     */
+    protected function _getCents()
+    {
         return $this->_cents * $this->_getRate($this->_currency);
     }
     
     /**
      * Add new value to current one
      *
+     * @param Model_Cost The cost to add
      * @return $this
-     **/
-    public function add(Model_Cost $cost) {
+     */
+    public function add(Model_Cost $cost)
+    {
         $this->_cents += $cost->cents;
         return $this;
     }
@@ -144,9 +150,11 @@ final class Model_Cost
     /**
      * Deduct this value from current one
      *
+     * @param Model_Cost The cost to deduct
      * @return $this
-     **/
-    public function deduct(Model_Cost $cost) {
+     */
+    public function deduct(Model_Cost $cost)
+    {
         $this->_cents -= $cost->cents;
         return $this;
     }
@@ -156,8 +164,9 @@ final class Model_Cost
      *
      * @param integer Multiplier
      * @return $this
-     **/
-    public function multiply($num) {
+     */
+    public function multiply($num)
+    {
         $this->_cents *= $num;
         return $this;
     }
@@ -167,7 +176,7 @@ final class Model_Cost
      *
      * @param float|Model_Cost Divider
      * @return $this|float
-     **/
+     */
     public function divide($div)
     {
         if ($div instanceof Model_Cost)
@@ -181,8 +190,9 @@ final class Model_Cost
      *
      * @param Model_Cost|mixed Another value
      * @return boolean
-     **/
-    public function greaterThan(Model_Cost $cost = null, $orEqual = false) {
+     */
+    public function greaterThan(Model_Cost $cost = null, $orEqual = false)
+    {
         if (is_null($cost))
             return $this->_cents > 0;
         if ($orEqual)
@@ -195,8 +205,9 @@ final class Model_Cost
      *
      * @param Model_Cost|mixed Another value
      * @return boolean
-     **/
-    public function lessThan(Model_Cost $cost = null, $orEqual = false) {
+     */
+    public function lessThan(Model_Cost $cost = null, $orEqual = false)
+    {
         if (is_null($cost))
             return $this->_cents < 0;
         if ($orEqual)
@@ -210,8 +221,9 @@ final class Model_Cost
      * @param Zend_Currency Currency to work with
      * @return float
      * @todo Implement through www.foxrate.org
-     **/
-    protected function _getRate(Zend_Currency $currency) {
+     */
+    protected function _getRate(Zend_Currency $currency)
+    {
         $symbol = $currency->getShortName();
         switch ($symbol) {
             case 'USD':

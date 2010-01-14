@@ -22,7 +22,7 @@
  *
  * @package Model
  */
-abstract class Model_Asset_Design_Linux extends Model_Asset_Abstract 
+class Model_Asset_Design_Fazend_Linux extends Model_Asset_Design_Abstract 
 {
     
     /**
@@ -42,10 +42,11 @@ abstract class Model_Asset_Design_Linux extends Model_Asset_Abstract
         $list = $this->_getProxy()->getAnalysis($this->_project->name);
         $return = array();
         foreach ($list as $data) {
-            $return[] = FaZend_StdObject::make()
-                ->set('type', 'class')
+            $return[] = FaZend_StdObject::create()
+                ->set('type', $data['type'])
                 ->set('name', $data['fullName'])
                 ->set('description', '...')
+                ->set('traces', $data['traces'])
                 ;
         }
         return $return;
@@ -60,8 +61,8 @@ abstract class Model_Asset_Design_Linux extends Model_Asset_Abstract
     {
         if (!isset($this->_proxy)) {
             $xmlRpc = new Shared_XmlRpc($this->_project, $this->_project->user->email);
-            $this->_proxy = $this->_xmlRpc->client(
-                'http://linux.fazend.com/pan', 
+            $this->_proxy = $xmlRpc->client(
+                'http://linux.fazend.com/pan',
                 'pan'
             );
         }

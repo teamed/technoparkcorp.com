@@ -47,4 +47,25 @@ class Model_Asset_Defects_Fazend_TracTest extends AbstractProjectTest
         $this->assertTrue(count($tickets) > 0, 'No ticket were found, why?');
     }
 
+    public function testRealLifeCallWorks() 
+    {
+        if (!defined('TEST_REAL_CONNECTIONS'))
+            return $this->markTestIncomplete();
+            
+        Shared_XmlRpc::setXmlRpcClientClass('Zend_XmlRpc_Client');
+        Mocks_Shared_Project::setLive();
+        try {
+            $tickets = $this->_asset->retrieveBy();
+        } catch (Exception $e) {
+            $failure = true;
+        }
+        Mocks_Shared_Project::setTest();
+        Shared_XmlRpc::setXmlRpcClientClass('Mocks_Shared_XmlRpc');
+
+        if (isset($failure))
+            $this->fail("Failed to get tickets from Trac: " . $e->getMessage());
+        
+        $this->assertTrue(count($tickets) > 0, 'No tickets in Trac, why?');
+    }
+
 }
