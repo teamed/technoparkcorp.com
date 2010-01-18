@@ -46,7 +46,7 @@ class Metric_Artifacts_Requirements_Actors_Total extends Metric_Abstract
     public function getWorkPackage()
     {
         return $this->_makeWp(
-            $this->_project->wbs->sum('artifacts\/requirements\/functional\/total')->multiply(self::PORTION), 
+            $this->_project->wbs->sum('artifacts\/requirements\/functional\/total')->mul(self::PORTION), 
             'Specify actors');
     }
         
@@ -74,7 +74,7 @@ class Metric_Artifacts_Requirements_Actors_Total extends Metric_Abstract
         if ($slice->sum()) {
             foreach ($slice->onlyActivities() as $activity) {
                 $activity->criteria
-                    ->when('[artifacts/requirements/actors/compliance] > %0.2f', $slice->sumUntil($activity)->divide($slice->sum()));
+                    ->when('[artifacts/requirements/actors/compliance] > %0.2f', $slice->sumUntil($activity)->div($slice->sum()));
             }
         }
     }
