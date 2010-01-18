@@ -57,7 +57,7 @@ class theStatements implements ArrayAccess, Iterator, Countable, Model_Artifact_
     /**
      * Calculate balance
      *
-     * @return Model_Cost
+     * @return FaZend_Bo_Money
      **/
     protected function _getBalance() 
     {
@@ -67,7 +67,7 @@ class theStatements implements ArrayAccess, Iterator, Countable, Model_Artifact_
     /**
      * Calculate total volume
      *
-     * @return Model_Cost
+     * @return FaZend_Bo_Money
      **/
     protected function _getVolume() 
     {

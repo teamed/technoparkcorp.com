@@ -42,7 +42,7 @@ class theWorkPackage implements Model_Artifact_Stateless {
     /**
      * Cost
      *
-     * @var Model_Cost
+     * @var FaZend_Bo_Money
      */
     protected $_cost;
     
@@ -57,11 +57,11 @@ class theWorkPackage implements Model_Artifact_Stateless {
      * Create new work package
      *
      * @param string Code of the work package
-     * @param Model_Cost Cost of work package
+     * @param FaZend_Bo_Money Cost of work package
      * @param string Title of it
      * @return void
      **/
-    public function __construct($code, Model_Cost $cost = null, $title) {
+    public function __construct($code, FaZend_Bo_Money $cost = null, $title) {
         $this->_code = $code;
         $this->_cost = $cost;
         $this->_title = $title;

@@ -21,14 +21,14 @@
 require_once 'FaZend/Test/TestCase.php';
 
 /**
- * Model_Cost test
+ * FaZend_Bo_Money test
  *
  * @package test
  */
 class CostTest extends FaZend_Test_TestCase {
 
     public function testRetrieveAllWorks() {
-        $cost = new Model_Cost('50.78');
+        $cost = new FaZend_Bo_Money('50.78');
         
         logg('Cost __toString(): ' . $cost);
         logg('Cost ->usd: ' . $cost->usd);

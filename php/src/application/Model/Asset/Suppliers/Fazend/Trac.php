@@ -83,7 +83,7 @@ class Model_Asset_Suppliers_Fazend_Trac extends Model_Asset_Suppliers_Abstract
                 $supplier->addSkill(trim($skill));
                 
             $supplier->addRole($attributes['role']);
-            $supplier->setRate(new Model_Cost($attributes['price']));
+            $supplier->setRate(new FaZend_Bo_Money($attributes['price']));
         }
     }
     

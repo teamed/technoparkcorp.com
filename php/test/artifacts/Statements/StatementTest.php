@@ -34,10 +34,10 @@ class theStatementTest extends FaZend_Test_TestCase
         $statement = Mocks_theStatement::get();
         
         $volume = $statement->volume;
-        $this->assertTrue($volume instanceof Model_Cost, 'Volume is not as Model_Cost, why?');
+        $this->assertTrue($volume instanceof FaZend_Bo_Money, 'Volume is not as FaZend_Bo_Money, why?');
         
         $balance = $statement->balance;
-        $this->assertTrue($balance instanceof Model_Cost, 'Balance is not as Model_Cost, why?');
+        $this->assertTrue($balance instanceof FaZend_Bo_Money, 'Balance is not as FaZend_Bo_Money, why?');
     }
 
     public function testPaymentCollectionWorks() 

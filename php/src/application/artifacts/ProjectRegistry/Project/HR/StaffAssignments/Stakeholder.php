@@ -88,7 +88,7 @@ class theStakeholder implements Model_Artifact_Stateless
     /**
      * How much this supplier already get in the given project?
      *
-     * @return Model_Cost
+     * @return FaZend_Bo_Money
      **/
     public function getPaidInProject(theProject $project) 
     {

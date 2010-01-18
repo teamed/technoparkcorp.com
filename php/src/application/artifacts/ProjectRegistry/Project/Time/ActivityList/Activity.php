@@ -61,7 +61,7 @@ class theActivity
     /**
      * Cost we can spend on it, our estimate
      *
-     * @var Model_Cost
+     * @var FaZend_Bo_Money
      */
     protected $_cost;
     
@@ -185,10 +185,10 @@ class theActivity
     /**
      * Set cost, our estimate
      *
-     * @param Model_Cost Cost estimate
+     * @param FaZend_Bo_Money Cost estimate
      * @return $this
      */
-    public function setCost(Model_Cost $cost)
+    public function setCost(FaZend_Bo_Money $cost)
     {
         $this->_cost = clone $cost;
         return $this;

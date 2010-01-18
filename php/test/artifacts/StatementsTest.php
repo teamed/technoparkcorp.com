@@ -33,12 +33,12 @@ class theStatementsTest extends FaZend_Test_TestCase
         $statements = Model_Artifact::root()->statements;
         
         $volume = $statements->volume;
-        $this->assertTrue($volume instanceof Model_Cost, 
-            'Volume is not as Model_Cost, why?');
+        $this->assertTrue($volume instanceof FaZend_Bo_Money, 
+            'Volume is not as FaZend_Bo_Money, why?');
         
         $balance = $statements->balance;
-        $this->assertTrue($balance instanceof Model_Cost, 
-            'Balance is not as Model_Cost, why?');
+        $this->assertTrue($balance instanceof FaZend_Bo_Money, 
+            'Balance is not as FaZend_Bo_Money, why?');
     }
 
 }

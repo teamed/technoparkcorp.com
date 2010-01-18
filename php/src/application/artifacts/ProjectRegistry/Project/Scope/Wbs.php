@@ -70,14 +70,14 @@ class theWbs extends Model_Artifact_Bag implements Model_Artifact_Passive
      * Summarize work packages and return their cummulative cost
      *
      * @param array|string Name or list of names - regular expressions
-     * @return Model_Cost
+     * @return FaZend_Bo_Money
      **/
     public function sum($regexs = '') 
     {
         if (!is_array($regexs))
             $regexs = array($regexs);
             
-        $sum = new Model_Cost();
+        $sum = new FaZend_Bo_Money();
         foreach ($regexs as $regex) {
             foreach ($this->ps()->parent->metrics as $metric) {
                 if (!preg_match('/' . $regex . '/', $metric->name))

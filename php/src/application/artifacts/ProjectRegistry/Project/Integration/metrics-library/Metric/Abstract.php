@@ -314,14 +314,14 @@ abstract class Metric_Abstract
     /**
      * Create work package, internal helper
      *
-     * @param string|integer|Model_Cost Cost, param for Model_Cost::__construct()
+     * @param string|integer|FaZend_Bo_Money Cost, param for FaZend_Bo_Money::__construct()
      * @param string Title of work package
      * @return theWorkPackage
      **/
     protected final function _makeWp($cost, $title)
     {
-        if (!($cost instanceof Model_Cost))
-            $cost = new Model_Cost($cost);
+        if (!($cost instanceof FaZend_Bo_Money))
+            $cost = new FaZend_Bo_Money($cost);
         return new theWorkPackage($this->_name, $cost, $title);
     }
     

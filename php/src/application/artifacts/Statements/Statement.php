@@ -141,7 +141,7 @@ class theStatement extends Zend_Db_Table_Row implements ArrayAccess, Iterator, C
     /**
      * Calculate balance
      *
-     * @return Model_Cost
+     * @return FaZend_Bo_Money
      **/
     protected function _getBalance() 
     {
@@ -151,7 +151,7 @@ class theStatement extends Zend_Db_Table_Row implements ArrayAccess, Iterator, C
     /**
      * Calculate total volume
      *
-     * @return Model_Cost
+     * @return FaZend_Bo_Money
      **/
     protected function _getVolume() 
     {

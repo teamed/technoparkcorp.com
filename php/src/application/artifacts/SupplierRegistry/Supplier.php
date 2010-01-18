@@ -43,7 +43,7 @@ class theSupplier
     /**
      * Rate
      *
-     * @var Model_Cost
+     * @var FaZend_Bo_Money
      */
     protected $_rate;
     
@@ -109,10 +109,10 @@ class theSupplier
     /**
      * Set rate
      *
-     * @param Model_Cost Rate
+     * @param FaZend_Bo_Money Rate
      * @return void
      **/
-    public function setRate(Model_Cost $rate) 
+    public function setRate(FaZend_Bo_Money $rate) 
     {
         $this->_rate = $rate;
         return $this;

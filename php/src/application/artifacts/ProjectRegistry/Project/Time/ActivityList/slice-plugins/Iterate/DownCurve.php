@@ -57,10 +57,10 @@ class Slice_Plugin_Iterate_DownCurve extends Slice_Plugin_Abstract {
         
         $this->rewind();
         $activity = $this->current();
-        $total = Model_Cost::factory($activity->cost);
+        $total = FaZend_Bo_Money::factory($activity->cost);
         $this->delete($activity);
         
-        $this->_min = Model_Cost::factory($options['minCost'])->usd;
+        $this->_min = FaZend_Bo_Money::factory($options['minCost'])->usd;
         
         /**
          * We will allocate numbers using $cos(x)$ function.
@@ -98,7 +98,7 @@ class Slice_Plugin_Iterate_DownCurve extends Slice_Plugin_Abstract {
                 $p = pi()/2 - $a;
                 
             $activity = $this->add($options['codePrefix'] . $i++)
-                ->setCost(Model_Cost::factory($this->_square($a, $a+$p)))
+                ->setCost(FaZend_Bo_Money::factory($this->_square($a, $a+$p)))
                 ->setSow($options['sow']);
         };
         

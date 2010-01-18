@@ -51,7 +51,7 @@ class thePayment extends FaZend_Db_Table_ActiveRow_payment
         $payment->rate = $rate;
         $payment->original = $original;
         
-        $payment->amount = (integer)Model_Cost::factory($original)->cents;
+        $payment->amount = (integer)FaZend_Bo_Money::factory($original)->cents;
         
         $payment->save();
         return $payment;
@@ -75,11 +75,11 @@ class thePayment extends FaZend_Db_Table_ActiveRow_payment
     /**
      * Get total volume
      *
-     * @return Model_Cost
+     * @return FaZend_Bo_Money
      **/
     public static function getVolume() 
     {
-        return Model_Cost::factory(intval(thePayment::retrieve()
+        return FaZend_Bo_Money::factory(intval(thePayment::retrieve()
             ->columns(array('volume'=>new Zend_Db_Expr('SUM(IF(amount>0,amount,0))/100')))
             ->fetchRow()
             ->volume) . ' USD');
@@ -88,11 +88,11 @@ class thePayment extends FaZend_Db_Table_ActiveRow_payment
     /**
      * Get total balance
      *
-     * @return Model_Cost
+     * @return FaZend_Bo_Money
      **/
     public static function getBalance() 
     {
-        return Model_Cost::factory(intval(thePayment::retrieve()
+        return FaZend_Bo_Money::factory(intval(thePayment::retrieve()
             ->columns(array('balance'=>new Zend_Db_Expr('SUM(amount)/100')))
             ->fetchRow()
             ->balance) . ' USD');
@@ -102,11 +102,11 @@ class thePayment extends FaZend_Db_Table_ActiveRow_payment
      * Get total volume of the given statement
      *
      * @param theStatement The statement to analyze
-     * @return Model_Cost
+     * @return FaZend_Bo_Money
      **/
     public static function getStatementVolume(theStatement $statement) 
     {
-        return Model_Cost::factory(intval(thePayment::retrieve()
+        return FaZend_Bo_Money::factory(intval(thePayment::retrieve()
             ->columns(array('volume'=>new Zend_Db_Expr('SUM(IF(amount>0,amount,0))/100')))
             ->where('supplier = ?', $statement->supplier)
             ->group('supplier')
@@ -118,11 +118,11 @@ class thePayment extends FaZend_Db_Table_ActiveRow_payment
      * Get balance of the given statement
      *
      * @param theStatement The statement to analyze
-     * @return Model_Cost
+     * @return FaZend_Bo_Money
      **/
     public static function getStatementBalance(theStatement $statement) 
     {
-        return Model_Cost::factory(intval(thePayment::retrieve()
+        return FaZend_Bo_Money::factory(intval(thePayment::retrieve()
             ->columns(array('balance'=>new Zend_Db_Expr('SUM(amount)/100')))
             ->where('supplier = ?', $statement->supplier)
             ->group('supplier')
@@ -135,7 +135,7 @@ class thePayment extends FaZend_Db_Table_ActiveRow_payment
      *
      * @param theStakeholder
      * @param theProject
-     * @return Model_Cost
+     * @return FaZend_Bo_Money
      **/
     public static function getPaidInProjectToStakeholder(theStakeholder $stakeholder, theProject $project) 
     {
@@ -148,9 +148,9 @@ class thePayment extends FaZend_Db_Table_ActiveRow_payment
             ->fetchRow();
             
         if (!$row)
-            return Model_Cost::factory(0);
+            return FaZend_Bo_Money::factory(0);
             
-        return Model_Cost::factory(intval($row->volume) . ' USD');
+        return FaZend_Bo_Money::factory(intval($row->volume) . ' USD');
     }
     
     /**
@@ -175,10 +175,10 @@ class thePayment extends FaZend_Db_Table_ActiveRow_payment
     /**
      * Get amount in USD
      *
-     * @return Model_Cost
+     * @return FaZend_Bo_Money
      **/
     protected function _getUsd() {
-        return Model_Cost::factory($this->amount / 100);
+        return FaZend_Bo_Money::factory($this->amount / 100);
     }
            
 }

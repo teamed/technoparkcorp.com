@@ -182,11 +182,11 @@ class theStaffRequest
     /**
      * Total cost of this request
      *
-     * @return Model_Cost
+     * @return FaZend_Bo_Money
      **/
     protected function _getCost() 
     {
-        $cost = new Model_Cost();
+        $cost = new FaZend_Bo_Money();
         foreach ($this->_activities as $activity)
             $cost->add($activity->cost);
         return $cost;

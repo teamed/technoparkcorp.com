@@ -30,10 +30,10 @@ class Slice_Plugin_SumUntil extends Slice_Plugin_Abstract {
     /**
      * Sum them!
      *
-     * @return Model_Cost
+     * @return FaZend_Bo_Money
      **/
     public function execute(theActivity $stop) {
-        $sum = new Model_Cost();
+        $sum = new FaZend_Bo_Money();
         $found = false;
         foreach ($this as $activity) {
             $sum->add($activity->cost);

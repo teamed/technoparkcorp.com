@@ -71,11 +71,11 @@ class theWpAggregator extends theWorkPackage {
     /**
      * Calculate and return cost
      *
-     * @return Model_Cost
+     * @return FaZend_Bo_Money
      **/
     protected function _getCost() {
         if (is_null($this->_cost)) {
-            $this->_cost = new Model_Cost();
+            $this->_cost = new FaZend_Bo_Money();
             foreach ($this->_aggregatedWps as $wp)
                 $this->_cost->add($wp->cost);
         }
