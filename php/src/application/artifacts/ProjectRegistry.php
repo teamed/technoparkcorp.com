@@ -65,7 +65,15 @@ class theProjectRegistry extends Model_Artifact_Bag implements Model_Artifact_Pa
         // remove all items from the array
         $this->ps()->cleanArray();
         
-        foreach (Model_Project::retrieveAll() as $project) {
+        // get list of projects from FaZend server
+        try {
+            $fzProjects = Model_Project::retrieveAll();
+        } catch (Shared_Project_SoapFailure $e) {
+            $fzProjects = array();
+            FaZend_Log::err("Failed to retrieve projects: {$e->getMessage()}");
+        }
+        
+        foreach ($fzProjects as $project) {
             // if we DON'T manage this project - skip it
             if (!$project->isManaged())
                 continue;
