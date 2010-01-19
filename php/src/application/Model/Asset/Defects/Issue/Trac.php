@@ -146,7 +146,7 @@ class Model_Asset_Defects_Issue_Trac extends Model_Asset_Defects_Issue_Abstract
                 $name, 
                 $value, 
                 $author, 
-                new Zend_Date($date)
+                $date
             );
         }
     }
@@ -300,9 +300,9 @@ class Model_Asset_Defects_Issue_Trac extends Model_Asset_Defects_Issue_Abstract
         return array(
             (string)$name, 
             $value, 
-            (string)$author, 
-            strtotime($date)
-            );
+            (string)$author, // author
+            new Zend_Date($date) // moment of change
+        );
     }
     
     /**
