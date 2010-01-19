@@ -67,14 +67,18 @@ class Metric_Artifacts_Requirements_Actors_Total extends Metric_Abstract
             
         $i = 1;
         foreach ($slice->codeRegex('/^a[\d]+$/')->afterMilestone() as $milestone) {
-            $milestone->criteria
-                ->when('[aspects/readiness] > %0.2f', 0.3 * $i++ / $total);
+            $milestone->criteria->when(
+                '[aspects/readiness] > %0.2f', 
+                0.3 * $i++ / $total
+            );
         }
             
-        if ($slice->sum()) {
+        if (!$slice->sum()->isZero()) {
             foreach ($slice->onlyActivities() as $activity) {
-                $activity->criteria
-                    ->when('[artifacts/requirements/actors/compliance] > %0.2f', $slice->sumUntil($activity)->div($slice->sum()));
+                $activity->criteria->when(
+                    '[artifacts/requirements/actors/compliance] > %0.2f', 
+                    $slice->sumUntil($activity)->div($slice->sum())
+                );
             }
         }
     }
