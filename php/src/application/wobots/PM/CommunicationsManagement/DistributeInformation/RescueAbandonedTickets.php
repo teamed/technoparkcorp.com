@@ -38,19 +38,24 @@ class RescueAbandonedTickets extends Model_Decision_PM
      */
     protected function _make()
     {
+        $closed = array();
         foreach ($this->_project->issues as $issue) {
             // ignore closed tickets
-            if ($issue->isClosed())
+            if ($issue->isClosed()) {
+                $closed[] = $issue->id;
                 continue;
+            }
                 
             // there was some activity for the last 72 hours
             $lastDate = $issue->changelog->get('comment')->getLastDate();
-            if ($lastDate->isEarlier(Zend_Date::now()->subHours(72)))
+            if ($lastDate->isEarlier(Zend_Date::now()->subHours(72))) {
+                logg('Ticket #%d was changed shortly, on %s', $issue->id, $lastDate);
                 continue;
+            }
                 
             $owner = $issue->changelog->get('owner')->getValue();
             if (!isset($this->_project->staffAssignments[$owner])) {
-                FaZend_Log::err("Unknown email in ticket #{$issue->id}: $owner");
+                FaZend_Log::err('Unknown email in ticket #%d: %s', $issue->id, $owner);
                 continue;
             }
             
@@ -58,8 +63,10 @@ class RescueAbandonedTickets extends Model_Decision_PM
             $pmRole = $this->_project->staffAssignments->createRole('PM');
             
             // this ticket is already with PM
-            if ($owner->hasRole($pmRole))
+            if ($owner->hasRole($pmRole)) {
+                logg('Ticket #%d is in long delay, but with PM now', $issue->id);
                 continue;
+            }
              
             // remind right now   
             // if ($issue->askOnce(
@@ -85,6 +92,8 @@ class RescueAbandonedTickets extends Model_Decision_PM
                 $pm->email
             );
         }
+        
+        logg('Closed tickets were ignored: %s', implode(', ', $closed));
     }
     
 }
