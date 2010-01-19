@@ -87,17 +87,20 @@ abstract class Model_Asset_Defects_Issue_Changelog_Field_Abstract
     }
 
     /**
-     * Was it changed?
+     * Was it changed during this session?
      *
      * @return boolean
      **/
     public function wasChanged()
     {
-        return (bool)count($this->_changes);
-        // foreach ($this->_changes as $change)
-        //     if ($change->date)
-        //         return true;
-        // return false;
+        // empty DATE means that the value was changed
+        // in THIS script, and is waiting for deployment
+        // to tracker
+        foreach ($this->_changes as $change) {
+            if (!$change->date)
+                return true;
+        }
+        return false;
     }
 
     /**
