@@ -169,12 +169,23 @@ abstract class Model_Asset_Defects_Issue_Abstract
     }
 
     /**
+     * Re-assign
+     *
+     * @param string New email to assign
+     * @return boolean
+     **/
+    public function reassign($email) 
+    {
+        $this->changelog->get('owner')->setValue($email);
+    }
+
+    /**
      * Send this message just once to the ticke
      *
      * @param string Code of the message
      * @param string Text of the message
      * @param integer|null How many days before we can ask again, NULL means - never ask again
-     * @return void
+     * @return boolean The ticket is alredy asked (FALSE) or asked now (TRUE)
      **/
     abstract public function askOnce($code, $text, $lag = null);
     

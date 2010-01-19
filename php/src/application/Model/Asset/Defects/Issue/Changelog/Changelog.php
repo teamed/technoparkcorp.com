@@ -60,12 +60,16 @@ class Model_Asset_Defects_Issue_Changelog_Changelog
      *
      * @param string Name of field
      * @return mixed
+     * @throws Model_Asset_Defects_Issue_Changelog_FieldNotFound
      **/
     public function get($name)
     {
-        if (!$this->allowsField($name))
-            FaZend_Exception::raise('Model_Asset_Defects_Issue_Changelog_FieldNotFound',
-                "There is no such field in changelog like '{$name}'");
+        if (!$this->allowsField($name)) {
+            FaZend_Exception::raise(
+                'Model_Asset_Defects_Issue_Changelog_FieldNotFound',
+                "There is no such field in changelog like '{$name}'"
+            );
+        }
                 
         if (!$this->_fields[$name]) {
             $className = 'Model_Asset_Defects_Issue_Changelog_Field_' . ucfirst($name);
@@ -94,10 +98,10 @@ class Model_Asset_Defects_Issue_Changelog_Changelog
      * @param string Name of field
      * @param mixed Value to set
      * @param string Changer of the field (email)
-     * @param integer Date/time when this change happened
+     * @param Zend_Date When this change happened
      * @return $this
      **/
-    public function load($name, $value, $author, $date)
+    public function load($name, $value, $author, Zend_Date $date)
     {
         $this->get($name)->load($value, $author, $date);
         return $this;

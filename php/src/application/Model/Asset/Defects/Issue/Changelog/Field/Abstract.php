@@ -59,12 +59,16 @@ abstract class Model_Asset_Defects_Issue_Changelog_Field_Abstract
      *
      * @param mixed Value to set
      * @return $this
+     * @throws Model_Asset_Defects_Issue_Changelog_Field_CantChange
      **/
     public function setValue($value)
     {
-        if (!$this->_validate($value))
-            FaZend_Exception::raise('Model_Asset_Defects_Issue_Changelog_Field_CantChange',
-                "You can't change value of type " . get_class($this));
+        if (!$this->_validate($value)) {
+            FaZend_Exception::raise(
+                'Model_Asset_Defects_Issue_Changelog_Field_CantChange',
+                "You can't change value of type " . get_class($this)
+            );
+        }
         $this->_addChange($value, null, null);
     }
 
@@ -73,10 +77,10 @@ abstract class Model_Asset_Defects_Issue_Changelog_Field_Abstract
      *
      * @param mixed Value to set
      * @param string Email of the author
-     * @param integer Date/time of changes made
+     * @param Zend_Date When changes were made
      * @return $this
      **/
-    public function load($value, $author, $date)
+    public function load($value, $author, Zend_Date $date)
     {
         $this->_validate($value);
         $this->_addChange($value, $author, $date);
@@ -89,12 +93,45 @@ abstract class Model_Asset_Defects_Issue_Changelog_Field_Abstract
      **/
     public function wasChanged()
     {
-        foreach ($this->_changes as $change)
-            if (!$change->date)
-                return true;
-        return false;
+        return (bool)count($this->_changes);
+        // foreach ($this->_changes as $change)
+        //     if ($change->date)
+        //         return true;
+        // return false;
     }
 
+    /**
+     * Get the date of last change
+     *
+     * @return Zend_Date
+     **/
+    public function getLastDate()
+    {
+        $date = null;
+        foreach ($this->_changes as $change) {
+            if (!is_null($date) || $date->isLater($change->date))
+                $date = $change->date;
+        }
+        return $date;
+    }
+    
+    /**
+     * Get the author of the last change
+     *
+     * @return string Email of the author
+     **/
+    public function getLastAuthor()
+    {
+        $date = $author = null;
+        foreach ($this->_changes as $change) {
+            if (!is_null($date) || $date->isLater($change->date)) {
+                $date = $change->date;
+                $author = $change->author;
+            }
+        }
+        return $author;
+    }
+    
     /**
      * Get current value
      *
@@ -123,10 +160,10 @@ abstract class Model_Asset_Defects_Issue_Changelog_Field_Abstract
      *
      * @param mixed Value to set
      * @param string Email of the author
-     * @param integer Date/time of changes made
+     * @param Zend_Date When changes were made
      * @return void
      **/
-    protected function _addChange($value, $author, $date)
+    protected function _addChange($value, $author, Zend_Date $date)
     {
         if ($this->getValue() == $value)
             return;

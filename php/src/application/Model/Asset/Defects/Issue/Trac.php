@@ -32,11 +32,10 @@ class Model_Asset_Defects_Issue_Trac extends Model_Asset_Defects_Issue_Abstract
      * @param string Code of the message
      * @param string Text of the message
      * @param integer|null How many days before we can ask again, NULL means - never ask again
-     * @return void
+     * @return boolean The ticket is alredy asked (FALSE) or asked now (TRUE)
      **/
     public function askOnce($code, $text, $lag = null) 
     {
-        $lastDate = false;
         foreach ($this->changelog->get('comment')->getChanges() as $change) {
             // not from me
             if ($change->author != Model_User::getCurrentUser()->email)
@@ -49,22 +48,22 @@ class Model_Asset_Defects_Issue_Trac extends Model_Asset_Defects_Issue_Abstract
             // invalid code
             if ($matches[1] != md5($code))
                 continue;
-                
-            $lastDate = max($lastDate, $change->date);
+            $asked = true;
         }
         
         // if we can ask just once - and we already asked - skip
-        if ($lastDate && is_null($lag))
+        if (isset($asked) && is_null($lag))
             return false;
         
+        $lastDate = $this->changelog->get('comment')->getLastDate();
         // we posted it recently
-        if ($lastDate > time() - SECONDS_IN_DAY * $lag) {
+        if ($lastDate->isEarlier(Zend_Date::now()->subDays($lag))) {
             logg(
                 "No '%s' to ticket #%d since we already did it %0.1f hours ago, at %s" .
                 $code, 
                 $this->_id, 
-                (time() - $lastDate)/SECONDS_IN_HOUR, 
-                date('m/d/y h:i:s', $lastDate)
+                Zend_Date::now()->sub($lastDate)->getSeconds(), 
+                $lastDate->get(DATETIME_MEDIUM)
             );
             return false;
         }
@@ -138,12 +137,17 @@ class Model_Asset_Defects_Issue_Trac extends Model_Asset_Defects_Issue_Abstract
                 $record[1], // value of this field
                 $record[2], // author of changes
                 $record[3] // date of change
-                );
+            );
                 
             if (!$this->_changelog->allowsField($name))
                 continue;
                 
-            $this->_changelog->load($name, $value, $author, $date);
+            $this->_changelog->load(
+                $name, 
+                $value, 
+                $author, 
+                new Zend_Date($date)
+            );
         }
     }
         

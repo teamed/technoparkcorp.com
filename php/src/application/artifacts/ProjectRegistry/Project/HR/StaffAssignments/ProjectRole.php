@@ -47,7 +47,8 @@ class theProjectRole implements Model_Artifact_Stateless
      * @param string The role title, alnum only
      * @return void
      **/
-    public function __construct(theStaffAssignments $staffAssignments, $title) {
+    public function __construct(theStaffAssignments $staffAssignments, $title)
+    {
         validate()->alnum($title, array());
         $this->_staffAssignments = $staffAssignments;
         $this->_title = $title;
@@ -58,7 +59,8 @@ class theProjectRole implements Model_Artifact_Stateless
      *
      * @return string
      **/
-    public function __toString() {
+    public function __toString()
+    {
         return $this->_title;
     }
 
@@ -67,7 +69,8 @@ class theProjectRole implements Model_Artifact_Stateless
      *
      * @return theStakeholder
      **/
-    public function random() {
+    public function random()
+    {
         return $this->_staffAssignments->findRandomStakeholderByRole($this);
     }
     

@@ -57,7 +57,8 @@ class theStaffAssignments implements ArrayAccess, Countable, Iterator, Model_Art
         $list = $this->_project()->getStakeholdersByRole($name);
         
         // if nothing found - throw an exception
-        validate()->true(count($list) > 0, "Role '{$name}' is not found in project '{$this->_project()->name}'");
+        validate()->true(count($list) > 0, 
+            "Role '{$name}' is not found in project '{$this->_project()->name}'");
                 
         // if just one email - return it as string
         if (count($list) == 1)
@@ -230,8 +231,10 @@ class theStaffAssignments implements ArrayAccess, Countable, Iterator, Model_Art
      **/
     public function offsetSet($name, $value) 
     {
-        FaZend_Exception::raise('StaffAssignmentsAreStatic',
-            "You can't change staffAssignments directly, only through FaZend");
+        FaZend_Exception::raise(
+            'StaffAssignmentsAreStatic',
+            "You can't change staffAssignments directly, only through FaZend"
+        );
     }
     
     /**
@@ -241,8 +244,10 @@ class theStaffAssignments implements ArrayAccess, Countable, Iterator, Model_Art
      **/
     public function offsetUnset($name) 
     {
-        FaZend_Exception::raise('StaffAssignmentsAreStatic',
-            "You can't change staffAssignments directly, only through FaZend");
+        FaZend_Exception::raise(
+            'StaffAssignmentsAreStatic',
+            "You can't change staffAssignments directly, only through FaZend"
+        );
     }
     
     /**

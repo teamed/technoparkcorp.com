@@ -97,7 +97,7 @@ class Model_Artifact extends FaZend_Pos_Abstract implements Model_Artifact_Inter
     {
         if (is_null($property) && !($artifact instanceof Model_Artifact_Stateless)) {
             // do nothing
-        } elseif (!is_null($property) && ($artifact instanceof Model_Artifact_Stateless)) {
+        } elseif (!is_null($property)) {
             if (method_exists($artifact, $property))
                 $artifact->$property($root);
             else
@@ -106,7 +106,7 @@ class Model_Artifact extends FaZend_Pos_Abstract implements Model_Artifact_Inter
             FaZend_Exception::raise(
                 'Model_Artifact_InvalidChildArtifact', 
                 'Artifact ' . get_class($artifact) . ' is not stateless'
-                );
+            );
         }
             
         // reload it if it's empty now and requires loading

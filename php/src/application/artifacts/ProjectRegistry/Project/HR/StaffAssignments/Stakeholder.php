@@ -71,8 +71,10 @@ class theStakeholder implements Model_Artifact_Stateless
         if (property_exists($this, $var))
             return $this->$var;
         
-        FaZend_Exception::raise('Stakeholder_PropertyOrMethodNotFound', 
-            "Can't find what is '$name' in " . get_class($this));
+        FaZend_Exception::raise(
+            'Stakeholder_PropertyOrMethodNotFound', 
+            "Can't find what is '$name' in " . get_class($this)
+        );
     }
     
     /**
