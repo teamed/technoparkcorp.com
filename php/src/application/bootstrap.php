@@ -17,6 +17,10 @@
  * @version $Id$
  */
 
+class Model_Cost extends FaZend_Bo_Money
+{
+}
+
 /**
  * Bootstraper
  *
