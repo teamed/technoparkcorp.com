@@ -112,7 +112,7 @@ abstract class Model_Asset_Defects_Issue_Changelog_Field_Abstract
     {
         $date = null;
         foreach ($this->_changes as $change) {
-            if (!is_null($date) || $date->isLater($change->date))
+            if (is_null($date) || $date->isLater($change->date))
                 $date = $change->date;
         }
         return $date;
@@ -127,7 +127,7 @@ abstract class Model_Asset_Defects_Issue_Changelog_Field_Abstract
     {
         $date = $author = null;
         foreach ($this->_changes as $change) {
-            if (!is_null($date) || $date->isLater($change->date)) {
+            if (is_null($date) || $date->isLater($change->date)) {
                 $date = $change->date;
                 $author = $change->author;
             }
