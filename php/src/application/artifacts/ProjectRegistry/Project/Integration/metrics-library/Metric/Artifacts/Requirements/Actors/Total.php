@@ -45,9 +45,10 @@ class Metric_Artifacts_Requirements_Actors_Total extends Metric_Abstract
      **/
     public function getWorkPackage()
     {
-        return $this->_makeWp(
-            $this->_project->wbs->sum('artifacts\/requirements\/functional\/total')->mul(self::PORTION), 
-            'Specify actors');
+        return $this->_makeWp($this->_project->wbs->sum(
+            'artifacts\/requirements\/functional\/total')->mul(self::PORTION), 
+            'Specify actors'
+        );
     }
         
     /**
