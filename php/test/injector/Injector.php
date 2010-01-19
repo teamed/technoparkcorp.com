@@ -1,52 +1,16 @@
 <?php
-/**
- *
- * Copyright (c) 2008, TechnoPark Corp., Florida, USA
- * All rights reserved. THIS IS PRIVATE SOFTWARE.
- *
- * Redistribution and use in source and binary forms, with or without modification, are PROHIBITED
- * without prior written permission from the author. This product may NOT be used anywhere
- * and on any computer except the server platform of TechnoPark Corp. located at
- * www.technoparkcorp.com. If you received this code occacionally and without intent to use
- * it, please report this incident to the author by email: privacy@technoparkcorp.com or
- * by mail: 568 Ninth Street South 202 Naples, Florida 34102, the United States of America,
- * tel. +1 (239) 243 0206, fax +1 (239) 236-0738.
- *
- * @author Yegor Bugaenko <egor@technoparkcorp.com>
- * @copyright Copyright (c) TechnoPark Corp., 2001-2009
- * @version $Id$
- *
- */
 
 require_once 'Mocks/artifacts/ProjectRegistry/Project.php';
 
-/**
- * This class injects test components into a workable system
- *
- * Bootstrap calls this class only when APPLICATION_ENV is not 'production'
- *
- * @see bootstrap.php
- * @package test
- */
 class Injector extends FaZend_Test_Injector 
 {
     
-    /**
-     * Inject extra logger
-     *
-     * @return void
-     **/
     protected function _injectTestLogger() 
     {
         // log errors in ALL environments
         // ...
     }
     
-    /**
-     * Make sure we don't do any actual connections to fazend
-     *
-     * @return void
-     **/
     protected function _injectSoapClient() 
     {
         // this class will catch all calls to fazend
@@ -57,11 +21,6 @@ class Injector extends FaZend_Test_Injector
         Shared_Soap_Gateway::setCacheEnabled(false);
     }
         
-    /**
-     * Minor config options
-     *
-     * @return void
-     **/
     protected function _injectMiscellaneous() 
     {
         // clean Shared cache, if necessary
@@ -81,11 +40,6 @@ class Injector extends FaZend_Test_Injector
         Zend_Registry::get('Zend_Translate')->setLocale(new Zend_Locale('ru'));
     }
 
-    /**
-     * Configure LUCENE
-     *
-     * @return void
-     **/
     protected function _injectLuceneConfig() 
     {
         // we should set this path to a writable directory
@@ -93,12 +47,7 @@ class Injector extends FaZend_Test_Injector
         Model_Article::setLucenePath($path);
     }
 
-    /**
-     * Injects a tester logged in
-     *
-     * @return void
-     **/
-    protected function _injectTesterLogin() 
+    protected function _injectTesterIsLoggedIn() 
     {
         // in testing environment you do EVERYTHING under this role
         // in order to avoid conflicts with real documents in
@@ -107,11 +56,6 @@ class Injector extends FaZend_Test_Injector
         Model_User::logIn(Mocks_Model_Project::PM);
     }
 
-    /**
-     * Injects a test project into application
-     *
-     * @return void
-     **/
     protected function _injectTestProject() 
     {
         // disable any activities with any LIVE projects
@@ -137,11 +81,6 @@ class Injector extends FaZend_Test_Injector
         FaZend_Pos_Abstract::root()->ps()->saveAll();
     }
 
-    /**
-     * Tester has rights to access any/all pages
-     *
-     * @return void
-     **/
     protected function _injectAccessRights() 
     {
         // initialize ACL
