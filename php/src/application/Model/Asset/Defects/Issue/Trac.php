@@ -210,6 +210,7 @@ class Model_Asset_Defects_Issue_Trac extends Model_Asset_Defects_Issue_Abstract
             case 'cc':
             case 'keywords':
             case 'milestone':
+            case 'attachment':
             case 'version':
                 $name = null;
                 break;
