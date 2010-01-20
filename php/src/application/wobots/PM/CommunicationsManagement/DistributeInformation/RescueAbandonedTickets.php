@@ -48,7 +48,7 @@ class RescueAbandonedTickets extends Model_Decision_PM
                 
             // there was some activity for the last 72 hours
             $lastDate = $issue->changelog->get('comment')->getLastDate();
-            if ($lastDate->isEarlier(Zend_Date::now()->subHours(72))) {
+            if ($lastDate->isEarlier(Zend_Date::now()->subHour(72))) {
                 logg('Ticket #%d was changed shortly, on %s', $issue->id, $lastDate);
                 continue;
             }
