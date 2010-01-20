@@ -187,6 +187,7 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history
         self::retrieve()
             ->where('wobot = ?', $wobot->getName())
             ->where('context = ?', $wobot->getContext())
+            ->where('protocol <> ""')
             ->delete();
     }
 
