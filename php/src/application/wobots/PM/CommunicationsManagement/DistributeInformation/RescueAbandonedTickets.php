@@ -39,6 +39,7 @@ class RescueAbandonedTickets extends Model_Decision_PM
     protected function _make()
     {
         $closed = array();
+        return;
         foreach ($this->_project->issues as $issue) {
             // ignore closed tickets
             if ($issue->isClosed()) {
