@@ -25,7 +25,8 @@ require_once 'artifacts/ProjectRegistry/Project/Time/ActivityList/slice-plugins/
  * 
  * @package Slice_Plugin
  */
-class Slice_Plugin_Iterate_DownCurve extends Slice_Plugin_Abstract {
+class Slice_Plugin_Iterate_DownCurve extends Slice_Plugin_Abstract
+{
 
     /**
      * Minimim
@@ -47,8 +48,8 @@ class Slice_Plugin_Iterate_DownCurve extends Slice_Plugin_Abstract {
      * @param array List of options
      * @return mixed
      **/
-    public function execute(array $options = array()) {
-        
+    public function execute(array $options = array())
+    {
         $this->_normalizeOptions($options, array(
             'minCost' => '10 USD', // minimal possible cost of one activity
             'codePrefix' => 'a', // prefix to set before each new code of activity

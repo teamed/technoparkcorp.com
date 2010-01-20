@@ -294,14 +294,13 @@ class Model_Asset_Defects_Issue_Trac extends Model_Asset_Defects_Issue_Abstract
                     'Model_Asset_Defects_Issue_Trac_UnknownField',
                     "Unknown field came from Trac: '{$name}', value: '{$value}'"
                 );
-        
         }
         
         return array(
             (string)$name, 
             $value, 
             (string)$author, // author
-            new Zend_Date($date) // moment of change
+            new Zend_Date(strtotime($date)) // moment of change
         );
     }
     

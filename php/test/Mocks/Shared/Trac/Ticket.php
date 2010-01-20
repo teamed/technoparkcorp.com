@@ -37,12 +37,15 @@ class Mocks_Shared_Trac_Ticket extends Shared_Trac_Ticket
         );
     }
 
+    /**
+     * @see Model_Asset_Defects_Issue_Trac
+     */
     public function getTracChangelog() 
     {
         $changelog = array();
         foreach (array('summary', 'comment', 'description') as $field) {
             $changelog[] = array(
-                0 => Zend_Date::now()->getIso(),
+                0 => date('Ymd\TH:i:s'), // this is what we are getting from Trac
                 1 => Model_User::me()->email,
                 2 => $field,
                 3 => false,
