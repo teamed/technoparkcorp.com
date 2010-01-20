@@ -163,11 +163,18 @@ abstract class Model_Decision implements Model_Decision_Interface
         $db = Zend_Db_Table::getDefaultAdapter();
 
         try {
-            logg('Starting decision (rev' . FaZend_Revision::get() . '): ' . $this->_file);
+            logg(
+                'Starting decision (pid: %d, rev%s): %s', 
+                getmypid(),
+                FaZend_Revision::get(), 
+                $this->_file
+            );
+            
             $db->beginTransaction();
             $decision = $this->_make();
             $db->commit();
-            logg('Decision execution finished (' . pathinfo($this->_file, PATHINFO_FILENAME) . ')');
+            
+            logg('Decision execution finished (%s)', pathinfo($this->_file, PATHINFO_FILENAME));
         } catch (Exception $e) {
             // some error inside - we skip the process
             FaZend_Log::err($e->getMessage());
