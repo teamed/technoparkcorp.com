@@ -81,7 +81,7 @@ abstract class Model_Decision implements Model_Decision_Interface
      * Selects the next decision to be executed
      *
      * @param Model_Wobot Wobot, the initiator
-     * @return string Absolute name of PHP file
+     * @return string|null Absolute name of PHP file
      */
     public static function nextForWobot(Model_Wobot $wobot)
     {
@@ -158,6 +158,14 @@ abstract class Model_Decision implements Model_Decision_Interface
      */
     public function make()
     {
+        // mark that the decision was started
+        $history = Model_Decision_History::create(
+            $this->_wobot, 
+            $this, 
+            'started on ' . Zend_Date::now(),
+            ''
+        );
+
         FaZend_Log::getInstance()->addWriter('Memory', 'decision');
 
         $db = Zend_Db_Table::getDefaultAdapter();
@@ -186,7 +194,7 @@ abstract class Model_Decision implements Model_Decision_Interface
         $log = FaZend_Log::getInstance()->getWriterAndRemove('decision')->getLog();
         
         // protocol this decision, if something was said
-        Model_Decision_History::create($this->_wobot, $this, $decision, $log);
+        $history->recordResult($decision, $log);
         
         return $decision;
     }

@@ -37,8 +37,7 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history
      */
     public static function create(Model_Wobot $wobot, Model_Decision $decision, $result, $log)
     {
-        $row = new Model_Decision_History();
-
+        $row = new self();
         $row->wobot = $wobot->getName();
         $row->context = $wobot->getContext();
         $row->result = $result;
@@ -47,6 +46,20 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history
         $row->save();
 
         return $row;
+    }
+    
+    /**
+     * undocumented function
+     *
+     * @param string|false Decision made
+     * @param string Log of the decision made
+     * @return void
+     */
+    public function recordResult($result, $log) 
+    {
+        $this->result = $result;
+        $this->protocol = $log;
+        $this->save();
     }
 
     /**
@@ -69,7 +82,7 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history
      *
      * @param Model_Wobot Wobot that is looking for new decision
      * @param array List of files that exist in the wobot
-     * @return string
+     * @return string|null Name of the file or NULL if nothing found
      */
     public static function findNextDecision(Model_Wobot $wobot, array $files)
     {
@@ -83,15 +96,36 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history
         // first element of the list - we return it if nothing better found
         $first = $files[0];
 
+        // latest decision made by this wobot
         $latest = self::retrieve()
             ->setSilenceIfEmpty()
             ->where('wobot = ?', $wobot->getName())
             ->where('context = ?', $wobot->getContext())
+            ->where('protocol <> ""') // they are still executing?
             ->order('created DESC')
             ->fetchRow();
 
+        // get list of running decisions
+        $running = self::retrieve()
+            ->where('wobot = ?', $wobot->getName())
+            ->where('context = ?', $wobot->getContext())
+            ->where('protocol = ""') // they are still executing?
+            ->fetchAll();
+
         if (!$latest)
             return $first;
+
+        // exclude files that are executing NOW
+        foreach ($running as $decision) {
+            foreach ($files as $id=>$file) {
+                if ($decision->hash == Model_Decision::hash($file)) {
+                    unset($files[$id]);
+                }
+            }
+        }
+        
+        if (!count($files))
+            return null;
 
         while (count($files)) {
             $file = array_shift($files);

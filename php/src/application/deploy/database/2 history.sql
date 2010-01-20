@@ -1,5 +1,5 @@
 ---
---- 
+--- @see Model_Decision, Model_Decision_History
 ---
 
 CREATE TABLE IF NOT EXISTS `history` (
@@ -15,6 +15,8 @@ CREATE TABLE IF NOT EXISTS `history` (
     `protocol` LONGTEXT NOT NULL COMMENT 'Protocol of decision',
 
     PRIMARY KEY (`id`)
-
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+)
+ENGINE=InnoDB
+DEFAULT CHARSET=utf8
+AUTO_INCREMENT=1;
 

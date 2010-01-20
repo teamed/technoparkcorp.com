@@ -163,11 +163,14 @@ abstract class Model_Wobot implements Model_Wobot_Interface
     /**
      * Execute this wobot (make next waiting decision)
      *
-     * @return string The decision just made
+     * @return string|false The decision just made
      */
     public function execute() 
     {
-        return $this->decisionFactory(Model_Decision::nextForWobot($this))->make();
+        $file = Model_Decision::nextForWobot($this);
+        if (empty($file))
+            return false;
+        return $this->decisionFactory($file)->make();
     }
 
     /**
