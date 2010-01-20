@@ -37,9 +37,9 @@ class Wobots extends FaZend_Cli_Abstract
     {
         foreach (Model_Wobot::retrieveAll() as $wobot) {
             Model_User::logIn($wobot->getEmail());
-            echo $wobot->execute() . "\n";
+            $wobot->execute();
         }
-        return 0;
+        return self::RETURNCODE_OK;
     }
 
 }
