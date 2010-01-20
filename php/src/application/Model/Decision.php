@@ -155,9 +155,17 @@ abstract class Model_Decision implements Model_Decision_Interface
      * Make decision and protocol results
      *
      * @return string|false Result of decision made (FALSE = no decission)
+     * @throws Model_Decision_AlreadyRunning
      */
     public function make()
     {
+        if (Model_Decision_History::isRunning($this->_wobot, $this)) {
+            FaZend_Exception::raise(
+                'Model_Decision_AlreadyRunning',
+                "Decision is running now: {$this->_file}"
+            );
+        }
+        
         // mark that the decision was started
         $history = Model_Decision_History::create(
             $this->_wobot, 

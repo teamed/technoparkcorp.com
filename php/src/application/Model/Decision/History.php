@@ -191,6 +191,24 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history
     }
 
     /**
+     * Find next waiting decision
+     *
+     * @param Model_Wobot Wobot that initiated this decision
+     * @param Model_Decision Decision that has to be protocoled
+     * @return string|null Name of the file or NULL if nothing found
+     */
+    public static function isRunning(Model_Wobot $wobot, Model_Decision $decision)
+    {
+        return (bool)self::retrieve()
+            ->setSilenceIfEmpty()
+            ->where('wobot = ?', $wobot->getName())
+            ->where('hash = ?', $decision->getHash())
+            ->where('context = ?', $wobot->getContext())
+            ->where('protocol = ""')
+            ->fetchRow();
+    }
+
+    /**
      * Title of the decision
      *
      * @return string
