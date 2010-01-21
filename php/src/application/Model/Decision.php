@@ -198,7 +198,7 @@ abstract class Model_Decision implements Model_Decision_Interface
             );
         } catch (Exception $e) {
             // some error inside - we skip the process
-            FaZend_Log::err($e->getMessage());
+            FaZend_Log::err(get_class($e) . ': ' . $e->getMessage());
             $decision = 'ERROR: ' . $e->getMessage();
             $db->rollBack();
             logg('Decision execution aborted, DB transaction rolled back');
