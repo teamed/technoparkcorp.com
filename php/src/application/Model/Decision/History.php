@@ -244,6 +244,8 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history
                 "\n\nprocess {$pid} is not running any more\n";
             $this->result = 'ERROR: failed in PID ' . $this->result;
             $this->save();
+            
+            @unlink($this->getLogFileName());
             return null;
         }
         
