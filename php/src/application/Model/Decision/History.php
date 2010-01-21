@@ -242,6 +242,7 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history
         if (!shell_exec("ps -p {$pid} | grep {$pid}")) {
             $this->protocol = $this->getProtocol() . 
                 "\n\nprocess {$pid} is not running any more\n";
+            $this->result = 'ERROR: failed in PID ' . $this->result;
             $this->save();
             return null;
         }
@@ -292,16 +293,7 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history
                 );
             }
         }
-        $file = $dir . '/' . substr(strrchr($this->hash, '/'), 1) . '.log';
-        // if (!file_exists($file)) {
-        //     if (@file_put_contents($file, ' ') === false) {
-        //         FaZend_Exception::raise(
-        //             'Model_Decision_History_FileInvalid',
-        //             "Can't create file: {$file}"
-        //         );
-        //     }
-        // }
-        return $file;
+        return $dir . '/' . substr(strrchr($this->hash, '/'), 1) . '.log';
     }
     
     /**
