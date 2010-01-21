@@ -179,6 +179,7 @@ abstract class Model_Decision implements Model_Decision_Interface
             'stream'
         );
 
+        $start = microtime(true);
         $db = Zend_Db_Table::getDefaultAdapter();
         try {
             logg(
@@ -193,8 +194,9 @@ abstract class Model_Decision implements Model_Decision_Interface
             $db->commit();
             
             logg(
-                'Decision execution finished (%s)', 
-                pathinfo($this->_file, PATHINFO_FILENAME)
+                'Decision execution finished (%s) in %0.2fsec', 
+                pathinfo($this->_file, PATHINFO_FILENAME),
+                microtime(true) - $start
             );
         } catch (Exception $e) {
             // some error inside - we skip the process
