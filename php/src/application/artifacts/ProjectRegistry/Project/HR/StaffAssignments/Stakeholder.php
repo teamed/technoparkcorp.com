@@ -88,6 +88,22 @@ class theStakeholder implements Model_Artifact_Stateless
     }
 
     /**
+     * This stakeholder has this role?
+     *
+     * @param theProjectRole Role to find
+     * @return boolean
+     */
+    public function hasRole(theProjectRole $role) 
+    {
+        $roles = $this->_staffAssignments->retrieveRolesByStakeholder($this);
+        foreach ($roles as $myRole) {
+            if ($myRole === $role)
+                return true;
+        }
+        return false;
+    }
+
+    /**
      * How much this supplier already get in the given project?
      *
      * @return FaZend_Bo_Money
