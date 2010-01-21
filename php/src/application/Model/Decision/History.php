@@ -271,7 +271,7 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history
             return $this->protocol;
             
         $file = $this->getLogFileName();
-        return "...getting it from {$file}...\n" . @file_get_contents();
+        return "...getting it from {$file}...\n" . @file_get_contents($file);
     }
     
     /**
