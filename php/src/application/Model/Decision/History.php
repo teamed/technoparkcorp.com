@@ -293,14 +293,14 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history
             }
         }
         $file = $dir . '/' . substr(strrchr($this->hash, '/'), 1) . '.log';
-        if (!file_exists($file)) {
-            if (@file_put_contents($file, '') === false) {
-                FaZend_Exception::raise(
-                    'Model_Decision_History_FileInvalid',
-                    "Can't create file: {$file}"
-                );
-            }
-        }
+        // if (!file_exists($file)) {
+        //     if (@file_put_contents($file, ' ') === false) {
+        //         FaZend_Exception::raise(
+        //             'Model_Decision_History_FileInvalid',
+        //             "Can't create file: {$file}"
+        //         );
+        //     }
+        // }
         return $file;
     }
     
