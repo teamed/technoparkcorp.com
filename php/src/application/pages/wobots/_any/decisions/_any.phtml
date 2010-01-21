@@ -3,13 +3,13 @@
 <p>
     Date: <?=$decision->created?><br/>
     Title: "<?=$decision->getTitle()?>"<br/>
-    Decision made: <b><?=$decision->result?></b>
+    Decision made: <b><?=$decision->result?><?=$decision->isStillRunning() ? " (RUNNING NOW)" : false?></b>
 </p>
 
 <p>Protocol:</p>
 
 <!-- very long PRE cause problems for browser -->
-<? foreach (array_chunk(explode("\n", $decision->protocol), 50) as $chunk): ?>
+<? foreach (array_chunk(explode("\n", $decision->getProtocol()), 50) as $chunk): ?>
     <pre>
         <?=implode("\n", $chunk)?>
     </pre>

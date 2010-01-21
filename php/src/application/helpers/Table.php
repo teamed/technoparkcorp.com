@@ -185,6 +185,34 @@ class Helper_Table extends FaZend_View_Helper
     }
 
     /**
+     * Add converter to the column
+     *
+     * @param string Class name
+     * @param string|null Method name
+     * @return Helper_Table
+     */
+    public function addConverter($class, $method = null)
+    {
+        // add column to the htmlTable()
+        $this->_table->addConverter($this->_predecessor, $class, $method);
+        return $this;
+    }
+    
+    /**
+     * Add formatter to the column
+     *
+     * @param string Condition
+     * @param string|null Style
+     * @return Helper_Table
+     */
+    public function addFormatter($condition, $style = null)
+    {
+        // add column to the htmlTable()
+        $this->_table->addFormatter($this->_predecessor, $condition, $style);
+        return $this;
+    }
+    
+    /**
      * Resolve document name by data
      *
      * This method is called by FaZend_View_Helper_HtmlTable when configured

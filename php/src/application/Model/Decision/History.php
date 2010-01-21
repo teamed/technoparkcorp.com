@@ -210,6 +210,16 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history
     }
 
     /**
+     * This history record is about a running decision?
+     *
+     * @return boolean
+     */
+    public function isStillRunning() 
+    {
+        return empty($this->protocol);
+    }
+
+    /**
      * Title of the decision
      *
      * @return string
@@ -218,6 +228,42 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history
     {
         $title = substr($this->hash, 0, strpos($this->hash, '/'));
         return preg_replace('/([A-Z])/', ' ${1}', $title);
+    }
+    
+    /**
+     * Get protocol, even if it's not stopped yet
+     *
+     * @return string
+     */
+    public function getProtocol() 
+    {
+        if (!$this->isStillRunning())
+            return $this->protocol;
+            
+        return @file_get_contents($this->getLogFileName());
+    }
+    
+    /**
+     * Get file name of a log file to be used with this decision
+     *
+     * @return string Absolute file name
+     */
+    public function getLogFileName() 
+    {
+        $dir = TEMP_PATH . '/panel2-decisions';
+        if (!file_exists($dir) || !is_dir($dir))
+            mkdir($dir);
+        return $dir . '/' . $this->hash . '.log';
+    }
+    
+    /**
+     * This decision finished with error?
+     *
+     * @return boolean
+     */
+    public function isError() 
+    {
+        return stripos($this->result, 'error') === 0;
     }
 
 }

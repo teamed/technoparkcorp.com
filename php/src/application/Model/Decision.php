@@ -173,11 +173,14 @@ abstract class Model_Decision implements Model_Decision_Interface
             'started on ' . Zend_Date::now(),
             ''
         );
-
+        
+        // start logging to memory
         FaZend_Log::getInstance()->addWriter('Memory', 'decision');
+        
+        // start logging to file
+        FaZend_Log::getInstance()->addWriter(new Zend_Log_Writer_Stream($history->getLogFileName()), 'stream');
 
         $db = Zend_Db_Table::getDefaultAdapter();
-
         try {
             logg(
                 'Starting decision (pid: %d, rev%s): %s', 
@@ -199,6 +202,11 @@ abstract class Model_Decision implements Model_Decision_Interface
             logg('Decision execution aborted, DB transaction rolled back');
         }
         
+        // stop logging to file
+        FaZend_Log::getInstance()->removeWriter('stream');
+        @unlink($history->getLogFileName());
+        
+        // stop logging to memory
         $log = FaZend_Log::getInstance()->getWriterAndRemove('decision')->getLog();
         
         // protocol this decision, if something was said
