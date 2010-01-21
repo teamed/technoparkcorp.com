@@ -63,8 +63,10 @@ class theStaffResponseItem
         if (property_exists($this, $var))
             return $this->$var;
         
-        FaZend_Exception::raise('StaffResponseItem_PropertyOrMethodNotFound', 
-            "Can't find what is '$name' in " . get_class($this));
+        FaZend_Exception::raise(
+            'StaffResponseItem_PropertyOrMethodNotFound', 
+            "Can't find what is '$name' in " . get_class($this)
+        );
     }
     
     /**
@@ -89,7 +91,8 @@ class theStaffResponseItem
     {
         validate()
             ->type($quality, 'integer', "Quality must be INTEGER")
-            ->true($quality <= 100 && $quality >= 0, "Quality must be in [0..100] interval, {$quality} provided");
+            ->true($quality <= 100 && $quality >= 0, 
+                "Quality must be in [0..100] interval, {$quality} provided");
         $this->_quality = $quality;
         return $this;
     }

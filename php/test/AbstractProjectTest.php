@@ -21,9 +21,4 @@ abstract class AbstractProjectTest extends FaZend_Test_TestCase
             'The project is not loaded, why?');
     }
 
-    public function tearDown()
-    {
-        FaZend_Pos_Abstract::root()->ps()->saveAll();
-    }
-
 }

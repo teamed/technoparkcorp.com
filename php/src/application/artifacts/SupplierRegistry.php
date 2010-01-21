@@ -113,9 +113,12 @@ class theSupplierRegistry extends Model_Artifact_Bag
     public function offsetGet($email) 
     {
         $suppliers = $this->_getSuppliers();
-        if (!isset($suppliers[$email]))
-            FaZend_Exception::raise('SupplierRegistryNotFound', 
-                "Supplier '{$email}' not found in list (" . count($suppliers) . ' total)');
+        if (!isset($suppliers[$email])) {
+            FaZend_Exception::raise(
+                'SupplierRegistryNotFound', 
+                "Supplier '{$email}' not found in list (" . count($suppliers) . ' total)'
+            );
+        }
         
         if ($suppliers[$email] === false) {
             $supplier = new theSupplier($email);
@@ -137,10 +140,14 @@ class theSupplierRegistry extends Model_Artifact_Bag
      * The method is required by ArrayAccess interface, don't delete it.
      *
      * @return void
+     * @throws SupplierRegistryException
      */
     public function offsetSet($email, $value) 
     {
-        FaZend_Exception::raise('SupplierRegistryException', "Suppliers are not editable directly");
+        FaZend_Exception::raise(
+            'SupplierRegistryException', 
+            "Suppliers are not editable directly"
+        );
     }
 
     /**
@@ -149,10 +156,14 @@ class theSupplierRegistry extends Model_Artifact_Bag
      * The method is required by ArrayAccess interface, don't delete it.
      *
      * @return void
+     * @throws SupplierRegistryException
      */
     public function offsetUnset($email) 
     {
-        FaZend_Exception::raise('SupplierRegistryException', "Suppliers are not editable directly");
+        FaZend_Exception::raise(
+            'SupplierRegistryException', 
+            "Suppliers are not editable directly"
+        );
     }
 
     /**

@@ -10,32 +10,29 @@
     Quality Threshold: <?=$request->threshold?>%
 </p>
 
-<p>Already in the project:</p>
-<ul>
-<? foreach ($request->project->staffAssignments->retrieveStakeholdersByRole($request->role) as $stakeholder): ?>
-    <li><?=$stakeholder?>:
-    <?=$stakeholder->getPaidInProject($request->project)?> paid already</li>
-<? endforeach; ?>
-</ul>
-
-<p>Candidates:</p>
+<p>Suggested candidates:</p>
 <? $index = 0; ?>
 <? foreach ($response as $item): ?>
 
-    <? if ($index++ < 3): ?>
+    <? if (isset($request->project->staffAssignments[$item->supplier->email])): ?>
+        <? $paid = '[' . $request->project->staffAssignments[$item->supplier->email]
+            ->getPaidInProject($request->project) . ' paid already]' ?>
+    <? else: ?>
+        <? $paid = false; ?>
+    <? endif; ?>
 
+    <? if ($index++ < 3): ?>
         <p><span style="color:<?=($item->quality > $request->threshold ? Model_Colors::GREEN : Model_Colors::RED)?>;
             font-size:2em;font-weight:bold;"><?=$item->quality?>%</span>: 
             <b><?=$item->supplier->name?></b>
             (<a href="mailto:<?=$item->supplier->email?>"><?=$item->supplier->email?></a>), 
-            <?=$item->supplier->rate?></p>
+            <?=$item->supplier->rate?>
+            &nbsp;<span style="color:green"><?=$paid?></span></p>
         <pre><?=$item->reason?></pre>
-
     <? else: ?>
-    
         <p><?=$item->quality?>%: <b><?=$item->supplier->name?></b>
-        (<?=$item->supplier->email?>), <?=$item->supplier->rate?></p>
-    
+        (<?=$item->supplier->email?>), <?=$item->supplier->rate?>
+        &nbsp;<span style="color:green"><?=$paid?></span></p>
     <? endif; ?>
 
 <? endforeach; ?>

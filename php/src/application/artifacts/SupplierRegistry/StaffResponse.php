@@ -31,7 +31,8 @@ class theStaffResponse extends ArrayIterator
      *
      * @return string
      **/
-    public function __toString() {
+    public function __toString()
+    {
         if (!count($this))
             return 'nobody';
         

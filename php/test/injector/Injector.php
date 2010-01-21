@@ -65,7 +65,7 @@ class Injector extends FaZend_Test_Injector
         theProjectRegistry::addExtra(Mocks_Model_Project::NAME, new Mocks_theProject());
 
         if (defined('CLI_ENVIRONMENT')) {
-            $project = FaZend_Pos_Abstract::root()->projectRegistry[Mocks_Model_Project::NAME];
+            $project = Model_Artifact::root()->projectRegistry[Mocks_Model_Project::NAME];
             foreach ($project->ps()->properties as $property) {
                 if (!isset($project->$property))
                     continue;
@@ -78,7 +78,7 @@ class Injector extends FaZend_Test_Injector
         // we need this line because we should SAVE our
         // test project to the POS registry, before any other
         // tests get access to POS
-        FaZend_Pos_Abstract::root()->ps()->saveAll();
+        // FaZend_Pos_Properties::cleanPosMemory(true);
     }
 
     protected function _injectAccessRights() 

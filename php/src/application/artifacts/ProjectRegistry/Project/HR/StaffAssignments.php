@@ -257,7 +257,7 @@ class theStaffAssignments implements ArrayAccess, Countable, Iterator, Model_Art
      **/
     public function offsetExists($name) 
     {
-        return $this->_getStakeholders()->offsetIsset($name);
+        return $this->_getStakeholders()->offsetExists($name);
     }
     
     /**

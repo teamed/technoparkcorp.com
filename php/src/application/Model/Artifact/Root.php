@@ -27,6 +27,7 @@ class Model_Artifact_Root extends FaZend_Pos_Root implements Model_Artifact_Inte
 {
 
     public static $cnt = 0;
+    
     /**
      * Initialize it
      *

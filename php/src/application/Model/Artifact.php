@@ -25,6 +25,16 @@
  */
 class Model_Artifact extends FaZend_Pos_Abstract implements Model_Artifact_Interface 
 {
+    
+    /**
+     * Get ROOT of the entire storage
+     *
+     * @return FaZend_Pos_Abstract
+     */
+    public static function root() 
+    {
+        return FaZend_Pos_Properties::root();
+    }
 
     /**
      * Attach sub-artifact if it's not here already
