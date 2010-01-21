@@ -174,7 +174,10 @@ abstract class Model_Decision implements Model_Decision_Interface
         FaZend_Log::getInstance()->addWriter('Memory', 'decision');
         
         // start logging to file
-        FaZend_Log::getInstance()->addWriter(new Zend_Log_Writer_Stream($history->getLogFileName()), 'stream');
+        FaZend_Log::getInstance()->addWriter(
+            new Zend_Log_Writer_Stream($history->getLogFileName()), 
+            'stream'
+        );
 
         $db = Zend_Db_Table::getDefaultAdapter();
         try {
@@ -189,7 +192,10 @@ abstract class Model_Decision implements Model_Decision_Interface
             $decision = $this->_make();
             $db->commit();
             
-            logg('Decision execution finished (%s)', pathinfo($this->_file, PATHINFO_FILENAME));
+            logg(
+                'Decision execution finished (%s)', 
+                pathinfo($this->_file, PATHINFO_FILENAME)
+            );
         } catch (Exception $e) {
             // some error inside - we skip the process
             FaZend_Log::err($e->getMessage());
