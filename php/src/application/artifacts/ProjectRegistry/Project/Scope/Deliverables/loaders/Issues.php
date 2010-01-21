@@ -38,10 +38,12 @@ class DeliverablesLoaders_Issues extends DeliverablesLoaders_Abstract
     {
         $this->_loadFirst('srs');
         
+        logg('Issues loading started...');
         $project = $this->_deliverables->ps()->parent;
         $asset = $project->fzProject()->getAsset(Model_Project::ASSET_DEFECTS);
             
-        foreach ($asset->retrieveBy() as $id) {
+        $ids = $asset->retrieveBy();
+        foreach ($ids as $id) {
             $ticket = $asset->findById($id);
     
             // add it to the list of deliverables
@@ -78,6 +80,7 @@ class DeliverablesLoaders_Issues extends DeliverablesLoaders_Abstract
                 ));
             }
         }
+        logg('Issues loading finished, %d tickets processed', count($ids));
     }
     
 }
