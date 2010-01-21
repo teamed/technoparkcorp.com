@@ -156,6 +156,7 @@ abstract class Model_Decision implements Model_Decision_Interface
      *
      * @return string|false Result of decision made (FALSE = no decission)
      * @throws Model_Decision_AlreadyRunning
+     * @throws Model_Decision_LogCrashed
      */
     public function make()
     {
@@ -199,7 +200,12 @@ abstract class Model_Decision implements Model_Decision_Interface
         
         // stop logging to file
         FaZend_Log::getInstance()->removeWriter('stream');
-        @unlink($history->getLogFileName());
+        if (@unlink($history->getLogFileName()) === false) {
+            FaZend_Exception::raise(
+                'Model_Decision_LogCrashed',
+                "Can't delete log file"
+            );
+        }
         
         // stop logging to memory
         $log = FaZend_Log::getInstance()->getWriterAndRemove('decision')->getLog();
