@@ -1,8 +1,8 @@
 <?php
 
-require_once 'FaZend/Test/TestCase.php';
+require_once 'AbstractTest.php';
 
-class PMDecisionsTest extends FaZend_Test_TestCase 
+class PMDecisionsTest extends AbstractTest 
 {
 
     public function testDecisionsCanBeMade() 

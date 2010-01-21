@@ -1,8 +1,8 @@
 <?php
 
-require_once 'FaZend/Test/TestCase.php';
+require_once 'AbstractTest.php';
 
-class Decision_HistoryTest extends FaZend_Test_TestCase 
+class Decision_HistoryTest extends AbstractTest 
 {
 
     public function testNewHistoryRecordsCanBeRetrieved() 

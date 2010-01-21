@@ -226,6 +226,7 @@ class Model_Article
         foreach (array('label', 'title', 'description', 'keywords', 'text') as $field)
             $doc->addField(Zend_Search_Lucene_Field::UnStored($field, $this->$field));
         self::lucene()->addDocument($doc);
+        self::lucene()->commit();
     }
     
     /**

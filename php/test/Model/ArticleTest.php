@@ -1,8 +1,8 @@
 <?php
 
-require_once 'FaZend/Test/TestCase.php';
+require_once 'AbstractTest.php';
 
-class ArticleTest extends FaZend_Test_TestCase 
+class ArticleTest extends AbstractTest 
 {
 
     public function testArticleCanBeCreatedByLabel() 

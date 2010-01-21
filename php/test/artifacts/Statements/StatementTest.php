@@ -1,8 +1,8 @@
 <?php
 
-require_once 'FaZend/Test/TestCase.php';
+require_once 'AbstractTest.php';
 
-class theStatementTest extends FaZend_Test_TestCase
+class theStatementTest extends AbstractTest
 {
 
     public function testVolumeAndBalanceWork() 

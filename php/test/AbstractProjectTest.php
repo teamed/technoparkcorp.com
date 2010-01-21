@@ -1,8 +1,8 @@
 <?php
 
-require_once 'FaZend/Test/TestCase.php';
+require_once 'AbstractTest.php';
 
-abstract class AbstractProjectTest extends FaZend_Test_TestCase 
+abstract class AbstractProjectTest extends AbstractTest 
 {
 
     public function setUp() 

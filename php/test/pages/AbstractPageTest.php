@@ -1,8 +1,8 @@
 <?php
 
-require_once 'FaZend/Test/TestCase.php';
+require_once 'AbstractTest.php';
 
-abstract class AbstractPageTest extends FaZend_Test_TestCase
+abstract class AbstractPageTest extends AbstractTest
 {
 
     public function dispatchPage($doc) 

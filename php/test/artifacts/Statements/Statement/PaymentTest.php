@@ -1,8 +1,8 @@
 <?php
 
-require_once 'FaZend/Test/TestCase.php';
+require_once 'AbstractTest.php';
 
-class thePaymentTest extends FaZend_Test_TestCase
+class thePaymentTest extends AbstractTest
 {
 
     public function testValidPaymentCanBeCreated() 
