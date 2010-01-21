@@ -35,11 +35,12 @@ class DeliverablesLoaders_Design extends DeliverablesLoaders_Abstract
      **/
     public function load() 
     {
+        logg('Design loading started...');
         $project = $this->_deliverables->ps()->parent;
 
-        foreach ($project->fzProject()
-            ->getAsset(Model_Project::ASSET_DESIGN)->getComponents() as $component) {
-                
+        $components = $project->fzProject()
+            ->getAsset(Model_Project::ASSET_DESIGN)->getComponents();
+        foreach ($components as $component) {
             $deliverable = theDeliverables::factory(
                 $component->type, 
                 $component->name, 
@@ -59,6 +60,7 @@ class DeliverablesLoaders_Design extends DeliverablesLoaders_Abstract
                 ));
             }
         }
+        logg('Design loading finished, %d components loaded', count($components));
     }
     
 }
