@@ -1,5 +1,7 @@
 <?php
 
+require_once 'artifacts/ProjectRegistry/Project.php';
+
 class Mocks_theProject extends theProject 
 {
 

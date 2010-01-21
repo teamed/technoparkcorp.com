@@ -10,12 +10,12 @@
 
 <?=$this->table()
     ->setSource(Model_Decision_History::retrieveByWobotNonEmpty($this->wobot))
+    ->addFormatter('->isStillRunning()', 'color:gray')
+    ->addFormatter('->isError()', 'color:red')
 
     ->addColumn('created', 'Date')
     ->addColumn('getTitle', 'Title')
     ->addColumn('result', 'Decision made')
-        ->addFormatter('->isError()', 'color:red')
-        ->addFormatter('->isStillRunning()', 'color:gray')
 
     ->addOption('created', 'decisions/{__id}')
     ?>

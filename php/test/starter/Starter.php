@@ -7,7 +7,8 @@ class Starter extends FaZend_Test_Starter
 
     protected function _startDatabase() 
     {
-        $this->_dropDatabase();
+        // FaZend_Pos_Properties::cleanPosMemory(true);
+        // $this->_dropDatabase();
     }
         
 }

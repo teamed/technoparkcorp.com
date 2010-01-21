@@ -240,7 +240,8 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history
         if (!$this->isStillRunning())
             return $this->protocol;
             
-        return @file_get_contents($this->getLogFileName());
+        $file = $this->getLogFileName();
+        return "...getting it from {$file}...\n" . @file_get_contents();
     }
     
     /**
@@ -253,7 +254,7 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history
         $dir = TEMP_PATH . '/panel2-decisions';
         if (!file_exists($dir) || !is_dir($dir))
             mkdir($dir);
-        return $dir . '/' . $this->hash . '.log';
+        return $dir . '/' . substr(strrchr($this->hash, '/'), 1) . '.log';
     }
     
     /**
