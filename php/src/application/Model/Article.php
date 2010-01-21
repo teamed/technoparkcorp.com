@@ -114,7 +114,7 @@ class Model_Article
                 FaZend_Exception::raise(
                     'Model_Article_InvalidLucenePath',
                     "Dir specified '{$path}' is absent and can't be created"
-                    );
+                );
             }
         }
 
@@ -123,7 +123,7 @@ class Model_Article
             FaZend_Exception::raise(
                 'Model_Article_InvalidLucenePath',
                 "Path specified '{$path}' is not a directory"
-                );
+            );
         }
         
         // it's not writable? permissions problem?
@@ -131,7 +131,7 @@ class Model_Article
             FaZend_Exception::raise(
                 'Model_Article_InvalidLucenePath',
                 "Path specified '{$path}' is not writable"
-                );
+            );
         }
         
         self::$_lucenePath = $path;
