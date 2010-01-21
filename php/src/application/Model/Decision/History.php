@@ -278,15 +278,29 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history
      * Get file name of a log file to be used with this decision
      *
      * @return string Absolute file name
+     * @throws Model_Decision_History_DirectoryInvalid
+     * @throws Model_Decision_History_FileInvalid
      */
     public function getLogFileName() 
     {
         $dir = TEMP_PATH . '/panel2-decisions';
-        if (!file_exists($dir) || !is_dir($dir))
-            mkdir($dir);
+        if (!file_exists($dir) || !is_dir($dir)) {
+            if (@mkdir($dir) === false) {
+                FaZend_Exception::raise(
+                    'Model_Decision_History_DirectoryInvalid',
+                    "Can't create directory: {$dir}"
+                );
+            }
+        }
         $file = $dir . '/' . substr(strrchr($this->hash, '/'), 1) . '.log';
-        if (!file_exists($file))
-            @file_put_contents($file, '');
+        if (!file_exists($file)) {
+            if (@file_put_contents($file, '') === false) {
+                FaZend_Exception::raise(
+                    'Model_Decision_History_FileInvalid',
+                    "Can't create file: {$file}"
+                );
+            }
+        }
         return $file;
     }
     
