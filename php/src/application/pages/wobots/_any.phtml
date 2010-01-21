@@ -10,7 +10,7 @@
 
 <?=$this->table()
     ->setSource(Model_Decision_History::retrieveByWobotNonEmpty($this->wobot))
-    ->addFormatter('->isStillRunning()', 'color:gray')
+    ->addFormatter('->isRunning()', 'color:gray')
     ->addFormatter('->isError()', 'color:red')
 
     ->addColumn('created', 'Date')

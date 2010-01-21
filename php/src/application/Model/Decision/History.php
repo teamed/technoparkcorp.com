@@ -31,17 +31,15 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history
      *
      * @param Model_Wobot Wobot that initiated this decision
      * @param Model_Decision Decision that has to be protocoled
-     * @param string|false Decision made
-     * @param string Log of the decision made
      * @return Model_Decision_History
      */
-    public static function create(Model_Wobot $wobot, Model_Decision $decision, $result, $log)
+    public static function create(Model_Wobot $wobot, Model_Decision $decision)
     {
         $row = new self();
         $row->wobot = $wobot->getName();
         $row->context = $wobot->getContext();
-        $row->result = $result;
-        $row->protocol = $log;
+        $row->result = getmypid() . ': ' . Zend_Date::now();
+        $row->protocol = '';
         $row->hash = $decision->getHash();
         $row->save();
 
@@ -192,21 +190,26 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history
     }
 
     /**
-     * Find next waiting decision
+     * This decision of this type is running now?
      *
      * @param Model_Wobot Wobot that initiated this decision
      * @param Model_Decision Decision that has to be protocoled
-     * @return string|null Name of the file or NULL if nothing found
+     * @return boolean
      */
-    public static function isRunning(Model_Wobot $wobot, Model_Decision $decision)
+    public static function hasRunning(Model_Wobot $wobot, Model_Decision $decision)
     {
-        return (bool)self::retrieve()
+        $history = self::retrieve()
             ->setSilenceIfEmpty()
             ->where('wobot = ?', $wobot->getName())
             ->where('hash = ?', $decision->getHash())
             ->where('context = ?', $wobot->getContext())
             ->where('protocol = ""')
+            ->setRowClass('Model_Decision_History')
             ->fetchRow();
+            
+        if (!$history)
+            return false;
+        return $history->isRunning();
     }
 
     /**
@@ -214,9 +217,36 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history
      *
      * @return boolean
      */
-    public function isStillRunning() 
+    public function isRunning() 
     {
-        return empty($this->protocol);
+        return (bool)$this->getPid();
+    }
+    
+    /**
+     * Get process ID if running
+     *
+     * @return null|integer
+     */
+    public function getPid() 
+    {
+        if (!empty($this->protocol))
+            return null;
+            
+        if (!preg_match('/^(\d+):\s.*$/', $this->result, $matches)) {
+            $this->protocol = 'result line is invalid';
+            $this->save();
+            return null;
+        }
+        
+        $pid = intval($matches[1]);
+        if (!shell_exec("ps -p {$pid} | grep {$pid}")) {
+            $this->protocol = $this->getProtocol() . 
+                "\n\nprocess {$pid} is not running any more\n";
+            $this->save();
+            return null;
+        }
+        
+        return $pid;
     }
 
     /**
@@ -237,7 +267,7 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history
      */
     public function getProtocol() 
     {
-        if (!$this->isStillRunning())
+        if (!empty($this->protocol))
             return $this->protocol;
             
         $file = $this->getLogFileName();
@@ -254,7 +284,10 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history
         $dir = TEMP_PATH . '/panel2-decisions';
         if (!file_exists($dir) || !is_dir($dir))
             mkdir($dir);
-        return $dir . '/' . substr(strrchr($this->hash, '/'), 1) . '.log';
+        $file = $dir . '/' . substr(strrchr($this->hash, '/'), 1) . '.log';
+        if (!file_exists($file))
+            @file_put_contents($file, '');
+        return $file;
     }
     
     /**

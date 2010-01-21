@@ -74,11 +74,6 @@ class Injector extends FaZend_Test_Injector
                 $project->$property->reload();
             }
         }
-        
-        // we need this line because we should SAVE our
-        // test project to the POS registry, before any other
-        // tests get access to POS
-        // FaZend_Pos_Properties::cleanPosMemory(true);
     }
 
     protected function _injectAccessRights() 

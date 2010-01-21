@@ -159,7 +159,7 @@ abstract class Model_Decision implements Model_Decision_Interface
      */
     public function make()
     {
-        if (Model_Decision_History::isRunning($this->_wobot, $this)) {
+        if (Model_Decision_History::hasRunning($this->_wobot, $this)) {
             FaZend_Exception::raise(
                 'Model_Decision_AlreadyRunning',
                 "Decision is running now: {$this->_file}"
@@ -167,12 +167,7 @@ abstract class Model_Decision implements Model_Decision_Interface
         }
         
         // mark that the decision was started
-        $history = Model_Decision_History::create(
-            $this->_wobot, 
-            $this, 
-            'started on ' . Zend_Date::now(),
-            ''
-        );
+        $history = Model_Decision_History::create($this->_wobot, $this);
         
         // start logging to memory
         FaZend_Log::getInstance()->addWriter('Memory', 'decision');

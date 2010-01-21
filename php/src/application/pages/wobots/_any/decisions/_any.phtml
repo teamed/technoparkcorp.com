@@ -4,14 +4,16 @@
     Date: <?=$decision->created?><br/>
     Title: "<?=$decision->getTitle()?>"<br/>
     Hash: "<?=$decision->hash?>"<br/>
-    Decision made: <b><?=$decision->result?><?=$decision->isStillRunning() ? " (RUNNING NOW)" : false?></b>
+    Decision made: <b><?=$decision->result?>
+        <?=$decision->isRunning() ? 
+            " (pid: {$decision->getPid()})" : 
+            false
+        ?></b>
 </p>
 
 <p>Protocol:</p>
 
 <!-- very long PRE cause problems for browser -->
 <? foreach (array_chunk(explode("\n", $decision->getProtocol()), 50) as $chunk): ?>
-    <pre>
-        <?=implode("\n", $chunk)?>
-    </pre>
+    <pre><?=implode("\n", $chunk)?></pre>
 <? endforeach; ?>
