@@ -283,7 +283,7 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history
      */
     public function getLogFileName() 
     {
-        $dir = TEMP_PATH . '/panel2-decisions-' .  APPLICATION_PATH;
+        $dir = TEMP_PATH . '/panel2-decisions-' .  APPLICATION_ENV;
         if (!file_exists($dir) || !is_dir($dir)) {
             if (@mkdir($dir) === false) {
                 FaZend_Exception::raise(
