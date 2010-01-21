@@ -35,14 +35,17 @@ class DeliverablesLoaders_Srs extends DeliverablesLoaders_Abstract
      **/
     public function load() 
     {
-        foreach ($this->_deliverables->ps()->parent->fzProject()
-            ->getAsset(Model_Project::ASSET_SRS)->getEntities() as $entity) {
+        logg('SRS loading started...');
+        $entities = $this->_deliverables->ps()->parent->fzProject()
+            ->getAsset(Model_Project::ASSET_SRS)->getEntities();
+        foreach ($entities as $entity) {
                 
             $deliverable = theDeliverables::factory($entity->type, $entity->name, $entity->description);
             $entity->deriveDetails($deliverable);
             
             $this->_deliverables->add($deliverable);
         }
+        logg('SRS loading finished, %d deliverables found', count($entities));
     }
     
 }
