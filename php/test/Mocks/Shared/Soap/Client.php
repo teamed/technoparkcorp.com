@@ -25,7 +25,8 @@ class Mocks_Shared_Soap_Client
 
         foreach (array('PM', 'SystemAnalyst', 'Architect', 'CCB', 'Programmer') as $role)
             $authz .= '[' . Mocks_Model_Project::NAME . ':' . 
-                Model_Project::ROLE_AUTHZ_PREFIX . "$role]\n" . self::PM . " = rw\n";
+                Model_Project::ROLE_AUTHZ_PREFIX . "$role]\n" .
+                self::PM . " = rw\n";
 
         return array(
             FaZend_StdObject::create()
