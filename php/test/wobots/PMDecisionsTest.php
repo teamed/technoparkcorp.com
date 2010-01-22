@@ -11,7 +11,9 @@ class PMDecisionsTest extends AbstractTest
         
         foreach (Model_Decision::getDecisionFiles($wobot) as $file) {
             $decision = $wobot->decisionFactory($file);
-            $decision->make();
+            $result = $decision->make();
+            $this->assertFalse((bool)preg_match('/^error/i', $result), 
+                'Failure in decision: '. $file);
         }
     }
     

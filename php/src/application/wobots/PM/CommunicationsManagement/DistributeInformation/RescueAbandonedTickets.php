@@ -40,14 +40,21 @@ class RescueAbandonedTickets extends Model_Decision_PM
     {
         $closed = array();
         foreach ($this->_project->issues as $issue) {
+            $lastDate = $issue->changelog->get('comment')->getLastDate();
+
             // ignore closed tickets
             if ($issue->isClosed()) {
                 $closed[] = $issue->id;
+                logg(
+                    "Ticket #%d ignored since closed (%s) on %s", 
+                    $issue->id, 
+                    $issue->changelog->get('status')->getValue(),
+                    $lastDate
+                );
                 continue;
             }
                 
             // there was some activity for the last 72 hours
-            $lastDate = $issue->changelog->get('comment')->getLastDate();
             if ($lastDate->isEarlier(Zend_Date::now()->subHour(72))) {
                 logg('Ticket #%d was changed shortly, on %s', $issue->id, $lastDate);
                 continue;
