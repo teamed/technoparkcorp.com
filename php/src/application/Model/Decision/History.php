@@ -232,7 +232,7 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history
         if (!empty($this->protocol))
             return null;
             
-        if (!preg_match('/^(\d+):\s.*$/', $this->result, $matches)) {
+        if (!preg_match('/^(\d+):\s(.*)$/', $this->result, $matches)) {
             $this->protocol = 'result line is invalid';
             $this->save();
             return null;
@@ -240,11 +240,18 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history
         
         $pid = intval($matches[1]);
         if (!shell_exec("ps -p {$pid} | grep {$pid}")) {
-            $this->protocol = $this->getProtocol() . 
-                "\n\nprocess {$pid} is not running any more\n";
+            // add comments to the protocol
+            $this->protocol = sprintf(
+                "%s\n\nprocess #%d is not running any more, detected at %s\n",
+                $this->getProtocol(),
+                $pid,
+                Zend_Date::now()
+            );
+            
             $this->result = 'ERROR: failed in PID ' . $this->result;
             $this->save();
             
+            // delete the log file, if it exists
             @unlink($this->getLogFileName());
             return null;
         }
