@@ -24,19 +24,30 @@ class Model_Asset_Design_Fazend_LinuxTest extends AbstractProjectTest
         // disabled since "Authorization Required" comes from there :(
         return $this->markTestIncomplete();
             
-        Shared_XmlRpc::setXmlRpcClientClass('Zend_XmlRpc_Client');
-        Mocks_Shared_Project::setLive();
+        Shared_Pan::setSoapClient(null);
+        Mocks_Shared_Soap_Client::setLive();
         try {
+            Shared_Pan::getSoapClient();
             $components = $this->_asset->getComponents();
         } catch (Exception $e) {
-            logg("Failed to get components: " . $e->getMessage());
+            $httpClient = Shared_Pan::getSoapClient()->getHttpClient();
+            
+            logg(
+                'connected to "%s", exception raised (%s): "%s"',
+                $httpClient->getUri(),
+                get_class($e),
+                $e->getMessage()
+            );
+            FaZend_Log::err("Failed to get components");
             $incomplete = true;
         }
-        Mocks_Shared_Project::setTest();
-        Shared_XmlRpc::setXmlRpcClientClass('Mocks_Shared_XmlRpc');
+        Mocks_Shared_Soap_Client::setTest();
+        Shared_Pan::setSoapClient(Mocks_Shared_Pan_SoapClient::get());
         
-        if (isset($incomplete))
+        if (isset($incomplete)) {
+            bug(444);
             $this->markTestIncomplete();
+        }
 
         $this->assertTrue(count($components) > 0, 'No components in Trac, why?');
     }

@@ -12,7 +12,7 @@ class ProjectTest extends AbstractProjectTest
 
     public function testGetStakeholdersByRoleWorks() 
     {
-        $project = Mocks_Model_Project::getInstance();
+        $project = Mocks_Model_Project::get();
         $list = $project->getStakeholdersByRole('CCB');
     }
 

@@ -20,8 +20,8 @@ class Injector extends FaZend_Test_Injector
         // no cache, since there are NO real SOAP calls to FaZend
         Shared_Soap_Gateway::setCacheEnabled(false);
     }
-        
-    protected function _injectMiscellaneous() 
+    
+    protected function _injectSharedMocks()
     {
         // clean Shared cache, if necessary
         // Shared_Cache::getInstance('Shared_SOAP_Gateway')->clean();
@@ -32,7 +32,11 @@ class Injector extends FaZend_Test_Injector
         // don't go into real Shared resources
         Shared_XmlRpc::setXmlRpcClientClass('Mocks_Shared_XmlRpc');
         Shared_Trac::setTicketClass('Mocks_Shared_Trac_Ticket');
-
+        Shared_Pan::setSoapClient(Mocks_Shared_Pan_SoapClient::get());
+    }
+        
+    protected function _injectMiscellaneous() 
+    {
         // disable file moving after uploading
         Model_Artifact_Attachments::setLocation(false);
 
@@ -53,7 +57,8 @@ class Injector extends FaZend_Test_Injector
         // in order to avoid conflicts with real documents in
         // real environment (fazend for example)
         Model_User::setSession(new FaZend_StdObject());
-        Model_User::logIn(Mocks_Model_Project::PM);
+        $pms = Mocks_Model_Project::get()->getStakeholdersByRole('PM');
+        Model_User::logIn(array_shift($pms));
     }
 
     protected function _injectTestProject() 
@@ -82,11 +87,12 @@ class Injector extends FaZend_Test_Injector
         $acl = Model_Pages::getInstance()->getAcl();
         
         // add this role to ACL
-        if (!$acl->hasRole(Mocks_Model_Project::PM))
-            $acl->addRole(Mocks_Model_Project::PM);
+        $email = Model_User::getCurrentUser()->email;
+        if (!$acl->hasRole($email))
+            $acl->addRole($email);
         
         // give access to everything for the testing user
-        $acl->allow(Mocks_Model_Project::PM);
+        $acl->allow($email);
     }
 
 }

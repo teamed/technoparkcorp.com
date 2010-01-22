@@ -30,15 +30,15 @@ class Model_Asset_Defects_Fazend_TracTest extends AbstractProjectTest
             return $this->markTestIncomplete();
             
         Shared_XmlRpc::setXmlRpcClientClass('Zend_XmlRpc_Client');
-        Mocks_Shared_Project::setLive();
+        Mocks_Shared_Soap_Client::setLive();
         try {
             $tickets = $this->_asset->retrieveBy();
         } catch (Exception $e) {
-            logg("Failed to get tickets from Trac: " . $e->getMessage());
+            FaZend_Log::err("Failed to get tickets from Trac: " . $e->getMessage());
             $incomplete = true;
         }
         
-        Mocks_Shared_Project::setTest();
+        Mocks_Shared_Soap_Client::setTest();
         Shared_XmlRpc::setXmlRpcClientClass('Mocks_Shared_XmlRpc');
         
         if (isset($incomplete))

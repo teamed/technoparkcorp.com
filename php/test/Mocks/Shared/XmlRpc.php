@@ -29,7 +29,7 @@ class Mocks_Shared_XmlRpc
         $html = file_get_contents(dirname(__FILE__) . '/wiki/' . $name . '.html');
         $html = preg_replace(
             '/\{(.*?)\}/', 
-            '<a href="http://trac.fazend.com/' . Mocks_Shared_Project::NAME . '/wiki/${1}">${1}</a>', 
+            '<a href="http://trac.fazend.com/' . Mocks_Model_Project::NAME . '/wiki/${1}">${1}</a>', 
             $html);
         return $html;
     }
@@ -88,8 +88,10 @@ class Mocks_Shared_XmlRpc
                 break;
 
             default:
-                FaZend_Exception::raise('Mocks_Shared_XmlRpc_NotImplemnetedYet',
-                    "We can't return anything for your request: '$query'");
+                FaZend_Exception::raise(
+                    'Mocks_Shared_XmlRpc_NotImplemnetedYet',
+                    "We can't return anything for your request: '$query'"
+                );
         }
         
         $ids = array();
@@ -123,26 +125,4 @@ class Mocks_Shared_XmlRpc
         return array('test1', 'test2');
     }
     
-    /**
-     * @return array[]
-     * @see Model_Asset_Design_Fazend_Linux
-     **/
-    public function getAnalysis() 
-    {
-        return array(
-            array(
-                'name' => 'System',
-                'fullName' => 'FaZend.System',
-                'type' => 'package',
-                'traces' => array('#1', 'FaZend.System.MyClass'),
-                ),
-            array(
-                'name' => 'MyClass',
-                'fullName' => 'FaZend.System.MyClass',
-                'type' => 'class',
-                'traces' => array('#2', 'FaZend.System'),
-                ),
-            );
-    }
-
 }

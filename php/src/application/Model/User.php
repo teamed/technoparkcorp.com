@@ -93,9 +93,13 @@ class Model_User
      *
      * @param string Email of the user
      * @return void
+     * @throws Exception
      */
     public static function logIn($email) 
     {
+        validate()
+            ->emailAddress($email, array(), "Invalid email provided: '{$email}'");
+            
         self::_session()->email = $email;
         
         // set current user in POS

@@ -26,11 +26,12 @@ class Model_Asset_Design_Fazend_Linux extends Model_Asset_Design_Abstract
 {
     
     /**
-     * XML RPC proxy
+     * Shared_Pan connector
      *
-     * @var Zend_XmlRpc_Client
+     * @var Shared_Pan
+     * @see _init()
      **/
-    protected $_proxy;
+    protected $_pan;
     
     /**
      * Get full list of components
@@ -39,7 +40,7 @@ class Model_Asset_Design_Fazend_Linux extends Model_Asset_Design_Abstract
      **/
     public function getComponents() 
     {
-        $list = $this->_getProxy()->getAnalysis($this->_project->name);
+        $list = $this->_pan->getComponents();
         $return = array();
         foreach ($list as $data) {
             $return[] = FaZend_StdObject::create()
@@ -53,20 +54,13 @@ class Model_Asset_Design_Fazend_Linux extends Model_Asset_Design_Abstract
     }
     
     /**
-     * Get XML RPC proxy
+     * Initializer
      *
-     * @return Zend_XmlRpc_Client
+     * @return void
      **/
-    protected function _getProxy() 
+    protected function _init() 
     {
-        if (!isset($this->_proxy)) {
-            $xmlRpc = new Shared_XmlRpc($this->_project, $this->_project->user->email);
-            $this->_proxy = $xmlRpc->client(
-                'http://linux.fazend.com/pan',
-                'pan'
-            );
-        }
-        return $this->_proxy;
+        $this->_pan = new Shared_Pan($this->_project);
     }
-    
+
 }
