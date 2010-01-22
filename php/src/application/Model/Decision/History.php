@@ -25,6 +25,8 @@
  */
 class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history
 {
+    
+    const ERROR_PREFIX = 'ERROR';
 
     /**
      * Create new row
@@ -248,7 +250,7 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history
                 Zend_Date::now()
             );
             
-            $this->result = 'ERROR: failed in PID ' . $this->result;
+            $this->result = self::ERROR_PREFIX . ': failed in PID ' . $this->result;
             $this->save();
             
             // delete the log file, if it exists
@@ -312,7 +314,7 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history
      */
     public function isError() 
     {
-        return stripos($this->result, 'error') === 0;
+        return stripos($this->result, self::ERROR_PREFIX) === 0;
     }
 
 }
