@@ -33,7 +33,8 @@ class Model_Auth_Adapter extends Zend_Auth_Adapter_Http
      * @throws Zend_Auth_Adapter_Exception
      * @return Zend_Auth_Result
      */
-    protected function _basicAuth($header) {
+    protected function _basicAuth($header)
+    {
         do {
             $authResult = parent::_basicAuth($header);
         } while (!$authResult->isValid() && $this->getBasicResolver()->hasMore());

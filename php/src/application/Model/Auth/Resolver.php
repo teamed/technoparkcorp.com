@@ -58,7 +58,12 @@ class Model_Auth_Resolver implements Zend_Auth_Adapter_Http_Resolver_Interface
          *
          * @see Shared_Project for better details
          */
-        $users = Shared_Project::retrieveAllStakeholders();
+        try {
+            $users = Shared_Project::retrieveAllStakeholders();
+        } catch (Shared_Project_EmptyDueToSoapFailure $e) {
+            FaZend_Log::err('Auth resolve failure: ' . $e->getMessage());
+            return false;
+        }
 
         // user not found in general
         if (!isset($users[$username]))
