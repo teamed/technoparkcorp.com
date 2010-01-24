@@ -177,7 +177,9 @@ class Helper_Publish extends FaZend_View_Helper
             $this->_acl->addResource($script);
         }
         
-        foreach (explode("\n", ($this->getView()->render($prefix . '/_access.phtml'))) as $id=>$line) {
+        $access = $this->getView()->render($prefix . '/_access.phtml');
+        $access = preg_replace('/<!--.*-->/s', '', $access);
+        foreach (explode("\n", $access) as $id=>$line) {
             // ignore comments and empty lines
             if (preg_match('/^(?:\s?#.*|\s?)$/', $line))
                 continue;

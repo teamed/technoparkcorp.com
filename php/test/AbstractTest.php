@@ -9,7 +9,7 @@ abstract class AbstractTest extends FaZend_Test_TestCase
     {
         parent::tearDown();
 
-        Model_Artifact::root()->ps()->save();
+        // FaZend_Pos_Properties::cleanPosMemory(true);
         Model_Article::lucene()->commit();
     }
 
