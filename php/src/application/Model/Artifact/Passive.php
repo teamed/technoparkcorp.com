@@ -23,7 +23,8 @@
  *
  * @package Artifacts
  */
-interface Model_Artifact_Passive {
+interface Model_Artifact_Passive
+{
 
     /**
      * Reloads this artifact and makes it current

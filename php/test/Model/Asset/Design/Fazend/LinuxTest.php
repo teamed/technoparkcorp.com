@@ -1,13 +1,16 @@
 <?php
 
-require_once 'FaZend/Test/TestCase.php';
+require_once 'AbstractProjectTest.php';
 
 class Model_Asset_Design_Fazend_LinuxTest extends AbstractProjectTest 
 {
 
     public function setUp()
     {
+        parent::setUp();
         $this->_asset = $this->_project->fzProject()->getAsset(Model_Project::ASSET_DESIGN);
+        
+        $this->assertTrue($this->_asset instanceof Model_Asset_Design_Abstract);
     }
 
     public function testWeCanRetrieveAllComponents() 
@@ -22,14 +25,13 @@ class Model_Asset_Design_Fazend_LinuxTest extends AbstractProjectTest
             return $this->markTestIncomplete();
             
         // disabled since "Authorization Required" comes from there :(
-        return $this->markTestIncomplete();
+        // return $this->markTestIncomplete();
             
         Shared_Pan::setSoapClient(null);
         Mocks_Shared_Soap_Client::setLive();
         try {
-            Shared_Pan::getSoapClient();
             $components = $this->_asset->getComponents();
-        } catch (Exception $e) {
+        } catch (Shared_Pan_SoapFailure $e) {
             $httpClient = Shared_Pan::getSoapClient()->getHttpClient();
             
             logg(

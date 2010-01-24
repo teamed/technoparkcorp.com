@@ -1,6 +1,6 @@
 <?php
 
-require_once 'FaZend/Test/TestCase.php';
+require_once 'AbstractProjectTest.php';
 
 class Model_Asset_Defects_Fazend_TracTest extends AbstractProjectTest 
 {
@@ -33,8 +33,12 @@ class Model_Asset_Defects_Fazend_TracTest extends AbstractProjectTest
         Mocks_Shared_Soap_Client::setLive();
         try {
             $tickets = $this->_asset->retrieveBy();
-        } catch (Exception $e) {
-            FaZend_Log::err("Failed to get tickets from Trac: " . $e->getMessage());
+        } catch (Shared_Trac_SoapFault $e) {
+            FaZend_Log::err(sprintf(
+                "Failed to get tickets from Trac (%s): ", 
+                get_class($e),
+                $e->getMessage()
+            ));
             $incomplete = true;
         }
         

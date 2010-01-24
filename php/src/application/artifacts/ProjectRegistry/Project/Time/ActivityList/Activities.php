@@ -23,7 +23,7 @@
  *
  * @package Artifacts
  */
-class theActivities implements ArrayAccess, Iterator, Countable, Model_Artifact_Passive
+class theActivities implements ArrayAccess, Iterator, Countable, Model_Artifact_Passive, Model_Artifact_Interface
 {
 
     /**
