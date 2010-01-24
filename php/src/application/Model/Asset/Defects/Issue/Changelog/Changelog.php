@@ -1,16 +1,16 @@
 <?php
 /**
+ * thePanel v2.0, Project Management Software Toolkit
  *
- * Copyright (c) 2008, TechnoPark Corp., Florida, USA
- * All rights reserved. THIS IS PRIVATE SOFTWARE.
- *
- * Redistribution and use in source and binary forms, with or without modification, are PROHIBITED
- * without prior written permission from the author. This product may NOT be used anywhere
- * and on any computer except the server platform of TechnoPark Corp. located at
- * www.technoparkcorp.com. If you received this code occacionally and without intent to use
- * it, please report this incident to the author by email: privacy@technoparkcorp.com or
- * by mail: 568 Ninth Street South 202 Naples, Florida 34102, the United States of America,
- * tel. +1 (239) 243 0206, fax +1 (239) 236-0738.
+ * Redistribution and use in source and binary forms, with or without 
+ * modification, are PROHIBITED without prior written permission from 
+ * the author. This product may NOT be used anywhere and on any computer 
+ * except the server platform of TechnoPark Corp. located at 
+ * www.technoparkcorp.com. If you received this code occasionally and 
+ * without intent to use it, please report this incident to the author 
+ * by email: privacy@technoparkcorp.com or by mail: 
+ * 568 Ninth Street South 202, Naples, Florida 34102, USA
+ * tel. +1 (239) 935 5429
  *
  * @author Yegor Bugaenko <egor@technoparkcorp.com>
  * @copyright Copyright (c) TechnoPark Corp., 2001-2009
@@ -30,6 +30,8 @@ class Model_Asset_Defects_Issue_Changelog_Changelog
      * List of fields
      *
      * @var Model_Asset_Defects_Issue_Changelog_Field[]
+     * @see get()
+     * @see __construct()
      */
     protected $_fields = array();
 
@@ -71,7 +73,7 @@ class Model_Asset_Defects_Issue_Changelog_Changelog
             );
         }
                 
-        if (!$this->_fields[$name]) {
+        if ($this->_fields[$name] === false) {
             $className = 'Model_Asset_Defects_Issue_Changelog_Field_' . ucfirst($name);
             $this->_fields[$name] = new $className();
         }
@@ -113,12 +115,13 @@ class Model_Asset_Defects_Issue_Changelog_Changelog
      * Returns a list of fields and values to be changed in tracker.
      *
      * @return array
-     **/
+     * @see Model_Asset_Defects_Issue_Trac::_saveChangelog()
+     */
     public function whatToSave()
     {
         $list = array();
         foreach ($this->_fields as $name=>$field) {
-            if ($field && $field->wasChanged())
+            if (($field !== false) && $field->wasChanged())
                 $list[$name] = $field->getValue();
         }
         return $list;

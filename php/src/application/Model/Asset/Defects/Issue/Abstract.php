@@ -1,16 +1,16 @@
 <?php
 /**
+ * thePanel v2.0, Project Management Software Toolkit
  *
- * Copyright (c) 2008, TechnoPark Corp., Florida, USA
- * All rights reserved. THIS IS PRIVATE SOFTWARE.
- *
- * Redistribution and use in source and binary forms, with or without modification, are PROHIBITED
- * without prior written permission from the author. This product may NOT be used anywhere
- * and on any computer except the server platform of TechnoPark Corp. located at
- * www.technoparkcorp.com. If you received this code occacionally and without intent to use
- * it, please report this incident to the author by email: privacy@technoparkcorp.com or
- * by mail: 568 Ninth Street South 202 Naples, Florida 34102, the United States of America,
- * tel. +1 (239) 243 0206, fax +1 (239) 236-0738.
+ * Redistribution and use in source and binary forms, with or without 
+ * modification, are PROHIBITED without prior written permission from 
+ * the author. This product may NOT be used anywhere and on any computer 
+ * except the server platform of TechnoPark Corp. located at 
+ * www.technoparkcorp.com. If you received this code occasionally and 
+ * without intent to use it, please report this incident to the author 
+ * by email: privacy@technoparkcorp.com or by mail: 
+ * 568 Ninth Street South 202, Naples, Florida 34102, USA
+ * tel. +1 (239) 935 5429
  *
  * @author Yegor Bugaenko <egor@technoparkcorp.com>
  * @copyright Copyright (c) TechnoPark Corp., 2001-2009
@@ -45,8 +45,9 @@ abstract class Model_Asset_Defects_Issue_Abstract
      * Changelog
      *
      * @var Model_Asset_Defects_Issue_Changelog_Changelog
+     * @see _getChangelog()
      */
-    protected $_changelog;
+    protected $_changelog = null;
 
     /**
      * Unique ID of the ticket in tracker
@@ -57,7 +58,7 @@ abstract class Model_Asset_Defects_Issue_Abstract
     protected $_id = null;
     
     /**
-	 * Constructor
+     * Constructor
      *
      * @param Model_Asset_Defects_Abstract Tracker instance
      * @param string Unique code of the issue
@@ -65,36 +66,36 @@ abstract class Model_Asset_Defects_Issue_Abstract
      * @return void
      * @throws Exception If parameters are invalid
      */
-	public function __construct(Model_Asset_Defects_Abstract $tracker, $code, $id = null) 
-	{
-	    validate()
-	        ->true(
-	            is_null($id) || is_integer($id), 
-	            "Issue ID should be NULL or integer, {$id} provided"
-	        )
-	        ->true(
-	            (empty($code) && !is_null($id)) || (is_null($id) && is_string($code)), 
-	            "Either CODE ({$code}) or ID ({$id}) please"
-	        );
-	    
-	    $this->_tracker = $tracker;
+    public function __construct(Model_Asset_Defects_Abstract $tracker, $code, $id = null) 
+    {
+        validate()
+            ->true(
+                is_null($id) || is_integer($id), 
+                "Issue ID should be NULL or integer, {$id} provided"
+            )
+            ->true(
+                (empty($code) && !is_null($id)) || (is_null($id) && is_string($code)), 
+                "Either CODE ({$code}) or ID ({$id}) please"
+            );
+        
+        $this->_tracker = $tracker;
         $this->_code = $code;
-    	$this->_id = $id;
+        $this->_id = $id;
     }
 
     /**
-	 * Destructor
+     * Destructor
      *
      * @return void
      */
-	public function __destruct() 
-	{
-	    try {
+    public function __destruct() 
+    {
+        try {
             if (isset($this->_changelog))
-	            $this->_saveChangelog();
-	    } catch (Exception $e) {
-	        // @todo Do something here!
-	        bug($e);
+                $this->_saveChangelog();
+        } catch (Exception $e) {
+            // @todo Do something here!
+            bug($e);
         }
     }
 
@@ -190,27 +191,14 @@ abstract class Model_Asset_Defects_Issue_Abstract
     abstract public function askOnce($code, $text, $lag = null);
     
     /**
-     * Load changelog
-     *
-     * @return void
-     **/
-    abstract protected function _loadChangelog();
-
-    /**
-     * Save changelog
-     *
-     * @return void
-     **/
-    abstract protected function _saveChangelog();
-
-    /**
      * Get changelog for this issue
      *
      * @return Model_Asset_Defects_Issue_Changelog_Changelog
-     **/
+     * @uses $this->_changelog
+     */
     protected function _getChangelog() 
     {
-        if (isset($this->_changelog))
+        if (!is_null($this->_changelog))
             return $this->_changelog;
             
         $this->_changelog = new Model_Asset_Defects_Issue_Changelog_Changelog();
@@ -221,5 +209,21 @@ abstract class Model_Asset_Defects_Issue_Abstract
             
         return $this->_changelog;
     }
+
+    /**
+     * Load changelog
+     *
+     * @return void
+     * @see _getChangelog()
+     */
+    abstract protected function _loadChangelog();
+
+    /**
+     * Save changelog
+     *
+     * @return void
+     * @see __destruct()
+     */
+    abstract protected function _saveChangelog();
 
 }

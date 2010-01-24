@@ -100,21 +100,33 @@ class Mocks_Shared_XmlRpc
         return $ids;
     }
 
+    /**
+     * @see Model_Asset_Defects_Issue_Trac
+     */
     public function create($summary, $description, $params, $smth) 
     {
         return 1;
     }
 
+    /**
+     * @see Model_Asset_Defects_Issue_Trac
+     */
     public function update($id, $summary, $params, $smth) 
     {
         // ...
     }
 
+    /**
+     * @see Model_Asset_Defects_Issue_Trac
+     */
     public function changeLog($id) 
     {
         return Mocks_Shared_Trac_Ticket::get($id)->getTracChangelog();
     }
 
+    /**
+     * @see Model_Asset_Defects_Issue_Trac
+     */
     public function get($id) 
     {
         return Mocks_Shared_Trac_Ticket::get($id)->getTracDetails();

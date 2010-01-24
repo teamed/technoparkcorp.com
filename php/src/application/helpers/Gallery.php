@@ -1,13 +1,16 @@
 <?php
 /**
+ * thePanel v2.0, Project Management Software Toolkit
  *
- * Copyright (c) FaZend.com
- * All rights reserved.
- *
- * You can use this product "as is" without any warranties from authors.
- * You can change the product only through Google Code repository
- * at http://code.google.com/p/fazend
- * If you have any questions about privacy, please email privacy@fazend.com
+ * Redistribution and use in source and binary forms, with or without 
+ * modification, are PROHIBITED without prior written permission from 
+ * the author. This product may NOT be used anywhere and on any computer 
+ * except the server platform of TechnoPark Corp. located at 
+ * www.technoparkcorp.com. If you received this code occasionally and 
+ * without intent to use it, please report this incident to the author 
+ * by email: privacy@technoparkcorp.com or by mail: 
+ * 568 Ninth Street South 202, Naples, Florida 34102, USA
+ * tel. +1 (239) 935 5429
  *
  * @copyright Copyright (c) FaZend.com
  * @version $Id$

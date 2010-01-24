@@ -1,16 +1,16 @@
 <?php
 /**
+ * thePanel v2.0, Project Management Software Toolkit
  *
- * Copyright (c) 2008, TechnoPark Corp., Florida, USA
- * All rights reserved. THIS IS PRIVATE SOFTWARE.
- *
- * Redistribution and use in source and binary forms, with or without modification, are PROHIBITED
- * without prior written permission from the author. This product may NOT be used anywhere
- * and on any computer except the server platform of TechnoPark Corp. located at
- * www.technoparkcorp.com. If you received this code occacionally and without intent to use
- * it, please report this incident to the author by email: privacy@technoparkcorp.com or
- * by mail: 568 Ninth Street South 202 Naples, Florida 34102, the United States of America,
- * tel. +1 (239) 243 0206, fax +1 (239) 236-0738.
+ * Redistribution and use in source and binary forms, with or without 
+ * modification, are PROHIBITED without prior written permission from 
+ * the author. This product may NOT be used anywhere and on any computer 
+ * except the server platform of TechnoPark Corp. located at 
+ * www.technoparkcorp.com. If you received this code occasionally and 
+ * without intent to use it, please report this incident to the author 
+ * by email: privacy@technoparkcorp.com or by mail: 
+ * 568 Ninth Street South 202, Naples, Florida 34102, USA
+ * tel. +1 (239) 935 5429
  *
  * @author Yegor Bugaenko <egor@technoparkcorp.com>
  * @copyright Copyright (c) TechnoPark Corp., 2001-2009
@@ -25,6 +25,14 @@
  */
 class Model_Asset_Defects_Issue_Trac extends Model_Asset_Defects_Issue_Abstract 
 {
+    
+    /**
+     * Cache of resolution
+     *
+     * @var string
+     * @see _translateFromTrac()
+     */
+    protected $_resolutionCache = null;
 
     /**
      * Send this message just once to the ticke
@@ -111,6 +119,7 @@ class Model_Asset_Defects_Issue_Trac extends Model_Asset_Defects_Issue_Abstract
     {
         $log = $this->_tracker->getXmlProxy()->changeLog($this->_id);
         logg("Issue #%d has %d changes in Trac", $this->_id, count($log));
+        // logg(spl_object_hash($this));
         
         $fields = array();
         $records = array();
@@ -139,8 +148,9 @@ class Model_Asset_Defects_Issue_Trac extends Model_Asset_Defects_Issue_Abstract
                 $record[3] // date of change
             );
                 
-            if (!$this->_changelog->allowsField($name))
+            if (!$this->_changelog->allowsField($name)) {
                 continue;
+            }
                 
             $this->_changelog->load(
                 $name, 
@@ -201,7 +211,6 @@ class Model_Asset_Defects_Issue_Trac extends Model_Asset_Defects_Issue_Abstract
     protected function _translateFromTrac($name, $value, $author, $date) 
     {
         switch ($name) {
-            
             case 'code':
                 $value = Model_Pages_Encoder::decode($value);
                 break;
@@ -229,7 +238,10 @@ class Model_Asset_Defects_Issue_Trac extends Model_Asset_Defects_Issue_Abstract
             case 'status':
                 switch ($value) {
                     case 'closed':
-                        $value = $this->resolutionCache;
+                        if (!is_null($this->_resolutionCache))
+                            $value = $this->_resolutionCache;
+                        else
+                            $value = Model_Asset_Defects_Issue_Changelog_Field_Status::INVALID;
                         break;
                     default: 
                         $value = Model_Asset_Defects_Issue_Changelog_Field_Status::OPEN;

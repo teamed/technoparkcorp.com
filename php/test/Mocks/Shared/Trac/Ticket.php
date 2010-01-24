@@ -1,10 +1,19 @@
 <?php
 
+/**
+ * @see Model_Asset_Defects_Issue_Trac
+ */
 class Mocks_Shared_Trac_Ticket extends Shared_Trac_Ticket
 {
 
     protected static $_attributes = array();
 
+     // this is what we are getting from Trac
+    const TRAC_DATE = 'YMdTHH:m:s';
+    
+    /**
+     * @see Model_Asset_Defects_Issue_Trac
+     */
     public static function get($id, array $attributes = null) 
     {
         if ($id === false) {
@@ -27,11 +36,14 @@ class Mocks_Shared_Trac_Ticket extends Shared_Trac_Ticket
         return self::$_attributes[$this->getId()];
     }
     
+    /**
+     * @see Model_Asset_Defects_Issue_Trac
+     */
     public function getTracDetails() 
     {
         return array(
             0 => false,
-            1 => Zend_Date::now()->getIso(),
+            1 => Zend_Date::now()->get(self::TRAC_DATE),
             2 => false,
             3 => $this->getAttributes(),
         );
@@ -42,14 +54,33 @@ class Mocks_Shared_Trac_Ticket extends Shared_Trac_Ticket
      */
     public function getTracChangelog() 
     {
+        $data = array(
+            'status' => array('open', 'closed', 'invalid'),
+            'summary' => 'to test UC1 and R1', 
+            'comment' => 'some testing is required with ActorUser and UC2', 
+            'description' => 'it is an initial task spec'
+        );
+
         $changelog = array();
-        foreach (array('summary', 'comment', 'description') as $field) {
+        foreach ($data as $field=>$value) {
+            for ($i=0; $i<10; $i++) {
+                $changelog[] = array(
+                    0 => Zend_Date::now()->subHour(rand(1, 100))->get(self::TRAC_DATE),
+                    1 => Model_User::me()->email,
+                    2 => $field,
+                    3 => false,
+                    4 => (is_string($value) ? 
+                        FaZend_View_Helper_LoremIpsum::getLoremIpsum() :
+                        $value[array_rand($value)]
+                    ),
+                );
+            }
             $changelog[] = array(
-                0 => date('Ymd\TH:i:s'), // this is what we are getting from Trac
+                0 => Zend_Date::now()->get(self::TRAC_DATE),
                 1 => Model_User::me()->email,
                 2 => $field,
                 3 => false,
-                4 => 'some text about R1, UC1, ActorUser and others',
+                4 => is_array($value) ? array_shift($value) : $value,
             );
         }
         return $changelog;

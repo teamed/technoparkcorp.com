@@ -1,16 +1,16 @@
 <?php
 /**
+ * thePanel v2.0, Project Management Software Toolkit
  *
- * Copyright (c) 2008, TechnoPark Corp., Florida, USA
- * All rights reserved. THIS IS PRIVATE SOFTWARE.
- *
- * Redistribution and use in source and binary forms, with or without modification, are PROHIBITED
- * without prior written permission from the author. This product may NOT be used anywhere
- * and on any computer except the server platform of TechnoPark Corp. located at
- * www.technoparkcorp.com. If you received this code occacionally and without intent to use
- * it, please report this incident to the author by email: privacy@technoparkcorp.com or
- * by mail: 568 Ninth Street South 202 Naples, Florida 34102, the United States of America,
- * tel. +1 (239) 243 0206, fax +1 (239) 236-0738.
+ * Redistribution and use in source and binary forms, with or without 
+ * modification, are PROHIBITED without prior written permission from 
+ * the author. This product may NOT be used anywhere and on any computer 
+ * except the server platform of TechnoPark Corp. located at 
+ * www.technoparkcorp.com. If you received this code occasionally and 
+ * without intent to use it, please report this incident to the author 
+ * by email: privacy@technoparkcorp.com or by mail: 
+ * 568 Ninth Street South 202, Naples, Florida 34102, USA
+ * tel. +1 (239) 935 5429
  *
  * @author Yegor Bugaenko <egor@technoparkcorp.com>
  * @copyright Copyright (c) TechnoPark Corp., 2001-2009
@@ -66,10 +66,10 @@ abstract class Model_Asset_Defects_Issue_Changelog_Field_Abstract
         if (!$this->_validate($value)) {
             FaZend_Exception::raise(
                 'Model_Asset_Defects_Issue_Changelog_Field_CantChange',
-                "You can't change value of type " . get_class($this)
+                "Validation failure in type " . get_class($this)
             );
         }
-        $this->_addChange($value, null, null);
+        $this->_addChange($value);
     }
 
     /**
@@ -97,7 +97,7 @@ abstract class Model_Asset_Defects_Issue_Changelog_Field_Abstract
         // in THIS script, and is waiting for deployment
         // to tracker
         foreach ($this->_changes as $change) {
-            if (!$change->date)
+            if (is_null($change->date))
                 return true;
         }
         return false;
@@ -112,6 +112,10 @@ abstract class Model_Asset_Defects_Issue_Changelog_Field_Abstract
     {
         $date = null;
         foreach ($this->_changes as $change) {
+            // maybe this is the change made during this script?
+            // not saved yet to tracker
+            if (is_null($change->date))
+                continue;
             if (is_null($date) || $date->isLater($change->date))
                 $date = $change->date;
         }
@@ -127,6 +131,10 @@ abstract class Model_Asset_Defects_Issue_Changelog_Field_Abstract
     {
         $date = $author = null;
         foreach ($this->_changes as $change) {
+            // maybe this is the change made during this script?
+            // not saved yet to tracker
+            if (is_null($change->date))
+                continue;
             if (is_null($date) || $date->isLater($change->date)) {
                 $date = $change->date;
                 $author = $change->author;
@@ -138,12 +146,13 @@ abstract class Model_Asset_Defects_Issue_Changelog_Field_Abstract
     /**
      * Get current value
      *
-     * @return mixed
+     * @return mixed NULL means that there are no changed yet, no value yet
      **/
     public function getValue()
     {
-        if (!count($this->_changes))
+        if (!count($this->_changes)) {
             return null;
+        }
 
         return $this->_changes[count($this->_changes)-1]->value;
     }
@@ -163,13 +172,20 @@ abstract class Model_Asset_Defects_Issue_Changelog_Field_Abstract
      *
      * @param mixed Value to set
      * @param string Email of the author
-     * @param Zend_Date When changes were made
+     * @param Zend_Date|null When changes were made, NULL if now
      * @return void
      **/
-    protected function _addChange($value, $author, Zend_Date $date)
+    protected function _addChange($value, $author = null, Zend_Date $date = null)
     {
-        if ($this->getValue() == $value)
+        if (!is_null($author)) {
+            validate()
+                ->emailAddress($author, array(), "Invalid email: '{$author}'");
+        }
+        
+        // do NOT duplicate changes
+        if ($this->getValue() === $value)
             return;
+
         $this->_changes[] = FaZend_StdObject::create()
             ->set('author', $author)
             ->set('date', $date)
