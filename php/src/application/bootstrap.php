@@ -66,7 +66,6 @@ class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap
     protected function _initPos() 
     {
         // make sure all artifacts are attached to OUR root
-        FaZend_Pos_Properties::cleanPosMemory(true);
         FaZend_Pos_Properties::setRootClass('Model_Artifact_Root');
     }
 

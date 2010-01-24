@@ -126,8 +126,10 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
                 break;
             
             default:
-                FaZend_Exception::raise('Model_Wiki_PropertyOrMethodNotFound', 
-                    "Can't find what is '$name' in " . get_class($this));        
+                FaZend_Exception::raise(
+                    'Deliverables_PropertyOrMethodNotFound', 
+                    "Can't find what is '$name' in " . get_class($this)
+                );        
         }
         
         return $this->_getByType(self::_convertType($type));

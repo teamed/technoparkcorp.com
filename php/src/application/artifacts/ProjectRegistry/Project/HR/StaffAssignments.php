@@ -221,6 +221,7 @@ class theStaffAssignments implements ArrayAccess, Countable, Iterator, Model_Art
      **/
     public function offsetGet($name) 
     {
+        validate()->emailAddress($name, array(), "Email is wrong: '{$name}'");
         return $this->_getStakeholders()->offsetGet($name);
     }
     
@@ -257,6 +258,7 @@ class theStaffAssignments implements ArrayAccess, Countable, Iterator, Model_Art
      **/
     public function offsetExists($name) 
     {
+        validate()->emailAddress($name, array(), "Email is wrong: '{$name}'");
         return $this->_getStakeholders()->offsetExists($name);
     }
     

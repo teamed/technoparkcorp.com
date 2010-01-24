@@ -72,7 +72,7 @@ class Model_Artifact_Passive_Loader
         $this->_toAttach[$var] = array(
             'artifact' => $kid, 
             'property' => $property
-            );
+        );
         return $this;
     }
 

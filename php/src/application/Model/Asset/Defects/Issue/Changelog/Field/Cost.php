@@ -23,7 +23,8 @@
  *
  * @package Model
  */
-class Model_Asset_Defects_Issue_Changelog_Field_Cost extends Model_Asset_Defects_Issue_Changelog_Field_Abstract {
+class Model_Asset_Defects_Issue_Changelog_Field_Cost extends Model_Asset_Defects_Issue_Changelog_Field_Abstract
+{
 
     /**
      * Validate new value
@@ -32,9 +33,11 @@ class Model_Asset_Defects_Issue_Changelog_Field_Cost extends Model_Asset_Defects
      * @return void
      * @throws Exception if failed
      **/
-    protected function _validate($value) {
+    protected function _validate($value)
+    {
         validate()->type($value, 'integer', "Cost shall be INT only");
-        return false;
+        
+        return true;
     }
 
 }

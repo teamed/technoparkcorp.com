@@ -23,7 +23,8 @@
  *
  * @package Model
  */
-class Model_Asset_Defects_Issue_Changelog_Field_Priority extends Model_Asset_Defects_Issue_Changelog_Field_Abstract {
+class Model_Asset_Defects_Issue_Changelog_Field_Priority extends Model_Asset_Defects_Issue_Changelog_Field_Abstract
+{
 
     const MINOR = 1;
     const MAJOR = 2;
@@ -37,14 +38,16 @@ class Model_Asset_Defects_Issue_Changelog_Field_Priority extends Model_Asset_Def
      * @return void
      * @throws Exception if failed
      **/
-    protected function _validate($value) {
+    protected function _validate($value)
+    {
         validate()
             ->type($value, 'integer', "Priority shall be INT only")
             ->true(in_array($value, array(
                 self::MINOR,
                 self::MAJOR,
                 self::CRITICAL,
-                self::BLOCKER)), "Priority shall be from the predefined list");
+                self::BLOCKER
+            )), "Priority shall be from the predefined list");
             
         return true;
     }

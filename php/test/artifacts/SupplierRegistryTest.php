@@ -24,7 +24,7 @@ class theSupplierRegistryTest extends AbstractTest
         // now we should check that the registry is recoverable
         // from POS
         Model_Artifact::root()->supplierRegistry->ps()->save();
-        FaZend_Pos_Properties::cleanPosMemory();
+
         $this->assertTrue(count(Model_Artifact::root()->supplierRegistry) > 0, 
             'SupplierRegistry is empty again, why?');
     }

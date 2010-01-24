@@ -56,11 +56,12 @@ class Mocks_Shared_Trac_Ticket extends Shared_Trac_Ticket
     {
         $data = array(
             'status' => array('open', 'closed', 'invalid'),
+            'owner' => array_keys(Mocks_Model_Project::get()->getStakeholders()),
             'summary' => 'to test UC1 and R1', 
             'comment' => 'some testing is required with ActorUser and UC2', 
             'description' => 'it is an initial task spec'
         );
-
+        
         $changelog = array();
         foreach ($data as $field=>$value) {
             for ($i=0; $i<10; $i++) {

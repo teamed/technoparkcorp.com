@@ -5,8 +5,12 @@ class Mocks_Shared_Soap_Client
     
     const OWNER = 'yegor256@yahoo.com';
     const OWNER_PWD = 'aF41Atlz';
+    
     const PM = 'tester@tpc2.com';
     const PM_PWD = 'violetta';
+    
+    const WORKER = 'worker@tpc2.com';
+    const WORKER_PWD = 'victory';
     
     protected static $_userId = 1;
     
@@ -23,10 +27,13 @@ class Mocks_Shared_Soap_Client
             Model_Wobot_PM::getEmailByProjectName(Mocks_Model_Project::NAME) . " = rw\n" .
             self::OWNER . " = rw\n";
 
-        foreach (array('PM', 'SystemAnalyst', 'Architect', 'CCB', 'Programmer') as $role)
-            $authz .= '[' . Mocks_Model_Project::NAME . ':' . 
-                Model_Project::ROLE_AUTHZ_PREFIX . "$role]\n" .
-                self::PM . " = rw\n";
+        foreach (array(self::PM, self::OWNER, self::WORKER) as $email) {
+            foreach (array('PM', 'SystemAnalyst', 'Architect', 'CCB', 'Programmer') as $role) {
+                $authz .= '[' . Mocks_Model_Project::NAME . ':' . 
+                    Model_Project::ROLE_AUTHZ_PREFIX . "$role]\n" .
+                    $email . " = rw\n";
+            }
+        }
 
         return array(
             FaZend_StdObject::create()

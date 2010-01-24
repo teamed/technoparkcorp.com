@@ -70,7 +70,7 @@ class Mocks_Shared_XmlRpc
                 $list = array(
                     Mocks_Shared_Trac_Ticket::get(false, array()),
                     Mocks_Shared_Trac_Ticket::get(false, array()),
-                    );
+                );
                 break;
                 
             // one ticket by ID

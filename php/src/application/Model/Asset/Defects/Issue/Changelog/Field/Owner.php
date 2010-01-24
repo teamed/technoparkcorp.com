@@ -36,7 +36,8 @@ class Model_Asset_Defects_Issue_Changelog_Field_Owner extends Model_Asset_Defect
     protected function _validate($value)
     {
         validate()->emailAddress($value, array(), "Invalid owner's email: '{$value}'");
-        return false;
+        
+        return true;
     }
 
 }

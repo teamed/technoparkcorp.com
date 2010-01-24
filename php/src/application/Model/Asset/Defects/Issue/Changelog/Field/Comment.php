@@ -23,7 +23,8 @@
  *
  * @package Model
  */
-class Model_Asset_Defects_Issue_Changelog_Field_Comment extends Model_Asset_Defects_Issue_Changelog_Field_Abstract {
+class Model_Asset_Defects_Issue_Changelog_Field_Comment extends Model_Asset_Defects_Issue_Changelog_Field_Abstract
+{
 
     /**
      * Validate new value
@@ -32,7 +33,8 @@ class Model_Asset_Defects_Issue_Changelog_Field_Comment extends Model_Asset_Defe
      * @return void
      * @throws Exception if failed
      **/
-    protected function _validate($value) {
+    protected function _validate($value)
+    {
         return true;
     }
 

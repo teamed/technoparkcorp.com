@@ -44,7 +44,7 @@ class theIssues implements Model_Artifact_Interface, ArrayAccess, Iterator, Coun
      * @var ArrayIterator(Model_Asset_Defects_Issue_Abstract)
      * @see _getIssues()
      */
-    protected $_issues = null;
+    protected $_issues;
     
     /**
      * Save project
@@ -67,7 +67,7 @@ class theIssues implements Model_Artifact_Interface, ArrayAccess, Iterator, Coun
      */
     public function offsetExists($id)
     {
-        return $this->_getIssues()->offsetExists();
+        return $this->_getIssues()->offsetExists($id);
     }
 
     /**
@@ -124,8 +124,7 @@ class theIssues implements Model_Artifact_Interface, ArrayAccess, Iterator, Coun
      */
     public function current() 
     {
-        $this->_load($this->key());
-        return $this->_getIssues()->current();
+        return $this->offsetGet($this->key());
     }
     
     /**
@@ -137,8 +136,7 @@ class theIssues implements Model_Artifact_Interface, ArrayAccess, Iterator, Coun
      */
     public function next() 
     {
-        $this->_load($this->key());
-        return $this->_getIssues()->next();
+        $this->_getIssues()->next();
     }
     
     /**
@@ -197,7 +195,7 @@ class theIssues implements Model_Artifact_Interface, ArrayAccess, Iterator, Coun
      **/
     protected function _getIssues()
     {
-        if (!isset($this->_issues)) {
+        if (is_null($this->_issues)) {
             $this->_issues = new ArrayIterator(
                 array_map(
                     create_function('', 'return false;'),

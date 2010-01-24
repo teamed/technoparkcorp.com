@@ -7,31 +7,37 @@ class IssuesTest extends AbstractProjectTest
 
     public function testListOfIssuesIsAccessible()
     {
-        // $issues = $this->_project->issues;
-        // $this->assertTrue($issues instanceof theIssues, 
-        //     "Invalid type of issue holder");
-        // 
-        // $cnt = count($issues);
-        // foreach ($issues as $id=>$issue) {
-        //     // logg(spl_object_hash($issue));
-        //     $this->assertTrue($issue instanceof Model_Asset_Defects_Issue_Abstract,
-        //         "Invalid type of issue #{$id}: " . gettype($issue));
-        //     $cnt--;
-        //     
-        //     $this->assertTrue($issue->changelog instanceof Model_Asset_Defects_Issue_Changelog_Changelog,
-        //         "Invalid type of changelog: " . gettype($issue->changelog));
-        //         
-        //     foreach (array('status', 'comment', 'summary') as $name) {
-        //         $field = $issue->changelog->get($name);
-        //         $this->assertTrue($field instanceof Model_Asset_Defects_Issue_Changelog_Field_Abstract,
-        //             "Invalid type of field '{$name}': " . gettype($field));
-        //         
-        //         $this->assertNotEquals(false, $field->getValue(),
-        //             "Failed to retrieve '{$name}': '{$field->getValue()}'");
-        //     }
-        // }
-        // 
-        // $this->assertEquals(0, $cnt);
+        $issues = $this->_project->issues;
+        $this->assertTrue($issues instanceof theIssues, 
+            "Invalid type of issue holder");
+
+        logg('issues found: %s', implode(', ', array_keys(iterator_to_array($issues))));
+
+        $cnt = count($issues);
+        foreach ($issues as $id=>$issue) {
+            // logg(spl_object_hash($issue));
+            $this->assertTrue($issue instanceof Model_Asset_Defects_Issue_Abstract,
+                "Invalid type of issue #{$id}: " . gettype($issue));
+            $this->assertEquals($issue->id == $id, "ID's are different");
+            $this->assertTrue($issue === $this->_project->fzProject()
+                ->getAsset(Model_Project::ASSET_DEFECTS)->findById($id),
+                "Issue and Ticket objects are different (ID: $id)");
+            $cnt--;
+            
+            $this->assertTrue($issue->changelog instanceof Model_Asset_Defects_Issue_Changelog_Changelog,
+                "Invalid type of changelog: " . gettype($issue->changelog));
+                
+            foreach (array('status', 'comment', 'summary', 'owner') as $name) {
+                $field = $issue->changelog->get($name);
+                $this->assertTrue($field instanceof Model_Asset_Defects_Issue_Changelog_Field_Abstract,
+                    "Invalid type of field '{$name}': " . gettype($field));
+                
+                $this->assertNotEquals(false, $field->getValue(),
+                    "Failed to retrieve '{$name}': '{$field->getValue()}'");
+            }
+        }
+        
+        $this->assertEquals(0, $cnt);
     }
 
     // public function testRealLifeListOfIssuesIsAccessible() 

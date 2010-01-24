@@ -47,6 +47,11 @@ class Model_Artifact extends FaZend_Pos_Abstract implements Model_Artifact_Inter
      */
     protected function _attach($name, Model_Artifact_Interface $artifact, $property = null) 
     {
+        // make sure that we don't save this to DB
+        if ($artifact instanceof Model_Artifact_Stateless) {
+            $this->ps()->setStatelessProperty($name);
+        }
+
         // don't attach again, if it's already here
         if (!isset($this->$name)) {
             $this->$name = $artifact;
@@ -105,25 +110,12 @@ class Model_Artifact extends FaZend_Pos_Abstract implements Model_Artifact_Inter
         Model_Artifact_Interface $artifact, 
         $property) 
     {
-        if (is_null($property) && !($artifact instanceof Model_Artifact_Stateless)) {
-            // do nothing
-        } elseif (!is_null($property)) {
+        if (!is_null($property) && !($artifact instanceof Model_Artifact)) {
             if (method_exists($artifact, $property))
                 $artifact->$property($root);
             else
                 $artifact->$property = $root;
-        } elseif (!is_null($property)) {
-            FaZend_Exception::raise(
-                'Model_Artifact_InvalidChildArtifact', 
-                'Artifact ' . get_class($artifact) . ' is not stateless'
-            );
         }
-            
-        // reload it if it's empty now and requires loading
-        // we should NOT do it here!
-        // if (($artifact instanceof Model_Artifact_Passive) && !$artifact->isLoaded())
-        //     $artifact->reload();
-            
         return $root;
     }
     
