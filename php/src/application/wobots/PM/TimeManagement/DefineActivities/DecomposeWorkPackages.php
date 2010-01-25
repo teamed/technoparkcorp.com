@@ -48,6 +48,9 @@ class DecomposeWorkPackages extends Model_Decision_PM
         }
 
         logg('There are ' . count($this->_project->wbs) . ' work packages');
+        
+        // remove it later, we don't need it here
+        $this->_project->activityList->reload();
         logg('There are ' . count($this->_project->activityList->activities) . 
             ' activities in the Activity List');
 
