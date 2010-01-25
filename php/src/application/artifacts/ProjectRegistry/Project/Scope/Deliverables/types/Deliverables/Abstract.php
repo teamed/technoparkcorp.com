@@ -88,8 +88,10 @@ abstract class Deliverables_Abstract
         if (property_exists($this, $var))
             return $this->$var;
         
-        FaZend_Exception::raise('PropertyOrMethodNotFound', 
-            "Can't find what is '$name' in " . get_class($this));        
+        FaZend_Exception::raise(
+            'PropertyOrMethodNotFound', 
+            "Can't find what is '$name' in " . get_class($this)
+        );        
     }
     
     /**
@@ -111,12 +113,16 @@ abstract class Deliverables_Abstract
                 $this->$property = $value;
                 return $this;
             }
-            FaZend_Exception::raise('PropertyNotFound', 
-                "Can't find property '$property' in " . get_class($this));        
+            FaZend_Exception::raise(
+                'PropertyNotFound', 
+                "Can't find property '$property' in " . get_class($this)
+            );        
         }
         
-        FaZend_Exception::raise('MethodNotFound', 
-            "Can't find what is '$method' in " . get_class($this));        
+        FaZend_Exception::raise(
+            'MethodNotFound', 
+            "Can't find what is '$method' in " . get_class($this)
+        );        
     }
     
     /**

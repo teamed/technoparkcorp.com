@@ -16,14 +16,11 @@ class Model_Asset_Design_Fazend_LinuxTest extends AbstractProjectTest
     public function testWeCanRetrieveAllComponents() 
     {
         $components = $this->_asset->getComponents();
-        $this->assertTrue(count($components) > 0, 'No components in Trac, why?');
+        $this->assertTrue(count($components) > 0, 'No components in Design, why?');
     }
     
     public function testRealLifeCallWorks() 
     {
-        // disabled since "Authorization Required" comes from there :(
-        // return $this->markTestIncomplete();
-            
         Shared_Pan::setSoapClient(null);
         Mocks_Shared_Soap_Client::setLive();
         
