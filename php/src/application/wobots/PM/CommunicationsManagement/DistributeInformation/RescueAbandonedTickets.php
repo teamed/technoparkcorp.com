@@ -38,6 +38,8 @@ class RescueAbandonedTickets extends Model_Decision_PM
      */
     protected function _make()
     {
+        logg('Found %d tickets totally', count($this->_project->issues));
+        
         $closed = array();
         foreach ($this->_project->issues as $issue) {
             $lastDate = $issue->changelog->get('comment')->getLastDate();
