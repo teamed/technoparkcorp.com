@@ -40,6 +40,8 @@ class DeliverablesLoaders_Design extends DeliverablesLoaders_Abstract
 
         $components = $project->fzProject()
             ->getAsset(Model_Project::ASSET_DESIGN)->getComponents();
+
+        logg('Found %d components', count($components));
         foreach ($components as $component) {
             $deliverable = theDeliverables::factory(
                 $component->type, 
