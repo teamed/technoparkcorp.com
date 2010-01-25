@@ -44,6 +44,23 @@ class Model_Asset_Design_Fazend_Linux extends Model_Asset_Design_Abstract
         $list = $this->_pan->getComponents();
         $return = array();
         foreach ($list as $data) {
+            switch ($data['type']) {
+                case 'category':
+                case 'package':
+                    $data['type'] = 'package';
+                    break;
+                case 'file':
+                case 'file_Php':
+                    $data['type'] = 'file';
+                    break;
+                case 'method':
+                    $data['type'] = 'method';
+                    break;
+                default:
+                    $data['type'] = 'class';
+                    break;
+            }
+            
             $return[] = FaZend_StdObject::create()
                 ->set('type', $data['type'])
                 ->set('name', $data['fullName'])
