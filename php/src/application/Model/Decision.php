@@ -207,7 +207,9 @@ abstract class Model_Decision implements Model_Decision_Interface
                 $e->getFile(),
                 $e->getLine()
             ));
-            $decision = Model_Decision_History::ERROR_PREFIX . ': ' . $e->getMessage();
+            $decision = Model_Decision_History::ERROR_PREFIX . ': ' . 
+                get_class($e) . ', ' .
+                $e->getMessage();
             $db->rollBack();
             logg('Decision execution aborted, DB transaction rolled back');
         }
