@@ -48,6 +48,12 @@ class DeliverablesLoaders_Design extends DeliverablesLoaders_Abstract
                 $component->name, 
                 $component->description
             );
+            
+            if (isset($project->deliverables[$deliverable->name])) {
+                logg('Duplicate deliverable: %s (%s)', $deliverable->name, $deliverable->type);
+                continue;
+            }
+            
             $project->deliverables->add($deliverable);
             
             foreach ($component->traces as $trace) {
