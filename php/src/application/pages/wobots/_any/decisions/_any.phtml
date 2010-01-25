@@ -15,6 +15,7 @@
 -->
  
 <? $decision = new Model_Decision_History($this->segment(3)); ?>
+<? $protocol = explode("\n", $decision->getProtocol()) ?>
 
 <p>
     Date: <?=$decision->created?><br/>
@@ -27,9 +28,9 @@
         ?></b>
 </p>
 
-<p>Protocol:</p>
+<p>Protocol (<?=count($protocol)?> lines):</p>
 
 <!-- very long PRE cause problems for browser -->
-<? foreach (array_chunk(explode("\n", $decision->getProtocol()), 50) as $chunk): ?>
+<? foreach (array_chunk($protocol, 50) as $chunk): ?>
     <pre><?=implode("\n", $chunk)?></pre>
 <? endforeach; ?>
