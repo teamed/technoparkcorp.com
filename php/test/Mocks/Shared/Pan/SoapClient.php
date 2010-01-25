@@ -12,7 +12,7 @@ class Mocks_Shared_Pan_SoapClient
      * @return array[]
      * @see Model_Asset_Design_Fazend_Linux
      **/
-    public function getComponents() 
+    public function getAnalysis() 
     {
         return array(
             array(

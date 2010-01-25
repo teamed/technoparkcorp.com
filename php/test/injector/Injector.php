@@ -26,9 +26,6 @@ class Injector extends FaZend_Test_Injector
         // clean Shared cache, if necessary
         // Shared_Cache::getInstance('Shared_SOAP_Gateway')->clean();
 
-        // set it to FALSE and unit tests WON'T try to test any real life calls
-        define('TEST_REAL_CONNECTIONS', true);
-
         // don't go into real Shared resources
         Shared_XmlRpc::setXmlRpcClientClass('Mocks_Shared_XmlRpc');
         Shared_Trac::setTicketClass('Mocks_Shared_Trac_Ticket');

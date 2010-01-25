@@ -26,9 +26,6 @@ class Model_Asset_Defects_Fazend_TracTest extends AbstractProjectTest
 
     public function testRealLifeCallWorks() 
     {
-        if (!defined('TEST_REAL_CONNECTIONS'))
-            return $this->markTestIncomplete();
-            
         Shared_XmlRpc::setXmlRpcClientClass('Zend_XmlRpc_Client');
         Mocks_Shared_Soap_Client::setLive();
         try {
