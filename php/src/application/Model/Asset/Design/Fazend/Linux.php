@@ -50,7 +50,7 @@ class Model_Asset_Design_Fazend_Linux extends Model_Asset_Design_Abstract
                     $data['type'] = 'package';
                     break;
                 case 'file':
-                case 'file_Php':
+                case 'file_PhpFile':
                     $data['type'] = 'file';
                     break;
                 case 'method':
