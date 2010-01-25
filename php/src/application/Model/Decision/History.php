@@ -289,11 +289,12 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history
     /**
      * Get file name of a log file to be used with this decision
      *
+     * @param boolean Clean it?
      * @return string Absolute file name
      * @throws Model_Decision_History_DirectoryInvalid
      * @throws Model_Decision_History_FileInvalid
      */
-    public function getLogFileName() 
+    public function getLogFileName($clean = false) 
     {
         $dir = TEMP_PATH . '/panel2-decisions-' .  APPLICATION_ENV;
         if (!file_exists($dir) || !is_dir($dir)) {
@@ -304,7 +305,11 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history
                 );
             }
         }
-        return $dir . '/' . substr(strrchr($this->hash, '/'), 1) . '.log';
+        $file = $dir . '/' . substr(strrchr($this->hash, '/'), 1) . '.log';
+        
+        if ($clean)
+            file_put_contents($file, '');
+        return $file;
     }
     
     /**

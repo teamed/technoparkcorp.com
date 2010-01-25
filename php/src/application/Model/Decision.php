@@ -175,7 +175,7 @@ abstract class Model_Decision implements Model_Decision_Interface
         
         // start logging to file
         FaZend_Log::getInstance()->addWriter(
-            new Zend_Log_Writer_Stream($history->getLogFileName()), 
+            new Zend_Log_Writer_Stream($history->getLogFileName(true)), 
             'stream'
         );
 
