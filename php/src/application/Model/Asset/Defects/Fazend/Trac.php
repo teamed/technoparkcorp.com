@@ -26,7 +26,7 @@
 class Model_Asset_Defects_Fazend_Trac extends Model_Asset_Defects_Abstract 
 {
     
-    const QUERY_ALL = 'order=priority';
+    const QUERY_ALL = 'order=id';
 
     /**
      * Trac from Shared lib
@@ -73,7 +73,8 @@ class Model_Asset_Defects_Fazend_Trac extends Model_Asset_Defects_Abstract
      * @param array Associative array of conditiions, where key is attribute and
      *              value is a required value of the given attribute.
      * @param array The same, but negative
-     * @return array
+     * @return array List of ID's, integers
+     * @throws Model_Asset_Defects_Fazend_Trac_SoapFault
      **/
     public function retrieveBy(array $conditions = array(), array $negative = array())
     {
@@ -88,8 +89,29 @@ class Model_Asset_Defects_Fazend_Trac extends Model_Asset_Defects_Abstract
         // we should not send empty queries to Trac
         if (!count($lemmas))
             $lemmas[] = self::QUERY_ALL;
-            
-        return $this->_trac->query(implode('&', $lemmas), false);
+
+        $ids = array();
+        $page = 1;
+        $maxPerPage = 50;
+        do {
+            try {
+                $portion = $this->_trac->query(
+                    implode('&', $lemmas) . "&max={$maxPerPage}&page=" . $page++, 
+                    false
+                );
+            } catch (Zend_XmlRpc_Client_FaultException $e) {
+                if (strpos($e->getMessage(), 'is beyond the number of pages') !== false)
+                    break;
+                FaZend_Exception::raise(
+                    'Model_Asset_Defects_Fazend_Trac_SoapFault',
+                    $e->getMessage()
+                );
+            }
+            $ids = array_merge($ids, $portion);
+            if (count($portion) < $maxPerPage)
+                break;
+        } while (count($portion) > 0);
+        return array_unique($ids);
     }
     
     /**

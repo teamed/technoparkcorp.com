@@ -65,6 +65,7 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history
     /**
      * Find one decision history record
      *
+     * @param string Hash of the decision
      * @return Model_Decision_History
      **/
     public static function findByHash($hash)
@@ -225,7 +226,7 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history
     }
     
     /**
-     * Get process ID if running
+     * Get process ID if running, NULL means "not any longer"
      *
      * @return null|integer
      */
@@ -292,7 +293,6 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history
      * @param boolean Clean it?
      * @return string Absolute file name
      * @throws Model_Decision_History_DirectoryInvalid
-     * @throws Model_Decision_History_FileInvalid
      */
     public function getLogFileName($clean = false) 
     {
@@ -308,7 +308,7 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history
         $file = $dir . '/' . substr(strrchr($this->hash, '/'), 1) . '.log';
         
         if ($clean)
-            file_put_contents($file, '');
+            @unlink($file);
         return $file;
     }
     

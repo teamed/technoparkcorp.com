@@ -217,7 +217,7 @@ abstract class Model_Decision implements Model_Decision_Interface
         if (@unlink($history->getLogFileName()) === false) {
             FaZend_Exception::raise(
                 'Model_Decision_LogCrashed',
-                "Can't delete log file"
+                "Can't delete log file: " . $history->getLogFileName()
             );
         }
         

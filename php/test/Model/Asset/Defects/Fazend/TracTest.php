@@ -17,13 +17,19 @@ class Model_Asset_Defects_Fazend_TracTest extends AbstractProjectTest
         $ticket = $this->_asset->findById(1);
         $this->assertTrue($ticket->id == 1, 'Ticket was not found, why?');
     }
-
+    
     public function testRetrieveByWorks() 
     {
         $tickets = $this->_asset->retrieveBy(array('id'=>1));
         $this->assertTrue(count($tickets) > 0, 'No ticket were found, why?');
     }
-
+    
+    public function testRetrieveByCanReturnFullListOfTickets() 
+    {
+        $tickets = $this->_asset->retrieveBy();
+        $this->assertTrue(count($tickets) > 0, 'No ticket were found, why?');
+    }
+    
     public function testRealLifeCallWorks() 
     {
         Shared_XmlRpc::setXmlRpcClientClass('Zend_XmlRpc_Client');

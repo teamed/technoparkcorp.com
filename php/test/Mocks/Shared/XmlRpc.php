@@ -30,7 +30,8 @@ class Mocks_Shared_XmlRpc
         $html = preg_replace(
             '/\{(.*?)\}/', 
             '<a href="http://trac.fazend.com/' . Mocks_Model_Project::NAME . '/wiki/${1}">${1}</a>', 
-            $html);
+            $html
+        );
         return $html;
     }
     
@@ -38,12 +39,12 @@ class Mocks_Shared_XmlRpc
     {
         switch (true) {
             // get all tickets about suppliers
-            case ($query == Model_Asset_Suppliers_Fazend_Trac::QUERY_ALL):
+            case $query == Model_Asset_Suppliers_Fazend_Trac::QUERY_ALL:
                 $list = array();
                 for ($i = 0; $i<5; $i++) {
                     $list[] = Mocks_Shared_Trac_Ticket::get(false, array(
                         'supplier' => "test{$i}@example.com",
-                        ));
+                    ));
                 }
                 break;
                     
@@ -61,30 +62,36 @@ class Mocks_Shared_XmlRpc
                         'skills' => implode(', ', array_slice($skills, 0, 3)),
                         'role' => $roles[array_rand($roles)],
                         'price' => rand(8, 20) . ' EUR',
-                        )),
-                    );
-                break;
-                
-            // full list of tickets in test project
-            case ($query == Model_Asset_Defects_Fazend_Trac::QUERY_ALL):
-                $list = array(
-                    Mocks_Shared_Trac_Ticket::get(false, array()),
-                    Mocks_Shared_Trac_Ticket::get(false, array()),
+                    )),
                 );
                 break;
                 
+            // full list of tickets in test project
+            case preg_match(
+                '/^' . preg_quote(Model_Asset_Defects_Fazend_Trac::QUERY_ALL, '/') . '&max=(\d+)&page=(\d+)$/', 
+                $query, 
+                $matches
+            ):
+                $list = array();
+                if ($matches[2] < 3) {
+                    for ($i = 0; $i<$matches[1]; $i++) {
+                        $list[] = Mocks_Shared_Trac_Ticket::get(false, array());
+                    }
+                }
+                break;
+
             // one ticket by ID
-            case preg_match('/^id=\'(\d+)\'$/', $query, $matches):
+            case preg_match('/^id=\'(\d+)\'/', $query, $matches):
                 $list = array(
                     Mocks_Shared_Trac_Ticket::get($matches[1]),
-                    );
+                );
                 break;
 
             // one ticket by CODE
-            case preg_match('/^code=\'([\w\d\-]+)\'$/', $query, $matches):
+            case preg_match('/^code=\'([\w\d\-]+)\'/', $query, $matches):
                 $list = array(
                     Mocks_Shared_Trac_Ticket::get(false, array()),
-                    );
+                );
                 break;
 
             default:
