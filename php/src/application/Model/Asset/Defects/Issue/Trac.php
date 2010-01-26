@@ -118,7 +118,7 @@ class Model_Asset_Defects_Issue_Trac extends Model_Asset_Defects_Issue_Abstract
     protected function _loadChangelog() 
     {
         $log = $this->_tracker->getXmlProxy()->changeLog($this->_id);
-        logg("Issue #%d has %d changes in Trac", $this->_id, count($log));
+        // logg("Issue #%d has %d changes in Trac", $this->_id, count($log));
         
         $fields = array();
         $records = array();
