@@ -40,27 +40,23 @@ class DeliverablesLoaders_Issues extends DeliverablesLoaders_Abstract
         
         logg('Issues loading started...');
         $project = $this->_deliverables->ps()->parent;
-        $asset = $project->fzProject()->getAsset(Model_Project::ASSET_DEFECTS);
             
-        $ids = $asset->retrieveBy();
-        foreach ($ids as $id) {
-            $ticket = $asset->findById($id);
-    
+        foreach ($project->issues as $issue) {
             // add it to the list of deliverables
-            $issueName = '#' .  $id;
+            $issueName = '#' .  $issue->id;
             $project->deliverables->add(theDeliverables::factory(
                 'issue', 
                 $issueName, 
-                $ticket->changelog->get('summary')->getValue()
+                $issue->changelog->get('summary')->getValue()
             ));
             
-            $changes = $ticket->changelog->get('comment')->getChanges();
+            $changes = $issue->changelog->get('comment')->getChanges();
             
             // we're building a list of deliverables mentioned in this ticket
             $mentioned = array();
             foreach ($changes as $change) {
                 if (!preg_match_all(Deliverables_Abstract::REGEX, $change->value, $matches))
-                    return;
+                    continue;
 
                 foreach ($matches[0] as $match) {
                     if (isset($project->deliverables[$match]))
@@ -76,11 +72,11 @@ class DeliverablesLoaders_Issues extends DeliverablesLoaders_Abstract
                     $project->deliverables[$name],
                     0.05,
                     1,
-                    "mentioned in {$issueName}: " . $ticket->changelog->get('summary')->getValue()
+                    "mentioned in {$issueName}: " . $issue->changelog->get('summary')->getValue()
                 ));
             }
         }
-        logg('Issues loading finished, %d tickets processed', count($ids));
+        logg('Issues loading finished, %d tickets processed', count($project->issues));
     }
     
 }

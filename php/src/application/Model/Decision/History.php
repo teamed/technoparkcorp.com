@@ -244,9 +244,10 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history
         $pid = intval($matches[1]);
         if (!shell_exec("ps -p {$pid} | grep {$pid}")) {
             // add comments to the protocol
+            $current = $this->getProtocol();
             $this->protocol = sprintf(
                 "%s\n\nprocess #%d is not running any more, detected at %s\n",
-                $this->getProtocol(),
+                $current,
                 $pid,
                 Zend_Date::now()
             );
