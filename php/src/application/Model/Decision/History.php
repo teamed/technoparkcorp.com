@@ -280,7 +280,7 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history
      */
     public function getProtocol() 
     {
-        if (!empty($this->protocol))
+        if ($this->protocol)
             return $this->protocol;
             
         $file = $this->getLogFileName();
