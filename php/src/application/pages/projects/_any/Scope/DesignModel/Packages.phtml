@@ -14,12 +14,12 @@
  *
 -->
  
-<?=$this->publish($this->project->analysisModel)?>
+<h1>Packages</h1>
 
-<h1>Analysis Model</h1>
-
-<?=$this->bar()
-    ->setStyle('stairs')
-    ->addLink('Packages', 'Packages')
+<?=$this->table()
+    ->setSource($this->project->deliverables->packages)
+    ->addColumn('name', 'Name')
+    ->addColumn('description', 'Description')
+    ->addColumn('attributes', 'Attributes')
     ?>
     

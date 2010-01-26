@@ -114,6 +114,7 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
             case 'interfaces':
             case 'packages':
             case 'files':
+            case 'methods':
             case 'useCases':
             case 'issues':
             case 'testCases':

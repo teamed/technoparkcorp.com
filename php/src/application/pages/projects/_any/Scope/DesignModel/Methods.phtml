@@ -14,12 +14,12 @@
  *
 -->
  
-<h1>Scope Management</h1>
+<h1>Methods</h1>
 
-<?=$this->bar()
-    ->setStyle('stairs')
-    ->addLink('WBS', 'Work Breakdown Structure (WBS)')
-    ->addLink('SRS', 'Software Requirements Specification (SRS)')
-    ->addLink('DesignModel', 'Design Model')
-    ->addLink('Traceability', 'Traceability Matrix')
+<?=$this->table()
+    ->setSource($this->project->deliverables->methods)
+    ->addColumn('name', 'Name')
+    ->addColumn('description', 'Description')
+    ->addColumn('attributes', 'Attributes')
     ?>
+    
