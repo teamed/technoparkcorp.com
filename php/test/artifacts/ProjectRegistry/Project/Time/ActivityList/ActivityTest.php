@@ -5,11 +5,19 @@ require_once 'AbstractProjectTest.php';
 class ActivityTest extends AbstractProjectTest
 {
 
-    public function testActivityIsAccessible()
+    public function setUp()
     {
+        parent::setUp();
+        if (!$this->_project->metrics->isLoaded())
+            $this->_project->metrics->reload();
+        if (!$this->_project->wbs->isLoaded())
+            $this->_project->wbs->reload();
         if (!$this->_project->activityList->isLoaded())
             $this->_project->activityList->reload();
+    }
 
+    public function testActivityIsAccessible()
+    {
         $this->assertTrue(count($this->_project->activityList->activities) > 0, "Empty activity list, why?");
     
         $this->_project->activityList->activities->rewind();
