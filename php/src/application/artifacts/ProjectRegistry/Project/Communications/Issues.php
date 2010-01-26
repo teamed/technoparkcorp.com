@@ -23,7 +23,7 @@
  *
  * @package Artifacts
  */
-class theIssues implements Model_Artifact_Interface, ArrayAccess, Iterator, Countable
+class theIssues implements Model_Artifact_Interface, Model_Artifact_Stateless, ArrayAccess, Iterator, Countable
 {
     
     /**
