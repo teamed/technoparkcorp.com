@@ -61,11 +61,16 @@ class RescueAbandonedTickets extends Model_Decision_PM
                 continue;
             }
             
-            $delayedDays = Zend_Date::now()->sub($lastDate)->toValue(Zend_Date::DAY);
+            $delayedHours = Zend_Date::now()->sub($lastDate)->toValue(Zend_Date::HOUR);
                 
             // there was some activity for the last 72 hours
-            if ($lastDate->isEarlier(Zend_Date::now()->subHour(72))) {
-                logg('Ticket #%d was changed shortly, on %s', $issue->id, $lastDate);
+            if ($delayedHours < 48) {
+                logg(
+                    'Ticket #%d was updated recently, on %s (%d hours ago)', 
+                    $issue->id, 
+                    $lastDate,
+                    $delayedHours
+                );
                 continue;
             }
                 
@@ -81,9 +86,9 @@ class RescueAbandonedTickets extends Model_Decision_PM
             // this ticket is already with PM
             if ($owner->hasRole($pmRole)) {
                 logg(
-                    'Ticket #%d is in long delay (%d days since %s), but with PM now (%s)', 
+                    'Ticket #%d is in long delay (%d hours since %s), but with PM now (%s)', 
                     $issue->id,
-                    $delayedDays,
+                    $delayedHours,
                     $lastDate->get(Zend_Date::DATE_MEDIUM),
                     $owner
                 );
@@ -97,7 +102,7 @@ class RescueAbandonedTickets extends Model_Decision_PM
             //         'This ticket has no attention of the owner for the last %d hours. ' .
             //         'Looks like an abandoned ticket. Could you please provide some news here ' . 
             //         'or assign the ticket to another person? Thanks!',
-            //         $lastDate->sub(Zend_Date::now())->getHours()
+            //         $delayedHours
             //     )
             // )) {
             //     logg('Reminder added to issue #%d (owner: %s)', $issue->id, $owner->email);
