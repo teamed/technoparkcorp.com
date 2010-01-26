@@ -7,9 +7,14 @@ class Mocks_Shared_Trac_Ticket extends Shared_Trac_Ticket
 {
 
     protected static $_attributes = array();
+    
+    protected static $_lastDates = array();
 
-     // this is what we are getting from Trac
-    const TRAC_DATE = 'YMMDDTHH:m:s';
+    /**
+     * this is what we are getting from Trac
+     * @see Zend_Date
+     */
+    const TRAC_DATE = 'yMMddTHH:m:s';
     
     /**
      * @see Model_Asset_Defects_Issue_Trac
@@ -45,7 +50,7 @@ class Mocks_Shared_Trac_Ticket extends Shared_Trac_Ticket
     {
         return array(
             0 => false,
-            1 => Zend_Date::now()->get(self::TRAC_DATE),
+            1 => $this->_getLastDate()->get(self::TRAC_DATE),
             2 => false,
             3 => $this->getAttributes(),
         );
@@ -68,7 +73,7 @@ class Mocks_Shared_Trac_Ticket extends Shared_Trac_Ticket
         foreach ($data as $field=>$value) {
             for ($i=0; $i<10; $i++) {
                 $changelog[] = array(
-                    0 => Zend_Date::now()->subHour(rand(1, 100))->get(self::TRAC_DATE),
+                    0 => $this->_getLastDate()->subHour(rand(10, 1000))->get(self::TRAC_DATE),
                     1 => Model_User::me()->email,
                     2 => $field,
                     3 => false,
@@ -79,7 +84,7 @@ class Mocks_Shared_Trac_Ticket extends Shared_Trac_Ticket
                 );
             }
             $changelog[] = array(
-                0 => Zend_Date::now()->get(self::TRAC_DATE),
+                0 => $this->_getLastDate()->get(self::TRAC_DATE),
                 1 => Model_User::me()->email,
                 2 => $field,
                 3 => false,
@@ -87,6 +92,13 @@ class Mocks_Shared_Trac_Ticket extends Shared_Trac_Ticket
             );
         }
         return $changelog;
+    }
+    
+    protected function _getLastDate()
+    {
+        if (!isset(self::$_lastDates[$this->getId()]))
+            self::$_lastDates[$this->getId()] = Zend_Date::now()->subDay(rand(10, 100));
+        return self::$_lastDates[$this->getId()];
     }
 
 }

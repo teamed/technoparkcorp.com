@@ -61,7 +61,8 @@ class RescueAbandonedTickets extends Model_Decision_PM
                 continue;
             }
             
-            $delayedHours = Zend_Date::now()->sub($lastDate)->toValue(Zend_Date::HOUR);
+            $delayedHours = Zend_Date::now()->sub($lastDate)->getTimestamp() /
+                (60 * 60);
                 
             // there was some activity for the last 72 hours
             if ($delayedHours < 48) {

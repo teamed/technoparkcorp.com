@@ -34,6 +34,7 @@ class Model_Asset_Defects_Fazend_TracTest extends AbstractProjectTest
     {
         Shared_XmlRpc::setXmlRpcClientClass('Zend_XmlRpc_Client');
         Mocks_Shared_Soap_Client::setLive();
+        Model_Asset_Defects_Fazend_Trac::setTicketsPerPage(100);
         try {
             $tickets = $this->_asset->retrieveBy();
         } catch (Shared_Trac_SoapFault $e) {
@@ -45,6 +46,7 @@ class Model_Asset_Defects_Fazend_TracTest extends AbstractProjectTest
             $incomplete = true;
         }
         
+        Model_Asset_Defects_Fazend_Trac::setTicketsPerPage(3);
         Mocks_Shared_Soap_Client::setTest();
         Shared_XmlRpc::setXmlRpcClientClass('Mocks_Shared_XmlRpc');
         
