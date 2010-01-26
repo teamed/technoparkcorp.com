@@ -30,6 +30,9 @@ class Injector extends FaZend_Test_Injector
         Shared_XmlRpc::setXmlRpcClientClass('Mocks_Shared_XmlRpc');
         Shared_Trac::setTicketClass('Mocks_Shared_Trac_Ticket');
         Shared_Pan::setSoapClient(Mocks_Shared_Pan_SoapClient::get());
+        
+        // make sure we are getting just small number of test tickets
+        Model_Asset_Defects_Fazend_Trac::setTicketsPerPage(3);
     }
         
     protected function _injectMiscellaneous() 

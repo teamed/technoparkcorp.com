@@ -102,7 +102,8 @@ class RescueAbandonedTickets extends Model_Decision_PM
             );
         }
         
-        logg('Closed tickets were ignored: %s', implode(', ', $closed));
+        if ($closed)
+            logg('Closed tickets were ignored: %s', implode(', ', $closed));
     }
     
 }

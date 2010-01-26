@@ -27,6 +27,13 @@ class Model_Asset_Defects_Fazend_Trac extends Model_Asset_Defects_Abstract
 {
     
     const QUERY_ALL = 'order=id';
+    
+    /**
+     * How many tickets we should retrieve per each page
+     *
+     * @var integer
+     */
+    protected static $_ticketsPerPage = 100;
 
     /**
      * Trac from Shared lib
@@ -34,6 +41,17 @@ class Model_Asset_Defects_Fazend_Trac extends Model_Asset_Defects_Abstract
      * @var Shared_Trac
      **/
     protected $_trac;
+    
+    /**
+     * Set how many tickets we should retrieve per one page
+     *
+     * @param integer Tickets number
+     * @return void
+     */
+    public static function setTicketsPerPage($ticketsPerPage) 
+    {
+        self::$_ticketsPerPage = $ticketsPerPage;
+    }
     
     /**
      * Get one ticket by ID
@@ -92,11 +110,10 @@ class Model_Asset_Defects_Fazend_Trac extends Model_Asset_Defects_Abstract
 
         $ids = array();
         $page = 1;
-        $maxPerPage = 50;
         do {
             try {
                 $portion = $this->_trac->query(
-                    implode('&', $lemmas) . "&max={$maxPerPage}&page=" . $page++, 
+                    implode('&', $lemmas) . '&max=' . self::$_ticketsPerPage . '&page=' . $page++, 
                     false
                 );
             } catch (Zend_XmlRpc_Client_FaultException $e) {
@@ -108,7 +125,7 @@ class Model_Asset_Defects_Fazend_Trac extends Model_Asset_Defects_Abstract
                 );
             }
             $ids = array_merge($ids, $portion);
-            if (count($portion) < $maxPerPage)
+            if (count($portion) < self::$_ticketsPerPage)
                 break;
         } while (count($portion) > 0);
         return array_unique($ids);
