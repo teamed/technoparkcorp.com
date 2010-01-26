@@ -14,16 +14,16 @@
  *
 -->
  
-<? $decision = new Model_Decision_History($this->segment(3)); ?>
-<? $protocol = explode("\n", $decision->getProtocol()) ?>
+<? $history = new Model_Decision_History($this->segment(3)); ?>
+<? $protocol = explode("\n", $history->getProtocol()) ?>
 
 <p>
-    Date: <?=$decision->created?><br/>
-    Title: "<?=$decision->getTitle()?>"<br/>
-    Hash: "<?=$decision->hash?>"<br/>
-    Decision made: <b><?=$decision->result?>
-        <?=$decision->isRunning() ? 
-            " (pid: {$decision->getPid()})" : 
+    Date: <?=$history->created?><br/>
+    Title: "<?=$history->getTitle()?>"<br/>
+    Hash: "<?=$history->hash?>"<br/>
+    Decision made: <b><?=$history->result?>
+        <?=$history->isRunning() ? 
+            " (pid: {$history->getPid()})" : 
             false
         ?></b>
 </p>
