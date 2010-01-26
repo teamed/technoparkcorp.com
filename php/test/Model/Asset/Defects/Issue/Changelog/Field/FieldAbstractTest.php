@@ -31,5 +31,13 @@ class Model_Asset_Defects_Issue_Changelog_Changelog_Field_FieldAbstractTest exte
         $this->assertTrue(is_string($this->_field->getValue()));
         $this->assertTrue($this->_field->getLastDate() instanceof Zend_Date);
     }
+    
+    public function testFieldLastChangeDateIsCorrect()
+    {
+        $lastDate = $this->_field->getLastDate();
+        foreach ($this->_field->getChanges() as $change)
+            $this->assertNotEquals(-1, $lastDate->compare($change->date), 
+                "{$change->date} is later than {$lastDate}, why?");
+    }
 
 }

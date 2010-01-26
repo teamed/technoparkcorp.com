@@ -116,7 +116,7 @@ abstract class Model_Asset_Defects_Issue_Changelog_Field_Abstract
             // not saved yet to tracker
             if (is_null($change->date))
                 continue;
-            if (is_null($date) || $date->isLater($change->date))
+            if (is_null($date) || $date->isEarlier($change->date))
                 $date = $change->date;
         }
         return $date;
@@ -135,7 +135,7 @@ abstract class Model_Asset_Defects_Issue_Changelog_Field_Abstract
             // not saved yet to tracker
             if (is_null($change->date))
                 continue;
-            if (is_null($date) || $date->isLater($change->date)) {
+            if (is_null($date) || $date->isEarlier($change->date)) {
                 $date = $change->date;
                 $author = $change->author;
             }

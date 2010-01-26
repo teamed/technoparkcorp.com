@@ -83,7 +83,7 @@ class Mocks_Shared_XmlRpc
             // one ticket by ID
             case preg_match('/^id=\'(\d+)\'/', $query, $matches):
                 $list = array(
-                    Mocks_Shared_Trac_Ticket::get($matches[1]),
+                    Mocks_Shared_Trac_Ticket::get($matches[1], array()),
                 );
                 break;
 

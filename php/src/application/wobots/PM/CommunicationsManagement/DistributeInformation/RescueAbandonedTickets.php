@@ -44,6 +44,11 @@ class RescueAbandonedTickets extends Model_Decision_PM
         foreach ($this->_project->issues as $issue) {
             $lastDate = $issue->changelog->get('comment')->getLastDate();
 
+            // maybe the date is NULL, which means that there are no comments yet
+            if (is_null($lastDate)) {
+                $lastDate = $issue->changelog->get('summary')->getLastDate();
+            }
+
             // ignore closed tickets
             if ($issue->isClosed()) {
                 $closed[] = $issue->id;
@@ -55,6 +60,8 @@ class RescueAbandonedTickets extends Model_Decision_PM
                 );
                 continue;
             }
+            
+            $delayedDays = Zend_Date::now()->sub($lastDate)->toValue(Zend_Date::DAY);
                 
             // there was some activity for the last 72 hours
             if ($lastDate->isEarlier(Zend_Date::now()->subHour(72))) {
@@ -73,7 +80,13 @@ class RescueAbandonedTickets extends Model_Decision_PM
             
             // this ticket is already with PM
             if ($owner->hasRole($pmRole)) {
-                logg('Ticket #%d is in long delay, but with PM now', $issue->id);
+                logg(
+                    'Ticket #%d is in long delay (%d days since %s), but with PM now (%s)', 
+                    $issue->id,
+                    $delayedDays,
+                    $lastDate->get(Zend_Date::DATE_MEDIUM),
+                    $owner
+                );
                 continue;
             }
              

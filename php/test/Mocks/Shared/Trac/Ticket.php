@@ -9,20 +9,22 @@ class Mocks_Shared_Trac_Ticket extends Shared_Trac_Ticket
     protected static $_attributes = array();
 
      // this is what we are getting from Trac
-    const TRAC_DATE = 'YMdTHH:m:s';
+    const TRAC_DATE = 'YMMDDTHH:m:s';
     
     /**
      * @see Model_Asset_Defects_Issue_Trac
      */
-    public static function get($id, array $attributes = null) 
+    public static function get($id, array $attributes = array()) 
     {
         if ($id === false) {
             if (count(self::$_attributes) > 0)
                 $id = max(array_keys(self::$_attributes)) + 1;
             else
                 $id = 1;
-
             self::$_attributes[$id] = $attributes;
+        } else {
+            if (!isset(self::$_attributes[$id]))
+                self::$_attributes[$id] = $attributes;
         }
         
         return new self(Mocks_Shared_Trac::get(), $id);
