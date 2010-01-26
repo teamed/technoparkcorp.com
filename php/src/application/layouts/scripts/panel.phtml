@@ -74,8 +74,9 @@
         <?=implode(', ', array_map(
             create_function('$a', '$a = round($a, 2); return $a < 3 ? $a : "<span style=\'color:red;\'>$a</span>";'), 
             sys_getloadavg()
-        ))?></span><br/>
+        ))?><br/>
         <?=Zend_Date::now()?>
+        </span>
     </div>
 
     <?=$this->headScript() ?>
