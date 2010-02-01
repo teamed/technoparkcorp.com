@@ -22,7 +22,8 @@
  *
  * @package helpers
  */
-class Helper_Segment extends FaZend_View_Helper {
+class Helper_Segment extends FaZend_View_Helper
+{
 
     /**
      * Returns segment of document name
@@ -30,7 +31,8 @@ class Helper_Segment extends FaZend_View_Helper {
      * @param int Number of segment
      * @return string|int
      */
-    public function segment($num = null) {
+    public function segment($num = null)
+    {
         $exp = explode('/', $this->getView()->doc);
 
         if (is_null($num))

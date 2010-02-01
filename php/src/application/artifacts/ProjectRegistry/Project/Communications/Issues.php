@@ -199,8 +199,10 @@ class theIssues implements Model_Artifact_Interface, Model_Artifact_Stateless, A
             $this->_issues = new ArrayIterator(
                 array_map(
                     create_function('', 'return false;'),
-                    array_flip($this->_project->fzProject()
-                        ->getAsset(Model_Project::ASSET_DEFECTS)->retrieveBy())
+                    array_flip(
+                        $this->_project->fzProject()
+                        ->getAsset(Model_Project::ASSET_DEFECTS)->retrieveBy()
+                    )
                 )
             );
         }

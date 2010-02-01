@@ -22,18 +22,19 @@
  *
  * @package helpers
  */
-class Helper_YesNo {
+class Helper_YesNo
+{
 
     /**
      * Builds the mark
      *
      * @return string
      */
-    public function yesNo($bool) {
-
-        return "<span style='color:" . ($bool ? Model_Colors::GREEN : Model_Colors::RED). ";'>" . 
-            ($bool ? 'yes' : 'no') . '</span>';
-
+    public function yesNo($bool)
+    {
+        return "<span style='color:" . 
+        ($bool ? Model_Colors::GREEN : Model_Colors::RED). ";'>" . 
+        ($bool ? 'yes' : 'no') . '</span>';
     }
 
 }

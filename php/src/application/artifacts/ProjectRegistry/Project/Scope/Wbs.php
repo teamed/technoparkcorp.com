@@ -60,8 +60,10 @@ class theWbs extends Model_Artifact_Bag implements Model_Artifact_Passive
     {
         $wp = $this->_findWorkPackage($name);
         if (is_null($wp)) {
-            FaZend_Exception::raise('WorkPackageAbsent', 
-                "Metric '{$name}' does not have a work package in " . get_class($metric) . "::getWorkPackage()");
+            FaZend_Exception::raise(
+                'WorkPackageAbsent', 
+                "Metric '{$name}' does not have a work package in " . get_class($metric) . "::getWorkPackage()"
+            );
         }
         return $wp;
     }
@@ -103,8 +105,12 @@ class theWbs extends Model_Artifact_Bag implements Model_Artifact_Passive
             
             $code = $wp->code;
             // wrong way
-            if (!preg_match('/^' . preg_quote($prefix . ($prefix ? theMetrics::SEPARATOR : false), '/') . 
-                '([\w\d]+)(?:' . preg_quote(theMetrics::SEPARATOR, '/') . '(.*))?$/', $code, $matches))
+            if (!preg_match(
+                '/^' . preg_quote($prefix . ($prefix ? theMetrics::SEPARATOR : false), '/') . 
+                '([\w\d]+)(?:' . preg_quote(theMetrics::SEPARATOR, '/') . '(.*))?$/', 
+                $code, 
+                $matches
+            ))
                 continue;
                 
             // bug($matches);
@@ -114,8 +120,13 @@ class theWbs extends Model_Artifact_Bag implements Model_Artifact_Passive
                 continue;
             }
                 
-            if (!isset($list[$matches[1]]))
-                $list[$matches[1]] = new theWpAggregator($prefix . ($prefix ? theMetrics::SEPARATOR : false) . $matches[1], null, null);
+            if (!isset($list[$matches[1]])) {
+                $list[$matches[1]] = new theWpAggregator(
+                    $prefix . ($prefix ? theMetrics::SEPARATOR : false) . $matches[1], 
+                    null, 
+                    null
+                );
+            }
             $list[$matches[1]]->addWorkPackage($wp);
         }
         
@@ -133,9 +144,12 @@ class theWbs extends Model_Artifact_Bag implements Model_Artifact_Passive
     {
         try {
             $wp = $this->_findWorkPackage($code);
-            if (!$wp)
-                FaZend_Exception::raise('WorkPackageNotFound', 
-                    "Metric {$code} doesn't have a work package");
+            if (!$wp) {
+                FaZend_Exception::raise(
+                    'WorkPackageNotFound', 
+                    "Metric {$code} doesn't have a work package"
+                );
+            }
             return $wp;
         } catch (WorkPackageNotFound $e) {
             // just go forward
@@ -150,9 +164,12 @@ class theWbs extends Model_Artifact_Bag implements Model_Artifact_Passive
         }
         $wps = $this->getWorkPackagesByPrefix($parent);
         
-        if (!isset($wps[$kid]))
-            FaZend_Exception::raise('WorkPackageCantBeMade', 
-                "WP '{$kid}' not found in parent '{$parent}', while " . count($wps) . ' WPs found there');
+        if (!isset($wps[$kid])) {
+            FaZend_Exception::raise(
+                'WorkPackageCantBeMade', 
+                "WP '{$kid}' not found in parent '{$parent}', while " . count($wps) . ' WPs found there'
+            );
+        }
                 
         return $wps[$kid];
                 

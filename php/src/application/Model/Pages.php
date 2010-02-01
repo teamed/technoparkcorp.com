@@ -26,7 +26,7 @@
  *
  * @package Model
  */
-class Model_Pages extends Zend_Navigation 
+class Model_Pages extends Zend_Navigation
 {
 
     /**
@@ -166,8 +166,10 @@ class Model_Pages extends Zend_Navigation
 
         // PHTML script or directory is NOT found
         if (!file_exists($path)) {
-            FaZend_Exception::raise('Model_Pages_DocumentNotFound',
-                "Document '{$doc}' was not found, path: '{$path}'");
+            FaZend_Exception::raise(
+                'Model_Pages_DocumentNotFound',
+                "Document '{$doc}' was not found, path: '{$path}'"
+            );
         }
 
         return $path;
@@ -352,9 +354,12 @@ class Model_Pages extends Zend_Navigation
                 continue;
 
             // notify about unknown format
-            if (!preg_match('/^([a-zA-Z0-9\.\@]+)\.phtml$/', $file, $matches))
-                FaZend_Exception::raise('Model_Pages_IncorrectFormat',
-                    "Line #$id has invalid format in $fullPath: '" . $file . "', .phtml file name expected");
+            if (!preg_match('/^([a-zA-Z0-9\.\@]+)\.phtml$/', $file, $matches)) {
+                FaZend_Exception::raise(
+                    'Model_Pages_IncorrectFormat',
+                    "Line #$id has invalid format in $fullPath: '" . $file . "', .phtml file name expected"
+                );
+            }
                 
             $container->addPage($this->_createPage($prefix . $matches[1]));
         }
@@ -483,18 +488,23 @@ class Model_Pages extends Zend_Navigation
             if (preg_match('/^\[([\w\d]+)\]$/', $line, $matches)) {
                 $current = $matches[1];
                 if (!$pages->findBy('title', $prefix . $current)) {
-                    FaZend_Exception::raise('Model_Pages_IncorrectFileFormat',
+                    FaZend_Exception::raise(
+                        'Model_Pages_IncorrectFileFormat',
                         "Line #{$id}, page '{$current}' in not in the directory {$dir}: '{$line}'" .  
-                        implode(', ', $pages));
+                        implode(', ', $pages)
+                    );
                 }
                 continue;
             }
 
             // if access rights are specified - like in proper format
             if (preg_match('/^(.*?)\s?\=\s?(r|rw|)$/', $line, $matches)) {
-                if ($current === false)
-                    FaZend_Exception::raise('Model_Pages_UnattachedLine',
-                        "Line #{$id} in file '{$accessFile}' is not related to any page: '{$line}'");
+                if ($current === false) {
+                    FaZend_Exception::raise(
+                        'Model_Pages_UnattachedLine',
+                        "Line #{$id} in file '{$accessFile}' is not related to any page: '{$line}'"
+                    );
+                }
 
                 if (!isset($rights[$current]))
                     $rights[$current] = array();
@@ -503,8 +513,10 @@ class Model_Pages extends Zend_Navigation
                 continue;
             }
 
-            FaZend_Exception::raise('Model_Pages_IncorrectLineFormat',
-                "Line #{$id} in file '{$accessFile}' has invalid format: '{$line}' " . htmlspecialchars($line));
+            FaZend_Exception::raise(
+                'Model_Pages_IncorrectLineFormat',
+                "Line #{$id} in file '{$accessFile}' has invalid format: '{$line}' " . htmlspecialchars($line)
+            );
         }
 
         // create resources
@@ -565,8 +577,11 @@ class Model_Pages extends Zend_Navigation
      */
     protected function _addResource($page) 
     {
-        $this->getAcl()->addResource($page, strpos($page, '/') !== false ?
-            substr($page, 0, strrpos($page, '/')) : null);
+        $this->getAcl()->addResource(
+            $page, 
+            strpos($page, '/') !== false ?
+            substr($page, 0, strrpos($page, '/')) : null
+        );
     }
 
     /**
@@ -610,12 +625,14 @@ class Model_Pages extends Zend_Navigation
      */
     protected function _createPage($doc) 
     {
-        return new Zend_Navigation_Page_Uri(array(
-            'label' => (strrpos($doc, '/') ? substr(strrchr($doc, '/'), 1) : $doc),
-            'title' => $doc,
-            'uri' => Zend_Registry::getInstance()->view->panelUrl($doc),
-            'resource' => $doc,
-        ));
+        return new Zend_Navigation_Page_Uri(
+            array(
+                'label' => (strrpos($doc, '/') ? substr(strrchr($doc, '/'), 1) : $doc),
+                'title' => $doc,
+                'uri' => Zend_Registry::getInstance()->view->panelUrl($doc),
+                'resource' => $doc,
+            )
+        );
     }
 
 }

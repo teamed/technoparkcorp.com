@@ -23,7 +23,7 @@
  * 
  * @package Model
  */
-class Model_Process 
+class Model_Process
 {
 
     /**

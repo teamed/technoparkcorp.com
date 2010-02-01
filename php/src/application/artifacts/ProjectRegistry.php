@@ -23,7 +23,7 @@
  *
  * @package Artifacts
  */
-class theProjectRegistry extends Model_Artifact_Bag implements Model_Artifact_Passive 
+class theProjectRegistry extends Model_Artifact_Bag implements Model_Artifact_Passive
 {
 
     /**

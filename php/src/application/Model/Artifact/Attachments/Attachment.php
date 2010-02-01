@@ -23,7 +23,8 @@
  *
  * @package Artifacts
  */
-class Model_Artifact_Attachments_Attachment implements Model_Artifact_Stateless {
+class Model_Artifact_Attachments_Attachment implements Model_Artifact_Stateless
+{
 
     /**
      * Name
@@ -54,12 +55,15 @@ class Model_Artifact_Attachments_Attachment implements Model_Artifact_Stateless 
      * @param string Absolute(!) file name of the attachment
      * @return void
      */
-    public function __construct($name, $description, $file = null) {
+    public function __construct($name, $description, $file = null)
+    {
         $this->_name = $name;
         $this->_description = $description;
         
         if ($file) {
-            $this->_fileName = Zend_Date::now('en')->get(YEAR) . '/' . Zend_Date::now('en')->get(MONTH) . '/' . pathinfo($file, PATHINFO_BASENAME);
+            $this->_fileName = Zend_Date::now('en')->get(YEAR) . '/' . 
+            Zend_Date::now('en')->get(MONTH) . '/' . 
+            pathinfo($file, PATHINFO_BASENAME);
         
             // move file into special file storage
             if (Model_Artifact_Attachments::getLocation() !== false)
@@ -73,7 +77,8 @@ class Model_Artifact_Attachments_Attachment implements Model_Artifact_Stateless 
      * @param string Name of property to get
      * @return mixed
      **/
-    public function __get($name) {
+    public function __get($name)
+    {
         $method = '_get' . ucfirst($name);
         if (method_exists($this, $method))
             return $this->$method();
@@ -82,8 +87,10 @@ class Model_Artifact_Attachments_Attachment implements Model_Artifact_Stateless 
         if (property_exists($this, $var))
             return $this->$var;
         
-        FaZend_Exception::raise('Attachment_PropertyOrMethodNotFound', 
-            "Can't find what is '$name' in " . get_class($this));
+        FaZend_Exception::raise(
+            'Attachment_PropertyOrMethodNotFound', 
+            "Can't find what is '$name' in " . get_class($this)
+        );
     }
     
 }

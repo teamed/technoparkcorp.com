@@ -25,14 +25,16 @@ require_once 'artifacts/ProjectRegistry/Project/Time/ActivityList/slice-plugins/
  * 
  * @package Slice_Plugin
  */
-class Slice_Plugin_ResolveMilestones extends Slice_Plugin_Abstract {
+class Slice_Plugin_ResolveMilestones extends Slice_Plugin_Abstract
+{
 
     /**
      * Resolve milestones
      *
      * @return $this
      **/
-    public function execute() {
+    public function execute()
+    {
         foreach ($this as $activity) {
             if ($activity->isMilestone())
                 $this->_addPredecessors($activity);
@@ -45,7 +47,8 @@ class Slice_Plugin_ResolveMilestones extends Slice_Plugin_Abstract {
      * @param theMilestone The milestone to resolve
      * @return void
      **/
-    protected function _addPredecessors(theMilestone $milestone) {
+    protected function _addPredecessors(theMilestone $milestone)
+    {
         return ;
         /**
          * We retrieve an array of metric codes for this milestone.
@@ -57,8 +60,10 @@ class Slice_Plugin_ResolveMilestones extends Slice_Plugin_Abstract {
          */
         $metrics = $this->_getKidMetrics($milestone);
         if (!count($metrics)) {
-            FaZend_Exception::raise('ResolveMilestoneCantResolve',
-                "Milestone '{$milestone}' can't be resolved, because no metrics impact it!");
+            FaZend_Exception::raise(
+                'ResolveMilestoneCantResolve',
+                "Milestone '{$milestone}' can't be resolved, because no metrics impact it!"
+            );
         }
         
         /**
@@ -89,8 +94,10 @@ class Slice_Plugin_ResolveMilestones extends Slice_Plugin_Abstract {
          * from the matrix.
          */
         if (!$this->_isMatrixPositive($matrix, $milestone)) {
-            FaZend_Exception::raise('ResolveMilestoneCantResolve',
-                "Milestone '{$milestone}' can't be resolved, it's never positive!");
+            FaZend_Exception::raise(
+                'ResolveMilestoneCantResolve',
+                "Milestone '{$milestone}' can't be resolved, it's never positive!"
+            );
         }
                 
         /**
@@ -118,7 +125,8 @@ class Slice_Plugin_ResolveMilestones extends Slice_Plugin_Abstract {
      * @param theMilestone The milestone to compare with
      * @return array List of metric names
      **/
-    protected function _getKidMetrics(theMilestone $milestone) {
+    protected function _getKidMetrics(theMilestone $milestone)
+    {
         return $milestone->criteria->getAffectors();
     }
 
@@ -128,7 +136,8 @@ class Slice_Plugin_ResolveMilestones extends Slice_Plugin_Abstract {
      * @param array List of metrics
      * @return array Matrix to work with
      **/
-    protected function _getMatrix(array $metrics) {
+    protected function _getMatrix(array $metrics)
+    {
         return $metrics;
     }
     
@@ -139,7 +148,8 @@ class Slice_Plugin_ResolveMilestones extends Slice_Plugin_Abstract {
      * @param theMilestone The milestone to compare with
      * @return void
      **/
-    protected function _orderByImpact(array &$matrix, theMilestone $milestone) {
+    protected function _orderByImpact(array &$matrix, theMilestone $milestone)
+    {
     }
         
     /**
@@ -150,7 +160,8 @@ class Slice_Plugin_ResolveMilestones extends Slice_Plugin_Abstract {
      * @param array Collection of metric names and activity codes (key=>value)
      * @return boolean
      **/
-    protected function _isMatrixPositive(array $matrix, theMilestone $milestone, array $position = array()) {
+    protected function _isMatrixPositive(array $matrix, theMilestone $milestone, array $position = array())
+    {
         return false;
     }
         
@@ -162,7 +173,8 @@ class Slice_Plugin_ResolveMilestones extends Slice_Plugin_Abstract {
      * @param array Collection of metric names and activity codes (key=>value)
      * @return array New position
      **/
-    protected function _getNewPosition(array $matrix, theMilestone $milestone, array $position) {
+    protected function _getNewPosition(array $matrix, theMilestone $milestone, array $position)
+    {
         return $position;
     }
         

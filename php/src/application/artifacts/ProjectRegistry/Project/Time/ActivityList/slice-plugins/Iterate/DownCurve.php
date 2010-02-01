@@ -50,11 +50,14 @@ class Slice_Plugin_Iterate_DownCurve extends Slice_Plugin_Abstract
      **/
     public function execute(array $options = array())
     {
-        $this->_normalizeOptions($options, array(
-            'minCost' => '10 USD', // minimal possible cost of one activity
-            'codePrefix' => 'a', // prefix to set before each new code of activity
-            'sow' => 'Perform work', //statement of work to set to each activity
-            ));
+        $this->_normalizeOptions(
+            $options, 
+            array(
+                'minCost' => '10 USD', // minimal possible cost of one activity
+                'codePrefix' => 'a', // prefix to set before each new code of activity
+                'sow' => 'Perform work', //statement of work to set to each activity
+            )
+        );
         
         $this->rewind();
         $activity = $this->current();
@@ -113,7 +116,8 @@ class Slice_Plugin_Iterate_DownCurve extends Slice_Plugin_Abstract
      * @param float X-coordinate, stop
      * @return float
      **/
-    protected function _square($a, $b) {
+    protected function _square($a, $b)
+    {
         return $this->_int($b) - $this->_int($a);
     }
         
@@ -123,7 +127,8 @@ class Slice_Plugin_Iterate_DownCurve extends Slice_Plugin_Abstract
      * @param float X-coordinate
      * @return float
      **/
-    protected function _f($x) {
+    protected function _f($x)
+    {
         return $this->_min + cos($x) * $this->_d;
     }
         
@@ -133,7 +138,8 @@ class Slice_Plugin_Iterate_DownCurve extends Slice_Plugin_Abstract
      * @param float X-coordinate
      * @return float
      **/
-    protected function _int($x) {
+    protected function _int($x)
+    {
         return $x * $this->_min + sin($x) * $this->_d;
     }
     
@@ -155,7 +161,8 @@ class Slice_Plugin_Iterate_DownCurve extends Slice_Plugin_Abstract
      * @link http://mathcentral.uregina.ca/QQ/database/QQ.09.00/roble1.html
      * @return float
      **/
-    protected function _delta() {
+    protected function _delta()
+    {
         $x = 0; // it's important to start from zero!
         do {
             $x = $x - $this->_lambda($x) / $this->_lambdaDerivative($x);
@@ -169,7 +176,8 @@ class Slice_Plugin_Iterate_DownCurve extends Slice_Plugin_Abstract
      * @param float X
      * @return float
      **/
-    protected function _lambda($x) {
+    protected function _lambda($x)
+    {
         return $this->_min * pi()/2 + $this->_d - $this->_min * $x - $this->_d * sin($x) - $this->_min;
     }
         
@@ -179,7 +187,8 @@ class Slice_Plugin_Iterate_DownCurve extends Slice_Plugin_Abstract
      * @param float X
      * @return float
      **/
-    protected function _lambdaDerivative($x) {
+    protected function _lambdaDerivative($x)
+    {
         return - $this->_min - $this->_d * cos($x);
     }
         

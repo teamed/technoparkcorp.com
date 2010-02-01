@@ -25,14 +25,16 @@ require_once 'artifacts/ProjectRegistry/Project/Time/ActivityList/activity-plugi
  * 
  * @package Activity_Plugin
  */
-class Activity_Plugin_MakeAlive extends Activity_Plugin_Abstract {
+class Activity_Plugin_MakeAlive extends Activity_Plugin_Abstract
+{
 
     /**
      * Execute it
      *
      * @return boolean
      **/
-    public function execute() {
+    public function execute()
+    {
         // milestones can't become alive in tracker
         if ($this->_activity->isMilestone())
             return;

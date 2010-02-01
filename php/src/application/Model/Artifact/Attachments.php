@@ -23,7 +23,8 @@
  *
  * @package Artifacts
  */
-class Model_Artifact_Attachments extends ArrayIterator implements Model_Artifact_Stateless {
+class Model_Artifact_Attachments extends ArrayIterator implements Model_Artifact_Stateless
+{
 
     /**
      * Location of attachments
@@ -37,7 +38,8 @@ class Model_Artifact_Attachments extends ArrayIterator implements Model_Artifact
      *
      * @return string Absolute directory name
      **/
-    public static function getLocation() {
+    public static function getLocation()
+    {
         if (self::$_location === null)
             self::$_location = APPLICATION_PATH . '/../../attachments';
         return self::$_location;
@@ -49,7 +51,8 @@ class Model_Artifact_Attachments extends ArrayIterator implements Model_Artifact
      * @param string New location
      * @return string Absolute directory name
      **/
-    public static function setLocation($location) {
+    public static function setLocation($location)
+    {
         self::$_location = $location;
     }
     

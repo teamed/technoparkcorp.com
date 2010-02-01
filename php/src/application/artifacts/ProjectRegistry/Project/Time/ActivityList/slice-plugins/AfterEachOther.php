@@ -25,7 +25,8 @@ require_once 'artifacts/ProjectRegistry/Project/Time/ActivityList/slice-plugins/
  * 
  * @package Slice_Plugin
  */
-class Slice_Plugin_AfterEachOther extends Slice_Plugin_Abstract {
+class Slice_Plugin_AfterEachOther extends Slice_Plugin_Abstract
+{
 
     /**
      * Set activities in line
@@ -33,12 +34,15 @@ class Slice_Plugin_AfterEachOther extends Slice_Plugin_Abstract {
      * @param array List of options
      * @return $this
      **/
-    public function execute(array $options = array()) {
-
-        $this->_normalizeOptions($options, array(
-            'type' => theActivityPredecessor::FINISH_TO_START, // type of link
-            'lag' => 0, // lag in calendar days
-            ));
+    public function execute(array $options = array())
+    {
+        $this->_normalizeOptions(
+            $options, 
+            array(
+                'type' => theActivityPredecessor::FINISH_TO_START, // type of link
+                'lag' => 0, // lag in calendar days
+            )
+        );
 
         $previous = false;
         foreach ($this as $activity) {

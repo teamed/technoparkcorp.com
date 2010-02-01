@@ -95,8 +95,10 @@ class theStaffRequest
         if (property_exists($this, $var))
             return $this->$var;
         
-        FaZend_Exception::raise('PropertyOrMethodNotFound', 
-            "Can't find what is '$name' in " . get_class($this));
+        FaZend_Exception::raise(
+            'PropertyOrMethodNotFound', 
+            "Can't find what is '$name' in " . get_class($this)
+        );
     }
     
     /**
@@ -133,7 +135,8 @@ class theStaffRequest
     {
         validate()
             ->type($threshold, 'integer', "Threshold must be INTEGER")
-            ->true($threshold <= 100 && $threshold >= 0, "Threshold must be in [0..100] interval, {$threshold} provided");
+            ->true($threshold <= 100 && $threshold >= 0, 
+                "Threshold must be in [0..100] interval, {$threshold} provided");
         $this->_threshold = $threshold;
         return $this;
     }

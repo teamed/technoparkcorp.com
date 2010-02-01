@@ -40,9 +40,16 @@ class Model_Asset_Defects_Issue_Changelog_Field_Type extends Model_Asset_Defects
     {
         validate()
             ->type($value, 'integer', "Type of issue shall be INT only")
-            ->true(in_array($value, array(
-                self::DEFECT,
-                self::TASK)), "Type of issue shall be from pre-defined list only");
+            ->true(
+                in_array(
+                    $value, 
+                    array(
+                        self::DEFECT,
+                        self::TASK
+                    )
+                ), 
+                "Type of issue shall be from pre-defined list only"
+            );
             
         return true;
     }

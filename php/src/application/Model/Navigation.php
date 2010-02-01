@@ -155,21 +155,27 @@ class Model_Navigation
         if (self::$_cache != false)
             return self::$_cache;
 
-        self::$_cache = Zend_Cache::factory('Core', 'File', array(
-            'caching' => self::USE_CACHE,
-            'cache_id_prefix' => 'panel2nav' . FaZend_Revision::get(),
-            'lifetime' => null, // live forever
-            'automatic_serialization' => true,
-            'automatic_cleaning_factor' => false,
-            'write_control' => true,
-            'logging' => false,
-            'ignore_user_abort' => true), array(
-
-            'cache_dir' => TEMP_PATH,
-            'hashed_directory_level' => 0,
-            'read_control' => true,
-            'file_locking' => true,
-            'file_name_prefix' => 'panel2navigation'));
+        self::$_cache = Zend_Cache::factory(
+            'Core', 
+            'File', 
+            array(
+                'caching' => self::USE_CACHE,
+                'cache_id_prefix' => 'panel2nav' . FaZend_Revision::get(),
+                'lifetime' => null, // live forever
+                'automatic_serialization' => true,
+                'automatic_cleaning_factor' => false,
+                'write_control' => true,
+                'logging' => false,
+                'ignore_user_abort' => true
+            ), 
+            array(
+                'cache_dir' => TEMP_PATH,
+                'hashed_directory_level' => 0,
+                'read_control' => true,
+                'file_locking' => true,
+                'file_name_prefix' => 'panel2navigation'
+            )
+        );
 
         return self::$_cache;
     }

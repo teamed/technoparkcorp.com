@@ -91,7 +91,8 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
      * @param string Name of property to get
      * @return string
      **/
-    public function __get($name) {
+    public function __get($name)
+    {
         $method = '_get' . ucfirst($name);
         if (method_exists($this, $method))
             return $this->$method();

@@ -61,8 +61,10 @@ class Model_Wobot_PM extends Model_Wobot
         try {
             $this->_project = Model_Project::findByName($context);
         } catch (Shared_Project_NotFoundException $e) {
-            FaZend_Exception::raise('Model_Wobot_PM_ProjectMissed', 
-                "Project '{$context}' is absent, can't initialize PM wobot");
+            FaZend_Exception::raise(
+                'Model_Wobot_PM_ProjectMissed', 
+                "Project '{$context}' is absent, can't initialize PM wobot"
+            );
         }
 
         validate()
@@ -154,8 +156,10 @@ class Model_Wobot_PM extends Model_Wobot
             if (preg_match('/^[' . $regexp . ']/i', $projectName))
                 return $name;
                 
-        FaZend_Exception::raise('Model_Wobot_NameNotFound', 
-            "Can find human name for project: '{$projectName}'");
+        FaZend_Exception::raise(
+            'Model_Wobot_NameNotFound', 
+            "Can find human name for project: '{$projectName}'"
+        );
     }
 
     /**

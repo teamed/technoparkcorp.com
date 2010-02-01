@@ -22,7 +22,8 @@
  *
  * @package helpers
  */
-class Helper_Bar extends FaZend_View_Helper {
+class Helper_Bar extends FaZend_View_Helper
+{
 
     /**
      * Collection of links
@@ -43,7 +44,8 @@ class Helper_Bar extends FaZend_View_Helper {
      *
      * @return Helper_Bar
      */
-    public function bar() {
+    public function bar()
+    {
         $this->_links = array();
         return $this;
     }
@@ -54,7 +56,8 @@ class Helper_Bar extends FaZend_View_Helper {
      * @param string Style
      * @return $this
      */
-    public function setStyle($style) {
+    public function setStyle($style)
+    {
         $this->_style = $style;
         return $this;
     }
@@ -66,7 +69,8 @@ class Helper_Bar extends FaZend_View_Helper {
      * @param string Label
      * @return $this
      */
-    public function addLink($link, $title = null) {
+    public function addLink($link, $title = null)
+    {
         $this->_links[] = array(
             'link'=>$link,
             'title'=>(is_null($title) ? $link : $title)
@@ -79,7 +83,8 @@ class Helper_Bar extends FaZend_View_Helper {
      *
      * @return string
      */
-    public function __toString() {
+    public function __toString()
+    {
         try {
             return (string)$this->_render();
         } catch (Exception $e) {
@@ -92,11 +97,11 @@ class Helper_Bar extends FaZend_View_Helper {
      *
      * @return string
      */
-    protected function _render() {
+    protected function _render()
+    {
         $htmls = array();
 
         foreach ($this->_links as $link) {
-
             $resolvedLink = Model_Pages::resolveLink($link['link']);
 
             // if this link is not allowed for current user
@@ -104,9 +109,8 @@ class Helper_Bar extends FaZend_View_Helper {
                 continue;
 
             $htmls[] = '<a href="' . $this->getView()->panelUrl($resolvedLink) . '" ' .
-                'title="' . $this->getView()->escape($link['title'] . " ({$resolvedLink})") . '">' .
-                $this->getView()->escape($link['title']) . '</a>';
-
+            'title="' . $this->getView()->escape($link['title'] . " ({$resolvedLink})") . '">' .
+            $this->getView()->escape($link['title']) . '</a>';
         }
 
         if (!count($htmls))
@@ -121,7 +125,8 @@ class Helper_Bar extends FaZend_View_Helper {
      * @param array List of links
      * @return string
      */
-    protected function _drawSnake(array $links) {
+    protected function _drawSnake(array $links)
+    {
         return '<p>' . implode('&#32;&middot;&#32;', $links) . '</p>';
     }
 
@@ -131,7 +136,8 @@ class Helper_Bar extends FaZend_View_Helper {
      * @param array List of links
      * @return string
      */
-    protected function _drawStairs(array $links) {
+    protected function _drawStairs(array $links)
+    {
         return '<ul><li>' . implode('</li><li>', $links) . '</li></ul>';
     }
 

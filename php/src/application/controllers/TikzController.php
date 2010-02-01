@@ -22,14 +22,16 @@
  *
  * @see http://framework.zend.com/manual/en/zend.loader.html#zend.loader.load.autoload
  */
-class TikzController extends FaZend_Controller_Action {
+class TikzController extends FaZend_Controller_Action
+{
 
     /**
      * Show tikz image
      * 
      * @return void
      */
-    public function indexAction() {
+    public function indexAction()
+    {
         return $this->_returnPNG(Model_XML::tikzShow($this->_getParam('tikz')), false);
     }    
     
@@ -38,7 +40,8 @@ class TikzController extends FaZend_Controller_Action {
      * 
      * @return void
      */
-    public function cleanAction() {
+    public function cleanAction()
+    {
         Model_XML::tikzClean();
         $this->_redirectFlash('TIKZ database cleaned', 'index', 'static');
     }    

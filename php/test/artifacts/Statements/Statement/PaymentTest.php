@@ -11,7 +11,7 @@ class thePaymentTest extends AbstractTest
         $payment = Mocks_thePayment::make('test@example.com', '123 USD');
         $this->assertTrue($payment instanceof thePayment);
         $this->assertEquals($payment->supplier, 'test@example.com');
-        $this->assertEquals($payment->usd->usd, 123);
+        $this->assertEquals($payment->amount->usd, 123);
     }
 
 }

@@ -23,7 +23,7 @@
  *
  * @package Model
  */
-class Model_Asset_Suppliers_Fazend_Trac extends Model_Asset_Suppliers_Abstract 
+class Model_Asset_Suppliers_Fazend_Trac extends Model_Asset_Suppliers_Abstract
 {
     
     const QUERY_ALL = 'status=closed&supplier!=&resolution=approve';

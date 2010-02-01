@@ -56,9 +56,12 @@ class Metric_Artifacts_Defects_Total extends Metric_Abstract
                 continue;
 
             $method = '_reload' . ucfirst($pattern);
-            if (!method_exists($this, $method))
-                FaZend_Exception::raise('Metric_Artifact_Defects_Total_InvalidClass',
-                    "Method '$method' is not implemented, why?");
+            if (!method_exists($this, $method)) {
+                FaZend_Exception::raise(
+                    'Metric_Artifact_Defects_Total_InvalidClass',
+                    "Method '$method' is not implemented, why?"
+                );
+            }
                     
             return $this->$method($this->_getOption($pattern));
         }
@@ -71,9 +74,12 @@ class Metric_Artifacts_Defects_Total extends Metric_Abstract
         // load all kid metrics
         foreach (new RegexIterator(new ArrayIterator($this->_patterns), '/^by\w+$/') as $pattern) {
             $method = '_ping' . ucfirst($pattern);
-            if (!method_exists($this, $method))
-                FaZend_Exception::raise('Metric_Artifact_Defects_Total_InvalidClass',
-                    "Method '$method' is not implemented, why?");
+            if (!method_exists($this, $method)) {
+                FaZend_Exception::raise(
+                    'Metric_Artifact_Defects_Total_InvalidClass',
+                    "Method '$method' is not implemented, why?"
+                );
+            }
             $this->$method();
         }
     }

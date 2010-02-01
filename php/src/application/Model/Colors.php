@@ -23,7 +23,8 @@
  *
  * @package Model
  */
-class Model_Colors {
+class Model_Colors
+{
 
     const DARK_GRAY =      '#5a5a5a';
     const LIGHT_GRAY =     '#7d8f9b';
@@ -46,12 +47,14 @@ class Model_Colors {
      * @param string Name of the color
      * @return int Id of the color
      */
-    public static final function getForImage($img, $color) {
-        return imagecolorallocate($img, 
+    public static final function getForImage($img, $color)
+    {
+        return imagecolorallocate(
+            $img, 
             hexdec('0x' . $color[1] . $color[2]), 
             hexdec('0x' . $color[3] . $color[4]), 
-            hexdec('0x' . $color[5] . $color[6]));
+            hexdec('0x' . $color[5] . $color[6])
+        );
     }
-
 
 }

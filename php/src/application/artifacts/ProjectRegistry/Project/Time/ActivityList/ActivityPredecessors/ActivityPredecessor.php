@@ -113,7 +113,7 @@ class theActivityPredecessor
                 FaZend_Exception::raise(
                     'ActivityPredecessorInvalidType',
                     "Invalid type of predecessor: '{$this->_type}'"
-                    );
+                );
         }
         
         $start->add($this->_lag, Zend_Date::DAY);

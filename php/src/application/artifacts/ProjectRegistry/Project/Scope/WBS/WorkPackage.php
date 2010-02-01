@@ -23,7 +23,8 @@
  *
  * @package Artifacts
  */
-class theWorkPackage implements Model_Artifact_Stateless {
+class theWorkPackage implements Model_Artifact_Stateless
+{
     
     /**
      * Project
@@ -61,7 +62,8 @@ class theWorkPackage implements Model_Artifact_Stateless {
      * @param string Title of it
      * @return void
      **/
-    public function __construct($code, FaZend_Bo_Money $cost = null, $title) {
+    public function __construct($code, FaZend_Bo_Money $cost = null, $title = null)
+    {
         $this->_code = $code;
         $this->_cost = $cost;
         $this->_title = $title;
@@ -73,7 +75,8 @@ class theWorkPackage implements Model_Artifact_Stateless {
      * @param theWbs
      * @return void
      */
-    public function setWbs(theWbs $wbs) {
+    public function setWbs(theWbs $wbs)
+    {
         $this->_project = $wbs->ps()->parent;
     }
     
@@ -82,7 +85,8 @@ class theWorkPackage implements Model_Artifact_Stateless {
      *
      * @return mixed
      **/
-    public function __get($name) {
+    public function __get($name)
+    {
         switch ($name) {
             case 'metric':
                 return $this->_project->metrics[$this->_code];
@@ -102,7 +106,8 @@ class theWorkPackage implements Model_Artifact_Stateless {
      *
      * @return void
      **/
-    public function split(theActivities $list) {
+    public function split(theActivities $list)
+    {
         return $this->_project->metrics[$this->_code]->split($list);
     }
     

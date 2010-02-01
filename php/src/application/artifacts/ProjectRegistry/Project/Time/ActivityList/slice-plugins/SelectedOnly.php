@@ -25,7 +25,8 @@ require_once 'artifacts/ProjectRegistry/Project/Time/ActivityList/slice-plugins/
  * 
  * @package Slice_Plugin
  */
-class Slice_Plugin_SelectedOnly extends Slice_Plugin_Abstract {
+class Slice_Plugin_SelectedOnly extends Slice_Plugin_Abstract
+{
 
     /**
      * List of names of activities
@@ -40,7 +41,8 @@ class Slice_Plugin_SelectedOnly extends Slice_Plugin_Abstract {
      * @param theActivity Activity to check
      * @return boolean
      **/
-    protected function _isInside(theActivity $activity) {
+    protected function _isInside(theActivity $activity)
+    {
         return in_array($activity->name, $this->_names);
     }
         
@@ -50,7 +52,8 @@ class Slice_Plugin_SelectedOnly extends Slice_Plugin_Abstract {
      * @param array List of activity names
      * @return $this
      **/
-    public function execute(array $names = array()) {
+    public function execute(array $names = array())
+    {
         $this->_names = $names;
         return $this;
     }

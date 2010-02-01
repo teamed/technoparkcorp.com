@@ -24,7 +24,7 @@
  * @package Model
  * @see PanelController
  */
-class Model_Auth_Resolver implements Zend_Auth_Adapter_Http_Resolver_Interface 
+class Model_Auth_Resolver implements Zend_Auth_Adapter_Http_Resolver_Interface
 {
 
     /**

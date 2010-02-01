@@ -23,7 +23,8 @@
  * 
  * @package Slice_Plugin
  */
-abstract class Slice_Plugin_Abstract implements Iterator, Countable {
+abstract class Slice_Plugin_Abstract implements Iterator, Countable
+{
 
     /**
      * List of actitivites
@@ -46,7 +47,8 @@ abstract class Slice_Plugin_Abstract implements Iterator, Countable {
      * @param theActivities Holder of this SLICE
      * @return void
      **/
-    public static function factory($name, $activities) {
+    public static function factory($name, $activities)
+    {
         assert($activities instanceof Slice_Plugin_Abstract || $activities instanceof theActivities);
 
         if (!isset(self::$_loader)) {
@@ -63,7 +65,8 @@ abstract class Slice_Plugin_Abstract implements Iterator, Countable {
      * @param theActivities Holder of this SLICE
      * @return void
      **/
-    public function __construct($activities) {
+    public function __construct($activities)
+    {
         assert($activities instanceof Slice_Plugin_Abstract || $activities instanceof theActivities);
         
         $this->_activities = $activities;
@@ -74,7 +77,8 @@ abstract class Slice_Plugin_Abstract implements Iterator, Countable {
      *
      * @return Slice_Plugin_Abstract
      **/
-    public function __call($method, array $args) {
+    public function __call($method, array $args)
+    {
         $slice = self::factory($method, $this);
         if (method_exists($slice, 'execute'))
             return call_user_func_array(array($slice, 'execute'), $args);
@@ -87,7 +91,8 @@ abstract class Slice_Plugin_Abstract implements Iterator, Countable {
      * @param theActivity Activity to delete
      * @return void
      **/
-    public function delete(theActivity $toKill) {
+    public function delete(theActivity $toKill)
+    {
         return $this->_activities->delete($toKill);
     }
     
@@ -97,7 +102,8 @@ abstract class Slice_Plugin_Abstract implements Iterator, Countable {
      * @param string Code of new activity
      * @return theActivity
      **/
-    public function add($code) {
+    public function add($code)
+    {
         return $this->_activities->add($code);
     }
     
@@ -107,7 +113,8 @@ abstract class Slice_Plugin_Abstract implements Iterator, Countable {
      * @param string Code of new milestone
      * @return theMilestone
      **/
-    public function addMilestone($code) {
+    public function addMilestone($code)
+    {
         return $this->_activities->addMilestone($code);
     }
     
@@ -116,7 +123,8 @@ abstract class Slice_Plugin_Abstract implements Iterator, Countable {
      *
      * @return theActivity
      **/
-    public function current() {
+    public function current()
+    {
         return $this->_activities->current();
     }
     
@@ -125,7 +133,8 @@ abstract class Slice_Plugin_Abstract implements Iterator, Countable {
      *
      * @return theActivity
      **/
-    public function key() {
+    public function key()
+    {
         return $this->_activities->key();
     }
     
@@ -134,7 +143,8 @@ abstract class Slice_Plugin_Abstract implements Iterator, Countable {
      *
      * @return theActivity
      **/
-    public function next() {
+    public function next()
+    {
         return $this->_activities->next();
     }
     
@@ -143,7 +153,8 @@ abstract class Slice_Plugin_Abstract implements Iterator, Countable {
      *
      * @return integer
      **/
-    public function count() {
+    public function count()
+    {
         $count = 0;
         foreach ($this->_activities as $activity)
             if ($this->_isInside($activity))
@@ -156,7 +167,8 @@ abstract class Slice_Plugin_Abstract implements Iterator, Countable {
      *
      * @return theActivity
      **/
-    public function rewind() {
+    public function rewind()
+    {
         $this->_activities->rewind();
         while ($this->_activities->current() && !$this->_isInside($this->_activities->current())) {
             $this->_activities->next();
@@ -168,7 +180,8 @@ abstract class Slice_Plugin_Abstract implements Iterator, Countable {
      *
      * @return boolean
      **/
-    public function valid() {
+    public function valid()
+    {
         return $this->_activities->valid();
     }
     
@@ -178,7 +191,8 @@ abstract class Slice_Plugin_Abstract implements Iterator, Countable {
      * @param theActivity Activity to check
      * @return boolean
      **/
-    protected function _isInside(theActivity $activity) {
+    protected function _isInside(theActivity $activity)
+    {
         return true;
     }
     
@@ -188,7 +202,8 @@ abstract class Slice_Plugin_Abstract implements Iterator, Countable {
      * @param string Name/code of activity
      * @return theActivity
      **/
-    protected function _findByName($name) {
+    protected function _findByName($name)
+    {
         return $this->_activities->findByName($code);
     }
         
@@ -198,7 +213,8 @@ abstract class Slice_Plugin_Abstract implements Iterator, Countable {
      * @param string Prefix in code
      * @return integer
      **/
-    protected function _nextCode($prefix = '') {
+    protected function _nextCode($prefix = '')
+    {
         $code = 0;
         foreach ($this as $activity) {
             if (!preg_match('/^' . preg_quote($prefix, '/') . '(\d+)$/', $activity->code, $matches))
@@ -214,7 +230,8 @@ abstract class Slice_Plugin_Abstract implements Iterator, Countable {
      *
      * @return void
      **/
-    protected function _normalizeOptions(array &$options, array $defaults) {
+    protected function _normalizeOptions(array &$options, array $defaults)
+    {
         foreach ($defaults as $key=>$value) {
             if (!isset($options[$key]))
                 $options[$key] = $value;

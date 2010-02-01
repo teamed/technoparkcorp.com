@@ -23,7 +23,7 @@
  *
  * @package Model
  */
-class Model_Asset_Defects_Issue_Trac extends Model_Asset_Defects_Issue_Abstract 
+class Model_Asset_Defects_Issue_Trac extends Model_Asset_Defects_Issue_Abstract
 {
     
     /**
@@ -183,7 +183,8 @@ class Model_Asset_Defects_Issue_Trac extends Model_Asset_Defects_Issue_Abstract
                 (string)$this->_changelog->get('summary')->getValue(),
                 (string)$this->_changelog->get('description')->getValue(),
                 $this->_translateToTrac($pairs),
-                true);
+                true
+            );
             
             logg('Trac ticket #%d was created', $this->_id);
         } else {
@@ -192,7 +193,8 @@ class Model_Asset_Defects_Issue_Trac extends Model_Asset_Defects_Issue_Abstract
                 $this->_id, 
                 isset($pairs['comment']) ? $pairs['comment'] : '',
                 $this->_translateToTrac($pairs),
-                true);
+                true
+            );
             logg('Trac ticket #%d was updated', $this->_id);
         }
     }

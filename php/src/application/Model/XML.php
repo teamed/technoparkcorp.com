@@ -23,7 +23,8 @@
  *
  * @package cls
  */
-class Model_XML {
+class Model_XML
+{
 
     /**
      * Cache of PNG/TIKZ images
@@ -52,7 +53,8 @@ class Model_XML {
      * @param SimpleXML instance
      * @return void
      */
-    protected function __construct($xml) {
+    protected function __construct($xml)
+    {
         $this->_xml = $xml;
 
         if (!isset(self::$_view)) {
@@ -67,7 +69,8 @@ class Model_XML {
      *
      * @return XMLDocument
      */
-    public static final function loadFile($fileName) {
+    public static final function loadFile($fileName)
+    {
         return new Model_XML(simplexml_load_file($fileName));
     }
 
@@ -76,7 +79,8 @@ class Model_XML {
      *
      * @return XMLDocument
      */
-    public static final function loadXML($text) {
+    public static final function loadXML($text)
+    {
         return new Model_XML(simplexml_load_string($text));
     }
 
@@ -85,7 +89,8 @@ class Model_XML {
      *
      * @return var
      */
-    public function __get($key) {
+    public function __get($key)
+    {
         if (isset($this->_xml->$key))
             return new Model_XML($this->_xml->$key);
         return false;
@@ -96,7 +101,8 @@ class Model_XML {
      *
      * @return var
      */
-    public function __set($key, $value) {
+    public function __set($key, $value)
+    {
         $this->_xml->$key = $value;
     }
 
@@ -105,7 +111,8 @@ class Model_XML {
      *
      * @return var
      */
-    public function __call($method, $args) {
+    public function __call($method, $args)
+    {
         return call_user_func_array(array($this->_xml, $method), $args);
     }
 
@@ -114,8 +121,8 @@ class Model_XML {
      *
      * @return string
      */
-    public function __toString() {
-
+    public function __toString()
+    {
         $xml = $this->_xml->asXML();
         $name = $this->_xml->getName();
 
@@ -128,7 +135,6 @@ class Model_XML {
         } catch (Exception $e) {
             return get_class($e) . ': ' . $e->getMessage();
         }
-
     }
 
     /**
@@ -137,8 +143,8 @@ class Model_XML {
      * @param string XML text
      * @return string
      */
-    protected function _parseImages($text) {
-
+    protected function _parseImages($text)
+    {
         // replace propable HTML special chars
         $text = preg_replace('/\&lt\;(\/?)tikz(\s.*?)?\&gt\;/m', '<${1}tikz${2}>', $text);
 
@@ -150,8 +156,12 @@ class Model_XML {
         foreach ($matches[3] as $key=>$match) {
             $md5 = md5($match);
 
-            $text = str_replace($matches[0][$key], "<img alt='loading...' src='" .
-                self::$_view->url(array('tikz'=>$md5), 'tikz', true) . "' " . $matches[2][$key] . " />", $text);
+            $text = str_replace(
+                $matches[0][$key], 
+                "<img alt='loading...' src='" .
+                self::$_view->url(array('tikz'=>$md5), 'tikz', true) . "' " . $matches[2][$key] . " />", 
+                $text
+            );
 
             // what type of image it is?    
             switch ($matches[1][$key]) {    
@@ -187,9 +197,7 @@ class Model_XML {
 
             }    
         }    
-
         return $text;
-
     }
 
     /**
@@ -198,8 +206,8 @@ class Model_XML {
      * @param string XML text
      * @return string
      */
-    protected function _parseMetas($text) {
-
+    protected function _parseMetas($text)
+    {
         if (!preg_match_all('/\${(\w+)\:(.*)}/smU', $text, $matches))
             return $text;
 
@@ -217,7 +225,8 @@ class Model_XML {
                     break;
 
                 case 'mailto':
-                    $replacement = 'mailto:' . $matches[2][$key] . '@' . preg_replace('/^https?\:\/\//', '', WEBSITE_URL);
+                    $replacement = 'mailto:' . $matches[2][$key] . 
+                    '@' . preg_replace('/^https?\:\/\//', '', WEBSITE_URL);
                     break;
 
             }
@@ -230,7 +239,6 @@ class Model_XML {
         }                                   
 
         return $text;
-
     }
 
     /**
@@ -238,7 +246,8 @@ class Model_XML {
      *
      * @return void
      */
-    public static final function tikzClean() {
+    public static final function tikzClean()
+    {
         self::_cache()->clean();
     }
 
@@ -248,8 +257,8 @@ class Model_XML {
      * @param string MD5 code of the requested image to show
      * @return string
      */
-    public static final function tikzShow($md5) {
-
+    public static final function tikzShow($md5)
+    {
         // if this PNG already exists
         if (self::_cache()->test($md5 . '_png')) 
             return self::_cache()->load($md5 . '_png');
@@ -275,7 +284,9 @@ class Model_XML {
         
         // maybe the PNG is not a valid image?
         if (imagecreatefromstring($png) === false) {
-            FaZend_Log::err('Error in XML/tikzShow - invalid PNG (' . strlen($png) . ' bytes), will try again next time');
+            FaZend_Log::err(
+                'Error in XML/tikzShow - invalid PNG (' . strlen($png) . ' bytes), will try again next time'
+            );
             return self::_errorPNG($md5, Model_Colors::YELLOW);
         }
 
@@ -284,7 +295,6 @@ class Model_XML {
 
         // return PNG image content
         return $png;
-
     }
 
     /**
@@ -293,8 +303,8 @@ class Model_XML {
      * @param string MD5 code of the requested (and failed) image
      * @return string
      */
-    protected static function _errorPNG($md5, $color = Model_Colors::RED) {
-        
+    protected static function _errorPNG($md5, $color = Model_Colors::RED)
+    {
         $img = imagecreatetruecolor(50, 30);
 
         imagefill($img, 0, 0, Model_Colors::getForImage($img, $color));
@@ -311,29 +321,34 @@ class Model_XML {
      *
      * @return Zend_Cache
      */
-    protected static function _cache() {
-
+    protected static function _cache()
+    {
         if (self::$_cache != false)
             return self::$_cache;
 
-        self::$_cache = Zend_Cache::factory('Core', 'File', array(
-            'caching' => true,
-            'cache_id_prefix' => 'panel2tikz',
-            'lifetime' => SECONDS_IN_DAY * 10,
-            'automatic_serialization' => true,
-            'automatic_cleaning_factor' => false,
-            'write_control' => true,
-            'logging' => false,
-            'ignore_user_abort' => true), array(
-
-            'cache_dir' => sys_get_temp_dir(),
-            'hashed_directory_level' => 0,
-            'read_control' => false,
-            'file_locking' => false,
-            'file_name_prefix' => 'tikz'));
+        self::$_cache = Zend_Cache::factory(
+            'Core', 
+            'File', 
+            array(
+                'caching' => true,
+                'cache_id_prefix' => 'panel2tikz',
+                'lifetime' => SECONDS_IN_DAY * 10,
+                'automatic_serialization' => true,
+                'automatic_cleaning_factor' => false,
+                'write_control' => true,
+                'logging' => false,
+                'ignore_user_abort' => true
+            ), 
+            array(
+                'cache_dir' => sys_get_temp_dir(),
+                'hashed_directory_level' => 0,
+                'read_control' => false,
+                'file_locking' => false,
+                'file_name_prefix' => 'tikz'
+            )
+        );
 
         return self::$_cache;
-
     }
 
 }

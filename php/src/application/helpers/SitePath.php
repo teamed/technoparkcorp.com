@@ -23,16 +23,16 @@
  * @see http://naneau.nl/2007/07/08/use-the-url-view-helper-please/
  * @package FaZend 
  */
-class Helper_SitePath extends FaZend_View_Helper {
+class Helper_SitePath extends FaZend_View_Helper
+{
 
     /**
     * Builds the path
     *
     * @return string
     */
-    public function sitePath($page, $title) {
-
-
+    public function sitePath($page, $title)
+    {
     }
 
 }

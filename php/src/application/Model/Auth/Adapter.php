@@ -24,7 +24,7 @@
  * @package Model
  * @see PanelController
  */
-class Model_Auth_Adapter extends Zend_Auth_Adapter_Http 
+class Model_Auth_Adapter extends Zend_Auth_Adapter_Http
 {
 
     /**

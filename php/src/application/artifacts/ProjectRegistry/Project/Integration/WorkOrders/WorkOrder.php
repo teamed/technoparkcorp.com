@@ -23,7 +23,8 @@
  *
  * @package Artifacts
  */
-class theWorkOrder implements Model_Artifact_Stateless {
+class theWorkOrder implements Model_Artifact_Stateless
+{
 
     /**
      * Issue responsible for this order
@@ -40,13 +41,14 @@ class theWorkOrder implements Model_Artifact_Stateless {
      * @param string ID of decision
      * @return void
      **/
-    public function __construct(theWorkOrders $workOrders, $decision, $id) {
+    public function __construct(theWorkOrders $workOrders, $decision, $id)
+    {
         $this->_project = Model_Project::findByName($project->name);
         $this->_issue = Model_Asset_Defects_Issue_Abstract::factory(
             $this->_project->tracker, 
             $project->name, 
-            $decision . ':' . $id);
-                
+            $decision . ':' . $id
+        );
     }
         
     /**
@@ -54,7 +56,8 @@ class theWorkOrder implements Model_Artifact_Stateless {
      *
      * @return boolean
      **/
-    public function isPaid() {
+    public function isPaid()
+    {
         return true;
     }
     
@@ -63,7 +66,8 @@ class theWorkOrder implements Model_Artifact_Stateless {
      *
      * @return boolean
      **/
-    public function create() {
+    public function create()
+    {
         $this->_issue
             ->setAssignTo($this->_performer)
             ->setReportedBy($this->_decision->wobot->fullEmail)

@@ -42,12 +42,18 @@ class Model_Asset_Defects_Issue_Changelog_Field_Priority extends Model_Asset_Def
     {
         validate()
             ->type($value, 'integer', "Priority shall be INT only")
-            ->true(in_array($value, array(
-                self::MINOR,
-                self::MAJOR,
-                self::CRITICAL,
-                self::BLOCKER
-            )), "Priority shall be from the predefined list");
+            ->true(
+                in_array(
+                    $value, 
+                    array(
+                        self::MINOR,
+                        self::MAJOR,
+                        self::CRITICAL,
+                        self::BLOCKER
+                    )
+                ), 
+                "Priority shall be from the predefined list"
+            );
             
         return true;
     }

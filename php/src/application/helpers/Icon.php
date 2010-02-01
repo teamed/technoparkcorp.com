@@ -22,15 +22,16 @@
  *
  * @package helpers
  */
-class Helper_Icon extends FaZend_View_Helper {
+class Helper_Icon extends FaZend_View_Helper
+{
 
     /**
      * Builds the html icon
      *
      * @return string
      */
-    public function icon($name) {
-
+    public function icon($name)
+    {
         $text = @file_get_contents(APPLICATION_PATH . '/views/icons/' . $name . '.txt');
 
         if (!$text)
@@ -46,7 +47,6 @@ class Helper_Icon extends FaZend_View_Helper {
         }
 
         return $html . '</table>';
-
     }
 
 }

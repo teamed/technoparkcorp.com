@@ -23,7 +23,8 @@
  *
  * @package Artifacts
  */
-class thePayments implements Model_Artifact_Stateless {
+class thePayments implements Model_Artifact_Stateless
+{
        
     /**
      * Holder of the class
@@ -41,7 +42,8 @@ class thePayments implements Model_Artifact_Stateless {
      * @param string Details of the payment
      * @return thePayment
      **/
-    public function createSpecific($user, $original, $context, $details) {
+    public function createSpecific($user, $original, $context, $details)
+    {
         return thePayment::create($user, null, $original, $context, $details);
     }
         
@@ -53,7 +55,8 @@ class thePayments implements Model_Artifact_Stateless {
      * @param string Details of the payment
      * @return thePayment
      **/
-    public function createGeneric($original, $context, $details) {
+    public function createGeneric($original, $context, $details)
+    {
         return thePayment::create(null, null, $original, $context, $details);
     }
         

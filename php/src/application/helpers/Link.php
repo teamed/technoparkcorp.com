@@ -22,7 +22,8 @@
  *
  * @package helpers
  */
-class Helper_Link extends FaZend_View_Helper {
+class Helper_Link extends FaZend_View_Helper
+{
 
     /**
      * Builds a link
@@ -32,7 +33,8 @@ class Helper_Link extends FaZend_View_Helper {
      * @param boolean Build it in form of a paragraph
      * @return Helper_Table
      */
-    public function link($link, $title = null, $inPar = true) {
+    public function link($link, $title = null, $inPar = true)
+    {
         $resolvedLink = Model_Pages::resolveLink($link);
 
         // if this link is not allowed for current user

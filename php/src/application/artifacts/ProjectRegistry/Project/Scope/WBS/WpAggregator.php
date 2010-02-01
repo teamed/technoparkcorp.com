@@ -23,7 +23,8 @@
  *
  * @package Artifacts
  */
-class theWpAggregator extends theWorkPackage {
+class theWpAggregator extends theWorkPackage
+{
 
     const MAX_PACKAGES_TO_SHOW_IN_TITLE = 8;
 
@@ -39,7 +40,8 @@ class theWpAggregator extends theWorkPackage {
      *
      * @return mixed
      **/
-    public function __get($name) {
+    public function __get($name)
+    {
         switch ($name) {
             case 'cost':
                 return $this->_getCost();
@@ -54,7 +56,8 @@ class theWpAggregator extends theWorkPackage {
      *
      * @return void
      **/
-    public function split(theActivities $list) {
+    public function split(theActivities $list)
+    {
         // don't split anything
     }
     
@@ -63,7 +66,8 @@ class theWpAggregator extends theWorkPackage {
      *
      * @return void
      **/
-    public function addWorkPackage(theWorkPackage $wp) {
+    public function addWorkPackage(theWorkPackage $wp)
+    {
         $this->_aggregatedWps[$wp->code] = $wp;
         $this->_cost = null;
     }
@@ -73,7 +77,8 @@ class theWpAggregator extends theWorkPackage {
      *
      * @return FaZend_Bo_Money
      **/
-    protected function _getCost() {
+    protected function _getCost()
+    {
         if (is_null($this->_cost)) {
             $this->_cost = new FaZend_Bo_Money();
             foreach ($this->_aggregatedWps as $wp)
@@ -87,11 +92,12 @@ class theWpAggregator extends theWorkPackage {
      *
      * @return string
      **/
-    protected function _getTitle() {
+    protected function _getTitle()
+    {
         $cnt = count($this->_aggregatedWps);
         return plural("{$cnt} Work Package[s]: ", $cnt) . 
-            implode(', ', array_slice(array_keys($this->_aggregatedWps), 0, self::MAX_PACKAGES_TO_SHOW_IN_TITLE)) . 
-            ($cnt > self::MAX_PACKAGES_TO_SHOW_IN_TITLE ? ', ...' : false);
+        implode(', ', array_slice(array_keys($this->_aggregatedWps), 0, self::MAX_PACKAGES_TO_SHOW_IN_TITLE)) . 
+        ($cnt > self::MAX_PACKAGES_TO_SHOW_IN_TITLE ? ', ...' : false);
     }
 
 }

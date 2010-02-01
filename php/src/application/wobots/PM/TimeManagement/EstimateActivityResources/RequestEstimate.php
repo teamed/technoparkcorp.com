@@ -23,7 +23,7 @@
  *
  * @package wobots
  */
-class RequestEstimate extends Model_Decision_PM 
+class RequestEstimate extends Model_Decision_PM
 {
 
     /**

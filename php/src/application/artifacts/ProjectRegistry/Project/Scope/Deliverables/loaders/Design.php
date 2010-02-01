@@ -25,7 +25,7 @@ require_once 'artifacts/ProjectRegistry/Project/Scope/Deliverables/loaders/Abstr
  *
  * @package Artifacts
  */
-class DeliverablesLoaders_Design extends DeliverablesLoaders_Abstract 
+class DeliverablesLoaders_Design extends DeliverablesLoaders_Abstract
 {
     
     /**
@@ -59,13 +59,15 @@ class DeliverablesLoaders_Design extends DeliverablesLoaders_Abstract
             foreach ($component->traces as $trace) {
                 if (!isset($project->deliverables[$trace]))
                     continue;
-                $project->traceability->add(new theTraceabilityLink(
-                    $deliverable,
-                    $project->deliverables[$trace],
-                    0.75,
-                    1,
-                    "@see {$trace}"
-                ));
+                $project->traceability->add(
+                    new theTraceabilityLink(
+                        $deliverable,
+                        $project->deliverables[$trace],
+                        0.75,
+                        1,
+                        "@see {$trace}"
+                    )
+                );
             }
         }
         logg('Design loading finished, %d components loaded', count($components));

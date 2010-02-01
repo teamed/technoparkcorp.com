@@ -63,7 +63,7 @@ class theObjective
         FaZend_Exception::raise(
             'InvalidPropertyOfMethod',
             "Can't find what is $name in " . get_class($this)
-            );
+        );
     }
 
     /**

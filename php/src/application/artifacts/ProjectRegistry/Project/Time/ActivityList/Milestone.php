@@ -23,7 +23,8 @@
  *
  * @package Artifacts
  */
-class theMilestone extends theActivity {
+class theMilestone extends theActivity
+{
 
     /**
      * Factory method
@@ -33,7 +34,8 @@ class theMilestone extends theActivity {
      * @param string Unique code for this work package
      * @return theMilestone
      **/
-    public static function factoryMilestone(theActivities $activities, $wp, $code) {
+    public static function factoryMilestone(theActivities $activities, $wp, $code)
+    {
         return new theMilestone($activities, $wp, $code);
     }
 

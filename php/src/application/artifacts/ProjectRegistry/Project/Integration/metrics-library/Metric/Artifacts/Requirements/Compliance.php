@@ -24,7 +24,7 @@
  * @see http://fazend.com/a/2009-12-WikiNotation.html
  * @package Artifacts
  */
-class Metric_Artifacts_Requirements_Compliance extends Metric_Abstract 
+class Metric_Artifacts_Requirements_Compliance extends Metric_Abstract
 {
 
     /**

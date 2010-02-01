@@ -23,7 +23,8 @@
  *
  * @package Model
  */
-abstract class Model_Decision_PM extends Model_Decision {
+abstract class Model_Decision_PM extends Model_Decision
+{
 
     /**
      * Project, the owner of the decision
@@ -38,7 +39,8 @@ abstract class Model_Decision_PM extends Model_Decision {
      * @param theProject Project, the holder of the decision
      * @return void
      **/
-    public function setProject(theProject $project) {
+    public function setProject(theProject $project)
+    {
         $this->_project = $project;
     }
 

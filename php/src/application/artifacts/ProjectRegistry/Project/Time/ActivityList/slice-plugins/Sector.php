@@ -25,7 +25,8 @@ require_once 'artifacts/ProjectRegistry/Project/Time/ActivityList/slice-plugins/
  * 
  * @package Slice_Plugin
  */
-class Slice_Plugin_Sector extends Slice_Plugin_Abstract {
+class Slice_Plugin_Sector extends Slice_Plugin_Abstract
+{
 
     /**
      * Start index
@@ -47,7 +48,8 @@ class Slice_Plugin_Sector extends Slice_Plugin_Abstract {
      * @param theActivity Activity to check
      * @return boolean
      **/
-    protected function _isInside(theActivity $activity) {
+    protected function _isInside(theActivity $activity)
+    {
         return ($activity->code >= $this->_start) &&
             (is_null($this->_end) || ($activity->code <= $this->_end));
     }
@@ -59,7 +61,8 @@ class Slice_Plugin_Sector extends Slice_Plugin_Abstract {
      * @param integer Last element (NULL means 'till the end')
      * @return Slice_Plugin_Simple
      **/
-    public function execute($start, $end) {
+    public function execute($start, $end)
+    {
         $this->_start = $start;
         $this->_end = $end;
         return $this;

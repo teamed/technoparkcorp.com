@@ -49,8 +49,10 @@ class theStatements implements ArrayAccess, Iterator, Countable, Model_Artifact_
         if (property_exists($this, $var))
             return $this->$var;
         
-        FaZend_Exception::raise('Statements_PropertyOrMethodNotFound', 
-            "Can't find what is '$name' in " . get_class($this));
+        FaZend_Exception::raise(
+            'Statements_PropertyOrMethodNotFound', 
+            "Can't find what is '$name' in " . get_class($this)
+        );
     }
 
     /**
@@ -113,7 +115,10 @@ class theStatements implements ArrayAccess, Iterator, Countable, Model_Artifact_
      */
     public function offsetSet($email, $value) 
     {
-        FaZend_Exception::raise('StatementsException', "Statements are not editable directly");
+        FaZend_Exception::raise(
+            'StatementsException', 
+            "Statements are not editable directly"
+        );
     }
 
     /**
@@ -125,7 +130,10 @@ class theStatements implements ArrayAccess, Iterator, Countable, Model_Artifact_
      */
     public function offsetUnset($email) 
     {
-        FaZend_Exception::raise('StatementsException', "Statements are not editable directly");
+        FaZend_Exception::raise(
+            'StatementsException', 
+            "Statements are not editable directly"
+        );
     }
 
     /**

@@ -23,7 +23,7 @@
  *
  * @package Model
  */
-abstract class Model_Asset_Defects_Issue_Abstract 
+abstract class Model_Asset_Defects_Issue_Abstract
 {
 
     /**

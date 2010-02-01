@@ -23,14 +23,16 @@
  * @see http://naneau.nl/2007/07/08/use-the-url-view-helper-please/
  * @package FaZend 
  */
-class Helper_StaticUrl extends FaZend_View_Helper {
+class Helper_StaticUrl extends FaZend_View_Helper
+{
 
     /**
      * Builds the static URL
      *
      * @return string
      */
-    public function staticUrl($page) {
+    public function staticUrl($page)
+    {
         return $this->getView()->url(array('page'=>$page), 'static', true, false);    
     }
 

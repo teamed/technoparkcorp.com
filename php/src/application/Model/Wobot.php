@@ -57,8 +57,10 @@ abstract class Model_Wobot implements Model_Wobot_Interface
             $wobotClass = __CLASS__ . '_' . $name;
             
             if (!method_exists($wobotClass, 'getAllNames')) {
-                FaZend_Exception::raise('Model_Wobot_InvalidChild',
-                    "Class '{$wobotClass}' has to implement '::getAllNames()'");
+                FaZend_Exception::raise(
+                    'Model_Wobot_InvalidChild',
+                    "Class '{$wobotClass}' has to implement '::getAllNames()'"
+                );
             }
             
             eval("\$names = $wobotClass::getAllNames();");

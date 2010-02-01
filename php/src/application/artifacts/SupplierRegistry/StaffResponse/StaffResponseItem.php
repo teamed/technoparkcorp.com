@@ -23,7 +23,7 @@
  *
  * @package Artifacts
  */
-class theStaffResponseItem 
+class theStaffResponseItem
 {
 
     /**

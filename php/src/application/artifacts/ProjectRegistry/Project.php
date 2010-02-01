@@ -23,7 +23,7 @@
  *
  * @package Artifacts
  */
-class theProject extends Model_Artifact_Bag implements Model_Artifact_Passive 
+class theProject extends Model_Artifact_Bag implements Model_Artifact_Passive
 {
     
     /**
@@ -120,8 +120,7 @@ class theProject extends Model_Artifact_Bag implements Model_Artifact_Passive
             ->attach('wbs', new theWbs())
             ->attach('activityList', new theActivityList())
             ->attach('schedule', new theSchedule())
-            ->attach('issues', new theIssues(), 'setProject')
-            ;
+            ->attach('issues', new theIssues(), 'setProject');
     }
     
 }

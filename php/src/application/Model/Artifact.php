@@ -23,7 +23,7 @@
  *
  * @package Model
  */
-class Model_Artifact extends FaZend_Pos_Abstract implements Model_Artifact_Interface 
+class Model_Artifact extends FaZend_Pos_Abstract implements Model_Artifact_Interface
 {
     
     /**

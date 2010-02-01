@@ -22,7 +22,8 @@
  *
  * @package helpers
  */
-class Helper_Shortcut extends FaZend_View_Helper {
+class Helper_Shortcut extends FaZend_View_Helper
+{
 
     /**
      * Name of the document to share
@@ -57,7 +58,8 @@ class Helper_Shortcut extends FaZend_View_Helper {
      *
      * @return Helper_Shortcut
      */
-    public function shortcut() {
+    public function shortcut()
+    {
         return $this;
     }
     
@@ -66,7 +68,8 @@ class Helper_Shortcut extends FaZend_View_Helper {
      *
      * @return string
      **/
-    public function __toString() {
+    public function __toString()
+    {
         try {
             return $this->_render();
         } catch (Exception $e) {
@@ -79,7 +82,8 @@ class Helper_Shortcut extends FaZend_View_Helper {
      *
      * @return string
      **/
-    public function _render() {
+    public function _render()
+    {
         return Model_Shortcut::create($document, $this->_emails, $this->_params, $this->_uniqueAccess)
             ->getUrl();
     }
@@ -90,7 +94,8 @@ class Helper_Shortcut extends FaZend_View_Helper {
      * @param string Document to share
      * @return $this
      **/
-    public function setDocument($document) {
+    public function setDocument($document)
+    {
         $this->_document = $document;
         return $this;
     }
@@ -101,7 +106,8 @@ class Helper_Shortcut extends FaZend_View_Helper {
      * @param string Email of accessor
      * @return $this
      **/
-    public function addEmail($email) {
+    public function addEmail($email)
+    {
         validate()->emailAddress($email, array());
         $this->_emails[] = $email;
         return $this;
@@ -114,7 +120,8 @@ class Helper_Shortcut extends FaZend_View_Helper {
      * @param string Value of it
      * @return $this
      **/
-    public function addParam($name, $value) {
+    public function addParam($name, $value)
+    {
         $this->_params[$name] = $value;
         return $this;
     }
@@ -124,7 +131,8 @@ class Helper_Shortcut extends FaZend_View_Helper {
      *
      * @return $this
      **/
-    public function setUniqueAccess() {
+    public function setUniqueAccess()
+    {
         $this->_uniqueAccess = true;
         return $this;
     }

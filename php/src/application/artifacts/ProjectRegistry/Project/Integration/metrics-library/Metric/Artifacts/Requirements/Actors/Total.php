@@ -45,8 +45,9 @@ class Metric_Artifacts_Requirements_Actors_Total extends Metric_Abstract
      **/
     public function getWorkPackage()
     {
-        return $this->_makeWp($this->_project->wbs->sum(
-            'artifacts\/requirements\/functional\/total')->mul(self::PORTION), 
+        return $this->_makeWp(
+            $this->_project->wbs->sum('artifacts\/requirements\/functional\/total')
+            ->mul(self::PORTION), 
             'Specify actors'
         );
     }
@@ -60,9 +61,13 @@ class Metric_Artifacts_Requirements_Actors_Total extends Metric_Abstract
     protected function _split(Slice_Plugin_Abstract $slice)
     {
         // split the activity onto smaller pieces
-        $total = $slice->iterate('downCurve', array(
-            'sow' => 'Identify actors',
-            'minCost' => '10 USD'));
+        $total = $slice->iterate(
+            'downCurve', 
+            array(
+                'sow' => 'Identify actors',
+                'minCost' => '10 USD'
+            )
+        );
             
         $slice->afterEachOther();
             

@@ -23,7 +23,7 @@
  *
  * @package Model
  */
-class Model_Asset_Design_Fazend_Linux extends Model_Asset_Design_Abstract 
+class Model_Asset_Design_Fazend_Linux extends Model_Asset_Design_Abstract
 {
     
     /**
@@ -65,8 +65,7 @@ class Model_Asset_Design_Fazend_Linux extends Model_Asset_Design_Abstract
                 ->set('type', $data['type'])
                 ->set('name', $data['fullName'])
                 ->set('description', '...')
-                ->set('traces', $data['traces'])
-                ;
+                ->set('traces', $data['traces']);
         }
         return $return;
     }

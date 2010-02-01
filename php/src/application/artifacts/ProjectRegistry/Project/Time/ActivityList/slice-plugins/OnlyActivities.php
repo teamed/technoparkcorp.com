@@ -25,7 +25,8 @@ require_once 'artifacts/ProjectRegistry/Project/Time/ActivityList/slice-plugins/
  * 
  * @package Slice_Plugin
  */
-class Slice_Plugin_OnlyActivities extends Slice_Plugin_Abstract {
+class Slice_Plugin_OnlyActivities extends Slice_Plugin_Abstract
+{
 
     /**
      * Show only activities, not milestones
@@ -33,7 +34,8 @@ class Slice_Plugin_OnlyActivities extends Slice_Plugin_Abstract {
      * @param theActivity Activity to check
      * @return boolean
      **/
-    protected function _isInside(theActivity $activity) {
+    protected function _isInside(theActivity $activity)
+    {
         return !$activity->isMilestone();
     }
         

@@ -41,11 +41,17 @@ class Model_Asset_Defects_Issue_Changelog_Field_Status extends Model_Asset_Defec
     {
         validate()
             ->type($value, 'integer', "Status shall be INT only, '{$value}' provided")
-            ->true(in_array($value, array(
-                self::OPEN,
-                self::FIXED,
-                self::INVALID
-            )), "Status shall be from the predefined list");
+            ->true(
+                in_array(
+                    $value, 
+                    array(
+                        self::OPEN,
+                        self::FIXED,
+                        self::INVALID
+                    )
+                ), 
+                "Status shall be from the predefined list"
+            );
             
         return true;
     }

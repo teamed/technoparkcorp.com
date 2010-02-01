@@ -286,7 +286,8 @@ class theActivity
      */
     protected function _getDoc()
     {
-        return 'projects/' . $this->project->name . '/Scope/WBS/' . str_replace(theMetrics::SEPARATOR, '-', $this->code);
+        return 'projects/' . $this->project->name . '/Scope/WBS/' . 
+        str_replace(theMetrics::SEPARATOR, '-', $this->code);
     }
     
     /**

@@ -23,7 +23,8 @@
  * 
  * @package Artifacts
  */
-class Metric_Artifacts_Requirements_Functional_Total extends Metric_Abstract {
+class Metric_Artifacts_Requirements_Functional_Total extends Metric_Abstract
+{
 
     /**
      * Forwarders
@@ -106,9 +107,15 @@ class Metric_Artifacts_Requirements_Functional_Total extends Metric_Abstract {
             
         $price = $this->_pricePerRequirement[$this->_getOption('level')];
             
-        return $this->_makeWp($this->delta * $price, 
-            sprintf('Specify +%d functional requirements on %s level',
-                $this->delta, $this->_getOption('level'), $this->value));
+        return $this->_makeWp(
+            $this->delta * $price, 
+            sprintf(
+                'Specify +%d functional requirements on %s level',
+                $this->delta, 
+                $this->_getOption('level'), 
+                $this->value
+            )
+        );
     }
     
 }

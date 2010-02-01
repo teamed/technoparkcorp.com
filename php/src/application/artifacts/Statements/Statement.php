@@ -49,8 +49,10 @@ class theStatement extends Zend_Db_Table_Row implements ArrayAccess, Iterator, C
         if (property_exists($this, $var))
             return $this->$var;
         
-        FaZend_Exception::raise('Statement_PropertyOrMethodNotFound', 
-            "Can't find what is '$name' in " . get_class($this));
+        FaZend_Exception::raise(
+            'Statement_PropertyOrMethodNotFound', 
+            "Can't find what is '$name' in " . get_class($this)
+        );
     }
 
     /**
@@ -121,18 +123,19 @@ class theStatement extends Zend_Db_Table_Row implements ArrayAccess, Iterator, C
             "Full list of tasks completed and payments made is below:\n\n";
         
         foreach ($this as $payment) {
-            $text .= sprintf("%10s: %12s   %s\n",
+            $text .= sprintf(
+                "%10s: %12s   %s\n",
                 FaZend_Date::make($payment->created)->get(Zend_Date::DATE_SHORT), 
-                $payment->usd,
+                $payment->amount,
                 ($payment->reason ? "[{$payment->context}/{$payment->reason}] " : false) .
-                    $payment->details
-                );
+                $payment->details
+            );
         }
         
         $text .= 
-            "\nTotal to pay now: {$this->balance}. Please reply to this email with the information\n" .
-            "required, and we will proceed with the payment. If we made some mistakes in the\n" .
-            "calculations above, please let us know and we fix them. Thanks for working with us!\n";
+        "\nTotal to pay now: {$this->balance}. Please reply to this email with the information\n" .
+        "required, and we will proceed with the payment. If we made some mistakes in the\n" .
+        "calculations above, please let us know and we fix them. Thanks for working with us!\n";
             
         return $text;
     }
@@ -203,7 +206,10 @@ class theStatement extends Zend_Db_Table_Row implements ArrayAccess, Iterator, C
      */
     public function offsetSet($email, $value) 
     {
-        FaZend_Exception::raise('StatementException', "Statements are not editable directly");
+        FaZend_Exception::raise(
+            'StatementException', 
+            "Statements are not editable directly"
+        );
     }
 
     /**
@@ -215,7 +221,10 @@ class theStatement extends Zend_Db_Table_Row implements ArrayAccess, Iterator, C
      */
     public function offsetUnset($email) 
     {
-        FaZend_Exception::raise('StatementException', "Statements are not editable directly");
+        FaZend_Exception::raise(
+            'StatementException', 
+            "Statements are not editable directly"
+        );
     }
 
     /**

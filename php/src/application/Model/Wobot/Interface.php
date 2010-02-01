@@ -23,7 +23,8 @@
  *
  * @package Model
  */
-interface Model_Wobot_Interface {
+interface Model_Wobot_Interface
+{
 
     /**
      * Text name of the wobot, e.g. 'PM.test'

@@ -23,7 +23,8 @@
  *
  * @package Model
  */
-interface Model_Decision_Interface {
+interface Model_Decision_Interface
+{
 
     /**
      * Make decision and protocol results

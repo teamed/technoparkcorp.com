@@ -23,6 +23,6 @@
  *
  * @package Artifacts
  */
-interface Model_Artifact_Interface {
-
+interface Model_Artifact_Interface
+{
 }

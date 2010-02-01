@@ -23,7 +23,8 @@
  *
  * @package AssetManagement
  */
-class Model_IPF10 {
+class Model_IPF10
+{
 
     const WSDL_URI = 'http://ipf10.tpc-svn.com/wsdl.php';
     const COOKIE = 'ipf10session';
@@ -51,7 +52,8 @@ class Model_IPF10 {
      *
      * @return void
      */
-    protected function __construct() {
+    protected function __construct()
+    {
     }
 
     /**
@@ -59,7 +61,8 @@ class Model_IPF10 {
      *
      * @return Model_IPF10
      */
-    public static function getInstance() {
+    public static function getInstance()
+    {
         if (!isset(self::$_instance))
             self::$_instance = new Model_IPF10();
         return self::$_instance;
@@ -70,22 +73,26 @@ class Model_IPF10 {
      *
      * @return SoapClient
      */
-    protected function _getSoapClient() {
-
+    protected function _getSoapClient()
+    {
         if (isset($this->_soapClient))
             return $this->_soapClient;
 
         // connect and configure
-        $this->_soapClient = new SoapClient(self::WSDL_URI, array(
-            'trace' => true,
-            'cache_wsdl' => false,
-        ));
+        $this->_soapClient = new SoapClient(
+            self::WSDL_URI, 
+            array(
+                'trace' => true,
+                'cache_wsdl' => false,
+            )
+        );
 
         // secret params for login, don't change them
         $id = $this->_soapClient->Login(
             self::IPF10_LOGIN, 
             self::IPF10_PASSWORD, 
-            self::IPF10_SECRET);
+            self::IPF10_SECRET
+        );
 
         // set the name of the cookie
         $this->_soapClient->__setCookie(self::COOKIE, $id);
@@ -101,18 +108,16 @@ class Model_IPF10 {
      * @param string LaTeX source
      * @return string
      */
-    public function TikzImage($tex) {
-
+    public function TikzImage($tex)
+    {
         try {
-
             return convert_uudecode($this->_getSoapClient()->TikzImage((string)$tex));
-            
         } catch (SoapFault $e) {
-
             FaZend_Log::err('Error in IPF10/TikzImage: ' . $e->getMessage());
-            FaZend_Exception::raise('Model_IPF10_TikzImageSoapFault',
-                'SOAP error: '.$e->getMessage());
-
+            FaZend_Exception::raise(
+                'Model_IPF10_TikzImageSoapFault',
+                'SOAP error: '.$e->getMessage()
+            );
         }    
 
     }
@@ -123,22 +128,18 @@ class Model_IPF10 {
      * @param string LaTeX source
      * @return string
      */
-    public function TikzPDF($tex) {
-    
+    public function TikzPDF($tex)
+    {
         try {
-
             return convert_uudecode($this->_getSoapClient()->TikzPDF((string)$tex));
-
         } catch (SoapFault $e) {
-
             FaZend_Log::err('Error in IPF10/TikzPDF: ' . $e->getMessage());
-            FaZend_Exception::raise('Model_IPF10_TikzPDFSoapFault',
-                'SOAP error: '.$e->getMessage());
-
+            FaZend_Exception::raise(
+                'Model_IPF10_TikzPDFSoapFault',
+                'SOAP error: '.$e->getMessage()
+            );
         }    
-
     }
-
     
 }
 

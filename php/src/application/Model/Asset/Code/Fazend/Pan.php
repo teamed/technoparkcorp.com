@@ -23,8 +23,6 @@
  *
  * @package Model
  */
-class Model_Asset_Code_Fazend_Pan extends Model_Asset_Code_Abstract 
+class Model_Asset_Code_Fazend_Pan extends Model_Asset_Code_Abstract
 {
-    
-    
 }

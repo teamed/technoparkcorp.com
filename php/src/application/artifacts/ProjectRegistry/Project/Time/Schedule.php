@@ -23,7 +23,7 @@
  *
  * @package Artifacts
  */
-class theSchedule extends Model_Artifact_Bag implements Model_Artifact_Passive 
+class theSchedule extends Model_Artifact_Bag implements Model_Artifact_Passive
 {
 
     /**
@@ -51,7 +51,7 @@ class theSchedule extends Model_Artifact_Bag implements Model_Artifact_Passive
                 FaZend_Exception::raise(
                     'ActivitiesNotFound',
                     'Activities not found in ActivityList after reloading, why?'
-                    );
+                );
             }
         }
         

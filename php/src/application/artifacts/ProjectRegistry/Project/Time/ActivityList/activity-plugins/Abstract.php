@@ -23,7 +23,7 @@
  * 
  * @package Activity_Plugin
  */
-abstract class Activity_Plugin_Abstract 
+abstract class Activity_Plugin_Abstract
 {
 
     /**

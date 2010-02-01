@@ -97,8 +97,10 @@ abstract class Metric_Abstract
     public function reload()
     {
         // you should override this method in child class
-        FaZend_Exception::raise('MetricIsNotOverriden', 
-            'Metric ' . get_class($this) . 'does not override reload(), it is wrong');
+        FaZend_Exception::raise(
+            'MetricIsNotOverriden', 
+            'Metric ' . get_class($this) . 'does not override reload(), it is wrong'
+        );
     }
         
     /**
@@ -162,9 +164,11 @@ abstract class Metric_Abstract
 
             case 'value':
                 if (!$this->isLoaded()) {
-                    FaZend_Exception::raise('MetricReloadingException', 
+                    FaZend_Exception::raise(
+                        'MetricReloadingException', 
                         'Metric ' . get_class($this) . 
-                        '[' . $this->name . '] is not reloaded by reload(), why?');
+                        '[' . $this->name . '] is not reloaded by reload(), why?'
+                    );
                 }
                 return $this->_value;
                 
@@ -190,8 +194,10 @@ abstract class Metric_Abstract
                 return isset($this->_default);
         }
         
-        FaZend_Exception::raise('MetricAccessException', 
-            'You can GET only declared properties of a metric (' . get_class($this) . '::' . $name . ')');
+        FaZend_Exception::raise(
+            'MetricAccessException', 
+            'You can GET only declared properties of a metric (' . get_class($this) . '::' . $name . ')'
+        );
     }
         
     /**
@@ -210,8 +216,10 @@ abstract class Metric_Abstract
                 return $this->setTarget($value);
         }
         
-        FaZend_Exception::raise('MetricAccessException', 
-            'You can SET only declared properties of a metric (' . get_class($this) . '::' . $name . ')');
+        FaZend_Exception::raise(
+            'MetricAccessException', 
+            'You can SET only declared properties of a metric (' . get_class($this) . '::' . $name . ')'
+        );
     }
     
     /**
@@ -257,8 +265,10 @@ abstract class Metric_Abstract
             return $metric;
         }
 
-        FaZend_Exception::raise('MetricPatternMismatch', 
-            'Cannot clone ' . get_class($this) . ' with this pattern: "' . $pattern . '"');
+        FaZend_Exception::raise(
+            'MetricPatternMismatch', 
+            'Cannot clone ' . get_class($this) . ' with this pattern: "' . $pattern . '"'
+        );
     }
 
     /**

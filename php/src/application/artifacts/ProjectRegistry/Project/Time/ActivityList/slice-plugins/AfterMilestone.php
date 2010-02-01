@@ -25,7 +25,8 @@ require_once 'artifacts/ProjectRegistry/Project/Time/ActivityList/slice-plugins/
  * 
  * @package Slice_Plugin
  */
-class Slice_Plugin_AfterMilestone extends Slice_Plugin_Abstract {
+class Slice_Plugin_AfterMilestone extends Slice_Plugin_Abstract
+{
 
     /**
      * Set one milestone in front of every activity and return a list of milestones
@@ -33,12 +34,15 @@ class Slice_Plugin_AfterMilestone extends Slice_Plugin_Abstract {
      * @param array List of options
      * @return $this
      **/
-    public function execute(array $options = array()) {
-
-        $this->_normalizeOptions($options, array(
-            'codePrefix' => 'm', // prefix to set before each new code of activity
-            'sow' => 'milestone', // statement of work to set to each activity
-            ));
+    public function execute(array $options = array())
+    {
+        $this->_normalizeOptions(
+            $options, 
+            array(
+                'codePrefix' => 'm', // prefix to set before each new code of activity
+                'sow' => 'milestone', // statement of work to set to each activity
+            )
+        );
         
         $names = array();
 

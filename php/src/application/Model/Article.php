@@ -39,7 +39,7 @@
  *
  * @package Controllers
  */
-class Model_Article 
+class Model_Article
 {
 
     /**
@@ -170,9 +170,12 @@ class Model_Article
             $xmlFile .= '/intro'; 
 
             // if it's absent - we go away
-            if (!file_exists(CONTENT_PATH . '/' . $xmlFile . '.xml'))
-                FaZend_Exception::raise('Model_Article_NotFound', 
-                    "Page '{$page}' not found: (tried '{$xmlFile}.xml')");
+            if (!file_exists(CONTENT_PATH . '/' . $xmlFile . '.xml')) {
+                FaZend_Exception::raise(
+                    'Model_Article_NotFound', 
+                    "Page '{$page}' not found: (tried '{$xmlFile}.xml')"
+                );
+            }
         }    
 
         return self::createFromFile(CONTENT_PATH . '/' . $xmlFile . '.xml', $page);
@@ -200,7 +203,7 @@ class Model_Article
         if (!isset(self::$_lucene) || $refresh) {        
             $path = self::getLucenePath();
             
-            if (file_exists($path) && !$refresh)
+            if (file_exists($path) && is_dir($path) && !$refresh)
                 self::$_lucene = Zend_Search_Lucene::open($path);
             else
                 self::$_lucene = Zend_Search_Lucene::create($path);
@@ -351,8 +354,15 @@ class Model_Article
         $txt = ucwords(preg_replace('/(\s*[^a-z0-9A-Z]\s*)/', ' ', strip_tags((string)$this->_xml->text)));
         
         // Filter the words that are longer than 3 symbols and counts them
-        $words = array_count_values(array_filter(explode(' ', $txt), create_function('$word', 
-            'return(strlen($word) > 3) && ((int) $word[0] == 0);')));
+        $words = array_count_values(
+            array_filter(
+                explode(' ', $txt), 
+                create_function(
+                    '$word', 
+                    'return(strlen($word) > 3) && ((int) $word[0] == 0);'
+                )
+            )
+        );
 
         // Sort in reverse mode(top elements are the most popular words)
         arsort($words);
@@ -375,9 +385,16 @@ class Model_Article
             return trim(preg_replace("/[\t\n\r]+/", ' ', (string)$this->_xml->description));
 
         // Remove all unreadable symbols and cut the line to 500 symbols
-        if ($this->_xml->text)
-            return cutLongLine(preg_replace('/(\s*[^a-z0-9A-Z\-\.\,]\s*)/', ' ',
-                trim(strip_tags((string)$this->_xml->text), "\t\n ")), 500);
+        if ($this->_xml->text) {
+            return cutLongLine(
+                preg_replace(
+                    '/(\s*[^a-z0-9A-Z\-\.\,]\s*)/', 
+                    ' ',
+                    trim(strip_tags((string)$this->_xml->text), "\t\n ")
+                ), 
+                500
+            );
+        }
 
         // no text, no description
         return '...';

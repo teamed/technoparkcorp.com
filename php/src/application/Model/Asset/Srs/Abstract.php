@@ -23,7 +23,7 @@
  *
  * @package Model
  */
-abstract class Model_Asset_Srs_Abstract extends Model_Asset_Abstract 
+abstract class Model_Asset_Srs_Abstract extends Model_Asset_Abstract
 {
     
     /**

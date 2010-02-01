@@ -22,7 +22,8 @@
  *
  * @package helpers
  */
-class Helper_Gallery extends FaZend_View_Helper {
+class Helper_Gallery extends FaZend_View_Helper
+{
 
     /**
      * Icon name
@@ -57,7 +58,8 @@ class Helper_Gallery extends FaZend_View_Helper {
      *
      * @return Helper_Table
      */
-    public function gallery() {
+    public function gallery()
+    {
         return $this;
     }
 
@@ -66,8 +68,8 @@ class Helper_Gallery extends FaZend_View_Helper {
      *
      * @return string HTML
      */
-    public function __toString() {
-
+    public function __toString()
+    {
         $html = '<div class="gallery">';
 
         $icon = $this->getView()->icon($this->_icon);
@@ -104,7 +106,6 @@ class Helper_Gallery extends FaZend_View_Helper {
         $this->getView()->includeCSS('helper/gallery.css');
 
         return $html . '</div>';
-
     }
 
     /**
@@ -113,7 +114,8 @@ class Helper_Gallery extends FaZend_View_Helper {
      * @param Iterator
      * @return Helper_Table
      */
-    public function setSource(Iterator $iterator) {
+    public function setSource(Iterator $iterator)
+    {
         $this->_source = $iterator;
         return $this;
     }
@@ -124,7 +126,8 @@ class Helper_Gallery extends FaZend_View_Helper {
      * @param string Name of icon
      * @return Helper_Table
      */
-    public function setIcon($icon) {
+    public function setIcon($icon)
+    {
         $this->_icon = $icon;
         return $this;
     }
@@ -135,7 +138,8 @@ class Helper_Gallery extends FaZend_View_Helper {
      * @param string Link to use for each element
      * @return Helper_Table
      */
-    public function setLink($link) {
+    public function setLink($link)
+    {
         $this->_link = $link;
 
         if (preg_match('/\{(.*?)\}/', $this->_link, $matches))
@@ -150,7 +154,8 @@ class Helper_Gallery extends FaZend_View_Helper {
      * @param string Name of title property
      * @return Helper_Table
      */
-    public function setTitle($title) {
+    public function setTitle($title)
+    {
         $this->_title = $title;
         return $this;
     }

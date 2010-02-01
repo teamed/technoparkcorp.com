@@ -26,8 +26,37 @@ class Model_Cost extends FaZend_Bo_Money
  *
  * @package application
  */
-class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap 
+class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap
 {
+    
+    /**
+     * Init non-explicit ORM mapping rules
+     *
+     * @return void
+     */
+    protected function _initOrmMapping() 
+    {
+        $converters = array(
+            'dates' => array(
+                'regexs' => array(
+                    '/^payment\.date$/',
+                ),
+                'converter' => 'Zend_Date'
+            ),
+            'costs' => array(
+                'regexs' => array(
+                    '/^payment\.(?:amount|volume|balance)$/',
+                ),
+                'converter' => array('FaZend_Bo_Money', 'convertFromCents')
+            ),
+        );
+        
+        foreach ($converters as $converter) {
+            foreach ($converter['regexs'] as $regex) {
+                FaZend_Db_Table_ActiveRow::addMapping($regex, $converter['converter']);
+            }
+        }
+    }
     
     /**
      * Initialize autoloader for artifacts
@@ -108,9 +137,10 @@ class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap
         $this->bootstrap('Fazend');
         
         // filter out all INFO messages
-        if (APPLICATION_ENV === 'production')
+        if (APPLICATION_ENV === 'production') {
             FaZend_Log::getInstance()->getWriter('ErrorLog')
                 ->addFilter(new Zend_Log_Filter_Priority(Zend_Log::ERR));    
+        }
     }
 
 }
@@ -137,6 +167,9 @@ function plural($str, $var)
     $singular = array('', 'is', 'does', 'has', 'was', 'y', 'es', 'person');
     $plural = array('s', 'are', 'do', 'have', 'were', 'ies', '', 'people');
 
-    return str_replace($src,
-        abs($var) != 1 ? $plural : $singular, $str);
+    return str_replace(
+        $src,
+        abs($var) != 1 ? $plural : $singular, 
+        $str
+    );
 }

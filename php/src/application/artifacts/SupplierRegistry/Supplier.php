@@ -88,8 +88,10 @@ class theSupplier
         if (property_exists($this, $var))
             return $this->$var;
         
-        FaZend_Exception::raise('Supplier_PropertyOrMethodNotFound', 
-            "Can't find what is '$name' in " . get_class($this));
+        FaZend_Exception::raise(
+            'Supplier_PropertyOrMethodNotFound', 
+            "Can't find what is '$name' in " . get_class($this)
+        );
     }
     
     /**

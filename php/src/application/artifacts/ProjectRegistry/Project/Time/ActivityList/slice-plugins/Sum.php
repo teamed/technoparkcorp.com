@@ -25,14 +25,16 @@ require_once 'artifacts/ProjectRegistry/Project/Time/ActivityList/slice-plugins/
  * 
  * @package Slice_Plugin
  */
-class Slice_Plugin_Sum extends Slice_Plugin_Abstract {
+class Slice_Plugin_Sum extends Slice_Plugin_Abstract
+{
 
     /**
      * Summarize them
      *
      * @return FaZend_Bo_Money
      **/
-    public function execute() {
+    public function execute()
+    {
         $sum = new FaZend_Bo_Money();
         foreach ($this as $activity) {
             if ($activity->cost instanceof FaZend_Bo_Money)

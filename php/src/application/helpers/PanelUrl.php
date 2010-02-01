@@ -22,7 +22,7 @@
  *
  * @package helpers
  */
-class Helper_PanelUrl extends FaZend_View_Helper 
+class Helper_PanelUrl extends FaZend_View_Helper
 {
 
     /**
@@ -33,9 +33,14 @@ class Helper_PanelUrl extends FaZend_View_Helper
      */
     public function panelUrl($doc = false) 
     {
-        return $this->getView()->url(array(
+        return $this->getView()->url(
+            array(
                 'doc' => ($doc ? $doc : $this->getView()->doc)
-            ), 'panel', true, false);
+            ), 
+            'panel', 
+            true, 
+            false
+        );
     }
 
 }

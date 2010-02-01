@@ -23,7 +23,7 @@
  *
  * @package Artifacts
  */
-class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive 
+class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
 {
 
     const SEPARATOR = '/';
@@ -45,8 +45,16 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
         // enable this directory for class loading
         self::$_autoloader = Zend_Loader_Autoloader::getInstance();
         self::$_autoloader->registerNamespace('Metric_');
-        set_include_path(get_include_path() . PATH_SEPARATOR . 
-            dirname(__FILE__) . '/metrics-library');
+        
+        set_include_path(
+            implode(
+                PATH_SEPARATOR,
+                array(
+                    get_include_path(),
+                    dirname(__FILE__) . '/metrics-library'
+                )
+            )
+        );
     }
     
     /**

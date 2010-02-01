@@ -25,14 +25,16 @@ require_once 'artifacts/ProjectRegistry/Project/Time/ActivityList/slice-plugins/
  * 
  * @package Slice_Plugin
  */
-class Slice_Plugin_SumUntil extends Slice_Plugin_Abstract {
+class Slice_Plugin_SumUntil extends Slice_Plugin_Abstract
+{
 
     /**
      * Sum them!
      *
      * @return FaZend_Bo_Money
      **/
-    public function execute(theActivity $stop) {
+    public function execute(theActivity $stop)
+    {
         $sum = new FaZend_Bo_Money();
         $found = false;
         foreach ($this as $activity) {
@@ -42,8 +44,12 @@ class Slice_Plugin_SumUntil extends Slice_Plugin_Abstract {
                 break;
             }
         }
-        if (!$found)
-            FaZend_Exception::raise('SumUntil_ActivityNotFound', "Activity {$stop} not found");
+        if (!$found) {
+            FaZend_Exception::raise(
+                'SumUntil_ActivityNotFound', 
+                "Activity {$stop} not found"
+            );
+        }
             
         return $sum;
     }

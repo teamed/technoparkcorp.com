@@ -27,5 +27,4 @@ require_once 'artifacts/ProjectRegistry/Project/Scope/Deliverables/types/Deliver
  */
 class Deliverables_Issue extends Deliverables_Abstract
 {
-        
 }

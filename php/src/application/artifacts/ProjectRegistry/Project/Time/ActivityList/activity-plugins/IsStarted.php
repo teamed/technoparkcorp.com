@@ -25,14 +25,16 @@ require_once 'artifacts/ProjectRegistry/Project/Time/ActivityList/activity-plugi
  * 
  * @package Activity_Plugin
  */
-class Activity_Plugin_IsStarted extends Activity_Plugin_Abstract {
+class Activity_Plugin_IsStarted extends Activity_Plugin_Abstract
+{
 
     /**
      * Execute it
      *
      * @return boolean
      **/
-    public function execute() {
+    public function execute()
+    {
         if (!$this->_activity->isIssueExist())
             return false;
             

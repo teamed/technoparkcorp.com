@@ -82,8 +82,10 @@ class Model_User
     {
         $email = self::_session()->email;
         if (!$email) {
-            FaZend_Exception::raise('FaZend_User_NotLoggedIn', 
-                'User is not logged in');
+            FaZend_Exception::raise(
+                'FaZend_User_NotLoggedIn', 
+                'User is not logged in'
+            );
         }
         return FaZend_Flyweight::factory('Model_User', $email);    
     }

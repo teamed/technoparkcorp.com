@@ -25,6 +25,7 @@ require_once 'artifacts/ProjectRegistry/Project/Scope/Deliverables/types/Deliver
  *
  * @package Artifacts
  */
-class Deliverables_Class_TestCase extends Deliverables_Abstract {
+class Deliverables_Class_TestCase extends Deliverables_Abstract
+{
         
 }

@@ -33,7 +33,8 @@ class Activity_Plugin_IsClosed extends Activity_Plugin_Abstract
      *
      * @return boolean
      **/
-    public function execute() {
+    public function execute()
+    {
         if (!$this->_activity->isIssueExist())
             return false;
             

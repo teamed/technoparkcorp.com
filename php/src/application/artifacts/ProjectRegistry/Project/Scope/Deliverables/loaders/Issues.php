@@ -26,7 +26,7 @@ require_once 'artifacts/ProjectRegistry/Project/Scope/Deliverables/types/Deliver
  *
  * @package Artifacts
  */
-class DeliverablesLoaders_Issues extends DeliverablesLoaders_Abstract 
+class DeliverablesLoaders_Issues extends DeliverablesLoaders_Abstract
 {
     
     /**
@@ -44,11 +44,13 @@ class DeliverablesLoaders_Issues extends DeliverablesLoaders_Abstract
         foreach ($project->issues as $issue) {
             // add it to the list of deliverables
             $issueName = '#' .  $issue->id;
-            $project->deliverables->add(theDeliverables::factory(
-                'issue', 
-                $issueName, 
-                $issue->changelog->get('summary')->getValue()
-            ));
+            $project->deliverables->add(
+                theDeliverables::factory(
+                    'issue', 
+                    $issueName, 
+                    $issue->changelog->get('summary')->getValue()
+                )
+            );
             
             $changes = $issue->changelog->get('comment')->getChanges();
             
@@ -67,13 +69,15 @@ class DeliverablesLoaders_Issues extends DeliverablesLoaders_Abstract
 
             // make bi-directional links between them
             foreach ($mentioned as $name) {
-                $project->traceability->add(new theTraceabilityLink(
-                    $project->deliverables[$issueName],
-                    $project->deliverables[$name],
-                    0.05,
-                    1,
-                    "mentioned in {$issueName}: " . $issue->changelog->get('summary')->getValue()
-                ));
+                $project->traceability->add(
+                    new theTraceabilityLink(
+                        $project->deliverables[$issueName],
+                        $project->deliverables[$name],
+                        0.05,
+                        1,
+                        "mentioned in {$issueName}: " . $issue->changelog->get('summary')->getValue()
+                    )
+                );
             }
         }
         logg('Issues loading finished, %d tickets processed', count($project->issues));

@@ -32,9 +32,8 @@ class DetermineDependencies extends Model_Decision_PM
      * @return string|false
      * @throws FaZend_Validator_Failure If something happens 
      */
-    protected function _make() {
-        
-        
+    protected function _make()
+    {
     }
     
 }

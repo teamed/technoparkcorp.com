@@ -25,7 +25,8 @@ require_once 'artifacts/ProjectRegistry/Project/Time/ActivityList/slice-plugins/
  * 
  * @package Slice_Plugin
  */
-class Slice_Plugin_Simple extends Slice_Plugin_Abstract {
+class Slice_Plugin_Simple extends Slice_Plugin_Abstract
+{
 
     /**
      * WP code
@@ -39,7 +40,8 @@ class Slice_Plugin_Simple extends Slice_Plugin_Abstract {
      *
      * @return void
      **/
-    public function setWp(theWorkPackage $wp) {
+    public function setWp(theWorkPackage $wp)
+    {
         $this->_wp = $wp;
         return $this;
     }
@@ -50,7 +52,8 @@ class Slice_Plugin_Simple extends Slice_Plugin_Abstract {
      * @param theActivity Activity to delete
      * @return void
      **/
-    public final function delete(theActivity $toKill) {
+    public final function delete(theActivity $toKill)
+    {
         $this->_activities->delete($toKill);
     }
     
@@ -60,7 +63,8 @@ class Slice_Plugin_Simple extends Slice_Plugin_Abstract {
      * @param string Code of new activity
      * @return theActivity
      **/
-    public final function add($code) {
+    public final function add($code)
+    {
         if (!isset($this->_wp))
             FaZend_Exception::raise('SimplePluginInvalidInitialization');
             
@@ -75,7 +79,8 @@ class Slice_Plugin_Simple extends Slice_Plugin_Abstract {
      * @param string Code of new milestone
      * @return theMilestone
      **/
-    public final function addMilestone($code) {
+    public final function addMilestone($code)
+    {
         if (!isset($this->_wp))
             FaZend_Exception::raise('SimplePluginInvalidInitialization');
             
@@ -90,7 +95,8 @@ class Slice_Plugin_Simple extends Slice_Plugin_Abstract {
      * @param theActivity Activity to check
      * @return boolean
      **/
-    protected function _isInside(theActivity $activity) {
+    protected function _isInside(theActivity $activity)
+    {
         if (!isset($this->_wp))
             return true;
         return $activity->belongsTo($this->_wp);

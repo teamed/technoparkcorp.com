@@ -22,7 +22,8 @@
  *
  * @package helpers
  */
-class Helper_Segments extends FaZend_View_Helper {
+class Helper_Segments extends FaZend_View_Helper
+{
 
     /**
      * Returns segments of document name
@@ -32,8 +33,8 @@ class Helper_Segments extends FaZend_View_Helper {
      * @param string Separator
      * @return string
      */
-    public function segments($start, $end = null, $separator = '/') {
-
+    public function segments($start, $end = null, $separator = '/')
+    {
         $exp = explode('/', $this->getView()->doc);
 
         if (!$end)
@@ -43,7 +44,6 @@ class Helper_Segments extends FaZend_View_Helper {
         $exp = array_slice($exp, $start, $end);
 
         return implode($separator, $exp);
-
     }
 
 }

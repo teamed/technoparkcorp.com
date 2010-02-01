@@ -24,7 +24,8 @@
  *
  * @package Controllers
  */
-class Model_Pages_Encoder {
+class Model_Pages_Encoder
+{
 
     const SALT = 'x8='; // just a secure suffix
 
@@ -34,7 +35,8 @@ class Model_Pages_Encoder {
      * @param string Value to encode
      * @return string
      */
-    public static function encode($text) {
+    public static function encode($text)
+    {
         return wordwrap(trim(base64_encode($text . self::SALT), '='), 8, '-', true);
     }
 
@@ -44,12 +46,17 @@ class Model_Pages_Encoder {
      * @param string Value to decode
      * @return string
      */
-    public static function decode($text) {
+    public static function decode($text)
+    {
         $text = base64_decode(str_replace('-', '', $text));
         
         // security check
-        if (substr($text, strlen($text) - strlen(self::SALT)) != self::SALT)
-            FaZend_Exception::raise('Model_Pages_Encoder_InvalidSalt', "Wrong security salt in '{$text}'");
+        if (substr($text, strlen($text) - strlen(self::SALT)) != self::SALT) {
+            FaZend_Exception::raise(
+                'Model_Pages_Encoder_InvalidSalt', 
+                "Wrong security salt in '{$text}'"
+            );
+        }
             
         return substr($text, 0, -strlen(self::SALT));
     }

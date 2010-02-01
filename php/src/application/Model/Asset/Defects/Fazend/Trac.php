@@ -23,7 +23,7 @@
  *
  * @package Model
  */
-class Model_Asset_Defects_Fazend_Trac extends Model_Asset_Defects_Abstract 
+class Model_Asset_Defects_Fazend_Trac extends Model_Asset_Defects_Abstract
 {
     
     const QUERY_ALL = 'order=id';

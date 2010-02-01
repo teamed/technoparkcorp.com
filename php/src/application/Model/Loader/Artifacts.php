@@ -23,7 +23,8 @@
  *
  * @see http://framework.zend.com/manual/en/zend.loader.autoloader.html
  */
-class Model_Loader_Artifacts implements Zend_Loader_Autoloader_Interface {
+class Model_Loader_Artifacts implements Zend_Loader_Autoloader_Interface
+{
 
     /**
      * Mapping array
@@ -41,18 +42,26 @@ class Model_Loader_Artifacts implements Zend_Loader_Autoloader_Interface {
      * @return Model_Artifact
      * @throws Model_Loader_Artifacts_NotFound
      */
-    public function autoload($class) {
+    public function autoload($class)
+    {
         if (class_exists($class, false))
             return;
 
-        if (substr($class, 0, 3) !== 'the')
-            FaZend_Exception::raise('Model_Loader_Artifacts_InvalidName', "Class $class has invalid name for this loader");
+        if (substr($class, 0, 3) !== 'the') {
+            FaZend_Exception::raise(
+                'Model_Loader_Artifacts_InvalidName', 
+                "Class $class has invalid name for this loader"
+            );
+        }
 
-        if (!$this->_exists($class))
-            FaZend_Exception::raise('Model_Loader_Artifacts_NotFound', "Class $class not found");
+        if (!$this->_exists($class)) {
+            FaZend_Exception::raise(
+                'Model_Loader_Artifacts_NotFound', 
+                "Class $class not found"
+            );
+        }
 
         require_once($this->_classFile($class));
-
     }
 
     /**
@@ -61,7 +70,8 @@ class Model_Loader_Artifacts implements Zend_Loader_Autoloader_Interface {
      * @param string Class name
      * @return array
      */
-    protected function _getMapping($class = null) {
+    protected function _getMapping($class = null)
+    {
         if (!isset($this->_mapping)) {
             $this->_mapping = $this->_grab(APPLICATION_PATH . '/artifacts');
         }
@@ -78,7 +88,8 @@ class Model_Loader_Artifacts implements Zend_Loader_Autoloader_Interface {
      * @param string Name of the class
      * @return array
      */
-    protected function _exists($class) {
+    protected function _exists($class)
+    {
         return array_key_exists($class, $this->_getMapping());
     }
 
@@ -88,7 +99,8 @@ class Model_Loader_Artifacts implements Zend_Loader_Autoloader_Interface {
      * @param string Class name
      * @return array
      */
-    protected function _classFile($class) {
+    protected function _classFile($class)
+    {
         return $this->_getMapping($class);
     }
 
@@ -98,7 +110,8 @@ class Model_Loader_Artifacts implements Zend_Loader_Autoloader_Interface {
      * @param string Path
      * @return array
      */
-    protected function _grab($path) {
+    protected function _grab($path)
+    {
         $files = array();
         foreach (glob($path . '/*') as $file) {
             if (is_dir($file))

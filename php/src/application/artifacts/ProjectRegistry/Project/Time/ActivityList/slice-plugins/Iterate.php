@@ -25,14 +25,16 @@ require_once 'artifacts/ProjectRegistry/Project/Time/ActivityList/slice-plugins/
  * 
  * @package Slice_Plugin
  */
-class Slice_Plugin_Iterate extends Slice_Plugin_Abstract {
+class Slice_Plugin_Iterate extends Slice_Plugin_Abstract
+{
 
     /**
      * Iterate
      *
      * @return mixed
      **/
-    public function execute($style, array $options = array()) {
+    public function execute($style, array $options = array())
+    {
         validate()->true(count($this) == 1, 
             "You can iterate only when you have ONE activity in slice, now there are " . count($this));
         

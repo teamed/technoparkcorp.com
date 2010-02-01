@@ -153,10 +153,15 @@ class PanelController extends FaZend_Controller_Action
         }
 
         // access control
-        if (!in_array(Model_User::getCurrentUser()->email, $shortcut->getEmails()))
-            return $this->_restrict(_t('Sorry, this document "%s" is not shared with you, but only with %s',
-                $shortcut->document,
-                implode(', ', $shortcut->getEmails())));
+        if (!in_array(Model_User::getCurrentUser()->email, $shortcut->getEmails())) {
+            return $this->_restrict(
+                _t(
+                    'Sorry, this document "%s" is not shared with you, but only with %s',
+                    $shortcut->document,
+                    implode(', ', $shortcut->getEmails())
+                )
+            );
+        }
         
         // build document and show it
         $this->_buildDocument($shortcut->document, $shortcuts->getParams());
@@ -171,7 +176,7 @@ class PanelController extends FaZend_Controller_Action
      **/
     protected function _buildDocument($doc, array $params = array()) 
     {
-        $this->view->headTitle($doc . ' -- ' );
+        $this->view->headTitle($doc . ' -- ');
 
         try {
             $this->view->document = $this->_pages->buildDocumentHtml($doc, $params);
@@ -187,8 +192,12 @@ class PanelController extends FaZend_Controller_Action
      **/
     protected function _restrict($message) 
     {
-        return $this->_forward('restrict', null, null, 
-            array('msg'=>$message));
+        return $this->_forward(
+            'restrict', 
+            null, 
+            null, 
+            array('msg'=>$message)
+        );
     }
 
 }

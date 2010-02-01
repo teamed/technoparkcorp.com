@@ -25,7 +25,7 @@ require_once 'artifacts/ProjectRegistry/Project/Scope/Deliverables/loaders/Abstr
  *
  * @package Artifacts
  */
-class DeliverablesLoaders_Srs extends DeliverablesLoaders_Abstract 
+class DeliverablesLoaders_Srs extends DeliverablesLoaders_Abstract
 {
     
     /**
