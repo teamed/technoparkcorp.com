@@ -64,7 +64,7 @@ class thePayment extends FaZend_Db_Table_ActiveRow_payment
      **/
     public static function retrieveByStatement(theStatement $statement) 
     {
-        return thePayment::retrieve()
+        return self::retrieve()
             ->where('supplier = ?', $statement->supplier)
             ->order('created')
             ->setRowClass('thePayment')
@@ -78,7 +78,7 @@ class thePayment extends FaZend_Db_Table_ActiveRow_payment
      **/
     public static function getVolume() 
     {
-        return thePayment::retrieve()
+        return self::retrieve()
             ->columns(array('volume'=>new Zend_Db_Expr('SUM(IF(amount>0,amount,0))')))
             ->fetchRow()
             ->volume;
@@ -91,7 +91,7 @@ class thePayment extends FaZend_Db_Table_ActiveRow_payment
      **/
     public static function getBalance() 
     {
-        return thePayment::retrieve()
+        return self::retrieve()
             ->columns(array('balance'=>new Zend_Db_Expr('SUM(amount)')))
             ->fetchRow()
             ->balance;
@@ -105,7 +105,7 @@ class thePayment extends FaZend_Db_Table_ActiveRow_payment
      **/
     public static function getStatementVolume(theStatement $statement) 
     {
-        return thePayment::retrieve()
+        return self::retrieve()
             ->columns(array('volume'=>new Zend_Db_Expr('SUM(IF(amount>0,amount,0))')))
             ->where('supplier = ?', $statement->supplier)
             ->group('supplier')
@@ -121,7 +121,7 @@ class thePayment extends FaZend_Db_Table_ActiveRow_payment
      **/
     public static function getStatementBalance(theStatement $statement) 
     {
-        return thePayment::retrieve()
+        return self::retrieve()
             ->columns(array('balance'=>new Zend_Db_Expr('SUM(amount)')))
             ->where('supplier = ?', $statement->supplier)
             ->group('supplier')
@@ -138,7 +138,7 @@ class thePayment extends FaZend_Db_Table_ActiveRow_payment
      **/
     public static function getPaidInProjectToStakeholder(theStakeholder $stakeholder, theProject $project) 
     {
-        $row = thePayment::retrieve()
+        $row = self::retrieve()
             ->columns(array('volume'=>new Zend_Db_Expr('SUM(amount)')))
             ->where('supplier = ?', $stakeholder->email)
             ->where('context = ?', $project->name)
@@ -147,7 +147,7 @@ class thePayment extends FaZend_Db_Table_ActiveRow_payment
             ->fetchRow();
             
         if (!$row)
-            return FaZend_Bo_Money::factory(0);
+            return new FaZend_Bo_Money(0);
             
         return $row->volume;
     }
