@@ -45,6 +45,7 @@ class Model_Pages_Encoder
      *
      * @param string Value to decode
      * @return string
+     * @throws Model_Pages_Encoder_InvalidSalt
      */
     public static function decode($text)
     {

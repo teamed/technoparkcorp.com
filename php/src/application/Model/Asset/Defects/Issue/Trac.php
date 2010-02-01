@@ -213,10 +213,15 @@ class Model_Asset_Defects_Issue_Trac extends Model_Asset_Defects_Issue_Abstract
     {
         switch ($name) {
             case 'code':
-                if ($value)
-                    $value = Model_Pages_Encoder::decode($value);
-                else 
+                if ($value) {
+                    try {
+                        $value = Model_Pages_Encoder::decode($value);
+                    } catch (Model_Pages_Encoder_InvalidSalt $e) {
+                        $name = null;
+                    }
+                } else {
                     $name = null;
+                }
                 break;
             
             // we ignore them
