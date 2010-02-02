@@ -159,6 +159,11 @@ abstract class Metric_Abstract
             case 'name':
                 return $this->_name;
                 
+            case 'suffix':
+                if (strpos($this->_name, '/') === false)
+                    return $this->_name;
+                return substr($this->_name, strrpos($this->_name, '/') + 1);
+                    
             case 'id':
                 return Model_Pages_Encoder::encode($this->_name);
 
