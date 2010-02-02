@@ -195,6 +195,7 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
      * @param string Name of the metric, like 'requirements/total'
      * @param null|Metric_Abstract Metric class, if we already instantiated it
      * @return boolean Attached or not?
+     * @throws MetricLoadingFailure
      **/
     protected function _attachMetric($name, Metric_Abstract $metric = null) 
     {
@@ -213,8 +214,9 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
             }
 
             // no such class?
-            if (!@self::$_autoloader->autoload($className, false))
+            if (!@self::$_autoloader->autoload($className, false)) {
                 return false;
+            }
             $metric = new $className;
         }
 
@@ -231,7 +233,11 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
                 "Metric [{$name}] failed to reload, won't be attached; " .
                 get_class($e) . ': ' . $e->getMessage()
             );
-            return false;
+
+            FaZend_Exception::raise(
+                'MetricLoadingFailure',
+                "Metric $name loading failed, ". get_class($e) . ": {$e->getMessage()}"
+            );
         }
         logg("Metric [$name] reloaded: {$metric->value}");
         return true;

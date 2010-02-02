@@ -33,6 +33,11 @@ class Metric_Artifacts_Requirements_UseCases_Total extends Metric_Abstract
      **/
     public function reload()
     {
+        // we can't calculate metrics here if deliverables are not loaded
+        if (!$this->_project->deliverables->isLoaded()) {
+            $this->_project->deliverables->reload();
+        }
+            
         $this->_value = count($this->_project->deliverables->useCases);
         $this->_default = round(
             $this->_project->metrics['artifacts/requirements/functional/total/level/first']->target / 10

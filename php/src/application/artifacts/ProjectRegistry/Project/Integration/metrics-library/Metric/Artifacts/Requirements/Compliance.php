@@ -53,7 +53,7 @@ class Metric_Artifacts_Requirements_Compliance extends Metric_Abstract
             'interfaces' => 1,
             'functional' => 4,
             'qos' => 3,
-            );
+        );
             
         $compliance = array();
         $this->_value = 0;

@@ -66,6 +66,11 @@ class Metric_Artifacts_Requirements_Functional_Total extends Metric_Abstract
      **/
     public function reload()
     {
+        // we can't calculate metrics here if deliverables are not loaded
+        if (!$this->_project->deliverables->isLoaded()) {
+            $this->_project->deliverables->reload();
+        }
+            
         if ($this->_getOption('level') !== null) {
             $max = max(array_keys($this->_pricePerRequirement));
             validate()
@@ -84,10 +89,6 @@ class Metric_Artifacts_Requirements_Functional_Total extends Metric_Abstract
         
         $this->_value = count($this->_project->deliverables->functional);
         $this->_default = 300;
-
-        // make sure all levels are loaded
-        foreach (array_keys($this->_levelCode) as $level)
-            $this->_pingPattern('level/' . $level);
     }
         
     /**

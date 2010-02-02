@@ -18,6 +18,20 @@
 
 <h1>Project Metrics (full list)</h1>
 
+<?=$this->forma()
+    ->addAttrib('class', 'inline')
+    ->addBehavior('flash', "Metric '%s' reloaded", '{name}')
+    ->addBehavior('redirect')
+    ->addField('text', 'name')
+        ->fieldLabel('Metric')
+        ->fieldAttrib('size', 50)
+        ->fieldRequired(true)
+    ->addField('submit', 'submit')
+        ->fieldValue('Ping')
+        ->fieldAttrib('class', 'btn')
+        ->fieldAction($this->project->metrics, 'offsetGet')
+    ?>
+
 <?=$this->table()
     ->setSource($this->project->metrics)
     ->addColumn('__key', 'Name')

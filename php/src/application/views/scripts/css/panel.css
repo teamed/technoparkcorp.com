@@ -290,6 +290,15 @@ div.wrapper {
                 background-color: <?=Model_Colors::WHITE?>;
             }
 
+    /* forms that should render all inputs in one line */
+    div.wrapper form.inline {
+    }
+
+        div.wrapper form.inline dd,
+        div.wrapper form.inline label {
+            display: inline !important;
+        }
+
 /* page finisher */
 div.btm {
     margin-top: 40px; 

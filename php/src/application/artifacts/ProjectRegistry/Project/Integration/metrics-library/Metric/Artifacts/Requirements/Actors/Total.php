@@ -35,6 +35,11 @@ class Metric_Artifacts_Requirements_Actors_Total extends Metric_Abstract
      **/
     public function reload()
     {
+        // we can't calculate metrics here if deliverables are not loaded
+        if (!$this->_project->deliverables->isLoaded()) {
+            $this->_project->deliverables->reload();
+        }
+            
         $this->_value = count($this->_project->deliverables->actors);
     }
         
