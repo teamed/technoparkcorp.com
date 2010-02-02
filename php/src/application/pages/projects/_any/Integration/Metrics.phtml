@@ -14,6 +14,8 @@
  *
 -->
  
+<? $this->includeCSS('pages/projects/_any/Integration/Metrics/tree.css') ?>
+
 <?=$this->publish($this->project->metrics)?>
 
 <h1>Project Metrics (full list)</h1>
@@ -32,14 +34,14 @@
         ->fieldAction($this->project->metrics, 'offsetGet')
     ?>
 
-<?=$this->table()
-    ->setSource($this->project->metrics)
-    ->addColumn('__key', 'Name')
-    ->addColumn('default', 'Default')
-    ->addColumn('value', 'Value')
-    ->addColumn('target', 'Target')
-    ->addColumn('delta', 'Delta')
-    
-    ->addOption('target', 'set/{id}')
+<?=$this->tree()
+    ->setCollection($this->project->metrics, 'name', '/')
+    ->addAttrib('class', 'tree')
+    ->setMask('%s: <b>%s</b>/%s/%s/%s')
+    ->addToken('->name')
+    ->addToken('->value')
+    ->addToken('->default')
+    ->addToken('->target')
+    ->addToken('->delta')
     ?>
 
