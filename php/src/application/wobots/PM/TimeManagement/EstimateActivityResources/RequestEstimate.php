@@ -37,6 +37,10 @@ class RequestEstimate extends Model_Decision_PM
         // validate()
             // ->false($this->_project->objectives->ps()->isApproved(), 'Objectives are not approved yet');
 
+        if (!$this->_project->schedule->isLoaded()) {
+            $this->_project->schedule->reload();
+        }
+        
         $cnt = 0;
         foreach ($this->_project->schedule->activities as $activity) {
             // the activity is too far in the future, there is 
