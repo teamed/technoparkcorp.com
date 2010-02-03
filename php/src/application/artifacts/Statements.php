@@ -56,23 +56,23 @@ class theStatements implements ArrayAccess, Iterator, Countable, Model_Artifact_
     }
 
     /**
-     * Calculate balance
+     * Calculate balance of all statements
      *
      * @return FaZend_Bo_Money
      **/
     protected function _getBalance() 
     {
-        return thePayment::getBalance($this);
+        return thePayment::getBalance();
     }
     
     /**
-     * Calculate total volume
+     * Calculate total volume of all statements together
      *
      * @return FaZend_Bo_Money
      **/
     protected function _getVolume() 
     {
-        return thePayment::getVolume($this);
+        return thePayment::getVolume();
     }
     
     /**

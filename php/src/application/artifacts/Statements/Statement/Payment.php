@@ -37,7 +37,14 @@ class thePayment extends FaZend_Db_Table_ActiveRow_payment
      * @param string Details of the payment
      * @return FaZend_Db_Table_ActiveRow_payment
      **/
-    public static function create($supplier, $rate, $original, $context, $reason, $details) 
+    public static function create(
+        $supplier, 
+        FaZend_Bo_Money $rate, 
+        FaZend_Bo_Money $original, 
+        $context, 
+        $reason, 
+        $details
+    ) 
     {
         validate()
             ->emailAddress($supplier, array());
@@ -49,8 +56,7 @@ class thePayment extends FaZend_Db_Table_ActiveRow_payment
         $payment->details = $details;
         $payment->rate = $rate;
         $payment->original = $original;
-        
-        $payment->amount = (integer)FaZend_Bo_Money::factory($original)->cents;
+        $payment->amount = $original->cents;
         
         $payment->save();
         return $payment;
@@ -138,18 +144,13 @@ class thePayment extends FaZend_Db_Table_ActiveRow_payment
      **/
     public static function getPaidInProjectToStakeholder(theStakeholder $stakeholder, theProject $project) 
     {
-        $row = self::retrieve()
+        return self::retrieve()
             ->columns(array('volume'=>new Zend_Db_Expr('SUM(amount)')))
             ->where('supplier = ?', $stakeholder->email)
             ->where('context = ?', $project->name)
             ->group('supplier')
-            ->setSilenceIfEmpty()
-            ->fetchRow();
-            
-        if (!$row)
-            return new FaZend_Bo_Money(0);
-            
-        return $row->volume;
+            ->fetchRow()
+            ->volume;
     }
     
     /**

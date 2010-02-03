@@ -23,6 +23,7 @@
         ->fieldRequired()
         ->fieldAttrib('maxlength', 10)
         ->fieldAttrib('size', 10)
+        ->fieldConverter('FaZend_Bo_Money')
         
     ->addField('textarea', 'details')
         ->fieldLabel('Details of payment')
@@ -46,6 +47,7 @@
         ->fieldRequired(false)
         ->fieldLabel('Rate per hour')
         ->fieldAttrib('size', 15)
+        ->fieldConverter('FaZend_Bo_Money')
 
     ->addField('submit')
         ->fieldAttrib('class', 'btn')

@@ -7,8 +7,8 @@ class Mocks_thePayment
     {
         return thePayment::create(
             $supplier, // supplier
-            '12 USD', // rate per hour
-            $original, // original
+            new FaZend_Bo_Money('12 USD'), // rate per hour
+            new FaZend_Bo_Money($original), // original
             'test', // context
             'test.' . time() . '.' . (microtime(true) * 1000), // reason, should be new every time
             'created by ' . get_class()
