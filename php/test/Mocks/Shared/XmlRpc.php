@@ -88,7 +88,14 @@ class Mocks_Shared_XmlRpc
                 break;
 
             // one ticket by CODE
-            case preg_match('/^code=\'([\w\d\-]+)\'/', $query, $matches):
+            case preg_match('/^code=\'([\w\d\-]+)\'/', $query):
+                $list = array(
+                    Mocks_Shared_Trac_Ticket::get(false, array()),
+                );
+                break;
+
+            // one ticket by any other param
+            case preg_match('/^(?:reporter|owner|status|severity|milestone)=\'(.*?)\'/', $query):
                 $list = array(
                     Mocks_Shared_Trac_Ticket::get(false, array()),
                 );

@@ -33,6 +33,10 @@ class Injector extends FaZend_Test_Injector
         
         // make sure we are getting just small number of test tickets
         Model_Asset_Defects_Fazend_Trac::setTicketsPerPage(3);
+
+        // instruct them to logg all events
+        Shared_Trac::setVerbose(true);
+        Shared_Wiki::setVerbose(true);
     }
         
     protected function _injectMiscellaneous() 

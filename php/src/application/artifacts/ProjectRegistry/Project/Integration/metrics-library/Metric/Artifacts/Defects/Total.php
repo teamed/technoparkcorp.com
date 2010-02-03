@@ -33,18 +33,19 @@ class Metric_Artifacts_Defects_Total extends Metric_Abstract
      * @see Metric_Abstract::$_patterns
      */
     protected $_patterns = array(
-        '/byReporter\/(.*?)/' => 'byReporter',
-        '/byComponent\/(.*?)/' => 'byComponent',
-        '/byOwner\/(.*?)/' => 'byOwner',
-        '/bySeverity\/(.*?)/' => 'bySeverity',
-        '/byMilestone\/(.*?)/' => 'byMilestone',
-        '/byStatus\/(.*?)/' => 'byStatus',
+        '/^byReporter\/(.*?)$/' => 'byReporter',
+        '/^byComponent\/(.*?)$/' => 'byComponent',
+        '/^byOwner\/(.*?)$/' => 'byOwner',
+        '/^bySeverity\/(.*?)$/' => 'bySeverity',
+        '/^byMilestone\/(.*?)$/' => 'byMilestone',
+        '/^byStatus\/(.*?)$/' => 'byStatus',
         );
 
     /**
      * Load this metric
      *
      * @return void
+     * @throws Metric_Artifact_Defects_Total_InvalidClass
      **/
     public function reload()
     {
@@ -57,7 +58,7 @@ class Metric_Artifacts_Defects_Total extends Metric_Abstract
             if (!method_exists($this, $method)) {
                 FaZend_Exception::raise(
                     'Metric_Artifact_Defects_Total_InvalidClass',
-                    "Method '$method' is not implemented, why?"
+                    "Method '$method' is not implemented"
                 );
             }
                     

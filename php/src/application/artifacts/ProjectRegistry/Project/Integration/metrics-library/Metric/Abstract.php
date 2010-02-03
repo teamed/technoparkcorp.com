@@ -68,8 +68,9 @@ abstract class Metric_Abstract
      * Set of options
      *
      * @var array
+     * @see cloneByPattern()
      */
-    private $_options;
+    protected $_options;
     
     /**
      * List of patterns
@@ -248,6 +249,7 @@ abstract class Metric_Abstract
      *
      * @param string Regex pattern
      * @return Metric_Abstract
+     * @throws MetricPatternMismatch
      **/
     public final function cloneByPattern($pattern)
     {

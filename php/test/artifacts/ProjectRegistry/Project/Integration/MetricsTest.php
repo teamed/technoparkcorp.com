@@ -12,13 +12,13 @@ class MetricsTest extends AbstractProjectTest
         // explicitly reload them
         $this->_project->metrics->reload();
     }
-
+    
     public function testMetricsAreAccessibleInStorage() 
     {
         $defects = $this->_project->metrics['artifacts/defects/total']->value;
         logg($defects . ' defects found');
     }
-
+    
     public function testFullRetrievalOfMetricsWork()
     {
         $list = $this->_project->metrics;
@@ -26,6 +26,32 @@ class MetricsTest extends AbstractProjectTest
         
         foreach ($list as $name=>$metric)
             logg("Metric [$name]: {$metric->value}, {$metric->default}, {$metric->target}, {$metric->delta}");
+    }
+    
+    public static function providerMetricNames()
+    {
+        $project = Mocks_theProject::get();
+        return array(
+            array('artifacts/requirements/functional/total/level/third'),
+            array('artifacts/defects/total/byOwner/' . $project->staffAssignments->PM->random()),
+            array('artifacts/defects/total/byReporter/' . $project->staffAssignments->PM->random()),
+        );
+    }
+    
+    /**
+     * @dataProvider providerMetricNames
+     */
+    public function testReloadIndividualMetric($name)
+    {
+        $metric = $this->_project->metrics[$name];
+        $metric->reload();
+        $value = $metric->value;
+        $this->assertTrue(!is_null($value));
+        logg(
+            '[%s] works: %s',
+            $name, 
+            $value
+        );
     }
 
 }

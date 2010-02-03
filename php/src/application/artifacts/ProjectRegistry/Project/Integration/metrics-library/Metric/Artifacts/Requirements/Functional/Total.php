@@ -35,7 +35,7 @@ class Metric_Artifacts_Requirements_Functional_Total extends Metric_Abstract
     protected $_patterns = array(
         '/level\/(\w+)/' => 'level',
         '/level\/(\w+)\/(\w+)/' => 'level, status',
-        );
+    );
 
     /**
      * Level code
@@ -45,7 +45,7 @@ class Metric_Artifacts_Requirements_Functional_Total extends Metric_Abstract
         'second' => 1,
         'third' => 2,
         'forth' => 3,
-        );
+    );
 
     /**
      * Price per each requirement on some level
@@ -57,7 +57,7 @@ class Metric_Artifacts_Requirements_Functional_Total extends Metric_Abstract
         'second' => '10 USD',
         'third' => '4 USD',
         'forth' => '2 USD'
-        );
+    );
 
     /**
      * Load this metric

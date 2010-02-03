@@ -47,9 +47,9 @@ class theStaffAssignments implements ArrayAccess, Countable, Iterator, Model_Art
      * Dispatcher
      *
      * You can call $staffAssignments->PM and you will get a list of project
-     * managers (if many) or just one PM (if he/she is alone)
+     * managers, in a role. Later you can get a random one by ->random()
      *
-     * @return theProjectRole|theStakeholder One stakeholder or one role
+     * @return theProjectRole The role
      * @throws Exception If the role is not found
      **/
     public function __get($name) 
@@ -60,10 +60,6 @@ class theStaffAssignments implements ArrayAccess, Countable, Iterator, Model_Art
         validate()->true(count($list) > 0, 
             "Role '{$name}' is not found in project '{$this->_project()->name}'");
                 
-        // if just one email - return it as string
-        if (count($list) == 1)
-            return FaZend_Flyweight::factory('theStakeholder', $this, array_pop($list));
-            
         return $this->createRole($name);
     }
 
@@ -229,6 +225,7 @@ class theStaffAssignments implements ArrayAccess, Countable, Iterator, Model_Art
      * ArrayAccess method
      *
      * @return void
+     * @throws StaffAssignmentsAreStatic
      **/
     public function offsetSet($name, $value) 
     {
@@ -242,6 +239,7 @@ class theStaffAssignments implements ArrayAccess, Countable, Iterator, Model_Art
      * ArrayAccess method
      *
      * @return void
+     * @throws StaffAssignmentsAreStatic
      **/
     public function offsetUnset($name) 
     {

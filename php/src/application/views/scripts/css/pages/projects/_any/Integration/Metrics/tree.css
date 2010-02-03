@@ -27,11 +27,15 @@ div.tree {
     }
         
     div.tree span {
-        font-weight: bold;
         cursor: pointer;
         display: block;
+        color: <?=Model_Colors::BLUE?>;
     }
 
+        div.tree span:hover {
+            color: <?=Model_Colors::BLUE?>;
+        }
+        
     div.tree div {
     }
 
