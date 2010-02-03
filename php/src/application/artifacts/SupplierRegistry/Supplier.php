@@ -77,6 +77,7 @@ class theSupplier
      *
      * @param string Name of property to get
      * @return mixed
+     * @throws Supplier_PropertyOrMethodNotFound
      **/
     public function __get($name) 
     {

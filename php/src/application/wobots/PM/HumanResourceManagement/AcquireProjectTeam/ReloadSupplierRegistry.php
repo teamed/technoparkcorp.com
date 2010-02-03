@@ -39,15 +39,25 @@ class ReloadSupplierRegistry extends Model_Decision_PM
     {
         $supplierRegistry = Model_Artifact::root()->supplierRegistry;
         
-        logg('There are ' . count($supplierRegistry) . ' suppliers in the registry now');
+        logg('There are %d suppliers in the registry now', count($supplierRegistry));
         
         // reload it
         $supplierRegistry->reload();
         
-        foreach ($supplierRegistry as $supplier)
-            logg("Supplier {$supplier->email} found: {$supplier->rate}");
+        foreach ($supplierRegistry as $supplier) {
+            logg(
+                'Supplier %s found; rate: %s; roles: %s; skills: %s',
+                $supplier->email,
+                $supplier->rate,
+                implode(', ', $supplier->roles),
+                implode(', ', $supplier->skills)
+            );
+        }
         
-        logg('There are ' . count($supplierRegistry) . ' suppliers in the registry, after reloading');
+        logg(
+            'There are %d suppliers in the registry, after reloading',
+            count($supplierRegistry)
+        );
 
         return 'Registry reloaded, now it has ' . count($supplierRegistry) . ' suppliers';
     }
