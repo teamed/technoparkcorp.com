@@ -221,6 +221,7 @@ class Helper_Tree extends FaZend_View_Helper
                 continue;
             }
             
+            // it's an item
             $values = array();
             foreach ($this->_tokens as $token) {
                 eval("\$value = \$item{$token};");
