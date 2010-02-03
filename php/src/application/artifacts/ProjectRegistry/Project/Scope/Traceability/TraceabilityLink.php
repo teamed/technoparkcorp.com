@@ -134,6 +134,42 @@ class theTraceabilityLink
     }
     
     /**
+     * This is link is TO this given deliverable?
+     *
+     * @param Deliverables_Abstract|Deliverables_Abstract[]
+     * @return boolean
+     */
+    public function isFrom($deliverables) 
+    {
+        if (!is_array($deliverables))
+            $deliverables = array($deliverables);
+        foreach ($deliverables as $d) {
+            if (($d->name == $this->fromName) && ($d->type == $this->fromType)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    /**
+     * This is link is TO this given deliverable?
+     *
+     * @param Deliverables_Abstract|Deliverables_Abstract[]
+     * @return boolean
+     */
+    public function isTo($deliverables) 
+    {
+        if (!is_array($deliverables))
+            $deliverables = array($deliverables);
+        foreach ($deliverables as $d) {
+            if (($d->name == $this->toName) && ($d->type == $this->toType)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    /**
      * Get type of FROM
      *
      * @return string

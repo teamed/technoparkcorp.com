@@ -35,6 +35,8 @@ class MetricsTest extends AbstractProjectTest
             array('artifacts/requirements/functional/total/level/third'),
             array('artifacts/defects/total/byOwner/' . $project->staffAssignments->PM->random()),
             array('artifacts/defects/total/byReporter/' . $project->staffAssignments->PM->random()),
+            array('aspects/coverage/classes/issues'),
+            array('aspects/coverage/functional/classes'),
         );
     }
     

@@ -153,6 +153,8 @@ abstract class Metric_Abstract
      *
      * @param string Name of the property
      * @return numeric
+     * @throws Metrics_ReloadingExceptions
+     * @throws Metrics_AccessException
      **/
     public final function __get($name)
     {
@@ -171,7 +173,7 @@ abstract class Metric_Abstract
             case 'value':
                 if (!$this->isLoaded()) {
                     FaZend_Exception::raise(
-                        'MetricReloadingException', 
+                        'Metrics_ReloadingException', 
                         'Metric ' . get_class($this) . 
                         '[' . $this->name . '] is not reloaded by reload(), why?'
                     );
@@ -201,7 +203,7 @@ abstract class Metric_Abstract
         }
         
         FaZend_Exception::raise(
-            'MetricAccessException', 
+            'Metrics_AccessException', 
             'You can GET only declared properties of a metric (' . get_class($this) . '::' . $name . ')'
         );
     }

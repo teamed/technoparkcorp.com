@@ -89,7 +89,8 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
      * Getter dispatcher
      *
      * @param string Name of property to get
-     * @return string
+     * @return string|array
+     * @throws Deliverables_PropertyOrMethodNotFoundException
      **/
     public function __get($name)
     {
@@ -129,7 +130,7 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
             
             default:
                 FaZend_Exception::raise(
-                    'Deliverables_PropertyOrMethodNotFound', 
+                    'Deliverables_PropertyOrMethodNotFoundException', 
                     "Can't find what is '$name' in " . get_class($this)
                 );        
         }

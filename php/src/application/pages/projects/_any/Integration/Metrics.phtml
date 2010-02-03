@@ -45,3 +45,18 @@
     ->addToken('->delta')
     ?>
 
+<? $this->headScript()->appendScript('
+    $(document).ready(
+        function()
+        {
+            $("div.tree span").bind(
+                "click", 
+                function()
+                {
+                    $("input#name").val($(this).html());
+                }
+            );
+        } 
+    );
+') ?>
+

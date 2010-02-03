@@ -46,7 +46,7 @@ class theTraceability extends Model_Artifact_Bag
     public function add(theTraceabilityLink $link)
     {
         $this[] = $link;
-        logg("Traceability link added: $link");
+        logg("Traceability link added: {$link}");
         return $this;
     }
     
@@ -60,6 +60,19 @@ class theTraceability extends Model_Artifact_Bag
         $types = array();
         foreach ($this as $link)
             $types[$link->fromType] = true;
+        return array_keys($types);
+    }
+     
+    /**
+     * Get list of all known destination types
+     *
+     * @return string[]
+     **/
+    public function getAllDestinationTypes() 
+    {
+        $types = array();
+        foreach ($this as $link)
+            $types[$link->toType] = true;
         return array_keys($types);
     }
      
@@ -114,9 +127,60 @@ class theTraceability extends Model_Artifact_Bag
      * @param string|array Name of deliverable or name of class who should cover
      * @return float
      **/
-    public function getCoverage($froms, $tos)
+    public function getCoverage($from, $to)
     {
-        // todo
+        $this->_normalize($from);
+        $this->_normalize($to);
+        
+        // to avoid division by zero
+        if (!count($to))
+            return 0;
+        
+        $covered = array();
+        foreach ($this as $link) {
+            if (!$link->isFrom($from) || !$link->isTo($to))
+                continue;
+            $covered[] = strval($link->to);
+        }
+        return count($covered) / count($to);
+    }
+    
+    /**
+     * Normalize the param and make sure it looks like an array of Deliverables
+     *
+     * @param string|Deliverables_Abstract|array
+     * @return void
+     * @throws Traceability_UnknownTypeOfArgumentException
+     */
+    protected function _normalize(&$smth) 
+    {
+        // make sure it's array in any case
+        if (!is_array($smth)) {
+            $smth = array($smth);
+        }
+        foreach ($smth as $id=>$deliverable) {
+            // is is OK already?
+            if ($deliverable instanceof Deliverables_Abstract) {
+                continue;
+            }
+            // otherwises it should be a string
+            if (!is_string($deliverable)) {
+                FaZend_Exception::raise(
+                    'Traceability_UnknownTypeOfArgumentException', 
+                    "What does this deliverable mean?"
+                );        
+            }
+            try {
+                foreach ($this->ps()->parent->deliverables->$deliverable as $found)
+                    $smth[] = $found;
+                unset($smth[$id]);
+                continue;
+            } catch (Deliverables_PropertyOrMethodNotFoundException $e) {
+                // not found? let'd go next
+            }
+            
+            $deliverable = $this->ps()->parent->deliverables[$deliverable];
+        }
     }
      
 }
