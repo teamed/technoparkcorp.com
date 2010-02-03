@@ -39,7 +39,7 @@ class Metric_Artifacts_Defects_Total extends Metric_Abstract
         '/^bySeverity\/(.*?)$/' => 'bySeverity',
         '/^byMilestone\/(.*?)$/' => 'byMilestone',
         '/^byStatus\/(.*?)$/' => 'byStatus',
-        );
+    );
 
     /**
      * Load this metric
