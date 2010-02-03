@@ -114,10 +114,11 @@ class RescueAbandonedTickets extends Model_Decision_PM
             $pm = $this->_project->staffAssignments->PM->random();
             // $issue->reassign($pm->email);
             logg(
-                'Issue #%d reassigned from owner (%s) to PM (%s), since abandoned', 
+                'Issue #%d reassigned from owner (%s) to PM (%s), since abandoned for %dhrs', 
                 $issue->id, 
                 $owner->email,
-                $pm->email
+                $pm->email,
+                $delayedHours
             );
         }
         
