@@ -22,10 +22,7 @@
     Title: "<?=$history->getTitle()?>"<br/>
     Hash: "<?=$history->hash?>"<br/>
     Decision made: <b><?=$history->result?>
-        <?=$history->isRunning() ? 
-            " (pid: {$history->getPid()})" : 
-            false
-        ?></b>
+        <?=$history->isRunning() ? " (pid: {$history->getPid()})" : false?></b>
 </p>
 
 <p>Protocol (<?=count($protocol)?> lines):</p>
