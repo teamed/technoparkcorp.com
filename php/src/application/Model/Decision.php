@@ -215,8 +215,13 @@ abstract class Model_Decision implements Model_Decision_Interface
                 )
             );
             $decision = Model_Decision_History::ERROR_PREFIX . ': ' . $e->getMessage();
-            $db->rollBack();
-            logg('Decision execution aborted, DB transaction rolled back');
+            logg('Decision execution aborted');
+            try {
+                $db->rollBack();
+                logg('DB transaction rolled back');
+            } catch (Exception $e) {
+                logg('Failed to rollback the DB transaction: ' . $e->getMessage());
+            }
         }
         
         // stop logging to file
