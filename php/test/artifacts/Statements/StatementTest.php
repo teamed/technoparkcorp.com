@@ -12,10 +12,6 @@ class theStatementTest extends AbstractTest
         
         $volume = $statement->volume;
         $this->assertTrue($volume instanceof FaZend_Bo_Money, 'Volume is not as FaZend_Bo_Money, why?');
-        $this->assertTrue(
-            $volume->isGreater('20 USD'), 
-            "Volume is too small ({$volume}), why?"
-        );
         
         $balance = $statement->balance;
         $this->assertTrue($balance instanceof FaZend_Bo_Money, 'Balance is not as FaZend_Bo_Money, why?');
