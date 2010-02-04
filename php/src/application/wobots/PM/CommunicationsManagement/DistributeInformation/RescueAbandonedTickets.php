@@ -138,10 +138,10 @@ class RescueAbandonedTickets extends Model_Decision_PM
             );
         }
 
-        if (empty($resolved))
+        if (empty($rescued))
             return 'Nothing to rescue';
 
-        return 'Tickets rescued: ' . implode(', ', $resolved);
+        return 'Tickets rescued: ' . implode(', ', $rescued);
     }
     
 }
