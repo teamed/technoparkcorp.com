@@ -27,15 +27,37 @@ class Model_Artifact extends FaZend_Pos_Abstract implements Model_Artifact_Inter
 {
     
     /**
+     * When we ping-ed DB last time
+     *
+     * @var integer
+     */
+    protected static $_lastPingTime = null;
+
+    /**
      * Get ROOT of the entire storage
      *
      * @return FaZend_Pos_Abstract
      */
     public static function root() 
     {
-        // @todo do it somehow else!
-        mysqli_ping(Zend_Db_Table::getDefaultAdapter()->getConnection());
         return FaZend_Pos_Properties::root();
+    }
+    
+    /**
+     * Decorator on top of parent::__get()
+     *
+     * @param string Name of property to get
+     * @return mixed
+     */
+    public function __get($name) 
+    {
+        // ping every 10 seconds
+        if (self::$_lastPingTime < microtime(true) - 10) {
+            // @todo do it somehow else!
+            mysqli_ping(Zend_Db_Table::getDefaultAdapter()->getConnection());
+            self::$_lastPingTime = microtime(true);
+        }
+        return parent::__get($name);
     }
 
     /**
