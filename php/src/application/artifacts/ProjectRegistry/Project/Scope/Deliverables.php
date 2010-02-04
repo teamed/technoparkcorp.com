@@ -105,11 +105,11 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
         // deduct trailing 'S' and return by this type
         switch ($name) {
             case 'classes':
-                $type = substr($name, 0, -2);
+                $types = substr($name, 0, -2);
                 break;
 
             case 'glossary':
-                $type = 'object';
+                $types = 'object';
                 break;
 
             case 'actors':
@@ -120,12 +120,16 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
             case 'useCases':
             case 'issues':
             case 'testCases':
-                $type = substr($name, 0, -1);
+                $types = substr($name, 0, -1);
                 break;
 
             case 'functional':
             case 'qos':
-                $type = $name;
+                $types = $name;
+                break;
+                
+            case 'design':
+                $types = array('package', 'class', 'method', 'file');
                 break;
             
             default:
@@ -135,7 +139,7 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
                 );        
         }
         
-        return $this->_getByType(self::_convertType($type));
+        return $this->_getByTypes(self::_convertTypes($types));
     }
 
     /**
@@ -148,7 +152,9 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
      **/
     public static function factory($type, $name, $description) 
     {
-        $className = 'Deliverables_' . ucfirst(self::_convertType($type));
+        $types = self::_convertTypes($type);
+        $type = array_shift($types);
+        $className = 'Deliverables_' . ucfirst($type);
         return new $className($name, $description);        
     }
      
@@ -175,15 +181,18 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
     /**
      * Get entities by type
      *
-     * @param string Type
+     * @param string|array Type or list of types
      * @return ArrayIterator
      **/
-    protected function _getByType($type) 
+    protected function _getByTypes($types) 
     {
+        if (!is_array($types))
+            $types = array($types);
         $list = new ArrayIterator();
         foreach ($this as $deliverable) {
-            if ($deliverable->type == $type)
+            if (in_array($deliverable->type, $types)) {
                 $list[] = $deliverable;
+            }
         }
         return $list;
     }
@@ -191,20 +200,29 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
     /**
      * Convert from text to PHP name suffix
      *
-     * @return string
+     * @param string|array Type or list of types
+     * @return array
      **/
-    public static function _convertType($type) 
+    public static function _convertTypes($types) 
     {
-        switch ($type) {
-            case 'functional':
-            case 'qos':
-                return 'requirement_' . ucfirst($type);
+        if (!is_array($types))
+            $types = array($types);
+        foreach ($types as &$type) {
+            switch ($type) {
+                case 'functional':
+                case 'qos':
+                    $type = 'requirement_' . ucfirst($type);
+                    break;
 
-            case 'testCase':
-                return 'class_' . ucfirst($type);
+                case 'testCase':
+                    $type = 'class_' . ucfirst($type);
+                    break;
+                    
+                default:
+                    // ... nothing ...
+            }
         }
-        
-        return $type;
+        return $types;
     }
     
     /**

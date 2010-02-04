@@ -1,5 +1,4 @@
-<!--
- *
+/**
  * thePanel v2.0, Project Management Software Toolkit
  *
  * Redistribution and use in source and binary forms, with or without 
@@ -12,25 +11,31 @@
  * 568 Ninth Street South 202, Naples, Florida 34102, USA
  * tel. +1 (239) 935 5429
  *
--->
- 
-<? $this->includeCSS('pages/projects/_any/Scope/DesignModel/tree.css') ?>
+ * @copyright Copyright (c) TechnoPark Corp., 2001-2009
+ * @version $Id$
+ *
+ */
 
-<?=$this->publish($this->project->deliverables)?>
+div.tree {
+    margin-top: 20px;
+    margin-left: -20px;
+}
 
-<h1>Design Model</h1>
+    div.tree span,
+    div.tree div {
+        margin-left: 20px;
+    }
+        
+    div.tree span {
+        cursor: pointer;
+        display: block;
+        color: <?=Model_Colors::BLUE?>;
+    }
 
-<?=$this->bar()
-    // ->setStyle('stairs')
-    ->addLink('Classes', 'Classes')
-    ->addLink('Files', 'Files')
-    ->addLink('TestCases', 'Test Cases')
-    ?>
+        div.tree span:hover {
+            color: <?=Model_Colors::BLUE?>;
+        }
+        
+    div.tree div {
+    }
 
-<?=$this->tree()
-    ->setCollection($this->project->deliverables->design, 'name', '.')
-    ->addAttrib('class', 'tree')
-    ->setMask('%s (%s)')
-    ->addToken('->name')
-    ->addToken('->type')
-    ?>
