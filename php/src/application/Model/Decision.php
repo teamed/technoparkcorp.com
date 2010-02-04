@@ -193,7 +193,7 @@ abstract class Model_Decision implements Model_Decision_Interface
             $decision = $this->_make();
             
             // save all changes made to POS, if they were made
-            FaZend_Pos_Properties::cleanPosMemory(true, true);
+            FaZend_Pos_Properties::saveAll();
             
             $db->commit();
             
