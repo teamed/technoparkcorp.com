@@ -12,9 +12,25 @@ class theStatementTest extends AbstractTest
         
         $volume = $statement->volume;
         $this->assertTrue($volume instanceof FaZend_Bo_Money, 'Volume is not as FaZend_Bo_Money, why?');
+        $this->assertTrue(
+            $volume->isGreater('100 USD'), 
+            "Volume is too small ({$volume}), why?"
+        );
         
         $balance = $statement->balance;
         $this->assertTrue($balance instanceof FaZend_Bo_Money, 'Balance is not as FaZend_Bo_Money, why?');
+    }
+    
+    public function testEmptyVolumeAndBalanceCanBeRetrieved()
+    {
+        require_once 'Mocks/artifacts/Statements/Statement.php';
+        $statement = Mocks_theStatement::get();
+        
+        // delete all payments
+        thePayment::retrieve()->delete();
+
+        $this->assertTrue($statement->volume->isZero(), 'Volume is not empty, why?');
+        $this->assertTrue($statement->balance->isZero(), 'Balance is not empty, why?');
     }
 
     public function testPaymentCollectionWorks() 

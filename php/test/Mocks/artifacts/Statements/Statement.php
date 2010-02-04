@@ -13,7 +13,7 @@ class Mocks_theStatement
         }
             
         for ($i = 0; $i < 5; $i++)
-            Mocks_thePayment::make($supplier, (rand(1,9) > 5 ? '' : '-') . rand(100, 200) . ' EUR');
+            Mocks_thePayment::make($supplier, (rand(1,9) > 5 ? '' : '-') . rand(20, 100));
             
         return Model_Artifact::root()->statements[$supplier];
     }

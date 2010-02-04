@@ -114,7 +114,6 @@ class thePayment extends FaZend_Db_Table_ActiveRow_payment
         return self::retrieve()
             ->columns(array('volume'=>new Zend_Db_Expr('SUM(IF(amount>0,amount,0))')))
             ->where('supplier = ?', $statement->supplier)
-            ->group('supplier')
             ->fetchRow()
             ->volume;
     }
@@ -130,7 +129,6 @@ class thePayment extends FaZend_Db_Table_ActiveRow_payment
         return self::retrieve()
             ->columns(array('balance'=>new Zend_Db_Expr('SUM(amount)')))
             ->where('supplier = ?', $statement->supplier)
-            ->group('supplier')
             ->fetchRow()
             ->balance;
     }
