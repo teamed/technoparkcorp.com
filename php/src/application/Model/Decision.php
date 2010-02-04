@@ -191,10 +191,14 @@ abstract class Model_Decision implements Model_Decision_Interface
             
             $db->beginTransaction();
             $decision = $this->_make();
+            
+            // save all changes made to POS, if they were made
+            FaZend_Pos_Properties::cleanPosMemory(true, true);
+            
             $db->commit();
             
             logg(
-                'Decision execution finished (%s) in %0.2fsec', 
+                'Decision execution finished (%s) in %0.2fsec, DB transaction committed', 
                 pathinfo($this->_file, PATHINFO_FILENAME),
                 microtime(true) - $start
             );

@@ -33,6 +33,8 @@ class Model_Artifact extends FaZend_Pos_Abstract implements Model_Artifact_Inter
      */
     public static function root() 
     {
+        // @todo do it somehow else!
+        mysqli_ping(Zend_Db_Table::getDefaultAdapter()->getConnection());
         return FaZend_Pos_Properties::root();
     }
 
