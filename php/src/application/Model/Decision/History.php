@@ -309,11 +309,11 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history
         }
         $file = $dir . '/' . $this->context . '-' . substr(strrchr($this->hash, '/'), 1) . '.log';
         
-        if ($clean) {
+        if ($clean && file_exists($file)) {
             if (@unlink($file) === false) {
                 FaZend_Exception::raise(
                     'Model_Decision_History_UnlinkFailedException',
-                    "Can't delete log file: $file"
+                    "Can't delete log file: '{$file}'"
                 );
             }
         }
