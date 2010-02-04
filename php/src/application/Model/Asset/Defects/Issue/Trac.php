@@ -65,7 +65,7 @@ class Model_Asset_Defects_Issue_Trac extends Model_Asset_Defects_Issue_Abstract
         
         $lastDate = $this->changelog->get('comment')->getLastDate();
         // we posted it recently
-        if ($lastDate->isEarlier(Zend_Date::now()->subDays($lag))) {
+        if ($lastDate->isEarlier(Zend_Date::now()->subDay($lag))) {
             logg(
                 "No '%s' to ticket #%d since we already did it %0.1f hours ago, at %s" .
                 $code, 
