@@ -16,3 +16,26 @@
  *
  */
 
+div.tree {
+    margin-top: 20px;
+    margin-left: -20px;
+}
+
+    div.tree span,
+    div.tree div {
+        margin-left: 20px;
+    }
+        
+    div.tree span {
+        cursor: pointer;
+        display: block;
+        color: <?=Model_Colors::BLUE?>;
+    }
+
+        div.tree span:hover {
+            color: <?=Model_Colors::BLUE?>;
+        }
+        
+    div.tree div {
+    }
+

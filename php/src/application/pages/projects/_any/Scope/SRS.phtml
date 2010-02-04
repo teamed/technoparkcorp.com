@@ -19,11 +19,18 @@
 <h1>Software Requirements Specification (SRS)</h1>
 
 <?=$this->bar()
-    ->setStyle('stairs')
     ->addLink('Actors', 'Actors')
     ->addLink('Interfaces', 'Interfaces')
     ->addLink('Glossary', 'Glossary')
     ->addLink('UseCases', 'Use Cases')
     ->addLink('Functional', 'Functional Requirements')
     ->addLink('QOS', 'Quality of Service')
+    ?>
+
+<?=$this->tree()
+    ->setCollection($this->project->deliverables->functional, 'name', '.')
+    ->addAttrib('class', 'tree')
+    ->setMask('%s: %s')
+    ->addToken('->name')
+    ->addToken('->description')
     ?>

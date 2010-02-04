@@ -77,6 +77,10 @@ class Helper_Tree extends FaZend_View_Helper
     public function tree()
     {
         $this->getView()->includeJQuery();
+        
+        // configure CSS for this gallery
+        $this->getView()->includeCSS('helper/tree.css');
+
         return $this;
     }
 
