@@ -77,7 +77,13 @@ class RescueAbandonedTickets extends Model_Decision_PM
                 
             $owner = $issue->changelog->get('owner')->getValue();
             if (!isset($this->_project->staffAssignments[$owner])) {
-                FaZend_Log::err('Unknown email in ticket #%d: %s', $issue->id, $owner);
+                FaZend_Log::err(
+                    sprintf(
+                        'Unknown email in ticket #%d: %s', 
+                        $issue->id, 
+                        $owner
+                    )
+                );
                 continue;
             }
             
