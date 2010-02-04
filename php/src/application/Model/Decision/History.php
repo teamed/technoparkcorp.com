@@ -49,7 +49,7 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history
     }
     
     /**
-     * undocumented function
+     * Document the result of decision execution, after it's completed
      *
      * @param string|false Decision made
      * @param string Log of the decision made
@@ -67,7 +67,7 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history
      *
      * @param string Hash of the decision
      * @return Model_Decision_History
-     **/
+     */
     public static function findByHash($hash)
     {
         return self::retrieve()
