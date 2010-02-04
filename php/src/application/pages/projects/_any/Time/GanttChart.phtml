@@ -28,7 +28,9 @@
 <? if ($increment == Zend_Date::WEEK) $start->setWeekday(1) ?>
 <? $date = clone $start; ?>
 
-<p>Start on <?=$start->get(Zend_Date::DATE_SHORT)?>, finish estimated on <?=$finish->get(Zend_Date::DATE_SHORT)?>.</p>
+<p>Start on <?=$start->get(Zend_Date::DATE_SHORT)?>, 
+    finish estimated on <b><?=$finish->get(Zend_Date::DATE_SHORT)?></b>,
+    <?=count($this->project->schedule->activities)?> activities.</p>
 
 <table class="chart">
 <tr>
