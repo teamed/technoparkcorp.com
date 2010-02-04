@@ -72,27 +72,13 @@ class Metric_Artifacts_Product_Functionality_Implemented extends Metric_Abstract
      **/
     protected function _derive(array &$metrics = array())
     {
-        $component = $this->_getOption('byComponent');
-        switch ($component) {
-            case 'SRS':
-                return $this->_makeWp(
-                    $this->_project->metrics['artifacts/requirements/functional/total']->delta * 10, 
-                    'To find defects in SRS'
-                );
-        
-            case 'Design':
-                return $this->_makeWp(
-                    $this->_project->metrics['artifacts/design/classes/total']->delta * 10, 
-                    'To find defects in Design'
-                );
-        
-            case null:
-                $metrics = array(
-                    'artifacts/defects/total/byComponent/SRS',
-                    'artifacts/defects/total/byComponent/Design'
-                );
-                return null;
-        }
+        if ($this->_getOption('requirement'))
+            return null;
+        return $this->_makeWp(
+            FaZend_Bo_Money::factory('100 USD')
+            ->mul($this->_project->metrics['artifacts/requirements/functional/total']->delta), 
+            'To implement functional requirements'
+        );
     }
         
 }

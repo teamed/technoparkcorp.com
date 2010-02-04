@@ -113,7 +113,7 @@ class RescueAbandonedTickets extends Model_Decision_PM
                 'or re-assign this ticket to another person? Thanks!'
             )) {
                 logg('Reminder added to issue #%d (owner: %s)', $issue->id, $owner->email);
-                $resolved[] = $issue->id;
+                $rescued[] = $issue->id;
                 continue;
             }
                 

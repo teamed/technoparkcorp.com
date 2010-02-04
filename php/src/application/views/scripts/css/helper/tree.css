@@ -28,12 +28,13 @@ div.tree {
         
     div.tree span {
         cursor: pointer;
-        display: block;
+        display: inline-block;
         color: <?=Model_Colors::BLUE?>;
     }
 
         div.tree span:hover {
-            color: <?=Model_Colors::BLUE?>;
+            background-color: <?=Model_Colors::BLUE?>;
+            color: white;
         }
         
     div.tree div {

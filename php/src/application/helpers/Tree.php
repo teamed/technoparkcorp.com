@@ -49,6 +49,16 @@ class Helper_Tree extends FaZend_View_Helper
     protected $_separator;
     
     /**
+     * List of options
+     *
+     * @var array
+     */
+    protected $_options = array(
+        'startCollapsed' => false, // when loaded first time the tree is closed
+        'useAjax' => false,
+    );
+    
+    /**
      * Attribs of the DIV
      *
      * @var array
@@ -100,6 +110,17 @@ class Helper_Tree extends FaZend_View_Helper
         $this->_id = $id;
         $this->_separator = $separator;
         return $this;
+    }
+    
+    /**
+     * Set array of config options
+     *
+     * @param array Options
+     * @return void
+     */
+    public function setOptions(array $options) 
+    {
+        $this->_options = $options;
     }
     
     /**
@@ -211,11 +232,12 @@ class Helper_Tree extends FaZend_View_Helper
             if (count($sectors) > 1) {
                 $html .= sprintf(
                     "%s<span onclick=\"$('div#tree%d').toggle();\">%s</span>\n" . 
-                    "%s<div style='display:none' id=\"tree%d\">\n",
+                    "%s<div %sid=\"tree%d\">\n",
                     $indent,
                     ++$this->_divCounter,
                     $sectors[0],
                     $indent,
+                    (!empty($this->_options['startCollapsed']) ? "style='display:none' " : false),
                     $this->_divCounter
                 );
 

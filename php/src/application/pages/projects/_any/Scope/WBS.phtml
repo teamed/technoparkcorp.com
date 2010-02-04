@@ -29,3 +29,11 @@
     ?>
     
 <p>Total Cost: <b><?=$this->project->wbs->sum()?></b></p>
+
+<?=$this->tree()
+    ->setCollection($this->project->wbs, 'code', '/')
+    ->addAttrib('class', 'tree')
+    ->setMask('%s: %s')
+    ->addToken('->code')
+    ->addToken('->cost')
+    ?>
