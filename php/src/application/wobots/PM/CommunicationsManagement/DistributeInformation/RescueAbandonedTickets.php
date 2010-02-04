@@ -39,9 +39,13 @@ class RescueAbandonedTickets extends Model_Decision_PM
     protected function _make()
     {
         logg('Found %d tickets totally', count($this->_project->issues));
-        
+     
+        $rescued = array();
         $closed = array();
         foreach ($this->_project->issues as $issue) {
+            if (count($rescued) >= 3)
+                break;
+            
             $lastDate = $issue->changelog->get('comment')->getLastDate();
 
             // maybe the date is NULL, which means that there are no comments yet
@@ -103,22 +107,19 @@ class RescueAbandonedTickets extends Model_Decision_PM
             }
              
             // remind right now   
-            // if ($issue->askOnce(
-            //     'remind after ' . $lastDate,
-            //     sprintf(
-            //         'This ticket has no attention of the owner for the last %d hours. ' .
-            //         'Looks like an abandoned ticket. Could you please provide some news here ' . 
-            //         'or assign the ticket to another person? Thanks!',
-            //         $delayedHours
-            //     )
-            // )) {
-            //     logg('Reminder added to issue #%d (owner: %s)', $issue->id, $owner->email);
-            //     continue;
-            // }
+            if ($issue->askOnce(
+                'remind after ' . $lastDate,
+                'Could you please provide some update here ' . 
+                'or re-assign this ticket to another person? Thanks!'
+            )) {
+                logg('Reminder added to issue #%d (owner: %s)', $issue->id, $owner->email);
+                $resolved[] = $issue->id;
+                continue;
+            }
                 
             // reassign the ticket to PM
             $pm = $this->_project->staffAssignments->PM->random();
-            // $issue->reassign($pm->email);
+            $issue->reassign($pm->email);
             logg(
                 'Issue #%d reassigned from owner (%s) to PM (%s), since abandoned for %dhrs', 
                 $issue->id, 
@@ -126,10 +127,16 @@ class RescueAbandonedTickets extends Model_Decision_PM
                 $pm->email,
                 $delayedHours
             );
+            $rescued[] = $issue->id;
         }
         
         if ($closed)
             logg('Closed tickets were ignored: %s', implode(', ', $closed));
+
+        if (empty($resolved))
+            return 'Nothing to rescue';
+
+        return 'Tickets rescued: ' . implode(', ', $resolved);
     }
     
 }
