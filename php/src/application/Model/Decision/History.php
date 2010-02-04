@@ -84,6 +84,7 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history
      * @param Model_Wobot Wobot that is looking for new decision
      * @param array List of files that exist in the wobot
      * @return string|null Name of the file or NULL if nothing found
+     * @throws Exception
      */
     public static function findNextDecision(Model_Wobot $wobot, array $files)
     {
@@ -291,9 +292,9 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history
     /**
      * Get file name of a log file to be used with this decision
      *
-     * @param boolean Clean it?
+     * @param boolean Shall we remove the file before returning it's name?
      * @return string Absolute file name
-     * @throws Model_Decision_History_DirectoryInvalid
+     * @throws Model_Decision_History_DirectoryInvalidException
      * @throws Model_Decision_History_UnlinkFailedException
      */
     public function getLogFileName($clean = false) 
@@ -302,8 +303,8 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history
         if (!file_exists($dir) || !is_dir($dir)) {
             if (@mkdir($dir) === false) {
                 FaZend_Exception::raise(
-                    'Model_Decision_History_DirectoryInvalid',
-                    "Can't create directory: {$dir}"
+                    'Model_Decision_History_DirectoryInvalidException',
+                    "Can't create directory: '{$dir}'"
                 );
             }
         }
