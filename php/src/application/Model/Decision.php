@@ -195,6 +195,7 @@ abstract class Model_Decision implements Model_Decision_Interface
             // save all changes made to POS, if they were made
             FaZend_Pos_Properties::saveAll();
             
+            // commit all changes to DB
             $db->commit();
             
             logg(
