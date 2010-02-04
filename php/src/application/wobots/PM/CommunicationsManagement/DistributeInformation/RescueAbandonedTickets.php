@@ -130,8 +130,13 @@ class RescueAbandonedTickets extends Model_Decision_PM
             $rescued[] = $issue->id;
         }
         
-        if ($closed)
-            logg('Closed tickets were ignored: %s', implode(', ', $closed));
+        if ($closed) {
+            logg(
+                '%d closed tickets were ignored: %s',
+                count($closed), 
+                cutLongLine(implode(', ', $closed))
+            );
+        }
 
         if (empty($resolved))
             return 'Nothing to rescue';
