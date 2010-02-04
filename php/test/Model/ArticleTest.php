@@ -79,16 +79,16 @@ class ArticleTest extends AbstractTest
         );
     }
 
-    public function testLuceneIndexationWorks() 
-    {
-        $lucene = Model_Article::lucene(true);
-        $this->assertTrue(
-            $lucene instanceof Zend_Search_Lucene_Proxy, 
-            'Lucene index was not created, why?'
-            );
-         
-        $article = Model_Article::createByLabel('process/cost');
-        $article->luceneIndex();
-    }
+    // public function testLuceneIndexationWorks() 
+    // {
+    //     $lucene = Model_Article::lucene(true);
+    //     $this->assertTrue(
+    //         $lucene instanceof Zend_Search_Lucene_Proxy, 
+    //         'Lucene index was not created, why?'
+    //         );
+    //      
+    //     $article = Model_Article::createByLabel('process/cost');
+    //     $article->luceneIndex();
+    // }
     
 }

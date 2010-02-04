@@ -64,19 +64,12 @@ class Model_Article
     protected $_cache = array();
 
     /**
-     * Lucene search instance
+     * Search proxy
      *
-     * @var Zend_Search_Lucene
+     * @var Model_Article_SearchProxy|mixed
      */
-    protected static $_lucene = null;
+    protected static $_searchProxy = null;
     
-    /**
-     * Directory name of the lucene storag
-     *
-     * @var string
-     **/
-    protected static $_lucenePath = null;
-
     /**
      * Create new article
      *
@@ -88,53 +81,26 @@ class Model_Article
     }
     
     /**
-     * Get directory name of the LUCENE storage
+     * Set search proxy
      *
-     * @return string
+     * @param mixed Search proxy
+     * @return void
      **/
-    public static function getLucenePath() 
+    public static function setSearchProxy($proxy) 
     {
-        if (is_null(self::$_lucenePath))
-            self::setLucenePath(TEMP_PATH . '/panel2lucene');
-        return self::$_lucenePath;
+        self::$_searchProxy = $proxy;
     }
 
     /**
-     * Set directory name of the LUCENE storage
+     * Get search proxy
      *
-     * @param string Directory path
-     * @return void
-     * @throws Model_Article_InvalidLucenePath
+     * @return mixed
      **/
-    public static function setLucenePath($path) 
+    public static function getSearchProxy() 
     {
-        // it is absent? we should create it
-        if (!file_exists($path)) {
-            if (!@mkdir($path)) {
-                FaZend_Exception::raise(
-                    'Model_Article_InvalidLucenePath',
-                    "Dir specified '{$path}' is absent and can't be created"
-                );
-            }
-        }
-
-        // it's not a directory?
-        if (!is_dir($path)) {
-            FaZend_Exception::raise(
-                'Model_Article_InvalidLucenePath',
-                "Path specified '{$path}' is not a directory"
-            );
-        }
-        
-        // it's not writable? permissions problem?
-        if (!is_writable($path)) {
-            FaZend_Exception::raise(
-                'Model_Article_InvalidLucenePath',
-                "Path specified '{$path}' is not writable"
-            );
-        }
-        
-        self::$_lucenePath = $path;
+        if (is_null(self::$_searchProxy))
+            self::$_searchProxy = new Model_Article_SearchProxy;
+        return self::$_searchProxy;
     }
 
     /**
@@ -190,46 +156,6 @@ class Model_Article
         } else {
         }
         */   
-    }
-    
-    /**
-     * Return search engine instance
-     *
-     * @param boolean Shall we kill the existing index and start over?
-     * @return Zend_Search_Lucene_Proxy
-     */
-    public static function lucene($refresh = false) 
-    {
-        if (!isset(self::$_lucene) || $refresh) {        
-            $path = self::getLucenePath();
-            
-            if (file_exists($path) && is_dir($path) && !$refresh)
-                self::$_lucene = Zend_Search_Lucene::open($path);
-            else
-                self::$_lucene = Zend_Search_Lucene::create($path);
-                
-            Zend_Search_Lucene::setResultSetLimit(20);
-            Zend_Search_Lucene::setTermsPerQueryLimit(100);
-        }
-        
-        return self::$_lucene;
-    }
-
-    /**
-     * Add this article to lucene search index
-     *
-     * If the article already exists in the index, ignore it
-     *
-     * @return void
-     */
-    public function luceneIndex() 
-    {        
-        $doc = new Zend_Search_Lucene_Document();
-        $doc->addField(Zend_Search_Lucene_Field::Text('page', $this->page));
-        foreach (array('label', 'title', 'description', 'keywords', 'text') as $field)
-            $doc->addField(Zend_Search_Lucene_Field::UnStored($field, $this->$field));
-        self::lucene()->addDocument($doc);
-        self::lucene()->commit();
     }
     
     /**

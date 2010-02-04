@@ -149,4 +149,35 @@ class Metric_Artifacts_Defects_Total extends Metric_Abstract
             ->retrieveBy($query);
     }
         
+    /**
+     * Get work package
+     *
+     * @param string[] Names of metrics, to consider after this one
+     * @return theWorkPackage
+     **/
+    protected function _derive(array &$metrics = array())
+    {
+        $component = $this->_getOption('byComponent');
+        switch ($component) {
+            case 'SRS':
+                return $this->_makeWp(
+                    $this->_project->metrics['artifacts/requirements/functional/total']->delta * 10, 
+                    'To find defects in SRS'
+                );
+        
+            case 'Design':
+                return $this->_makeWp(
+                    $this->_project->metrics['artifacts/design/classes/total']->delta * 10, 
+                    'To find defects in Design'
+                );
+        
+            case null:
+                $metrics = array(
+                    'artifacts/defects/total/byComponent/SRS',
+                    'artifacts/defects/total/byComponent/Design'
+                );
+                return null;
+        }
+    }
+        
 }

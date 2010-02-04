@@ -56,7 +56,7 @@ class Model_Navigation
             $container->setPages(self::_cache()->load('map'));
         } else {
             // kill LUCENE search index
-            Model_Article::lucene(true);
+            Model_Article::getSearchProxy()->clean();
 
             // we should calculate them again
             self::_addMenuPages($container);
@@ -64,7 +64,7 @@ class Model_Navigation
             // and save to cache
             self::_cache()->save($container->getPages(), 'map');
             
-            logg('Indexed ' . Model_Article::lucene()->numDocs() . ' articles in Lucene');
+            logg('Indexed ' . Model_Article::getSearchProxy()->numDocs() . ' articles in Lucene');
         }
 
         // mark active page as "active"
@@ -98,7 +98,7 @@ class Model_Navigation
             // add this article to search
             // this operation takes time, but since the entire navigation-building
             // process is cached - it's OK
-            $article->luceneIndex();
+            Model_Article::getSearchProxy()->addArticle($article);
 
             // create and add new page to the current collection
             $page = new Zend_Navigation_Page_Uri(array(

@@ -55,13 +55,14 @@ class theWbs extends Model_Artifact_Bag implements Model_Artifact_Passive
      * Get WP even if it doesn't exist in array
      *
      * @return theWorkPackage
+     * @throws Wbs_WorkPackageAbsentException
      **/
     public function offsetGet($name) 
     {
         $wp = $this->_findWorkPackage($name);
         if (is_null($wp)) {
             FaZend_Exception::raise(
-                'WorkPackageAbsent', 
+                'Wbs_WorkPackageAbsentException', 
                 "Metric '{$name}' does not have a work package in " . get_class($metric) . "::getWorkPackage()"
             );
         }
@@ -96,6 +97,7 @@ class theWbs extends Model_Artifact_Bag implements Model_Artifact_Passive
     /**
      * Get list of workpackages with given prefix and all aggregators below them
      *
+     * @param string Prefix
      * @return theWorkPackage[]
      **/
     public function getWorkPackagesByPrefix($prefix = '') 
@@ -192,9 +194,15 @@ class theWbs extends Model_Artifact_Bag implements Model_Artifact_Passive
         try {
             $metric = $this->ps()->parent->metrics[$code];
         } catch (MetricNotFound $e) {
-            FaZend_Exception::raise('WorkPackageNotFound', $e->getMessage());
+            FaZend_Exception::raise(
+                'WorkPackageNotFound', 
+                $e->getMessage()
+            );
         } catch (MetricDoesntMatch $e) {
-            FaZend_Exception::raise('WorkPackageNotFound', $e->getMessage());
+            FaZend_Exception::raise(
+                'WorkPackageNotFound', 
+                $e->getMessage()
+            );
         }
         
         $wp = $metric->getWorkPackage();

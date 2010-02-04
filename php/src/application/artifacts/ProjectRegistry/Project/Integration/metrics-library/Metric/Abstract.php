@@ -297,19 +297,25 @@ abstract class Metric_Abstract
      * Create work package according to this metric information
      *
      * @return theWorkPackage|null The work package to achieve this metric target or null if not necessary to achieve
-     **/
-    public function getWorkPackage()
+     * @see theWbs::_findWorkPackage()
+     */
+    public final function getWorkPackage()
     {
-        // you should override this method, if necessary
-        return null;
+        $metrics = array();
+        $wp = $this->_derive($metrics);
+        foreach ($metrics as $name) {
+            $this->_project->wbs[$name];
+        }
+        return $wp;
     }
         
     /**
      * Split work package onto activities
      *
+     * @param theActivities The list of activities to be extended
      * @return void
-     **/
-    public function split(theActivities $list)
+     */
+    public final function split(theActivities $list)
     {
         $wp = $this->_project->wbs[$this->_name];
         $activity = theActivity::factory($this->_project->activityList->activities, $this->_name, '1')
@@ -322,12 +328,27 @@ abstract class Metric_Abstract
     }
     
     /**
+     * Derive the work package from this metric
+     *
+     * @param string[] List of other metrics to consider
+     * @return theWorkPackage|null
+     */
+    protected function _derive(array &$metrics) 
+    {
+        // override it
+        return null;
+    }
+    
+    /**
      * Split, by slice provided
      *
+     * @param Slice_Plugin_Abstract Slice to use
      * @return void
      **/
     protected function _split(Slice_Plugin_Abstract $slice)
     {
+        // override it
+        return null;
     }
     
     /**

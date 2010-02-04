@@ -16,12 +16,10 @@
  
 <?=$this->article->text?>
 
-<? foreach (Model_Article::lucene()->find(Zend_Controller_Front::getInstance()->getRequest()->getPost('keyword')) as $hit): ?>
+<? foreach (Model_Article::getSearchProxy()->findArticles(
+    Zend_Controller_Front::getInstance()->getRequest()->getPost('keyword')
+) as $article): ?>
 
-    <? $doc = $hit->getDocument(); ?>
-
-    <? $article = Model_Article::createByLabel($doc->page); ?>
-            
     <p>
         <b><a title="<?=$article->title?>" 
             href="<?=$this->staticUrl($article->page)?>"><?=$article->title?></a></b><br/> 

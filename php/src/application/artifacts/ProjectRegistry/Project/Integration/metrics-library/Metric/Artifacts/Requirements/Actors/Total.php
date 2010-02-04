@@ -46,9 +46,10 @@ class Metric_Artifacts_Requirements_Actors_Total extends Metric_Abstract
     /**
      * Get work package
      *
+     * @param string[] Names of metrics, to consider after this one
      * @return theWorkPackage
      **/
-    public function getWorkPackage()
+    protected function _derive(array &$metrics = array())
     {
         return $this->_makeWp(
             $this->_project->wbs->sum('artifacts\/requirements\/functional\/total')

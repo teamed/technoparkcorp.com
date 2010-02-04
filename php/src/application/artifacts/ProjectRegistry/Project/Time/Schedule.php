@@ -40,21 +40,24 @@ class theSchedule extends Model_Artifact_Bag implements Model_Artifact_Passive
      * Initialize the list
      *
      * @return void
+     * @throws Schedule_ActivitiesNotFoundException
      */
     public function reload() 
     {
         $activityList = $this->ps()->parent->activityList;
         
-        if (!isset($activityList->activities)) {
+        if (!$activityList->isLoaded()) {
             $activityList->reload();
             if (!isset($activityList->activities)) {
                 FaZend_Exception::raise(
-                    'ActivitiesNotFound',
+                    'Schedule_ActivitiesNotFoundException',
                     'Activities not found in ActivityList after reloading, why?'
                 );
             }
         }
         
+        if (isset($this->activities))
+            unset($this->activities);
         $this->_attach('activities', clone $activityList->activities);
         
         // todo: implement it later

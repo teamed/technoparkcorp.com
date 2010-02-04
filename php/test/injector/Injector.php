@@ -48,11 +48,9 @@ class Injector extends FaZend_Test_Injector
         Zend_Registry::get('Zend_Translate')->setLocale(new Zend_Locale('ru'));
     }
 
-    protected function _injectLuceneConfig() 
+    protected function _injectSearchProxy() 
     {
-        // we should set this path to a writable directory
-        $path = TEMP_PATH . '/panel2lucene.' . APPLICATION_ENV;
-        Model_Article::setLucenePath($path);
+        Model_Article::setSearchProxy(new Mocks_Model_Article_SearchProxy());
     }
 
     protected function _injectTesterIsLoggedIn() 

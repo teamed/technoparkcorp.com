@@ -94,9 +94,10 @@ class Metric_Artifacts_Requirements_Functional_Total extends Metric_Abstract
     /**
      * Get work package
      *
+     * @param string[] Names of metrics, to consider after this one
      * @return theWorkPackage
-     **/
-    public function getWorkPackage()
+     */
+    protected function _derive(array &$metrics = array())
     {
         // if we already have too many requirements - skip this WP
         if ($this->delta < 0)
