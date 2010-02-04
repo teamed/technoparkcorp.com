@@ -173,11 +173,24 @@ abstract class Model_Asset_Defects_Issue_Abstract
      * Re-assign
      *
      * @param string New email to assign
-     * @return boolean
-     **/
+     * @return $this
+     */
     public function reassign($email) 
     {
         $this->changelog->get('owner')->setValue($email);
+        return $this;
+    }
+
+    /**
+     * Say something to the ticket
+     *
+     * @param string New text to say
+     * @return $this
+     */
+    public function say($msg) 
+    {
+        $this->changelog->get('comment')->setValue($msg);
+        return $this;
     }
 
     /**

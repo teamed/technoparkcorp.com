@@ -119,7 +119,9 @@ class RescueAbandonedTickets extends Model_Decision_PM
                 
             // reassign the ticket to PM
             $pm = $this->_project->staffAssignments->PM->random();
-            $issue->reassign($pm->email);
+            $issue
+                ->reassign($pm->email)
+                ->say('I\' re-assigning the ticket since it looks abandonded for a long time');
             logg(
                 'Issue #%d reassigned from owner (%s) to PM (%s), since abandoned for %dhrs', 
                 $issue->id, 

@@ -76,7 +76,10 @@ class Model_Asset_Defects_Issue_Trac extends Model_Asset_Defects_Issue_Abstract
             return false;
         }
             
-        $this->changelog->set('comment', "{{{\n#!comment\n" . md5($code) . "\n}}}\n" . $text);
+        $this->changelog->set(
+            'comment', 
+            "{{{\n#!comment\n" . md5($code) . "\n}}}\n" . $text
+        );
         return true;
     }
 
