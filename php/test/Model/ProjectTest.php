@@ -24,4 +24,15 @@ class ProjectTest extends AbstractProjectTest
         $this->assertTrue($asset1 === $asset2);
     }
 
+    public function testDifferentProjectsHaveDifferentAssets() 
+    {
+        $project = Mocks_Model_Project::get();
+        $project2 = Mocks_Model_Project::get(2);
+        $this->assertFalse($project1 === $project2, 'Projects are the same, why??');
+
+        $asset1 = $project->getAsset(Model_Project::ASSET_DEFECTS);
+        $asset2 = $project2->getAsset(Model_Project::ASSET_DEFECTS);
+        $this->assertFalse($asset1 === $asset2, 'Assets are the same, why??');
+    }
+
 }

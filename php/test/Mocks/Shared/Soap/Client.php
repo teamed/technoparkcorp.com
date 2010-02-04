@@ -37,7 +37,7 @@ class Mocks_Shared_Soap_Client
 
         return array(
             FaZend_StdObject::create()
-                ->set('id', 1)
+                ->set('id', Mocks_Model_Project::ID)
                 ->set('name', Mocks_Model_Project::NAME)
                 ->set('user', self::$_userId)
                 ->set('authz', $authz)

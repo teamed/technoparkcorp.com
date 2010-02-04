@@ -142,6 +142,7 @@ class Model_Project extends Shared_Project
     /**
      * Get one asset
      *
+     * @param string Name of the asset to get
      * @return Model_Asset_Abstract
      * @todo Should be configurable
      **/
@@ -155,11 +156,15 @@ class Model_Project extends Shared_Project
             self::ASSET_CODE => 'Fazend_Pan',
             self::ASSET_DESIGN => 'Fazend_Linux',
             self::ASSET_SUPPLIERS => 'Fazend_Trac',
-            );
+        );
 
         // create a class according to the information above
         $className = "Model_Asset_{$name}_{$assets[$name]}";
-        return FaZend_Flyweight::factoryById($className, $name, $this);
+        return FaZend_Flyweight::factoryById(
+            $className, 
+            $this->name . '.' . $name, 
+            $this
+        );
     }
     
 }
