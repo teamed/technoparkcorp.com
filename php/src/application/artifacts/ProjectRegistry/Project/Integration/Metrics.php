@@ -239,7 +239,7 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
                 "Metric '{$name}' loading failed, ". get_class($e) . ": {$e->getMessage()}"
             );
         }
-        logg("Metric [$name] reloaded: {$metric->value}");
+        // logg("Metric [$name] reloaded: {$metric->value}");
         return true;
     }
     

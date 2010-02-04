@@ -46,7 +46,7 @@ class theTraceability extends Model_Artifact_Bag
     public function add(theTraceabilityLink $link)
     {
         $this[] = $link;
-        logg("Traceability link added: {$link}");
+        // logg("Traceability link added: {$link}");
         return $this;
     }
     
