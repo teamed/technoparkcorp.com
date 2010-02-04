@@ -22,4 +22,13 @@
     ->setLink('{getFullName}')
     ?>
 
+<?=$this->forma()
+    ->addAttrib('class', 'invisible')
+    ->addBehavior('flash', 'POS was clean out successfully')
+    ->addBehavior('redirect')
+    ->addField('submit', 'submit')
+        ->fieldValue('Clean POS Database')
+        ->fieldAttrib('class', 'btn')
+        ->fieldAction('FaZend_Pos_Properties', 'cleanOut')
+    ?>
 
