@@ -144,6 +144,21 @@ abstract class Model_Wobot implements Model_Wobot_Interface
     {
         return $this->getEmailPrefix() . '@' . self::EMAIL_DOMAIN;
     }
+    
+    /**
+     * Get timezone when this wobot shall work
+     *
+     * The method returns an integer, which is a positive
+     * or negative increment to GMT. If it returns +5 it means
+     * that the wobot works in GMT+5 timezone.
+     *
+     * @return integer
+     */
+    public function getTimezone() 
+    {
+        // central european time for now
+        return +1;
+    }
 
     /**
      * Get the full name of the human-wobot
@@ -161,14 +176,37 @@ abstract class Model_Wobot implements Model_Wobot_Interface
     {
         return '';
     }
+    
+    /**
+     * The wobot is in the office now? :)
+     *
+     * This method takes into account current time and the timezone
+     * where the wobot is located.
+     *
+     * @return boolean
+     */
+    public function isInOfficeNow() 
+    {
+        $timezone = $this->getTimezone();
+        $diff = Zend_Date::now()->get(Zend_Date::TIMEZONE_SECS) / (60 * 60);
+        $hour = Zend_Date::now()->get(Zend_Date::HOUR) - $diff + $timezone;
+        return ($hour >= 8) && ($hour <= 20);
+    }
 
     /**
      * Execute this wobot (make next waiting decision)
      *
      * @return string|false The decision just made
+     * @throws Model_Wobot_OutOfOfficeException
      */
     public function execute() 
     {
+        if (!$this->isInOfficeNow()) {
+            FaZend_Exception::raise(
+                'Model_Wobot_OutOfOfficeException',
+                "Wrong time to execute the wobot"
+            );
+        }
         $file = Model_Decision::nextForWobot($this);
         if (empty($file))
             return false;

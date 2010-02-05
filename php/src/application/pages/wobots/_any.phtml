@@ -14,8 +14,10 @@
  *
 -->
  
-<?=$this->icon('wobot')?><br/>
-<?=$this->wobot?> (<?=$this->wobot->getHumanName()?>, <tt><?=$this->wobot->getEmail()?></tt>)
+<p><?=$this->icon('wobot')?><br/>
+<?=$this->wobot?> 
+    (<?=$this->wobot->getHumanName()?>, <tt><?=$this->wobot->getEmail()?></tt>)
+    <?=($this->wobot->isInOfficeNow() ? false : '<span style="color:red">out of office</span>')?></p>
 
 <?=$this->bar()
     ->addLink('decisions', 'Decisions')

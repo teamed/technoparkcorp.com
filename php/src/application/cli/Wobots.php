@@ -36,6 +36,9 @@ class Wobots extends FaZend_Cli_Abstract
     public function execute()
     {
         foreach (Model_Wobot::retrieveAll() as $wobot) {
+            if (!$wobot->isInOfficeNow()) {
+                continue;
+            }
             Model_User::logIn($wobot->getEmail());
             $wobot->execute();
         }

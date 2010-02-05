@@ -22,7 +22,8 @@ class WobotTest extends AbstractTest
     public function testWobotCanBeExecuted() 
     {
         $wobot = Model_Wobot::factory('PM.' . Mocks_Model_Project::NAME);
-        $wobot->execute();
+        if ($wobot->isInOfficeNow())
+            $wobot->execute();
     }
     
 }
