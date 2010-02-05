@@ -117,11 +117,12 @@ class Helper_Tree extends FaZend_View_Helper
      * Set array of config options
      *
      * @param array Options
-     * @return void
+     * @return $this
      */
     public function setOptions(array $options) 
     {
         $this->_options = $options;
+        return $this;
     }
     
     /**
@@ -245,27 +246,41 @@ class Helper_Tree extends FaZend_View_Helper
                     $this->_divCounter
                 );
 
-                $html .= $this->_renderNode(
-                    ($root ? $root . $this->_separator : false) . $sectors[0]
-                ) . "{$indent}</div>\n";
-                continue;
-            }
-            
-            // it's an item
-            $values = array();
-            foreach ($this->_tokens as $token) {
-                eval("\$value = \$item{$token};");
-                $values[] = $value;
-            }
+                if (empty($this->_options['useAjax'])) {
+                    $sub = $this->_renderNode(
+                        ($root ? $root . $this->_separator : false) . $sectors[0]
+                    ) . "{$indent}</div>\n";
+                    // something was added and we can go to the next element,
+                    // we're sure that NEXT() was performed inside this call
+                    $html .= $sub;
+                    if ($sub) {
+                        continue;
+                    }
+                    // don't CONTINUE, but go below until NEXT()
+                } else {
+                    $html .= $id . 'skipped';
+                    do {
+                        next($this->_collection);
+                    } while (strpos(key($this->_collection), $id . $this->_separator) === 0);
+                    continue;
+                }
+            } else {
+                // it's an item
+                $values = array();
+                foreach ($this->_tokens as $token) {
+                    eval("\$value = \$item{$token};");
+                    $values[] = $value;
+                }
 
-            $html .= 
-            "{$indent}<div>" . call_user_func_array(
-                'sprintf',
-                array_merge(
-                    array($this->_mask),
-                    $values
-                )
-            ) . "</div>\n";
+                $html .= 
+                "{$indent}<div>" . call_user_func_array(
+                    'sprintf',
+                    array_merge(
+                        array($this->_mask),
+                        $values
+                    )
+                ) . "</div>\n";
+            }
 
             next($this->_collection);
         }
