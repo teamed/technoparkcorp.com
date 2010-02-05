@@ -57,7 +57,7 @@ class Metric_Artifacts_Product_Functionality_Implemented extends Metric_Abstract
         
         $implemented = array();
         foreach ($this->_project->deliverables->functional as $r) {
-            if ($this->_project->metrics['artifacts/product/functionality/implemented/' . $r->name]) {
+            if ($this->_project->metrics['artifacts/product/functionality/implemented/' . $r->name]->value) {
                 $implemented[] = $r->name;
             }
         }
