@@ -238,7 +238,8 @@ class Helper_Tree extends FaZend_View_Helper
                     "%s<div %sid=\"tree%d\">\n",
                     $indent,
                     ++$this->_divCounter,
-                    (empty($this->_options['suffixOnly']) ? $id : $sectors[0]),
+                    (empty($this->_options['suffixOnly']) ? $root . 
+                    ($root ? $this->_separator : false) : false ) . $sectors[0],
                     $indent,
                     (empty($this->_options['startCollapsed']) ? false : "style='display:none' "),
                     $this->_divCounter
