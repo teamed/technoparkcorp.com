@@ -40,14 +40,19 @@ class ReloadSupplierRegistry extends Model_Decision_PM
         $supplierRegistry = Model_Artifact::root()->supplierRegistry;
         
         // maybe it's fresh enough?
-        if ($supplierRegistry->ps()->updated->isEarlier(Zend_Date::now()->subDay(1))) {
+        $ageHours = Zend_Date::now()->sub($supplierRegistry->ps()->updated)->getTimestamp() / (60 * 60);
+        if ($ageHours < 24) {
             return sprintf(
                 'registry is up to date, %dhrs', 
-                Zend_Date::now()->sub($supplierRegistry->ps()->updated)->getTimestamp() / (60 * 60)
+                $ageHours
             );
         }
         
-        logg('There are %d suppliers in the registry now', count($supplierRegistry));
+        logg(
+            'There are %d suppliers in the registry now (%dhrs old)', 
+            count($supplierRegistry),
+            $ageHours
+        );
         
         // reload it
         $supplierRegistry->reload();
