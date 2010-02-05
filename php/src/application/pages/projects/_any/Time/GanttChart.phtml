@@ -24,7 +24,7 @@
 <? $start = new FaZend_Date(Zend_Date::now()
     ->setHour(0)
     ->setMinute(0)) ?>
-<? $increment = Zend_Date::DAY ?>
+<? $increment = Zend_Date::WEEK ?>
 <? if ($increment == Zend_Date::WEEK) $start->setWeekday(1) ?>
 <? $date = clone $start; ?>
 
