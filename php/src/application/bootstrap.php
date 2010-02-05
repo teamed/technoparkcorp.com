@@ -45,7 +45,7 @@ class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap
             ),
             'costs' => array(
                 'regexs' => array(
-                    '/^payment\.(?:amount|volume|balance)$/',
+                    '/^payment\.(?:amount|volume|balance|paid|earned)$/',
                 ),
                 'converter' => array('FaZend_Bo_Money', 'convertFromCents')
             ),

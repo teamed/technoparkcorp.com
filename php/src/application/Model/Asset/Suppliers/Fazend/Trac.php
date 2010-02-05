@@ -84,6 +84,7 @@ class Model_Asset_Suppliers_Fazend_Trac extends Model_Asset_Suppliers_Abstract
                 
             $supplier->addRole($attributes['role']);
             $supplier->setRate(new FaZend_Bo_Money($attributes['price']));
+            $supplier->setApprovedOn(new Zend_Date($attributes['date']));
         }
     }
     

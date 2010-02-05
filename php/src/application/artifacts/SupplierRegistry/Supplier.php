@@ -62,6 +62,13 @@ class theSupplier
     protected $_roles = array();
     
     /**
+     * Approved on this date
+     *
+     * @var Zend_Date
+     */
+    protected $_approvedOn;
+    
+    /**
      * Construct the class
      *
      * @param string Email
@@ -131,6 +138,17 @@ class theSupplier
     {
         $this->_name = $name;
         return $this;
+    }
+
+    /**
+     * Set when this supplier was approved FIRST time
+     *
+     * @param Zend_Date
+     * @return $this
+     */
+    public function setApprovedOn(Zend_Date $approvedOn) 
+    {
+        $this->_approvedOn = $approvedOn;
     }
 
     /**

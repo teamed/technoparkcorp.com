@@ -14,11 +14,20 @@
  *
 -->
  
-<h1>Project Management Office (PMO)</h1>
+<h1>Performance Reports</h1>
 
-<?=$this->bar()
-    ->setStyle('stairs')
-    ->addLink('Suppliers', 'Database of Suppliers')
-    ->addLink('StaffRequests', 'Staff Requests and Responses')
-    ->addLink('Reports', 'PMO Performance Reports')
+<? 
+    $reports = new ArrayIterator();
+    for ($i=0; $i<5; $i++) {
+        $date = Zend_Date::now()->sub($i, Zend_Date::MONTH);
+        $reports[] = FaZend_StdObject::create()
+            ->set('id', $date->get(Zend_Date::MONTH . '-' . Zend_Date::YEAR))
+            ->set('name', $date->get(Zend_Date::MONTH_NAME . ' ' . Zend_Date::YEAR));
+    }
+?>
+
+<?=$this->table()
+    ->setSource($reports)
+    ->addColumn('name', 'Month')
+    ->addOption('name', '{id}')
     ?>

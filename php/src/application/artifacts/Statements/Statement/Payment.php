@@ -78,6 +78,32 @@ class thePayment extends FaZend_Db_Table_ActiveRow_payment
     }
     
     /**
+     * Get summary of payments made in the specified interval, grouped by supplier
+     *
+     * @param Zend_Date Start
+     * @param Zend_Date End
+     * @return array[]
+     */
+    public static function retrieveSummaryByInterval(Zend_Date $start, Zend_Date $end) 
+    {
+        return self::retrieve()
+            ->columns(
+                array(
+                    'paid' => new Zend_Db_Expr('SUM(IF(context = "" AND amount < 0, -amount, 0))'),
+                    'earned' => new Zend_Db_Expr('SUM(IF(context <> "", amount, 0))'),
+                )
+            )
+            ->where('created BETWEEN :start AND :end')
+            ->group('supplier')
+            ->fetchAll(
+                array(
+                    'start' => $start->getIso(),
+                    'end' => $end->getIso(),
+                )
+            );
+    }
+    
+    /**
      * Get total volume
      *
      * @return FaZend_Bo_Money

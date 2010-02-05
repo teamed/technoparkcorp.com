@@ -89,6 +89,22 @@ class theSupplierRegistry extends Model_Artifact_Bag
     }
     
     /**
+     * Retrive full list of suppliers approved in the specified interval
+     *
+     * @return theSupplier[]
+     */
+    public function retrieveApprovedByInterval($start, $end) 
+    {
+        $list = new ArrayIterator();
+        foreach ($this as $supplier) {
+            if ($supplier->approvedOn->isLater($end) && $supplier->approvedOn->isEarlier($start)) {
+                $list[] = $supplier;
+            }
+        }
+        return $list;
+    }
+    
+    /**
      * Supplier exists?
      * 
      * The method is required by ArrayAccess interface, don't delete it.

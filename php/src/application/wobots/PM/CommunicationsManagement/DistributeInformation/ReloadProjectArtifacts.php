@@ -49,7 +49,9 @@ class ReloadProjectArtifacts extends Model_Decision_PM
             
             // maybe it's fresh enough?    
             if ($this->_project->$property instanceof Model_Artifact) {
-                $ageHours = Zend_Date::now()->sub($this->_project->$property->ps()->updated)->getTimestamp() / (60 * 60);
+                $ageHours = Zend_Date::now()
+                    ->sub($this->_project->$property->ps()->updated)
+                    ->getTimestamp() / (60 * 60);
                 if ($ageHours < 24) {
                     logg(
                         '%s is up to date, %dhrs', 

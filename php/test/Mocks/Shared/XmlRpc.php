@@ -57,12 +57,16 @@ class Mocks_Shared_XmlRpc
                 shuffle($skills);
                 
                 $list = array(
-                    Mocks_Shared_Trac_Ticket::get(false, array(
-                        'supplier' => substr($query, -strlen(Model_Asset_Suppliers_Fazend_Trac::QUERY_SINGLE)),
-                        'skills' => implode(', ', array_slice($skills, 0, 3)),
-                        'role' => $roles[array_rand($roles)],
-                        'price' => rand(8, 20) . ' EUR',
-                    )),
+                    Mocks_Shared_Trac_Ticket::get(
+                        false, 
+                        array(
+                            'supplier' => substr($query, -strlen(Model_Asset_Suppliers_Fazend_Trac::QUERY_SINGLE)),
+                            'skills' => implode(', ', array_slice($skills, 0, 3)),
+                            'role' => $roles[array_rand($roles)],
+                            'price' => rand(8, 20) . ' EUR',
+                            'date' => Zend_Date::now()->sub(rand(5, 30), Zend_Date::DAY)->get(Mocks_Shared_Trac_Ticket::TRAC_DATE),
+                        )
+                    ),
                 );
                 break;
                 

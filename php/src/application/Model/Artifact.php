@@ -54,7 +54,8 @@ class Model_Artifact extends FaZend_Pos_Abstract implements Model_Artifact_Inter
         // ping every 10 seconds
         if (self::$_lastPingTime < microtime(true) - 10) {
             // @todo do it somehow else!
-            mysqli_ping(Zend_Db_Table::getDefaultAdapter()->getConnection());
+            // mysqli_ping(Zend_Db_Table::getDefaultAdapter()->getConnection());
+            Zend_Db_Table::getDefaultAdapter()->query('--');
             self::$_lastPingTime = microtime(true);
         }
         return parent::__get($name);
