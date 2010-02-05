@@ -56,6 +56,7 @@ class Helper_Tree extends FaZend_View_Helper
     protected $_options = array(
         'startCollapsed' => false, // when loaded first time the tree is closed
         'useAjax' => false,
+        'suffixOnly' => false, // section names will have only suffixes
     );
     
     /**
@@ -224,9 +225,11 @@ class Helper_Tree extends FaZend_View_Helper
             }
 
             if ($root)
-                $id = substr($id, strlen($root) + 1);
+                $idSuffix = substr($id, strlen($root) + 1);
+            else
+                $idSuffix = $id;
             
-            $sectors = explode($this->_separator, $id);
+            $sectors = explode($this->_separator, $idSuffix);
 
             // is it a chapter?
             if (count($sectors) > 1) {
@@ -235,9 +238,9 @@ class Helper_Tree extends FaZend_View_Helper
                     "%s<div %sid=\"tree%d\">\n",
                     $indent,
                     ++$this->_divCounter,
-                    $sectors[0],
+                    (empty($this->_options['suffixOnly']) ? $id : $sectors[0]),
                     $indent,
-                    (!empty($this->_options['startCollapsed']) ? "style='display:none' " : false),
+                    (empty($this->_options['startCollapsed']) ? false : "style='display:none' "),
                     $this->_divCounter
                 );
 
