@@ -46,13 +46,29 @@ class ReloadProjectArtifacts extends Model_Decision_PM
             // we're interested only in PASSIVE artifacts
             if (!($this->_project->$property instanceof Model_Artifact_Passive))
                 continue;
-                
+            
+            // maybe it's fresh enough?    
+            if ($this->_project->$property instanceof Model_Artifact) {
+                $ageHours = Zend_Date::now()->sub($this->_project->$property->ps()->updated)->getTimestamp() / (60 * 60);
+                if ($ageHours < 24) {
+                    logg(
+                        '%s is up to date, %dhrs', 
+                        $property,
+                        $ageHours
+                    );
+                    continue;
+                }
+            }
+            
             // we reload it explicitly, no matter whether it's loaded or not
             logg("Reloading of [{$this->_project->$property->ps()->path}]...");
             $this->_project->$property->reload();
             logg("Artifact reloaded: $property");
             $reloaded[] = $property;
         }
+        
+        if (!count($reloaded))
+            return 'Nothing reloaded';
         
         return "Artifacts reloaded: " . implode(', ', $reloaded);
     }
