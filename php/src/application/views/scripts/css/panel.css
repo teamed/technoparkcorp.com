@@ -48,33 +48,6 @@ h2 {
     padding-bottom: 6px;
 }
 
-/* table properties */
-th {
-    text-align: left;
-}
-
-    td, th {
-        text-align: left;
-        vertical-align: top;
-        padding: 2px;
-    }
-
-    th {
-        background-color: <?=Model_Colors::BLUE?>;
-        color: white;
-        font-weight: normal;
-    }
-
-    tr.even {
-        color: inherit;
-        background-color: #e7e9ea;
-    }    
-
-    tr.highlight {
-        color: inherit;
-        background-color: #9cacb6;
-    }    
-
 /* form properties */
 input, 
 textarea, 
