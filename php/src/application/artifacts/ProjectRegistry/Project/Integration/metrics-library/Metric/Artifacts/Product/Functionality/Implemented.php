@@ -61,7 +61,7 @@ class Metric_Artifacts_Product_Functionality_Implemented extends Metric_Abstract
                 $implemented[] = $r->name;
             }
         }
-        $this->_value = count($implemented) / count($this->_project->deliverables->functional);
+        $this->_value = round(count($implemented) / count($this->_project->deliverables->functional), 2);
     }
     
     /**
