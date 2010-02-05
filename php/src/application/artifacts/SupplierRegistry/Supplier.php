@@ -210,4 +210,14 @@ class theSupplier
         return $this->hasSkill($skill) * 100;
     }
     
+    /**
+     * How much we should pay to PMO for this supplier
+     *
+     * @return FaZend_Bo_Money
+     */
+    protected function _getPmoBonus() 
+    {
+        return new FaZend_Bo_Money('10 USD');
+    }
+    
 }

@@ -130,6 +130,17 @@ class Helper_Table extends FaZend_View_Helper
     }
 
     /**
+     * Inject variable
+     *
+     * @return $this
+     */
+    public function setInjection($name, $var) 
+    {
+        $this->_table->setInjection($name, $var);
+        return $this;
+    }
+
+    /**
      * Add new column
      *
      * @param string|false Name of the object property to get, false = KEY
@@ -210,7 +221,7 @@ class Helper_Table extends FaZend_View_Helper
      */
     public function addFormatter($condition, $style = null)
     {
-        // add column to the htmlTable()
+        // add formatter to the htmlTable()
         $this->_table->addFormatter($this->_predecessor, $condition, $style);
         return $this;
     }

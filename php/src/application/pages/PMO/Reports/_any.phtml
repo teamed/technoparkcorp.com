@@ -26,16 +26,27 @@
 
 <p>Suppliers' results:</p>
 <?=$this->table()
+    ->setInjection('earned', $earned = new FaZend_Bo_Money())
     ->setSource(thePayment::retrieveSummaryByInterval($start, $end))
     ->addColumn('supplier', 'Email')
     ->addColumn('earned', 'Earned')
+        ->addFormatter(
+            'callback',
+            create_function(
+                '$value, $row, $table', 
+                '$table->getInjection("earned")->add($value); return false;'
+            )
+        )
     ->addColumn('paid', 'Paid')
     ?>
+    
+<p>They totally earned <?=$earned?>, PMO bonus: <b><?=$earned->div(10)?></b></p>
 
 <p>Suppliers approved during the reporting period:</p>
 
 <?=$this->table()
     ->setSource($this->root->supplierRegistry->retrieveApprovedByInterval($start, $end))
+    ->setInjection('pmoBonus', $pmoBonus = new FaZend_Bo_Money())
     ->addColumn('email', 'Email')
     ->addColumn('name', 'Full name')
     ->addColumn('skills', 'Skills')
@@ -49,5 +60,14 @@
             create_function('$a', 'return implode(", ", $a);')
         )
     ->addColumn('rate', 'Rate')
+    ->addColumn('pmoBonus', 'Bonus')
+        ->addFormatter(
+            'callback',
+            create_function(
+                '$value, $row, $table', 
+                '$table->getInjection("pmoBonus")->add($value); return false;'
+            )
+        )
     ?>
 
+<p>PMO bonus: <b><?=$pmoBonus?></b></p>
