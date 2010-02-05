@@ -235,7 +235,7 @@ class Helper_Tree extends FaZend_View_Helper
             if (count($sectors) > 1) {
                 $html .= sprintf(
                     "%s<div><span onclick=\"$('div#tree%d').toggle();\">%s</span></div>\n" . 
-                    "%s<div %sid=\"tree%d\">\n",
+                    "%s<div %sid=\"tree%d\" class=\"sub\">\n",
                     $indent,
                     ++$this->_divCounter,
                     (empty($this->_options['suffixOnly']) ? $root . 
