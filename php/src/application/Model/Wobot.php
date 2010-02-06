@@ -187,9 +187,16 @@ abstract class Model_Wobot implements Model_Wobot_Interface
      */
     public function isInOfficeNow() 
     {
+        $now = Zend_Date::now();
+        
+        // is it a weekend?
+        $weekday = $now->get(Zend_Date::WEEKDAY_DIGIT);
+        if (($weekday == 7) || ($weekday == 6))
+            return false;
+            
         $timezone = $this->getTimezone();
-        $diff = Zend_Date::now()->get(Zend_Date::TIMEZONE_SECS) / (60 * 60);
-        $hour = Zend_Date::now()->get(Zend_Date::HOUR) - $diff + $timezone;
+        $diff = $now->get(Zend_Date::TIMEZONE_SECS) / (60 * 60);
+        $hour = $now->get(Zend_Date::HOUR) - $diff + $timezone;
         return ($hour >= 8) && ($hour <= 20);
     }
 
