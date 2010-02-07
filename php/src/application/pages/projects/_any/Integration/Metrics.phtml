@@ -36,6 +36,11 @@
 
 <?=$this->tree()
     ->setCollection($this->project->metrics, 'name', '/')
+    ->setOptions(
+        array(
+            'useAjax' => true,
+        )
+    )
     ->addAttrib('class', 'tree')
     ->setMask('%s: <b>%s</b>/%s/%s/%s')
     ->addToken('->suffix')

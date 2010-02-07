@@ -183,6 +183,11 @@ class Helper_Tree extends FaZend_View_Helper
      */
     protected function _render()
     {
+        // normalize options
+        if (!empty($this->_options['useAjax'])) {
+            $this->_options['startCollapsed'] = true;
+        }
+        
         $new = array();
         foreach ($this->_collection as $id=>$item) {
             if ($this->_id) {
@@ -197,10 +202,32 @@ class Helper_Tree extends FaZend_View_Helper
         $this->_collection = $new;
         $this->_divCounter = 0;
         
+        if (!empty($this->_options['useAjax'])) {
+            $front = Zend_Controller_Front::getInstance();
+            $node = $front->getRequest()->getPost('node');
+            if ($node) {
+                $front->getResponse()->setBody($this->_renderNode($node));
+                
+                die();
+            }
+            
+            $this->getView()->includeJQuery();
+            $this->getView()->headScript()->appendScript(
+                '
+                function loadNode(div, node)
+                {
+                    if (div.html().length < 2) {
+                        div.load("", {"node": node});
+                    }
+                }
+                '
+            );
+        }
+
         $attribs = '';
         foreach ($this->_attribs as $name=>$value)
             $attribs .= ' ' . $name . '="' . $value . '"';
-        
+            
         return "<div{$attribs}>\n{$this->_renderNode()}\n</div>";
     }
     
@@ -208,16 +235,25 @@ class Helper_Tree extends FaZend_View_Helper
      * Build list in HTML, recursively
      *
      * @param string Root name
+     * @param boolean Is it a recursive sub-call?
      * @return void
      */
-    protected function _renderNode($root = '') 
+    protected function _renderNode($root = '', $subCall = false) 
     {
+        if ($subCall && !empty($this->_options['useAjax'])) {
+            do {
+                next($this->_collection);
+            } while (strpos(key($this->_collection), $root . $this->_separator) === 0);
+            
+            return '';
+        }
+        
         if ($root)
             $indent = str_repeat("\t", substr_count($root, $this->_separator) + 1);
         else
             $indent = '';
         
-        $html = '';
+        $html = false;
         while ($item = current($this->_collection)) {
             $id = key($this->_collection);
             
@@ -231,39 +267,34 @@ class Helper_Tree extends FaZend_View_Helper
                 $idSuffix = $id;
             
             $sectors = explode($this->_separator, $idSuffix);
+            $idPrefix = $root . ($root ? $this->_separator : false) . $sectors[0];
 
             // is it a chapter?
             if (count($sectors) > 1) {
                 $html .= sprintf(
-                    "%s<div><span onclick=\"$('div#tree%d').toggle();\">%s</span></div>\n" . 
+                    "%s<div><span onclick=\"$('div#tree%d').toggle()%s\">%s</span></div>\n" . 
                     "%s<div %sid=\"tree%d\" class=\"sub\">\n",
                     $indent,
                     ++$this->_divCounter,
-                    (empty($this->_options['suffixOnly']) ? $root . 
-                    ($root ? $this->_separator : false) : false ) . $sectors[0],
+                    (empty($this->_options['useAjax']) ? false :
+                    ";loadNode($('div#tree{$this->_divCounter}'), '{$idPrefix}');"),
+                    empty($this->_options['suffixOnly']) ? $idPrefix : $sectors[0],
                     $indent,
                     (empty($this->_options['startCollapsed']) ? false : "style='display:none' "),
                     $this->_divCounter
                 );
 
-                if (empty($this->_options['useAjax'])) {
-                    $sub = $this->_renderNode(
-                        ($root ? $root . $this->_separator : false) . $sectors[0]
-                    ) . "{$indent}</div>\n";
-                    // something was added and we can go to the next element,
-                    // we're sure that NEXT() was performed inside this call
-                    $html .= $sub;
-                    if ($sub) {
-                        continue;
-                    }
-                    // don't CONTINUE, but go below until NEXT()
-                } else {
-                    $html .= $id . 'skipped';
-                    do {
-                        next($this->_collection);
-                    } while (strpos(key($this->_collection), $id . $this->_separator) === 0);
+                $sub = $this->_renderNode(
+                    ($root ? $root . $this->_separator : false) . $sectors[0],
+                    true
+                ) . "{$indent}</div>\n";
+                // something was added and we can go to the next element,
+                // we're sure that NEXT() was performed inside this call
+                $html .= $sub;
+                if ($sub !== false) {
                     continue;
                 }
+                // don't CONTINUE, but go below until NEXT()
             } else {
                 // it's an item
                 $values = array();
