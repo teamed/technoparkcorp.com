@@ -69,7 +69,7 @@ class RescueAbandonedTickets extends Model_Decision_PM
                 (60 * 60);
                 
             // there was some activity for the last 72 hours
-            if ($delayedHours < 48) {
+            if ($delayedHours < 72) {
                 logg(
                     'Ticket #%d was updated recently, on %s (%d hours ago)', 
                     $issue->id, 
