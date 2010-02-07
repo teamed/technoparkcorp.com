@@ -191,7 +191,7 @@ abstract class Model_Wobot implements Model_Wobot_Interface
         
         // is it a weekend?
         $weekday = $now->get(Zend_Date::WEEKDAY_DIGIT);
-        if (($weekday == 7) || ($weekday == 6))
+        if (($weekday == 0) || ($weekday == 6))
             return false;
             
         $timezone = $this->getTimezone();
