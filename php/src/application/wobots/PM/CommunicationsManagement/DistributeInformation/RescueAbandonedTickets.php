@@ -38,6 +38,8 @@ class RescueAbandonedTickets extends Model_Decision_PM
      */
     protected function _make()
     {
+        return 'disabled temporarily';
+        
         logg('Found %d tickets totally', count($this->_project->issues));
      
         $rescued = array();
