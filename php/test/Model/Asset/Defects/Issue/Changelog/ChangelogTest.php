@@ -10,14 +10,16 @@ class Model_Asset_Defects_Issue_Changelog_ChangelogTest extends AbstractProjectT
         parent::setUp();
         $project = $this->_project->fzProject();
         $asset = $project->getAsset(Model_Project::ASSET_DEFECTS);
-        $issue = $asset->findById(1);
-        $this->_changelog = $issue->changelog;
+        $issues = $asset->retrieveBy();
+        $id = array_shift($issues);
+        $this->_issue = $asset->findById($id);
+        $this->_changelog = $this->_issue->changelog;
     }
 
     public function testChangelogIsAlwaysUniqueObject()
     {
         $changelog = $this->_project->fzProject()
-            ->getAsset(Model_Project::ASSET_DEFECTS)->findById(1)->changelog;
+            ->getAsset(Model_Project::ASSET_DEFECTS)->findById($this->_issue->id)->changelog;
         $this->assertTrue($changelog === $this->_changelog);
     }
 
