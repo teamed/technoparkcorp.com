@@ -29,6 +29,11 @@
 
 <?=$this->tree()
     ->setCollection($this->project->deliverables->functional, 'name', '.')
+    ->setOptions(
+        array(
+            'renderSections' => false,
+        )
+    )
     ->addAttrib('class', 'tree')
     ->setMask('%s: %s')
     ->addToken('->name')

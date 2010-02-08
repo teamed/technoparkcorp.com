@@ -57,6 +57,7 @@ class Helper_Tree extends FaZend_View_Helper
         'startCollapsed' => false, // when loaded first time the tree is closed
         'useAjax' => false,
         'suffixOnly' => false, // section names will have only suffixes
+        'renderSections' => true, // show sections? or just put links to items
     );
     
     /**
@@ -121,7 +122,15 @@ class Helper_Tree extends FaZend_View_Helper
      */
     public function setOptions(array $options) 
     {
-        $this->_options = $options;
+        foreach ($options as $option=>$value) {
+            if (!array_key_exists($option, $this->_options)) {
+                FaZend_Exception::raise(
+                    'Helper_Tree_InvalidOption', 
+                    "Option '{$option}' in unknown the helper"
+                );
+            }
+            $this->_options[$option] = $value;
+        }
         return $this;
     }
     
@@ -256,6 +265,7 @@ class Helper_Tree extends FaZend_View_Helper
         $html = false;
         while ($item = current($this->_collection)) {
             $id = key($this->_collection);
+            $this->_divCounter++;
             
             if ($root && strpos($id, $root) !== 0) {
                 break;
@@ -269,16 +279,27 @@ class Helper_Tree extends FaZend_View_Helper
             $sectors = explode($this->_separator, $idSuffix);
             $idPrefix = $root . ($root ? $this->_separator : false) . $sectors[0];
 
+            $onclick = sprintf(
+                " onclick=\"$('div#tree%d').toggle()%s\"", 
+                $this->_divCounter,
+                (empty($this->_options['useAjax']) ? false :
+                ";loadNode($('div#tree{$this->_divCounter}'), '{$idPrefix}');")
+            );
+            
             // is it a chapter?
             if (count($sectors) > 1) {
+                if (empty($this->_options['renderSections'])) {
+                    $this->_divCounter--;
+                }
                 $html .= sprintf(
-                    "%s<div><span onclick=\"$('div#tree%d').toggle()%s\">%s</span></div>\n" . 
-                    "%s<div %sid=\"tree%d\" class=\"sub\">\n",
+                    "%s%s%s<div %sid=\"tree%d\" class=\"sub\">\n",
                     $indent,
-                    ++$this->_divCounter,
-                    (empty($this->_options['useAjax']) ? false :
-                    ";loadNode($('div#tree{$this->_divCounter}'), '{$idPrefix}');"),
-                    empty($this->_options['suffixOnly']) ? $idPrefix : $sectors[0],
+                    empty($this->_options['renderSections']) ? false :
+                    sprintf(
+                        "<div><span%s>%s</span></div>\n",
+                        $onclick,
+                        empty($this->_options['suffixOnly']) ? $idPrefix : $sectors[0]
+                    ),
                     $indent,
                     (empty($this->_options['startCollapsed']) ? false : "style='display:none' "),
                     $this->_divCounter
@@ -287,11 +308,11 @@ class Helper_Tree extends FaZend_View_Helper
                 $sub = $this->_renderNode(
                     ($root ? $root . $this->_separator : false) . $sectors[0],
                     true
-                ) . "{$indent}</div>\n";
+                );
                 // something was added and we can go to the next element,
                 // we're sure that NEXT() was performed inside this call
-                $html .= $sub;
-                if ($sub !== false) {
+                $html .= $sub . "{$indent}</div>\n";
+                if (trim($sub, "\t\n ")) {
                     continue;
                 }
                 // don't CONTINUE, but go below until NEXT()
@@ -303,14 +324,18 @@ class Helper_Tree extends FaZend_View_Helper
                     $values[] = $value;
                 }
 
-                $html .= 
-                "{$indent}<div>" . call_user_func_array(
-                    'sprintf',
-                    array_merge(
-                        array($this->_mask),
-                        $values
+                $html .= sprintf(
+                    "%s<div%s>%s</div>\n",
+                    $indent,
+                    !empty($this->_options['renderSections']) ? false : $onclick,
+                    call_user_func_array(
+                        'sprintf',
+                        array_merge(
+                            array($this->_mask),
+                            $values
+                        )
                     )
-                ) . "</div>\n";
+                );
             }
 
             next($this->_collection);
