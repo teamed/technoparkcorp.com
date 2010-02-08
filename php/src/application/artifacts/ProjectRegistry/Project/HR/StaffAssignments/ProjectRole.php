@@ -49,7 +49,7 @@ class theProjectRole implements Model_Artifact_Stateless
      **/
     public function __construct(theStaffAssignments $staffAssignments, $title)
     {
-        validate()->alnum($title, array());
+        validate()->regex($title, '/^[\sa-zA-Z]$/');
         $this->_staffAssignments = $staffAssignments;
         $this->_title = $title;
     }
