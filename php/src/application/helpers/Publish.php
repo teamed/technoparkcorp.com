@@ -93,21 +93,28 @@ class Helper_Publish extends FaZend_View_Helper
 
         // define privileges of current user on current page
         $privileges = 'r';
-        if (Model_Pages::getInstance()->isAllowed($current, null, 'w'))
+        if (Model_Pages::getInstance()->isAllowed($current, null, 'w')) {
             $privileges = 'rw';
+        }
 
         // build menu
         $links = array();        
         foreach ($this->_pages as $page) {            
-            if ($this->_acl->isAllowed(Model_User::me()->email, $page->tag, $privileges))
-                $links[$page->tag] = '<a href="' . $this->getView()->panelUrl($current) . 
-                '?' . $page->tag .  '">' . $page->tag . '</a>';
+            if ($this->_acl->isAllowed(Model_User::me()->email, $page->tag, $privileges)) {
+                $links[$page->tag] = sprintf(
+                    '<a href="%s?%s">%s</a>',
+                    $this->getView()->panelUrl($current),
+                    $page->tag,
+                    $page->tag
+                );
+            }
         }
         
         $request = Zend_Controller_Front::getInstance()->getRequest();
         foreach ($this->_pages as $page) {
-            if (!isset($request->{$page->tag}))
+            if (!isset($request->{$page->tag})) {
                 continue;
+            }
 
             if (isset($links[$page->tag])) {
                 $pageHtml = $this->_executePage($page);
@@ -120,7 +127,7 @@ class Helper_Publish extends FaZend_View_Helper
         }
         
         // when the document was updated last time
-        $age = $this->getView()->dateInterval($this->_doc->ps()->updated->get(Zend_Date::TIMESTAMP));
+        $age = $this->getView()->dateInterval($this->_doc->ps()->updated);
         
         return '<div class="publish">' .
             '<tt' . ($this->_doc instanceof Model_Artifact_Passive ? " style='color:red;'" : false) . '>' . 
