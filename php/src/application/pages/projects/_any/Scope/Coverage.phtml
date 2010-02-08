@@ -46,14 +46,15 @@
         $from = $this->post('from');
         $to = $this->post('to');
         
-        $deliverables = $this->project->deliverables->$to;
+        $dest = $this->project->deliverables->$to;
         $source = $this->project->deliverables->$from;
         
-        foreach ($deliverables as $deliverable) {
-            $coverage = $this->project->traceability->getCoverage($source, $deliverable);
+        $matrix = $this->project->traceability->getCoverageMatrix($source, $dest);
+        
+        foreach ($dest as $id=>$deliverable) {
             echo sprintf(
                 "<span%s>%s</span>\n",
-                $coverage > 0 ? ' class="covered"' : false,
+                isset($matrix[$id]) ? ' class="covered"' : false,
                 $deliverable->name
             );
         }

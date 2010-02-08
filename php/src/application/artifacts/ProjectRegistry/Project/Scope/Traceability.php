@@ -143,6 +143,29 @@ class theTraceability extends Model_Artifact_Bag
     }
      
     /**
+     * Returns indexes of elements in $to, which are covered by any elements from $from
+     *
+     * @param string|array Name of deliverable or name of class who should cover
+     * @param string|array Name of deliverable or name of class who should be covered
+     * @return array()
+     */
+    public function getCoverageMatrix($from, $to) 
+    {
+        $this->_normalize($from);
+        $this->_normalize($to);
+        
+        $covered = array();
+        foreach ($to as $id=>$dest) {
+            foreach ($this as $link) {
+                if ($link->isTo($dest) && $link->isFrom($from)) {
+                    $covered[$id] = 1;
+                }
+            }
+        }
+        return $covered;
+    }
+     
+    /**
      * Calculate coverage
      *
      * @param string|array Name of deliverable or name of class who should cover
@@ -151,21 +174,12 @@ class theTraceability extends Model_Artifact_Bag
      **/
     public function getCoverage($from, $to)
     {
-        $this->_normalize($from);
-        $this->_normalize($to);
-        
         // to avoid division by zero
         if (!count($to)) {
             return 0;
         }
         
-        $covered = array();
-        foreach ($this as $link) {
-            if (!$link->isFrom($from) || !$link->isTo($to)) {
-                continue;
-            }
-            $covered[] = strval($link->to);
-        }
+        $covered = $this->getCoverageMatrix($from, $to);
         return count($covered) / count($to);
     }
     
