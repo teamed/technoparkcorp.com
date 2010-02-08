@@ -27,6 +27,8 @@ class pages_CoverageOfVisibilityTest extends AbstractPageTest
     public function testDocumentIsRendered($name) 
     {
         $this->dispatchPage($name);
+        $this->assertNotRedirect();
+        // bug($this->response->getBody());
         logg('Page %s dispatched', $name);
     }
 

@@ -51,7 +51,7 @@ class Mocks_Shared_Soap_Client
             FaZend_StdObject::create()
                 ->set('id', 2)
                 ->set('name', 'PMO')
-                ->set('user', 1)
+                ->set('user', self::$_userId)
                 ->set('authz', "[PMO:/]\n" . self::PM . " = rw\n")
                 ->set('passwd', "[users]\n" . self::PM . " = " . self::PM_PWD . "\n")
                 ->set('tracIni', ''),

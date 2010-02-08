@@ -37,12 +37,17 @@ class Model_Asset_Defects_Fazend_TracTest extends AbstractProjectTest
         Model_Asset_Defects_Fazend_Trac::setTicketsPerPage(100);
         try {
             $tickets = $this->_asset->retrieveBy();
+            $ticketId = current($tickets);
+            $ticket = $this->_asset->findById($ticketId);
+            $ticket->changelog;
         } catch (Shared_Trac_SoapFault $e) {
-            FaZend_Log::err(sprintf(
-                "Failed to get tickets from Trac (%s): ", 
-                get_class($e),
-                $e->getMessage()
-            ));
+            FaZend_Log::err(
+                sprintf(
+                    "Failed to get tickets from Trac (%s): %s", 
+                    get_class($e),
+                    $e->getMessage()
+                )
+            );
             $incomplete = true;
         }
         

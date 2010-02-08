@@ -61,7 +61,12 @@ class Model_Asset_Defects_Fazend_Trac extends Model_Asset_Defects_Abstract
      **/
     public function findById($id) 
     {
-        return FaZend_Flyweight::factory('Model_Asset_Defects_Issue_Trac', $this, false, $id);
+        return FaZend_Flyweight::factory(
+            'Model_Asset_Defects_Issue_Trac',
+            $this,
+            false, // code
+            $id // ID of the ticket
+        );
     }
     
     /**
@@ -72,7 +77,11 @@ class Model_Asset_Defects_Fazend_Trac extends Model_Asset_Defects_Abstract
      **/
     public function findByCode($code) 
     {
-        return FaZend_Flyweight::factory('Model_Asset_Defects_Issue_Trac', $this, $code);
+        return FaZend_Flyweight::factory(
+            'Model_Asset_Defects_Issue_Trac', 
+            $this, 
+            $code
+        );
     }
     
     /**
@@ -105,8 +114,9 @@ class Model_Asset_Defects_Fazend_Trac extends Model_Asset_Defects_Abstract
         }
         
         // we should not send empty queries to Trac
-        if (!count($lemmas))
+        if (!count($lemmas)) {
             $lemmas[] = self::QUERY_ALL;
+        }
 
         $ids = array();
         $page = 1;

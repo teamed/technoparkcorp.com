@@ -94,8 +94,7 @@ abstract class Model_Asset_Defects_Issue_Abstract
             if (isset($this->_changelog))
                 $this->_saveChangelog();
         } catch (Exception $e) {
-            // @todo Do something here!
-            bug($e);
+            FaZend_Log::err('failed to save changes to ticket #' . $this->_id);
         }
     }
 

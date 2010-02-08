@@ -27,13 +27,6 @@ class PanelController extends FaZend_Controller_Action
 {
 
     /**
-     * Session namespace
-     *
-     * @var Zend_Session_Namespace
-     */
-    protected $_session;
-
-    /**
      * Pre-configuration
      *
      * @return void
@@ -43,9 +36,12 @@ class PanelController extends FaZend_Controller_Action
         // if the user is not logged in - try to log him in
         if (!Model_User::isLoggedIn()) {
             // show as much information as possible
-            $adapter = new Model_Auth_Adapter(array(
-                'accept_schemes' => 'basic',
-                'realm' => 'thePanel 2.0 beta'));
+            $adapter = new Model_Auth_Adapter(
+                array(
+                    'accept_schemes' => 'basic',
+                    'realm' => 'thePanel 2.0 beta'
+                )
+            );
 
             $adapter->setBasicResolver(new Model_Auth_Resolver());
             $adapter->setRequest($this->getRequest());
@@ -117,7 +113,6 @@ class PanelController extends FaZend_Controller_Action
         $list = array();
 
         if ($current) {
-
             foreach ($current->parent->getPages() as $page) {
                 if (!$this->_pages->isAllowed($page->resource))
                     continue;
