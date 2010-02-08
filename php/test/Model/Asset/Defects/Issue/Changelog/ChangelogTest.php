@@ -30,7 +30,10 @@ class Model_Asset_Defects_Issue_Changelog_ChangelogTest extends AbstractProjectT
     {
         $log = array();
         foreach (array('comment', 'status', 'owner', 'summary', 'description') as $name) {
-            $this->assertFalse(is_null($this->_changelog->get($name)->getValue()));
+            $this->assertFalse(
+                is_null($this->_changelog->get($name)->getValue()),
+                "'{$name}' field is NULL, why?"
+            );
             $log[] = $name . '=' . $this->_changelog->get($name)->getValue();
         }
         logg(implode(', ', $log));
