@@ -12,6 +12,7 @@
  * 568 Ninth Street South 202, Naples, Florida 34102, USA
  * tel. +1 (239) 935 5429
  *
+ * @version $Id$
 -->
  
 <? $this->includeCSS('pages/projects/_any/Scope/DesignModel/tree.css') ?>
@@ -28,8 +29,13 @@
 
 <?=$this->tree()
     ->setCollection($this->project->deliverables->design, 'name', '.')
+    ->setOptions(
+        array(
+            'renderSections' => false,
+        )
+    )
     ->addAttrib('class', 'tree')
-    ->setMask('%s (%s)')
+    ->setMask('<span class="node">%s</span> (%s)')
     ->addToken('->name')
     ->addToken('->type')
     ?>

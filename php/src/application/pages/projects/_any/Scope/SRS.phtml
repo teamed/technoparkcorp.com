@@ -12,8 +12,11 @@
  * 568 Ninth Street South 202, Naples, Florida 34102, USA
  * tel. +1 (239) 935 5429
  *
+ * @version $Id$
 -->
  
+<? $this->includeCSS('pages/projects/_any/Scope/DesignModel/tree.css') ?>
+
 <?=$this->publish($this->project->deliverables)?>
 
 <h1>Software Requirements Specification (SRS)</h1>
@@ -32,10 +35,11 @@
     ->setOptions(
         array(
             'renderSections' => false,
+            'startCollapsed' => true,
         )
     )
     ->addAttrib('class', 'tree')
-    ->setMask('%s: %s')
+    ->setMask('<span class="node">%s</span>: %s')
     ->addToken('->name')
     ->addToken('->description')
     ?>
