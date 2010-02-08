@@ -31,7 +31,6 @@ class Model_Asset_Suppliers_Fazend_TracTest extends AbstractTest
     public function testRealLifeDatabaseOfSuppliersIsAccessible() 
     {
         Shared_XmlRpc::setXmlRpcClientClass('Zend_XmlRpc_Client');
-        Mocks_Shared_Soap_Client::setLive();
         Model_Asset_Defects_Fazend_Trac::setTicketsPerPage(100);
         try {
             $project = Model_Project::findByName('PMO');
@@ -50,9 +49,7 @@ class Model_Asset_Suppliers_Fazend_TracTest extends AbstractTest
             );
             $incomplete = true;
         }
-        
         Model_Asset_Defects_Fazend_Trac::setTicketsPerPage(3);
-        Mocks_Shared_Soap_Client::setTest();
         Shared_XmlRpc::setXmlRpcClientClass('Mocks_Shared_XmlRpc');
         
         if (isset($incomplete))
