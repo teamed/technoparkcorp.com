@@ -192,6 +192,9 @@ class Helper_Tree extends FaZend_View_Helper
      */
     protected function _render()
     {
+        // doesn't work so far.
+        $this->_options['useAjax'] = false;
+
         // normalize options
         if (!empty($this->_options['useAjax'])) {
             $this->_options['startCollapsed'] = true;
@@ -212,11 +215,9 @@ class Helper_Tree extends FaZend_View_Helper
         $this->_divCounter = 0;
         
         if (!empty($this->_options['useAjax'])) {
-            $front = Zend_Controller_Front::getInstance();
-            $node = $front->getRequest()->getPost('node');
+            $node = $this->getView()->post('node');
             if ($node) {
-                $front->getResponse()->setBody($this->_renderNode($node));
-                
+                echo $this->_renderNode($node);
                 die();
             }
             
@@ -226,7 +227,7 @@ class Helper_Tree extends FaZend_View_Helper
                 function loadNode(div, node)
                 {
                     if (div.html().length < 2) {
-                        div.load("", {"node": node});
+                        div.load("?test", {"node": node});
                     }
                 }
                 '
