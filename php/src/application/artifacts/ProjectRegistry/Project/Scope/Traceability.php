@@ -58,8 +58,9 @@ class theTraceability extends Model_Artifact_Bag
     public function getAllSourceTypes() 
     {
         $types = array();
-        foreach ($this as $link)
+        foreach ($this as $link) {
             $types[$link->fromType] = true;
+        }
         return array_keys($types);
     }
      
@@ -71,8 +72,9 @@ class theTraceability extends Model_Artifact_Bag
     public function getAllDestinationTypes() 
     {
         $types = array();
-        foreach ($this as $link)
+        foreach ($this as $link) {
             $types[$link->toType] = true;
+        }
         return array_keys($types);
     }
      
@@ -103,8 +105,9 @@ class theTraceability extends Model_Artifact_Bag
         $this->_normalize($source);
         $links = array();
         foreach ($this as $link) {
-            if ($link->isFrom($source))
+            if ($link->isFrom($source)) {
                 $links[] = $link;
+            }
         }
         return $links;
     }
@@ -120,8 +123,9 @@ class theTraceability extends Model_Artifact_Bag
         $this->_normalize($dest);
         $links = array();
         foreach ($this as $link) {
-            if ($link->isTo($dest))
+            if ($link->isTo($dest)) {
                 $links[] = $link;
+            }
         }
         return $links;
     }
@@ -151,13 +155,15 @@ class theTraceability extends Model_Artifact_Bag
         $this->_normalize($to);
         
         // to avoid division by zero
-        if (!count($to))
+        if (!count($to)) {
             return 0;
+        }
         
         $covered = array();
         foreach ($this as $link) {
-            if (!$link->isFrom($from) || !$link->isTo($to))
+            if (!$link->isFrom($from) || !$link->isTo($to)) {
                 continue;
+            }
             $covered[] = strval($link->to);
         }
         return count($covered) / count($to);
@@ -173,9 +179,10 @@ class theTraceability extends Model_Artifact_Bag
     protected function _normalize(&$smth) 
     {
         // make sure it's array in any case
-        if (!is_array($smth)) {
+        if (!is_array($smth) && !($smth instanceof ArrayAccess)) {
             $smth = array($smth);
         }
+        
         foreach ($smth as $id=>$deliverable) {
             // is is OK already?
             if ($deliverable instanceof Deliverables_Abstract) {

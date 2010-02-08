@@ -141,8 +141,9 @@ class theTraceabilityLink
      */
     public function isFrom($deliverables) 
     {
-        if (!is_array($deliverables))
+        if (!is_array($deliverables) && !($deliverables instanceof ArrayAccess)) {
             $deliverables = array($deliverables);
+        }
         foreach ($deliverables as $d) {
             if (($d->name == $this->fromName) && ($d->type == $this->fromType)) {
                 return true;
@@ -159,8 +160,9 @@ class theTraceabilityLink
      */
     public function isTo($deliverables) 
     {
-        if (!is_array($deliverables))
+        if (!is_array($deliverables) && !($deliverables instanceof ArrayAccess)) {
             $deliverables = array($deliverables);
+        }
         foreach ($deliverables as $d) {
             if (($d->name == $this->toName) && ($d->type == $this->toType)) {
                 return true;

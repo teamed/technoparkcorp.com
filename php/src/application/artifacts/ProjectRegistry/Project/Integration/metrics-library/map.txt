@@ -40,9 +40,8 @@ artifacts
 aspects
     coverage
         functional
-            classes*: 0..1
-        use cases
-            classes*: 0..1
+            classes: 0..1
+            methods: 0..1
     readiness
         requirements: 0..1
             useCases
@@ -56,7 +55,10 @@ aspects
     
 org
     staff
-        Architect: 0 or 1
-        SystemAnalyst: 0 or 1
-        CodeReviewer: 0 or 1
-
+        availability
+            Architect: 0, 1, 2, ...
+            SystemAnalyst: ...
+            CodeReviewer: ...
+            DesignReviewer: ...
+            ManualTester: ...
+            
