@@ -1,5 +1,4 @@
-<!--
- *
+/**
  * thePanel v2.0, Project Management Software Toolkit
  *
  * Redistribution and use in source and binary forms, with or without 
@@ -12,17 +11,23 @@
  * 568 Ninth Street South 202, Naples, Florida 34102, USA
  * tel. +1 (239) 935 5429
  *
- * @version $Id$
--->
- 
-<?=$this->publish($this->project->traceability)?>
+ * @copyright Copyright (c) TechnoPark Corp., 2001-2009
+ * @version $Id: tree.css 611 2010-02-07 07:43:45Z yegor256@yahoo.com $
+ *
+ */
 
-<h1>Traceability Matrix</h1>
+div.matrix {
+    margin-top: 20px;
+}
 
-<?
-    $bar = $this->bar()->setStyle('stairs');
-    foreach ($this->project->traceability->getAllSourceTypes() as $type)
-        $bar->addLink($type, $type . '(s) trace to...');
-?>
+    div.matrix span {
+        border: 1px solid <?=Model_Colors::BLUE?>;
+        color: <?=Model_Colors::BLUE?>;
+        margin: 5px;
+        padding: 5px;
+    }
 
-<?=$bar?>
+        div.matrix span.covered {
+            background-color: <?=Model_Colors::BLUE?>;
+            color: white;
+        }

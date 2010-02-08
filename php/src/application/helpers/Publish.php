@@ -105,7 +105,7 @@ class Helper_Publish extends FaZend_View_Helper
                     '<a href="%s?%s">%s</a>',
                     $this->getView()->panelUrl($current),
                     $page->tag,
-                    $page->tag
+                    _t($page->tag)
                 );
             }
         }
@@ -122,8 +122,10 @@ class Helper_Publish extends FaZend_View_Helper
                 break;
             }
 
-            $pageHtml = '<p class="error">You don\' have enough access ' . 
-            'permissions to access this page (' . $page->tag . ')</p>';
+            $pageHtml = '<p class="error">' . _t(
+                "You don't have enough access permissions to access this page (%s)",
+                $page->tag
+            ) . '</p>';
         }
         
         // when the document was updated last time
@@ -136,9 +138,9 @@ class Helper_Publish extends FaZend_View_Helper
             '<sup title="you can read/write" style="cursor:pointer;"><small>rw</small></sup>: ' : false) . 
             implode('&#32;&middot;&#32;', $links) . 
             '<span style="color:gray;margin-left:20px;font-size:0.8em;">' .
-                'v' . $this->_doc->ps()->version . ', updated ' . $age . ' ago' . 
+                'v' . $this->_doc->ps()->version . ', ' . _t('updated %s ago', $age) .
                 ($this->_doc instanceof Model_Artifact_Passive ? 
-                    ($this->_doc->isLoaded() ? false : ' (requires reloading)') : false) . 
+                    ($this->_doc->isLoaded() ? false : ' ' . _t('(requires reloading)')) : false) . 
                 '</span>' .
             '</div>' . 
             (isset($pageHtml) ? "<div class='publisher'>" . $pageHtml . '</div>' : false);
@@ -192,8 +194,12 @@ class Helper_Publish extends FaZend_View_Helper
             if (preg_match('/^(?:\s?#.*|\s?)$/', $line))
                 continue;
 
-            if (!preg_match('/^\s?(\w+)\s?=\s?(.*)$/', trim($line, "\t\r\n "), $matches))
-                FaZend_Exception::raise('Helper_Publish_InvalidSyntax', "Error in access.pthml file, line #$id: $line");
+            if (!preg_match('/^\s?(\w+)\s?=\s?(.*)$/', trim($line, "\t\r\n "), $matches)) {
+                FaZend_Exception::raise(
+                    'Helper_Publish_InvalidSyntax', 
+                    "Error in access.pthml file, line #$id: $line"
+                );
+            }
             
             if (!$this->_acl->has($matches[1]))
                 $this->_acl->addResource($matches[1]);

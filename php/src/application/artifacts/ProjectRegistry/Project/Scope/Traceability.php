@@ -95,14 +95,32 @@ class theTraceability extends Model_Artifact_Bag
     /**
      * Get full list of links by the given source of traceability
      *
-     * @param Deliverables_Abstract Source of traceability
+     * @param string|Deliverables_Abstract Source of traceability
      * @return theTraceabilityLink[]
      **/
-    public function getLinksBySource(Deliverables_Abstract $source) 
+    public function getLinksBySource($source) 
     {
+        $this->_normalize($source);
         $links = array();
         foreach ($this as $link) {
-            if ($source->name == $link->fromName)
+            if ($link->isFrom($source))
+                $links[] = $link;
+        }
+        return $links;
+    }
+
+    /**
+     * Get full list of links by the given destination
+     *
+     * @param string|Deliverables_Abstract Destination of traceability
+     * @return theTraceabilityLink[]
+     **/
+    public function getLinksByDestination($dest) 
+    {
+        $this->_normalize($dest);
+        $links = array();
+        foreach ($this as $link) {
+            if ($link->isTo($dest))
                 $links[] = $link;
         }
         return $links;
@@ -123,8 +141,8 @@ class theTraceability extends Model_Artifact_Bag
     /**
      * Calculate coverage
      *
-     * @param string|array Name of deliverable or name of class who should be covered
      * @param string|array Name of deliverable or name of class who should cover
+     * @param string|array Name of deliverable or name of class who should be covered
      * @return float
      **/
     public function getCoverage($from, $to)

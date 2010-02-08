@@ -1,0 +1,60 @@
+<!--
+ *
+ * thePanel v2.0, Project Management Software Toolkit
+ *
+ * Redistribution and use in source and binary forms, with or without 
+ * modification, are PROHIBITED without prior written permission from 
+ * the author. This product may NOT be used anywhere and on any computer 
+ * except the server platform of TechnoPark Corp. located at 
+ * www.technoparkcorp.com. If you received this code occasionally and 
+ * without intent to use it, please report this incident to the author 
+ * by email: privacy@technoparkcorp.com or by mail: 
+ * 568 Ninth Street South 202, Naples, Florida 34102, USA
+ * tel. +1 (239) 935 5429
+ *
+ * @version $Id$
+-->
+ 
+<? $this->includeCSS('pages/projects/_any/Scope/Coverage/matrix.css') ?>
+
+<h1>Traceability Coverage</h1>
+
+<? $options = array(
+    'classes',
+    'functional',
+    'design',
+    'issues',
+) ?>
+
+<?=$this->forma()
+    ->addAttrib('class', 'inline')
+    ->addBehavior('nothing')
+    ->addField('select', 'from')
+        ->fieldOptions(array_combine($options, $options))
+        ->fieldLabel('From')
+    ->addField('select', 'to')
+        ->fieldOptions(array_combine($options, $options))
+        ->fieldLabel('To')
+    ->addField('submit', 'submit')
+        ->fieldValue('Refresh')
+        ->fieldAttrib('class', 'btn')
+    ?>
+  
+<div class="matrix">  
+<?
+    if ($this->post('to')) {
+        $from = $this->post('from');
+        $to = $this->post('to');
+        
+        $deliverables = $this->project->deliverables->$to;
+        foreach ($deliverables as $deliverable) {
+            $coverage = $this->project->traceability->getCoverage($from, $deliverable);
+            echo sprintf(
+                "<span%s>%s</span>\n",
+                $coverage > 0 ? ' class="covered"' : false,
+                $deliverable->name
+            );
+        }
+    }
+?>
+</div>  

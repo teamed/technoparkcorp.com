@@ -32,6 +32,11 @@
 
 <?=$this->tree()
     ->setCollection($this->project->wbs, 'code', '/')
+    ->setOptions(
+        array(
+            'suffixOnly' => true,
+        )
+    )
     ->addAttrib('class', 'tree')
     ->setMask('%s: %s')
     ->addToken('->code')

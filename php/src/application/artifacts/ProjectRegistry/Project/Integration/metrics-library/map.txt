@@ -6,65 +6,57 @@ Don't forget:
     - 
 
 business model
-requirements
-    glossary
-        total
-        readability - how good it is formatted
-        reference-rate - how often terms are referenced
-    actors
-        total
-    interfaces
-        total
-    use cases
-        format correctness
-        total: requirements/functional/total / 10
-    functional
-        deepness - biggest level..
-        total: OBJECTIVE
-            by level: level0: 12, level1: 45, level2: ...
-            by status: 
-        format correctness
-        structure correctness
-        ambiguity
-    quality of service
+artifacts
+    requirements
+        glossary
+            total*:
+        actors
+            total
+        interfaces
+            total
+        use cases
+            total*: requirements/functional/total / 10
+        functional
+            deepness: biggest level..
+            total: 
+                by level*: level0: 12, level1: 45, level2: ...
+        quality of service
+            total*:
+    design
+        classes
+            total*: requirements/functional/total / 10
+    defects
+        byComponent
+            SRS*: 1000: 
+            SRS-UseCases*: ..
+            SRS-QoS*: ..
+            Design*: 1000
+            Design-DbSchema*: ...
+            R...*: 1000 per each
+        byReporter/email
+    product
+        implemented*: 100%
 
-architecture
-    components
-        total: requirements/functional/total / 10
-        by type
-        traceability coverage
-            to glossary term
-            to QOS
-            to functional reqs
-        defects coverage
-            minor/major/critical/blocker
-            open/fixed/invalid
-    diagrams
-        by type
-
-design
-    classes
-        traceability coverage
-            to requirements
-            to components
-    scripts
-    unit tests
-    
-code
-    complexity
+aspects
     coverage
-    sloc
-deliverables
-    requirements attributes
-repository
-    traceability
+        functional
+            classes*: 0..1
+        use cases
+            classes*: 0..1
+    readiness
+        requirements: 0..1
+            useCases
+            functional
+            qos
+            glossary
+            actors
+        design: 0..1
+        product: 0..1
+        defects: 0..1
+    
+org
+    staff
+        Architect: 0 or 1
+        SystemAnalyst: 0 or 1
+        CodeReviewer: 0 or 1
 
-
-traceability
-    from artifact, to artifact
-    from type/all, to type/all
-        coverage
-defects
-    by artifact/severity/status/all
-        adp
-        
