@@ -112,7 +112,9 @@ class thePayment extends FaZend_Db_Table_ActiveRow_payment
     {
         return self::retrieve()
             ->columns(array('volume'=>new Zend_Db_Expr('SUM(IF(amount>0,amount,0))')))
+            ->setRowClass('thePayment')
             ->fetchRow()
+            ->setIgnoreNull()
             ->volume;
     }
     
@@ -125,7 +127,9 @@ class thePayment extends FaZend_Db_Table_ActiveRow_payment
     {
         return self::retrieve()
             ->columns(array('balance'=>new Zend_Db_Expr('SUM(amount)')))
+            ->setRowClass('thePayment')
             ->fetchRow()
+            ->setIgnoreNull()
             ->balance;
     }
     
@@ -140,7 +144,9 @@ class thePayment extends FaZend_Db_Table_ActiveRow_payment
         return self::retrieve()
             ->columns(array('volume'=>new Zend_Db_Expr('SUM(IF(amount>0,amount,0))')))
             ->where('supplier = ?', $statement->supplier)
+            ->setRowClass('thePayment')
             ->fetchRow()
+            ->setIgnoreNull()
             ->volume;
     }
     
@@ -155,7 +161,9 @@ class thePayment extends FaZend_Db_Table_ActiveRow_payment
         return self::retrieve()
             ->columns(array('balance'=>new Zend_Db_Expr('SUM(amount)')))
             ->where('supplier = ?', $statement->supplier)
+            ->setRowClass('thePayment')
             ->fetchRow()
+            ->setIgnoreNull()
             ->balance;
     }
     
@@ -173,7 +181,9 @@ class thePayment extends FaZend_Db_Table_ActiveRow_payment
             ->where('supplier = ?', $stakeholder->email)
             ->where('context = ?', $project->name)
             ->group('supplier')
+            ->setRowClass('thePayment')
             ->fetchRow()
+            ->setIgnoreNull()
             ->volume;
     }
     
