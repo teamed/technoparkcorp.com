@@ -21,7 +21,7 @@
 <?=$this->forma()
     ->addField('text', 'target')
         ->fieldLabel('Current target:')
-        ->fieldValue($metric->target)
+        ->fieldValue($metric->objective)
         ->fieldRequired(true)
         ->fieldAttrib('maxlength', 10)
         ->fieldAttrib('size', 5)

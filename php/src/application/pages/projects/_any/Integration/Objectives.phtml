@@ -12,6 +12,7 @@
  * 568 Ninth Street South 202, Naples, Florida 34102, USA
  * tel. +1 (239) 935 5429
  *
+ * @version $Id$
 -->
  
 <?=$this->publish($this->project->objectives)?>
@@ -19,7 +20,8 @@
 <h1>Project Objectives</h1>
 
 <?=$this->table()
-    ->setSource($this->project->objectives)
+    ->setSource($this->project->metrics)
+    ->addConverter('(${2}->visible ? true : false)')
     ->addColumn('__key', 'Name')
     ->addColumn('value', 'Value')
     ?>

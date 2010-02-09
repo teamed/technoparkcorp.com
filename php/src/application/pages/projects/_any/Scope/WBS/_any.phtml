@@ -49,8 +49,8 @@
         <p>
             Current metric value: <?=$this->wp->metric->value?><br/>
             Target value: 
-                <? if ($this->wp->metric->target): ?>
-                    <?=$this->wp->metric->target?>
+                <? if ($this->wp->metric->objective): ?>
+                    <?=$this->wp->metric->objective?>
                     <? if ($this->wp->metric->visible): ?>
                         (default: <?=$this->wp->metric->default?>)
                     <? endif; ?>
