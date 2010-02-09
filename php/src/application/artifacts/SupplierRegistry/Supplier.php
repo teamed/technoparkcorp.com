@@ -217,7 +217,21 @@ class theSupplier
      */
     protected function _getPmoBonus() 
     {
-        return new FaZend_Bo_Money('10 USD');
+        switch (true) {
+            case $this->hasRole('Architect'):
+                $bonus = '40 USD';
+                break;
+            case $this->hasRole('Designer'):
+                $bonus = '25 USD';
+                break;
+            case $this->hasRole('System Analyst'):
+                $bonus = '20 USD';
+                break;
+            default:
+                $bonus = '10 USD';
+                break;
+        }
+        return new FaZend_Bo_Money($bonus);
     }
     
 }
