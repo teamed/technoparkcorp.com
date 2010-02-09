@@ -19,10 +19,38 @@
 
 <h1>Project Objectives</h1>
 
+<?=$this->forma()
+    ->addAttrib('class', 'inline')
+    ->addBehavior('flash', '"Objective \'{${a1}->name}\' set to \'{${a2}}\'"')
+    ->addBehavior('redirect')
+    ->addField('text', 'a1')
+        ->fieldLabel('Objective')
+        ->fieldAttrib('size', 40)
+        ->fieldRequired(true)
+        ->fieldConverter(
+            FaZend_Callback::factory('${i1}[${a1}]')
+            ->inject($this->project->metrics)
+        )
+    ->addField('text', 'a2')
+        ->fieldLabel('Value')
+        ->fieldAttrib('size', 5)
+        ->fieldAttrib('maxlength', 5)
+        ->fieldRequired(true)
+    ->addField('submit', 'submit')
+        ->fieldValue('Set')
+        ->fieldAttrib('class', 'btn')
+        ->fieldAction('false; ${a1}->objective = ${a2}')
+    ?>
+
 <?=$this->table()
     ->setSource($this->project->metrics)
-    ->addConverter('(${2}->visible ? true : false)')
+    ->addConverter('(${a2}->visible ? true : false)')
     ->addColumn('__key', 'Name')
+        ->addConverter('"<span onclick=\'set()\'>{${a1}}</span>"')
+        ->allowRawHtml()
+    ->addColumn('objective', 'Objective')
+        ->addFormatter('(${a2}->objective == ${a2}->default ? false : true)', 'font-weight:bold')
+    ->addColumn('default', 'Default')
     ->addColumn('value', 'Value')
     ?>
     

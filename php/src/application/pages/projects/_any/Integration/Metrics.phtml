@@ -22,7 +22,7 @@
 
 <?=$this->forma()
     ->addAttrib('class', 'inline')
-    ->addBehavior('flash', "Metric '%s' reloaded", '{name}')
+    ->addBehavior('flash', '"Metric \'{${a1}}\' reloaded"')
     ->addBehavior('redirect')
     ->addField('text', 'name')
         ->fieldLabel('Metric')
@@ -31,7 +31,7 @@
     ->addField('submit', 'submit')
         ->fieldValue('Ping')
         ->fieldAttrib('class', 'btn')
-        ->fieldAction($this->project->metrics, 'offsetGet')
+        ->fieldAction(array($this->project->metrics, 'offsetGet'))
     ?>
 
 <?=$this->tree()

@@ -216,6 +216,18 @@ class Helper_Table extends FaZend_View_Helper
     }
     
     /**
+     * Allow raw html
+     *
+     * @return Helper_Table
+     */
+    public function allowRawHtml()
+    {
+        // add column to the htmlTable()
+        $this->_table->allowRawHtml($this->_predecessor);
+        return $this;
+    }
+    
+    /**
      * Add formatter to the column
      *
      * @param string Condition

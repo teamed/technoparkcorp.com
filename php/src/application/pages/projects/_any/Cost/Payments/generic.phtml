@@ -34,5 +34,5 @@
         ->fieldValue($this->project->name)
         
     ->addField('submit')
-        ->fieldAction($this->project->payments, 'createGeneric')
+        ->fieldAction(array($this->project->payments, 'createGeneric'))
     ?>

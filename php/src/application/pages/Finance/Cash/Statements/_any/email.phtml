@@ -30,7 +30,7 @@
     
     ->addField('submit')
         ->fieldAttrib('class', 'btn')
-        ->fieldAction($statement, 'sendByEmail')
+        ->fieldAction(array($statement, 'sendByEmail'))
     ?>
    
 <pre> 

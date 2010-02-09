@@ -43,6 +43,17 @@ class theObjective
     {
         $this->value = $value;
     }
+    
+    /**
+     * Set new value
+     *
+     * @param mixed Value to set
+     * @return $this
+     */
+    public function setValue($value) 
+    {
+        $this->_value = $value;
+    }
         
     /**
      * Getter dispatcher

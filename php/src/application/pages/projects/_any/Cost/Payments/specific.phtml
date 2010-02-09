@@ -38,5 +38,5 @@
         ->fieldValue($this->project->name)
         
     ->addField('submit')
-        ->fieldAction($this->project->payments, 'createSpecific')
+        ->fieldAction(array($this->project->payments, 'createSpecific'))
     ?>

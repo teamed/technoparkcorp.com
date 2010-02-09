@@ -29,6 +29,6 @@
     ->addField('submit', 'submit')
         ->fieldValue('Clean POS Databasee')
         ->fieldAttrib('class', 'btn')
-        ->fieldAction('FaZend_Pos_Properties', 'cleanOut')
+        ->fieldAction(array('FaZend_Pos_Properties', 'cleanOut'))
     ?>
 
