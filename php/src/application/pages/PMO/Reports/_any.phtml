@@ -12,6 +12,7 @@
  * 568 Ninth Street South 202, Naples, Florida 34102, USA
  * tel. +1 (239) 935 5429
  *
+ * @version $Id$
 -->
  
 <? 
@@ -20,6 +21,11 @@
     $end = clone $start;
     $end->add(1, Zend_Date::MONTH);
 ?>
+
+<? foreach ($this->root->supplierRegistry->getPmoReports() as $report): ?>
+    <? $this->bar()->addLink('../' . $report->id, $report->name) ?>
+<? endforeach; ?>
+<?=$this->bar()?>
  
 <h1>Performance Report for 
     <?=$start->get(Zend_Date::MONTH_NAME . ' ' . Zend_Date::YEAR)?></h1>

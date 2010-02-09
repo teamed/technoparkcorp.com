@@ -74,12 +74,6 @@ class Helper_Table extends FaZend_View_Helper
         $this->_links = array();
         $this->_columns = array();
         $this->_predecessor = false;
-        
-        $this->_table->setNoDataMessage('<p class="empty">The table is empty, no data.</p>');
-        
-        // configure CSS for this gallery
-        $this->getView()->includeCSS('helper/table.css');
-
         return $this;
     }
 
@@ -90,6 +84,11 @@ class Helper_Table extends FaZend_View_Helper
      */
     public function __toString()
     {
+        $this->_table->setNoDataMessage('<p class="empty">The table is empty, no data.</p>');
+        
+        // configure CSS for this gallery
+        $this->getView()->includeCSS('helper/table.css');
+
         try {
             return (string)$this->_render();
         } catch (Exception $e) {

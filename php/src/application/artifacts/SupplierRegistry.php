@@ -105,6 +105,23 @@ class theSupplierRegistry extends Model_Artifact_Bag
     }
     
     /**
+     * Returns a list of reports for PMO
+     *
+     * @return array
+     */
+    public function getPmoReports() 
+    {
+        $reports = new ArrayIterator();
+        for ($i=0; $i<5; $i++) {
+            $date = Zend_Date::now()->sub($i, Zend_Date::MONTH);
+            $reports[] = FaZend_StdObject::create()
+                ->set('id', $date->get(Zend_Date::MONTH . '-' . Zend_Date::YEAR))
+                ->set('name', $date->get(Zend_Date::MONTH_NAME . ' ' . Zend_Date::YEAR));
+        }
+        return $reports;
+    }
+    
+    /**
      * Supplier exists?
      * 
      * The method is required by ArrayAccess interface, don't delete it.

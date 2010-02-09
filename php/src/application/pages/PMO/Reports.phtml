@@ -16,18 +16,8 @@
  
 <h1>Performance Reports</h1>
 
-<? 
-    $reports = new ArrayIterator();
-    for ($i=0; $i<5; $i++) {
-        $date = Zend_Date::now()->sub($i, Zend_Date::MONTH);
-        $reports[] = FaZend_StdObject::create()
-            ->set('id', $date->get(Zend_Date::MONTH . '-' . Zend_Date::YEAR))
-            ->set('name', $date->get(Zend_Date::MONTH_NAME . ' ' . Zend_Date::YEAR));
-    }
-?>
-
 <?=$this->table()
-    ->setSource($reports)
+    ->setSource($this->root->supplierRegistry->getPmoReports())
     ->addColumn('name', 'Month')
     ->addOption('name', '{id}')
     ?>

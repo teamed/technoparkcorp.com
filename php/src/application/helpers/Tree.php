@@ -88,11 +88,6 @@ class Helper_Tree extends FaZend_View_Helper
      */
     public function tree()
     {
-        $this->getView()->includeJQuery();
-        
-        // configure CSS for this helper
-        $this->getView()->includeCSS('helper/tree.css');
-
         return $this;
     }
 
@@ -178,6 +173,11 @@ class Helper_Tree extends FaZend_View_Helper
      */
     public function __toString()
     {
+        $this->getView()->includeJQuery();
+        
+        // configure CSS for this helper
+        $this->getView()->includeCSS('helper/tree.css');
+
         try {
             return (string)$this->_render();
         } catch (Exception $e) {

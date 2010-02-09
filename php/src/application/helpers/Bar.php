@@ -30,7 +30,7 @@ class Helper_Bar extends FaZend_View_Helper
      *
      * @var array
      */
-    protected $_links;
+    protected $_links = array();
 
     /**
      * Style
@@ -46,7 +46,6 @@ class Helper_Bar extends FaZend_View_Helper
      */
     public function bar()
     {
-        $this->_links = array();
         return $this;
     }
 
@@ -108,9 +107,12 @@ class Helper_Bar extends FaZend_View_Helper
             if (!Model_Pages::getInstance()->isAllowed($resolvedLink))
                 continue;
 
-            $htmls[] = '<a href="' . $this->getView()->panelUrl($resolvedLink) . '" ' .
-            'title="' . $this->getView()->escape($link['title'] . " ({$resolvedLink})") . '">' .
-            $this->getView()->escape($link['title']) . '</a>';
+            $htmls[] = sprintf(
+                '<a href="%s" title="%s">%s</a>',
+                $this->getView()->panelUrl($resolvedLink),
+                $this->getView()->escape($link['title'] . " ({$resolvedLink})"),
+                $this->getView()->escape($link['title'])
+            );
         }
 
         if (!count($htmls))
@@ -127,7 +129,10 @@ class Helper_Bar extends FaZend_View_Helper
      */
     protected function _drawSnake(array $links)
     {
-        return '<p>' . implode('&#32;&middot;&#32;', $links) . '</p>';
+        return sprintf(
+            '<p>%s</p>',
+            implode('&#32;&middot;&#32;', $links)
+        );
     }
 
     /**
@@ -138,7 +143,10 @@ class Helper_Bar extends FaZend_View_Helper
      */
     protected function _drawStairs(array $links)
     {
-        return '<ul><li>' . implode('</li><li>', $links) . '</li></ul>';
+        return sprintf(
+            '<ul><li>%s</li></ul>',
+            implode('</li><li>', $links)
+        );
     }
 
 }

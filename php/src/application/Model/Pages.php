@@ -225,10 +225,14 @@ class Model_Pages extends Zend_Navigation
             
         // remove leading slash if it's an absolute path, 
         // or make it absolute from relative
-        if ($link[0] == '/')
+        if ($link[0] == '/') {
             $link = substr($link, 1);
-        else
+        } else {
             $link = self::getInstance()->findOneBy('active', true)->title . '/' . $link;
+        }
+        
+        // Replace "/abc/.." with nothing
+        $link = preg_replace('/\/[\w\d\-\.]+\/\.\./', '', $link);
 
         // return the document name, which can be used in panelUrl() helper
         return $link;
