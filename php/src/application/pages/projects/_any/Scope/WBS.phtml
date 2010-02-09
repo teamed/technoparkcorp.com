@@ -12,6 +12,7 @@
  * 568 Ninth Street South 202, Naples, Florida 34102, USA
  * tel. +1 (239) 935 5429
  *
+ * @version $Id$
 -->
  
 <?=$this->publish($this->project->wbs)?>
@@ -38,7 +39,8 @@
         )
     )
     ->addAttrib('class', 'tree')
-    ->setMask('%s: %s')
+    ->setMask('<tt>%s</tt>, %s, %s')
     ->addToken('->code')
     ->addToken('->cost')
+    ->addToken('->title')
     ?>
