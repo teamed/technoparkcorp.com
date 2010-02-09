@@ -97,7 +97,7 @@ class theSupplierRegistry extends Model_Artifact_Bag
     {
         $list = new ArrayIterator();
         foreach ($this as $supplier) {
-            if ($supplier->approvedOn->isLater($end) && $supplier->approvedOn->isEarlier($start)) {
+            if ($supplier->approvedOn->isEarlier($end) && $supplier->approvedOn->isLater($start)) {
                 $list[] = $supplier;
             }
         }
