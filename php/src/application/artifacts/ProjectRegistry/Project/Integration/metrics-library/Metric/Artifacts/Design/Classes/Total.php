@@ -39,7 +39,7 @@ class Metric_Artifacts_Design_Classes_Total extends Metric_Abstract
         }
         
         // total amount of classes in the project
-        $this->_value = count($this->_project->deliverables->classes);
+        $this->value = count($this->_project->deliverables->classes);
     }
     
 }

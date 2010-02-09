@@ -39,8 +39,10 @@ class Metric_Artifacts_Requirements_Functional_Total extends Metric_Abstract
 
     /**
      * Level code
+     * 
+     * @var array
      */
-    protected $_levelCode = array(
+    protected $_levelCodes = array(
         'first' => 0,
         'second' => 1,
         'third' => 2,
@@ -71,24 +73,24 @@ class Metric_Artifacts_Requirements_Functional_Total extends Metric_Abstract
             $this->_project->deliverables->reload();
         }
             
-        if ($this->_getOption('level') !== null) {
+        if ($this->_getOption('level')) {
             $max = max(array_keys($this->_pricePerRequirement));
             validate()
                 ->true(isset($this->_pricePerRequirement[$this->_getOption('level')]));
 
-            $this->_value = 0;
+            $this->value = 0;
             foreach ($this->_project->deliverables->functional as $requirement) {
-                if (substr_count($requirement, '.') == $this->_levelCode[$this->_getOption('level')])
-                    $this->_value++;
+                if (substr_count($requirement, '.') == $this->_levelCodes[$this->_getOption('level')])
+                    $this->value++;
             }
             
-            $increment = pow($this->_project->metrics['artifacts/requirements/functional/total']->target, 1/4);
-            $this->_default = round(pow($increment, 1+$this->_levelCode[$this->_getOption('level')]));
+            $increment = pow($this->_project->metrics['artifacts/requirements/functional/total']->objective, 1/4);
+            $this->default = round(pow($increment, 1+$this->_levelCodes[$this->_getOption('level')]));
             return;
         }
         
-        $this->_value = count($this->_project->deliverables->functional);
-        $this->_default = 300;
+        $this->value = count($this->_project->deliverables->functional);
+        $this->default = 300;
     }
         
     /**
@@ -99,18 +101,28 @@ class Metric_Artifacts_Requirements_Functional_Total extends Metric_Abstract
      */
     protected function _derive(array &$metrics = array())
     {
-        // if we already have too many requirements - skip this WP
-        if ($this->delta < 0)
-            return null;
-            
         // we specify requirements only on some particular level
-        if (!$this->_getOption('level'))
+        if (!$this->_getOption('level')) {
+            // instruct loader to ping these metrics/WPs
+            foreach (array_keys($this->_levelCodes) as $code) {
+                $metrics[] = './level/' . $code;
+            }
             return null;
+        }
             
-        $price = $this->_pricePerRequirement[$this->_getOption('level')];
+        // if we already have too many requirements - skip this WP
+        if ($this->delta <= 0) {
+            return null;
+        }
+            
+        $price = new FaZend_Bo_Money(
+            $this->_project
+            ->metrics['history/cost/requirements/functional/level/' . $this->_getOption('level')]
+            ->value
+        );
             
         return $this->_makeWp(
-            $this->delta * $price, 
+            $price->mul($this->delta), 
             sprintf(
                 'Specify +%d functional requirements on %s level',
                 $this->delta, 

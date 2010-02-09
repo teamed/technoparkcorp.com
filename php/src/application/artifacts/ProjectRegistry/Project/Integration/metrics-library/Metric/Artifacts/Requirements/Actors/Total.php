@@ -40,7 +40,7 @@ class Metric_Artifacts_Requirements_Actors_Total extends Metric_Abstract
             $this->_project->deliverables->reload();
         }
             
-        $this->_value = count($this->_project->deliverables->actors);
+        $this->value = count($this->_project->deliverables->actors);
     }
         
     /**

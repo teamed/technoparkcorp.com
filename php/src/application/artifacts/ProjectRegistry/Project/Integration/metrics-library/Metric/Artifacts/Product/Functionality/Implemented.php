@@ -45,13 +45,13 @@ class Metric_Artifacts_Product_Functionality_Implemented extends Metric_Abstract
     public function reload()
     {
         if ($this->_getOption('requirement')) {
-            $this->_value = rand(0, 1);
+            $this->value = rand(0, 1);
             return;
         }
         
         // to avoid division by zero
         if (!count($this->_project->deliverables->functional)) {
-            $this->_value = 0;
+            $this->value = 0;
             return;
         }
         
@@ -61,7 +61,7 @@ class Metric_Artifacts_Product_Functionality_Implemented extends Metric_Abstract
                 $implemented[] = $r->name;
             }
         }
-        $this->_value = round(count($implemented) / count($this->_project->deliverables->functional), 2);
+        $this->value = round(count($implemented) / count($this->_project->deliverables->functional), 2);
     }
     
     /**

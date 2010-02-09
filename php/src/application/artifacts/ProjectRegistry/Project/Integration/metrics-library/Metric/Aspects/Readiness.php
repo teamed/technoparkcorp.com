@@ -33,7 +33,7 @@ class Metric_Aspects_Readiness extends Metric_Abstract
      **/
     public function reload()
     {
-        $this->_value = 0.99;
+        $this->value = 0.99;
     }
                 
 }

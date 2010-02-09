@@ -26,7 +26,7 @@
  * <code>
  * $metric->value; // current value
  * $metric->default; // default target to be reached
- * $metric->target; // target to be reached, equals to 'default' if not changed
+ * $metric->objective; // target to be reached, equals to 'default' if not changed
  * $metric->delta; // the difference between target and current value
  * </code>
  * 
@@ -48,21 +48,21 @@ abstract class Metric_Abstract
      *
      * @var string
      */
-    protected $_name;
+    private $_name;
 
     /**
      * Value of the metric, loaded latest
      *
      * @var numeric
      */
-    protected $_value = null;
+    private $_value = null;
     
     /**
      * Default target of the metric
      *
      * @var numeric
      */
-    protected $_default;
+    private $_default;
     
     /**
      * Set of options
@@ -108,7 +108,7 @@ abstract class Metric_Abstract
      * Is it loaded?
      *
      * @return boolean
-     **/
+     */
     public final function isLoaded()
     {
         return isset($this->_value);
@@ -119,7 +119,8 @@ abstract class Metric_Abstract
      *
      * @param theMetrics Owner of this metric
      * @return void
-     **/
+     * @see Model_Artifact::_attach()
+     */
     public final function setMetrics(theMetrics $metrics)
     {
         $this->_project = $metrics->ps()->parent;
@@ -137,14 +138,23 @@ abstract class Metric_Abstract
     }
         
     /**
-     * Save the target
+     * Save the objective
      *
-     * @param integer Target
-     * @return void
-     **/
-    public final function setTarget($target)
+     * @param integer Objective to define for the metric
+     * @return $this
+     */
+    public final function setObjective($objective)
     {
-        $this->_project->objectives->setObjective($this->_name, $target);
+        if (!$this->visible) {
+            FaZend_Exception::raise(
+                'Metrics_VisibilityException', 
+                'Metric (' . get_class($this) . ') is not visible, you canot set its objective'
+            );
+        }
+        $this->_project->objectives->setObjective(
+            $this->name, 
+            $objective
+        );
         return $this;
     }
         
@@ -186,18 +196,18 @@ abstract class Metric_Abstract
                 return $this->_default;
                 
             // target is set in objectives, if set
-            case 'target':
+            case 'objective':
                 if (isset($this->_project->objectives[$this->_name]))
-                    return $this->_project->objectives[$this->_name];
+                    return $this->_project->objectives[$this->_name]->value;
                 return $this->_default;
                 
             case 'delta':
                 if (isset($this->_default))
-                    return $this->target - $this->_value;
+                    return $this->objective - $this->_value;
                 return null;
 
             // if this metric doesn't have DEFAULT - we can't make it visible
-            // in objective and nobody can set it's target value
+            // in objective and nobody can set it's "objective" value
             case 'visible':
                 return isset($this->_default);
         }
@@ -220,14 +230,19 @@ abstract class Metric_Abstract
         validate()->numeric($value, "You can only save NUMERIC values to metrics");
         
         switch ($name) {
-            case 'target':
-                return $this->setTarget($value);
+            case 'objective':
+                return $this->setObjective($value);
+            case 'value':
+                return $this->_value = $value;
+            case 'default':
+                return $this->_default = $value;
+            default:    
+                FaZend_Exception::raise(
+                    'MetricAccessException', 
+                    'You can SET only declared properties of a metric (' . 
+                    get_class($this) . '::' . $name . ')'
+                );
         }
-        
-        FaZend_Exception::raise(
-            'MetricAccessException', 
-            'You can SET only declared properties of a metric (' . get_class($this) . '::' . $name . ')'
-        );
     }
     
     /**
@@ -304,6 +319,9 @@ abstract class Metric_Abstract
         $metrics = array();
         $wp = $this->_derive($metrics);
         foreach ($metrics as $name) {
+            if ($name[0] == '.') {
+                $name = $this->name . substr($name, 1);
+            }
             $this->_project->wbs[$name];
         }
         return $wp;

@@ -39,7 +39,7 @@ class Metric_Artifacts_Design_Methods_Total extends Metric_Abstract
         }
         
         // total amount of methods in the project
-        $this->_value = count($this->_project->deliverables->methods);
+        $this->value = count($this->_project->deliverables->methods);
     }
     
 }

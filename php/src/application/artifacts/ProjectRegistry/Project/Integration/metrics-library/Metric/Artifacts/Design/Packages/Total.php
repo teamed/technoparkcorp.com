@@ -39,7 +39,7 @@ class Metric_Artifacts_Design_Packages_Total extends Metric_Abstract
         }
         
         // total amount of packages in the project
-        $this->_value = count($this->_project->deliverables->packages);
+        $this->value = count($this->_project->deliverables->packages);
     }
     
 }

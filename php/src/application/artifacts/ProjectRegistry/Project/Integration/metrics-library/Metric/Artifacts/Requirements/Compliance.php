@@ -44,7 +44,7 @@ class Metric_Artifacts_Requirements_Compliance extends Metric_Abstract
     public function reload() 
     {
         if ($this->_getOption('element'))
-            return $this->_value = rand(0, 1);
+            return $this->value = rand(0, 1);
         
         // types of elements in SRS and their value in total compliance
         $types = array(
@@ -56,7 +56,7 @@ class Metric_Artifacts_Requirements_Compliance extends Metric_Abstract
         );
             
         $compliance = array();
-        $this->_value = 0;
+        $this->value = 0;
         foreach (array_keys($types) as $type) {
             if (!isset($compliance[$type]))
                 $compliance[$type] = array();
@@ -73,7 +73,7 @@ class Metric_Artifacts_Requirements_Compliance extends Metric_Abstract
                 $compliance[$type] = 0;
         }
         
-        $this->_value = round(array_sum($compliance) / array_sum($types), 2);
+        $this->value = round(array_sum($compliance) / array_sum($types), 2);
     }
                 
 }

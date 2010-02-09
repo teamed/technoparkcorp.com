@@ -45,10 +45,10 @@ class Metric_Aspects_Coverage extends Metric_Abstract
     {
         // general coverage? something unknown
         if (!$this->_getOption('destination'))
-            return $this->_value = 0;
+            return $this->value = 0;
     
         // calculate coverage
-        $this->_value = $this->_project->traceability->getCoverage(
+        $this->value = $this->_project->traceability->getCoverage(
             $this->_getOption('source'),
             $this->_getOption('destination')
         );

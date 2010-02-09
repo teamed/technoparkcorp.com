@@ -62,6 +62,23 @@ class Helper_Bar extends FaZend_View_Helper
     }
 
     /**
+     * Add collection of links
+     *
+     * It should be an associative array with keys as links
+     * and values as labels
+     *
+     * @param array|Iterator collection to add
+     * @return $this
+     */
+    public function addCollection($collection) 
+    {
+        foreach ($collection as $id=>$item) {
+            $this->addLink($id, $item);
+        }
+        return $this;
+    }
+
+    /**
      * Add new link
      *
      * @param string Link

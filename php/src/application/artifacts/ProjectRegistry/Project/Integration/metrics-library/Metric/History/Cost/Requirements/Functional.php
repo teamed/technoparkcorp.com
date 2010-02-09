@@ -14,34 +14,54 @@
  *
  * @author Yegor Bugaenko <egor@technoparkcorp.com>
  * @copyright Copyright (c) TechnoPark Corp., 2001-2009
- * @version $Id$
+ * @version $Id: Total.php 611 2010-02-07 07:43:45Z yegor256@yahoo.com $
  *
  */
 
 /**
- * Total number of use cases
+ * Total number of functional requiremnts
  * 
  * @package Artifacts
  */
-class Metric_Artifacts_Requirements_UseCases_Total extends Metric_Abstract
+class Metric_History_Cost_Requirements_Functional extends Metric_Abstract
 {
+
+    /**
+     * Forwarders
+     *
+     * @var array
+     * @see Metric_Abstract::$_patterns
+     */
+    protected $_patterns = array(
+        '/level\/(\w+)/' => 'level',
+    );
+
+    /**
+     * Price per each requirement on some level, in USD
+     *
+     * @var array
+     */
+    protected $_pricePerRequirement = array(
+        'first' => 45,
+        'second' => 10,
+        'third' => 4,
+        'forth' => 2,
+    );
 
     /**
      * Load this metric
      *
      * @return void
+     * @throws Metric_History_Cost_Requirements_Functional_LevelMissedException
      **/
     public function reload()
     {
-        // we can't calculate metrics here if deliverables are not loaded
-        if (!$this->_project->deliverables->isLoaded()) {
-            $this->_project->deliverables->reload();
+        if (!$this->_getOption('level')) {
+            $this->value = 0;
+            return null;
         }
             
-        $this->value = count($this->_project->deliverables->useCases);
-        $this->default = round(
-            $this->_project->metrics['artifacts/requirements/functional/total/level/first']->objective / 10
-        );
+        $this->value = $this->_pricePerRequirement[$this->_getOption('level')];
     }
-        
+            
 }

@@ -66,7 +66,7 @@ class Metric_Artifacts_Defects_Total extends Metric_Abstract
         }
         
         // total amount of tickets in the project
-        $this->_value = count($this->_retrieveBy());
+        $this->value = count($this->_retrieveBy());
     }
     
     /**
@@ -77,7 +77,7 @@ class Metric_Artifacts_Defects_Total extends Metric_Abstract
      **/
     protected function _reloadByReporter($reporter) 
     {
-        $this->_value = count($this->_retrieveBy(array('reporter'=>$reporter)));
+        $this->value = count($this->_retrieveBy(array('reporter'=>$reporter)));
     }
         
     /**
@@ -88,7 +88,7 @@ class Metric_Artifacts_Defects_Total extends Metric_Abstract
      **/
     protected function _reloadByOwner($owner) 
     {
-        $this->_value = count($this->_retrieveBy(array('owner'=>$owner)));
+        $this->value = count($this->_retrieveBy(array('owner'=>$owner)));
     }
         
     /**
@@ -99,7 +99,7 @@ class Metric_Artifacts_Defects_Total extends Metric_Abstract
      **/
     protected function _reloadByComponent($component) 
     {
-        $this->_value = count($this->_retrieveBy(array('component'=>$component)));
+        $this->value = count($this->_retrieveBy(array('component'=>$component)));
     }
         
     /**
@@ -110,7 +110,7 @@ class Metric_Artifacts_Defects_Total extends Metric_Abstract
      **/
     protected function _reloadByMilestone($milestone) 
     {
-        $this->_value = count($this->_retrieveBy(array('milestone'=>$milestone)));
+        $this->value = count($this->_retrieveBy(array('milestone'=>$milestone)));
     }
         
     /**
@@ -121,7 +121,7 @@ class Metric_Artifacts_Defects_Total extends Metric_Abstract
      **/
     protected function _reloadBySeverity($severity) 
     {
-        $this->_value = count($this->_retrieveBy(array('severity'=>$severity)));
+        $this->value = count($this->_retrieveBy(array('severity'=>$severity)));
     }
         
     /**
@@ -132,7 +132,7 @@ class Metric_Artifacts_Defects_Total extends Metric_Abstract
      **/
     protected function _reloadByStatus($status) 
     {
-        $this->_value = count($this->_retrieveBy(array('status'=>$status)));
+        $this->value = count($this->_retrieveBy(array('status'=>$status)));
     }
         
     /**

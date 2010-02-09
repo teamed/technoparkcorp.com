@@ -25,7 +25,7 @@ class MetricsTest extends AbstractProjectTest
         logg(count($list) . ' metrics found');
         
         foreach ($list as $name=>$metric)
-            logg("Metric [$name]: {$metric->value}, {$metric->default}, {$metric->target}, {$metric->delta}");
+            logg("Metric [$name]: {$metric->value}, {$metric->default}, {$metric->objective}, {$metric->delta}");
     }
     
     public static function providerMetricNames()
