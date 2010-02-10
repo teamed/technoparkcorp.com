@@ -112,7 +112,8 @@ abstract class Model_Wobot implements Model_Wobot_Interface
      */
     public function getFullName() 
     {
-        return $this->getName() . '.' . $this->getContext();
+        $context = $this->getContext();
+        return $this->getName() . ($context ? '.' . $context : false);
     }
 
     /**

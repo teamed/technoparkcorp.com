@@ -89,27 +89,10 @@ class Helper_Table extends FaZend_View_Helper
         // configure CSS for this gallery
         $this->getView()->includeCSS('helper/table.css');
 
-        try {
-            return (string)$this->_render();
-        } catch (Exception $e) {
-            return get_class($this) . ' throws ' . get_class($e) . ': ' . $e->getMessage();
-        }
-    }
-
-    /**
-     * Converts it to HTML
-     *
-     * @return string HTML
-     */
-    protected function _render()
-    {
         $this->_table->showColumns($this->_columns);
 
-        $html = $this->_table->__toString();
-        if (!$html)
-            return '';
-
-        return '<p>' . $html . '</p>' . $this->getView()->paginator;
+        return '<p>' . $this->_table->__toString() . '</p>' . 
+        $this->getView()->paginator;
     }
 
     /**
@@ -125,10 +108,9 @@ class Helper_Table extends FaZend_View_Helper
             
         FaZend_Paginator::addPaginator($iterator, $this->getView(), 1, 'paginator');
 
-        // in other words - NO paging
-        $this->getView()->paginator->setItemCountPerPage(1000);
-        
+        $this->getView()->paginator->setItemCountPerPage(25);
         $this->_table->setPaginator($this->getView()->paginator);
+        
         return $this;
     }
 
@@ -159,8 +141,9 @@ class Helper_Table extends FaZend_View_Helper
         $this->_table->addColumn($name, $this->_predecessor);
 
         // reconfigure header, if the name is given
-        if (!is_null($header))
+        if (!is_null($header)) {
             $this->_table->setColumnTitle($name, $header);
+        }
 
         // set predecessor to make sure we allocate them consequently
         $this->_predecessor = $name;
@@ -179,9 +162,11 @@ class Helper_Table extends FaZend_View_Helper
     public function addOption($name, $link)
     {
         // this params will be sent to the htmlTable() helper
-        $urlParams = array('doc'=>array($this, 'resolveDocumentName'));
+        $urlParams = array(
+            'doc' => FaZend_Callback::factory(array($this, 'resolveDocumentName'))
+        );
 
-        // add the link to this helper
+        // add the link to $this
         $this->_links[$name] = $link;
 
         // user func call params
