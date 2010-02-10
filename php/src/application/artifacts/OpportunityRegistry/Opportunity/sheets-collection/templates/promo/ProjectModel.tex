@@ -1,0 +1,174 @@
+\section*{Iterative and Incremental Project Model}
+
+Project manager will develop a project schedule as a collection 
+of iterations and milestones. Milestones are the dates when
+the team delivers some results and the project gets the next
+payment. Schedule as a document is signed by you and our director.
+
+\subsection*{Iterations}
+
+Iterations ($I_1, I_2, \dots, I_n$) breakdown a long project onto small and manageable sub-projects: 
+6--15 working days and 100--400 staff-hours. Iteration has its own
+objectives, iteration plan, activities, and results. Iterations are time-boxed
+pieces of work, accomplished by the project team in order to deliver
+product increments ($P_1, P_2, \dots, P_n$).
+
+\begin{tikzpicture}[font=\small]
+	\setstretch{1}
+
+	\tikzstyle{iteration} = [line width=4mm, draw=tpcBlue]
+
+	\def\theHeight{0.5}
+	\def\theWidth{1.3}
+
+	\draw [-angle 60] (-1.3,1) -- (11,1) node [right] {time};
+	\draw [-angle 60] (-1,1) -- (-1,-4) node [below] {scope};
+
+	\draw [ultra thin, draw=tpcGrey!50] (-1,-3.8) grid [step=0.3] (10.5,1);
+
+	\draw [iteration] (0,0) -- node [text=white] {$I_1$} (1*\theWidth,0);
+	\draw [iteration] (1*\theWidth,-1*\theHeight) -- node [text=white] {$I_2$} (2*\theWidth,-1*\theHeight);
+	\draw [iteration] (2*\theWidth,-2*\theHeight) -- node [text=white] {$I_3$} (3*\theWidth,-2*\theHeight);
+	\draw [iteration] (3*\theWidth,-3*\theHeight) -- node [text=white] {$I_4$} (4*\theWidth,-3*\theHeight);
+	\draw [iteration] (5*\theWidth,-5*\theHeight) -- node [text=white] {$I_{n-1}$} (6*\theWidth,-5*\theHeight);
+	\draw [iteration] (6*\theWidth,-6*\theHeight) -- node [text=white] {$I_n$} (7*\theWidth,-6*\theHeight);
+
+	\draw (-1.2,-1*\theHeight) node [left] {$P_2$} -- (-0.8,-1*\theHeight);
+	\draw (-1.2,-2*\theHeight) node [left] {$P_3$} -- (-0.8,-2*\theHeight);
+	\draw (-1.2,-3*\theHeight) node [left] {$P_4$} -- (-0.8,-3*\theHeight);
+	\draw (-1.2,-5*\theHeight) node [left] {$P_{n-1}$} -- (-0.8,-5*\theHeight);
+	\draw [draw=tpcGreen, fill=tpcGreen, -triangle 60] (-1.2,-6*\theHeight) node [left, draw=tpcGreen, fill=tpcGreen!20] {$P_n$} -- (-0.8,-6*\theHeight);
+
+	\draw [triangle 60-] (0,0.8) -- (0,1.2) node [above, font=\scriptsize, text width=2cm, text centered] {Project Start};
+	\draw [triangle 60-] (6.4*\theWidth,0.8) -- (6.4*\theWidth,1.2) node [above, font=\scriptsize, text width=2cm, text centered] {Project Release Milestone};
+\end{tikzpicture}
+
+\subsection*{Increments}
+
+\tikzstyle{num} = [draw=tpcGreen, fill=tpcGreen!20, inner sep=0.5mm, outer sep=-1mm]
+
+Product scope is elaborated, refined and delivered to the customer in 
+a number of consecutive increments. Every next increment $P_i$ is a workable
+product which has more implemented functions than the increment $P_{i-1}$ had.
+Increment $P_n$ is a final release of the product, which is entirely accepted by
+the customer.
+
+\begin{tikzpicture}[font=\scriptsize]\setstretch{1}
+	\tikzstyle{artifact} = [draw=tpcBlue, fill=tpcBlue!10, text width=2cm, text centered]
+	\tikzstyle{ln} = [draw=tpcBlack!50, -angle 60]
+
+	\def\theSize{4}
+
+	\path [] 
+		(0,0) 
+		.. controls (0,1.5*\theSize) and (2*\theSize,1.5*\theSize) .. (2*\theSize,0)
+
+		node [artifact, pos=0] (objectives) {Objectives}
+		node [artifact, pos=0.1] (cost) {Cost, Schedule, WBS}
+		node [artifact, pos=0.3] (risks) {Risk List (w/Risk Response Plans)}
+		node [artifact, pos=0.55] (iteration) {Iteration Plan (Activities, Network Diagram, Gantt Chart)}
+		node [artifact, pos=0.8] (srs) {Requirements (SRS)}
+		node [artifact, pos=0.9] (sad) {Analysis Model}
+		node [artifact, pos=1] (design) {Design Model};
+
+	\path [] 
+		(2*\theSize,0) 
+		.. controls (2*\theSize,-1.5*\theSize) and (-\theSize,-1.5*\theSize) .. (-\theSize,0)
+
+		node [artifact, pos=0.13] (matrix) {Traceability Matrix}
+		node [artifact, pos=0.25] (code) {Code}
+		node [artifact, pos=0.4] (deploy) {Deployed Product}
+		node [artifact, pos=0.6] (defects) {Test Results (Defects)}
+		node [artifact, pos=0.8] (changes) {Change Requests and changes to SRS}
+		node [artifact, pos=1] (attributes) {Requirements Attributes};
+
+	\node [above of=attributes] (end) {Iteration End};
+	\node [below of=objectives] (start) {Iteration Start};
+
+	\draw [ln] (start) -- (objectives);
+	\draw [ln] (objectives) -- node [num] {1} (cost);
+	\draw [ln] (cost) -- node [num] {2} (risks);
+	\draw [ln] (risks) -- node [num] {3} (iteration);
+	\draw [ln] (iteration) -- node [num] {4} (srs);
+	\draw [ln] (srs) -- node [num] {5} (sad);
+	\draw [ln] (sad) -- node [num] {6} (design);
+	\draw [ln] (design) -- node [num] {7} (matrix);
+	\draw [ln] (matrix) -- node [num] {8} (code);
+	\draw [ln] (code) -- node [num] {9} (deploy);
+	\draw [ln] (deploy) -- node [num] {A} (defects);
+	\draw [ln] (defects) -- node [num] {C} (changes);
+	\draw [ln] (changes) -- node [num] {D} (attributes);
+	\draw [ln] (attributes) -- (end);
+
+	\draw [ln] (defects) to [curve to]  node [num] {B} (code);
+\end{tikzpicture}
+
+\tikz{\node[num]{1};} The iteration starts with review of project objectives together with
+constraints (cost, schedule and scope). 
+\tikz{\node[num]{2};} Then we do risk identification, analysis
+and response planning. 
+\tikz{\node[num]{3};} According to the information from risk mitigation plans and
+WBS we create a list of activities for the iteration.
+
+\tikz{\node[num]{4};} System analysts perform the analysis of requirements,
+find inconsistencies and validate the SRS for compliance with customer
+expectations.
+
+\tikz{\node[num]{5};} Software architect make changes to the Analysis Model,
+adds details to UML diagrams and explain them to designers and programmers.
+\tikz{\node[num]{6};} Designers detalize the Analysis Model producing
+Design Model with descriptions of each class, component and module.
+\tikz{\node[num]{7};} Using Traceability Matrix we update bi-directional
+traceability links between requirements, UML diagrams, classes and test cases.
+
+\tikz{\node[num]{8};} Programmers do their work, implementing the concepts
+from the Analysis Model strictly according the Design Model details.
+\tikz{\node[num]{9};} Programmers commit their results to Subversion repository
+and continuous integration mechanism automatically deploy the product to the
+deployment platform.
+\tikz{\node[num]{A};} Testers finds defects in the new increment and report
+them through the Defects List to the programmers.
+\tikz{\node[num]{B};} Reported defects are fixed by the programmers.
+
+\tikz{\node[num]{C};} When the Iteration is close to its finish we document 
+all known changes to the requirements and document all non-fixed defects.
+\tikz{\node[num]{D};} We perform User Acceptance Testing and deliver the
+new product increment to the customer. Accepted requirements change their
+attributes.
+
+\subsection*{Project Team}
+
+Project team in our typical project (e.g., 2000 staff-hours) consists of about two
+dozens of full-time and part-time individuals. The most important project roles are:
+
+\newcommand{\theBar}[2]{\tikz{\node[minimum width=#1, minimum height=3mm, draw=tpcBlue, fill=tpcBlue, anchor=east] {} node [right] {#2};}}
+\begin{tabular}{lrl}
+Project Role			&amp; Staff-hours &amp; \\
+\hline
+Programmers (3 ppl)		&amp; 400 &amp; \theBar{40mm}{20\%} \\
+Tester (3 ppl)			&amp; 400 &amp; \theBar{40mm}{20\%} \\
+Project Manager			&amp; 260 &amp; \theBar{26mm}{13\%} \\
+Technical Reviewer (3 ppl)	&amp; 200 &amp; \theBar{20mm}{10\%} \\
+Designer			&amp; 180 &amp; \theBar{18mm}{9\%} \\
+Deployment Manager		&amp; 160 &amp; \theBar{16mm}{8\%} \\
+Architect			&amp; 140 &amp; \theBar{14mm}{7\%} \\
+Integrator			&amp; 140 &amp; \theBar{14mm}{7\%} \\
+Management Reviewer		&amp; 60 &amp; \theBar{6mm}{3\%} \\
+Test Analyst			&amp; 40 &amp; \theBar{4mm}{2\%} \\
+Quality Reviewer		&amp; 20 &amp; \theBar{2mm}{1\%} \\
+\end{tabular}
+
+Key project participants are project manager, architect and integrator. Project manager
+is responsible for planning, managing, controlling and delivering the whole project
+to you. Project manager must be \href{http://www.pmi.org/CareerDevelopment/Pages/AboutPMIsCredentials.aspx}{PMP} 
+certified and have at least 10,000 staff-hours of experience in our company.
+
+Architect must be \href{http://www.sun.com/training/certification/java/scea.xml}{SCEA} or 
+\href{http://www.microsoft.com/learning/mcp/architect/default.mspx}{MCA} certified, and must
+prove the experience in the project subject area. Architect is responsible for the
+analysis model (in UML) of the whole system and its correctness.
+
+Integrator is responsible for source code integration into a complete workable build,
+by means of builders and continuous integration tools. Integrator is a sort of chief programmer (or team leader)
+in the project team. Integrator must be Sun, Microsoft or IBM certified for the key technology
+used in the project (Java, .Net, C++, PHP, etc.).

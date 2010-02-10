@@ -1,0 +1,71 @@
+\section*{Technical Capacity}
+
+To perform a project we utilize several types of resources: project manager,
+technicians, project management software, requirements specifier, users,
+\href{http://en.wikipedia.org/wiki/Software_configuration_management}{SCM} system, 
+knowledge, equipment and cash. Each resource is critical:
+
+\begin{center}\begin{tikzpicture}
+\tikzstyle{resource} = [font=\small, text width=25mm, text centered, anchor=center]
+\tikzstyle{lbl} = [font=\scriptsize, text=tpcGreen]
+\tikzstyle{ln} = [draw=tpcBlack, -triangle 60]
+
+\node [draw=tpcBlue, fill=tpcBlue!30, outer sep=2mm] (project) {Project};
+\node [shape=ellipse, minimum height=4cm, minimum width=8cm] at (project) (circle) {};
+
+\node [below=0mm of circle.0, resource] (pm) {Project Manager};
+\node [below=0mm of circle.40, resource] (soft) {Management Software};
+\node [below=0mm of circle.90, resource] (scm) {SCM};
+\node [below=0mm of circle.140, resource] (equipment) {Equipment};
+\node [below=0mm of circle.180, resource] (technicians) {Technicians};
+\node [below=0mm of circle.210, resource] (users) {Users};
+\node [below=0mm of circle.260, resource] (specifier) {Requirements Specifier};
+\node [below=0mm of circle.330, resource] (cash) {Cash};
+
+\draw [ln] (pm) -- (project);
+\draw [ln] (soft) -- (project);
+\draw [ln] (scm) -- (project);
+\draw [ln] (equipment) -- (project);
+\draw [ln] (technicians) -- (project);
+\draw [ln] (users) -- (project);
+\draw [ln] (specifier) -- (project);
+\draw [ln] (cash) -- (project);
+
+\node [dashed, draw=tpcGreen, label={[lbl]-45:provided by you}, inner sep=0mm, thin, fit=(users) (specifier) (cash)] {};
+\node [dashed, draw=tpcGreen, label={[lbl]-45:outsourced}, inner sep=0mm, thin, fit=(technicians)] {};
+\end{tikzpicture}\end{center}
+
+\textbf{Project Manager} is a trained individual working in TechnoPark Corp. on a
+full-time basis. He/she possesses IBM Rational Unified Process (\href{http://en.wikipedia.org/wiki/IBM_Rational_Unified_Process}{RUP}) Certified Specialist
+certificate, and Project Management Professional (\href{http://en.wikipedia.org/wiki/Project_Management_Professional}{PMP}) certificate. There are
+five project managers in our company.
+
+\textbf{Management Software} is a web toolkit used to create, maintain, and use project management artifacts
+like Schedule, Cost, SRS, Risk List, Traceability Matrix, etc. We use our own management software
+that is seamlessly integrated with Subversion and \href{http://continuum.apache.org/}{Apache Continuum}.
+Our software is stable and mature (in development since December 2006, pending two USPTO patents).
+
+\textbf{Software Configuration Management (SCM) software} is a system that keeps source code 
+under versioning control. We use \href{http://subversion.tigris.org/}{Subversion (SVN)} -- one of a leading open source systems. Our SVN
+repositories are located on dedicated servers provided by \href{http://www.webfaction.com}{WebFaction.com} -- one of the best
+providers of such services. Regular (every 4 hours) backup procedure synchronizes SVN repositories with
+their reserve copies stored in \href{http://aws.amazon.com/s3/}{Amazon S3}.
+
+\textbf{Equipment} is rented from reliable providers, like \href{http://www.rackspace.com}{RackSpace.com} and WebFaction.com.
+It is our rule not to possess any equipment, since we perform projects of different types and various technologies.
+Equipment required for a particular project (like test deployment platform) usualy is rented for the
+purpose of the project.
+
+\textbf{Technicians} like programmers, designers, architects, testers, graphic artists and system administrators
+are invited to the project from our supplying companies. There are over 30 companies in our
+stock with various technologies, profiles and experience. 
+Totally over 200 certified and experienced technicians are available for involvement in new projects.
+We select the best suitable specialists
+for each project, analyzing the experience, certificates and ability to be helpful in the project.
+
+\textbf{Users} are people who will use the system after the project is finished. Users are provided
+by you (at least user champions) and kept engaged during the whole project.
+
+\textbf{Requirements Specifier} is a person who provides functional and non-functional requirements
+for the project, approves SRS document and signs a project close-out report when the system is ready.
+This person is a must in any project and is provided by you.
