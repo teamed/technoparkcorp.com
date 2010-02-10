@@ -41,7 +41,8 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
      * Initialize autoloader, to be called from bootstrap
      *
      * @return void
-     **/
+     * @see bootstrap.php
+     */
     public static function initAutoloader() 
     {
         $autoloader = Zend_Loader_Autoloader::getInstance();

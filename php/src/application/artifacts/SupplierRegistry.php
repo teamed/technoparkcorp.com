@@ -47,8 +47,10 @@ class theSupplierRegistry extends Model_Artifact_Bag
     {
         $suppliers = $this->_getSuppliers();
         $asset = Model_Project::findByName('PMO')->getAsset(Model_Project::ASSET_SUPPLIERS);
-        foreach ($asset->retrieveAll() as $email)
+        foreach ($asset->retrieveAll() as $email) {
             $suppliers[$email] = false;
+        }
+        $suppliers->rewind();
     }
     
     /**

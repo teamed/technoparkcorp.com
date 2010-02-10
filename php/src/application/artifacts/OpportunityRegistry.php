@@ -49,6 +49,7 @@ class theOpportunityRegistry extends Model_Artifact_Bag
         foreach ($this->_getAsset()->retrieveAll() as $id) {
             $opportunities[$id] = false;
         }
+        $opportunities->rewind();
     }
     
     /**

@@ -168,7 +168,7 @@ class theActivities implements ArrayAccess, Iterator, Countable, Model_Artifact_
      **/
     public final function delete(theActivity $toKill)
     {
-        validate()->true($activity instanceof theActivity);
+        validate()->true($toKill instanceof theActivity);
         foreach ($this as $key=>$activity) {
             if ($activity->equalsTo($toKill)) {
                 unset($this[$key]);

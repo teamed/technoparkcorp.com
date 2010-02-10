@@ -1,5 +1,5 @@
-<!--
- *
+<?php
+/**
  * thePanel v2.0, Project Management Software Toolkit
  *
  * Redistribution and use in source and binary forms, with or without 
@@ -12,25 +12,20 @@
  * 568 Ninth Street South 202, Naples, Florida 34102, USA
  * tel. +1 (239) 935 5429
  *
+ * @author Yegor Bugaenko <egor@technoparkcorp.com>
+ * @copyright Copyright (c) TechnoPark Corp., 2001-2009
  * @version $Id$
--->
- 
-<?=$this->publish($this->root->opportunityRegistry)?>
+ *
+ */
 
-<? $opp = $this->root->opportunityRegistry[$this->segment()]?>
+require_once 'artifacts/OpportunityRegistry/Opportunity/sheets-collection/Sheet/Abstract.php';
 
-<h1>Opportunity "<?=$opp->id?>"</h1>
-
-<?=$this->forma()
-    ->addAttrib('class', 'inline')
-    ->addBehavior('flash', '"Offer document sent to \'{${a1}}\'"')
-    ->addBehavior('redirect')
-    ->addField('text', 'email')
-        ->fieldLabel('Email')
-        ->fieldAttrib('size', 40)
-        ->fieldRequired(true)
-    ->addField('submit', 'submit')
-        ->fieldValue('Send')
-        ->fieldAttrib('class', 'btn')
-        ->fieldAction(array($opp, 'sendByEmail'))
-    ?>
+/**
+ * Vision
+ *
+ * @package Artifacts
+ */
+class Sheet_Vision extends Sheet_Abstract
+{
+    
+}

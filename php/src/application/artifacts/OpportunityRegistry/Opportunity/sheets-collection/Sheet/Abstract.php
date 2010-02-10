@@ -19,39 +19,63 @@
  */
 
 /**
- * One sales opportunity
+ * One abstract sheet
  *
  * @package Artifacts
  */
-class theOpportunity
+abstract class Sheet_Abstract
 {
 
     /**
-     * Id
+     * Configuration
      *
-     * @var string
+     * @var SimpleXMLElement
      */
-    protected $_id;
-    
-    /**
-     * Collection of sales sheets
-     *
-     * @var theSheetsCollection[]
-     */
-    protected $_sheets;
-    
+    protected $_config;
+
     /**
      * Construct the class
      *
-     * @param string Id
+     * @param SimpleXMLElement Configuration
      * @return void
      */
-    public function __construct($id) 
+    private function __construct(SimpleXMLElement $config) 
     {
-        $this->_id = $id;
-        $this->_sheets = new theSheetsCollection();
+        $this->_config = $config;
     }
 
+    /**
+     * Create new sheet and config it
+     *
+     * @param string Name of the sheet class
+     * @param SimpleXMLElement Configuration
+     * @return void
+     * @throws Sheet_Abstract_InvalidNameException
+     */
+    public static function factory($name, SimpleXMLElement $config) 
+    {
+        if (!self::isValidName($name)) {
+            FaZend_Exception::raise(
+                'Sheet_Abstract_InvalidNameException', 
+                "Invalid sheet name: '$name'"
+            );
+        } 
+        
+        $className = 'Sheet_' . ucfirst($name);
+        return new $className($config);
+    }
+    
+    /**
+     * The name provided is valid?
+     *
+     * @param string Name of the sheet class
+     * @return boolean
+     */
+    public static function isValidName($name) 
+    {
+        return file_exists(dirname(__FILE__) . '/' . ucfirst($name) . '.php');
+    }
+    
     /**
      * Getter dispatcher
      *
@@ -70,32 +94,9 @@ class theOpportunity
             return $this->$var;
         
         FaZend_Exception::raise(
-            'Opportunity_PropertyOrMethodNotFound', 
+            'Sheet_Abstract_PropertyOrMethodNotFound', 
             "Can't find what is '$name' in " . get_class($this)
         );
-    }
-    
-    /**
-     * Get opportunity document in LaTeX
-     *
-     * @return string
-     */
-    public function getLatex()
-    {
-        // ...
-        return 'test';
-    }
-    
-    /**
-     * Send document by email
-     *
-     * @param string Email to use
-     * @return void
-     */
-    public function sendByEmail($email) 
-    {
-        // ...
-        logg('PDF request sent to TeXry.com, email: %s', $email);
     }
     
 }

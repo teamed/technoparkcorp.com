@@ -26,6 +26,8 @@
 class Model_Asset_Opportunities_Fazend_Trac extends Model_Asset_Opportunities_Abstract
 {
     
+    const PREFIX = 'opp-';
+    
     /**
      * Instance of Shared_Wiki
      *
@@ -52,7 +54,7 @@ class Model_Asset_Opportunities_Fazend_Trac extends Model_Asset_Opportunities_Ab
     public function retrieveAll() 
     {
         $list = array();
-        foreach (preg_grep('/^opp-/', $this->_wiki->getListOfPages()) as $name) {
+        foreach (preg_grep('/^' . preg_quote(self::PREFIX, '/'). '/', $this->_wiki->getListOfPages()) as $name) {
             $list[] = substr($name, 4);
         }
         return $list;
@@ -67,7 +69,74 @@ class Model_Asset_Opportunities_Fazend_Trac extends Model_Asset_Opportunities_Ab
      **/
     public function deriveById($id, theOpportunity $opportunity) 
     {
-        // ...
+        $xml =
+        '<?xml version="1.0" encoding="UTF-8" ?><html>' .
+        $this->_wiki->getPageContent(self::PREFIX . $id) .
+        '</html>';
+        
+        $nodes = new SimpleXmlIterator($xml);
+        $nodes->rewind();
+        while ($section = $nodes->current()) {
+            $nodes->next();
+            // wait for section
+            if (strtolower($section->getName()) != 'h1') {
+                continue;
+            }
+            
+            // get the name of the section
+            $section = str_replace(' ', '', strval($section));
+            
+            // it's section now, but ignore it if the name is wrong
+            if (!Sheet_Abstract::isValidName($section)) {
+                continue;
+            }
+            
+            // new instance of configuration
+            $config = simplexml_load_string('<?xml version="1.0" encoding="utf-8" ?><data></data>');
+            
+            while ($node = $nodes->current()) {
+                // wait for paragraph
+                if (strtolower($node->getName()) !== 'p') {
+                    break;
+                }
+                
+                $nodes->next();
+
+                $node = trim(strval($node), "\r\t\n ");
+                if (strpos($node, ':') === false) {
+                    continue;
+                }
+                
+                list($name, $value) = explode(':', $node);
+                $item = $config->addChild('item', '');
+                $item->addAttribute('name', $name);
+                $item->addAttribute('value', $value);
+                
+                while ($ul = $nodes->current()) {
+                    // wait for UL
+                    if (strtolower($ul->getName()) !== 'ul') {
+                        break;
+                    }
+
+                    $nodes->next();
+                    foreach ($ul->xpath('li') as $li) {
+                        $li = trim(strval($li), "\n\t\r ");
+                        $subItem = $item->addChild('item', '');
+                        if (strpos($li, ':') === false) {
+                            $subItem->addAttribute('value', $li);
+                        } else {
+                            list($n, $v) = explode(':', $li);
+                            $subItem->addAttribute('name', $n);
+                            $subItem->addAttribute('value', $v);
+                        }
+                    }
+                }
+            }
+            
+            $sheet = Sheet_Abstract::factory($section, $config);
+            $opportunity->sheets[] = $sheet;
+
+        }
     }
     
 }

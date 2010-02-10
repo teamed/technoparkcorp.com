@@ -41,13 +41,13 @@ class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap
                 'regexs' => array(
                     '/^payment\.date$/',
                 ),
-                'converter' => 'Zend_Date'
+                'converter' => 'new Zend_Date(${a1}, Zend_Date::ISO_8601)'
             ),
             'costs' => array(
                 'regexs' => array(
                     '/^payment\.(?:amount|volume|balance|paid|earned)$/',
                 ),
-                'converter' => array('FaZend_Bo_Money', 'convertFromCents')
+                'converter' => 'FaZend_Bo_Money::convertFromCents(${a1})'
             ),
         );
         
@@ -71,6 +71,7 @@ class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap
         // some artifacts have their own loader
         theMetrics::initAutoloader();
         theDeliverables::initAutoloader();
+        theSheetsCollection::initAutoloader();
     }
 
     /**
