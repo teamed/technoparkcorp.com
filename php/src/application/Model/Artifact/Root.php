@@ -35,11 +35,14 @@ class Model_Artifact_Root extends FaZend_Pos_Root implements Model_Artifact_Inte
     {
         parent::init();
 
-        foreach (array(
+        $artifacts = array(
             'projectRegistry' => new theProjectRegistry(),
             'supplierRegistry' => new theSupplierRegistry(),
             'statements' => new theStatements(),
-            ) as $name=>$artifact) {
+            'opportunityRegistry' => new theOpportunityRegistry(),
+        );
+
+        foreach ($artifacts as $name=>$artifact) {
             // we need this validation for POS
             if (!isset($this->name)) {
                 // add them to the root, one by one

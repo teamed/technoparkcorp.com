@@ -34,6 +34,7 @@ class Model_Project extends Shared_Project
     const ASSET_CODE = 'Code';
     const ASSET_DESIGN = 'Design';
     const ASSET_SUPPLIERS = 'Suppliers';
+    const ASSET_OPPORTUNITIES = 'Opportunities';
     
     /**
      * We manage anything? If set to FALSE - none of the projects are managed
@@ -156,6 +157,7 @@ class Model_Project extends Shared_Project
             self::ASSET_CODE => 'Fazend_Pan',
             self::ASSET_DESIGN => 'Fazend_Linux',
             self::ASSET_SUPPLIERS => 'Fazend_Trac',
+            self::ASSET_OPPORTUNITIES => 'Fazend_Trac',
         );
 
         // create a class according to the information above

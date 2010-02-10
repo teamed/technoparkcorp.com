@@ -48,6 +48,7 @@ class Mocks_Shared_Soap_Client
                     self::OWNER . ' = ' . self::OWNER_PWD . "\n"
                 )
                 ->set('tracIni', ''),
+
             FaZend_StdObject::create()
                 ->set('id', 2)
                 ->set('name', 'PMO')
@@ -55,7 +56,15 @@ class Mocks_Shared_Soap_Client
                 ->set('authz', "[PMO:/]\n" . self::PM . " = rw\n")
                 ->set('passwd', "[users]\n" . self::PM . " = " . self::PM_PWD . "\n")
                 ->set('tracIni', ''),
-            );
+
+            FaZend_StdObject::create()
+                ->set('id', 3)
+                ->set('name', 'Sales')
+                ->set('user', self::$_userId)
+                ->set('authz', "[Sales:/]\n" . self::PM . " = rw\n")
+                ->set('passwd', "[users]\n" . self::PM . " = " . self::PM_PWD . "\n")
+                ->set('tracIni', ''),
+        );
     }
 
     public function getUsers() 

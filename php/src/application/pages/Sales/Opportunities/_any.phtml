@@ -15,19 +15,9 @@
  * @version $Id$
 -->
  
-<?=$this->publish($this->root->supplierRegistry)?>
+<?=$this->publish($this->root->opportunityRegistry)?>
 
-<h1>Full List of Suppliers</h1>
+<? $opp = $this->root->opportunityRegistry[$this->segment()]?>
 
-<?=$this->table()
-    ->setSource($this->root->supplierRegistry)
-    ->addColumn('email', 'Email')
-    ->addColumn('name', 'Full name')
-    ->addColumn('skills', 'Skills')
-        ->addConverter('implode(", ", ${a1});')
-    ->addColumn('roles', 'Roles')
-        ->addConverter('implode(", ", ${a1});')
-    ->addColumn('rate', 'Rate')
-    ->addColumn('approvedOn', 'Approved On')
-        ->addConverter('${a1}->get(Zend_Date::DATE_MEDIUM)')
-    ?>
+<h1>Opportunity "<?=$opp->id?>"</h1>
+
