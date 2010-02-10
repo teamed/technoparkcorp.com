@@ -29,11 +29,30 @@ class Helper_StaticUrl extends FaZend_View_Helper
     /**
      * Builds the static URL
      *
+     * @param string Name of the page on the site
+     * @param boolean Shall we produce long URL?
      * @return string
      */
-    public function staticUrl($page)
+    public function staticUrl($page, $long = false)
     {
-        return $this->getView()->url(array('page'=>$page), 'static', true, false);    
+        if ($long) {
+            $helper = 'longUrl';
+        } else {
+            $helper = 'url';
+        }
+        
+        return call_user_func_array(
+            array(
+                $this->getView(),
+                $helper
+            ),
+            array(
+                array('page'=>$page), 
+                'static', 
+                true, 
+                false
+            )
+        );    
     }
 
 }

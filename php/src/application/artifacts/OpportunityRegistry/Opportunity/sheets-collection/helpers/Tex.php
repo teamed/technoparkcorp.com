@@ -14,42 +14,26 @@
  *
  * @author Yegor Bugaenko <egor@technoparkcorp.com>
  * @copyright Copyright (c) TechnoPark Corp., 2001-2009
- * @version $Id$
+ * @version $Id: Vision.php 651 2010-02-10 17:50:05Z yegor256@yahoo.com $
  *
  */
 
-require_once 'artifacts/OpportunityRegistry/Opportunity/sheets-collection/Sheet/Abstract.php';
-
 /**
- * Vision
+ * Escape TeX symbols
  *
  * @package Artifacts
  */
-class Sheet_Vision extends Sheet_Abstract
+class Sheet_Helper_Tex
 {
-    
-    /**
-     * Defaults
-     *
-     * @var array
-     * @see __get()
-     */
-    protected $_defaults = array(
-        'product' => 'Custom software system',
-        'statement' => 'There is a strong marketing opportunity for a new business',
-        'features' => array(),
-        'actors' => array(),
-        'quality' => array(),
-    );
 
     /**
-     * Draw and return UC diagram
+     * Escape TeX chars
      *
-     * @return string LaTeX
+     * @return string
      */
-    public function getUseCaseDiagram() 
+    public function tex($str) 
     {
-        return 'uc..';
+        return addcslashes($str, '[]{}^%&\\$_#');
     }
-    
+
 }

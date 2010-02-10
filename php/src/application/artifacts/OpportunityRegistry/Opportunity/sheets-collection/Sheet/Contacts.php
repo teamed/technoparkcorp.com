@@ -21,13 +21,13 @@
 require_once 'artifacts/OpportunityRegistry/Opportunity/sheets-collection/Sheet/Abstract.php';
 
 /**
- * Vision
+ * Contacts
  *
  * @package Artifacts
  */
-class Sheet_Vision extends Sheet_Abstract
+class Sheet_Contacts extends Sheet_Abstract
 {
-    
+
     /**
      * Defaults
      *
@@ -35,21 +35,25 @@ class Sheet_Vision extends Sheet_Abstract
      * @see __get()
      */
     protected $_defaults = array(
-        'product' => 'Custom software system',
-        'statement' => 'There is a strong marketing opportunity for a new business',
-        'features' => array(),
-        'actors' => array(),
-        'quality' => array(),
+        'title' => 'Custom Software Product',
+        'name' => 'Undisclosed Name',
+        'company' => 'ACME Inc.',
+        'address' => 'address n/a',
+        'city' => 'New York',
+        'country' => 'USA',
+        'zip' => '10001',
+        'phone' => '239 935 5429',
+        'email' => 'sales@tpc2.com',
     );
-
-    /**
-     * Draw and return UC diagram
-     *
-     * @return string LaTeX
-     */
-    public function getUseCaseDiagram() 
-    {
-        return 'uc..';
-    }
     
+    /**
+     * Get name of the template file, like "Vision.tex", "ROM.tex", etc.
+     *
+     * @return string
+     */
+    public function getTemplateFile() 
+    {
+        return null;
+    }
+
 }

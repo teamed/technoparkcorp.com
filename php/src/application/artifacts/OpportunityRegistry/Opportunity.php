@@ -82,8 +82,7 @@ class theOpportunity
      */
     public function getLatex()
     {
-        // ...
-        return 'test';
+        return $this->sheets->getLatex();
     }
     
     /**

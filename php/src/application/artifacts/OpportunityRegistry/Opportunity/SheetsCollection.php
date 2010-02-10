@@ -34,6 +34,13 @@ class theSheetsCollection implements ArrayAccess, Iterator, Countable
     protected $_sheets;
     
     /**
+     * View for rendering of sheets
+     *
+     * @var Zend_View
+     */
+    protected $_view;
+    
+    /**
      * Construct the class
      *
      * @return void
@@ -86,6 +93,34 @@ class theSheetsCollection implements ArrayAccess, Iterator, Countable
             'SheetsCollection_PropertyOrMethodNotFound', 
             "Can't find what is '$name' in " . get_class($this)
         );
+    }
+    
+    /**
+     * Get opportunity document in LaTeX
+     *
+     * @return string
+     */
+    public function getLatex()
+    {
+        return $this->getView()->render('binder.tex');
+    }
+    
+    /**
+     * Get view
+     *
+     * @return Zend_View
+     */
+    public function getView() 
+    {
+        if (isset($this->_view)) {
+            return $this->_view;
+        }
+        $this->_view = clone Zend_Registry::getInstance()->view;
+        $this->_view
+            ->addHelperPath(dirname(__FILE__) . '/sheets-collection/helpers', 'Sheet_Helper_')
+            ->addScriptPath(dirname(__FILE__) . '/sheets-collection/templates')
+            ->assign('sheets', $this);
+        return $this->_view;
     }
     
     /**
@@ -161,12 +196,15 @@ class theSheetsCollection implements ArrayAccess, Iterator, Countable
     /**
      * Method from ArrayAccess interface
      *
+     * @param string Name of the sheet
+     * @param Sheet_Abstract Sheet instance
      * @return void
      **/
-    public function offsetSet($name, $value) 
+    public function offsetSet($name, $sheet) 
     {
-        validate()->true($value instanceof Sheet_Abstract);
-        return $this->_sheets->offsetSet($name, $value);
+        validate()->true($sheet instanceof Sheet_Abstract);
+        $sheet->setSheetsCollection($this);
+        return $this->_sheets->offsetSet($name, $sheet);
     }
 
     /**
@@ -188,5 +226,5 @@ class theSheetsCollection implements ArrayAccess, Iterator, Countable
     {
         return $this->_sheets->offsetUnset($name);
     }
-
+    
 }

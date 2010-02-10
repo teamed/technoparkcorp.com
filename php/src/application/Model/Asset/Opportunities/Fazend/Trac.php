@@ -102,15 +102,14 @@ class Model_Asset_Opportunities_Fazend_Trac extends Model_Asset_Opportunities_Ab
                 
                 $nodes->next();
 
-                $node = trim(strval($node), "\r\t\n ");
+                $node = strval($node);
                 if (strpos($node, ':') === false) {
                     continue;
                 }
                 
                 list($name, $value) = explode(':', $node);
                 $item = $config->addChild('item', '');
-                $item->addAttribute('name', $name);
-                $item->addAttribute('value', $value);
+                $item->addAttribute('name', $this->_trim($name, true));
                 
                 while ($ul = $nodes->current()) {
                     // wait for UL
@@ -120,23 +119,40 @@ class Model_Asset_Opportunities_Fazend_Trac extends Model_Asset_Opportunities_Ab
 
                     $nodes->next();
                     foreach ($ul->xpath('li') as $li) {
-                        $li = trim(strval($li), "\n\t\r ");
                         $subItem = $item->addChild('item', '');
                         if (strpos($li, ':') === false) {
-                            $subItem->addAttribute('value', $li);
+                            $subItem->addAttribute('value', $this->_trim($li));
                         } else {
                             list($n, $v) = explode(':', $li);
-                            $subItem->addAttribute('name', $n);
-                            $subItem->addAttribute('value', $v);
+                            $subItem->addAttribute('name', $this->_trim($n));
+                            $subItem->addAttribute('value', $this->_trim($v));
                         }
                     }
+                }
+                if (!count($item->children())) {
+                    $item->addAttribute('value', $this->_trim($value));
                 }
             }
             
             $sheet = Sheet_Abstract::factory($section, $config);
-            $opportunity->sheets[] = $sheet;
-
+            $opportunity->sheets[$section] = $sheet;
         }
+        // bug($opportunity);
+    }
+    
+    /**
+     * Trim string before injection into XML
+     *
+     * @param string
+     * @return string
+     */
+    protected function _trim($str, $toLower = false) 
+    {
+        $str = trim(preg_replace('/[\r\t\n\s]+/', ' ', $str));
+        if ($toLower) {
+            $str = strtolower($str);
+        }
+        return $str;
     }
     
 }

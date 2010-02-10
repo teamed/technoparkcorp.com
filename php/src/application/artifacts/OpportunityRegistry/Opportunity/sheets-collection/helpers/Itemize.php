@@ -14,42 +14,41 @@
  *
  * @author Yegor Bugaenko <egor@technoparkcorp.com>
  * @copyright Copyright (c) TechnoPark Corp., 2001-2009
- * @version $Id$
+ * @version $Id: Vision.php 651 2010-02-10 17:50:05Z yegor256@yahoo.com $
  *
  */
 
-require_once 'artifacts/OpportunityRegistry/Opportunity/sheets-collection/Sheet/Abstract.php';
-
 /**
- * Vision
+ * TeX list
  *
  * @package Artifacts
  */
-class Sheet_Vision extends Sheet_Abstract
+class Sheet_Helper_Itemize extends FaZend_View_Helper
 {
-    
-    /**
-     * Defaults
-     *
-     * @var array
-     * @see __get()
-     */
-    protected $_defaults = array(
-        'product' => 'Custom software system',
-        'statement' => 'There is a strong marketing opportunity for a new business',
-        'features' => array(),
-        'actors' => array(),
-        'quality' => array(),
-    );
 
     /**
-     * Draw and return UC diagram
+     * List in TeX
      *
-     * @return string LaTeX
+     * @return string
      */
-    public function getUseCaseDiagram() 
+    public function itemize($collection, $style = 'itemize') 
     {
-        return 'uc..';
+        if (!$collection) {
+            return 'empty list';
+        }
+        
+        $tex = "\n\\begin{{$style}}\n";
+        
+        foreach ($collection as $item) {
+            $tex .= sprintf(
+                "\t\item[%s] %s\n",
+                $this->getView()->tex($item['name']),
+                $this->getView()->tex($item['value'])
+            );
+        }
+        
+        $tex .= "\\end{{$style}}\n";
+        return $tex;
     }
-    
+
 }
