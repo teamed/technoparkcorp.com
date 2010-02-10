@@ -136,10 +136,15 @@ class theActivities implements ArrayAccess, Iterator, Countable, Model_Artifact_
      **/
     public function findByName($name)
     {
-        foreach ($this as $activity)
-            if ($activity->name == $name)
+        foreach ($this as $activity) {
+            if ($activity->name == $name) {
                 return $activity;
-        FaZend_Exception::raise('ActivityNotFound', 'Activity not found with name: ' . $name);
+            }
+        }
+        FaZend_Exception::raise(
+            'ActivityNotFound', 
+            'Activity not found with name: ' . $name
+        );
     }
 
     /**
@@ -150,6 +155,7 @@ class theActivities implements ArrayAccess, Iterator, Countable, Model_Artifact_
      **/
     public final function add(theActivity $activity)
     {
+        validate()->true($activity instanceof theActivity);
         $this[] = $activity;
         return $activity;
     }
@@ -162,6 +168,7 @@ class theActivities implements ArrayAccess, Iterator, Countable, Model_Artifact_
      **/
     public final function delete(theActivity $toKill)
     {
+        validate()->true($activity instanceof theActivity);
         foreach ($this as $key=>$activity) {
             if ($activity->equalsTo($toKill)) {
                 unset($this[$key]);
