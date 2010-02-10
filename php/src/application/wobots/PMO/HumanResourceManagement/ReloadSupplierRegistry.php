@@ -27,7 +27,7 @@
  *
  * @package wobots
  */
-class ReloadSupplierRegistry extends Model_Decision_PM
+class ReloadSupplierRegistry extends Model_Decision
 {
 
     /**
