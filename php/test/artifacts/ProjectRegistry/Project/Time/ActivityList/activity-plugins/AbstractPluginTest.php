@@ -8,13 +8,14 @@ class AbstractPluginTest extends AbstractProjectTest
     public function setUp()
     {
         parent::setUp();
+        
         if (!$this->_project->metrics->isLoaded()) {
             $this->_project->metrics->reload();
         }
         if (!$this->_project->wbs->isLoaded()) {
             $this->_project->wbs->reload();
         }
-        if (!$this->_project->activityList->isLoaded()) {
+        if (!$this->_project->activityList->isLoaded() || !count($this->_project->activityList->activities)) {
             $this->_project->activityList->reload();
         }
 
