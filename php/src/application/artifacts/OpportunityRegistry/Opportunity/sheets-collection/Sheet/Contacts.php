@@ -38,12 +38,17 @@ class Sheet_Contacts extends Sheet_Abstract
         'title' => 'Custom Software Product',
         'name' => 'Undisclosed Name',
         'company' => 'ACME Inc.',
+        'position' => 'director',
         'address' => 'address n/a',
         'city' => 'New York',
         'country' => 'USA',
         'zip' => '10001',
         'phone' => '239 935 5429',
+        'fax' => '239 935 5429',
+        'mobile' => '239 935 5429',
         'email' => 'sales@tpc2.com',
+        'skype' => 'n/a',
+        'msn' => 'n/a',
     );
     
     /**
