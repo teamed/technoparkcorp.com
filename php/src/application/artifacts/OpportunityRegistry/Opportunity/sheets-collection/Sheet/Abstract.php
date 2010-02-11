@@ -183,6 +183,17 @@ abstract class Sheet_Abstract
     }
     
     /**
+     * This variable exists in config?
+     *
+     * @param string Name
+     * @return boolean
+     */
+    public function exists($name) 
+    {
+        return (bool)count($this->_config->xpath("//item[@name='{$name}']"));
+    }
+    
+    /**
      * Get sheet in latex
      *
      * @return string LaTeX source
