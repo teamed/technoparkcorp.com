@@ -10,20 +10,20 @@ The project statement is: <?=$this->tex($this->sheet->statement)?>.
 The product to be developed is: <?=$this->tex($this->sheet->product)?>.
 
 Actors (users of the system) are:
-    <?=$this->itemize($this->sheet->actors, 'description')?>
+    <?=$this->itemize($this->sheet->actors, 'description')?>{}
 
 %% \begin{center}
 %%     <?=$this->sheet->getUseCaseDiagram()?>
 %% \end{center}
 
 Key system <?=$this->href('process/scope/feature', 'Features')?> are:
-    <?=$this->itemize($this->sheet->features, 'enumerate')?>
+    <?=$this->itemize($this->sheet->features, 'enumerate')?>{}
 	
 Quality requirements (non-functional) are:
-    <?=$this->itemize($this->sheet->quality, 'description')?>
+    <?=$this->itemize($this->sheet->quality, 'description')?>{}
 
 More detailed functional and non-functional 
-<?=$this->href('process/scope/requirement', 'requirements')?>
+<?=$this->href('process/scope/requirement', 'requirements')?>{}
 to the project will be supplied by the Customer 
 during <?=$this->href('process/time/inception', 'Inception Phase')?>. 
 All project documents and software comments will be in English.

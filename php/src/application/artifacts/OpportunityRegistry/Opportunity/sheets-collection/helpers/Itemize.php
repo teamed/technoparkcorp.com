@@ -39,7 +39,7 @@ class Sheet_Helper_Itemize extends FaZend_View_Helper
             case 'description':
             case 'enumerate':
                 if (!$collection) {
-                    return "\\textit{empty...}\n\n";
+                    return "\\textit{empty...}";
                 }
 
                 $tex = "\\begin{{$style}}\n";
@@ -50,7 +50,7 @@ class Sheet_Helper_Itemize extends FaZend_View_Helper
                         $this->getView()->tex($item['value'])
                     );
                 }
-                $tex .= "\\end{{$style}}\n\n";
+                $tex .= "\\end{{$style}}";
                 break;
         
             case 'inline':

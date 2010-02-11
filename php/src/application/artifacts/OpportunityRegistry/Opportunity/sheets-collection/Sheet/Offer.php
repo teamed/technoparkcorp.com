@@ -67,7 +67,7 @@ class Sheet_Offer extends Sheet_Abstract
     protected function _getDepositAmount() 
     {
         if (preg_match('/^(\d+(?:\.\d+)?)\%$/', $this->deposit, $matches)) {
-            return $this->pricePerHour->mul($matches[1] * $this->sheets['ROM']->hours / 100);
+            return $this->lowAmount->mul($matches[1] / 100);
         } else {
             return new FaZend_Bo_Money($this->deposit);
         }

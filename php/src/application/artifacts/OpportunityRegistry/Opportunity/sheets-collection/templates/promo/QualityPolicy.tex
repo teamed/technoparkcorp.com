@@ -5,19 +5,20 @@
 
 \section*{Quality Policy Basics}
 
-TechnoPark Corp. is a proud \href{${url:about/news/year2008/iso9001}}{ISO-9001 certified company} and we
-do all our best to fight for \href{${url:process/quality}}{quality} in our projects.
+TechnoPark Corp. is a proud 
+<?=$this->href('about/news/year2008/iso9001', 'ISO-9001 certified company')?> and we
+do all our best to fight for <?=$this->href('process/quality', 'quality')?> in our projects.
 
 There are three dimensions of quality:
-Quality of Process (referred to as 'QA');
-Quality of Project (calculated by 'SPI');
+Quality of Process (referred to as ``QA'');
+Quality of Project (calculated by ``SPI'');
 Quality of Product (amount of discovered software defects).
 Quality of product is the only dimension that we guarantee
 to the customer according to the contract. The other two dimensions
 are internal.
 
 \textbf{Quality of process} is an average sum of 
-${php:PM/QualityManagement/TheQAReview:GetTotalQARequirements()} quality metrics calculated
+270 quality metrics calculated
 in semi-automatic mode once a week by QA Group. Each quality metric has
 its weight (in 1-10 range). Each metric is rated from one to five, where
 one is the lowest mark that means absolute non-compliance to the quality
@@ -32,10 +33,10 @@ patent-pending invention.
 on-time delivery, effectiveness of communication and in-budget completeness.
 
 We use the \href{http://en.wikipedia.org/wiki/Earned_value_management}{Earned Value Analysis} 
-techique to calculate the quality of project.
+technique to calculate the quality of project.
 Schedule Performance Indicator (SPI) as a relation of Earned Value (EV) to Planned
 Value (PV) is used for the indication of quality of project. The PM and the
-whole team are responsible for keeping SPI higher than ${def:Props::Get('SPI.highmark')}.
+whole team are responsible for keeping SPI higher than 4.2.
 
 \textbf{Quality of product} is the degree of 
 conformance of Deliverables to Specification.
@@ -51,4 +52,4 @@ For quality definition we use
 and definitions from 
 \href{http://standards.ieee.org/reading/ieee/std_public/description/se/610.12-1990_desc.html}{IEEE 610.12}.
 QA Director is responsible for quality control in entire company,
-\href{${mailto:qa}}{Maria Vinogradova}.
+<?=$this->href('mailto:qa@technoparkcorp.com', 'Maria Vinogradova')?>.
