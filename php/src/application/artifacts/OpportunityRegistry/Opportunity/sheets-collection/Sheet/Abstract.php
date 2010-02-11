@@ -37,9 +37,9 @@ abstract class Sheet_Abstract
     /**
      * Configuration
      *
-     * @var SimpleXMLElement|null
+     * @var SimpleXMLElement
      */
-    protected $_config = null;
+    protected $_config;
     
     /**
      * Collection of sheets
@@ -56,6 +56,7 @@ abstract class Sheet_Abstract
      */
     private function __construct(SimpleXMLElement $config) 
     {
+        validate($config instanceof SimpleXMLElement);
         $this->_config = $config;
     }
 
@@ -104,6 +105,27 @@ abstract class Sheet_Abstract
         $this->_sheets = $sheets;
         $this->_init();
         return $this;
+    }
+    
+    /**
+     * Return list of properties to save
+     *
+     * @return array
+     */
+    public function __sleep() 
+    {
+        $this->_xml = $this->_config->asXml();
+        return array('_xml');
+    }
+    
+    /**
+     * Restore object
+     *
+     * @return void
+     */
+    public function __wakeup() 
+    {
+        $this->_config = simplexml_load_string($this->_xml);
     }
     
     /**

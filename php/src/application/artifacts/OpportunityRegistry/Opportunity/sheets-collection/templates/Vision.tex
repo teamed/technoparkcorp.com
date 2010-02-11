@@ -12,14 +12,14 @@ The product to be developed is: <?=$this->tex($this->sheet->product)?>
 Actors (users of the system) are:
     <?=$this->itemize($this->sheet->actors, 'description')?>
 
-\begin{center}
-    <?=$this->sheet->getUseCaseDiagram()?>
-\end{center}
+%% \begin{center}
+%%     <?=$this->sheet->getUseCaseDiagram()?>
+%% \end{center}
 
 Key system <?=$this->href('process/scope/feature', 'Features')?> are:
     <?=$this->itemize($this->sheet->features, 'enumerate')?>
 	
-Quality requirements (non-functional):
+Quality requirements (non-functional) are:
     <?=$this->itemize($this->sheet->quality, 'description')?>
 
 More detailed functional and non-functional 

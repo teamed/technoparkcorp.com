@@ -75,6 +75,16 @@ class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap
     }
 
     /**
+     * Initialize Model_Texry
+     *
+     * @return void
+     */
+    protected function _initTexry() 
+    {        
+        Model_Texry::addTemplateDir(APPLICATION_PATH . '/tikz');
+    }
+    
+    /**
      * Initialize SHARED library for connecting to FaZend
      *
      * @return void

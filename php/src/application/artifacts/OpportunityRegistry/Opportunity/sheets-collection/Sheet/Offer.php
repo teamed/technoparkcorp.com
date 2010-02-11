@@ -72,5 +72,35 @@ class Sheet_Offer extends Sheet_Abstract
             return new FaZend_Bo_Money($this->deposit);
         }
     }
+    
+    /**
+     * Get lower amount
+     *
+     * @return FaZend_Bo_Money
+     */
+    protected function _getLowAmount() 
+    {
+        if ($this->low) {
+            $hours = $this->low;
+        } else {
+            $hours = $this->sheets['ROM']->lowBoundary;
+        }
+        return $this->pricePerHour->mul($hours);
+    }
+
+    /**
+     * Get higher amount
+     *
+     * @return FaZend_Bo_Money
+     */
+    protected function _getHighAmount() 
+    {
+        if ($this->high) {
+            $hours = $this->high;
+        } else {
+            $hours = $this->sheets['ROM']->highBoundary;
+        }
+        return $this->pricePerHour->mul($hours);
+    }
 
 }

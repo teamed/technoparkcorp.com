@@ -35,4 +35,11 @@
         ->fieldAction(array($opp, 'sendByEmail'))
     ?>
 
-<pre class="log"><!-- ?=$opp->sheets->dump()? --></pre>
+<p>Structure of the document:</p>
+    
+<pre class="log"><?=$opp->sheets->dump()?></pre>
+
+<p>LaTeX source:</p>
+
+<pre class="log"><?=$opp->getLatex()?></pre>
+

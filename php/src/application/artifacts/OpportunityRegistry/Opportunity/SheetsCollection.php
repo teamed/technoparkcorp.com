@@ -155,11 +155,11 @@ class theSheetsCollection implements ArrayAccess, Iterator, Countable
         $text = '';
         foreach ($this as $sheet) {
             $text .= sprintf(
-                "%s\n\ttemplate: %s\n\tconfig:\n",
+                "%s\n\ttemplate: %s\n",
                 $sheet->getSheetName(),
                 $sheet->getTemplateFile() ? $sheet->getTemplateFile() : 'NULL'
             );
-            $text .= $this->_dumpXml($sheet->config, "\t\t");
+            $text .= "\tconfig:\n" . $this->_dumpXml($sheet->config, "\t\t");
         }
         return $text;
     }

@@ -21,7 +21,18 @@ class theOpportunityTest extends AbstractTest
         $this->assertTrue(strlen($tex) > 0, 'Empty TeX, why?');
         $this->assertTrue(is_string($this->_opp->sheets->dump()));
         // logg($this->_opp->sheets->dump());
-        logg($tex);
+        // logg($tex);
+    }
+
+    public function testWeCanSendOpportunityByEmail()
+    {
+        $this->_opp->sendByEmail('test@example.com');
+    }
+
+    public function testOpportunityIsRecoverableInPos()
+    {
+        $registry = Model_Artifact::root()->opportunityRegistry;
+        $this->_opp = $registry->current();
     }
 
 }

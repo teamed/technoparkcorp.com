@@ -82,7 +82,11 @@ class theOpportunity
      */
     public function getLatex()
     {
-        return $this->sheets->getLatex();
+        $texry = new Model_Texry('a4pdf.tex');
+        $texry->assign('document', $this->sheets->getLatex());
+        $tex = $texry->render();
+        
+        return $tex;
     }
     
     /**
@@ -93,8 +97,18 @@ class theOpportunity
      */
     public function sendByEmail($email) 
     {
-        // ...
-        logg('PDF request sent to TeXry.com, email: %s', $email);
+        $tex = $this->getLatex();
+        FaZend_Email::create()
+            ->set('body', "PDF offer for '{$this->id}'attached")
+            ->set('toEmail', $email)
+            ->attach(new Zend_Mime_Part($tex))
+            ->send();
+        
+        logg(
+            'LaTeX source sent to email: %s (%d bytes)', 
+            $email,
+            strlen($tex)
+        );
     }
     
 }
