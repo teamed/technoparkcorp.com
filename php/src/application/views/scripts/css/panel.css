@@ -233,8 +233,8 @@ div.wrapper {
 
     /* all paragraphs */
     div.wrapper p {
-        padding-top: 2em;
-        padding-bottom: 1em;
+        margin-top: 1em;
+        margin-bottom: 1em;
         width: 600px;
     }
 
@@ -263,14 +263,19 @@ div.wrapper {
                 background-color: <?=Model_Colors::WHITE?>;
             }
 
-    /* forms that should render all inputs in one line */
-    div.wrapper form.inline {
+    div.wrapper form {
+        margin-top: 1em;
+        margin-bottom: 1em;
     }
 
-        div.wrapper form.inline dd,
-        div.wrapper form.inline label {
-            display: inline !important;
+        /* forms that should render all inputs in one line */
+        div.wrapper form.inline {
         }
+
+            div.wrapper form.inline dd,
+            div.wrapper form.inline label {
+                display: inline !important;
+            }
 
 /* page finisher */
 div.btm {

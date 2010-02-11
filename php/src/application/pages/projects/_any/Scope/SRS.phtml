@@ -39,7 +39,10 @@
         )
     )
     ->addAttrib('class', 'tree')
-    ->setMask('<span class="node">%s</span>: %s')
-    ->addToken('->name')
-    ->addToken('->description')
+    ->setMask(
+        'sprintf(
+            "<span class=\'node\'>%s</span>: %s",
+            ${a1}->name,
+            ${a1}->description
+        )')
     ?>

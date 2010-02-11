@@ -37,10 +37,10 @@ class ReloadSupplierRegistry extends Model_Decision
      */
     protected function _make()
     {
-        $supplierRegistry = Model_Artifact::root()->supplierRegistry;
+        $registry = Model_Artifact::root()->supplierRegistry;
         
         // maybe it's fresh enough?
-        $ageHours = Zend_Date::now()->sub($supplierRegistry->ps()->updated)->getTimestamp() / (60 * 60);
+        $ageHours = Zend_Date::now()->sub($registry->ps()->updated)->getTimestamp() / (60 * 60);
         if ($ageHours < 24) {
             return sprintf(
                 'registry is up to date, %dhrs', 
@@ -50,14 +50,14 @@ class ReloadSupplierRegistry extends Model_Decision
         
         logg(
             'There are %d suppliers in the registry now (%dhrs old)', 
-            count($supplierRegistry),
+            count($registry),
             $ageHours
         );
         
         // reload it
-        $supplierRegistry->reload();
+        $registry->reload();
         
-        foreach ($supplierRegistry as $supplier) {
+        foreach ($registry as $supplier) {
             logg(
                 'Supplier %s found; rate: %s; roles: %s; skills: %s',
                 $supplier->email,
@@ -69,10 +69,10 @@ class ReloadSupplierRegistry extends Model_Decision
         
         logg(
             'There are %d suppliers in the registry, after reloading',
-            count($supplierRegistry)
+            count($registry)
         );
 
-        return 'Registry reloaded, now it has ' . count($supplierRegistry) . ' suppliers';
+        return 'Registry reloaded, now it has ' . count($registry) . ' suppliers';
     }
     
 }

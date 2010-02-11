@@ -42,12 +42,16 @@
         )
     )
     ->addAttrib('class', 'tree')
-    ->setMask('%s: <b>%s</b>/%s/%s/%s')
-    ->addToken('->suffix')
-    ->addToken('->value')
-    ->addToken('->default')
-    ->addToken('->objective')
-    ->addToken('->delta')
+    ->setMask(
+        'sprintf(
+            "%s: <b>%s</b>/%s/%s/%s",
+            ${a1}->suffix,
+            ${a1}->value,
+            ${a1}->default,
+            ${a1}->objective,
+            ${a1}->delta
+        )'
+    )
     ?>
 
 <? $this->headScript()->appendScript('

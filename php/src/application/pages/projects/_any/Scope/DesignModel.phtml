@@ -31,12 +31,16 @@
     ->setCollection($this->project->deliverables->design, 'name', '.')
     ->setOptions(
         array(
-            'renderSections' => false,
+            // 'renderSections' => false,
             'startCollapsed' => true,
         )
     )
     ->addAttrib('class', 'tree')
-    ->setMask('<span class="node">%s</span> (%s)')
-    ->addToken('->name')
-    ->addToken('->type')
+    ->setMask(
+        'sprintf(
+            "<span class=\'node\'>%s</span> (%s)",
+            ${a1}->name,
+            ${a1}->type
+        )'
+    )
     ?>

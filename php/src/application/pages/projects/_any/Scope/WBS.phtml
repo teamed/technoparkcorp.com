@@ -39,8 +39,11 @@
         )
     )
     ->addAttrib('class', 'tree')
-    ->setMask('<tt>%s</tt>, %s, %s')
-    ->addToken('->code')
-    ->addToken('->cost')
-    ->addToken('->title')
+    ->setMask(
+        'sprintf(
+            "<tt>%s</tt>, %s, %s",
+            ${a1}->code,
+            ${a1}->cost,
+            ${a1}->title
+        )')
     ?>

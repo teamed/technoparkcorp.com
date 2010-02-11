@@ -91,7 +91,7 @@ class Helper_Table extends FaZend_View_Helper
 
         $this->_table->showColumns($this->_columns);
 
-        return '<p>' . $this->_table->__toString() . '</p>' . 
+        return $this->_table->__toString() .
         $this->getView()->paginator;
     }
 

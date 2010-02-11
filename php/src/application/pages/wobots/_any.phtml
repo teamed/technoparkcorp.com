@@ -12,6 +12,7 @@
  * 568 Ninth Street South 202, Naples, Florida 34102, USA
  * tel. +1 (239) 935 5429
  *
+ * @version $Id$
 -->
  
 <p><?=$this->icon('wobot')?><br/>
@@ -21,14 +22,19 @@
 
 <?=$this->bar()
     ->addLink('decisions', 'Decisions')
-    ->addLink('clean', _t('Clean entire history (%d)', 
-        count(Model_Decision_History::retrieveByWobot($this->wobot))))
+    ->addLink(
+        'clean', 
+        _t(
+            'Clean entire history (%d)', 
+            count(Model_Decision_History::retrieveByWobot($this->wobot))
+        )
+    )
     ?>
 
 <?=$this->table()
     ->setSource(Model_Decision_History::retrieveByWobot($this->wobot))
-    ->addFormatter('->isRunning()', 'color:gray')
-    ->addFormatter('->isError()', 'color:red')
+    ->addFormatter('${a1}->isRunning()', 'color:gray')
+    ->addFormatter('${a1}->isError()', 'color:red')
 
     ->addColumn('created', 'Date')
     ->addColumn('getTitle', 'Title')

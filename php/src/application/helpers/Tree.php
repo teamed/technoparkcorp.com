@@ -68,19 +68,12 @@ class Helper_Tree extends FaZend_View_Helper
     protected $_attribs;
     
     /**
-     * Mask to use with sprintf()
+     * Callback to use for item rendering
      *
-     * @var string
+     * @var FaZend_Callback
      */
-    protected $_mask = 'empty';
+    protected $_mask;
     
-    /**
-     * List of tokens to pass to sprintf()
-     *
-     * @var array
-     */
-    protected $_tokens = array();
-
     /**
      * Builds an instance of this class
      *
@@ -137,19 +130,7 @@ class Helper_Tree extends FaZend_View_Helper
      */
     public function setMask($mask) 
     {
-        $this->_mask = $mask;
-        return $this;
-    }
-    
-    /**
-     * Add new token
-     *
-     * @param mixed
-     * @return $this
-     */
-    public function addToken($token) 
-    {
-        $this->_tokens[] = $token;
+        $this->_mask = FaZend_Callback::factory($mask);
         return $this;
     }
     
@@ -319,23 +300,11 @@ class Helper_Tree extends FaZend_View_Helper
                 // don't CONTINUE, but go below until NEXT()
             } else {
                 // it's an item
-                $values = array();
-                foreach ($this->_tokens as $token) {
-                    eval("\$value = \$item{$token};");
-                    $values[] = $value;
-                }
-
                 $html .= sprintf(
                     "%s<div%s>%s</div>\n",
                     $indent,
                     !empty($this->_options['renderSections']) ? false : $onclick,
-                    call_user_func_array(
-                        'sprintf',
-                        array_merge(
-                            array($this->_mask),
-                            $values
-                        )
-                    )
+                    $this->_mask->call($item)
                 );
             }
 
