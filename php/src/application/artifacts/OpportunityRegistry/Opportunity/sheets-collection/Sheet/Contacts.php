@@ -44,11 +44,7 @@ class Sheet_Contacts extends Sheet_Abstract
         'country' => 'USA',
         'zip' => '10001',
         'phone' => '239 935 5429',
-        'fax' => '239 935 5429',
-        'mobile' => '239 935 5429',
         'email' => 'sales@tpc2.com',
-        'skype' => 'n/a',
-        'msn' => 'n/a',
     );
     
     /**

@@ -45,6 +45,7 @@ class theSupplierRegistry extends Model_Artifact_Bag
      **/
     public function reload() 
     {
+        $this->_suppliers = new ArrayIterator();
         $suppliers = $this->_getSuppliers();
         $asset = Model_Project::findByName('PMO')->getAsset(Model_Project::ASSET_SUPPLIERS);
         foreach ($asset->retrieveAll() as $email) {
@@ -296,8 +297,9 @@ class theSupplierRegistry extends Model_Artifact_Bag
      **/
     protected function _getSuppliers() 
     {
-        if (!isset($this->_suppliers))
+        if (!isset($this->_suppliers)) {
             $this->_suppliers = new ArrayIterator();
+        }
         return $this->_suppliers;
     }
     

@@ -190,6 +190,9 @@ abstract class Sheet_Abstract
      */
     public function exists($name) 
     {
+        if (!array_key_exists($name, $this->_defaults)) {
+            return false;
+        }
         return (bool)count($this->_config->xpath("//item[@name='{$name}']"));
     }
     

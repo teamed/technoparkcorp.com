@@ -45,6 +45,7 @@ class theOpportunityRegistry extends Model_Artifact_Bag
      **/
     public function reload() 
     {
+        $this->_opportunities = new ArrayIterator();
         $opportunities = $this->_getOpportunities();
         foreach ($this->_getAsset()->retrieveAll() as $id) {
             $opportunities[$id] = false;
@@ -226,8 +227,9 @@ class theOpportunityRegistry extends Model_Artifact_Bag
      **/
     protected function _getOpportunities() 
     {
-        if (!isset($this->_opportunities))
+        if (!isset($this->_opportunities)) {
             $this->_opportunities = new ArrayIterator();
+        }
         return $this->_opportunities;
     }
     
