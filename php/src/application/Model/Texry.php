@@ -57,6 +57,7 @@ class Model_Texry
         $this->_template = $template;
         $this->_view = new Zend_View();
         $this->_view->addScriptPath(self::$_dirs);
+        $this->_view->setFilter(null);
     }
     
     /**
