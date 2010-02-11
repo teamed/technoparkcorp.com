@@ -12,8 +12,20 @@
  * 568 Ninth Street South 202, Naples, Florida 34102, USA
  * tel. +1 (239) 935 5429
  *
+ * @version $Id$
 -->
  
-<? $this->document->reload() ?>
+<?
+    // start logging to memory
+    FaZend_Log::getInstance()->addWriter('Memory', 'publish');
 
-<p>Document '<?=$this->document->ps()->path?>' reloaded.</p>
+    // explicitly reload the document
+    $this->document->reload();
+
+    // stop logging to memory
+    $log = FaZend_Log::getInstance()->getWriterAndRemove('publish')->getLog();
+?>
+
+<p>Document '<?=$this->document->ps()->path?>' reloaded:</p>
+
+<pre><?=$log?></pre>
