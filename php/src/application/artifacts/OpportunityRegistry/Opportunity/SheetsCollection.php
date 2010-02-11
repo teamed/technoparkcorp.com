@@ -96,13 +96,35 @@ class theSheetsCollection implements ArrayAccess, Iterator, Countable
     }
     
     /**
+     * Method from ArrayAccess interface
+     *
+     * @param string Name of the sheet
+     * @param Sheet_Abstract Sheet instance
+     * @return void
+     **/
+    public function add(Sheet_Abstract $sheet) 
+    {
+        validate()->true($sheet instanceof Sheet_Abstract);
+        $sheet->setSheetsCollection($this);
+        $this->_sheets[$sheet->getSheetName()] = $sheet;
+    }
+
+    /**
      * Get opportunity document in LaTeX
      *
      * @return string
+     * @throws SheetsCollection_RootTemplateMissedException
      */
     public function getLatex()
     {
-        return $this->getView()->render('binder.tex');
+        $template = 'binder.tex';
+        if (!Sheet_Abstract::isTemplateExists($template)) {
+            FaZend_Exception::raise(
+                'SheetsCollection_RootTemplateMissedException', 
+                "Template '{$template}' not found"
+            );
+        }
+        return $this->getView()->render($template);
     }
     
     /**
@@ -121,6 +143,46 @@ class theSheetsCollection implements ArrayAccess, Iterator, Countable
             ->addScriptPath(dirname(__FILE__) . '/sheets-collection/templates')
             ->assign('sheets', $this);
         return $this->_view;
+    }
+    
+    /**
+     * Dump entire object into text presentation
+     *
+     * @return string
+     */
+    public function dump() 
+    {
+        $text = '';
+        foreach ($this as $sheet) {
+            $text .= sprintf(
+                "%s\n\ttemplate: %s\n\tconfig:\n",
+                $sheet->getSheetName(),
+                $sheet->getTemplateFile() ? $sheet->getTemplateFile() : 'NULL'
+            );
+            $text .= $this->_dumpXml($sheet->config, "\t\t");
+        }
+        return $text;
+    }
+    
+    /**
+     * Dump XML with multiple levels
+     *
+     * @param SimpleXMLElement 
+     * @return string
+     */
+    protected function _dumpXml($xml, $prefix = "\t") 
+    {
+        $text = '';
+        foreach ($xml->children() as $item) {
+            $text .= sprintf(
+                "%s%s: %s\n",
+                $prefix,
+                $item->attributes()->name,
+                $item->attributes()->value
+            );
+            $text .= $this->_dumpXml($item, $prefix . "\t");
+        }
+        return $text;
     }
     
     /**
@@ -202,8 +264,6 @@ class theSheetsCollection implements ArrayAccess, Iterator, Countable
      **/
     public function offsetSet($name, $sheet) 
     {
-        validate()->true($sheet instanceof Sheet_Abstract);
-        $sheet->setSheetsCollection($this);
         return $this->_sheets->offsetSet($name, $sheet);
     }
 

@@ -37,9 +37,9 @@ abstract class Sheet_Abstract
     /**
      * Configuration
      *
-     * @var SimpleXMLElement
+     * @var SimpleXMLElement|null
      */
-    protected $_config;
+    protected $_config = null;
     
     /**
      * Collection of sheets
@@ -81,19 +81,6 @@ abstract class Sheet_Abstract
     }
     
     /**
-     * Inject dependency
-     *
-     * @param theSheetsCollection
-     * @return $this
-     * @see theSheetsCollection::offsetSet()
-     */
-    public function setSheetsCollection(theSheetsCollection $sheets) 
-    {
-        $this->_sheets = $sheets;
-        return $this;
-    }
-    
-    /**
      * The name provided is valid?
      *
      * @param string Name of the sheet class
@@ -105,13 +92,28 @@ abstract class Sheet_Abstract
     }
     
     /**
+     * Inject dependency
+     *
+     * @param theSheetsCollection
+     * @return $this
+     * @see theSheetsCollection::offsetSet()
+     * @see _init()
+     */
+    public function setSheetsCollection(theSheetsCollection $sheets) 
+    {
+        $this->_sheets = $sheets;
+        $this->_init();
+        return $this;
+    }
+    
+    /**
      * Getter dispatcher
      *
      * @param string Name of property to get
      * @return mixed
      * @throws Opportunity_PropertyOrMethodNotFound
      **/
-    public function __get($name) 
+    public final function __get($name) 
     {
         $method = '_get' . ucfirst($name);
         if (method_exists($this, $method)) {
@@ -147,35 +149,49 @@ abstract class Sheet_Abstract
      *
      * @return string LaTeX source
      * @throws Sheet_Abstract_RenderingProhibited
+     * @throws Sheet_Abstract_TemplateMissedException
      */
-    public function getLatex() 
+    public final function getLatex($template = null) 
     {
+        if (is_null($template)) {
+            $template = $this->getTemplateFile();
+        }
         if (is_null($this->sheets)) {
             FaZend_Exception::raise(
                 'Sheet_Abstract_RenderingProhibited', 
                 "You can't render '{$this->name}' outside of collection"
             );
         }
+        if (!self::isTemplateExists($template)) {
+            FaZend_Exception::raise(
+                'Sheet_Abstract_TemplateMissedException', 
+                "Template '{$template}' not found"
+            );
+        }
         return $this->sheets->getView()
             ->assign('sheet', $this)
-            ->render($this->getTemplateFile());
+            ->render($template);
     }
     
     /**
      * Get short proposal paragraph
      *
      * @return string LaTeX source
-     * @throws Sheet_Abstract_RenderingProhibited
      */
-    public function getProposal() 
+    public final function getProposal() 
     {
-        if (is_null($this->sheets)) {
-            FaZend_Exception::raise(
-                'Sheet_Abstract_RenderingProhibited', 
-                "You can't render '{$this->name}' outside of collection"
-            );
-        }
-        return $this->sheets->getView()->render('proposals/' . $this->getTemplateFile());
+        return $this->getLatex($this->getProposalFile());
+    }
+    
+    /**
+     * Given template exists?
+     *
+     * @param string Name of template, like "Vision.tex" or "promo/FinanceInfo.tex"
+     * @return void
+     */
+    public static function isTemplateExists($name) 
+    {
+        return file_exists(dirname(__FILE__) . '/../templates/' . $name);
     }
     
     /**
@@ -198,4 +214,24 @@ abstract class Sheet_Abstract
         return $this->getSheetName() . '.tex';
     }
     
+    /**
+     * Get name of the template file, like "Vision.tex", "ROM.tex", etc.
+     *
+     * @return string
+     */
+    public function getProposalFile() 
+    {
+        return 'proposals/' . $this->getSheetName() . '.tex';
+    }
+    
+    /**
+     * Initialize the clas
+     *
+     * @return void
+     */
+    protected function _init() 
+    {
+        // to override it
+    }
+
 }

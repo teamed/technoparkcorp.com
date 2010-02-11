@@ -21,13 +21,13 @@
 require_once 'artifacts/OpportunityRegistry/Opportunity/sheets-collection/Sheet/Abstract.php';
 
 /**
- * Contacts
+ * Vision
  *
  * @package Artifacts
  */
-class Sheet_Contacts extends Sheet_Abstract
+class Sheet_ROM extends Sheet_Abstract
 {
-
+    
     /**
      * Defaults
      *
@@ -35,35 +35,36 @@ class Sheet_Contacts extends Sheet_Abstract
      * @see __get()
      */
     protected $_defaults = array(
-        'title' => 'Custom Software Product',
-        'name' => 'Undisclosed Name',
-        'company' => 'ACME Inc.',
-        'address' => 'address n/a',
-        'city' => 'New York',
-        'country' => 'USA',
-        'zip' => '10001',
-        'phone' => '239 935 5429',
-        'email' => 'sales@tpc2.com',
     );
+
+    /**
+     * Average estimate
+     *
+     * @return integer Average estimate
+     */
+    protected function _getHours() 
+    {
+        return 100;
+    }
     
     /**
-     * Get name of the template file, like "Vision.tex", "ROM.tex", etc.
+     * Get LOW boundary
      *
-     * @return string|null
+     * @return integer Staff-hours
      */
-    public function getTemplateFile() 
+    protected function _getLowBoundary() 
     {
-        return null;
+        
     }
-
+    
     /**
-     * Get name of the template file for proposal
+     * Get HIGH boundary
      *
-     * @return string|null
+     * @return integer Staff-hours
      */
-    public function getProposalFile() 
+    protected function _getHighBoundary() 
     {
-        return null;
+        
     }
-
+    
 }

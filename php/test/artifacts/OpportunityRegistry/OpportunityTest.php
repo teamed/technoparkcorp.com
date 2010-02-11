@@ -19,7 +19,9 @@ class theOpportunityTest extends AbstractTest
     {
         $tex = $this->_opp->getLatex();
         $this->assertTrue(strlen($tex) > 0, 'Empty TeX, why?');
-        // logg($tex);
+        $this->assertTrue(is_string($this->_opp->sheets->dump()));
+        // logg($this->_opp->sheets->dump());
+        logg($tex);
     }
 
 }

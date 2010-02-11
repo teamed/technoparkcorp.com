@@ -21,11 +21,11 @@
 require_once 'artifacts/OpportunityRegistry/Opportunity/sheets-collection/Sheet/Abstract.php';
 
 /**
- * Contacts
+ * Offer we're giving to the customer
  *
  * @package Artifacts
  */
-class Sheet_Contacts extends Sheet_Abstract
+class Sheet_Offer extends Sheet_Abstract
 {
 
     /**
@@ -35,35 +35,42 @@ class Sheet_Contacts extends Sheet_Abstract
      * @see __get()
      */
     protected $_defaults = array(
-        'title' => 'Custom Software Product',
-        'name' => 'Undisclosed Name',
-        'company' => 'ACME Inc.',
-        'address' => 'address n/a',
-        'city' => 'New York',
-        'country' => 'USA',
-        'zip' => '10001',
-        'phone' => '239 935 5429',
-        'email' => 'sales@tpc2.com',
+        'price' => '25 EUR',
+        'deposit' => '25%',
     );
     
     /**
      * Get name of the template file, like "Vision.tex", "ROM.tex", etc.
      *
-     * @return string|null
+     * @return string
      */
     public function getTemplateFile() 
     {
         return null;
     }
+    
+    /**
+     * Get price per hour
+     *
+     * @return FaZend_Bo_Money
+     */
+    protected function _getPricePerHour() 
+    {
+        return new FaZend_Bo_Money($this->price);
+    }
 
     /**
-     * Get name of the template file for proposal
+     * Get price per hour
      *
-     * @return string|null
+     * @return FaZend_Bo_Money
      */
-    public function getProposalFile() 
+    protected function _getDepositAmount() 
     {
-        return null;
+        if (preg_match('/^(\d+(?:\.\d+)?)\%$/', $this->deposit, $matches)) {
+            return $this->pricePerHour->mul($matches[1] * $this->sheets['ROM']->hours / 100);
+        } else {
+            return new FaZend_Bo_Money($this->deposit);
+        }
     }
 
 }

@@ -88,6 +88,10 @@ class Model_Asset_Opportunities_Fazend_Trac extends Model_Asset_Opportunities_Ab
             
             // it's section now, but ignore it if the name is wrong
             if (!Sheet_Abstract::isValidName($section)) {
+                logg(
+                    'Section "%s" ignored',
+                    cutLongLine($section)
+                );
                 continue;
             }
             
@@ -104,10 +108,14 @@ class Model_Asset_Opportunities_Fazend_Trac extends Model_Asset_Opportunities_Ab
 
                 $node = strval($node);
                 if (strpos($node, ':') === false) {
+                    logg(
+                        'Paragraph "%s" ignored since ":" is missed',
+                        cutLongLine($node)
+                    );
                     continue;
                 }
                 
-                list($name, $value) = explode(':', $node);
+                list($name, $value) = explode(':', $node, 2);
                 $item = $config->addChild('item', '');
                 $item->addAttribute('name', $this->_trim($name, true));
                 
@@ -116,18 +124,8 @@ class Model_Asset_Opportunities_Fazend_Trac extends Model_Asset_Opportunities_Ab
                     if (strtolower($ul->getName()) !== 'ul') {
                         break;
                     }
-
+                    $this->_parseUl($ul, $item);
                     $nodes->next();
-                    foreach ($ul->xpath('li') as $li) {
-                        $subItem = $item->addChild('item', '');
-                        if (strpos($li, ':') === false) {
-                            $subItem->addAttribute('value', $this->_trim($li));
-                        } else {
-                            list($n, $v) = explode(':', $li);
-                            $subItem->addAttribute('name', $this->_trim($n));
-                            $subItem->addAttribute('value', $this->_trim($v));
-                        }
-                    }
                 }
                 if (!count($item->children())) {
                     $item->addAttribute('value', $this->_trim($value));
@@ -135,9 +133,35 @@ class Model_Asset_Opportunities_Fazend_Trac extends Model_Asset_Opportunities_Ab
             }
             
             $sheet = Sheet_Abstract::factory($section, $config);
-            $opportunity->sheets[$section] = $sheet;
+            $opportunity->sheets->add($sheet);
         }
-        // bug($opportunity);
+    }
+    
+    /**
+     * Parse UL node
+     *
+     * @param SimpleXMLElement Element to parse
+     * @param SimpleXMLElement Item to fill
+     * @return void
+     */
+    protected function _parseUl(SimpleXMLElement $ul, SimpleXMLElement $item) 
+    {
+        foreach ($ul->xpath('li') as $li) {
+            $subItem = $item->addChild('item', '');
+            if (strpos($li, ':') === false) 
+            {
+                $subItem->addAttribute('name', $this->_trim($li));
+                $subItem->addAttribute('value', $this->_trim($li));
+            } else {
+                list($n, $v) = explode(':', $li);
+                $subItem->addAttribute('name', $this->_trim($n));
+                $subItem->addAttribute('value', $this->_trim($v));
+            }
+            
+            foreach ($li->xpath('ul') as $subUl) {
+                $this->_parseUl($subUl, $subItem);
+            }
+        }
     }
     
     /**

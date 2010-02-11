@@ -30,24 +30,47 @@ class Sheet_Helper_Itemize extends FaZend_View_Helper
      * List in TeX
      *
      * @return string
+     * @throws Sheet_Helper_Itemize_InvalidStyleException
      */
     public function itemize($collection, $style = 'itemize') 
     {
         if (!$collection) {
-            return 'empty list';
+            return '\textit{empty...}';
         }
         
-        $tex = "\n\\begin{{$style}}\n";
+        switch ($style) {
+            case 'itemize':
+            case 'description':
+            case 'enumerate':
+                $tex = "\n\\begin{{$style}}\n";
+                foreach ($collection as $item) {
+                    $tex .= sprintf(
+                        "\t\item[%s] %s\n",
+                        $this->getView()->tex($item['name']),
+                        $this->getView()->tex($item['value'])
+                    );
+                }
+                $tex .= "\\end{{$style}}\n";
+                break;
         
-        foreach ($collection as $item) {
-            $tex .= sprintf(
-                "\t\item[%s] %s\n",
-                $this->getView()->tex($item['name']),
-                $this->getView()->tex($item['value'])
-            );
+            case 'inline':
+                $items = array();
+                foreach ($collection as $item) {
+                    $items[] = $this->getView()->tex($item['name']);
+                }
+                if (count($items) > 1) {
+                    $items[count($items)-1] = 'and ' . $items[count($items)-1];
+                }
+                $tex = "\n\t" . implode(((count($items) > 2) ? ',' : false) . "\n\t", $items) . "\n";
+                break;
+        
+            default:
+                FaZend_Exception::raise(
+                    'Sheet_Helper_Itemize_InvalidStyleException', 
+                    "Style '{$style}' is unknown"
+                );
+            
         }
-        
-        $tex .= "\\end{{$style}}\n";
         return $tex;
     }
 
