@@ -233,15 +233,15 @@ div.wrapper {
 
     /* all paragraphs */
     div.wrapper p {
-        padding-top: 6px;
-        padding-bottom: 3px;
+        padding-top: 2em;
+        padding-bottom: 1em;
         width: 600px;
     }
 
     /* PRE elements */
     div.wrapper pre.log {
         line-height: 1.2em;
-        padding-top: 6px;
+        padding-top: 2em;
     }
 
     div.wrapper table.icon {
