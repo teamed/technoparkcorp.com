@@ -114,6 +114,8 @@ class theSheetsCollection implements ArrayAccess, Iterator, Countable
      *
      * @return string
      * @throws SheetsCollection_RootTemplateMissedException
+     * @throws SheetsCollection_ContactsMissedException
+     * @throws SheetsCollection_OfferMissedException
      */
     public function getLatex()
     {
@@ -122,6 +124,20 @@ class theSheetsCollection implements ArrayAccess, Iterator, Countable
             FaZend_Exception::raise(
                 'SheetsCollection_RootTemplateMissedException', 
                 "Template '{$template}' not found"
+            );
+        }
+        
+        if (!isset($this['Offer'])) {
+            FaZend_Exception::raise(
+                'SheetsCollection_OfferMissedException', 
+                "Sheet 'Offer' not found"
+            );
+        }
+
+        if (!isset($this['Contacts'])) {
+            FaZend_Exception::raise(
+                'SheetsCollection_ContactsMissedException', 
+                "Sheet 'Contacts' not found"
             );
         }
         return $this->getView()->render($template);
