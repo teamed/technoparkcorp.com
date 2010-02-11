@@ -34,15 +34,15 @@ class Sheet_Helper_Itemize extends FaZend_View_Helper
      */
     public function itemize($collection, $style = 'itemize') 
     {
-        if (!$collection) {
-            return '\textit{empty...}';
-        }
-        
         switch ($style) {
             case 'itemize':
             case 'description':
             case 'enumerate':
-                $tex = "\n\\begin{{$style}}\n";
+                if (!$collection) {
+                    return "\\textit{empty...}\n\n";
+                }
+
+                $tex = "\\begin{{$style}}\n";
                 foreach ($collection as $item) {
                     $tex .= sprintf(
                         "\t\item[%s] %s\n",
@@ -50,10 +50,14 @@ class Sheet_Helper_Itemize extends FaZend_View_Helper
                         $this->getView()->tex($item['value'])
                     );
                 }
-                $tex .= "\\end{{$style}}\n";
+                $tex .= "\\end{{$style}}\n\n";
                 break;
         
             case 'inline':
+                if (!$collection) {
+                    return "$\dots$";
+                }
+                
                 $items = array();
                 foreach ($collection as $item) {
                     $items[] = $this->getView()->tex($item['name']);
@@ -61,7 +65,7 @@ class Sheet_Helper_Itemize extends FaZend_View_Helper
                 if (count($items) > 1) {
                     $items[count($items)-1] = 'and ' . $items[count($items)-1];
                 }
-                $tex = "\n\t" . implode(((count($items) > 2) ? ',' : false) . "\n\t", $items) . "\n";
+                $tex = implode(((count($items) > 2) ? ',' : false) . "\n\t", $items) . ' ';
                 break;
         
             default:

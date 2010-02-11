@@ -61,13 +61,16 @@ tel. +1 (239) 935 5429
     <? if (!$sheet->getProposalFile()) continue; ?>
     <? $this->assign('sheet', $sheet) ?>
     <?=$this->render($sheet->getProposalFile())?>
-    Read more about it in Appendix~\ref{sheet:<?=$sheet->getSheetName()?>}
-    (page~\pageref{sheet:<?=$sheet->getSheetName()?>})
+    <? if ($sheet->getTemplateFile()): ?>
+        Read more about it in Appendix~\ref{sheet:<?=$sheet->getSheetName()?>}
+        (page~\pageref{sheet:<?=$sheet->getSheetName()?>})
+    <? endif; ?>
 <? endforeach; ?>
 
 \appendix
 <? foreach ($this->sheets as $sheet): ?>
     <? if (!$sheet->getTemplateFile()) continue; ?>
+    
     \clearpage
     <? $this->assign('sheet', $sheet) ?>
     <?=preg_replace(

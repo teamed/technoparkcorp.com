@@ -37,7 +37,6 @@ class Sheet_Vision extends Sheet_Abstract
     protected $_defaults = array(
         'product' => 'Custom software system',
         'statement' => 'There is a strong marketing opportunity for a new business',
-        'features' => array(),
         'actors' => array(),
         'quality' => array(),
     );
@@ -50,6 +49,16 @@ class Sheet_Vision extends Sheet_Abstract
     public function getUseCaseDiagram() 
     {
         return 'uc..';
+    }
+    
+    /**
+     * Get list of features
+     *
+     * @return SimpleXMLElement
+     */
+    protected function _getFeatures() 
+    {
+        return $this->actors->xpath('item/item');
     }
     
 }

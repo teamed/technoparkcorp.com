@@ -42,6 +42,15 @@ abstract class Sheet_Abstract
     protected $_config;
     
     /**
+     * Serialization variable
+     *
+     * @var string
+     * @see __sleep()
+     * @see __wakeup()
+     */
+    protected $_xml;
+    
+    /**
      * Collection of sheets
      *
      * @var theSheetsCollection
@@ -115,7 +124,14 @@ abstract class Sheet_Abstract
     public function __sleep() 
     {
         $this->_xml = $this->_config->asXml();
-        return array('_xml');
+        $rc = new ReflectionClass($this);
+        $toSerialize = array();
+        foreach ($rc->getProperties() as $property) {
+            if ($property->getName() !== '_config') {
+                $toSerialize[] = $property->getName();
+            }
+        }
+        return $toSerialize;
     }
     
     /**
