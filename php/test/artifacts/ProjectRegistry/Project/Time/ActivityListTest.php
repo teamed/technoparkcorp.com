@@ -1,24 +1,9 @@
 <?php
 
-require_once 'AbstractProjectTest.php';
+require_once 'artifacts/ProjectRegistry/Project/Time/ActivityList/activity-plugins/AbstractPluginTest.php';
 
-class ActivityListTest extends AbstractProjectTest
+class ActivityListTest extends AbstractPluginTest
 {
-
-    public function setUp()
-    {
-        parent::setUp();
-        
-        if (!$this->_project->metrics->isLoaded()) {
-            $this->_project->metrics->reload();
-        }
-        if (!$this->_project->wbs->isLoaded()) {
-            $this->_project->wbs->reload();
-        }
-        if (!$this->_project->activityList->isLoaded()) {
-            $this->_project->activityList->reload();
-        }
-    }
 
     public function testActivityListIsReloadable()
     {
