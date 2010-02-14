@@ -29,45 +29,73 @@ class Sheet_Helper_Itemize extends FaZend_View_Helper
     /**
      * List in TeX
      *
-     * @return string
+     * @return SimpleXMLElement|mixed
      * @throws Sheet_Helper_Itemize_InvalidStyleException
      */
     public function itemize($collection, $style = 'itemize') 
     {
+        $items = $this->_deriveList($collection);
         switch ($style) {
             case 'itemize':
-            case 'description':
             case 'enumerate':
-                if (!$collection) {
-                    return "\\textit{empty...}";
+                if (!count($items)) {
+                    $tex = "\\textit{empty...}";
+                } else {
+                    $tex = "\\begin{{$style}}\n";
+                    foreach ($items as $name=>$value) {
+                        $tex .= sprintf(
+                            "\t\item %s\n",
+                            $this->getView()->tex($value)
+                        );
+                    }
+                    $tex .= "\\end{{$style}}";
                 }
+                break;
 
-                $tex = "\\begin{{$style}}\n";
-                foreach ($collection as $item) {
-                    $tex .= sprintf(
-                        "\t\item[%s] %s\n",
-                        $this->getView()->tex($item['name']),
-                        $this->getView()->tex($item['value'])
-                    );
+            case 'description':
+                if (!count($items)) {
+                    $tex = "\\textit{empty...}";
+                } else {
+                    $tex = "\\begin{{$style}}\n";
+                    foreach ($items as $name=>$value) {
+                        $tex .= sprintf(
+                            "\t\item[%s] %s\n",
+                            $this->getView()->tex($name),
+                            $this->getView()->tex($value)
+                        );
+                    }
+                    $tex .= "\\end{{$style}}";
                 }
-                $tex .= "\\end{{$style}}";
                 break;
         
             case 'inline':
-                if (!$collection) {
-                    return "$\dots$";
+                switch (true) {
+                    case !count($items):
+                        $tex = "$\dots$";
+                        break;
+                    case count($items) < 2:
+                        $tex = implode('', $items);
+                        break;
+                    case count($items) == 2:
+                        $tex = implode(' and ', $items);
+                        break;
+                    default:
+                        $tex = implode(",\n\t", array_slice($items, 0, -1)) .
+                        ', and ' . array_pop($items);
+                        break;
                 }
-                
-                $items = array();
-                foreach ($collection as $item) {
-                    $items[] = $this->getView()->tex($item['name']);
-                }
-                if (count($items) > 1) {
-                    $items[count($items)-1] = 'and ' . $items[count($items)-1];
-                }
-                $tex = implode(((count($items) > 2) ? ',' : false) . "\n\t", $items) . ' ';
                 break;
         
+            case 'inparaenum':
+                if (!count($items)) {
+                    $tex = "$\dots$";
+                } else {
+                    $tex = "\\begin{inparaenum}[\\itshape a\\upshape)]\n\t" .
+                    implode(";\n\t\\item ", $items) .
+                    "\n\\end{inparaenum}";
+                }
+                break;
+
             default:
                 FaZend_Exception::raise(
                     'Sheet_Helper_Itemize_InvalidStyleException', 
@@ -76,6 +104,26 @@ class Sheet_Helper_Itemize extends FaZend_View_Helper
             
         }
         return $tex;
+    }
+    
+    /**
+     * Derive array of items from XML
+     *
+     * @param SimpleXMLElement|mixed
+     * @return string[]
+     */
+    protected function _deriveList($collection) 
+    {
+        $items = array();
+        foreach ($collection as $name=>$item) {
+            if (is_scalar($item)) {
+                $items[$name] = $item;
+            } else {
+                $items[$this->getView()->tex($item['name'])] = 
+                    $this->getView()->tex($item['value']);
+            }
+        }
+        return $items;
     }
 
 }

@@ -189,7 +189,11 @@ abstract class Model_Decision implements Model_Decision_Interface
                 $this->_file
             );
             
+            // start DB transaction
             $db->beginTransaction();
+            logg('DB transaction started');
+            
+            // make the decision
             $decision = $this->_make();
             
             // save all changes made to POS, if they were made

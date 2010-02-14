@@ -35,11 +35,17 @@
         ->fieldAction(array($opp, 'sendByEmail'))
     ?>
 
+<p>LaTeX source:</p>
+
+<style>
+textarea.latex {
+    font-family: Courier;
+    font-size: 11px;
+}
+</style>
+<textarea class="latex" cols="140" rows="20"><?=$opp->getLatex()?></textarea>
+
 <p>Structure of the document:</p>
     
 <pre class="log"><?=$opp->sheets->dump()?></pre>
-
-<p>LaTeX source:</p>
-
-<textarea cols="100" rows="20"><?=$opp->getLatex()?></textarea>
 

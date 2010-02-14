@@ -35,8 +35,46 @@ class Sheet_ROM extends Sheet_Abstract
      * @see __get()
      */
     protected $_defaults = array(
+        'estimators' => array(),
     );
-
+    
+    /**
+     * Estimates provided
+     *
+     * @var string
+     */
+    protected $_estimates;
+    
+    /**
+     * Round float to the nearest valid precision
+     *
+     * @param float
+     * @return integer
+     */
+    public static function round($int) 
+    {
+        return intval(round($int));
+    }
+    
+    /**
+     * Initialize the clas
+     *
+     * @return void
+     */
+    protected function _init() 
+    {
+        $this->_estimates = array();
+        foreach ($this->estimators as $estimator) {
+            $lines = array();
+            foreach ($estimator as $item) {
+                $lines[] = $item['name'] . ': ' . $item['value'];
+            }
+            $this->_estimates[] = Sheet_ROM_Estimate_Abstract::factory($lines)
+                ->setEstimator(strval($estimator['name']))
+                ->setPromo(strval($estimator['value']));
+        }
+    }
+    
     /**
      * Average estimate
      *
@@ -44,7 +82,14 @@ class Sheet_ROM extends Sheet_Abstract
      */
     protected function _getHours() 
     {
-        return 100;
+        $hours[] = array();
+        foreach ($this->_estimates as $estimate) {
+            $hours[] = $estimate->hours;
+        }
+        if (!count($hours)) {
+            return 0;
+        }
+        return self::round(array_sum($hours) / count($hours));
     }
     
     /**
@@ -54,7 +99,7 @@ class Sheet_ROM extends Sheet_Abstract
      */
     protected function _getLowBoundary() 
     {
-        
+        return $this->hours;
     }
     
     /**
@@ -64,7 +109,17 @@ class Sheet_ROM extends Sheet_Abstract
      */
     protected function _getHighBoundary() 
     {
-        
+        return self::round($this->hours * 1.75);
+    }
+    
+    /**
+     * Total amount of estimators
+     *
+     * @return integer
+     */
+    protected function _getTotal() 
+    {
+        return count($this->_estimates);
     }
     
 }

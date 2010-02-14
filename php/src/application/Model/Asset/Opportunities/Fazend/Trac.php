@@ -149,7 +149,6 @@ class Model_Asset_Opportunities_Fazend_Trac extends Model_Asset_Opportunities_Ab
         foreach ($ul->xpath('li') as $li) {
             $subItem = $item->addChild('item', '');
             if (strpos($li, ':') === false) {
-                $subItem->addAttribute('name', $this->_trim($li));
                 $subItem->addAttribute('value', $this->_trim($li));
             } else {
                 list($n, $v) = explode(':', $li);

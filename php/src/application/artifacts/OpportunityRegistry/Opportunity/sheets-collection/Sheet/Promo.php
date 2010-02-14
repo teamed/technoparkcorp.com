@@ -43,7 +43,7 @@ class Sheet_Promo extends Sheet_Abstract
      *
      * @var string|null
      */
-    protected $_page = null;
+    protected $_page;
     
     /**
      * Set name of promo page

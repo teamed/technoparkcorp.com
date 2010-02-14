@@ -67,7 +67,10 @@ class Sheet_Offer extends Sheet_Abstract
     protected function _getDepositAmount() 
     {
         if (preg_match('/^(\d+(?:\.\d+)?)\%$/', $this->deposit, $matches)) {
-            return $this->lowAmount->mul($matches[1] / 100);
+            return $this->highAmount
+                ->add($this->lowAmount)
+                ->div(2)
+                ->mul($matches[1] / 100);
         } else {
             return new FaZend_Bo_Money($this->deposit);
         }
@@ -85,7 +88,8 @@ class Sheet_Offer extends Sheet_Abstract
         } else {
             $hours = $this->sheets['ROM']->lowBoundary;
         }
-        return $this->pricePerHour->mul($hours);
+        $amount = clone $this->pricePerHour;
+        return $amount->mul($hours);
     }
 
     /**
@@ -100,7 +104,8 @@ class Sheet_Offer extends Sheet_Abstract
         } else {
             $hours = $this->sheets['ROM']->highBoundary;
         }
-        return $this->pricePerHour->mul($hours);
+        $amount = clone $this->pricePerHour;
+        return $amount->mul($hours);
     }
 
 }

@@ -29,10 +29,14 @@ class theOpportunityTest extends AbstractTest
         $this->_opp->sendByEmail('test@example.com');
     }
 
-    public function testOpportunityIsRecoverableInPos()
+    public function testOpportunityIsSerializable()
     {
         $registry = Model_Artifact::root()->opportunityRegistry;
         $this->_opp = $registry->current();
+        $serialized = serialize($this->_opp);
+        $opp = unserialize($serialized);
+
+        $this->assertStringEquals($opp->getLatex(), $this->_opp->getLatex());
     }
 
 }

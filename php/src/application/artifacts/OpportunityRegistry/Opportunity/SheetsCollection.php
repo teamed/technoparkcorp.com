@@ -73,6 +73,18 @@ class theSheetsCollection implements ArrayAccess, Iterator, Countable
     }
     
     /**
+     * Restore object after serialization
+     *
+     * @return void
+     */
+    public function __wakeup() 
+    {
+        foreach ($this->_sheets as $sheet) {
+            $sheet->setSheetsCollection($this, false);
+        }
+    }
+    
+    /**
      * Getter dispatcher
      *
      * @param string Name of property to get
@@ -176,6 +188,26 @@ class theSheetsCollection implements ArrayAccess, Iterator, Countable
                 $sheet->getTemplateFile() ? $sheet->getTemplateFile() : 'NULL'
             );
             $text .= "\tconfig:\n" . $this->_dumpXml($sheet->config, "\t\t");
+            $text .= "\tcached:\n";
+            foreach ($sheet->cached as $method=>$value) {
+                $text .= sprintf(
+                    "\t\t%s: %s\n",
+                    $method,
+                    $value
+                );
+            }
+            $rc = new ReflectionClass($sheet);
+            foreach ($rc->getProperties() as $property) {
+                $name = substr($property->getName(), 1);
+                if (in_array($name, array('xml', 'config', 'defaults', 'cached', 'sheets'))) {
+                    continue;
+                }
+                $text .= sprintf(
+                    "\t%s: %s\n",
+                    $property->getName(),
+                    $sheet->$name
+                );
+            }
         }
         return $text;
     }

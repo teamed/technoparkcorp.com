@@ -70,6 +70,7 @@
   \renewcommand\@makefnmark{\mbox{\textsuperscript{\fontfamily{phv}\selectfont\@thefnmark}}} 
 \makeatother 
 
+% we're changing formatting of sections
 \titleformat{\section}
 	{\LARGE\bfseries\fontfamily{phv}\selectfont\color{tpcBlue}}
 	{\thesection{}.}{1em}{}
@@ -83,9 +84,15 @@
 	{\thesubsubsection{}.}{0.5em}{}
 \renewcommand\contentsname{\LARGE\bfseries\fontfamily{phv}\selectfont\color{tpcBlue}Contents} 
 
-\renewcommand\cftparskip{-0.5em} 
+\renewcommand\cftparskip{-0.5em}
 
+% paragraph formatting to change
 \setlength{\parskip}{0.3cm}
 \setlength{\parindent}{0cm}
 
-\newenvironment{wideTable}{\begin{list}{}{\setlength\leftmargin{-1cm}}\item[]}{\end{list}}
+\newenvironment{wideTable}
+{\begin{list}{}{\setlength\leftmargin{-1cm}}\item[]}
+{\end{list}}
+
+% for proper formatting of {description} environment
+\renewcommand*\descriptionlabel[1]{\fontfamily{phv}\selectfont\color{tpcBlack}``#1''}

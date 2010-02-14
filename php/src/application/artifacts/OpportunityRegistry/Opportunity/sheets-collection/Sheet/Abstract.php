@@ -33,6 +33,14 @@ abstract class Sheet_Abstract
      * @see __get()
      */
     protected $_defaults = array();
+    
+    /**
+     * List of valued calculated by _get*() methods
+     *
+     * @var array
+     * @see __get()
+     */
+    protected $_cached;
 
     /**
      * Configuration
@@ -42,20 +50,11 @@ abstract class Sheet_Abstract
     protected $_config;
     
     /**
-     * Serialization variable
-     *
-     * @var string
-     * @see __sleep()
-     * @see __wakeup()
-     */
-    protected $_xml;
-    
-    /**
      * Collection of sheets
      *
      * @var theSheetsCollection
      */
-    protected $_sheets = null;
+    protected $_sheets;
 
     /**
      * Construct the class
@@ -67,6 +66,7 @@ abstract class Sheet_Abstract
     {
         validate($config instanceof SimpleXMLElement);
         $this->_config = $config;
+        $this->_cached = array();
     }
 
     /**
@@ -105,14 +105,17 @@ abstract class Sheet_Abstract
      * Inject dependency
      *
      * @param theSheetsCollection
+     * @param boolean Initialize object?
      * @return $this
      * @see theSheetsCollection::offsetSet()
      * @see _init()
      */
-    public function setSheetsCollection(theSheetsCollection $sheets) 
+    public function setSheetsCollection(theSheetsCollection $sheets, $init = true) 
     {
         $this->_sheets = $sheets;
-        $this->_init();
+        if ($init) {
+            $this->_init();
+        }
         return $this;
     }
     
@@ -124,13 +127,15 @@ abstract class Sheet_Abstract
     public function __sleep() 
     {
         $this->_xml = $this->_config->asXml();
+
         $rc = new ReflectionClass($this);
         $toSerialize = array();
         foreach ($rc->getProperties() as $property) {
-            if ($property->getName() !== '_config') {
+            if (!in_array($property->getName(), array('_config', '_cached', '_sheets', '_defaults'))) {
                 $toSerialize[] = $property->getName();
             }
         }
+        $toSerialize[] = '_xml';
         return $toSerialize;
     }
     
@@ -142,6 +147,7 @@ abstract class Sheet_Abstract
     public function __wakeup() 
     {
         $this->_config = simplexml_load_string($this->_xml);
+        $this->_cached = array();
     }
     
     /**
@@ -155,7 +161,11 @@ abstract class Sheet_Abstract
     {
         $method = '_get' . ucfirst($name);
         if (method_exists($this, $method)) {
-            return $this->$method();
+            if (array_key_exists($method, $this->_cached)) {
+                return $this->_cached[$method];
+            } else {
+                return $this->_cached[$method] = $this->$method();
+            }
         }
             
         $var = '_' . $name;
@@ -284,6 +294,16 @@ abstract class Sheet_Abstract
     protected function _init() 
     {
         // to override it
+    }
+    
+    /**
+     * Get name of the sheet
+     *
+     * @return string
+     */
+    protected function _getName() 
+    {
+        return substr(get_class($this), strlen('Sheet_'));
     }
 
 }

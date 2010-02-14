@@ -5,15 +5,41 @@
 
 \section*{Rough-Order-of-Magnitude (ROM) Estimate}
 
-The spreadsheet contains raw numbers obtained from estimators, the calculation is as follows:
+We use a number of industry-wide estimating methods,
+and solicit numbers from different estimators. Each method
+produces its own estimates. The arithmetic average of those estimates 
+is the final result. On the next <?=$this->sheet->total?>{} pages
+you will find information received from estimators, with our
+comments and calculations.
 
-% tbd
+The bottom line is:
 
-We use a number of industry-wide estimating methods, and solicit numbers from different
-estimators. Each method produces its own estimates. The arithmetic average of those estimates 
-is the final result.
+\begin{tabular}{>{\raggedright}p{25em}r}
+    Estimator & Hours \\
+    \hline
+    <? foreach ($this->sheet->estimates as $estimate): ?>
+        <?=$this->tex($estimate->estimator)?>{}
+        <?=$this->tex($estimate->promo)?>{} &
+        <?=$estimate->hours?>{} \\
+    <? endforeach; ?>
+    \hline
+\end{tabular}
 
-% tbd
+Math average of the numbers received is <?=$this->sheet->hours?>,
+and the ROM interval is
+<?=$this->sheet->lowBoundary?>--<?=$this->sheet->highBoundary?>{}
+staff-hours.
 
-Read more information about <?=$this->href('process/cost/rom', 'ROM Estimate')?> 
+Read more information about <?=$this->href('process/cost/rom', 'ROM Estimate')?>{}
 and our <?=$this->href('process/cost', 'two-step quotation process')?>.
+
+<? foreach ($this->sheet->estimates as $estimate): ?>
+    \clearpage
+    \subsection*{Estimate by ``<?=$this->tex($estimate->estimator)?>''}
+    
+    {\setstretch{1.2}\begin{verbatim}
+<?=wordwrap(implode("\n", $estimate->lines), 70)?>
+    \end{verbatim}}
+    
+    <?=$this->render('ROM/' . $estimate->proposalFile)?>
+<? endforeach; ?>
