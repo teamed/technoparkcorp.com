@@ -79,11 +79,22 @@ class theOpportunity
      * Get opportunity document in LaTeX
      *
      * @return string
+     * @throws Opportunity_RenderingException
      */
     public function getLatex()
     {
         $texry = new Model_Texry('a4pdf.tex');
-        $texry->assign('document', $this->sheets->getLatex());
+        try {
+            $texry->assign(
+                'document', 
+                $this->sheets->getLatex()
+            );
+        } catch (SheetsCollection_RenderingException $e) {
+            FaZend_Exception::raise(
+                'Opportunity_RenderingException',
+                "Failed to render: {$e->getMessage()}"
+            );
+        }
         $tex = $texry->render();
         
         return $tex;

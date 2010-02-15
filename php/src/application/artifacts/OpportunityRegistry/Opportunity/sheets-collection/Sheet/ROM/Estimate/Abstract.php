@@ -60,21 +60,6 @@ abstract class Sheet_ROM_Estimate_Abstract
     }
     
     /**
-     * Return list of serializable vars
-     *
-     * @return array
-     */
-    // public function __sleep() 
-    // {
-    //     $rc = new ReflectionClass($this);
-    //     $toSerialize = array();
-    //     foreach ($rc->getProperties() as $property) {
-    //         $toSerialize[] = $property->getName();
-    //     }
-    //     return $toSerialize;
-    // }
-    
-    /**
      * Create a class from lines provided
      *
      * @param array List of lines from estimator

@@ -37,13 +37,20 @@
 
 <p>LaTeX source:</p>
 
+<?
+    try {
+        $tex = $opp->getLatex();
+    } catch (Opportunity_RenderingException $e) {
+        $tex = $e->getMessage();
+    }
+?>
 <style>
 textarea.latex {
     font-family: Courier;
     font-size: 11px;
 }
 </style>
-<textarea class="latex" cols="140" rows="20"><?=$opp->getLatex()?></textarea>
+<textarea class="latex" cols="140" rows="20"><?=$tex?></textarea>
 
 <p>Structure of the document:</p>
     

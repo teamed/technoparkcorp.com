@@ -80,9 +80,60 @@ class Sheet_ROM_Estimate_ThreePoints extends Sheet_ROM_Estimate_Abstract
      */
     protected function _getHours()
     {
+        return round((($this->bc + $this->wc + 4 * $this->ml) / 6) * $this->multiplier);
+    }
+    
+    /**
+     * Multiplier to conver coding time into project time
+     *
+     * @return float
+     */
+    protected function _getMultiplier() 
+    {
+        return 3.5;
+    }
+    
+    /**
+     * Get worst case
+     *
+     * @return integer
+     */
+    protected function _getWc() 
+    {
+        return $this->_getEstimateSummary('getWc');
+    }
+    
+    /**
+     * Get best case
+     *
+     * @return integer
+     */
+    protected function _getBc() 
+    {
+        return $this->_getEstimateSummary('getBc');
+    }
+    
+    /**
+     * Get most likely
+     *
+     * @return integer
+     */
+    protected function _getMl() 
+    {
+        return $this->_getEstimateSummary('getMl');
+    }
+    
+    /**
+     * Get total
+     *
+     * @param string Name of field in the estimate
+     * @return integer
+     */
+    protected function _getEstimateSummary($method) 
+    {
         $hours = 0;
         foreach ($this->_features as $feature) {
-            $hours += $feature->getHours();
+            $hours += $feature->$method();
         }
         return $hours;
     }

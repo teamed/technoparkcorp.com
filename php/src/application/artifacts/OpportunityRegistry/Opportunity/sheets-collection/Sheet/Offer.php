@@ -37,6 +37,7 @@ class Sheet_Offer extends Sheet_Abstract
     protected $_defaults = array(
         'price' => '25 EUR',
         'deposit' => '25%',
+        'objectives' => array(),
     );
     
     /**

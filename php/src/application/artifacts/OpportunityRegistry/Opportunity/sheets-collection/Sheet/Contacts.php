@@ -36,7 +36,7 @@ class Sheet_Contacts extends Sheet_Abstract
      */
     protected $_defaults = array(
         'title' => 'Custom Software Product',
-        'name' => 'Undisclosed Name',
+        'fullname' => 'Customer',
         'company' => 'ACME Inc.',
         'position' => 'director',
         'address' => 'address n/a',

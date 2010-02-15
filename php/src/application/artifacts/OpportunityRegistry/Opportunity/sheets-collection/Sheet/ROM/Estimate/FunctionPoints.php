@@ -80,7 +80,77 @@ class Sheet_ROM_Estimate_FunctionPoints extends Sheet_ROM_Estimate_Abstract
      */
     protected function _getHours()
     {
+        return round($this->pm * $this->daysInMonth);
+    }
+    
+    /**
+     * Return UFP
+     *
+     * @return integer
+     */
+    protected function _getUfp() 
+    {
         return $this->_fp;
+    }
+    
+    /**
+     * Return UFP-to-KSLOC rate
+     *
+     * @return integer
+     */
+    protected function _getUfpToKsloc() 
+    {
+        return 29 / 1000;
+    }
+    
+    /**
+     * Return KSLoC
+     *
+     * @return integer
+     */
+    protected function _getKsloc() 
+    {
+        return round($this->ufp * $this->ufpToKsloc, 2);
+    }
+    
+    /**
+     * Return A-factor
+     *
+     * @return float
+     */
+    protected function _getAFactor() 
+    {
+        return 2.48;
+    }
+    
+    /**
+     * Return B-factor
+     *
+     * @return float
+     */
+    protected function _getBFactor() 
+    {
+        return 1.06;
+    }
+    
+    /**
+     * Return people-months
+     *
+     * @return integer
+     */
+    protected function _getPm() 
+    {
+        return $this->aFactor * pow($this->ksloc, $this->bFactor);
+    }
+    
+    /**
+     * Return working day in one month
+     *
+     * @return integer
+     */
+    protected function _getDaysInMonth() 
+    {
+        return 172;
     }
     
 }

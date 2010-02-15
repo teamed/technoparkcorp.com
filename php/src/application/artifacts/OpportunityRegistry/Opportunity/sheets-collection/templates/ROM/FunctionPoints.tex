@@ -1,4 +1,52 @@
 %%
 %% Copyright TechnoPark Corp., 2010
-%% @version $Id: binder.tex 664 2010-02-11 13:22:41Z yegor256@yahoo.com $
+%% @version $Id$
 %%
+
+<?=$this->estimate->estimator?> used \textbf{function-point analysis}
+method, which is based on the assumption that 
+software code consists of atomic elements, called function points. Each
+feature has a certain amount of function points ($FP_i$), with some complexity ($C_i$). 
+We multiply the amount of function points to complexities and summarize the result. What we get is
+called unadjusted function points ($UFP$):
+
+\begin{equation}
+UFP = \sum_{i \in [\mbox{\scriptsize features}]} FP_i \times C_i
+    = <?=$this->estimate->ufp?>
+\end{equation}
+
+Roughly, in object-oriented programming function points represent
+class methods. Using these numbers we exploit
+\href{http://en.wikipedia.org/wiki/COCOMO}{COCOMO-II method} 
+to calculate a forecasted amount of thousands of software lines of code ($KSLoC$)
+and the size of the product in staff-hours. To get the value of $KSLoC$ in
+the product, we multiply the amount of function points to the
+\href{http://csse.usc.edu/csse/research/COCOMOII/cocomo2000.0/CII_modelman2000.0.pdf}{$UFP$-to-$KSLoC$ convertion ratio},
+which is <?=sprintf('%0.2f', $this->estimate->ufpToKsloc)?> in most our projects:
+
+\begin{equation}
+KSLoC = UFP \times <?=sprintf('%0.2f', $this->estimate->ufpToKsloc)?>
+    = <?=$this->estimate->ufp?> \times <?=sprintf('%0.2f', $this->estimate->ufpToKsloc)?>
+    = <?=$this->estimate->ksloc?>
+\end{equation}
+
+Here we calculate people-months ($PM$) with a formula from 
+\href{http://en.wikipedia.org/wiki/COCOMO}{COCOMO-II}:
+
+\begin{equation}\begin{gathered}
+PM = A \times KSLoC^{\displaystyle(B + 0.01 \times \sum_{j=1}^5 SF_j)}
+    \times {\displaystyle \prod_{i=1}^n EM_i} \\
+A \times \prod_{i=1}^n EM_i = <?=sprintf('%0.2f', $this->estimate->aFactor)?> \\
+B + 0.01 \times \sum_{j=1}^5 SF_j = <?=sprintf('%0.2f', $this->estimate->bFactor)?> \\
+PM = <?=sprintf('%0.2f', $this->estimate->aFactor)?>
+    \times <?=$this->estimate->ksloc?>^{<?=sprintf('%0.2f', $this->estimate->bFactor)?>} 
+    = <?=sprintf('%0.2f', $this->estimate->pm)?>
+\end{gathered}\end{equation}
+
+Factors in the formula ($A$ and $B$) are found experimentally
+after manipulating with Effort Multipliers ($EM_i$) and Scale Factors ($SF_i$). Since
+our team is working with projects of similar size range and duration, the factors
+are not changed very often. The result
+(we multiplied $PM$ to <?=$this->estimate->daysInMonth?> --- the amount of staff-hours
+in one people-month) is <?=$this->estimate->hours?> staff-hours.
+

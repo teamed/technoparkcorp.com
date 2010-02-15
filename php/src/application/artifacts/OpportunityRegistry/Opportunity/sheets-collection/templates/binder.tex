@@ -35,7 +35,7 @@
 \clearpage
 \section*{Cover Letter}
 
-Dear <?=$this->tex($this->sheets['Contacts']->name)?>,
+Dear <?=$this->tex($this->sheets['Contacts']->fullname)?>,
 
 In reply to your request we are sending you the documents (in PDF
 format), which include the answers to the questions asked in your RFP,
@@ -72,7 +72,7 @@ tel. +1 (239) 935 5429
     <?=$this->render($sheet->getProposalFile())?>
     <? if ($sheet->getTemplateFile()): ?>
         Read more about it in Appendix~\ref{sheet:<?=$sheet->getSheetName()?>}
-        (page~\pageref{sheet:<?=$sheet->getSheetName()?>})
+        (page~\pageref{sheet:<?=$sheet->getSheetName()?>}).
     <? endif; ?>
 <? endforeach; ?>
 

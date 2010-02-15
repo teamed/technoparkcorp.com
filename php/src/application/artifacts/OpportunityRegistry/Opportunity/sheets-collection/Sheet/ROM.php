@@ -53,7 +53,12 @@ class Sheet_ROM extends Sheet_Abstract
      */
     public static function round($int) 
     {
-        return intval(round($int));
+        $preciseness = pow(10, round(log10($int/10)));
+        if (!$preciseness) {
+            return 1;
+        }
+
+        return intval(round($int / $preciseness) * $preciseness);
     }
     
     /**
@@ -89,7 +94,7 @@ class Sheet_ROM extends Sheet_Abstract
         if (!count($hours)) {
             return 0;
         }
-        return self::round(array_sum($hours) / count($hours));
+        return intval(round(array_sum($hours) / count($hours)));
     }
     
     /**
@@ -99,7 +104,7 @@ class Sheet_ROM extends Sheet_Abstract
      */
     protected function _getLowBoundary() 
     {
-        return $this->hours;
+        return self::round($this->hours * 0.75);
     }
     
     /**
@@ -109,7 +114,7 @@ class Sheet_ROM extends Sheet_Abstract
      */
     protected function _getHighBoundary() 
     {
-        return self::round($this->hours * 1.75);
+        return self::round($this->hours * 3);
     }
     
     /**
@@ -120,6 +125,36 @@ class Sheet_ROM extends Sheet_Abstract
     protected function _getTotal() 
     {
         return count($this->_estimates);
+    }
+    
+    /**
+     * Multiplier for TDEV formula
+     *
+     * @return float
+     */
+    protected function _getDurationMultiplier() 
+    {
+        return 2.3;
+    }
+    
+    /**
+     * Power for TDEV formula
+     *
+     * @return float
+     */
+    protected function _getDurationPower() 
+    {
+        return 0.304;
+    }
+    
+    /**
+     * TDEV in months (project duration)
+     *
+     * @return float
+     */
+    protected function _getTdev() 
+    {
+        return round($this->durationMultiplier * pow($this->hours / 172, $this->durationPower), 2);
     }
     
 }

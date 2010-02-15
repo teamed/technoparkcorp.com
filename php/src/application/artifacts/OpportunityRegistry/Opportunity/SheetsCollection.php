@@ -79,6 +79,7 @@ class theSheetsCollection implements ArrayAccess, Iterator, Countable
      */
     public function __wakeup() 
     {
+        $this->_view = null;
         foreach ($this->_sheets as $sheet) {
             $sheet->setSheetsCollection($this, false);
         }
@@ -135,21 +136,24 @@ class theSheetsCollection implements ArrayAccess, Iterator, Countable
         if (!Sheet_Abstract::isTemplateExists($template)) {
             FaZend_Exception::raise(
                 'SheetsCollection_RootTemplateMissedException', 
-                "Template '{$template}' not found"
+                "Template '{$template}' not found",
+                'SheetsCollection_RenderingException'
             );
         }
         
         if (!isset($this['Offer'])) {
             FaZend_Exception::raise(
                 'SheetsCollection_OfferMissedException', 
-                "Sheet 'Offer' not found"
+                "Sheet 'Offer' not found",
+                'SheetsCollection_RenderingException'
             );
         }
 
         if (!isset($this['Contacts'])) {
             FaZend_Exception::raise(
                 'SheetsCollection_ContactsMissedException', 
-                "Sheet 'Contacts' not found"
+                "Sheet 'Contacts' not found",
+                'SheetsCollection_RenderingException'
             );
         }
         return $this->getView()->render($template);
@@ -202,10 +206,14 @@ class theSheetsCollection implements ArrayAccess, Iterator, Countable
                 if (in_array($name, array('xml', 'config', 'defaults', 'cached', 'sheets'))) {
                     continue;
                 }
+                $value = $sheet->$name;
+                if (!is_scalar($value)) {
+                    $value = str_replace("\n", "\n\t\t", print_r($value, true));
+                }
                 $text .= sprintf(
                     "\t%s: %s\n",
                     $property->getName(),
-                    $sheet->$name
+                    $value
                 );
             }
         }

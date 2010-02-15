@@ -35,7 +35,7 @@ class Sheet_Vision extends Sheet_Abstract
      * @see __get()
      */
     protected $_defaults = array(
-        'product' => 'Custom software system',
+        'product' => 'Custom Software System',
         'statement' => 'There is a strong marketing opportunity for a new business',
         'actors' => array(),
         'quality' => array(),
@@ -48,7 +48,39 @@ class Sheet_Vision extends Sheet_Abstract
      */
     public function getUseCaseDiagram() 
     {
-        return 'uc..';
+        $diagram = new Sheet_Vision_Diagram();
+        foreach ($this->actors as $actor) {
+            $diagram->addActor(strval($actor['name']));
+        }
+        
+        foreach ($this->features as $feature) {
+            $feature = strval($feature['value']);
+            if (preg_match('/^"(.*?)"\s*(.*)$/', $feature, $matches)) {
+                $feat = $matches[1];
+                $feature = $matches[2];
+            } else {
+                $feat = $feature;
+            }
+            
+            $actor = substr($feature, 0, strpos($feature, ' '));
+            $diagram->addFeature($feat, $actor);
+        }
+        
+        $diagram->setOptions(
+            array(
+                'width' => 14,
+                'height' => 6,
+                'actorWidth' => 2,
+                'actorHeight' => 1.1,
+
+                'cellWidth' => 1.6,
+                'cellHeight' => 0.8,
+                'cellsTotalX' => 4,
+                'cellsTotalY' => 4,
+            )
+        );
+        
+        return $diagram->getLatex($this->sheets->getView());
     }
     
     /**

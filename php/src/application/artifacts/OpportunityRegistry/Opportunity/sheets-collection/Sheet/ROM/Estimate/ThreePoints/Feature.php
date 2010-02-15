@@ -81,6 +81,36 @@ class Sheet_ROM_Estimate_ThreePoints_Feature
     }
     
     /**
+     * Get worst case
+     *
+     * @return integer
+     */
+    public function getWc() 
+    {
+        return $this->_wc;
+    }
+    
+    /**
+     * Get best case
+     *
+     * @return integer
+     */
+    public function getBc() 
+    {
+        return $this->_bc;
+    }
+    
+    /**
+     * Get most likely
+     *
+     * @return integer
+     */
+    public function getMl() 
+    {
+        return $this->_ml;
+    }
+    
+    /**
      * Get estimate
      *
      * @return integer

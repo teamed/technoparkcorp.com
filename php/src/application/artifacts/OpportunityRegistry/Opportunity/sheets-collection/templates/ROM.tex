@@ -18,20 +18,30 @@ The bottom line is:
     Estimator & Hours \\
     \hline
     <? foreach ($this->sheet->estimates as $estimate): ?>
-        <?=$this->tex($estimate->estimator)?>{}
+        \textbf{<?=$this->tex($estimate->estimator)?>}{}
         <?=$this->tex($estimate->promo)?>{} &
         <?=$estimate->hours?>{} \\
     <? endforeach; ?>
     \hline
 \end{tabular}
 
-Math average of the numbers received is <?=$this->sheet->hours?>,
-and the ROM interval is
+Math average of the numbers received is <?=$this->sheet->hours?>.
+Rough order of magnitude estimate of project size is
 <?=$this->sheet->lowBoundary?>--<?=$this->sheet->highBoundary?>{}
 staff-hours.
 
 Read more information about <?=$this->href('process/cost/rom', 'ROM Estimate')?>{}
 and our <?=$this->href('process/cost', 'two-step quotation process')?>.
+
+Project duration preliminary estimate ($TDEV$, in calendar months)
+is based on the formula from \href{http://en.wikipedia.org/wiki/COCOMO}{COCOMO},
+and equals to <?=$this->sheet->tdev?> months:
+
+\begin{equation}
+TDEV = <?=$this->sheet->durationMultiplier?> \times
+    \left(\frac{<?=$this->sheet->hours?>}{172}\right)^{<?=$this->sheet->durationPower?>} 
+    = <?=$this->sheet->tdev?>
+\end{equation}
 
 <? foreach ($this->sheet->estimates as $estimate): ?>
     \clearpage
@@ -41,5 +51,6 @@ and our <?=$this->href('process/cost', 'two-step quotation process')?>.
 <?=wordwrap(implode("\n", $estimate->lines), 70)?>
     \end{verbatim}}
     
+    <? $this->assign('estimate', $estimate) ?>
     <?=$this->render('ROM/' . $estimate->proposalFile)?>
 <? endforeach; ?>

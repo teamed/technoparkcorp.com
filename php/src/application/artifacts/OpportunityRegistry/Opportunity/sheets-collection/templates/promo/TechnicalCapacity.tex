@@ -5,10 +5,10 @@
 
 \section*{Technical Capacity}
 
-To perform a project we utilize several types of resources: project manager,
-technicians, project management software, requirements specifier, users,
+To perform a project we utilize several types of resources: project managers,
+technicians, project management software, requirements specifiers, end-users,
 \href{http://en.wikipedia.org/wiki/Software_configuration_management}{SCM} system, 
-knowledge, equipment and cash. Each resource is critical:
+our knowledge, equipment and cash. Each resource is critical:
 
 \begin{center}\begin{tikzpicture}
 \tikzstyle{resource} = [font=\small, text width=25mm, text centered, anchor=center]
@@ -23,7 +23,7 @@ knowledge, equipment and cash. Each resource is critical:
 \node [below=0mm of circle.90, resource] (scm) {SCM};
 \node [below=0mm of circle.140, resource] (equipment) {Equipment};
 \node [below=0mm of circle.180, resource] (technicians) {Technicians};
-\node [below=0mm of circle.210, resource] (users) {Users};
+\node [below=0mm of circle.210, resource] (users) {End-users};
 \node [below=0mm of circle.260, resource] (specifier) {Requirements Specifier};
 \node [below=0mm of circle.330, resource] (cash) {Cash};
 
@@ -41,22 +41,30 @@ knowledge, equipment and cash. Each resource is critical:
 \end{tikzpicture}\end{center}
 
 \textbf{Project Manager} is a trained individual working in TechnoPark Corp. on a
-full-time basis. He/she possesses IBM Rational Unified Process (\href{http://en.wikipedia.org/wiki/IBM_Rational_Unified_Process}{RUP}) Certified Specialist
-certificate, and Project Management Professional (\href{http://en.wikipedia.org/wiki/Project_Management_Professional}{PMP}) certificate. There are
-five project managers in our company.
+full-time basis. He/she possesses IBM Rational Unified Process
+(\href{http://en.wikipedia.org/wiki/IBM_Rational_Unified_Process}{RUP}) Certified Specialist
+certificate, and Project Management Professional
+(\href{http://en.wikipedia.org/wiki/Project_Management_Professional}{PMP}) certificate. There are
+four project managers in our company.
 
 \textbf{Management Software} is a web toolkit used to create, maintain, and use project management artifacts
 like Schedule, Cost, SRS, Risk List, Traceability Matrix, etc. We use our own management software
-that is seamlessly integrated with Subversion and \href{http://continuum.apache.org/}{Apache Continuum}.
+that is seamlessly integrated with \href{http://subversion.tigris.org}{Subversion}
+and \href{http://www.cruisecontrol.net/}{CruiseControl}.
 Our software is stable and mature (in development since December 2006, pending two USPTO patents).
 
 \textbf{Software Configuration Management (SCM) software} is a system that keeps source code 
-under versioning control. We use \href{http://subversion.tigris.org/}{Subversion (SVN)} -- one of a leading open source systems. Our SVN
-repositories are located on dedicated servers provided by \href{http://www.webfaction.com}{WebFaction.com} -- one of the best
-providers of such services. Regular (every 4 hours) backup procedure synchronizes SVN repositories with
+under versioning control. We use \href{http://subversion.tigris.org/}{Subversion (SVN)}
+-- one of a leading open source systems. Our SVN
+repositories are located on dedicated servers provided by
+\href{http://www.webfaction.com}{WebFaction.com} -- one of the best
+providers of such services. Regular (every 4 hours) backup procedure
+synchronizes SVN repositories with
 their reserve copies stored in \href{http://aws.amazon.com/s3/}{Amazon S3}.
 
-\textbf{Equipment} is rented from reliable providers, like \href{http://www.rackspace.com}{RackSpace.com} and WebFaction.com.
+\textbf{Equipment} is rented from reliable providers, like
+\href{http://www.rackspace.com}{RackSpace.com} and 
+\href{http://www.webfaction.com}{WebFaction.com}.
 It is our rule not to possess any equipment, since we perform projects of different types and various technologies.
 Equipment required for a particular project (like test deployment platform) usualy is rented for the
 purpose of the project.
@@ -68,8 +76,8 @@ Totally over 200 certified and experienced technicians are available for involve
 We select the best suitable specialists
 for each project, analyzing the experience, certificates and ability to be helpful in the project.
 
-\textbf{Users} are people who will use the system after the project is finished. Users are provided
-by you (at least user champions) and kept engaged during the whole project.
+\textbf{End-users} are people who will use the system after the project is finished.
+End-users are provided by you (at least user champions) and kept engaged during the whole project.
 
 \textbf{Requirements Specifier} is a person who provides functional and non-functional requirements
 for the project, approves SRS document and signs a project close-out report when the system is ready.

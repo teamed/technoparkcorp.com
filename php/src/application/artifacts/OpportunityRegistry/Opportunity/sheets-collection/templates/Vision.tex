@@ -12,9 +12,53 @@ The product to be developed is: <?=$this->tex($this->sheet->product)?>.
 Actors (users of the system) are:
     <?=$this->itemize($this->sheet->actors, 'description')?>{}
 
-%% \begin{center}
-%%     <?=$this->sheet->getUseCaseDiagram()?>
-%% \end{center}
+\begin{center}
+    \tikzstyle{uc} = [
+        ellipse, 
+        font={\scriptsize\setstretch{1.0}}, 
+        aspect=1.2, 
+        text centered,
+        outer sep=1mm, 
+        inner sep=-3mm,
+        draw=tpcRUPBorder,
+        fill=tpcRUPBody, 
+        minimum width=2cm,
+        minimum height=1cm,
+        text width=2cm,
+        anchor=center,
+        thick
+    ]
+    \tikzstyle{ln} = [
+        draw=tpcBlack,
+        -triangle 60,
+        thick
+    ]
+    \tikzstyle{actor} = [
+        font=\footnotesize\setstretch{1}, 
+        outer sep=3mm, 
+        text width=2cm, 
+        text centered, 
+        anchor=center,
+        draw=tpcGrey,
+        thin
+    ]
+    \tikzstyle{boundary} = [
+        rectangle,
+        dashed,
+        thin, 
+        draw=tpcGrey,
+        inner sep=2mm
+    ]
+    \tikzstyle{boundaryNote} = [
+        below=1mm of scope.south east, 
+        text=tpcGrey,
+        fill=white, 
+        anchor=south east,
+        inner sep=0mm,
+        font={\scriptsize}
+    ]
+    <?=$this->sheet->getUseCaseDiagram()?>
+\end{center}
 
 Key system <?=$this->href('process/scope/feature', 'Features')?> are:
     <?=$this->itemize($this->sheet->features, 'enumerate')?>{}

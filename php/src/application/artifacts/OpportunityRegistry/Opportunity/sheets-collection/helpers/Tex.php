@@ -33,7 +33,9 @@ class Sheet_Helper_Tex
      */
     public function tex($str) 
     {
-        return addcslashes($str, '[]{}^%&\\$_#');
+        $str = addcslashes($str, '[]{}^%&\\$_#');
+        $str = preg_replace('/"(.*?)"/', "``\${1}''", $str);
+        return $str;
     }
 
 }
