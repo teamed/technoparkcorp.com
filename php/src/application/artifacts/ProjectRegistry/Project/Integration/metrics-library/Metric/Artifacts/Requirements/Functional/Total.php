@@ -74,14 +74,14 @@ class Metric_Artifacts_Requirements_Functional_Total extends Metric_Abstract
         }
             
         if ($this->_getOption('level')) {
-            $max = max(array_keys($this->_pricePerRequirement));
             validate()
                 ->true(isset($this->_pricePerRequirement[$this->_getOption('level')]));
 
             $this->value = 0;
             foreach ($this->_project->deliverables->functional as $requirement) {
-                if (substr_count($requirement, '.') == $this->_levelCodes[$this->_getOption('level')])
+                if (substr_count($requirement, '.') == $this->_levelCodes[$this->_getOption('level')]) {
                     $this->value++;
+                }
             }
             
             $increment = pow($this->_project->metrics['artifacts/requirements/functional/total']->objective, 1/4);
@@ -90,7 +90,7 @@ class Metric_Artifacts_Requirements_Functional_Total extends Metric_Abstract
         }
         
         $this->value = count($this->_project->deliverables->functional);
-        $this->default = 300;
+        $this->default = 200;
     }
         
     /**

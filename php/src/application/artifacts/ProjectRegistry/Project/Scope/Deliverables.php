@@ -30,6 +30,7 @@
  * - packages
  * - test cases
  * - methods
+ * - glossary
  * and many others, if necessary
  *
  * @package Artifacts

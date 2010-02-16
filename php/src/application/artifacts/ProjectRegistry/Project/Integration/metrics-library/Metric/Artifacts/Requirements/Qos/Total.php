@@ -14,16 +14,16 @@
  *
  * @author Yegor Bugaenko <egor@technoparkcorp.com>
  * @copyright Copyright (c) TechnoPark Corp., 2001-2009
- * @version $Id$
+ * @version $Id: Total.php 642 2010-02-09 12:29:28Z yegor256@yahoo.com $
  *
  */
 
 /**
- * Total number of use cases
+ * Total number of QOS requirements
  * 
  * @package Artifacts
  */
-class Metric_Artifacts_Requirements_UseCases_Total extends Metric_Abstract
+class Metric_Artifacts_Requirements_Qos_Total extends Metric_Abstract
 {
 
     /**
@@ -38,7 +38,7 @@ class Metric_Artifacts_Requirements_UseCases_Total extends Metric_Abstract
             $this->_project->deliverables->reload();
         }
             
-        $this->value = count($this->_project->deliverables->useCases);
+        $this->value = count($this->_project->deliverables->qos);
         $this->default = round(
             $this->_project->metrics['artifacts/requirements/functional/total']->objective / 10
         );
