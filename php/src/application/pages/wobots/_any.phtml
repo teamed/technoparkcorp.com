@@ -33,8 +33,8 @@
 
 <?=$this->table()
     ->setSource(Model_Decision_History::retrieveByWobot($this->wobot))
-    ->addFormatter('${a1}->isRunning()', 'color:gray')
-    ->addFormatter('${a1}->isError()', 'color:red')
+    ->addFormatter('${a2}->isRunning()', 'color:gray')
+    ->addFormatter('${a2}->isError()', 'color:red')
 
     ->addColumn('created', 'Date')
     ->addColumn('getTitle', 'Title')
