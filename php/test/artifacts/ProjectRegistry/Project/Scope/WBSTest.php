@@ -14,4 +14,10 @@ class WBSTest extends AbstractProjectTest
         logg(count($wbs) . ' work packages in WBS');
     }
 
+    public function testSummaryWorks()
+    {
+        $wbs = $this->_project->wbs;
+        $this->assertTrue($this->_project->wbs->sum() instanceof FaZend_Bo_Money);
+    }
+
 }
