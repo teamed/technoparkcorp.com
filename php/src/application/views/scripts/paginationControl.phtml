@@ -1,0 +1,50 @@
+<!--
+ *
+ * thePanel v2.0, Project Management Software Toolkit
+ *
+ * Redistribution and use in source and binary forms, with or without 
+ * modification, are PROHIBITED without prior written permission from 
+ * the author. This product may NOT be used anywhere and on any computer 
+ * except the server platform of TechnoPark Corp. located at 
+ * www.technoparkcorp.com. If you received this code occasionally and 
+ * without intent to use it, please report this incident to the author 
+ * by email: privacy@technoparkcorp.com or by mail: 
+ * 568 Ninth Street South 202, Naples, Florida 34102, USA
+ * tel. +1 (239) 935 5429
+ *
+ * @version $Id$
+-->
+
+<? if ($this->pageCount > 1): ?>
+    <? $url = $this->url(array(), null, true, false) . '?pg='; ?>
+    <div class="paginationControl">
+    
+    <!-- Previous page link -->
+    <? if (isset($this->previous)): ?>
+        <a href="<?=$url . $this->previous?>">prev</a> 
+    <? else: ?>
+        <span style="color: grey;">prev</span>
+    <? endif; ?>
+
+    &#32;
+
+    <!-- Numbered page links -->
+    <? foreach ($this->pagesInRange as $page): ?>
+        <? if ($page != $this->current): ?>
+            <a href="<?=$url . $page?>"><?=$page;?></a>
+        <? else: ?>
+            [<?=$page?>]
+        <? endif; ?>
+        &#32;
+    <? endforeach; ?>
+
+    &#32;
+
+    <!-- Next page link -->
+    <? if (isset($this->next)): ?>
+        <a href="<?=$url . $this->next?>">next</a>
+    <? else: ?>
+        <span style="color: grey;">next</span>
+    <? endif; ?>
+    </div>
+<? endif;

@@ -106,7 +106,12 @@ class Helper_Table extends FaZend_View_Helper
         validate()
             ->instanceOf($iterator, 'Iterator', "Source should be an instance of Iterator");
             
-        FaZend_Paginator::addPaginator($iterator, $this->getView(), 1, 'paginator');
+        FaZend_Paginator::addPaginator(
+            $iterator, 
+            $this->getView(), 
+            Zend_Controller_Front::getInstance()->getRequest()->get('pg'), 
+            'paginator'
+        );
 
         $this->getView()->paginator->setItemCountPerPage(25);
         $this->_table->setPaginator($this->getView()->paginator);
