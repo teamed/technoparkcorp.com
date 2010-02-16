@@ -17,7 +17,11 @@ class Sheet_ROM_Estimate_ThreePointsTest extends AbstractTest
         );
         $tp = Sheet_ROM_Estimate_Abstract::factory($lines);
         $hours = $tp->hours;
-        // $this->assertEquals((30 + 29) * $tp->multiplier, $hours);
+        
+        $f1 = (90 + 10 + 20 * 4) / 6;
+        $f2 = (64 + 16 + 24 * 4) / 6;
+        
+        $this->assertEquals(round(($f1 + $f2) * $tp->multiplier), $hours);
     }
 
 }
