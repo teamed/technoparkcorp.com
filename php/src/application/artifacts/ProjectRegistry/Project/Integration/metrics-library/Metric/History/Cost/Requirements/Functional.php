@@ -56,7 +56,9 @@ class Metric_History_Cost_Requirements_Functional extends Metric_Abstract
     public function reload()
     {
         if (!$this->_getOption('level')) {
-            $this->value = 0;
+            $this->value = round(
+                array_sum($this->_pricePerRequirement) / count($this->_pricePerRequirement)
+            );
             return null;
         }
             
