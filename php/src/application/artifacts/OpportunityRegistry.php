@@ -94,6 +94,10 @@ class theOpportunityRegistry extends Model_Artifact_Bag
             
             // make sure the registry is dirty now and will be saved to POS
             $this->ps()->setDirty();
+            
+            // @todo This line is redundant, you should remove it...
+            // but it doesn't work without it... :(
+            $this->ps()->save();
         }
 
         return $opportunities[$id];
