@@ -79,7 +79,7 @@ class Metric_Artifacts_Requirements_Functional_Total extends Metric_Abstract
 
             $this->value = 0;
             foreach ($this->_project->deliverables->functional as $requirement) {
-                if (substr_count($requirement, '.') == $this->_levelCodes[$this->_getOption('level')]) {
+                if ($requirement->getLevel() == $this->_levelCodes[$this->_getOption('level')]) {
                     $this->value++;
                 }
             }
@@ -115,6 +115,7 @@ class Metric_Artifacts_Requirements_Functional_Total extends Metric_Abstract
             return null;
         }
             
+        // price per one requirement
         $price = new FaZend_Bo_Money(
             $this->_project
             ->metrics['history/cost/requirements/functional/level/' . $this->_getOption('level')]
@@ -124,7 +125,7 @@ class Metric_Artifacts_Requirements_Functional_Total extends Metric_Abstract
         return $this->_makeWp(
             $price->mul($this->delta), 
             sprintf(
-                'Specify +%d functional requirements on %s level',
+                'to specify +%d %s level functional requirements',
                 $this->delta, 
                 $this->_getOption('level'), 
                 $this->value

@@ -72,12 +72,23 @@ class Metric_Artifacts_Product_Functionality_Implemented extends Metric_Abstract
      **/
     protected function _derive(array &$metrics = array())
     {
-        if ($this->_getOption('requirement'))
+        if ($this->_getOption('requirement')) {
             return null;
+        }
+        
+        $toImplement = $this->_project->metrics['artifacts/requirements/functional/total']->delta;
+        
+        // price of one glossary item
+        $price = new FaZend_Bo_Money(
+            $this->_project->metrics['history/cost/product/functional']->value
+        );
+
         return $this->_makeWp(
-            FaZend_Bo_Money::factory('100 USD')
-            ->mul($this->_project->metrics['artifacts/requirements/functional/total']->delta), 
-            'To implement functional requirements'
+            $price->mul($toImplement), 
+            sprintf(
+                'to implement +%d functional requirements',
+                $toImplement
+            )
         );
     }
         

@@ -14,17 +14,27 @@
  *
  * @author Yegor Bugaenko <egor@technoparkcorp.com>
  * @copyright Copyright (c) TechnoPark Corp., 2001-2009
- * @version $Id$
+ * @version $Id: Total.php 611 2010-02-07 07:43:45Z yegor256@yahoo.com $
  *
  */
-
-require_once 'artifacts/ProjectRegistry/Project/Scope/Deliverables/types/Deliverables/Requirement.php';
 
 /**
- * One quality-of-service requirement
- *
+ * Cost of one class in design
+ * 
  * @package Artifacts
  */
-class Deliverables_Requirement_Qos extends Deliverables_Requirement
+class Metric_History_Cost_Design_Class extends Metric_Abstract
 {
+
+    /**
+     * Load this metric
+     *
+     * @return void
+     **/
+    public function reload()
+    {
+        // in USD
+        $this->value = 35;
+    }
+            
 }

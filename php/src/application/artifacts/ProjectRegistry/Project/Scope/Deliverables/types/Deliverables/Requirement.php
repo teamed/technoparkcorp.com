@@ -50,6 +50,16 @@ abstract class Deliverables_Requirement extends Deliverables_Abstract
     protected $_complexity = 1;
         
     /**
+     * Level of requirement (0...)
+     *
+     * @return integer
+     */
+    public function getLevel() 
+    {
+        return substr_count($this->_name, '.');
+    }
+       
+    /**
      * Discover links
      *
      * @param theProject Project to work with

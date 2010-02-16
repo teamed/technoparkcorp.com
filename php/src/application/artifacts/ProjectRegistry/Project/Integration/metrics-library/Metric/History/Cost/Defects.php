@@ -19,11 +19,11 @@
  */
 
 /**
- * Cost of one functional requirement
+ * Cost of one defect to find
  * 
  * @package Artifacts
  */
-class Metric_History_Cost_Requirements_Functional extends Metric_Abstract
+class Metric_History_Cost_Defects extends Metric_Abstract
 {
 
     /**
@@ -33,19 +33,7 @@ class Metric_History_Cost_Requirements_Functional extends Metric_Abstract
      * @see Metric_Abstract::$_patterns
      */
     protected $_patterns = array(
-        '/level\/(\w+)/' => 'level',
-    );
-
-    /**
-     * Price per each requirement on some level, in USD
-     *
-     * @var array
-     */
-    protected $_pricePerRequirement = array(
-        'first' => 45,
-        'second' => 10,
-        'third' => 4,
-        'forth' => 2,
+        '/byComponent\/(\w+)/' => 'component',
     );
 
     /**
@@ -55,12 +43,21 @@ class Metric_History_Cost_Requirements_Functional extends Metric_Abstract
      **/
     public function reload()
     {
-        if (!$this->_getOption('level')) {
-            $this->value = 0;
-            return null;
+        $component = $this->_getOption('component');
+        switch (true) {
+            case $component == 'SRS':
+                $this->value = 3;
+                break;
+            case $component == 'Design':
+                $this->value = 6;
+                break;
+            case preg_match('/^R\d/', $component):
+                $this->value = 4;
+                break;
+            default:
+                $this->value = 1;
+                break;
         }
-            
-        $this->value = $this->_pricePerRequirement[$this->_getOption('level')];
     }
             
 }

@@ -44,4 +44,31 @@ class Metric_Artifacts_Requirements_Glossary_Total extends Metric_Abstract
         );
     }
         
+    /**
+     * Get work package
+     *
+     * @param string[] Names of metrics, to consider after this one
+     * @return theWorkPackage
+     **/
+    protected function _derive(array &$metrics = array())
+    {
+        // if nothing to specify, skip it
+        if ($this->delta <= 0) {
+            return null;
+        }
+
+        // price of one glossary item
+        $price = new FaZend_Bo_Money(
+            $this->_project->metrics['history/cost/requirements/glossary']->value
+        );
+
+        return $this->_makeWp(
+            $price->mul($this->delta), 
+            sprintf(
+                'to specify +%d glossary items',
+                $this->delta
+            )
+        );
+    }
+        
 }

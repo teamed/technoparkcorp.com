@@ -100,6 +100,29 @@ class Metric_Artifacts_Defects_Total extends Metric_Abstract
     protected function _reloadByComponent($component) 
     {
         $this->value = count($this->_retrieveBy(array('component'=>$component)));
+        switch (true) {
+            case $component == 'SRS':
+                $this->default = 
+                    $this->_project->metrics['artifacts/requirements/functional/total']->objective;
+                break;
+            case $component == 'Design':
+                $this->default = 
+                    $this->_project->metrics['artifacts/design/classes/total']->objective * 5;
+                break;
+            case preg_match('/^R\d/', $component):
+                $this->default = round(
+                    $this->_project->metrics['artifacts/defects/total/byComponent/SRS']->objective / 3
+                );
+                break;
+            case $component:
+                $this->default = round(
+                    $this->_project->metrics['artifacts/defects/total/byComponent/SRS']->objective / 7
+                );
+                break;
+            default: 
+                //...
+                break;
+        }
     }
         
     /**
@@ -158,26 +181,40 @@ class Metric_Artifacts_Defects_Total extends Metric_Abstract
     protected function _derive(array &$metrics = array())
     {
         $component = $this->_getOption('byComponent');
-        switch ($component) {
-            case 'SRS':
-                return $this->_makeWp(
-                    $this->_project->metrics['artifacts/requirements/functional/total']->delta * 10, 
-                    'To find defects in SRS'
-                );
-        
-            case 'Design':
-                return $this->_makeWp(
-                    $this->_project->metrics['artifacts/design/classes/total']->delta * 10, 
-                    'To find defects in Design'
-                );
-        
-            case null:
-                $metrics = array(
-                    'artifacts/defects/total/byComponent/SRS',
-                    'artifacts/defects/total/byComponent/Design'
-                );
-                return null;
+
+        if (!$component) {
+            $components = array();
+            foreach ($this->_project->deliverables->functional as $requirement) {
+                if ($requirement->getLevel() === 0) {
+                    $components[] = strval($requirement);
+                }
+            }
+            
+            $components = array_merge($components, array('SRS', 'Design', 'QOS'));
+            
+            foreach ($components as $c) {
+                $metrics[] = 'artifacts/defects/total/byComponent/' . $c;
+            }
+            return null;
         }
+        
+        if ($this->delta <= 0) {
+            return null;
+        }
+
+        // price of one defect
+        $price = new FaZend_Bo_Money(
+            $this->_project->metrics['history/cost/defects/byComponent/' . $component]->value
+        );
+
+        return $this->_makeWp(
+            $this->delta * 10, 
+            sprintf(
+                'to find +%d defects in %s',
+                $this->delta,
+                $component
+            )
+        );
     }
         
 }

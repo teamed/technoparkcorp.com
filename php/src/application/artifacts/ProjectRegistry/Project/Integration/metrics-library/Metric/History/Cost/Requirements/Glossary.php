@@ -18,13 +18,23 @@
  *
  */
 
-require_once 'artifacts/ProjectRegistry/Project/Scope/Deliverables/types/Deliverables/Requirement.php';
-
 /**
- * One quality-of-service requirement
- *
+ * Cost of one glossary item
+ * 
  * @package Artifacts
  */
-class Deliverables_Requirement_Qos extends Deliverables_Requirement
+class Metric_History_Cost_Requirements_Glossary extends Metric_Abstract
 {
+
+    /**
+     * Load this metric
+     *
+     * @return void
+     **/
+    public function reload()
+    {
+        // in USD
+        $this->value = 20;
+    }
+            
 }

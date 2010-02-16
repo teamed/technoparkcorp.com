@@ -44,25 +44,11 @@ class Metric_Artifacts_Requirements_Actors_Total extends Metric_Abstract
     }
         
     /**
-     * Get work package
-     *
-     * @param string[] Names of metrics, to consider after this one
-     * @return theWorkPackage
-     **/
-    protected function _derive(array &$metrics = array())
-    {
-        return $this->_makeWp(
-            $this->_project->wbs->sum('artifacts\/requirements\/functional\/total')
-            ->mul(self::PORTION), 
-            'Specify actors'
-        );
-    }
-        
-    /**
      * Split the WP onto activities
      *
      * @param Slice_Plugin_Abstract
      * @return void
+     * @deprecated Delete it!
      **/
     protected function _split(Slice_Plugin_Abstract $slice)
     {

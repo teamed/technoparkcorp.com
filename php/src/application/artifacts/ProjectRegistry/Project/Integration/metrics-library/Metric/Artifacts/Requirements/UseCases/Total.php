@@ -40,7 +40,34 @@ class Metric_Artifacts_Requirements_UseCases_Total extends Metric_Abstract
             
         $this->value = count($this->_project->deliverables->useCases);
         $this->default = round(
-            $this->_project->metrics['artifacts/requirements/functional/total']->objective / 10
+            $this->_project->metrics['artifacts/requirements/functional/total']->objective / 30
+        );
+    }
+        
+    /**
+     * Get work package
+     *
+     * @param string[] Names of metrics, to consider after this one
+     * @return theWorkPackage
+     **/
+    protected function _derive(array &$metrics = array())
+    {
+        // if nothing to specify, skip it
+        if ($this->delta <= 0) {
+            return null;
+        }
+
+        // price of one use case
+        $price = new FaZend_Bo_Money(
+            $this->_project->metrics['history/cost/requirements/useCase']->value
+        );
+
+        return $this->_makeWp(
+            $price->mul($this->delta), 
+            sprintf(
+                'to specify +%d Use Cases',
+                $this->delta
+            )
         );
     }
         

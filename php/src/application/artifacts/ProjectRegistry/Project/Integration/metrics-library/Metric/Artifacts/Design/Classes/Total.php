@@ -40,6 +40,34 @@ class Metric_Artifacts_Design_Classes_Total extends Metric_Abstract
         
         // total amount of classes in the project
         $this->value = count($this->_project->deliverables->classes);
+        $this->default = $this->_project->metrics['artifacts/requirements/functional/total']->objective / 5;
     }
     
+    /**
+     * Get work package
+     *
+     * @param string[] Names of metrics, to consider after this one
+     * @return theWorkPackage
+     **/
+    protected function _derive(array &$metrics = array())
+    {
+        // if nothing to specify, skip it
+        if ($this->delta <= 0) {
+            return null;
+        }
+
+        // price of one use case
+        $price = new FaZend_Bo_Money(
+            $this->_project->metrics['history/cost/design/class']->value
+        );
+
+        return $this->_makeWp(
+            $price->mul($this->delta), 
+            sprintf(
+                'to design +%d classes',
+                $this->delta
+            )
+        );
+    }
+        
 }

@@ -27,5 +27,4 @@ require_once 'artifacts/ProjectRegistry/Project/Scope/Deliverables/types/Deliver
  */
 class Deliverables_Requirement_Functional extends Deliverables_Requirement
 {
-        
 }
