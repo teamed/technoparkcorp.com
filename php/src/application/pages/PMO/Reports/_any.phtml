@@ -37,11 +37,7 @@
     ->addColumn('supplier', 'Email')
     ->addColumn('earned', 'Earned')
         ->addFormatter(
-            'callback',
-            create_function(
-                '$value, $row, $table', 
-                '$table->getInjection("earned")->add($value); return false;'
-            )
+            'false; ${a3}->getInjection("earned")->add(${a1});'
         )
     ->addColumn('paid', 'Paid')
     ?>
@@ -56,23 +52,13 @@
     ->addColumn('email', 'Email')
     ->addColumn('name', 'Full name')
     ->addColumn('skills', 'Skills')
-        ->addConverter(
-            'callback', 
-            create_function('$a', 'return implode(", ", $a);')
-        )
+        ->addConverter('implode(", ", ${a1})')
     ->addColumn('roles', 'Roles')
-        ->addConverter(
-            'callback', 
-            create_function('$a', 'return implode(", ", $a);')
-        )
+        ->addConverter('implode(", ", ${a1})')
     ->addColumn('rate', 'Rate')
     ->addColumn('pmoBonus', 'Bonus')
         ->addFormatter(
-            'callback',
-            create_function(
-                '$value, $row, $table', 
-                '$table->getInjection("pmoBonus")->add($value); return false;'
-            )
+            'false; ${a3}->getInjection("pmoBonus")->add(${a1});'
         )
     ?>
 
