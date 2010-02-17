@@ -59,9 +59,7 @@
     every last detail valuable and easy-to-understand
     by means of instant automated metrics. You become a real stakeholder, 
     working together with the remote team and getting that clear picture
-    by means of instant automated metrics. Our other advantages are:</p>
-
-    ${php:Sales/Bidding/TheRelevantAdvantage:GetHTMLAdvantages()}
+    by means of instant automated metrics.</p>
 
     <p>Our quality is constantly being improved and we are proud of our
     standards and rules.</p>
