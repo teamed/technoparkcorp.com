@@ -60,6 +60,16 @@ abstract class Deliverables_Requirement extends Deliverables_Abstract
     }
        
     /**
+     * This requirement is accepted by CCB?
+     *
+     * @return boolean
+     */
+    public function isAccepted() 
+    {
+        return (bool)rand(0, 1);
+    }
+       
+    /**
      * Discover links
      *
      * @param theProject Project to work with

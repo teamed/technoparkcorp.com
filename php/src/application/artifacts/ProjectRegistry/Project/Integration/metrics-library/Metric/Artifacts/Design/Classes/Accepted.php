@@ -18,24 +18,33 @@
  *
  */
 
-require_once 'artifacts/ProjectRegistry/Project/Scope/Deliverables/types/Deliverables/Abstract.php';
-
 /**
- * One class
- *
+ * Total number of classes accepted by the architect
+ * 
  * @package Artifacts
  */
-class Deliverables_Class extends Deliverables_Abstract
+class Metric_Artifacts_Design_Classes_Accepted extends Metric_Abstract
 {
-    
+
     /**
-     * This class is accepted by the architect in its current design?
+     * Load this metric
      *
-     * @return boolean
+     * @return void
      */
-    public function isAccepted() 
+    public function reload()
     {
-        return (bool)rand(0, 1);
+        // we can't calculate metrics here if deliverables are not loaded
+        if (!$this->_project->deliverables->isLoaded()) {
+            $this->_project->deliverables->reload();
+        }
+        
+        // total amount of classes in the project
+        $this->value = 0;
+        foreach ($this->_project->deliverables->classes as $class) {
+            if ($class->isAccepted()) {
+                $this->value++;
+            }
+        }
     }
     
 }

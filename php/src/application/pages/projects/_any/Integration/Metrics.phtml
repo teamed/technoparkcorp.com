@@ -43,14 +43,19 @@
     )
     ->addAttrib('class', 'tree')
     ->setMask(
-        'sprintf(
-            "%s: <b>%s</b>/%s/%s/%s",
+        '
+        (${a1}->visible ?
+        sprintf(
+            "%s: <b>%s</b>, default: %0.2f, objective: %0.2f, delta: %+0.2f",
             ${a1}->suffix,
             ${a1}->value,
             ${a1}->default,
             ${a1}->objective,
             ${a1}->delta
-        )'
+        ) :
+        sprintf("%s: %s", ${a1}->suffix, ${a1}->value)
+        )
+        '
     )
     ?>
 

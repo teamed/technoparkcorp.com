@@ -51,21 +51,34 @@ class Metric_Artifacts_Design_Classes_Total extends Metric_Abstract
      **/
     protected function _derive(array &$metrics = array())
     {
-        // if nothing to specify, skip it
-        if ($this->delta <= 0) {
+        // to avoid division by zero
+        if (!$this->objective) {
+            return null;
+        }
+        
+        // how full our requirements are covered by design? [0..1]
+        $coverage = $this->_project->metrics['aspects/coverage/requirements/design']->value;
+        
+        // count classes that are accepted
+        $accepted = $this->_project->metrics['artifacts/design/classes/accepted']->value;
+        
+        // we have more classes accepted than needed
+        if ($accepted >= $this->objective) {
             return null;
         }
 
-        // price of one use case
-        $price = new FaZend_Bo_Money(
+        // price of entire design
+        $price = FaZend_Bo_Money::factory(
             $this->_project->metrics['history/cost/design/class']->value
-        );
+        )
+        ->mul($this->objective);
 
         return $this->_makeWp(
-            $price->mul($this->delta), 
+            $price->mul(1 - $coverage * $accepted/$this->objective), 
             sprintf(
-                'to design +%d classes',
-                $this->delta
+                'to design and accept +%d classes, add %d%% of coverage',
+                $this->objective - $accepted,
+                100 * (1 - $coverage)
             )
         );
     }

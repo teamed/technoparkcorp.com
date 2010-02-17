@@ -130,10 +130,14 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
                 $types = $name;
                 break;
                 
+            case 'requirements':
+                $types = array('functional', 'qos', 'interfaces', 'actors', 'glossary');
+                break;
+            
             case 'design':
                 $types = array('package', 'class', 'method', 'file');
                 break;
-            
+
             default:
                 FaZend_Exception::raise(
                     'Deliverables_PropertyOrMethodNotFoundException', 

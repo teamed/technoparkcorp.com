@@ -228,20 +228,35 @@ class Metric_Artifacts_Requirements_Functional_Total extends Metric_Abstract
             return null;
         }
             
-        // price per one requirement
-        $price = new FaZend_Bo_Money(
+        // total amount of reqs accepted
+        $accepted = 0;
+        foreach ($this->_project->deliverables->functional as $req) {
+            if ($req->getLevel() != $this->_levelCodes[$this->_getOption('level')]) {
+                continue;
+            }
+            if ($req->isAccepted()) {
+                $accepted++;
+            }
+        }
+        // price per all requirements at this level
+        $price = FaZend_Bo_Money::factory(
             $this->_project
             ->metrics['history/cost/requirements/functional/level/' . $this->_getOption('level')]
             ->value
-        );
+        )
+        ->mul($this->objective);
+        
+        // we have more reqs accepted than needed
+        if ($accepted >= $this->objective) {
+            return null;
+        }
             
         return $this->_makeWp(
-            $price->mul($this->delta), 
+            $price->mul(1 - $accepted / $this->objective), 
             sprintf(
-                'to specify +%d %s level functional requirements',
-                $this->delta, 
-                $this->_getOption('level'), 
-                $this->value
+                'to specify and accept +%d %s level functional requirements',
+                $this->objective - $accepted, 
+                $this->_getOption('level')
             )
         );
     }
