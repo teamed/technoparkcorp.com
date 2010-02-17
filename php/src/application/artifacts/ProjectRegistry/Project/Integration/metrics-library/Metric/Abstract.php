@@ -151,6 +151,7 @@ abstract class Metric_Abstract
                 'Metric (' . get_class($this) . ') is not visible, you canot set its objective'
             );
         }
+        logg('set %s to %d', $this->name, $objective);
         $this->_project->objectives->setObjective(
             $this->name, 
             $objective
@@ -173,8 +174,9 @@ abstract class Metric_Abstract
                 return $this->_name;
                 
             case 'suffix':
-                if (strpos($this->_name, '/') === false)
+                if (strpos($this->_name, '/') === false) {
                     return $this->_name;
+                }
                 return substr($this->_name, strrpos($this->_name, '/') + 1);
                     
             case 'id':
@@ -191,19 +193,22 @@ abstract class Metric_Abstract
                 return $this->_value;
                 
             case 'default':
-                if (!isset($this->_default))
+                if (!isset($this->_default)) {
                     return null;
+                }
                 return $this->_default;
                 
             // target is set in objectives, if set
             case 'objective':
-                if (isset($this->_project->objectives[$this->_name]))
+                if (isset($this->_project->objectives[$this->_name])) {
                     return $this->_project->objectives[$this->_name]->value;
+                }
                 return $this->_default;
                 
             case 'delta':
-                if (isset($this->_default))
+                if (isset($this->_default)) {
                     return $this->objective - $this->_value;
+                }
                 return null;
 
             // if this metric doesn't have DEFAULT - we can't make it visible

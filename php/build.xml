@@ -30,4 +30,13 @@
 		    target="main" />
 	</target>
 	
+	<target name="za">
+    	<zendcodeanalyzer 
+    	    analyzerPath="...">
+          <fileset dir=".">
+            <include name="**/*.php"/>
+          </fileset>
+        </zendcodeanalyzer>
+    </target>
+	
 </project>

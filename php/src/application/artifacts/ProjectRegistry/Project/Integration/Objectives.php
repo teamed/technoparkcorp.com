@@ -38,10 +38,11 @@ class theObjectives extends Model_Artifact
         validate()
             ->true(is_numeric($value), "Value should be numeric only");
         
-        if (!isset($this[$name]) || !($this[$name] instanceof theObjective))
+        if (!isset($this[$name]) || !($this[$name] instanceof theObjective)) {
             $this[$name] = new theObjective($value);
-        else
+        } else {
             $this[$name]->setValue($value);
+        }
     }
         
 }

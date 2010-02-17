@@ -41,7 +41,7 @@ class theObjective
      */
     public function __construct($value)
     {
-        $this->value = $value;
+        $this->_value = $value;
     }
     
     /**
@@ -53,6 +53,7 @@ class theObjective
     public function setValue($value) 
     {
         $this->_value = $value;
+        return $this;
     }
         
     /**
@@ -64,12 +65,14 @@ class theObjective
     public function __get($name) 
     {
         $method = '_get' . ucfirst($name);
-        if (method_exists($this, $method))
+        if (method_exists($this, $method)) {
             return $this->$method();
+        }
             
         $var = '_' . $name;
-        if (property_exists($this, $var))
+        if (property_exists($this, $var)) {
             return $this->$var;
+        }
             
         FaZend_Exception::raise(
             'InvalidPropertyOfMethod',

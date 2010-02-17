@@ -194,14 +194,13 @@ class Helper_Table extends FaZend_View_Helper
     /**
      * Add converter to the column
      *
-     * @param string Class name
-     * @param string|null Method name
+     * @param mixed Callback
      * @return Helper_Table
      */
-    public function addConverter($class, $method = null)
+    public function addConverter($callback)
     {
         // add column to the htmlTable()
-        $this->_table->addConverter($this->_predecessor, $class, $method);
+        $this->_table->addConverter($this->_predecessor, $callback);
         return $this;
     }
     
@@ -220,14 +219,14 @@ class Helper_Table extends FaZend_View_Helper
     /**
      * Add formatter to the column
      *
-     * @param string Condition
+     * @param mixed Callback
      * @param string|null Style
      * @return Helper_Table
      */
-    public function addFormatter($condition, $style = null)
+    public function addFormatter($callback, $style = null)
     {
         // add formatter to the htmlTable()
-        $this->_table->addFormatter($this->_predecessor, $condition, $style);
+        $this->_table->addFormatter($this->_predecessor, $callback, $style);
         return $this;
     }
     
