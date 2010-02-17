@@ -19,11 +19,11 @@
  */
 
 /**
- * Total number of defects
+ * Total number of defects, found
  * 
  * @package Artifacts
  */
-class Metric_Artifacts_Defects_Total extends Metric_Abstract
+class Metric_Artifacts_Defects_Found extends Metric_Abstract
 {
 
     /**
@@ -111,13 +111,13 @@ class Metric_Artifacts_Defects_Total extends Metric_Abstract
                 break;
             case preg_match('/^R\d/', $component):
                 $this->default = round(
-                    $this->_project->metrics['artifacts/defects/total/byComponent/SRS']->objective / 2,
+                    $this->_project->metrics['artifacts/defects/found/byComponent/SRS']->objective / 2,
                     -1
                 );
                 break;
             case $component:
                 $this->default = round(
-                    $this->_project->metrics['artifacts/defects/total/byComponent/SRS']->objective / 4,
+                    $this->_project->metrics['artifacts/defects/found/byComponent/SRS']->objective / 4,
                     -1
                 );
                 break;
@@ -195,7 +195,7 @@ class Metric_Artifacts_Defects_Total extends Metric_Abstract
             $components = array_merge($components, array('SRS', 'Design', 'QOS'));
             
             foreach ($components as $c) {
-                $metrics[] = 'artifacts/defects/total/byComponent/' . $c;
+                $metrics[] = 'artifacts/defects/found/byComponent/' . $c;
             }
             return null;
         }
@@ -206,11 +206,11 @@ class Metric_Artifacts_Defects_Total extends Metric_Abstract
 
         // price of one defect
         $price = new FaZend_Bo_Money(
-            $this->_project->metrics['history/cost/defects/byComponent/' . $component]->value
+            $this->_project->metrics['history/cost/defects/find/byComponent/' . $component]->value
         );
 
         return $this->_makeWp(
-            $this->delta * 10, 
+            $price->mul($this->delta), 
             sprintf(
                 'to find +%d defects in %s',
                 $this->delta,

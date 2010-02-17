@@ -15,7 +15,7 @@ class MetricsTest extends AbstractProjectTest
     
     public function testMetricsAreAccessibleInStorage() 
     {
-        $defects = $this->_project->metrics['artifacts/defects/total']->value;
+        $defects = $this->_project->metrics['artifacts/defects/found']->value;
         logg($defects . ' defects found');
     }
     
@@ -33,8 +33,8 @@ class MetricsTest extends AbstractProjectTest
         $project = Mocks_theProject::get();
         return array(
             array('artifacts/requirements/functional/total/level/third'),
-            array('artifacts/defects/total/byOwner/' . $project->staffAssignments->PM->random()),
-            array('artifacts/defects/total/byReporter/' . $project->staffAssignments->PM->random()),
+            array('artifacts/defects/found/byOwner/' . $project->staffAssignments->PM->random()),
+            array('artifacts/defects/found/byReporter/' . $project->staffAssignments->PM->random()),
             array('aspects/coverage/classes/issues'),
             array('aspects/coverage/functional/classes'),
         );

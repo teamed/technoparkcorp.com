@@ -55,7 +55,7 @@ class Slice_Plugin_ResolveMilestones extends Slice_Plugin_Abstract
          * There are all metrics, that impact this milestone's criteria.
          * For example:
          * <code>
-         *   (artifacts/requirements/functional/total, artifacts/defects/total)
+         *   (artifacts/requirements/functional/total, artifacts/defects/found)
          * </code>
          */
         $metrics = $this->_getKidMetrics($milestone);

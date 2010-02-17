@@ -33,7 +33,7 @@ class Metric_History_Cost_Defects extends Metric_Abstract
      * @see Metric_Abstract::$_patterns
      */
     protected $_patterns = array(
-        '/byComponent\/(\w+)/' => 'component',
+        '/^(fix|find)\/byComponent\/(\w+)$/' => 'action, component',
     );
 
     /**
@@ -43,20 +43,52 @@ class Metric_History_Cost_Defects extends Metric_Abstract
      **/
     public function reload()
     {
-        $component = $this->_getOption('component');
+        if (!$this->_getOption('action')) {
+            $this->value = 0;
+            return;
+        }
+        $action = $this->_getOption('action');
+        $method = '_reload' . ucfirst($action);
+        $this->value = $this->$method($this->_getOption('component'));
+    }
+     
+    /**
+     * Reload by component, to FIND cost
+     *
+     * @param string Component
+     * @return float Cost of defect, in USD
+     */
+    protected function _reloadFind($component) 
+    {
         switch (true) {
             case $component == 'SRS':
-                $this->value = 3;
-                break;
+                return 3;
             case $component == 'Design':
-                $this->value = 6;
-                break;
+                return 6;
             case preg_match('/^R\d/', $component):
-                $this->value = 4;
-                break;
+                return 4;
             default:
-                $this->value = 1;
-                break;
+                return 1;
+        }
+    }
+            
+    /**
+     * Reload by component, to FIX cost
+     *
+     * @param string Component
+     * @return void
+     */
+    protected function _reloadFix($component) 
+    {
+        switch (true) {
+            case $component == 'SRS':
+                return 8.5;
+            case $component == 'Design':
+                return 10;
+            case preg_match('/^R\d/', $component):
+                return 8;
+            default:
+                return 6;
         }
     }
             

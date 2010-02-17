@@ -26,7 +26,7 @@
 class theActivity
 {
 
-    const SEPARATOR = '.';
+    const SEPARATOR = ':';
 
     const DEFAULT_PRICE_PER_HOUR_USD = 15;
 

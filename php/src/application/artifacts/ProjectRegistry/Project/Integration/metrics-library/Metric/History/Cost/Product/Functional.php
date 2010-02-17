@@ -34,7 +34,7 @@ class Metric_History_Cost_Product_Functional extends Metric_Abstract
     public function reload()
     {
         // in USD
-        $this->value = 50;
+        $this->value = 25;
     }
             
 }

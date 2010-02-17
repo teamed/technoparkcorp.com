@@ -99,7 +99,7 @@ class Mocks_Shared_XmlRpc
                 break;
 
             // one ticket by any other param
-            case preg_match('/^(?:reporter|owner|status|severity|milestone|component)=(.*?)/', $query):
+            case preg_match('/^(?:reporter|owner|status|severity|milestone|component|resolution)=(.*?)/', $query):
                 $list = array(
                     Mocks_Shared_Trac_Ticket::get(false, array()),
                 );
