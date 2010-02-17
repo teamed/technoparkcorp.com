@@ -36,10 +36,15 @@ class Model_Asset_Defects_Fazend_TracTest extends AbstractProjectTest
         Mocks_Shared_Soap_Client::setLive();
         Model_Asset_Defects_Fazend_Trac::setTicketsPerPage(100);
         try {
-            $tickets = $this->_asset->retrieveBy();
-            $ticketId = current($tickets);
-            $ticket = $this->_asset->findById($ticketId);
-            $ticket->changelog;
+            $tickets = $this->_asset->retrieveBy(array('component'=>'SRS'));
+            if (!empty($tickets)) {
+                $ticketId = current($tickets);
+                $ticket = $this->_asset->findById($ticketId);
+                $ticket->changelog;
+            } else {
+                FaZend_Log::err('Empty list of tickets, why?');
+                $incomplete = true;
+            }
         } catch (Shared_Trac_SoapFault $e) {
             FaZend_Log::err(
                 sprintf(

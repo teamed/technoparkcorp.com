@@ -232,7 +232,11 @@ abstract class Metric_Abstract
      **/
     public final function __set($name, $value)
     {
-        validate()->numeric($value, "You can only save NUMERIC values to metrics");
+        validate()
+            ->true(
+                is_null($value) || is_numeric($value), 
+                "You can only save NUMERIC values to metrics, '{$value}' provided"
+            );
         
         switch ($name) {
             case 'objective':

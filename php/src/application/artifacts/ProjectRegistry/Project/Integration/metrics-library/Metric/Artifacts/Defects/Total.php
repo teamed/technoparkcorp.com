@@ -111,12 +111,14 @@ class Metric_Artifacts_Defects_Total extends Metric_Abstract
                 break;
             case preg_match('/^R\d/', $component):
                 $this->default = round(
-                    $this->_project->metrics['artifacts/defects/total/byComponent/SRS']->objective / 3
+                    $this->_project->metrics['artifacts/defects/total/byComponent/SRS']->objective / 2,
+                    -1
                 );
                 break;
             case $component:
                 $this->default = round(
-                    $this->_project->metrics['artifacts/defects/total/byComponent/SRS']->objective / 7
+                    $this->_project->metrics['artifacts/defects/total/byComponent/SRS']->objective / 4,
+                    -1
                 );
                 break;
             default: 

@@ -109,7 +109,7 @@ class Model_Asset_Defects_Fazend_Trac extends Model_Asset_Defects_Abstract
         foreach (array('=' => $conditions, '!=' => $negative) as $sign=>$list) {
             foreach ($list as $attrib=>$value) {
                 validate()->alnum($attrib, 'Attributes should be alnum only');
-                $lemmas[] = $attrib . $sign . "'" . addslashes($value) . "'";
+                $lemmas[] = $attrib . $sign . urlencode($value);
             }
         }
         
@@ -135,8 +135,9 @@ class Model_Asset_Defects_Fazend_Trac extends Model_Asset_Defects_Abstract
                 );
             }
             $ids = array_merge($ids, $portion);
-            if (count($portion) < self::$_ticketsPerPage)
+            if (count($portion) < self::$_ticketsPerPage) {
                 break;
+            }
         } while (count($portion) > 0);
         return array_unique($ids);
     }
