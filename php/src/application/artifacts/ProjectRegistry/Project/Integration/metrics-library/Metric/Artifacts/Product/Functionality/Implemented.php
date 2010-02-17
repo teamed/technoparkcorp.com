@@ -78,6 +78,10 @@ class Metric_Artifacts_Product_Functionality_Implemented extends Metric_Abstract
         
         $toImplement = $this->_project->metrics['artifacts/requirements/functional/total']->delta;
         
+        if ($toImplement <= 0) {
+            return null
+        }
+        
         // price of one glossary item
         $price = new FaZend_Bo_Money(
             $this->_project->metrics['history/cost/product/functional']->value

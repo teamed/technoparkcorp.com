@@ -36,6 +36,7 @@
         ->fieldAttrib('size', 5)
         ->fieldAttrib('maxlength', 5)
         ->fieldRequired(true)
+        ->fieldConverter('integer')
     ->addField('submit', 'submit')
         ->fieldValue('Set')
         ->fieldAttrib('class', 'btn')

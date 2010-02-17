@@ -30,19 +30,30 @@ class theObjectives extends Model_Artifact
      * Set one objective
      *
      * @param string Name of the objective
-     * @param integer Value of the objective
+     * @param integer|null Value of the objective or NULL if you want to remove it
      * @return void
      **/
     public function setObjective($name, $value) 
     {
-        validate()
-            ->true(is_numeric($value), "Value should be numeric only");
-        
-        if (!isset($this[$name]) || !($this[$name] instanceof theObjective)) {
-            $this[$name] = new theObjective($value);
+        if (is_null($value)) {
+            if (isset($this[$name])) {
+                unset($this[$name]);
+                logg('Objective %s removed', $name);
+            } else {
+                logg('Objective %s is absent, nothing to remove', $name);
+            }
         } else {
-            $this[$name]->setValue($value);
+            validate()
+                ->true(is_numeric($value), "Value should be numeric only");
+        
+            if (!isset($this[$name]) || !($this[$name] instanceof theObjective)) {
+                $this[$name] = new theObjective($value);
+            } else {
+                $this[$name]->setValue($value);
+            }
+            logg('Objective %s is set to %d', $name, $value);
         }
+        $this->ps()->setDirty();
     }
         
 }

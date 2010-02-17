@@ -68,6 +68,7 @@ class Metric_Artifacts_Requirements_Functional_TotalTest extends AbstractMetricT
             $totalReqs, 
             'Invalid calculation, ' . $log
         );
+        $metric->objective = null;
     }
     
 }
