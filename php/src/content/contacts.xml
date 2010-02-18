@@ -27,45 +27,6 @@
 
 <text>
 
-    <p>Call now and get immediate consultation for your software project.</p>
-
-    <p>568, 9th Street South, 202<br/>
-    Naples, Florida, 34102<br/>
-    United States of America<br/>
-    sales@technoparkcorp.com<br/>
-    tel. (239) 935-5429</p>
-
-    <p>We respond to email inquiries in 24 hours or less. All online inquiries are tracked
-    with SalesForce.com automation software. Please, use the form below to expedite the
-    process and automate it.</p>
-
-    <p><a href="http://www.salesforce.com" style="float:right;border:0;" title="Salesforce.com Logo"><png>//images/sfa</png></a>
-    Your request will be processed in the next 24 hours. 
-    All requests are automated with SalesForce.com software.</p>
-
-    <form action="https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="post">
-    <p>
-    <input type="hidden" name="oid" value="00D60000000779r" />
-    <input type="hidden" name="sfga" value="" />
-    <input type="hidden" name="retURL" value="${url:contacts}${arg:ref:sfa}" />
-    <input type="hidden" name="lead_source" value="Web site contact" />
-    First name:<br/>
-    <input maxlength="40" name="first_name" size="17" /><br/>
-    Last name:<br/>
-    <input maxlength="40" name="last_name" size="24" /><br/>
-    Email:<br/>
-    <input maxlength="80" name="email" size="30" /><br/>
-    <input maxlength="40" name="phone" size="23" type="hidden" />
-    Your question:<br/>
-
-    <input name="description" size="50" /><br/>
-
-    <input type="submit" 
-        value="" 
-        style="background: transparent url(${img:/button_send.gif}) top left no-repeat; border: none; cursor: pointer; width: 65px; height: 22px;" />
-
-    </p></form>
-
     <a href="http://www.truste.org/ivalidate.php?url=www.technoparkcorp.com&amp;sealid=101" 
         style="float: left; padding-right: 20px; border:0;" ><png>//images/truste</png></a>
 
