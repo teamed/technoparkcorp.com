@@ -213,7 +213,8 @@ class Model_Article_TexToHtml
      * @param string Text between \begin{tabular}{xxx} and \end{tabular}
      * @return string
      */
-    protected function _convertTabular($content) {
+    protected function _convertTabular($content)
+    {
         // $content = preg_replace(
         //     array(
         //         '/\s?\\\\hline\s?/sm',
