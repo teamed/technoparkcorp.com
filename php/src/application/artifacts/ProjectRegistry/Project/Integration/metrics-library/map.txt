@@ -62,3 +62,10 @@ org
             DesignReviewer: ...
             ManualTester: ...
             
+
+R3.3 [a:#435, i:#980] ActorUser can download XML report.
+
+/**
+ * @see a:#670
+ * @see i:#1390
+ */

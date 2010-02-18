@@ -19,18 +19,15 @@
 <?=$this->forma()
 
     ->addField('text', 'user')
-        ->fieldLabel('User to pay')
-        ->fieldRequired()
+        ->fieldLabel('User to pay', true)
         
     ->addField('text', 'original')
-        ->fieldLabel('Original amount')
-        ->fieldRequired()
+        ->fieldLabel('Original amount', true)
         ->fieldAttrib('maxlength', 10)
         ->fieldAttrib('size', 10)
         
     ->addField('textarea', 'details')
-        ->fieldLabel('Details of payment')
-        ->fieldRequired()
+        ->fieldLabel('Details of payment', true)
         ->fieldAttrib('cols', 40)
         ->fieldAttrib('rows', 5)
 

@@ -30,6 +30,21 @@ class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap
 {
     
     /**
+     * Init forma() helper
+     *
+     * @return void
+     */
+    protected function _initFormaHelper() 
+    {
+        FaZend_View_Helper_Forma::setLabelSuffixes(
+            array(
+                true => '<span style="color:red">*</span>:',
+                false => ':',
+            )
+        );
+    }
+    
+    /**
      * Init non-explicit ORM mapping rules
      *
      * @return void

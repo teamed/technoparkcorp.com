@@ -19,32 +19,27 @@
 <?=$this->forma()
 
     ->addField('text', 'original')
-        ->fieldLabel('Original amount')
-        ->fieldRequired()
+        ->fieldLabel('Original amount', true)
         ->fieldAttrib('maxlength', 10)
         ->fieldAttrib('size', 10)
         ->fieldConverter('FaZend_Bo_Money')
         
     ->addField('textarea', 'details')
-        ->fieldLabel('Details of payment')
-        ->fieldRequired()
+        ->fieldLabel('Details of payment', true)
         ->fieldAttrib('cols', 40)
         ->fieldAttrib('rows', 5)
 
     ->addField('text', 'context')
-        ->fieldRequired(false)
         ->fieldLabel('Context')
         
     ->addField('text', 'reason')
-        ->fieldRequired(false)
         ->fieldLabel('Reason of payment')
 
     ->addField('text', 'supplier')
-        ->fieldLabel('Supplier\'s email')
+        ->fieldLabel('Supplier\'s email', true)
         ->fieldAttrib('size', 25)
 
     ->addField('text', 'rate')
-        ->fieldRequired(false)
         ->fieldLabel('Rate per hour')
         ->fieldAttrib('size', 15)
         ->fieldConverter('FaZend_Bo_Money')
