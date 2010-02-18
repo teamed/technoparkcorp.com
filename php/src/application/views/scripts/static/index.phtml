@@ -12,6 +12,7 @@
  * 568 Ninth Street South 202, Naples, Florida 34102, USA
  * tel. +1 (239) 935 5429
  *
+ * @version $Id$
 -->
  
 <?
@@ -105,12 +106,17 @@
 
 <!-- wide line at the bottom of the page -->
 <p class="wl">
+    
+    <!--
     <span>
         <script type='text/javascript' src='http://w.sharethis.com/button/sharethis.js#tabs=post%2Cemail%2Cweb&amp;charset=utf-8&amp;style=rotate&amp;publisher=bd1d09bf-bb3e-433e-aa72-29bfdfa237d9&amp;headerbg=%237d8f9b&amp;inactivebg=%235a5a5a&amp;inactivefg=%23ffffff&amp;linkfg=%230093d0'></script>
     </span>    
+    -->
 
     <span class="rev">
-        <a href="<?=$this->url(array('page'=>$this->article->page), 'pdf', true, false)?>">Download in PDF</a> | 
+        <!-- 
+        <a href="<?=$this->url(array('page'=>$this->article->page), 'pdf', true, false)?>">Download in PDF</a> |
+        --> 
         Last update on <span style="color:<?=Model_Colors::BLUE?>"><?=$this->article->updated->get(Zend_Date::DATE_MEDIUM)?></span>
     </span>
 </p>

@@ -12,6 +12,7 @@
  * 568 Ninth Street South 202, Naples, Florida 34102, USA
  * tel. +1 (239) 935 5429
  *
+ * @version $Id$
 -->
  
 <? 
@@ -50,13 +51,19 @@
     <table class="links">
         <tr>
             <td>
-                <a href="<?=$this->staticUrl($front->left->item1->attributes()->name)?>"><?=$this->escape($front->left->item1)?></a><br/>
-                <a href="<?=$this->staticUrl($front->left->item2->attributes()->name)?>"><?=$this->escape($front->left->item2)?></a><br/>
-                <a href="<?=$this->staticUrl($front->left->item3->attributes()->name)?>"><?=$this->escape($front->left->item3)?></a><br/>
+                <a href="<?=$this->staticUrl($front->left->item1->attributes()->name)?>"
+                    ><?=$this->escape($front->left->item1)?></a><br/>
+                <a href="<?=$this->staticUrl($front->left->item2->attributes()->name)?>"
+                    ><?=$this->escape($front->left->item2)?></a><br/>
+                <a href="<?=$this->staticUrl($front->left->item3->attributes()->name)?>"
+                    ><?=$this->escape($front->left->item3)?></a><br/>
             </td><td>
-                <a href="<?=$this->staticUrl($front->middle->item1->attributes()->name)?>"><?=$this->escape($front->middle->item1)?></a><br/>
-                <a href="<?=$this->staticUrl($front->middle->item2->attributes()->name)?>"><?=$this->escape($front->middle->item2)?></a><br/>
-                <a href="<?=$this->staticUrl($front->middle->item3->attributes()->name)?>"><?=$this->escape($front->middle->item3)?></a><br/>
+                <a href="<?=$this->staticUrl($front->middle->item1->attributes()->name)?>"
+                    ><?=$this->escape($front->middle->item1)?></a><br/>
+                <a href="<?=$this->staticUrl($front->middle->item2->attributes()->name)?>"
+                    ><?=$this->escape($front->middle->item2)?></a><br/>
+                <a href="<?=$this->staticUrl($front->middle->item3->attributes()->name)?>"
+                    ><?=$this->escape($front->middle->item3)?></a><br/>
             </td><td style='padding-right: 10px; width: 220px;'>
                 <a href="<?=$this->staticUrl($front->right->news)?>"><?=$this->escape($newsline)?></a>
             </td></tr>
