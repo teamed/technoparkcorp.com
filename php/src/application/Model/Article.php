@@ -188,13 +188,14 @@ class Model_Article
         $method = '_get' . ucfirst($key);
 
         // calculate now and save to cache
-        if (method_exists($this, $method))
+        if (method_exists($this, $method)) {
             return $this->_cache[$key] = $this->$method();
+        }
 
         $key = '_' . $key;
-
-        if (!property_exists($this, $key))
+        if (!property_exists($this, $key)) {
             return $key . ' is absent';
+        }
 
         return $this->$key;
     }
@@ -206,9 +207,9 @@ class Model_Article
      */
     protected function _getUpdated() 
     {
-        if (file_exists(CONTENT_PATH . '/' . $this->_page . '.xml'))
+        if (file_exists(CONTENT_PATH . '/' . $this->_page . '.xml')) {
             return new Zend_Date(filemtime(CONTENT_PATH . '/' . $this->_page . '.xml'));
-
+        }
         return Zend_Date::now();    
     }
 
@@ -219,10 +220,15 @@ class Model_Article
      */
     protected function _getText() 
     {
-        if ($this->_xml->text)
-            return (string)$this->_xml->text;
-
-        return false;
+        if ($this->_xml->text) {
+            $text = (string)$this->_xml->text;
+            if ($this->_xml->text->attributes()->class == 'tex') {
+                $converter = new Model_Article_TexToHtml();
+                $text = $converter->convert($text);
+            }
+            return $text;
+        }
+        return '';
     }
 
     /**
@@ -232,9 +238,9 @@ class Model_Article
      */
     protected function _getLabel() 
     {
-        if (!$this->_xml->label)
+        if (!$this->_xml->label) {
             return $this->page;
-
+        }
         return trim((string)$this->_xml->label, "\n\t ");
     }
 
@@ -245,9 +251,9 @@ class Model_Article
      */
     protected function _getVisible() 
     {
-        if ($this->_xml->invisible)
+        if ($this->_xml->invisible) {
             return false;
-
+        }
         return true;
     }
 

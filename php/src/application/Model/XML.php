@@ -115,6 +115,16 @@ class Model_XML
     {
         return call_user_func_array(array($this->_xml, $method), $args);
     }
+    
+    /**
+     * Get list of attributes
+     *
+     * @return SimpleXMLElement
+     */
+    public function attributes() 
+    {
+        return $this->_xml->attributes();
+    }
 
     /**
      * Returns element's value
