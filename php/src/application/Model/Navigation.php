@@ -101,25 +101,29 @@ class Model_Navigation
             Model_Article::getSearchProxy()->addArticle($article);
 
             // create and add new page to the current collection
-            $page = new Zend_Navigation_Page_Uri(array(
-                'label' => $article->label,
-                'title' => $article->title,
-                'path' => $fullLabel,
-                'uri' => Zend_Registry::getInstance()->view->staticUrl($fullLabel),
-                'class' => 'l' . substr_count($fullLabel, '/'),
-            ));
+            $page = new Zend_Navigation_Page_Uri(
+                array(
+                    'label' => $article->label,
+                    'title' => $article->title,
+                    'path' => $fullLabel,
+                    'uri' => Zend_Registry::getInstance()->view->staticUrl($fullLabel),
+                    'class' => 'l' . substr_count($fullLabel, '/'),
+                )
+            );
 
             // hide unnecessary menu items
-            if (!$article->visible)
+            if (!$article->visible) {
                 $page->visible = false;
+            }
 
             // add this page to the container
             $container->addPage($page);
 
             // if it was a directory - add sub files to this page
             // as a sub menu
-            if (is_dir($path . '/' . $label))
+            if (is_dir($path . '/' . $label)) {
                 self::_addMenuPages($page, $path . '/' . $label, $fullLabel);
+            }
         }
     }
 
@@ -137,8 +141,9 @@ class Model_Navigation
 
         for ($i=0; $i<count($sections); $i++) {
             $page = $container->findOneBy('path', implode('/', array_slice($sections, 0, $i+1)));
-            if (is_null($page))
+            if (is_null($page)) {
                 continue;
+            }
 
             // set it as active
             $page->active = true;
@@ -152,10 +157,11 @@ class Model_Navigation
      */
     protected static function _cache() 
     {
-        if (self::$_cache != false)
+        if (self::$_cache != false) {
             return self::$_cache;
+        }
 
-        self::$_cache = Zend_Cache::factory(
+        return self::$_cache = Zend_Cache::factory(
             'Core', 
             'File', 
             array(
@@ -176,8 +182,6 @@ class Model_Navigation
                 'file_name_prefix' => 'panel2navigation'
             )
         );
-
-        return self::$_cache;
     }
 
 }

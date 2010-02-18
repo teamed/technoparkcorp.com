@@ -70,10 +70,13 @@ class Model_Article_SearchProxy
     {
         $doc = new Zend_Search_Lucene_Document();
         $doc->addField(Zend_Search_Lucene_Field::Text('page', $article->page));
-        foreach (array('label', 'title', 'description', 'keywords', 'text') as $field)
+        foreach (array('label', 'title', 'description', 'keywords', 'text') as $field) {
             $doc->addField(Zend_Search_Lucene_Field::UnStored($field, $article->$field));
-        $this->lucene()->addDocument($doc);
-        $this->lucene()->commit();
+        }
+        
+        // disable for now
+        // $this->lucene()->addDocument($doc);
+        // $this->lucene()->commit();
     }
     
     /**
@@ -98,8 +101,9 @@ class Model_Article_SearchProxy
      **/
     public function getLucenePath() 
     {
-        if (is_null($this->_lucenePath))
+        if (is_null($this->_lucenePath)) {
             $this->setLucenePath(TEMP_PATH . '/panel2lucene');
+        }
         return $this->_lucenePath;
     }
 
@@ -152,10 +156,11 @@ class Model_Article_SearchProxy
         if (!isset($this->_lucene) || $refresh) {        
             $path = $this->getLucenePath();
             
-            if (file_exists($path) && is_dir($path) && !$refresh)
-                $this->_lucene = Zend_Search_Lucene::open($path);
-            else
+            if (file_exists($path) && is_dir($path) && !$refresh) {
+                $this->_lucene = Zend_Search_Lucene::open($path); 
+            } else {
                 $this->_lucene = Zend_Search_Lucene::create($path);
+            }
                 
             Zend_Search_Lucene::setResultSetLimit(20);
             Zend_Search_Lucene::setTermsPerQueryLimit(100);
