@@ -38,10 +38,19 @@ class Model_Asset_Design_Fazend_Linux extends Model_Asset_Design_Abstract
      * Get full list of components
      *
      * @return mixed[]
-     **/
+     * @throws Model_Asset_Design_Fazend_Linux_SoapFailure
+     */
     public function getComponents() 
     {
-        $list = $this->_pan->getComponents();
+        try {
+            $list = $this->_pan->getComponents();
+        } catch (Shared_Pan_SoapFailure $e) {
+            FaZend_Exception::raise(
+                'Model_Asset_Design_Fazend_Linux_SoapFailure',
+                $e->getMessage()
+            );
+        }
+        
         $return = array();
         foreach ($list as $data) {
             switch ($data['type']) {
