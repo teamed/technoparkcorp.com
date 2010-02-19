@@ -96,33 +96,42 @@ class Metric_Artifacts_Defects_Found extends Metric_Abstract
      *
      * @param string Name of the component
      * @return void
-     **/
+     * @throws Metric_Artifacts_Defects_Found_ComponentNotFoundException
+     */
     protected function _reloadByComponent($component) 
     {
         $this->value = count($this->_retrieveBy(array('component'=>$component)));
         switch (true) {
             case $component == 'SRS':
-                $this->default = 
-                    $this->_project->metrics['artifacts/requirements/functional/total']->objective;
+                $this->default = round(
+                    $this->_project->metrics['artifacts/requirements/functional/accepted']->objective
+                    * $this->_project->metrics['history/ratios/defects/per/functional']->value
+                );
                 break;
             case $component == 'Design':
-                $this->default = 
-                    $this->_project->metrics['artifacts/design/classes/total']->objective * 5;
+                $this->default = round(
+                    $this->_project->metrics['artifacts/design/classes/accepted']->objective
+                    * $this->_project->metrics['history/ratios/defects/per/class']->value
+                );
+                break;
+            case $component == 'QOS':
+                $this->default = round(
+                    $this->_project->metrics['artifacts/requirements/qos/accepted']->objective
+                    * $this->_project->metrics['history/ratios/defects/per/qos']->value
+                );
                 break;
             case preg_match('/^R\d/', $component):
                 $this->default = round(
-                    $this->_project->metrics['artifacts/defects/found/byComponent/SRS']->objective / 2,
-                    -1
-                );
-                break;
-            case $component:
-                $this->default = round(
-                    $this->_project->metrics['artifacts/defects/found/byComponent/SRS']->objective / 4,
+                    $this->_project->metrics['artifacts/defects/found/byComponent/SRS']->objective
+                    * $this->_project->metrics['history/ratios/defects/per/functional-first']->value,
                     -1
                 );
                 break;
             default: 
-                //...
+                FaZend_Exception::raise(
+                    'Metric_Artifacts_Defects_Found_ComponentNotFoundException',
+                    "Can't find what is '{$component}' component"
+                );
                 break;
         }
     }

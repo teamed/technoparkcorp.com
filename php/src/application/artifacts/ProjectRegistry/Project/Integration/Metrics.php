@@ -143,8 +143,9 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
     protected function _findMetric($name) 
     {
         // maybe we can load it straight away?
-        if ($this->_attachMetric($name))
+        if ($this->_attachMetric($name)) {
             return parent::offsetGet($name);
+        }
 
         // break down the name of the metric onto parts
         $parts = explode(self::SEPARATOR, $name);
@@ -200,8 +201,9 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
     protected function _attachMetric($name, Metric_Abstract $metric = null) 
     {
         // don't add it again, if it exists
-        if (isset($this[$name]))
+        if (isset($this[$name])) {
             return true;
+        }
             
         if (is_null($metric)) {
             $className = $this->_nameToClass($name);

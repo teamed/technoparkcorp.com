@@ -39,36 +39,6 @@ class Metric_Artifacts_Requirements_Qos_Total extends Metric_Abstract
         }
             
         $this->value = count($this->_project->deliverables->qos);
-        $this->default = round(
-            $this->_project->metrics['artifacts/requirements/functional/total']->objective / 20
-        );
-    }
-        
-    /**
-     * Get work package
-     *
-     * @param string[] Names of metrics, to consider after this one
-     * @return theWorkPackage
-     **/
-    protected function _derive(array &$metrics = array())
-    {
-        // if nothing to specify, skip it
-        if ($this->delta <= 0) {
-            return null;
-        }
-
-        // price of one glossary item
-        $price = new FaZend_Bo_Money(
-            $this->_project->metrics['history/cost/requirements/glossary']->value
-        );
-
-        return $this->_makeWp(
-            $price->mul($this->delta), 
-            sprintf(
-                'to specify +%d QOS requirements',
-                $this->delta
-            )
-        );
     }
         
 }

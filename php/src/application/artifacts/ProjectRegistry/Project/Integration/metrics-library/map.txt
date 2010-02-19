@@ -63,7 +63,9 @@ org
             ManualTester: ...
             
 
-R3.3 [a:#435, i:#980] ActorUser can download XML report.
+R3.3: ActorUser can download XML report.
+
+#455 code=rfa:R3.3;
 
 /**
  * @see a:#670

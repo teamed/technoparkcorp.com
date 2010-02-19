@@ -43,11 +43,11 @@ class Metric_History_Cost_Defects extends Metric_Abstract
      **/
     public function reload()
     {
-        if (!$this->_getOption('action')) {
+        $action = $this->_getOption('action');
+        if (!$action) {
             $this->value = 0;
             return;
         }
-        $action = $this->_getOption('action');
         $method = '_reload' . ucfirst($action);
         $this->value = $this->$method($this->_getOption('component'));
     }

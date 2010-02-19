@@ -73,6 +73,28 @@ abstract class Deliverables_Abstract
     }
     
     /**
+     * This deliverable is accepted by the designated person
+     *
+     * @return boolean
+     * @see isBaselined
+     */
+    public function isAccepted() 
+    {
+        return false;
+    }
+    
+    /**
+     * This deliverable is baselined by CCB, meaning delivered to the customer
+     *
+     * @return boolean
+     * @see isAccepted
+     */
+    public function isBaselined() 
+    {
+        return false;
+    }
+    
+    /**
      * Getter dispatcher
      *
      * @param string Name of property to get
@@ -81,12 +103,14 @@ abstract class Deliverables_Abstract
     public function __get($name)
     {
         $method = '_get' . ucfirst($name);
-        if (method_exists($this, $method))
+        if (method_exists($this, $method)) {
             return $this->$method();
+        }
             
         $var = '_' . $name;
-        if (property_exists($this, $var))
+        if (property_exists($this, $var)) {
             return $this->$var;
+        }
         
         FaZend_Exception::raise(
             'PropertyOrMethodNotFound', 
@@ -106,10 +130,11 @@ abstract class Deliverables_Abstract
         if (substr($method, 0, 3) == 'set') {
             $property = '_' . lcfirst(substr($method, 3));
             if (property_exists($this, $property)) {
-                if (count($args))
+                if (count($args)) {
                     $value = array_shift($args);
-                else
+                } else {
                     $value = true;
+                }
                 $this->$property = $value;
                 return $this;
             }
@@ -134,16 +159,19 @@ abstract class Deliverables_Abstract
      **/
     public function discoverTraceabilityLinks(theProject $project, array &$links) 
     {
-        if (!preg_match_all(self::REGEX, $this->_description, $matches))
+        if (!preg_match_all(self::REGEX, $this->_description, $matches)) {
             return;
+        }
             
         foreach ($matches[0] as $match) {
-            if (!isset($project->deliverables[$match]))
+            if (!isset($project->deliverables[$match])) {
                 continue;
+            }
             
             // don't trace to itself
-            if ($this->_name == $match)
+            if ($this->_name == $match) {
                 continue;
+            }
                 
             $links[] = new theTraceabilityLink(
                 $project->deliverables[$this->_name],
@@ -176,14 +204,16 @@ abstract class Deliverables_Abstract
         $data = array();
         foreach ($reflector->getProperties(ReflectionProperty::IS_PROTECTED) as $property) {
             $name = $property->getName();
-            if (in_array($name, array('_name', '_description')))
+            if (in_array($name, array('_name', '_description'))) {
                 continue;
+            }
 
             $name = substr($name, 1);
             $value = $this->$name;
             
-            if (is_bool($value))
+            if (is_bool($value)) {
                 $value = $value ? 'TRUE' : 'FALSE';
+            }
             $data[] = $name . '=' . $value;
         }
         return implode('; ', $data);
