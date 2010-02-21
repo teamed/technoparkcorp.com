@@ -40,7 +40,7 @@ class Metric_Artifacts_Requirements_Qos_Accepted extends Metric_Abstract
             
         $this->value = 0;
         foreach ($this->_project->deliverables->qos as $qos) {
-            if ($qos->attributes['accepted']) {
+            if ($qos->attributes['accepted']->isTrue()) {
                 $this->value++;
             }
         }

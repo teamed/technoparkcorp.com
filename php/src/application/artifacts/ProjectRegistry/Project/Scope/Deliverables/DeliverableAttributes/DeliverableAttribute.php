@@ -72,4 +72,14 @@ class theDeliverableAttribute
         return strval($this->_value);
     }
     
+    /**
+     * Is it true?
+     *
+     * @return boolean
+     */
+    public function isTrue() 
+    {
+        return (bool)$this->_value;
+    }
+    
 }

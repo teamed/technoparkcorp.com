@@ -34,7 +34,7 @@ class DeliverableAttributesTest extends AbstractProjectTest
 
     public function testNonExistingAttributesReturnFalse()
     {
-        $this->assertFalse($this->_deliverable->attributes['missed for sure']);
+        $this->assertFalse($this->_deliverable->attributes['missed for sure']->isTrue());
     }
 
 }

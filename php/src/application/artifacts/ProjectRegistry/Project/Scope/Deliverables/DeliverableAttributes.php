@@ -71,7 +71,7 @@ class theDeliverableAttributes implements ArrayAccess
     public function offsetGet($name) 
     {
         if (!isset($this[$name])) {
-            return false;
+            $this->add($name, false);
         }
         return $this->_attribs->offsetGet($name);
     }
