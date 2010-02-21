@@ -190,14 +190,14 @@ abstract class Deliverables_Abstract
      **/
     protected function _getType()
     {
-        return lcfirst(preg_replace('/^Deliverables_/', '', get_class($this)));
+        return preg_replace('/^Deliverables_/', '', get_class($this));
     }
     
     /**
      * Get collection of ALL properties
      *
      * @return string
-     **/
+     */
     protected function _getAttributes()
     {
         $reflector = new ReflectionObject($this);

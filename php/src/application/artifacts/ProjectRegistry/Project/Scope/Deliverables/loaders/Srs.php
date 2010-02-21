@@ -38,11 +38,25 @@ class DeliverablesLoaders_Srs extends DeliverablesLoaders_Abstract
         logg('SRS loading started...');
         $entities = $this->_deliverables->ps()->parent->fzProject()
             ->getAsset(Model_Project::ASSET_SRS)->getEntities();
+
         foreach ($entities as $entity) {
-                
-            $deliverable = theDeliverables::factory($entity->type, $entity->name, $entity->description);
-            $entity->deriveDetails($deliverable);
+            $type = ucfirst($entity->type);
+            switch ($type) {
+                case 'Functional':
+                case 'Qos':
+                    $type = 'Requirements_Requirement_' . $type;
+                    break;
+                default:
+                    $type = 'Requirements_' . $type;
+                    break;
+            }
             
+            $deliverable = theDeliverables::factory(
+                $type,
+                $entity->name,
+                $entity->description
+            );
+            $entity->deriveDetails($deliverable);
             $this->_deliverables->add($deliverable);
         }
         logg('SRS loading finished, %d deliverables found', count($entities));

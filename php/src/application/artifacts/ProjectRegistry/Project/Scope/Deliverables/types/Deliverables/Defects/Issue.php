@@ -21,10 +21,10 @@
 require_once 'artifacts/ProjectRegistry/Project/Scope/Deliverables/types/Deliverables/Abstract.php';
 
 /**
- * One issue
+ * One issue in defect tracking system
  *
  * @package Artifacts
  */
-class Deliverables_Issue extends Deliverables_Abstract
+class Deliverables_Defects_Issue extends Deliverables_Abstract
 {
 }

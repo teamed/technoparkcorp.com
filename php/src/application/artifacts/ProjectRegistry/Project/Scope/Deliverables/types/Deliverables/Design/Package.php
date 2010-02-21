@@ -21,11 +21,10 @@
 require_once 'artifacts/ProjectRegistry/Project/Scope/Deliverables/types/Deliverables/Abstract.php';
 
 /**
- * One package
+ * One package of source code (also known as "category")
  *
  * @package Artifacts
  */
-class Deliverables_Package extends Deliverables_Abstract
+class Deliverables_Design_Package extends Deliverables_Abstract
 {
-        
 }

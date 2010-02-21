@@ -21,10 +21,10 @@
 require_once 'artifacts/ProjectRegistry/Project/Scope/Deliverables/types/Deliverables/Abstract.php';
 
 /**
- * One actor
+ * One actor, like ActorUser
  *
  * @package Artifacts
  */
-class Deliverables_Actor extends Deliverables_Abstract
+class Deliverables_Requirements_Actor extends Deliverables_Abstract
 {
 }
