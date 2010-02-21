@@ -1,4 +1,7 @@
 <?php
+/**
+ * @version $Id$
+ */
 
 /**
  * @see Model_Asset_Defects_Issue_Trac

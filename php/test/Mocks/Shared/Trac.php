@@ -1,4 +1,7 @@
 <?php
+/**
+ * @version $Id$
+ */
 
 class Mocks_Shared_Trac extends Shared_Trac
 {

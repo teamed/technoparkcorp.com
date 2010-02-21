@@ -1,4 +1,7 @@
 <?php
+/**
+ * @version $Id$
+ */
 
 class Mocks_Shared_User extends Shared_User 
 {

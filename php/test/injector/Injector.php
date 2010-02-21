@@ -1,4 +1,7 @@
 <?php
+/**
+ * @version $Id$
+ */
 
 require_once 'Mocks/artifacts/ProjectRegistry/Project.php';
 

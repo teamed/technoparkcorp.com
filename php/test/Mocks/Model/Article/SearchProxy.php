@@ -1,4 +1,7 @@
 <?php
+/**
+ * @version $Id$
+ */
 
 class Mocks_Model_Article_SearchProxy extends Model_Article_SearchProxy
 {
