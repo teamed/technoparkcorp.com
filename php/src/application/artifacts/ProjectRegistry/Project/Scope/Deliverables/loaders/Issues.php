@@ -44,13 +44,12 @@ class DeliverablesLoaders_Issues extends DeliverablesLoaders_Abstract
         foreach ($project->issues as $issue) {
             // add it to the list of deliverables
             $issueName = '#' .  $issue->id;
-            $project->deliverables->add(
-                theDeliverables::factory(
-                    'Defects_Issue', 
-                    $issueName, 
-                    $issue->changelog->get('summary')->getValue()
-                )
+            $deliverable = theDeliverables::factory(
+                'Defects_Issue', 
+                $issueName
             );
+            $deliverable->attributes->add('description', $issue->changelog->get('summary')->getValue());
+            $project->deliverables->add($deliverable);
             
             $changes = $issue->changelog->get('comment')->getChanges();
             

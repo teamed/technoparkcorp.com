@@ -165,7 +165,7 @@ class Metric_Artifacts_Requirements_Functional_Accepted extends Metric_Abstract
         // total amount of reqs accepted
         $this->value = 0;
         foreach ($reqs as $req) {
-            if ($req->isAccepted()) {
+            if ($req->attributes['accepted']) {
                 $this->value++;
             }
         }

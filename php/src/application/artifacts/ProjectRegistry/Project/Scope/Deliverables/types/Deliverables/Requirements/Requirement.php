@@ -29,27 +29,6 @@ abstract class Deliverables_Requirements_Requirement extends Deliverables_Abstra
 {
         
     /**
-     * This requirement is out of scope?
-     *
-     * @var boolean
-     */
-    protected $_outOfScope = false;
-        
-    /**
-     * Importance of this requirement
-     *
-     * @var integer
-     */
-    protected $_importance = 1;
-        
-    /**
-     * Complexity of this requirement
-     *
-     * @var integer
-     */
-    protected $_complexity = 1;
-        
-    /**
      * Level of requirement (0...)
      *
      * For R1.3.7 it will return 2. For R4 it will return 0.

@@ -53,10 +53,33 @@ class DeliverablesLoaders_Srs extends DeliverablesLoaders_Abstract
             
             $deliverable = theDeliverables::factory(
                 $type,
-                $entity->name,
-                $entity->description
+                $entity->name
             );
-            $entity->deriveDetails($deliverable);
+            $deliverable->attributes->add('description', $entity->description);
+
+            foreach (array_filter($entity->attributes) as $attrib=>$value) {
+                switch (true) {
+                    case $attrib == 'out':
+                        $deliverable->attributes->add('out', true);
+                        break;
+
+                    case $attrib == 'must':
+                        $deliverable->attributes->add('importance', 5);
+                        break;
+
+                    case preg_match('/^i(\d+)$/i', $attrib, $matches):
+                        $deliverable->attributes->add('importance', intval($matches[1]));
+                        break;
+
+                    case preg_match('/^c(\d+)$/i', $attrib, $matches):
+                    $deliverable->attributes->add('complexity', intval($matches[1]));
+                        break;
+
+                    default:
+                        // ignore it...
+                }
+            }
+
             $this->_deliverables->add($deliverable);
         }
         logg('SRS loading finished, %d deliverables found', count($entities));

@@ -40,7 +40,7 @@ class Metric_Artifacts_Requirements_UseCases_Accepted extends Metric_Abstract
             
         $this->value = 0;
         foreach ($this->_project->deliverables->useCases as $uc) {
-            if ($uc->isAccepted()) {
+            if ($uc->attributes['accepted']) {
                 $this->value++;
             }
         }

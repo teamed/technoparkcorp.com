@@ -45,14 +45,16 @@ class DeliverablesLoaders_Design extends DeliverablesLoaders_Abstract
         foreach ($components as $component) {
             $deliverable = theDeliverables::factory(
                 'Design_' . $component->type, 
-                $component->name, 
-                $component->description
+                $component->name
             );
             
             if (isset($project->deliverables[$deliverable->name])) {
                 logg('Duplicate deliverable: %s (%s)', $deliverable->name, $deliverable->type);
                 continue;
             }
+            
+            // add description
+            $deliverable->attributes->add('description', $component->description);
             
             $project->deliverables->add($deliverable);
             

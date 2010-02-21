@@ -100,6 +100,9 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
                 $this->traceability->add($link);
             }
         }
+        
+        // save what was found
+        $this->ps()->save();
     }
     
     /**
@@ -139,13 +142,12 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
      *
      * @param string Type of it, which will be added to "Deliverables_"
      * @param string Name of the deliverable, unique!
-     * @param string Text description of it
      * @return Deliverables_Abstract
      **/
-    public static function factory($type, $name, $description) 
+    public static function factory($type, $name) 
     {
         $className = 'Deliverables_' . ucfirst($type);
-        return new $className($name, $description);        
+        return new $className($name);        
     }
      
     /**
