@@ -52,6 +52,8 @@ abstract class Deliverables_Requirement extends Deliverables_Abstract
     /**
      * Level of requirement (0...)
      *
+     * For R1.3.7 it will return 2. For R4 it will return 0.
+     *
      * @return integer
      */
     public function getLevel() 
