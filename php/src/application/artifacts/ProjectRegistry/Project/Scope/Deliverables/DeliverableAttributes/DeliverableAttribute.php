@@ -40,9 +40,44 @@ class theDeliverableAttribute
      */
     public function __construct()
     {
-        $this->_value = new ArrayIterator();
+        $this->_values = new ArrayIterator();
     }
     
+    /**
+     * Get string
+     *
+     * @return string
+     */
+    public function __toString() 
+    {
+        return strval($this->value);
+    }
+    
+    /**
+     * Getter dispatcher
+     *
+     * @param string Name of property to get
+     * @return string|array
+     * @throws DeliverableAttribute_InvalidPropertyException
+     */
+    public function __get($name)
+    {
+        $method = '_get' . ucfirst($name);
+        if (method_exists($this, $method)) {
+            return $this->$method();
+        }
+            
+        $var = '_' . $name;
+        if (property_exists($this, $var)) {
+            return $this->$var;
+        }
+        
+        FaZend_Exception::raise(
+            'DeliverableAttribute_InvalidPropertyException', 
+            "Can't find what is '{$name}' in " . get_class($this)
+        );        
+    }
+
     /**
      * Add new value
      *
@@ -61,13 +96,54 @@ class theDeliverableAttribute
     }
     
     /**
+     * Latest value equals to...
+     *
+     * @param mixed Value to compare with
+     * @return boolean
+     */
+    public function equalsTo($val)
+    {
+        $value = $this->value;
+        if (!is_null($value)) {
+            $value = $value->value;
+        }
+        return $value == $val;
+    }
+    
+    /**
+     * Ever had this value?
+     *
+     * @param mixed Value to compare with
+     * @return boolean
+     */
+    public function wasEqualTo($val)
+    {
+        foreach ($this->_values as $value) {
+            if ($value->value == $val) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    /**
      * Is it true?
      *
      * @return boolean
      */
     public function isTrue()
     {
-        return (bool)$this->value->value;
+        return $this->equalsTo(true);
+    }
+    
+    /**
+     * Was it ever true?
+     *
+     * @return boolean
+     */
+    public function wasTrue()
+    {
+        return $this->wasEqualTo(true);
     }
     
     /**
@@ -80,7 +156,7 @@ class theDeliverableAttribute
         $latest = null;
         foreach ($this->_values as $value) {
             if (is_null($latest) || $value->date->isLater($latest->date)) {
-                $value = $latest;
+                $latest = $value;
             }
         }
         return $latest;

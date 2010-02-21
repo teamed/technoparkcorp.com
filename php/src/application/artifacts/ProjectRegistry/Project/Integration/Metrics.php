@@ -238,7 +238,14 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
 
             FaZend_Exception::raise(
                 'MetricLoadingFailure',
-                "Metric '{$name}' loading failed, ". get_class($e) . ": {$e->getMessage()}"
+                sprintf(
+                    "Metric '%s' loading failed, %s: '%s', %s:%d",
+                    $name,
+                    get_class($e),
+                    $e->getMessage(),
+                    $e->getFile(),
+                    $e->getLine()
+                )
             );
         }
         // logg("Metric [$name] reloaded: {$metric->value}");
