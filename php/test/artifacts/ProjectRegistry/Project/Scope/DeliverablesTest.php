@@ -1,14 +1,42 @@
 <?php
+/**
+ * @version $Id$
+ */
 
 require_once 'AbstractProjectTest.php';
 
 class DeliverablesTest extends AbstractProjectTest
 {
 
+    public function setUp()
+    {
+        parent::setUp();
+        $this->_deliverables = $this->_project->deliverables;
+        $this->_deliverables->reload();
+    }
+
     public function testReloadingOfDeliverablesWorks()
     {
-        $deliverables = $this->_project->deliverables;
-        $deliverables->reload();
+        $this->assertTrue(count($this->_deliverables) > 0, 'empty list of deliverables, why?');
+    }
+
+    public function testDeliverablesAreAccessedByShortcuts()
+    {
+        $shortcuts = array(
+            'design',
+            'requirements',
+            'glossary',
+            'classes',
+            'actors',
+            'functional'
+        );
+        
+        foreach ($shortcuts as $shortcut) {
+            $this->assertTrue(
+                count($this->_deliverables->{$shortcut}) > 0, 
+                "Empty shortcut: Deliverables->{$shortcut}, why?"
+            );
+        }
     }
 
 }

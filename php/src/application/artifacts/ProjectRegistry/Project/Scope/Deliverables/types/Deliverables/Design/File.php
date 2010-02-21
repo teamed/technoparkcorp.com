@@ -21,10 +21,10 @@
 require_once 'artifacts/ProjectRegistry/Project/Scope/Deliverables/types/Deliverables/Abstract.php';
 
 /**
- * One file
+ * One file with source code, e.g. ".php", ".java", etc.
  *
  * @package Artifacts
  */
-class Deliverables_File extends Deliverables_Abstract
+class Deliverables_Design_File extends Deliverables_Abstract
 {
 }

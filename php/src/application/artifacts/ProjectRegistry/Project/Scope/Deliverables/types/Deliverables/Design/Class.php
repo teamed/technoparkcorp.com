@@ -18,13 +18,13 @@
  *
  */
 
-require_once 'artifacts/ProjectRegistry/Project/Scope/Deliverables/types/Deliverables/Requirement.php';
+require_once 'artifacts/ProjectRegistry/Project/Scope/Deliverables/types/Deliverables/Abstract.php';
 
 /**
- * One functional requirement
+ * One class (PHP, Java, C++, etc)
  *
  * @package Artifacts
  */
-class Deliverables_Requirement_Functional extends Deliverables_Requirement
+class Deliverables_Design_Class extends Deliverables_Abstract
 {
 }

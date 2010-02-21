@@ -40,7 +40,7 @@ class Metric_Artifacts_Requirements_Glossary_Accepted extends Metric_Abstract
             
         $this->value = 0;
         foreach ($this->_project->deliverables->glossary as $item) {
-            if ($item->isAccepted()) {
+            if ($item->attributes['accepted']) {
                 $this->value++;
             }
         }

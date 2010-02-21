@@ -44,25 +44,26 @@ class DeliverablesLoaders_Issues extends DeliverablesLoaders_Abstract
         foreach ($project->issues as $issue) {
             // add it to the list of deliverables
             $issueName = '#' .  $issue->id;
-            $project->deliverables->add(
-                theDeliverables::factory(
-                    'issue', 
-                    $issueName, 
-                    $issue->changelog->get('summary')->getValue()
-                )
+            $deliverable = theDeliverables::factory(
+                'Defects_Issue', 
+                $issueName
             );
+            $deliverable->attributes->add('description', $issue->changelog->get('summary')->getValue());
+            $project->deliverables->add($deliverable);
             
             $changes = $issue->changelog->get('comment')->getChanges();
             
             // we're building a list of deliverables mentioned in this ticket
             $mentioned = array();
             foreach ($changes as $change) {
-                if (!preg_match_all(Deliverables_Abstract::REGEX, $change->value, $matches))
+                if (!preg_match_all(Deliverables_Abstract::REGEX, $change->value, $matches)) {
                     continue;
+                }
 
                 foreach ($matches[0] as $match) {
-                    if (isset($project->deliverables[$match]))
+                    if (isset($project->deliverables[$match])) {
                         $mentioned[$match] = true;
+                    }
                 }
             }
             $mentioned = array_keys($mentioned);

@@ -18,13 +18,13 @@
  *
  */
 
-require_once 'artifacts/ProjectRegistry/Project/Scope/Deliverables/types/Deliverables/Requirement.php';
+require_once 'artifacts/ProjectRegistry/Project/Scope/Deliverables/types/Deliverables/Abstract.php';
 
 /**
- * One quality-of-service requirement
+ * One package of source code (also known as "category")
  *
  * @package Artifacts
  */
-class Deliverables_Requirement_Qos extends Deliverables_Requirement
+class Deliverables_Design_Package extends Deliverables_Abstract
 {
 }

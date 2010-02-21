@@ -119,8 +119,9 @@ abstract class DeliverablesLoaders_Abstract
         $loaders = self::retrieveAll($deliverables);
         
         // mark them all as NOT-loaded yet
-        foreach ($loaders as $loader)
+        foreach ($loaders as $loader) {
             self::$_waiting[lcfirst(substr(get_class($loader), strlen('DeliverablesLoaders_')))] = $loader;
+        }
             
         while (count($load = array_filter(self::$_waiting)) > 0) {
             foreach ($load as $name=>&$loader) {
@@ -143,8 +144,10 @@ abstract class DeliverablesLoaders_Abstract
      **/
     protected function _loadFirst($name) 
     {
-        if (!self::$_waiting[$name])
+        if (!self::$_waiting[$name]) {
             return;
+        }
+        
         FaZend_Exception::raise(
             'RequiresLoaderLoading', 
             'DeliverablesLoaders_' . ucfirst($name)

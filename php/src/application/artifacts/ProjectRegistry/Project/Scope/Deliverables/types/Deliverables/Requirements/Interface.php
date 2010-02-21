@@ -21,10 +21,10 @@
 require_once 'artifacts/ProjectRegistry/Project/Scope/Deliverables/types/Deliverables/Abstract.php';
 
 /**
- * One object of interest (part of Glossary)
+ * One interface, like IfWeb or IfSoap
  *
  * @package Artifacts
  */
-class Deliverables_Object extends Deliverables_Abstract
+class Deliverables_Requirements_Interface extends Deliverables_Abstract
 {
 }

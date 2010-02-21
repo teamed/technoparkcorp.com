@@ -39,6 +39,29 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
 {
     
     /**
+     * Mapping between property name and list of classes to return
+     *
+     * @var string[]
+     */
+    protected static $_typeMapping = array(
+        'requirements' => array('functional', 'qos', 'interfaces', 'actors', 'glossary'),
+        'glossary'     => 'Requirements_Object',
+        'actors'       => 'Requirements_Actor',
+        'interfaces'   => 'Requirements_Interface',
+        'functional'   => 'Requirements_Requirement_Functional',
+        'qos'          => 'Requirements_Requirement_Qos',
+        'useCases'     => 'Requirements_UseCase',
+    
+        'design'       => array('packages', 'classes', 'methods', 'files'),
+        'classes'      => 'Design_Class',
+        'packages'     => 'Design_Package',
+        'files'        => 'Design_File',
+        'methods'      => 'Design_Method',
+    
+        'issues'       => 'Defects_Issue',
+    );
+    
+    /**
      * Initialize autoloader, to be called from bootstrap
      *
      * @return void
@@ -66,15 +89,20 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
         // remove all items from the array
         $this->ps()->cleanArray();
 
+        // reload everything, but all loaders
         DeliverablesLoaders_Abstract::reloadAll($this);
 
         // discover links, if possible
         foreach ($this as $deliverable) {
             $links = array();
             $deliverable->discoverTraceabilityLinks($this->ps()->parent, $links);
-            foreach ($links as $link)
+            foreach ($links as $link) {
                 $this->traceability->add($link);
+            }
         }
+        
+        // save what was found
+        $this->ps()->save();
     }
     
     /**
@@ -92,60 +120,21 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
      *
      * @param string Name of property to get
      * @return string|array
-     * @throws Deliverables_PropertyOrMethodNotFoundException
-     **/
+     * @throws Deliverables_InvalidShortcutException
+     */
     public function __get($name)
     {
         $method = '_get' . ucfirst($name);
-        if (method_exists($this, $method))
+        if (method_exists($this, $method)) {
             return $this->$method();
+        }
             
         $var = '_' . $name;
-        if (property_exists($this, $var))
+        if (property_exists($this, $var)) {
             return $this->$var;
-        
-        // deduct trailing 'S' and return by this type
-        switch ($name) {
-            case 'classes':
-                $types = substr($name, 0, -2);
-                break;
-
-            case 'glossary':
-                $types = 'object';
-                break;
-
-            case 'actors':
-            case 'interfaces':
-            case 'packages':
-            case 'files':
-            case 'methods':
-            case 'useCases':
-            case 'issues':
-            case 'testCases':
-                $types = substr($name, 0, -1);
-                break;
-
-            case 'functional':
-            case 'qos':
-                $types = $name;
-                break;
-                
-            case 'requirements':
-                $types = array('functional', 'qos', 'interfaces', 'actors', 'glossary');
-                break;
-            
-            case 'design':
-                $types = array('package', 'class', 'method', 'file');
-                break;
-
-            default:
-                FaZend_Exception::raise(
-                    'Deliverables_PropertyOrMethodNotFoundException', 
-                    "Can't find what is '$name' in " . get_class($this)
-                );        
         }
         
-        return $this->_getByTypes(self::_convertTypes($types));
+        return $this->_getByTypes($name);
     }
 
     /**
@@ -153,15 +142,12 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
      *
      * @param string Type of it, which will be added to "Deliverables_"
      * @param string Name of the deliverable, unique!
-     * @param string Text description of it
      * @return Deliverables_Abstract
      **/
-    public static function factory($type, $name, $description) 
+    public static function factory($type, $name) 
     {
-        $types = self::_convertTypes($type);
-        $type = array_shift($types);
         $className = 'Deliverables_' . ucfirst($type);
-        return new $className($name, $description);        
+        return new $className($name);        
     }
      
     /**
@@ -174,26 +160,27 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
     public function add(Deliverables_Abstract $deliverable) 
     {
         // check against double adding
-        if (isset($this[strval($deliverable)]))
+        if (isset($this[strval($deliverable)])) {
             FaZend_Exception::raise(
                 'DuplicateDeliverable',
                 "Deliverable {$deliverable} is already in the list"
             );
+        }
                 
         $this[strval($deliverable)] = $deliverable;
         logg("Deliverable attached: $deliverable ({$deliverable->type})");
     }
      
     /**
-     * Get entities by type
+     * Get entities by type, from $this
      *
      * @param string|array Type or list of types
      * @return ArrayIterator
-     **/
+     * @throws Deliverables_InvalidShortcutException
+     */
     protected function _getByTypes($types) 
     {
-        if (!is_array($types))
-            $types = array($types);
+        $types = self::_getNormalizedTypes($types);
         $list = new ArrayIterator();
         foreach ($this as $deliverable) {
             if (in_array($deliverable->type, $types)) {
@@ -204,38 +191,43 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
     }
     
     /**
-     * Convert from text to PHP name suffix
+     * Convert raw list of types to the the list of exact types
      *
-     * @param string|array Type or list of types
-     * @return array
-     **/
-    public static function _convertTypes($types) 
+     * @param string|array Type or list of types, or shortcuts
+     * @return string[]
+     * @throws Deliverables_InvalidShortcutException
+     */
+    protected static function _getNormalizedTypes($types) 
     {
-        if (!is_array($types))
-            $types = array($types);
-        foreach ($types as &$type) {
-            switch ($type) {
-                case 'functional':
-                case 'qos':
-                    $type = 'requirement_' . ucfirst($type);
-                    break;
-
-                case 'testCase':
-                    $type = 'class_' . ucfirst($type);
-                    break;
-                    
-                default:
-                    // ... nothing ...
+        if (!is_array($types)) {
+            if (array_key_exists($types, self::$_typeMapping)) {
+                $type = self::$_typeMapping[$types];
+                if (!is_array($type)) {
+                    return array($type);
+                }
+                return self::_getNormalizedTypes($type);
             }
+            FaZend_Exception::raise(
+                'Deliverables_InvalidShortcutException', 
+                "Shortcut '{$type}' is not found in Deliverables"
+            );        
         }
-        return $types;
+        
+        // resolve complex structure
+        $result = array();
+        foreach ($types as &$type) {
+            $result = array_merge($result, self::_getNormalizedTypes($type));
+        }
+        return $result;
     }
     
     /**
      * Get traceability object from the project
+     * 
+     * This is necessary for loaders, don't delete the method.
      *
      * @return theTraceability
-     **/
+     */
     protected function _getTraceability() 
     {
         return $this->ps()->parent->traceability;

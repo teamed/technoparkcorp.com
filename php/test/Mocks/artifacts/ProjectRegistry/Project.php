@@ -1,4 +1,7 @@
 <?php
+/**
+ * @version $Id$
+ */
 
 require_once 'artifacts/ProjectRegistry/Project.php';
 

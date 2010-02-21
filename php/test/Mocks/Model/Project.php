@@ -1,4 +1,7 @@
 <?php
+/**
+ * @version $Id$
+ */
 
 class Mocks_Model_Project extends Model_Project 
 {

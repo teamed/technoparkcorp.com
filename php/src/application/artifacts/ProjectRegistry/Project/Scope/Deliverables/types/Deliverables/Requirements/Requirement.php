@@ -25,29 +25,8 @@ require_once 'artifacts/ProjectRegistry/Project/Scope/Deliverables/types/Deliver
  *
  * @package Artifacts
  */
-abstract class Deliverables_Requirement extends Deliverables_Abstract
+abstract class Deliverables_Requirements_Requirement extends Deliverables_Abstract
 {
-        
-    /**
-     * This requirement is out of scope?
-     *
-     * @var boolean
-     */
-    protected $_outOfScope = false;
-        
-    /**
-     * Importance of this requirement
-     *
-     * @var integer
-     */
-    protected $_importance = 1;
-        
-    /**
-     * Complexity of this requirement
-     *
-     * @var integer
-     */
-    protected $_complexity = 1;
         
     /**
      * Level of requirement (0...)

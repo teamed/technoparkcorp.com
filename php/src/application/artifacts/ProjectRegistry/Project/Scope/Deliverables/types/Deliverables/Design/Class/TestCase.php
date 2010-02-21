@@ -21,10 +21,10 @@
 require_once 'artifacts/ProjectRegistry/Project/Scope/Deliverables/types/Deliverables/Abstract.php';
 
 /**
- * One interface
+ * One test case (class)
  *
  * @package Artifacts
  */
-class Deliverables_Interface extends Deliverables_Abstract
+class Deliverables_Design_Class_TestCase extends Deliverables_Abstract
 {
 }

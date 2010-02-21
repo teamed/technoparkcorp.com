@@ -18,13 +18,13 @@
  *
  */
 
-require_once 'artifacts/ProjectRegistry/Project/Scope/Deliverables/types/Deliverables/Abstract.php';
+require_once 'artifacts/ProjectRegistry/Project/Scope/Deliverables/types/Deliverables/Requirements/Requirement.php';
 
 /**
- * One actor
+ * One quality-of-service requirement
  *
  * @package Artifacts
  */
-class Deliverables_Actor extends Deliverables_Abstract
+class Deliverables_Requirements_Requirement_Qos extends Deliverables_Requirements_Requirement
 {
 }

@@ -41,7 +41,7 @@ class Metric_Artifacts_Design_Classes_Accepted extends Metric_Abstract
         // total amount of classes in the project
         $this->value = 0;
         foreach ($this->_project->deliverables->classes as $class) {
-            if ($class->isAccepted()) {
+            if ($class->attributes['accepted']) {
                 $this->value++;
             }
         }

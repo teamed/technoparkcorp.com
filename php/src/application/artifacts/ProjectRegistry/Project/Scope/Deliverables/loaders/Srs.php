@@ -38,11 +38,48 @@ class DeliverablesLoaders_Srs extends DeliverablesLoaders_Abstract
         logg('SRS loading started...');
         $entities = $this->_deliverables->ps()->parent->fzProject()
             ->getAsset(Model_Project::ASSET_SRS)->getEntities();
+
         foreach ($entities as $entity) {
-                
-            $deliverable = theDeliverables::factory($entity->type, $entity->name, $entity->description);
-            $entity->deriveDetails($deliverable);
+            $type = ucfirst($entity->type);
+            switch ($type) {
+                case 'Functional':
+                case 'Qos':
+                    $type = 'Requirements_Requirement_' . $type;
+                    break;
+                default:
+                    $type = 'Requirements_' . $type;
+                    break;
+            }
             
+            $deliverable = theDeliverables::factory(
+                $type,
+                $entity->name
+            );
+            $deliverable->attributes->add('description', $entity->description);
+
+            foreach (array_filter($entity->attributes) as $attrib=>$value) {
+                switch (true) {
+                    case $attrib == 'out':
+                        $deliverable->attributes->add('out', true);
+                        break;
+
+                    case $attrib == 'must':
+                        $deliverable->attributes->add('importance', 5);
+                        break;
+
+                    case preg_match('/^i(\d+)$/i', $attrib, $matches):
+                        $deliverable->attributes->add('importance', intval($matches[1]));
+                        break;
+
+                    case preg_match('/^c(\d+)$/i', $attrib, $matches):
+                    $deliverable->attributes->add('complexity', intval($matches[1]));
+                        break;
+
+                    default:
+                        // ignore it...
+                }
+            }
+
             $this->_deliverables->add($deliverable);
         }
         logg('SRS loading finished, %d deliverables found', count($entities));

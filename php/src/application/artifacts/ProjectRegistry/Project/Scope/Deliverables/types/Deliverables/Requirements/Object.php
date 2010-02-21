@@ -21,21 +21,10 @@
 require_once 'artifacts/ProjectRegistry/Project/Scope/Deliverables/types/Deliverables/Abstract.php';
 
 /**
- * One class
+ * One object of interest (part of Glossary)
  *
  * @package Artifacts
  */
-class Deliverables_Class extends Deliverables_Abstract
+class Deliverables_Requirements_Object extends Deliverables_Abstract
 {
-    
-    /**
-     * This class is accepted by the architect in its current design?
-     *
-     * @return boolean
-     */
-    public function isAccepted() 
-    {
-        return (bool)rand(0, 1);
-    }
-    
 }

@@ -44,9 +44,8 @@ class DeliverablesLoaders_Design extends DeliverablesLoaders_Abstract
         logg('Found %d components', count($components));
         foreach ($components as $component) {
             $deliverable = theDeliverables::factory(
-                $component->type, 
-                $component->name, 
-                $component->description
+                'Design_' . $component->type, 
+                $component->name
             );
             
             if (isset($project->deliverables[$deliverable->name])) {
@@ -54,11 +53,15 @@ class DeliverablesLoaders_Design extends DeliverablesLoaders_Abstract
                 continue;
             }
             
+            // add description
+            $deliverable->attributes->add('description', $component->description);
+            
             $project->deliverables->add($deliverable);
             
             foreach ($component->traces as $trace) {
-                if (!isset($project->deliverables[$trace]))
+                if (!isset($project->deliverables[$trace])) {
                     continue;
+                }
                 $project->traceability->add(
                     new theTraceabilityLink(
                         $deliverable,
