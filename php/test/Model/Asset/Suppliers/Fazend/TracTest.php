@@ -51,6 +51,9 @@ class Model_Asset_Suppliers_Fazend_TracTest extends AbstractTest
                 )
             );
             $incomplete = true;
+        } catch (Exception $e) {
+            FaZend_Log::err("Failed to get components: {$e->getMessage()}");
+            $incomplete = true;
         }
         Model_Asset_Defects_Fazend_Trac::setTicketsPerPage(3);
         Shared_XmlRpc::setXmlRpcClientClass('Mocks_Shared_XmlRpc');

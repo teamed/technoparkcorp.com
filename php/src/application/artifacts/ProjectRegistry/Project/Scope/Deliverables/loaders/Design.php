@@ -54,7 +54,7 @@ class DeliverablesLoaders_Design extends DeliverablesLoaders_Abstract
             }
             
             // add description
-            $deliverable->attributes->add('description', $component->description);
+            $deliverable->attributes['description']->add($component->description);
             
             $project->deliverables->add($deliverable);
             

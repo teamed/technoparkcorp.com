@@ -44,25 +44,6 @@ class theDeliverableAttributes implements ArrayAccess
     }
     
     /**
-     * Add new attribute
-     *
-     * @param string Name of the attribute
-     * @param mixed Value
-     * @param Zend_Date When this value was set?
-     * @param string Log, if necessary
-     * @return $this
-     */
-    public function add($name, $value, Zend_Date $date = null, $log = '') 
-    {
-        if (is_null($date)) {
-            $date = Zend_Date::now();
-        }
-        $attrib = new theDeliverableAttribute($value, $date, $log);
-        $this->_attribs[$name] = $attrib;
-        return $this;
-    }
-    
-    /**
      * Get one attribute, method for ArrayAccess interface
      *
      * @param string Name of the attribute
@@ -70,10 +51,10 @@ class theDeliverableAttributes implements ArrayAccess
      */
     public function offsetGet($name) 
     {
-        if (!isset($this[$name])) {
-            $this->add($name, false);
+        if (!isset($this->_attribs[$name])) {
+            $this->_attribs[$name] = new theDeliverableAttribute();
         }
-        return $this->_attribs->offsetGet($name);
+        return $this->_attribs[$name];
     }
     
     /**

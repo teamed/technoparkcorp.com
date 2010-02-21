@@ -57,6 +57,9 @@ class Model_Asset_Defects_Fazend_TracTest extends AbstractProjectTest
                 )
             );
             $incomplete = true;
+        } catch (Exception $e) {
+            FaZend_Log::err("Failed to get components: {$e->getMessage()}");
+            $incomplete = true;
         }
         
         Model_Asset_Defects_Fazend_Trac::setTicketsPerPage(3);

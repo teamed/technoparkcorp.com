@@ -48,7 +48,7 @@ class DeliverablesLoaders_Issues extends DeliverablesLoaders_Abstract
                 'Defects_Issue', 
                 $issueName
             );
-            $deliverable->attributes->add('description', $issue->changelog->get('summary')->getValue());
+            $deliverable->attributes['description']->add($issue->changelog->get('summary')->getValue());
             $project->deliverables->add($deliverable);
             
             $changes = $issue->changelog->get('comment')->getChanges();

@@ -51,28 +51,25 @@ class DeliverablesLoaders_Srs extends DeliverablesLoaders_Abstract
                     break;
             }
             
-            $deliverable = theDeliverables::factory(
-                $type,
-                $entity->name
-            );
-            $deliverable->attributes->add('description', $entity->description);
+            $deliverable = theDeliverables::factory($type, $entity->name);
+            $deliverable->attributes['description']->add($entity->description);
 
             foreach (array_filter($entity->attributes) as $attrib=>$value) {
                 switch (true) {
                     case $attrib == 'out':
-                        $deliverable->attributes->add('out', true);
+                        $deliverable->attributes['out']->add(true);
                         break;
 
                     case $attrib == 'must':
-                        $deliverable->attributes->add('importance', 5);
+                        $deliverable->attributes['importance']->add(5);
                         break;
 
                     case preg_match('/^i(\d+)$/i', $attrib, $matches):
-                        $deliverable->attributes->add('importance', intval($matches[1]));
+                        $deliverable->attributes['importance']->add(intval($matches[1]));
                         break;
 
                     case preg_match('/^c(\d+)$/i', $attrib, $matches):
-                    $deliverable->attributes->add('complexity', intval($matches[1]));
+                    $deliverable->attributes['complexity']->add(intval($matches[1]));
                         break;
 
                     default:

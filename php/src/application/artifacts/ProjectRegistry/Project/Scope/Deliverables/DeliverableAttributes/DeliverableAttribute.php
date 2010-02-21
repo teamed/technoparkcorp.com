@@ -27,49 +27,37 @@ class theDeliverableAttribute
 {
     
     /**
-     * Value
+     * List of values
      *
-     * @var mixed
+     * @var theDeliverableAttributeValue[]
      */
-    protected $_value;
-    
-    /**
-     * When this attribute was set
-     *
-     * @var Zend_Date
-     */
-    protected $_date;
-    
-    /**
-     * Log about this attribute, if any
-     *
-     * @var string
-     */
-    protected $_log;
+    protected $_values;
     
     /**
      * Construct the class
      *
-     * @param mixed Value
-     * @param Zend_Date When this value was set?
-     * @param string Log, if necessary
      * @return void
      */
-    public function __construct($value, Zend_Date $date, $log)
+    public function __construct()
     {
-        $this->_value = $value;
-        $this->_date = $date;
-        $this->_log = $log;
+        $this->_value = new ArrayIterator();
     }
     
     /**
-     * Get value
+     * Add new value
      *
-     * @return string
+     * @param mixed Value
+     * @param Zend_Date When this value was set?
+     * @param string Log, if necessary
+     * @return $this
      */
-    public function __toString() 
+    public function add($value, Zend_Date $date = null, $log = '') 
     {
-        return strval($this->_value);
+        if (is_null($date)) {
+            $date = Zend_Date::now();
+        }
+        $this->_values[] = new theDeliverableAttributeValue($value, $date, $log);
+        return $this;
     }
     
     /**
@@ -77,9 +65,75 @@ class theDeliverableAttribute
      *
      * @return boolean
      */
-    public function isTrue() 
+    public function isTrue()
     {
-        return (bool)$this->_value;
+        return (bool)$this->value->value;
     }
+    
+    /**
+     * Get latest value
+     *
+     * @return theDeliverableAttributeValue
+     */
+    protected function _getValue() 
+    {
+        $latest = null;
+        foreach ($this->_values as $value) {
+            if (is_null($latest) || $value->date->isLater($latest->date)) {
+                $value = $latest;
+            }
+        }
+        return $latest;
+    }
+    
+    // /**
+    //  * Method from Iterator interface
+    //  *
+    //  * @return void
+    //  */
+    // public function rewind() 
+    // {
+    //     $this->_values->rewind();
+    // }
+    // 
+    // /**
+    //  * Method from Iterator interface
+    //  *
+    //  * @return void
+    //  */
+    // public function key() 
+    // {
+    //     return $this->_values->key();
+    // }
+    // 
+    // /**
+    //  * Method from Iterator interface
+    //  *
+    //  * @return void
+    //  */
+    // public function current() 
+    // {
+    //     return $this->_values->current();
+    // }
+    // 
+    // /**
+    //  * Method from Iterator interface
+    //  *
+    //  * @return void
+    //  */
+    // public function next() 
+    // {
+    //     $this->_values->next();
+    // }
+    // 
+    // /**
+    //  * Method from Iterator interface
+    //  *
+    //  * @return void
+    //  */
+    // public function valid() 
+    // {
+    //     return $this->_values->valid();
+    // }
     
 }
