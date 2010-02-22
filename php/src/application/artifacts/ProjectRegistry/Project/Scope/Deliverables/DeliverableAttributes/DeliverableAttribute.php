@@ -83,15 +83,16 @@ class theDeliverableAttribute
      *
      * @param mixed Value
      * @param Zend_Date When this value was set?
+     * @param string Email of author of change
      * @param string Log, if necessary
      * @return $this
      */
-    public function add($value, Zend_Date $date = null, $log = '') 
+    public function add($value, Zend_Date $date = null, $author = null, $log = '') 
     {
         if (is_null($date)) {
             $date = Zend_Date::now();
         }
-        $this->_values[] = new theDeliverableAttributeValue($value, $date, $log);
+        $this->_values[] = new theDeliverableAttributeValue($value, $date, $author, $log);
         return $this;
     }
     

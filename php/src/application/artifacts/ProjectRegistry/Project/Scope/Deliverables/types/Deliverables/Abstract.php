@@ -26,7 +26,7 @@
 abstract class Deliverables_Abstract
 {
     
-    const REGEX = '/(?:[A-Z][a-z]+){2,}|(?:UC|R|QOS)\d+(?:\.\d+)*/';
+    const REGEX = '/System[\.\w]+|(?:[A-Z][a-z]+){2,}|(?:UC|R|QOS)\d+(?:\.\d+)*/';
     
     /**
      * Name of this deliverable

@@ -50,6 +50,12 @@ class Injector extends FaZend_Test_Injector
         // just to try the translation
         Zend_Registry::get('Zend_Translate')->setLocale(new Zend_Locale('ru'));
     }
+    
+    protected function _injectWeakValidation()
+    {
+        require_once 'artifacts/ProjectRegistry/Project/Scope/Deliverables/loaders/Issues.php';
+        DeliverablesLoaders_Issues::setStrictValidation(false);
+    }
 
     protected function _injectSearchProxy() 
     {

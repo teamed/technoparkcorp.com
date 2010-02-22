@@ -93,7 +93,7 @@ class Metric_Artifacts_Requirements_Functional_Total extends Metric_Abstract
             $this->value = 0;
             foreach ($this->_project->deliverables->functional as $requirement) {
                 if ($this->getLevelCode($level) == $requirement->getLevel()) {
-                    $this->value++;
+                    $this->value += 1;
                 }
             }
             return;

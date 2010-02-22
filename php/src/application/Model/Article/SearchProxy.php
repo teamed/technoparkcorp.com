@@ -25,6 +25,13 @@
  */
 class Model_Article_SearchProxy
 {
+    
+    /**
+     * Shall we use Lucene at all?
+     *
+     * @var boolean
+     */
+    protected $_enabled = false;
 
     /**
      * Lucene search instance
@@ -47,7 +54,9 @@ class Model_Article_SearchProxy
      */
     public function clean() 
     {
-        $this->lucene(true);
+        if ($this->_enabled) {
+            $this->lucene(true);
+        }
     }
 
     /**
@@ -57,7 +66,11 @@ class Model_Article_SearchProxy
      */
     public function numDocs() 
     {
-        return $this->lucene()->numDocs();
+        if ($this->_enabled) {
+            return $this->_lucene()->numDocs();
+        } else {
+            return 0;
+        }
     }
 
     /**
@@ -68,6 +81,9 @@ class Model_Article_SearchProxy
      */
     public function addArticle(Model_Article $article) 
     {
+        if (!$this->_enabled) {
+            return;
+        }
         $doc = new Zend_Search_Lucene_Document();
         $doc->addField(Zend_Search_Lucene_Field::Text('page', $article->page));
         foreach (array('label', 'title', 'description', 'keywords', 'text') as $field) {
@@ -75,8 +91,8 @@ class Model_Article_SearchProxy
         }
         
         // disable for now
-        // $this->lucene()->addDocument($doc);
-        // $this->lucene()->commit();
+        // $this->_lucene()->addDocument($doc);
+        // $this->_lucene()->commit();
     }
     
     /**
@@ -87,9 +103,11 @@ class Model_Article_SearchProxy
     public function findArticles($mask) 
     {
         $articles = array();
-        foreach ($this->lucene()->find($mask) as $hit) {
-            $doc = $hit->getDocument();
-            $article = Model_Article::createByLabel($doc->page);
+        if ($this->_enabled) {
+            foreach ($this->_lucene()->find($mask) as $hit) {
+                $doc = $hit->getDocument();
+                $article = Model_Article::createByLabel($doc->page);
+            }
         }
         return $articles;
     }
@@ -151,7 +169,7 @@ class Model_Article_SearchProxy
      * @param boolean Shall we kill the existing index and start over?
      * @return Zend_Search_Lucene_Proxy
      */
-    public function lucene($refresh = false) 
+    protected function _lucene($refresh = false) 
     {
         if (!isset($this->_lucene) || $refresh) {        
             $path = $this->getLucenePath();
