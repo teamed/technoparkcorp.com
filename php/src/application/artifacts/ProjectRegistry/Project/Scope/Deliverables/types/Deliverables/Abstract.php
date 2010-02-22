@@ -132,4 +132,14 @@ abstract class Deliverables_Abstract
         return preg_replace('/^Deliverables_/', '', get_class($this));
     }
     
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    protected function _getDescription() 
+    {
+        return $this->attributes['description']->value;
+    }
+    
 }
