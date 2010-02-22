@@ -45,9 +45,12 @@ class Mocks_Shared_XmlRpc
             case $query == Model_Asset_Suppliers_Fazend_Trac::QUERY_ALL:
                 $list = array();
                 for ($i = 0; $i<5; $i++) {
-                    $list[] = Mocks_Shared_Trac_Ticket::get(false, array(
-                        'supplier' => "test{$i}@example.com",
-                    ));
+                    $list[] = Mocks_Shared_Trac_Ticket::get(
+                        false, 
+                        array(
+                            'supplier' => "test{$i}@example.com",
+                        )
+                    );
                 }
                 break;
                     
@@ -80,6 +83,9 @@ class Mocks_Shared_XmlRpc
                 $matches
             ):
                 $list = array();
+                foreach (glob(dirname(__FILE__) . '/Trac/Ticket/*.php') as $file) {
+                    $list[] = Mocks_Shared_Trac_Ticket::get(false, array(), pathinfo($file, PATHINFO_FILENAME));
+                }
                 if ($matches[2] < 3) {
                     for ($i = 0; $i<$matches[1]; $i++) {
                         $list[] = Mocks_Shared_Trac_Ticket::get(false, array());

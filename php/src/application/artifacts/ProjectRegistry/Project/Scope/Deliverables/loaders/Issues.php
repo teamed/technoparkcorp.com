@@ -30,6 +30,24 @@ class DeliverablesLoaders_Issues extends DeliverablesLoaders_Abstract
 {
     
     /**
+     * Validate strongly against hash?
+     *
+     * @var boolean
+     */
+    protected static $_strictValidation = true;
+    
+    /**
+     * Shall we strongly validate hash?
+     *
+     * @param boolean
+     * @return void
+     */
+    public static function setStrictValidation($strictValidation) 
+    {
+        self::$_strictValidation = $strictValidation;
+    }
+    
+    /**
      * Load all tickets and understand them
      *
      * @return void
@@ -43,45 +61,172 @@ class DeliverablesLoaders_Issues extends DeliverablesLoaders_Abstract
             
         foreach ($project->issues as $issue) {
             // add it to the list of deliverables
-            $issueName = '#' .  $issue->id;
-            $deliverable = theDeliverables::factory(
-                'Defects_Issue', 
-                $issueName
-            );
-            $deliverable->attributes['description']->add($issue->changelog->get('summary')->getValue());
+            $deliverable = theDeliverables::factory('Defects_Issue', '#' .  $issue->id);
+            
+            // add description to the deliverable
+            $deliverable->attributes['description']
+                ->add($issue->changelog->get('summary')->getValue());
+            
+            // add deliverable to the project's collection    
             $project->deliverables->add($deliverable);
-            
-            $changes = $issue->changelog->get('comment')->getChanges();
-            
-            // we're building a list of deliverables mentioned in this ticket
-            $mentioned = array();
-            foreach ($changes as $change) {
-                if (!preg_match_all(Deliverables_Abstract::REGEX, $change->value, $matches)) {
-                    continue;
-                }
 
-                foreach ($matches[0] as $match) {
-                    if (isset($project->deliverables[$match])) {
-                        $mentioned[$match] = true;
+            // find deliverables attributes
+            $this->_findAttributes($project, $issue, $deliverable);
+            
+            // find all links from this issue to others
+            $this->_findTraceabilityLinks($project, $issue, $deliverable);
+        }
+        logg(
+            'Issues loading finished, %d tickets processed',
+            count($project->issues)
+        );
+    }
+    
+    /**
+     * Find attributes
+     *
+     * @param theProject Project to work with
+     * @param Model_Asset_Defects_Issue_Abstract Issue just found
+     * @param Deliverables_Abstract Deliverable (issue) just created
+     * @return void
+     */
+    protected function _findAttributes(
+        theProject $project, 
+        Model_Asset_Defects_Issue_Abstract $issue,
+        Deliverables_Abstract $deliverable)
+    {
+        // associative array, where keys are TAG-REGEXs used in tickets
+        // and values are arrays of arrays. every array in that lists
+        // includes three elements: 
+        //   - "deliverable" - name of deliverable, like "R5.4"
+        //   - "attribute" - attribute to set, like "accepted"
+        //   - .. maybe something else later
+        // we extend this array while going through changes, and 
+        // deduct elements from this array when we find comments
+        // with expected regexps.
+        $tags = array();
+        
+        $changes = $issue->changelog->get('comment')->getChanges();
+        foreach ($changes as $change) {
+            $text = $change->value;
+            
+            // maybe some approval appeared?
+            foreach ($tags as $regex=>$toApprove) {
+                if (preg_match("/{$regex}/", $text)) {
+                    foreach ($toApprove as $tag) {
+                        $project->deliverables[$tag['deliverable']]->attributes[$tag['attribute']]->add(
+                            $deliverable->name,
+                            $change->date,
+                            $change->author,
+                            sprintf(
+                                "'%s' attribute set",
+                                $tag['attribute']
+                            )
+                        );
                     }
                 }
             }
-            $mentioned = array_keys($mentioned);
-
-            // make bi-directional links between them
-            foreach ($mentioned as $name) {
-                $project->traceability->add(
-                    new theTraceabilityLink(
-                        $project->deliverables[$issueName],
-                        $project->deliverables[$name],
-                        0.05,
-                        1,
-                        "mentioned in {$issueName}: " . $issue->changelog->get('summary')->getValue()
+            
+            // is there any PRE-text?
+            $matches = array();
+            if (!preg_match('/\{{3}(.*)\}{3}/s', $text, $matches)) {
+                continue;
+            }
+            $tagRegex = $this->_getHashRegex($text);
+            if (!preg_match("/```(\\w+):{$tagRegex}'''/", $text)) {
+                continue;
+            }
+            
+            $request = $matches[1];
+            
+            // the request has valid information inside?
+            $deliverableRegex = substr(Deliverables_Abstract::REGEX, 1, -1);
+            if (!preg_match_all(
+                "/({$deliverableRegex}) is (\\w+), in rev\\.\\d+:\\n(.*?)\\n\\s*\\n/s", 
+                $request . "\n\n", 
+                $matches
+            )) {
+                continue;
+            }
+            // we store everything which is WAITING for approval now
+            $tags[$tagRegex] = array();
+            
+            // requests was sent for sure
+            foreach ($matches[1] as $id=>$name) {
+                $project->deliverables[$name]->attributes[$matches[2][$id] . '-request']->add(
+                    $deliverable->name,
+                    $change->date,
+                    $change->author,
+                    sprintf(
+                        "'%s' attribute requested, together with: %s",
+                        $matches[2][$id],
+                        implode(', ', $matches[1])
                     )
+                );
+                $tags[$tagRegex][] = array(
+                    'deliverable' => $name,
+                    'attribute' => $matches[2][$id],
                 );
             }
         }
-        logg('Issues loading finished, %d tickets processed', count($project->issues));
     }
+    
+    /**
+     * Calculate cash from the given text
+     *
+     * @param strin Text
+     * @return string
+     */
+    protected function _getHashRegex($text) 
+    {
+        if (self::$_strictValidation) {
+            return substr(md5($text), 0, 6); // first 6 symbols 
+        } else {
+            return '\d+';
+        }
+    }
+    
+    /**
+     * Find traceability links in the issue and add them to deliverable
+     *
+     * @param theProject Project to work with
+     * @param Model_Asset_Defects_Issue_Abstract Issue just found
+     * @param Deliverables_Abstract Deliverable (issue) just created
+     * @return void
+     */
+    protected function _findTraceabilityLinks(
+        theProject $project, 
+        Model_Asset_Defects_Issue_Abstract $issue, 
+        Deliverables_Abstract $deliverable)
+    {
+        // we're building a list of deliverables mentioned in this ticket
+        $mentioned = array();
+        $changes = $issue->changelog->get('comment')->getChanges();
+        foreach ($changes as $change) {
+            $matches = array();
+            if (!preg_match_all(Deliverables_Abstract::REGEX, $change->value, $matches)) {
+                continue;
+            }
+            foreach ($matches[0] as $match) {
+                if (isset($project->deliverables[$match])) {
+                    $mentioned[$match] = true;
+                }
+            }
+        }
+        $mentioned = array_keys($mentioned);
+
+        // make bi-directional links between them
+        foreach ($mentioned as $name) {
+            $project->traceability->add(
+                new theTraceabilityLink(
+                    $deliverable,
+                    $project->deliverables[$name],
+                    0.05,
+                    1,
+                    "mentioned in {$deliverable->name}: " . $issue->changelog->get('summary')->getValue()
+                )
+            );
+        }
+    } 
     
 }

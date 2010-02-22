@@ -41,6 +41,13 @@ class theDeliverableAttributeValue
     protected $_date;
     
     /**
+     * Who changed, email?
+     *
+     * @var string
+     */
+    protected $_author;
+    
+    /**
      * Log about this attribute, if any
      *
      * @var string
@@ -52,13 +59,15 @@ class theDeliverableAttributeValue
      *
      * @param mixed Value
      * @param Zend_Date When this value was set?
+     * @param string Email of author of changes
      * @param string Log, if necessary
      * @return void
      */
-    public function __construct($value, Zend_Date $date, $log)
+    public function __construct($value, Zend_Date $date, $author, $log)
     {
         $this->_value = $value;
         $this->_date = $date;
+        $this->_author = $author;
         $this->_log = $log;
     }
     

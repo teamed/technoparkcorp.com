@@ -11,6 +11,8 @@ class Mocks_Shared_Trac_Ticket extends Shared_Trac_Ticket
 
     protected static $_attributes = array();
     
+    protected static $_classNames = array();
+    
     protected static $_lastDates = array();
 
     /**
@@ -22,20 +24,29 @@ class Mocks_Shared_Trac_Ticket extends Shared_Trac_Ticket
     /**
      * @see Model_Asset_Defects_Issue_Trac
      */
-    public static function get($id, array $attributes = array()) 
+    public static function get($id, array $attributes = array(), $className = null) 
     {
         if ($id === false) {
-            if (count(self::$_attributes) > 0)
+            if (is_null($className)) {
+                $className = __CLASS__;
+            } else {
+                $className = __CLASS__ . '_' . $className;
+            }
+            if (count(self::$_attributes) > 0) {
                 $id = max(array_keys(self::$_attributes)) + 1;
-            else
+            } else {
                 $id = 1;
+            }
             self::$_attributes[$id] = $attributes;
+            self::$_classNames[$id] = $className;
         } else {
-            if (!isset(self::$_attributes[$id]))
+            if (!isset(self::$_attributes[$id])) {
                 self::$_attributes[$id] = $attributes;
+            }
         }
         
-        return new self(Mocks_Shared_Trac::get(), $id);
+        $className = self::$_classNames[$id];
+        return new $className(Mocks_Shared_Trac::get(), $id);
     }
     
     /**
@@ -99,8 +110,9 @@ class Mocks_Shared_Trac_Ticket extends Shared_Trac_Ticket
     
     protected function _getLastDate()
     {
-        if (!isset(self::$_lastDates[$this->getId()]))
+        if (!isset(self::$_lastDates[$this->getId()])) {
             self::$_lastDates[$this->getId()] = Zend_Date::now()->subDay(rand(10, 100));
+        }
         return self::$_lastDates[$this->getId()];
     }
 
