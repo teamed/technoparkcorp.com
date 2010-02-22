@@ -44,7 +44,7 @@ class DeliverablesLoaders_Design extends DeliverablesLoaders_Abstract
         logg('Found %d components', count($components));
         foreach ($components as $component) {
             $deliverable = theDeliverables::factory(
-                'Design_' . $component->type, 
+                'Design_' . ucfirst($component->type), 
                 $component->name
             );
             
