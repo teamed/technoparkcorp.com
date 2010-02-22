@@ -32,7 +32,7 @@ class Mocks_Shared_Trac_Ticket_RequirementsAttributesTicket extends Mocks_Shared
                     }}}
                     
                     If you agree with that revisions, please reply in this 
-                    ticket with a short message saying ```accept:887\'\'\'.
+                    ticket with a short message saying ```agree:887\'\'\'.
                     ',
                 ),
                 array(
@@ -50,7 +50,7 @@ class Mocks_Shared_Trac_Ticket_RequirementsAttributesTicket extends Mocks_Shared
                 ),
                 array(
                     'comment', 
-                    'I think that I can accept it. Here is the token: accept:887',
+                    'I think that I can accept it. Here is the token: agree:887',
                     'john@example.com'
                 ),
                 array(
@@ -59,7 +59,7 @@ class Mocks_Shared_Trac_Ticket_RequirementsAttributesTicket extends Mocks_Shared
                 ),
                 array(
                     'comment',
-                    'I think that I can accept it. Here is the token: accept:887',
+                    'I think that I can accept it. Here is the token: agree:887',
                     'willy@example.com'
                 ),
             )

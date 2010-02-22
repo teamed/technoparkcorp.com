@@ -112,8 +112,8 @@ class DeliverablesLoaders_Issues extends DeliverablesLoaders_Abstract
             
             // maybe some approval appeared?
             foreach ($tags as $regex=>$toApprove) {
-                if (preg_match("/{$regex}/", $text)) {
-                    foreach ($toApprove as $tag) {
+                foreach ($toApprove as $tag) {
+                    if (preg_match("/agree:{$regex}/", $text)) {
                         $project->deliverables[$tag['deliverable']]->attributes[$tag['attribute']]->add(
                             $deliverable->name,
                             $change->date,
