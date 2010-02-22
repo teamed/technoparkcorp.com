@@ -12,7 +12,7 @@
  * 568 Ninth Street South 202, Naples, Florida 34102, USA
  * tel. +1 (239) 935 5429
  *
- * @author Yegor Bugaenko <egor@technoparkcorp.com>
+ * @author Yegor Bugayenko <egor@tpc2.com>
  * @copyright Copyright (c) TechnoPark Corp., 2001-2009
  * @version $Id: Vision.php 661 2010-02-11 13:07:10Z yegor256@yahoo.com $
  *
