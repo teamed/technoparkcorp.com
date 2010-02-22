@@ -44,6 +44,20 @@ class theDeliverableAttributes implements ArrayAccess
     }
     
     /**
+     * Convert them all to string
+     *
+     * @return string
+     */
+    public function __toString() 
+    {
+        $attribs = array();
+        foreach ($this->_attribs as $name=>$attrib) {
+            $attribs[] = sprintf("%s='%s'", $name, $attrib->value);
+        }
+        return implode('; ', $attribs);
+    }
+    
+    /**
      * Get one attribute, method for ArrayAccess interface
      *
      * @param string Name of the attribute
