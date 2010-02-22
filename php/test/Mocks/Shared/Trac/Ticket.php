@@ -27,24 +27,28 @@ class Mocks_Shared_Trac_Ticket extends Shared_Trac_Ticket
     public static function get($id, array $attributes = array(), $className = null) 
     {
         if ($id === false) {
-            if (is_null($className)) {
-                $className = __CLASS__;
-            } else {
-                $className = __CLASS__ . '_' . $className;
-            }
             if (count(self::$_attributes) > 0) {
                 $id = max(array_keys(self::$_attributes)) + 1;
             } else {
                 $id = 1;
             }
             self::$_attributes[$id] = $attributes;
-            self::$_classNames[$id] = $className;
         } else {
             if (!isset(self::$_attributes[$id])) {
                 self::$_attributes[$id] = $attributes;
             }
         }
         
+        if (is_null($className)) {
+            if (isset(self::$_classNames[$id])) {
+                $className = self::$_classNames[$id];
+            } else {
+                self::$_classNames[$id] = $className = __CLASS__;
+            }
+        } else {
+            self::$_classNames[$id] = $className = __CLASS__ . '_' . $className;
+        }
+
         $className = self::$_classNames[$id];
         return new $className(Mocks_Shared_Trac::get(), $id);
     }
