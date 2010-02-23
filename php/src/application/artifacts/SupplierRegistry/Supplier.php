@@ -104,7 +104,7 @@ class theSupplier
         }
             
         $var = '_' . $name;
-        if (property_exists($this, $var)) }
+        if (property_exists($this, $var)) {
             return $this->$var;
         }
         
