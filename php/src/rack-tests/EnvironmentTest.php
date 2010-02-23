@@ -15,7 +15,7 @@ class EnvironmentTest extends PhpRack_Test
             ->isLoaded('simplexml')
             ->isLoaded('xsl');
 
-        $this->assert->php->extensions->finfo->isAlive();
+        $this->assert->php->extensions->fileinfo->isAlive();
     }
 
 }
