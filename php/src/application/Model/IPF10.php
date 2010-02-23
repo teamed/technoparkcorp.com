@@ -83,7 +83,7 @@ class Model_IPF10
             self::WSDL_URI, 
             array(
                 'trace' => true,
-                'cache_wsdl' => false,
+                'cache_wsdl' => true,
             )
         );
 
@@ -99,7 +99,6 @@ class Model_IPF10
 
         // return and save
         return $this->_soapClient;
-
     }
 
     /**
