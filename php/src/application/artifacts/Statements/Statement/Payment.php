@@ -47,7 +47,7 @@ class thePayment extends FaZend_Db_Table_ActiveRow_payment
     ) 
     {
         validate()
-            ->emailAddress($supplier, array(), "Invalid format of supplier's email: '{$email}'");
+            ->emailAddress($supplier, array(), "Invalid format of supplier's email: '{$supplier}'");
 
         $payment = new thePayment();
         $payment->supplier = strval($supplier);
