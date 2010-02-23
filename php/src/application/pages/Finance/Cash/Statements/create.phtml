@@ -22,7 +22,7 @@
         ->fieldLabel('Original amount', true)
         ->fieldAttrib('maxlength', 10)
         ->fieldAttrib('size', 10)
-        ->fieldConverter('FaZend_Bo_Money')
+        ->fieldConverter('new FaZend_Bo_Money(${a1})')
         
     ->addField('textarea', 'details')
         ->fieldLabel('Details of payment', true)
@@ -36,13 +36,13 @@
         ->fieldLabel('Reason of payment')
 
     ->addField('text', 'supplier')
-        ->fieldLabel('Supplier\'s email', true)
+        ->fieldLabel('Beneficiary\'s email', true)
         ->fieldAttrib('size', 25)
 
     ->addField('text', 'rate')
         ->fieldLabel('Rate per hour')
         ->fieldAttrib('size', 15)
-        ->fieldConverter('FaZend_Bo_Money')
+        ->fieldConverter('new FaZend_Bo_Money(${a1})')
 
     ->addField('submit')
         ->fieldAttrib('class', 'btn')

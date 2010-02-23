@@ -78,6 +78,16 @@ class theSupplier
     {
         $this->setEmail($email);
     }
+    
+    /**
+     * Convert to string
+     *
+     * @return string
+     */
+    public function __toString() 
+    {
+        return $this->email;
+    }
 
     /**
      * Getter dispatcher
@@ -89,12 +99,14 @@ class theSupplier
     public function __get($name) 
     {
         $method = '_get' . ucfirst($name);
-        if (method_exists($this, $method))
+        if (method_exists($this, $method)) {
             return $this->$method();
+        }
             
         $var = '_' . $name;
-        if (property_exists($this, $var))
+        if (property_exists($this, $var)) }
             return $this->$var;
+        }
         
         FaZend_Exception::raise(
             'Supplier_PropertyOrMethodNotFound', 
@@ -159,8 +171,9 @@ class theSupplier
      **/
     public function addSkill($skill) 
     {
-        if (!$this->hasSkill($skill))
+        if (!$this->hasSkill($skill)) {
             $this->_skills[] = $skill;
+        }
         return $this;
     }
 
@@ -172,8 +185,9 @@ class theSupplier
      **/
     public function addRole($role) 
     {
-        if (!$this->hasRole($role))
+        if (!$this->hasRole($role)) {
             $this->_roles[] = $role;
+        }
         return $this;
     }
     

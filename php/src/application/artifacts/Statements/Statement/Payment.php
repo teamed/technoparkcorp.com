@@ -47,10 +47,10 @@ class thePayment extends FaZend_Db_Table_ActiveRow_payment
     ) 
     {
         validate()
-            ->emailAddress($supplier, array());
-        
+            ->emailAddress($supplier, array(), "Invalid format of supplier's email: '{$email}'");
+
         $payment = new thePayment();
-        $payment->supplier = $supplier;
+        $payment->supplier = strval($supplier);
         $payment->context = $context;
         $payment->reason = $reason;
         $payment->details = $details;
@@ -71,7 +71,7 @@ class thePayment extends FaZend_Db_Table_ActiveRow_payment
     public static function retrieveByStatement(theStatement $statement) 
     {
         return self::retrieve()
-            ->where('supplier = ?', $statement->supplier)
+            ->where('supplier = ?', strval($statement->supplier))
             ->order('created')
             ->setRowClass('thePayment')
             ->fetchAll();
@@ -143,7 +143,7 @@ class thePayment extends FaZend_Db_Table_ActiveRow_payment
     {
         return self::retrieve()
             ->columns(array('volume'=>new Zend_Db_Expr('SUM(IF(amount>0,amount,0))')))
-            ->where('supplier = ?', $statement->supplier)
+            ->where('supplier = ?', strval($statement->supplier))
             ->setRowClass('thePayment')
             ->fetchRow()
             ->setIgnoreNull()
@@ -160,7 +160,7 @@ class thePayment extends FaZend_Db_Table_ActiveRow_payment
     {
         return self::retrieve()
             ->columns(array('balance'=>new Zend_Db_Expr('SUM(amount)')))
-            ->where('supplier = ?', $statement->supplier)
+            ->where('supplier = ?', strval($statement->supplier))
             ->setRowClass('thePayment')
             ->fetchRow()
             ->setIgnoreNull()
@@ -196,12 +196,14 @@ class thePayment extends FaZend_Db_Table_ActiveRow_payment
     public function __get($name) 
     {
         $method = '_get' . ucfirst($name);
-        if (method_exists($this, $method))
+        if (method_exists($this, $method)) {
             return $this->$method();
+        }
             
         $var = '_' . $name;
-        if (property_exists($this, $var))
+        if (property_exists($this, $var)) {
             return $this->$var;
+        }
         
         return parent::__get($name);
     }
