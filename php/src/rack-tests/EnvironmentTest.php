@@ -11,7 +11,7 @@ class EnvironmentTest extends PhpRack_Test
     {
         $this->assert->php->version->atLeast('5.2');
         $this->assert->php->extensions
-            ->isLoaded('finfo')
+            ->isLoaded('fileinfo')
             ->isLoaded('simplexml')
             ->isLoaded('xsl');
 
