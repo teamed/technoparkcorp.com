@@ -70,6 +70,17 @@ class theTraceabilityLink
     protected $_explanation;
     
     /**
+     * Get tag for the deliverable
+     *
+     * @param Deliverables_Abstract Deliverable
+     * @return string
+     */
+    public static function getDeliverableTag(Deliverables_Abstract $deliverable) 
+    {
+        return $deliverable->type . self::SEPARATOR . $deliverable->name;
+    }
+    
+    /**
      * Create an object
      *
      * @param Deliverables_Abstract Traceability FROM this deliverable
@@ -88,8 +99,8 @@ class theTraceabilityLink
         )
     {
         // initialize the class
-        $this->_from = $from->type . self::SEPARATOR . $from->name; 
-        $this->_to = $to->type . self::SEPARATOR . $to->name; 
+        $this->_from = self::getDeliverableTag($from); 
+        $this->_to = self::getDeliverableTag($to); 
 
         validate()->false(
             $this->_from == $this->_to,

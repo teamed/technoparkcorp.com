@@ -154,14 +154,23 @@ class theTraceability extends Model_Artifact_Bag
         $this->_normalize($from);
         $this->_normalize($to);
         
+        $fromTags = array();
+        foreach ($from as $deliverable) {
+            $fromTags[] = theTraceabilityLink::getDeliverableTag($deliverable);
+        }
+        
+        $toTags = array();
+        foreach ($to as $id=>$deliverable) {
+            $toTags[$id] = theTraceabilityLink::getDeliverableTag($deliverable);
+        }
+
         $covered = array();
-        foreach ($to as $id=>$dest) {
-            foreach ($this as $link) {
-                if ($link->isTo($dest) && $link->isFrom($from)) {
-                    $covered[$id] = 1;
-                }
+        foreach ($this as $link) {
+            if (in_array($link->to, $toTags) && in_array($link->from, $fromTags)) {
+                $covered[array_search($link->to, $toTags)] = 1;
             }
         }
+
         return $covered;
     }
      
@@ -174,6 +183,9 @@ class theTraceability extends Model_Artifact_Bag
      **/
     public function getCoverage($from, $to)
     {
+        $this->_normalize($from);
+        $this->_normalize($to);
+        
         // to avoid division by zero
         if (!count($to)) {
             return 0;
@@ -210,12 +222,13 @@ class theTraceability extends Model_Artifact_Bag
                 );        
             }
             try {
-                foreach ($this->ps()->parent->deliverables->$deliverable as $found)
+                foreach ($this->ps()->parent->deliverables->$deliverable as $found) {
                     $smth[] = $found;
+                }
                 unset($smth[$id]);
                 continue;
             } catch (Deliverables_PropertyOrMethodNotFoundException $e) {
-                // not found? let'd go next
+                // not found? let's go next
             }
             
             $deliverable = $this->ps()->parent->deliverables[$deliverable];
