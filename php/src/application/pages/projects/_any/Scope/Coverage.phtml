@@ -32,25 +32,27 @@
     ->addAttrib('class', 'inline')
     ->addBehavior('nothing')
     ->addField('select', 'from')
-        ->fieldOptions(array_combine($options, $options))
+        ->fieldOptions($options)
+        ->fieldUseValues(true)
         ->fieldLabel('From')
     ->addField('select', 'to')
-        ->fieldOptions(array_combine($options, $options))
+        ->fieldOptions($options)
+        ->fieldUseValues(true)
         ->fieldLabel('To')
     ->addField('submit', 'submit')
         ->fieldValue('Refresh')
         ->fieldAttrib('class', 'btn')
     ?>
   
-<? if ($this->post('to')): ?>
+<? if ($this->forma()->isCompleted()): ?>
     <div class="matrix">  
     <?
-        $from = $this->post('from');
-        $to = $this->post('to');
-        
+        $from = $this->forma()->getParam('from');
+        $to = $this->forma()->getParam('to');
+
         $dest = $this->project->deliverables->$to;
         $source = $this->project->deliverables->$from;
-        
+
         $matrix = $this->project->traceability->getCoverageMatrix($source, $dest);
         
         foreach ($dest as $id=>$deliverable) {
