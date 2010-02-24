@@ -14,6 +14,7 @@ class EnvironmentTest extends PhpRack_Test
             ->isLoaded('fileinfo')
             ->isLoaded('simplexml')
             ->isLoaded('pdo')
+            ->isLoaded('json')
             ->isLoaded('pdo_mysql')
             ->isLoaded('xsl');
 
