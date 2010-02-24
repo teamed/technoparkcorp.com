@@ -43,6 +43,6 @@
         'sprintf(
             "<span class=\'node\'>%s</span>: %s",
             ${a1}->name,
-            ${a1}->description
+            cutLongLine(${a1}->description, 100)
         )')
     ?>
