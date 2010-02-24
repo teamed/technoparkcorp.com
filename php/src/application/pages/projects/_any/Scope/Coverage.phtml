@@ -69,6 +69,6 @@
     ?>
     </div>  
     
-    <p>Coverage: <b><?=$this->project->traceability->getCoverage($source, $dest) * 100?>%</b></p>
+    <p>Coverage: <b><?=round($this->project->traceability->getCoverage($source, $dest) * 100)?>%</b></p>
 <? endif; ?>
 
