@@ -28,7 +28,7 @@
     'issues',
 ) ?>
 
-<?=$this->forma()
+<?=$this->forma('coverage')
     ->addAttrib('class', 'inline')
     ->addBehavior('nothing')
     ->addField('select', 'from')
@@ -44,11 +44,11 @@
         ->fieldAttrib('class', 'btn')
     ?>
   
-<? if ($this->forma()->isCompleted()): ?>
+<? if ($this->forma('coverage')->isCompleted()): ?>
     <div class="matrix">  
     <?
-        $from = $this->forma()->getParam('from');
-        $to = $this->forma()->getParam('to');
+        $from = $this->forma('coverage')->getParam('from');
+        $to = $this->forma('coverage')->getParam('to');
 
         $dest = $this->project->deliverables->$to;
         $source = $this->project->deliverables->$from;
