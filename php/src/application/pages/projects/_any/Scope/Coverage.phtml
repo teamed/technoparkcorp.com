@@ -58,7 +58,11 @@
         foreach ($dest as $id=>$deliverable) {
             echo sprintf(
                 "<span%s>%s</span>\n",
-                isset($matrix[$id]) ? ' class="covered"' : false,
+                !empty($matrix[$id]) ? 
+                sprintf(
+                    ' class="covered" title="by %s"',
+                    $matrix[$id]
+                ) : false,
                 $deliverable->name
             );
         }

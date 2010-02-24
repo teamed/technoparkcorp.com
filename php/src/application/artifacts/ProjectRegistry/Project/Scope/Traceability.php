@@ -145,6 +145,10 @@ class theTraceability extends Model_Artifact_Bag
     /**
      * Returns indexes of elements in $to, which are covered by any elements from $from
      *
+     * Returned array is an associative array, where keys are names KEYS from
+     * array $to and values are numbers of elements from $from that cover
+     * said element from $to.
+     *
      * @param string|array Name of deliverable or name of class who should cover
      * @param string|array Name of deliverable or name of class who should be covered
      * @return array()
@@ -164,10 +168,10 @@ class theTraceability extends Model_Artifact_Bag
             $toTags[$id] = theTraceabilityLink::getDeliverableTag($deliverable);
         }
 
-        $covered = array();
+        $covered = array_map(create_function('', 'return false;'), $toTags);
         foreach ($this as $link) {
             if (in_array($link->to, $toTags) && in_array($link->from, $fromTags)) {
-                $covered[array_search($link->to, $toTags)] = 1;
+                $covered[array_search($link->to, $toTags)] += 1;
             }
         }
 
@@ -185,13 +189,13 @@ class theTraceability extends Model_Artifact_Bag
     {
         $this->_normalize($from);
         $this->_normalize($to);
-        
+
         // to avoid division by zero
         if (!count($to)) {
             return 0;
         }
         
-        $covered = $this->getCoverageMatrix($from, $to);
+        $covered = array_filter($this->getCoverageMatrix($from, $to));
         return count($covered) / count($to);
     }
     
@@ -218,7 +222,7 @@ class theTraceability extends Model_Artifact_Bag
             if (!is_string($deliverable)) {
                 FaZend_Exception::raise(
                     'Traceability_UnknownTypeOfArgumentException', 
-                    "What does this deliverable mean?"
+                    "What does this deliverable mean: '{$deliverable}'?"
                 );        
             }
             try {
