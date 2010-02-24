@@ -169,6 +169,29 @@ class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap
         }
     }
 
+    /**
+     * Init session in DB
+     *
+     * @return void
+     * @see session.sql
+     * @see http://framework.zend.com/manual/en/zend.session.savehandler.dbtable.html
+     */
+    protected function _initSessionInDatabase() 
+    {
+        $this->bootstrap('fazend');
+        Zend_Session::setSaveHandler(
+            new Zend_Session_SaveHandler_DbTable(
+                array(
+                    'name'           => 'session',
+                    'primary'        => 'id',
+                    'modifiedColumn' => 'modified',
+                    'dataColumn'     => 'data',
+                    'lifetimeColumn' => 'lifetime'
+                )
+            )
+        );
+    }
+    
 }
 
 // total amount of seconds in day
