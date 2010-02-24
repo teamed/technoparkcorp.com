@@ -42,9 +42,9 @@
         ->fieldAttrib('class', 'btn')
     ?>
   
-<div class="matrix">  
-<?
-    if ($this->post('to')) {
+<? if ($this->post('to')): ?>
+    <div class="matrix">  
+    <?
         $from = $this->post('from');
         $to = $this->post('to');
         
@@ -60,6 +60,9 @@
                 $deliverable->name
             );
         }
-    }
-?>
-</div>  
+    ?>
+    </div>  
+    
+    <p>Coverage: <b><?=$this->project->traceability->getCoverage($source, $dest) * 100?>%</b></p>
+<? endif; ?>
+
