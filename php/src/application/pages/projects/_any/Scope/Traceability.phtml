@@ -25,7 +25,14 @@
 <?
     $bar = $this->bar()->setStyle('stairs');
     foreach ($this->project->traceability->getAllSourceTypes() as $type) {
-        $bar->addLink($type, $type . '(s) trace to...');
+        $bar->addLink(
+            $type, 
+            sprintf(
+                '%s(s) trace to..., %d links',
+                $type,
+                count($this->project->traceability->getSourcesByType($type))
+            )
+        );
     }
 ?>
 
