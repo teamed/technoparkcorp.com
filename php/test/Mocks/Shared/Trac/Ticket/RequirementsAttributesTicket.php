@@ -1,6 +1,6 @@
 <?php
 /**
- * @version $Id: Ticket.php 718 2010-02-21 15:55:39Z yegor256@yahoo.com $
+ * @version $Id$
  */
 
 class Mocks_Shared_Trac_Ticket_RequirementsAttributesTicket extends Mocks_Shared_Trac_Ticket
