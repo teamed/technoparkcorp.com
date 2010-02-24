@@ -19,10 +19,14 @@
 
 <h1>Traceability Matrix</h1>
 
+<p>There are <?=count($this->project->traceability)?>
+    traceability links:</p>
+
 <?
     $bar = $this->bar()->setStyle('stairs');
-    foreach ($this->project->traceability->getAllSourceTypes() as $type)
+    foreach ($this->project->traceability->getAllSourceTypes() as $type) {
         $bar->addLink($type, $type . '(s) trace to...');
+    }
 ?>
 
 <?=$bar?>
