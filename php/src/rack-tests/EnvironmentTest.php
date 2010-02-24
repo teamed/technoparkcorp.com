@@ -1,4 +1,7 @@
 <?php
+/**
+ * @version $Id$
+ */
 
 class EnvironmentTest extends PhpRack_Test
 {
@@ -15,6 +18,7 @@ class EnvironmentTest extends PhpRack_Test
             ->isLoaded('simplexml')
             ->isLoaded('pdo')
             ->isLoaded('json')
+            ->isLoaded('mysql')
             ->isLoaded('pdo_mysql')
             ->isLoaded('xsl');
 
