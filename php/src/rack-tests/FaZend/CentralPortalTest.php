@@ -1,6 +1,6 @@
 <?php
 /**
- * @version $Id: EnvironmentTest.php 746 2010-02-24 07:25:28Z yegor256@yahoo.com $
+ * @version $Id$
  */
 
 class CentralPortalTest extends PhpRack_Test
