@@ -97,16 +97,20 @@ class Model_User
      * @return void
      * @throws Exception
      */
-    public static function logIn($email) 
+    public static function logIn($email, $firstTime = true) 
     {
         validate()
             ->emailAddress($email, array(), "Invalid email provided: '{$email}'");
             
         self::_session()->email = $email;
-        Zend_Session::rememberMe();
         
         // set current user in POS
         FaZend_Pos_Properties::setUserId($email);
+
+        // add session to cookie
+        if ($firstTime) {
+            Zend_Session::rememberMe();
+        }
     }
 
     /**
@@ -117,8 +121,9 @@ class Model_User
     public static function isLoggedIn() 
     {
         $email = self::_session()->email;
-        if ($email)
-            self::logIn($email);
+        if ($email) {
+            self::logIn($email, false);
+        }
         return (bool)$email;
     }
 
