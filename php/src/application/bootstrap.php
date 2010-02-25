@@ -178,7 +178,7 @@ class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap
      */
     protected function _initSessionInDatabase() 
     {
-        $this->bootstrap('fazend');
+        $this->bootstrap('Fazend');
         Zend_Session::setSaveHandler(
             new Zend_Session_SaveHandler_DbTable(
                 array(
