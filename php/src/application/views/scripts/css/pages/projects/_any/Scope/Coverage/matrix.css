@@ -36,7 +36,7 @@ div.matrix {
         }
 
         div.matrix span.draft {
-            border: 1px solid <?=Model_Colors::GRAY?>;
-            color: <?=Model_Colors::GRAY?>;
+            border: 1px solid <?=Model_Colors::DARK_GRAY?>;
+            color: <?=Model_Colors::DARK_GRAY?>;
             cursor: pointer;
         }

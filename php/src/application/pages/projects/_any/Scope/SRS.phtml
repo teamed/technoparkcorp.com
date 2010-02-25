@@ -41,7 +41,9 @@
     ->addAttrib('class', 'tree')
     ->setMask(
         'sprintf(
-            "<span class=\'node\'>%s</span>: %s",
+            "<span class=\'node%s%s\'>%s</span>: %s",
+            ${a1}->isAccepted() ? false : " draft",
+            ${a1}->outOfScope ? " out" : false,
             ${a1}->name,
             cutLongLine(${a1}->description, 100)
         )')

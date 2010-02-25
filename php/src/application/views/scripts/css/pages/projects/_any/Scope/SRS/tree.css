@@ -25,3 +25,11 @@ div.tree span.node {
         background-color: <?=Model_Colors::BLUE?>;
         color: white;
     }
+
+div.tree span.draft {
+    color: <?=Model_Colors::DARK_GRAY?>;
+}
+
+div.tree span.out {
+    text-decoration: line-through;
+}
