@@ -62,7 +62,7 @@
             if (!$deliverable->wasAccepted()) {
                 $classes[] = 'draft';
             }
-            if ($deliverable instanceof Deliverables_Requirements_Abstact && $deliverable->outOfScope) {
+            if ($deliverable instanceof Deliverables_Requirements_Abstract && $deliverable->outOfScope) {
                 $classes[] = 'out';
                 $titles[] = 'out of scope';
             }
