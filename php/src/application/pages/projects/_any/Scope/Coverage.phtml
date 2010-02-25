@@ -59,7 +59,7 @@
         
         foreach ($dest as $id=>$deliverable) {
             $classes = $titles = array();
-            if (!$deliverable->isAccepted()) {
+            if (!$deliverable->wasAccepted()) {
                 $classes[] = 'draft';
             }
             if ($deliverable->outOfScope) {

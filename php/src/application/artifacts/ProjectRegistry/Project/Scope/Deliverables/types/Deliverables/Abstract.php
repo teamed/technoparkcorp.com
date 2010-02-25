@@ -99,6 +99,16 @@ abstract class Deliverables_Abstract
     }
     
     /**
+     * This deliverable was ever accepted
+     *
+     * @return boolean
+     */
+    public function wasAccepted() 
+    {
+        return $this->attributes['accepted']->wasTrue();
+    }
+    
+    /**
      * Discover links
      *
      * @param theProject Project to work with
