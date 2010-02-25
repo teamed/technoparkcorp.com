@@ -70,14 +70,4 @@ abstract class Deliverables_Requirements_Requirement extends Deliverables_Requir
         }
     }
     
-    /**
-     * This requirement is out of scope?
-     *
-     * @return boolean
-     */
-    protected function _getOutOfScope() 
-    {
-        return (bool)$this->attributes['out']->value;
-    }
-    
 }

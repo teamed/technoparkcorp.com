@@ -61,10 +61,15 @@
             echo sprintf(
                 "<span%s>%s</span>\n",
                 !empty($matrix[$id]) ? 
+                // it IS covered, show it in blue
                 sprintf(
                     ' class="covered" title="by %s"',
                     $matrix[$id]
-                ) : false,
+                ) :
+                // it is NOT covered
+                (!$deliverable->isAccepted() ? 
+                // it is NOT covered and NOT accepted - show it in gray
+                ' class="draft"' : false),
                 $deliverable->name
             );
         }

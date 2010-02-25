@@ -12,6 +12,7 @@
  * 568 Ninth Street South 202, Naples, Florida 34102, USA
  * tel. +1 (239) 935 5429
  *
+ * @version $Id$
 -->
  
 <?=$this->publish($this->project->deliverables)?>
@@ -20,6 +21,7 @@
 
 <?=$this->table()
     ->setSource($this->project->deliverables->actors)
+    ->addFormatter('${a2}->outOfScope', 'color:gray')
     ->addColumn('name', 'Name')
     ->addColumn('description', 'Description')
     ->addColumn('attributes', 'Attributes')

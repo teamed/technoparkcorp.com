@@ -27,4 +27,15 @@ require_once 'artifacts/ProjectRegistry/Project/Scope/Deliverables/types/Deliver
  */
 class Deliverables_Requirements_Abstract extends Deliverables_Abstract
 {
+
+        /**
+         * This requirement is out of scope?
+         *
+         * @return boolean
+         */
+        protected function _getOutOfScope() 
+        {
+            return (bool)$this->attributes['out']->value;
+        }
+
 }

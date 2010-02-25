@@ -34,3 +34,9 @@ div.matrix {
             color: white;
             cursor: pointer;
         }
+
+        div.matrix span.draft {
+            border: 1px solid <?=Model_Colors::GRAY?>;
+            color: <?=Model_Colors::GRAY?>;
+            cursor: pointer;
+        }
