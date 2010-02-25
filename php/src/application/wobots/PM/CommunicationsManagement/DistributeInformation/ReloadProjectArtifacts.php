@@ -29,6 +29,8 @@
  */
 class ReloadProjectArtifacts extends Model_Decision_PM
 {
+    
+    const LIFETIME_HOURS = 4;
 
     /**
      * Reload the oldest one
@@ -52,7 +54,7 @@ class ReloadProjectArtifacts extends Model_Decision_PM
                 $ageHours = Zend_Date::now()
                     ->sub($this->_project->$property->ps()->updated)
                     ->getTimestamp() / (60 * 60);
-                if ($ageHours < 24) {
+                if ($ageHours < self::LIFETIME_HOURS) {
                     logg(
                         '%s is up to date, %dhrs', 
                         $property,
