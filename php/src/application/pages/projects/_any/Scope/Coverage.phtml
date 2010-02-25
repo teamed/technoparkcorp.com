@@ -70,6 +70,8 @@
     ?>
     </div>  
     
-    <p>Coverage: <b><?=round($this->project->traceability->getCoverage($source, $dest) * 100)?>%</b></p>
+    <p>Coverage: 
+        <b><?=round($this->project->traceability->getCoverage($source, $dest) * 100)?>%</b>,
+        <?=count($dest)?> elements to be covered.</p>
 <? endif; ?>
 
