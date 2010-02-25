@@ -134,6 +134,10 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
             return $this->$var;
         }
         
+        if ($name == 'all') {
+            return $this;
+        }
+        
         return $this->_getByTypes($name);
     }
 
