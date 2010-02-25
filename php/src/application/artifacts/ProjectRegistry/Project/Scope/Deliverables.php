@@ -44,7 +44,7 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
      * @var string[]
      */
     protected static $_typeMapping = array(
-        'requirements' => array('functional', 'qos', 'interfaces', 'actors', 'glossary'),
+        'requirements' => array('functional', 'qos', 'interfaces', 'actors', 'glossary', 'useCases'),
         'glossary'     => 'Requirements_Object',
         'actors'       => 'Requirements_Actor',
         'interfaces'   => 'Requirements_Interface',
