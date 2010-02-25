@@ -58,18 +58,22 @@
         $matrix = $this->project->traceability->getCoverageMatrix($source, $dest);
         
         foreach ($dest as $id=>$deliverable) {
+            $classes = $titles = array();
+            if (!$deliverable->isAccepted()) {
+                $classes[] = 'draft';
+            }
+            if ($deliverable->outOfScope) {
+                $classes[] = 'out';
+                $titles[] = 'out of scope';
+            }
+            if (!empty($matrix[$id])) {
+                $classes[] = 'covered';
+                $titles[] = 'by ' . $matrix[$id];
+            }
             echo sprintf(
-                "<span%s>%s</span>\n",
-                !empty($matrix[$id]) ? 
-                // it IS covered, show it in blue
-                sprintf(
-                    ' class="covered" title="by %s"',
-                    $matrix[$id]
-                ) :
-                // it is NOT covered
-                (!$deliverable->isAccepted() ? 
-                // it is NOT covered and NOT accepted - show it in gray
-                ' class="draft"' : false),
+                "<span%s%s>%s</span>\n",
+                !empty($classes) ? ' class="' . implode(' ', $classes) . '"' : false,
+                !empty($titles) ? ' title="' . implode('; ', $titles) . '"' : false,
                 $deliverable->name
             );
         }
