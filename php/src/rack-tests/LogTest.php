@@ -10,14 +10,14 @@ class LogTest extends PhpRack_Test
 
     public function testFileExists()
     {
-        if (!file_exists(FILENAME)) {
-            $this->fail('Log file ' . FILENAME . ' is not found');
+        if (!file_exists(self::FILENAME)) {
+            $this->fail('Log file ' . self::FILENAME . ' is not found');
         }
     }
 
     public function testShowLogFile()
     {
-        $this->log(shell_exec('tail -50 ' . escapeshellarg(FILENAME)));
+        $this->log(shell_exec('tail -50 ' . escapeshellarg(self::FILENAME)));
     }
 
 }
