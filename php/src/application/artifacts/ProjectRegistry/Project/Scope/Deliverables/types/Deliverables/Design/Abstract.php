@@ -14,17 +14,17 @@
  *
  * @author Yegor Bugayenko <egor@tpc2.com>
  * @copyright Copyright (c) TechnoPark Corp., 2001-2009
- * @version $Id$
+ * @version $Id: Package.php 729 2010-02-22 12:06:48Z yegor256@yahoo.com $
  *
  */
 
 require_once 'artifacts/ProjectRegistry/Project/Scope/Deliverables/types/Deliverables/Abstract.php';
 
 /**
- * One use case
+ * One abstract design element
  *
  * @package Artifacts
  */
-class Deliverables_Requirements_UseCase extends Deliverables_Requirements_Abstract
+abstract class Deliverables_Design_Abstract extends Deliverables_Abstract
 {
 }

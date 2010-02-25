@@ -89,6 +89,16 @@ abstract class Deliverables_Abstract
     }
     
     /**
+     * This deliverable is accepted?
+     *
+     * @return boolean
+     */
+    public function isAccepted() 
+    {
+        return $this->attributes['accepted']->isTrue();
+    }
+    
+    /**
      * Discover links
      *
      * @param theProject Project to work with
