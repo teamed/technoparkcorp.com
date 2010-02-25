@@ -103,6 +103,7 @@ class Model_User
             ->emailAddress($email, array(), "Invalid email provided: '{$email}'");
             
         self::_session()->email = $email;
+        Zend_Session::rememberMe();
         
         // set current user in POS
         FaZend_Pos_Properties::setUserId($email);
