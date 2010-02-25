@@ -61,15 +61,15 @@ class DeliverablesLoaders_Srs extends DeliverablesLoaders_Abstract
                         break;
 
                     case $attrib == 'must':
-                        $deliverable->attributes['importance']->add(5);
+                        $deliverable->attributes['priority']->add(5);
                         break;
 
-                    case preg_match('/^i(\d+)$/i', $attrib, $matches):
-                        $deliverable->attributes['importance']->add(intval($matches[1]));
+                    case preg_match('/^p(\d+)$/i', $attrib, $matches):
+                        $deliverable->attributes['priority']->add(intval($matches[1]));
                         break;
 
                     case preg_match('/^c(\d+)$/i', $attrib, $matches):
-                    $deliverable->attributes['complexity']->add(intval($matches[1]));
+                        $deliverable->attributes['complexity']->add(intval($matches[1]));
                         break;
 
                     default:

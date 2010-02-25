@@ -27,4 +27,15 @@ require_once 'artifacts/ProjectRegistry/Project/Scope/Deliverables/types/Deliver
  */
 class Deliverables_Requirements_Requirement_Functional extends Deliverables_Requirements_Requirement
 {
+    
+    /**
+     * Priority of the requirement
+     *
+     * @return integer
+     */
+    protected function _getPriority() 
+    {
+        return $this->attributes['priority']->value;
+    }
+    
 }

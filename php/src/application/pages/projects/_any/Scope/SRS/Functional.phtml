@@ -12,15 +12,30 @@
  * 568 Ninth Street South 202, Naples, Florida 34102, USA
  * tel. +1 (239) 935 5429
  *
+ * @version $Id$
 -->
  
 <?=$this->publish($this->project->deliverables)?>
 
 <h1><?=_t('Functional Requirements')?></h1>
 
+<?
+    $reqs = $this->project->deliverables->functional;
+    $reqs->uasort(
+        create_function(
+            '$a, $b',
+            'return $a->priority < $b->priority;'
+        )
+    );
+?>
+
 <?=$this->table()
-    ->setSource($this->project->deliverables->functional)
+    ->setSource($reqs)
+    ->addFormatter('${a2}->outOfScope', 'color:gray')
     ->addColumn('name', _t('Name'))
+    ->addColumn('priority', _t('Pri.'))
+    ->addColumn('isAccepted', _t('Acc.'))
+        ->addConverter('(${a1} ? ${a2}->attributes["accepted"] : false)')
     ->addColumn('description', _t('Description'))
     ->addColumn('attributes', _t('Attributes'))
     ?>

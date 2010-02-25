@@ -39,7 +39,7 @@ abstract class Deliverables_Requirements_Requirement extends Deliverables_Requir
     {
         return substr_count($this->_name, '.');
     }
-       
+    
     /**
      * Discover links
      *
@@ -68,6 +68,16 @@ abstract class Deliverables_Requirements_Requirement extends Deliverables_Requir
                 'it is parent of ' . $this->_name
             );
         }
+    }
+    
+    /**
+     * This requirement is out of scope?
+     *
+     * @return boolean
+     */
+    protected function _getOutOfScope() 
+    {
+        return (bool)$this->attributes['out']->value;
     }
     
 }
