@@ -170,7 +170,7 @@ class theTraceability extends Model_Artifact_Bag
     }
      
     /**
-     * Returns deliverables that are source in this direction
+     * Returns deliverables that are sources in this direction
      *
      * @param string|array Name of deliverable or name of class who should cover
      * @param string|array Name of deliverable or name of class who should be covered
@@ -189,6 +189,31 @@ class theTraceability extends Model_Artifact_Bag
         }
         return $sources;
     }
+     
+    /**
+     * Returns deliverables that are in chain, from $from till the end..
+     *
+     * The array returned is an associative array, where keys are
+     * names of deliverables from $from, and values are arrays of 
+     * deliverables that are found in the chain from this deliverable.
+     *
+     * @param string|array Name of deliverable or name of class who should cover
+     * @param string|array Name of deliverable or name of class who should be covered
+     * @return Deliverables_Abstract[]
+     */
+    // public function getCoverageChain($from, $to) 
+    // {
+    //     $fromTags = $this->_getNormalizedTags($from);
+    //     $toTags = $this->_getNormalizedTags($to);
+    // 
+    //     $sources = array();
+    //     foreach ($this as $link) {
+    //         if (in_array($link->to, $toTags) && in_array($link->from, $fromTags)) {
+    //             $sources[array_search($link->from, $fromTags)] = $this->ps()->parent->deliverables[$link->fromName];
+    //         }
+    //     }
+    //     return $sources;
+    // }
      
     /**
      * Calculate coverage
@@ -214,11 +239,8 @@ class theTraceability extends Model_Artifact_Bag
     /**
      * Normalize the param and make sure it looks like an array of Deliverables
      *
-     * No matter what you provide, result array will contain type
-     * names (Deliverables_Design_Class, Deliverables_Defects_Issue, etc.), which
-     * could be later used in order to parse traceability links. Also this array
-     * will contain individual deliverables, instances of class Deliverables_Abstract.
-     * They won't be changed/touched.
+     * No matter what you provide, result array will contain individual 
+     * deliverables, instances of class Deliverables_Abstract.
      *
      * @param string|Deliverables_Abstract|array
      * @return void
@@ -260,6 +282,9 @@ class theTraceability extends Model_Artifact_Bag
     
     /**
      * Get list of traceability tags
+     *
+     * No matter what is provided the result array will contain
+     * traceability tags, like "class:Model_User", "issue:#564", etc.
      *
      * @param string Source, like "design", "useCases", or "R4.3"
      * @return string[]

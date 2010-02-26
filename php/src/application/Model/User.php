@@ -110,6 +110,28 @@ class Model_User
         // set cookie properly
         Zend_Session::rememberMe();
     }
+    
+    /**
+     * Log out everybody
+     *
+     * @return void
+     * @throws FaZend_User_NotLoggedIn
+     */
+    public static function logOut() 
+    {
+        if (!self::isLoggedIn()) {
+            FaZend_Exception::raise(
+                'FaZend_User_NotLoggedIn', 
+                'User is not logged in, cannot logout'
+            );
+        }
+        
+        // remove it from session
+        unset(self::_session()->email);
+        
+        // remove cookie properly
+        Zend_Session::forgetMe();
+    }
 
     /**
      * Is it logged in?
