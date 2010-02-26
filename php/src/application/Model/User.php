@@ -45,7 +45,7 @@ class Model_User
      *
      * @param mixed Session to use
      * @return void
-     **/
+     */
     public static function setSession($session) 
     {
         self::$_session = $session;
@@ -55,7 +55,7 @@ class Model_User
      * Construct the object
      *
      * @return void
-     **/
+     */
     public function __construct($email) 
     {
         $this->_email = $email;
@@ -131,7 +131,7 @@ class Model_User
      *
      * @param string Name of the variable
      * @return string
-     **/
+     */
     public function __get($name) 
     {
         if ($name == 'email') {
@@ -144,11 +144,12 @@ class Model_User
      * Create and return session
      *
      * @return Zend_Session_Namespace
-     **/
+     */
     protected static function _session() 
     {
-        if (is_null(self::$_session))
+        if (is_null(self::$_session)) {
             self::$_session = new Zend_Session_Namespace('panel2');
+        }
         return self::$_session;
     }
 
