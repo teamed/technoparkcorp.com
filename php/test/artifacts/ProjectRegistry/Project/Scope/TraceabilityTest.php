@@ -26,4 +26,10 @@ class TraceabilityTest extends AbstractProjectTest
         logg('coverage: %0.2f%%', $coverage * 100);
     }
 
+    public function testGetCoverageSourcesWorks()
+    {
+        $sources = $this->_traceability->getCoverageSources('issues', 'functional');
+        $this->assertFalse(empty($sources), 'Empty list of sources, why?');
+    }
+
 }

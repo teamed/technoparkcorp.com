@@ -28,14 +28,30 @@ require_once 'artifacts/ProjectRegistry/Project/Scope/Deliverables/types/Deliver
 class Deliverables_Requirements_Abstract extends Deliverables_Abstract
 {
 
-        /**
-         * This requirement is out of scope?
-         *
-         * @return boolean
-         */
-        protected function _getOutOfScope() 
-        {
-            return (bool)$this->attributes['out']->value;
+    /**
+     * This requirement is out of scope?
+     *
+     * @return boolean
+     */
+    protected function _getOutOfScope() 
+    {
+        return (bool)$this->attributes['out']->value;
+    }
+    
+    /**
+     * Get design map, in text
+     *
+     * @param theProject Project to use
+     * @return string
+     */
+    public function getDesignMap(theProject $project) 
+    {
+        $elements = $project->traceability->getCoverageSources('design', $this);
+        $text = array();
+        foreach ($elements as $element) {
+            $text[] = $element->name;
         }
+        return implode("\n", $text);
+    }
 
 }

@@ -36,6 +36,16 @@
     ->addColumn('priority', _t('Pri.'))
     ->addColumn('isAccepted', _t('Acc.'))
         ->addConverter('(${a1} ? ${a2}->attributes["accepted"] : false)')
+    ->addColumn('isBaselined', _t('Base.'))
+        ->addConverter('(${a1} ? "yes" : false)')
+    ->addColumn('type', 'Design')
+        ->addConverter(
+            FaZend_Callback::factory(
+                '${a2}->getDesignMap(${i1})'
+            )
+            ->inject($this->project)
+        )
+        ->addFormatter('true', 'font-family:Courier; white-space:pre')
     ->addColumn('description', _t('Description'))
     ->addColumn('attributes', _t('Attributes'))
     ?>

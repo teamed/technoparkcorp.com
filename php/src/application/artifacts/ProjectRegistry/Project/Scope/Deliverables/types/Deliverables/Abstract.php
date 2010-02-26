@@ -89,6 +89,16 @@ abstract class Deliverables_Abstract
     }
     
     /**
+     * This deliverable is baselined?
+     *
+     * @return boolean
+     */
+    public function isBaselined() 
+    {
+        return false;
+    }
+    
+    /**
      * This deliverable is accepted?
      *
      * @return boolean

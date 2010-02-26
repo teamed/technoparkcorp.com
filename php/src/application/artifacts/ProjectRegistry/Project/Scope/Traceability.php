@@ -156,18 +156,8 @@ class theTraceability extends Model_Artifact_Bag
      */
     public function getCoverageMatrix($from, $to) 
     {
-        $this->_normalize($from);
-        $this->_normalize($to);
-        
-        $fromTags = array();
-        foreach ($from as $deliverable) {
-            $fromTags[] = theTraceabilityLink::getDeliverableTag($deliverable);
-        }
-        
-        $toTags = array();
-        foreach ($to as $id=>$deliverable) {
-            $toTags[$id] = theTraceabilityLink::getDeliverableTag($deliverable);
-        }
+        $fromTags = $this->_getNormalizedTags($from);
+        $toTags = $this->_getNormalizedTags($to);
 
         $covered = array_map(create_function('', 'return false;'), $toTags);
         foreach ($this as $link) {
@@ -177,6 +167,27 @@ class theTraceability extends Model_Artifact_Bag
         }
 
         return $covered;
+    }
+     
+    /**
+     * Returns deliverables that are source in this direction
+     *
+     * @param string|array Name of deliverable or name of class who should cover
+     * @param string|array Name of deliverable or name of class who should be covered
+     * @return Deliverables_Abstract[]
+     */
+    public function getCoverageSources($from, $to) 
+    {
+        $fromTags = $this->_getNormalizedTags($from);
+        $toTags = $this->_getNormalizedTags($to);
+
+        $sources = array();
+        foreach ($this as $link) {
+            if (in_array($link->to, $toTags) && in_array($link->from, $fromTags)) {
+                $sources[array_search($link->from, $fromTags)] = $this->ps()->parent->deliverables[$link->fromName];
+            }
+        }
+        return $sources;
     }
      
     /**
@@ -203,9 +214,16 @@ class theTraceability extends Model_Artifact_Bag
     /**
      * Normalize the param and make sure it looks like an array of Deliverables
      *
+     * No matter what you provide, result array will contain type
+     * names (Deliverables_Design_Class, Deliverables_Defects_Issue, etc.), which
+     * could be later used in order to parse traceability links. Also this array
+     * will contain individual deliverables, instances of class Deliverables_Abstract.
+     * They won't be changed/touched.
+     *
      * @param string|Deliverables_Abstract|array
      * @return void
      * @throws Traceability_UnknownTypeOfArgumentException
+     * @see _getNormalizedTags()
      */
     protected function _normalize(&$smth) 
     {
@@ -238,6 +256,23 @@ class theTraceability extends Model_Artifact_Bag
             
             $deliverable = $this->ps()->parent->deliverables[$deliverable];
         }
+    }
+    
+    /**
+     * Get list of traceability tags
+     *
+     * @param string Source, like "design", "useCases", or "R4.3"
+     * @return string[]
+     */
+    protected function _getNormalizedTags($list) 
+    {
+        $this->_normalize($list);
+        
+        $tags = array();
+        foreach ($list as $deliverable) {
+            $tags[] = theTraceabilityLink::getDeliverableTag($deliverable);
+        }
+        return $tags;
     }
      
 }

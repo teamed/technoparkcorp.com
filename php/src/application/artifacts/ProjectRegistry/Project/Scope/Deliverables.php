@@ -213,7 +213,7 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
             }
             FaZend_Exception::raise(
                 'Deliverables_InvalidShortcutException', 
-                "Shortcut '{$type}' is not found in Deliverables"
+                "Shortcut '{$types}' is not found in Deliverables"
             );        
         }
         
