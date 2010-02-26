@@ -48,13 +48,18 @@ class PanelController extends FaZend_Controller_Action
             $adapter->setResponse($this->getResponse());
 
             $result = $adapter->authenticate();
-            if ($result->isValid()) {
-                $identity = $result->getIdentity();
-                $identity = $identity['username'];
-            } else {
+            if (!$result->isValid()) {
+                logg(
+                    'Invalid login attempt (code: %d, identity: %s). %s',
+                    $result->getCode(),
+                    serialize($result->getIdentity()),
+                    implode('; ', $result->getMessages())
+                );
                 return $this->_forward('index', 'static', null, array('page'=>'system/404'));
             }
 
+            $identity = $result->getIdentity();
+            $identity = $identity['username'];
             Model_User::logIn($identity);
         }
 
@@ -63,6 +68,7 @@ class PanelController extends FaZend_Controller_Action
 
         // get pages instance for the controller to user later
         $this->_pages = Model_Pages::getInstance();
+        return null;
     }
 
     /**
@@ -82,8 +88,15 @@ class PanelController extends FaZend_Controller_Action
         try {
             $this->_buildDocument($doc);
         } catch (Model_Pages_DocumentNotFound $e) {
-            return $this->_restrict(_t('Sorry, the document "%s" is not found', $doc));
+            return $this->_restrict(
+                _t(
+                    'Sorry, the document "%s" is not found: %s',
+                    $doc,
+                    $e->getMessage()
+                )
+            );
         }
+        return null;
     }
 
     /**
