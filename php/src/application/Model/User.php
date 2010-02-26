@@ -120,11 +120,12 @@ class Model_User
      */
     public static function isLoggedIn() 
     {
-        $email = self::_session()->email;
-        if ($email) {
-            self::logIn($email, false);
+        try {
+            self::getCurrentUser();
+        } catch (FaZend_User_NotLoggedIn $e) {
+            return false;
         }
-        return (bool)$email;
+        return true;
     }
 
     /**
