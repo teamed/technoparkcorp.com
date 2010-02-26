@@ -134,8 +134,10 @@ class Model_User
      **/
     public function __get($name) 
     {
-        if ($name == 'email')
+        if ($name == 'email') {
             return $this->_email;
+        }
+        return parent::__get($name);
     }
     
     /**
