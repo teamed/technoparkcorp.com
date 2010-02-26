@@ -89,7 +89,8 @@ class theTraceabilityLink
      * @param float Coverage
      * @param string Explanation of this link
      * @return void
-     **/
+     * @throws TraceabilityLink_ReversedLinkException
+     */
     public function __construct(
         Deliverables_Abstract $from,
         Deliverables_Abstract $to,
@@ -102,10 +103,12 @@ class theTraceabilityLink
         $this->_from = self::getDeliverableTag($from); 
         $this->_to = self::getDeliverableTag($to); 
 
-        validate()->false(
-            $this->_from == $this->_to,
-            "You can't trace to itself: [{$this->_to}]"
-        );
+        if ($this->_from == $this->_to) {
+            FaZend_Exception::raise(
+                'TraceabilityLink_ReversedLinkException',
+                "You can't trace to itself: [{$this->_to}]"
+            );
+        }
         
         $this->_deep = $deep;
         $this->_coverage = $coverage;

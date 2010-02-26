@@ -62,15 +62,19 @@ class DeliverablesLoaders_Design extends DeliverablesLoaders_Abstract
                 if (!isset($project->deliverables[$trace])) {
                     continue;
                 }
-                $project->traceability->add(
-                    new theTraceabilityLink(
-                        $deliverable,
-                        $project->deliverables[$trace],
-                        0.75,
-                        1,
-                        "@see {$trace}"
-                    )
-                );
+                try {
+                    $project->traceability->add(
+                        new theTraceabilityLink(
+                            $deliverable,
+                            $project->deliverables[$trace],
+                            0.75,
+                            1,
+                            "@see {$trace}"
+                        )
+                    );
+                } catch (TraceabilityLink_ReversedLinkException $e) {
+                    // ignore it...
+                }
             }
         }
         logg('Design loading finished, %d components loaded', count($components));

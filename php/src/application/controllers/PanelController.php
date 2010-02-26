@@ -56,7 +56,12 @@ class PanelController extends FaZend_Controller_Action
                     serialize($result->getIdentity()),
                     implode('; ', $result->getMessages())
                 );
-                return $this->_forward('index', 'static', null, array('page'=>'system/404'));
+                return $this->_forward(
+                    'index', // action
+                    'static', // controller
+                    null, // module, use default
+                    array('page' => 'system/404') // params
+                );
             }
 
             $identity = $result->getIdentity();
