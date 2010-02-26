@@ -94,16 +94,18 @@ class Injector extends FaZend_Test_Injector
 
     protected function _injectAccessRights() 
     {
-        // initialize ACL
-        $acl = Model_Pages::getInstance()->getAcl();
+        if (Model_User::isLoggedIn()) {
+            // initialize ACL
+            $acl = Model_Pages::getInstance()->getAcl();
         
-        // add this role to ACL
-        $email = Model_User::getCurrentUser()->email;
-        if (!$acl->hasRole($email))
-            $acl->addRole($email);
+            // add this role to ACL
+            $email = Model_User::getCurrentUser()->email;
+            if (!$acl->hasRole($email))
+                $acl->addRole($email);
         
-        // give access to everything for the testing user
-        $acl->allow($email);
+            // give access to everything for the testing user
+            $acl->allow($email);
+        }
     }
 
 }
