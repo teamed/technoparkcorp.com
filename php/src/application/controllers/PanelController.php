@@ -35,7 +35,7 @@ class PanelController extends FaZend_Controller_Action
     {
         // if the user is not logged in - try to log him in
         if (!Model_User::isLoggedIn()) {
-            logg('login attempt...');
+            FaZend_Log::err('login attempt...');
             // show as much information as possible
             $adapter = new Model_Auth_Adapter(
                 array(
@@ -50,11 +50,13 @@ class PanelController extends FaZend_Controller_Action
 
             $result = $adapter->authenticate();
             if (!$result->isValid()) {
-                logg(
-                    'Invalid login attempt (code: %d, identity: %s). %s',
-                    $result->getCode(),
-                    serialize($result->getIdentity()),
-                    implode('; ', $result->getMessages())
+                FaZend_Log::err(
+                    sprintf(
+                        'Invalid login attempt (code: %d, identity: %s). %s',
+                        $result->getCode(),
+                        serialize($result->getIdentity()),
+                        implode('; ', $result->getMessages())
+                    )
                 );
                 return $this->_forward(
                     'index', // action
