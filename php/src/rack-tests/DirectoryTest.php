@@ -14,6 +14,7 @@ class DirectoryTest extends PhpRack_Test
                 'exclude' => array(
                     '/library\/\w+\/.*/',
                     '/application\/\w+\/.*/',
+                    '/content\/\w+\/.*/',
                 ),
             )
         );
