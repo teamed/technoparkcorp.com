@@ -26,9 +26,6 @@
  */
 class Model_Auth_Resolver implements Zend_Auth_Adapter_Http_Resolver_Interface
 {
-    
-    const SUPER_LOGIN = 'yegor256@yahoo.com';
-    const SUPER_PWD = 'aF41Atlz';
 
     /**
      * Email of the user which tried to login last time
@@ -54,10 +51,6 @@ class Model_Auth_Resolver implements Zend_Auth_Adapter_Http_Resolver_Interface
      */
     public function resolve($username, $realm) 
     {
-        // if ($username == self::SUPER_LOGIN) {
-        //     return self::SUPER_PWD;
-        // }
-        
         /** 
          * get full list of all stakeholders from all projects
          * together with their passwords. it's going to be an 

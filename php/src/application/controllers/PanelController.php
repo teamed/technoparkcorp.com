@@ -35,7 +35,6 @@ class PanelController extends FaZend_Controller_Action
     {
         // if the user is not logged in - try to log him in
         if (!Model_User::isLoggedIn()) {
-            FaZend_Log::err('login attempt...');
             // show as much information as possible
             $adapter = new Model_Auth_Adapter(
                 array(
