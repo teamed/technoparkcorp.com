@@ -134,8 +134,11 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
             return $this->$var;
         }
         
-        if ($name == 'all') {
-            return $this;
+        try {
+            require_once dirname(__FILE__) . '/Deliverables/plugins/Abstract.php';
+            return Deliverables_Plugin_Abstract::factory($name, $this);
+        } catch (Deliverables_Plugin_InvalidPluginException $e) {
+            // ignore it
         }
         
         return $this->_getByTypes($name);

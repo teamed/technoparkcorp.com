@@ -191,28 +191,31 @@ class theTraceability extends Model_Artifact_Bag
     }
      
     /**
-     * Returns deliverables that are in chain, from $from till the end..
+     * Returns traceability chains for every deliverable, until it reaches destination
      *
      * The array returned is an associative array, where keys are
      * names of deliverables from $from, and values are arrays of 
-     * deliverables that are found in the chain from this deliverable.
+     * deliverables that are found in the chain from this deliverable,
+     * when it is traceable to $to.
+     *
+     * If a chain is empty, empty array will be the value of array item.
      *
      * @param string|array Name of deliverable or name of class who should cover
      * @param string|array Name of deliverable or name of class who should be covered
-     * @return Deliverables_Abstract[]
+     * @return array(Deliverables_Abstract[])
      */
-    // public function getCoverageChain($from, $to) 
+    // public function getCoverageChains($from, $to) 
     // {
-    //     $fromTags = $this->_getNormalizedTags($from);
     //     $toTags = $this->_getNormalizedTags($to);
     // 
-    //     $sources = array();
-    //     foreach ($this as $link) {
-    //         if (in_array($link->to, $toTags) && in_array($link->from, $fromTags)) {
-    //             $sources[array_search($link->from, $fromTags)] = $this->ps()->parent->deliverables[$link->fromName];
-    //         }
+    //     $chains = array();
+    //     foreach ($from as $source) {
+    //         $chains[$source->name] = $this->_findChain(
+    //             theTraceabilityLink::getDeliverableTag($source),
+    //             $toTags
+    //         );
     //     }
-    //     return $sources;
+    //     return $chains;
     // }
      
     /**
@@ -289,7 +292,7 @@ class theTraceability extends Model_Artifact_Bag
      * @param string Source, like "design", "useCases", or "R4.3"
      * @return string[]
      */
-    protected function _getNormalizedTags($list) 
+    protected function _getNormalizedTags(&$list) 
     {
         $this->_normalize($list);
         
@@ -299,5 +302,22 @@ class theTraceability extends Model_Artifact_Bag
         }
         return $tags;
     }
+    
+    /**
+     * Find chain of deliverables
+     *
+     * In the entire list of traceability links we're trying to find
+     * a chain of deliverables, which trace one to another and finally
+     * reach one of $toTags from $tag.
+     *
+     * @return string List of tags
+     */
+    // protected function _findChain($tag, array $toTags) 
+    // {
+    //     $sources = array();
+    //     foreach ($this as $link) {
+    //         $sources[] = $link;
+    //     }
+    // }
      
 }

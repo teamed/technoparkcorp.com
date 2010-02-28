@@ -28,7 +28,7 @@ class DeliverablesTest extends AbstractProjectTest
             'glossary',
             'classes',
             'actors',
-            'functional'
+            'functional',
         );
         
         foreach ($shortcuts as $shortcut) {
@@ -36,6 +36,19 @@ class DeliverablesTest extends AbstractProjectTest
                 count($this->_deliverables->{$shortcut}) > 0, 
                 "Empty shortcut: Deliverables->{$shortcut}, why?"
             );
+        }
+    }
+
+    public function testDeliverablesPluginsAreAccessible()
+    {
+        $plugins = array(
+            'queue', // development queue
+            'all', // everything
+        );
+        
+        foreach ($plugins as $plugin) {
+            $list = $this->_deliverables->{$plugin};
+            $this->assertTrue($list instanceof Deliverables_Plugin_Abstract);
         }
     }
 

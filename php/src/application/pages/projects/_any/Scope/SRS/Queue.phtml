@@ -12,15 +12,15 @@
  * 568 Ninth Street South 202, Naples, Florida 34102, USA
  * tel. +1 (239) 935 5429
  *
- * @version $Id$
+ * @version $Id: SRS.phtml 780 2010-02-25 14:22:29Z yegor256@yahoo.com $
 -->
  
 <?=$this->publish($this->project->deliverables)?>
 
-<h1><?=_t('Functional Requirements')?></h1>
+<h1><?=_t('Implementation Queue')?></h1>
 
 <?
-    $reqs = $this->project->deliverables->functional;
+    $reqs = new ArrayIterator(iterator_to_array($this->project->deliverables->queue));
     $reqs->uasort(
         create_function(
             '$a, $b',
@@ -31,20 +31,7 @@
 
 <?=$this->table()
     ->setSource($reqs)
-    ->addFormatter('${a2}->outOfScope', 'color:gray')
     ->addColumn('name', _t('Name'))
     ->addColumn('priority', _t('Pri.'))
-    ->addColumn('isAccepted', _t('Acc.'))
-        ->addConverter('(${a1} ? ${a2}->attributes["accepted"] : false)')
-    ->addColumn('type', 'Design')
-        ->addConverter(
-            FaZend_Callback::factory(
-                '${a2}->getDesignMap(${i1})'
-            )
-            ->inject($this->project)
-        )
-        ->addFormatter('true', 'font-family:Courier; white-space:pre')
     ->addColumn('description', _t('Description'))
-    ->addColumn('attributes', _t('Attributes'))
     ?>
-    

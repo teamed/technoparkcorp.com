@@ -70,4 +70,20 @@ abstract class Deliverables_Requirements_Requirement extends Deliverables_Requir
         }
     }
     
+    /**
+     * Name of parent requirement
+     *
+     * @return string
+     */
+    protected function _getParentName() 
+    {
+        if (!$this->getLevel()) {
+            FaZend_Exception::raise(
+                'Deliverables_Requirements_Requirement_NoParentException',
+                "There is not parent for '{$this->name}'"
+            );
+        }
+        return substr($this->name, 0, strrpos($this->name, '.') - 1);
+    }
+    
 }

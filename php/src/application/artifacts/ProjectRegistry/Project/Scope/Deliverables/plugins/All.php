@@ -17,35 +17,26 @@
  * @version $Id$
  *
  */
-
-require_once 'artifacts/ProjectRegistry/Project/Scope/Deliverables/types/Deliverables/Requirements/Requirement.php';
+ 
+require_once 'artifacts/ProjectRegistry/Project/Scope/Deliverables/plugins/Abstract.php';
 
 /**
- * One functional requirement
+ * All deliverables
  *
  * @package Artifacts
  */
-class Deliverables_Requirements_Requirement_Functional extends Deliverables_Requirements_Requirement
+class Deliverables_Plugin_All extends Deliverables_Plugin_Abstract
 {
-    
+
     /**
-     * Priority of the requirement
-     *
-     * @return integer
-     */
-    protected function _getPriority() 
-    {
-        return $this->attributes['priority']->value;
-    }
-    
-    /**
-     * Is it already implemented?
+     * Accept everything
      *
      * @return boolean
+     * @see FilterIterator::accept()
      */
-    public function isImplemented() 
+    public function accept()
     {
-        return false;
+        return true;
     }
-    
+        
 }
