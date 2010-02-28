@@ -49,7 +49,7 @@ abstract class Deliverables_Plugin_Abstract extends FilterIterator implements Co
     public static function factory($name, theDeliverables $deliverables) 
     {
         $className = 'Deliverables_Plugin_' . ucfirst($name);
-        $fileName = dirname(__FILE__) . '/' . $name . '.php';
+        $fileName = dirname(__FILE__) . '/' . ucfirst($name) . '.php';
         if (!file_exists($fileName)) {
             FaZend_Exception::raise(
                 'Deliverables_Plugin_InvalidPluginException',
