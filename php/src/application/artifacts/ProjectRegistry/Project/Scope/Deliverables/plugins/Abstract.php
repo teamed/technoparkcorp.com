@@ -56,7 +56,7 @@ abstract class Deliverables_Plugin_Abstract extends FilterIterator implements Co
                 "Plugin '{$name}' not found"
             );
         }
-        require_once dirname(__FILE__) . '/' . $name . '.php';
+        require_once $fileName;
         return new $className($deliverables);
     }
     
