@@ -18,33 +18,34 @@
 <? if ($this->pageCount > 1): ?>
     <? $url = $this->url(array(), null, true, false) . '?pg='; ?>
     <div class="paginationControl">
-    
-    <!-- Previous page link -->
-    <? if (isset($this->previous)): ?>
-        <a href="<?=$url . $this->previous?>">prev</a> 
-    <? else: ?>
-        <span style="color: grey;">prev</span>
-    <? endif; ?>
-
-    &#32;
-
-    <!-- Numbered page links -->
-    <? foreach ($this->pagesInRange as $page): ?>
-        <? if ($page != $this->current): ?>
-            <a href="<?=$url . $page?>"><?=$page;?></a>
+        <!-- Previous page link -->
+        <? if (isset($this->previous)): ?>
+            <a href="<?=$url . $this->previous?>"><?=_t('prev')?></a> 
         <? else: ?>
-            [<?=$page?>]
+            <span style="color: grey;"><?=_t('prev')?></span>
         <? endif; ?>
+
         &#32;
-    <? endforeach; ?>
 
-    &#32;
+        <!-- Numbered page links -->
+        <? foreach ($this->pagesInRange as $page): ?>
+            <? if ($page != $this->current): ?>
+                <a href="<?=$url . $page?>"><?=$page;?></a>
+            <? else: ?>
+                [<?=$page?>]
+            <? endif; ?>
+            &#32;
+        <? endforeach; ?>
 
-    <!-- Next page link -->
-    <? if (isset($this->next)): ?>
-        <a href="<?=$url . $this->next?>">next</a>
-    <? else: ?>
-        <span style="color: grey;">next</span>
-    <? endif; ?>
+        &#32;
+
+        <!-- Next page link -->
+        <? if (isset($this->next)): ?>
+            <a href="<?=$url . $this->next?>"><?=_t('next')?></a>
+        <? else: ?>
+            <span style="color: grey;"><?=_t('next')?></span>
+        <? endif; ?>
+        
+        <?=_t('%d total', $this->totalItemCount)?>
     </div>
 <? endif;
