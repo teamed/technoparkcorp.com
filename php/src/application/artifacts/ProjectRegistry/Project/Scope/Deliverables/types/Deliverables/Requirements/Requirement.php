@@ -83,7 +83,7 @@ abstract class Deliverables_Requirements_Requirement extends Deliverables_Requir
                 "There is not parent for '{$this->name}'"
             );
         }
-        return substr($this->name, 0, strrpos($this->name, '.') - 1);
+        return substr($this->name, 0, strrpos($this->name, '.'));
     }
     
 }
