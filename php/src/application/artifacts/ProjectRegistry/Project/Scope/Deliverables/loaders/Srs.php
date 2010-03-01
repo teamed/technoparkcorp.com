@@ -61,7 +61,7 @@ class DeliverablesLoaders_Srs extends DeliverablesLoaders_Abstract
                         break;
 
                     case $attrib == 'must':
-                        $deliverable->attributes['priority']->add(5);
+                        $deliverable->attributes['priority']->add(9);
                         break;
 
                     case preg_match('/^p(\d+)$/i', $attrib, $matches):
@@ -79,7 +79,37 @@ class DeliverablesLoaders_Srs extends DeliverablesLoaders_Abstract
 
             $this->_deliverables->add($deliverable);
         }
+        
+        // update priorities of all functional requirements
+        $this->_updatePriorities();
+        
         logg('SRS loading finished, %d deliverables found', count($entities));
+    }
+    
+    /**
+     * Update priorities of all functional requirements
+     *
+     * @return void
+     */
+    protected function _updatePriorities() 
+    {
+        foreach ($this->_deliverables->functional as $req) {
+            $parent = $req;
+            $priority = 1;
+            // try to set it to parent priority
+            while (true) {
+                if (!$parent->getLevel()) {
+                    break;
+                }
+                if ($parent->priority) {
+                    $priority = max($parent->priority->value, $priority);
+                    break;
+                }
+                $parent = $this->_deliverables[$parent->parentName];
+            }
+            
+            $req->attributes['priority']->add($priority);
+        }
     }
     
 }
