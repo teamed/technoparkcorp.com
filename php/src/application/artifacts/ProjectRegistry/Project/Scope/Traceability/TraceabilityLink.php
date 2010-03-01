@@ -23,7 +23,7 @@
  *
  * @package Artifacts
  */
-class theTraceabilityLink
+class theTraceabilityLink implements Model_Algo_PathFinder_Pair
 {
     
     const SEPARATOR = ':';
@@ -147,6 +147,30 @@ class theTraceabilityLink
             'Traceability_PropertyOrMethodNotFound', 
             "Can't find what is '$name' in " . get_class($this)
         );        
+    }
+    
+    /**
+     * Get left element in pair
+     *
+     * @return string
+     * @see Model_Algo_PathFinder_Pair::getLeftInPair()
+     * @see theTraceability::getCoverageChains()
+     */
+    public function getLeftInPair()
+    {
+        return $this->from;
+    }
+    
+    /**
+     * Get right element in pair
+     *
+     * @return string
+     * @see Model_Algo_PathFinder_Pair::getRightInPair()
+     * @see theTraceability::getCoverageChains()
+     */
+    public function getRightInPair()
+    {
+        return $this->to;
     }
     
     /**

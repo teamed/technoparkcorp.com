@@ -12,13 +12,14 @@
  * 568 Ninth Street South 202, Naples, Florida 34102, USA
  * tel. +1 (239) 935 5429
  *
+ * @version $Id$
 -->
  
 <? $this->includeCSS('pages/projects/_any/Integration/Metrics/tree.css') ?>
 
 <?=$this->publish($this->project->metrics)?>
 
-<h1>Project Metrics (full list)</h1>
+<h1><?=_t('Project Metrics (full list)')?></h1>
 
 <?=$this->forma()
     ->addAttrib('class', 'inline')
@@ -28,7 +29,7 @@
         ->fieldLabel('Metric', true)
         ->fieldAttrib('size', 50)
     ->addField('submit', 'submit')
-        ->fieldValue('Ping')
+        ->fieldValue(_t('Ping Metric'))
         ->fieldAttrib('class', 'btn')
         ->fieldAction(array($this->project->metrics, 'offsetGet'))
     ?>
@@ -44,7 +45,7 @@
     ->setMask(
         '
         (${a1}->visible ?
-        sprintf(
+        _t(
             "%s: <b>%s</b>, default: %0.2f, objective: %0.2f, delta: %+0.2f",
             ${a1}->suffix,
             ${a1}->value,

@@ -201,7 +201,13 @@ class DeliverablesLoaders_Issues extends DeliverablesLoaders_Abstract
     {
         // we're building a list of deliverables mentioned in this ticket
         $mentioned = array();
-        $changes = $issue->changelog->get('comment')->getChanges();
+        
+        // collect all changes
+        $changes = array();
+        foreach (array('summary', 'comment') as $field) {
+            $changes = array_merge($changes, $issue->changelog->get($field)->getChanges());
+        }
+        
         foreach ($changes as $change) {
             $matches = array();
             if (!preg_match_all(Deliverables_Abstract::REGEX, $change->value, $matches)) {

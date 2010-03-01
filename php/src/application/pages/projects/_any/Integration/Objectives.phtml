@@ -21,7 +21,7 @@
 
 <?=$this->forma()
     ->addAttrib('class', 'inline')
-    ->addBehavior('flash', '"Objective \'{${a1}->name}\' set to \'{${a2}}\'"')
+    ->addBehavior('flash', '_t("Objective \'%s\' set to \'%s\'", ${a1}->name, ${a2})')
     ->addBehavior('redirect')
     ->addField('text', 'a1')
         ->fieldLabel('Objective', true)
@@ -44,13 +44,13 @@
 <?=$this->table()
     ->setSource($this->project->metrics)
     ->addConverter('(${a2}->visible ? true : false)')
-    ->addColumn('__key', 'Name')
+    ->addColumn('__key', _t('Name'))
         ->addConverter('"<span onclick=\'set()\'>{${a1}}</span>"')
         ->allowRawHtml()
-    ->addColumn('objective', 'Objective')
+    ->addColumn('objective', _t('Objective'))
         ->addFormatter('(${a2}->objective == ${a2}->default ? false : true)', 'font-weight:bold')
-    ->addColumn('default', 'Default')
-    ->addColumn('value', 'Value')
+    ->addColumn('default', _t('Default'))
+    ->addColumn('value', _t('Value'))
     ?>
     
     

@@ -34,8 +34,9 @@ class TraceabilityTest extends AbstractProjectTest
 
     public function testGetCoverageChainsWorks()
     {
-        // $chains = $this->_traceability->getCoverageChains('issues', 'all');
-        // $this->assertFalse(empty($chains), 'Empty list of chains, why?');
+        $chains = $this->_traceability->getCoverageChains('issues', 'requirements');
+        // logg(print_r($chains, true));
+        $this->assertFalse(empty($chains), 'Empty list of chains, why?');
     }
 
 }

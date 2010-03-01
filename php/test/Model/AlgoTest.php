@@ -1,6 +1,6 @@
 <?php
 /**
- * @version $Id: WobotTest.php 718 2010-02-21 15:55:39Z yegor256@yahoo.com $
+ * @version $Id$
  */
 
 require_once 'AbstractTest.php';

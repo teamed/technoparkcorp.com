@@ -88,7 +88,7 @@ abstract class Deliverables_Plugin_Abstract extends FilterIterator implements Co
      * @param Iterator
      * @return void
      */
-    protected function _init(Iterator $iterator) 
+    protected function _init(theDeliverables $iterator) 
     {
         // ...
     }

@@ -12,16 +12,13 @@
  * 568 Ninth Street South 202, Naples, Florida 34102, USA
  * tel. +1 (239) 935 5429
  *
- * @version $Id$
+ * @version $Id: reload.phtml 671 2010-02-11 14:58:00Z yegor256@yahoo.com $
 -->
  
-versions = r
-stat = <?=Model_Pages::ADMIN?>
+<? $lines = $this->document->getSnapshot() ?>
 
-<? if ($this->document instanceof Model_Artifact_Passive): ?>
-    reload = r
-<? endif; ?>
-
-<? if ($this->document instanceof Model_Artifact_InScope): ?>
-    snapshot = r
+<? if ($lines): ?>
+    <pre><?=implode("\n", $this->document->getSnapshot())?></pre>
+<? else: ?>
+    <p>it's empty</p>
 <? endif; ?>

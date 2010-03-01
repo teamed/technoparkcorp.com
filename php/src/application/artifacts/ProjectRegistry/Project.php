@@ -109,6 +109,7 @@ class theProject extends Model_Artifact_Bag implements Model_Artifact_Passive
     protected function _passiveLoader() 
     {
         return Model_Artifact_Passive_Loader::factory($this)
+            ->attach('baselines', new theBaselines())
             ->attach('staffAssignments', new theStaffAssignments(), 'project')
             ->attach('workOrders', new theWorkOrders(), 'project')
             ->attach('milestones', new theMilestones())

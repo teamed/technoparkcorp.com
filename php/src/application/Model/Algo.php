@@ -67,7 +67,7 @@ class Model_Algo
     public function setOptions(array $options) 
     {
         foreach ($options as $option=>$value) {
-            if (!array_key_exists($this->_options[$option])) {
+            if (!array_key_exists($option, $this->_options)) {
                 FaZend_Exception::raise(
                     'Model_Algo_InvalidOptionException',
                     "Option '{$option}' is not recognized in " . get_class($this)

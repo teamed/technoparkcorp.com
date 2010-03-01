@@ -19,22 +19,8 @@
 
 <h1>Design Orphans</h1>
 
-<?
-    // very stupid approach, need to be fixed to 
-    // find more complex chains
-    $orphans = new ArrayIterator();
-    foreach ($this->project->deliverables->design as $element) {
-        if ($element instanceof Deliverables_Design_Package) {
-            continue;
-        }
-        if (!$this->project->traceability->getCoverage($element, 'all')) {
-            $orphans[] = $element;
-        }
-    }
-?>
-
 <?=$this->table()
-    ->setSource($orphans)
+    ->setSource($this->project->deliverables->orphans)
     ->addColumn('name', 'Name')
     ->addColumn('type', 'Type')
     ?>

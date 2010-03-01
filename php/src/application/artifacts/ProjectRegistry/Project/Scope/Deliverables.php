@@ -35,7 +35,7 @@
  *
  * @package Artifacts
  */
-class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passive
+class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passive, Model_Artifact_InScope
 {
     
     /**
@@ -113,6 +113,39 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
     public function isLoaded() 
     {
         return (bool)count($this);
+    }
+    
+    /**
+     * Get baseline as collection of text lines (Snapshot)
+     *
+     * @return string[]
+     * @see Model_Artifact_InScope::getSnapshot()
+     */
+    public function getSnapshot()
+    {
+        $lines = array();
+        foreach ($this as $deliverable) {
+            if (!($deliverable instanceof Deliverables_Requirements_Abstract)) {
+                continue;
+            }
+            $lines[] = 
+            ($deliverable instanceof Deliverables_Requirements_Requirement ?
+                str_repeat('  ', $deliverable->getLevel()) : false).
+            $deliverable->name . ': ' . $this->_compress($deliverable->description);
+        }
+        return $lines;
+    }
+    
+    /**
+     * Set baseline to work with for now (Snapshot)
+     *
+     * @param array List of lines to set as baseline
+     * @return void
+     * @see Model_Artifact_InScope::setSnapshot()
+     */
+    public function setSnapshot(array $lines)
+    {
+        // ignore...
     }
     
     /**
@@ -238,6 +271,22 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
     protected function _getTraceability() 
     {
         return $this->ps()->parent->traceability;
+    }
+
+    /**
+     * Compress one line for snapshot
+     *
+     * @param string
+     * @return string
+     */
+    protected function _compress($line) 
+    {
+        $replacers = array(
+            '/[\t\n\r ]+/' => ' ',
+            '/\s+/' => ' ',
+            '/[^\w\d,;\s]+/' => '',
+        );
+        return preg_replace(array_keys($replacers), $replacers, $line);
     }
 
 }

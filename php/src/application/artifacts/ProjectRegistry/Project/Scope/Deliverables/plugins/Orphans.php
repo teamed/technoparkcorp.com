@@ -14,26 +14,26 @@
  *
  * @author Yegor Bugayenko <egor@tpc2.com>
  * @copyright Copyright (c) TechnoPark Corp., 2001-2009
- * @version $Id$
+ * @version $Id: Queue.php 808 2010-02-28 17:58:12Z yegor256@yahoo.com $
  *
  */
  
 require_once 'artifacts/ProjectRegistry/Project/Scope/Deliverables/plugins/Abstract.php';
 
 /**
- * Implementation queue
+ * Full list of design elements that are NOT traceable to requirements
  *
  * @package Artifacts
  */
-class Deliverables_Plugin_Queue extends Deliverables_Plugin_Abstract
+class Deliverables_Plugin_Orphans extends Deliverables_Plugin_Abstract
 {
 
     /**
-     * List of terminates to use
+     * List of orphans
      *
      * @var string[]
      */
-    protected $_terminates;
+    protected $_orphans;
 
     /**
      * Accept ready-for implementation requirements
@@ -46,7 +46,7 @@ class Deliverables_Plugin_Queue extends Deliverables_Plugin_Abstract
         $req = $this->current();
 
         // @see _init()
-        if (!in_array($req->name, $this->_terminates)) {
+        if (!in_array($req->name, $this->_orphans)) {
             return false;
         }
 
@@ -61,7 +61,7 @@ class Deliverables_Plugin_Queue extends Deliverables_Plugin_Abstract
      */
     public function count() 
     {
-        return count($this->_terminates);
+        return count($this->_orphans);
     }
     
     /**
@@ -72,36 +72,20 @@ class Deliverables_Plugin_Queue extends Deliverables_Plugin_Abstract
      */
     protected function _init(theDeliverables $deliverables) 
     {
-        $terminates = array();
-        foreach ($deliverables as $req) {
-            if (!($req instanceof Deliverables_Requirements_Requirement_Functional)) {
+        // very stupid approach, need to be fixed to 
+        // find more complex chains
+        $this->_orphans = array();
+        foreach ($deliverables as $element) {
+            if (!($element instanceof Deliverables_Design_Abstract)) {
                 continue;
             }
-
-            // implemented already
-            if ($req->isImplemented()) {
-                return false;
-            }
-
-            // parent is there? we should kill it
-            if ($req->getLevel() && isset($terminates[$req->parentName])) {
-                unset($terminates[$req->parentName]);
-            }
-            
-            // kid already there?
-            $kidFound = false;
-            foreach (array_keys($terminates) as $kid) {
-                if (strpos($kid, $req->name . '.') === 0) {
-                    $kidFound = true;
-                }
-            }
-            if ($kidFound) {
+            if ($element instanceof Deliverables_Design_Package) {
                 continue;
             }
-            $terminates[$req->name] = $req;
+            if (!$deliverables->ps()->parent->traceability->getCoverageChains($element, 'functional')) {
+                $this->_orphans[] = $element;
+            }
         }
-        
-        $this->_terminates = array_keys($terminates);
     }
     
 }

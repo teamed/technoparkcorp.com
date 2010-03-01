@@ -15,13 +15,21 @@
  * @version $Id$
 -->
  
-versions = r
-stat = <?=Model_Pages::ADMIN?>
+<?=$this->publish($this->project->baselines)?>
 
-<? if ($this->document instanceof Model_Artifact_Passive): ?>
-    reload = r
-<? endif; ?>
+<h1><?=_t('Project Baselines')?></h1>
 
-<? if ($this->document instanceof Model_Artifact_InScope): ?>
-    snapshot = r
-<? endif; ?>
+<?=$this->table()
+    ->setSource($this->project->baselines)
+    ->addColumn('__key', _t('Name'))
+    ->addColumn('description', _t('Description'))
+    ->addColumn('length', _t('Length'))
+    ->addOption('switch to', '{__key}/switch')
+    ->addOption('diff', '{__key}/diff')
+    ?>
+    
+<h2>Current project snapshot:</h2>
+
+<pre>
+<?=$this->project->baselines->getSnapshot()?>
+</pre>

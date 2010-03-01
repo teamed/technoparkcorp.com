@@ -1,5 +1,5 @@
-<!--
- *
+<?php
+/**
  * thePanel v2.0, Project Management Software Toolkit
  *
  * Redistribution and use in source and binary forms, with or without 
@@ -12,16 +12,32 @@
  * 568 Ninth Street South 202, Naples, Florida 34102, USA
  * tel. +1 (239) 935 5429
  *
+ * @author Yegor Bugayenko <egor@tpc2.com>
+ * @copyright Copyright (c) TechnoPark Corp., 2001-2009
  * @version $Id$
--->
- 
-versions = r
-stat = <?=Model_Pages::ADMIN?>
+ *
+ */
 
-<? if ($this->document instanceof Model_Artifact_Passive): ?>
-    reload = r
-<? endif; ?>
+/**
+ * Pathfinder pair
+ *
+ * @package Model
+ */
+interface Model_Algo_PathFinder_Pair
+{
 
-<? if ($this->document instanceof Model_Artifact_InScope): ?>
-    snapshot = r
-<? endif; ?>
+    /**
+     * Get left element in pair
+     *
+     * @return string
+     */
+    public function getLeftInPair();
+    
+    /**
+     * Get right element in pair
+     *
+     * @return string
+     */
+    public function getRightInPair();
+    
+}

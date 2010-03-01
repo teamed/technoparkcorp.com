@@ -23,8 +23,45 @@
  *
  * @package Artifacts
  */
-class theObjectives extends Model_Artifact
+class theObjectives extends Model_Artifact implements Model_Artifact_InScope
 {
+    
+    /**
+     * Get baseline as collection of text lines (Snapshot)
+     *
+     * @return string[]
+     * @see Model_Artifact_InScope::getSnapshot()
+     */
+    public function getSnapshot()
+    {
+        $lines = array();
+        foreach ($this as $name=>$objective) {
+            $lines[] = $name . ': ' . $objective;
+        }
+        return $lines;
+    }
+    
+    /**
+     * Set baseline to work with for now (Snapshot)
+     *
+     * @param array List of lines to set as baseline
+     * @return void
+     * @see Model_Artifact_InScope::setSnapshot()
+     * @throws Objectives_InvalidSnapshotLineException
+     */
+    public function setSnapshot(array $lines)
+    {
+        $this->ps()->cleanArray();
+        foreach ($lines as $line) {
+            if (!preg_match('/^(.*?):\s(.*)$/', $line, $matches)) {
+                FaZend_Exception::raise(
+                    'Objectives_InvalidSnapshotLineException',
+                    "Invalid line: '{$line}'"
+                );
+            }
+            $this->setObjective($matches[1], $matches[2]);
+        }
+    }
     
     /**
      * Set one objective

@@ -44,6 +44,7 @@ class DeliverablesTest extends AbstractProjectTest
         $plugins = array(
             'queue', // development queue
             'all', // everything
+            'orphans', // design orphans
         );
         
         foreach ($plugins as $plugin) {

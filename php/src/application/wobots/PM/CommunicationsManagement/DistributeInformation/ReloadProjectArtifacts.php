@@ -42,12 +42,14 @@ class ReloadProjectArtifacts extends Model_Decision_PM
         $reloaded = array();
         foreach ($this->_project->ps()->properties as $property) {
             // if this is not a property, but an item?
-            if (!isset($this->_project->$property))
+            if (!isset($this->_project->$property)) {
                 continue;
+            }
                 
             // we're interested only in PASSIVE artifacts
-            if (!($this->_project->$property instanceof Model_Artifact_Passive))
+            if (!($this->_project->$property instanceof Model_Artifact_Passive)) {
                 continue;
+            }
             
             // maybe it's fresh enough?    
             if ($this->_project->$property instanceof Model_Artifact) {
@@ -67,12 +69,13 @@ class ReloadProjectArtifacts extends Model_Decision_PM
             // we reload it explicitly, no matter whether it's loaded or not
             logg("Reloading of [{$this->_project->$property->ps()->path}]...");
             $this->_project->$property->reload();
-            logg("Artifact reloaded: $property");
+            logg("Artifact reloaded: '{$property}'");
             $reloaded[] = $property;
         }
         
-        if (!count($reloaded))
+        if (!count($reloaded)) {
             return 'Nothing reloaded';
+        }
         
         return "Artifacts reloaded: " . implode(', ', $reloaded);
     }

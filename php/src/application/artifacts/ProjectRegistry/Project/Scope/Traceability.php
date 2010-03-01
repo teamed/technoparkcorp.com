@@ -194,7 +194,8 @@ class theTraceability extends Model_Artifact_Bag
      * Returns traceability chains for every deliverable, until it reaches destination
      *
      * The array returned is an associative array, where keys are
-     * names of deliverables from $from, and values are arrays of 
+     * names of deliverables from $from, and values are arrays of arrays. Every
+     * array there is a list of
      * deliverables that are found in the chain from this deliverable,
      * when it is traceable to $to.
      *
@@ -203,20 +204,34 @@ class theTraceability extends Model_Artifact_Bag
      * @param string|array Name of deliverable or name of class who should cover
      * @param string|array Name of deliverable or name of class who should be covered
      * @return array(Deliverables_Abstract[])
+     * @see Model_Algo_Cpm_Paths
      */
-    // public function getCoverageChains($from, $to) 
-    // {
-    //     $toTags = $this->_getNormalizedTags($to);
-    // 
-    //     $chains = array();
-    //     foreach ($from as $source) {
-    //         $chains[$source->name] = $this->_findChain(
-    //             theTraceabilityLink::getDeliverableTag($source),
-    //             $toTags
-    //         );
-    //     }
-    //     return $chains;
-    // }
+    public function getCoverageChains($from, $to) 
+    {
+        $algo = Model_Algo::factory(
+            'pathFinder', 
+            array(
+                'pairs' => $this,
+            )
+        );
+    
+        $toTags = $this->_getNormalizedTags($to);
+        $this->_normalize($from);
+        $chains = array();
+        foreach ($from as $source) {
+            $paths = array();
+            foreach ($toTags as $dest) {
+                $chain = $algo->find(theTraceabilityLink::getDeliverableTag($source), $dest);
+                if ($chain) {
+                    $paths[$dest] = $chain;
+                }
+            }
+            if ($paths) {
+                $chains[$source->name] = $paths;
+            }
+        }
+        return $chains;
+    }
      
     /**
      * Calculate coverage
@@ -257,11 +272,12 @@ class theTraceability extends Model_Artifact_Bag
             $smth = array($smth);
         }
         
-        foreach ($smth as $id=>$deliverable) {
+        foreach ($smth as $id=>&$deliverable) {
             // is is OK already?
             if ($deliverable instanceof Deliverables_Abstract) {
                 continue;
             }
+            
             // otherwises it should be a string
             if (!is_string($deliverable)) {
                 FaZend_Exception::raise(
@@ -269,17 +285,18 @@ class theTraceability extends Model_Artifact_Bag
                     "What does this deliverable mean: '{$deliverable}'?"
                 );        
             }
-            try {
-                foreach ($this->ps()->parent->deliverables->$deliverable as $found) {
-                    $smth[] = $found;
-                }
-                unset($smth[$id]);
-                continue;
-            } catch (Deliverables_PropertyOrMethodNotFoundException $e) {
-                // not found? let's go next
-            }
             
-            $deliverable = $this->ps()->parent->deliverables[$deliverable];
+            // it's a deliverable name?
+            if (isset($this->ps()->parent->deliverables[$deliverable])) {
+                $deliverable = $this->ps()->parent->deliverables[$deliverable];
+                continue;
+            }
+
+            // otherwise it's an aggregator
+            foreach ($this->ps()->parent->deliverables->$deliverable as $found) {
+                $smth[] = $found;
+            }
+            unset($smth[$id]);
         }
     }
     
@@ -303,21 +320,4 @@ class theTraceability extends Model_Artifact_Bag
         return $tags;
     }
     
-    /**
-     * Find chain of deliverables
-     *
-     * In the entire list of traceability links we're trying to find
-     * a chain of deliverables, which trace one to another and finally
-     * reach one of $toTags from $tag.
-     *
-     * @return string List of tags
-     */
-    // protected function _findChain($tag, array $toTags) 
-    // {
-    //     $sources = array();
-    //     foreach ($this as $link) {
-    //         $sources[] = $link;
-    //     }
-    // }
-     
 }
