@@ -53,16 +53,17 @@ class Model_Asset_Design_Fazend_Linux extends Model_Asset_Design_Abstract
         
         $return = array();
         foreach ($list as $data) {
-            switch ($data['type']) {
-                case 'category':
-                case 'package':
+            $type = $data['type'];
+            switch (true) {
+                case $type == 'category':
+                case $type == 'package':
                     $data['type'] = 'package';
                     break;
-                case 'file':
-                case 'file_PhpFile':
+                case $type == 'file':
+                case preg_match('/^file_\w+File$/', $type):
                     $data['type'] = 'file';
                     break;
-                case 'method':
+                case $type == 'method':
                     $data['type'] = 'method';
                     break;
                 default:
