@@ -1,4 +1,7 @@
 <?php
+/**
+ * @version $Id$
+ */
 
 require_once 'AbstractTest.php';
 require_once 'artifacts/OpportunityRegistry/Opportunity/sheets-collection/Sheet/Vision/Diagram.php';

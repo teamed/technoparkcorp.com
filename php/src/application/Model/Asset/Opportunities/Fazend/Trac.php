@@ -106,7 +106,7 @@ class Model_Asset_Opportunities_Fazend_Trac extends Model_Asset_Opportunities_Ab
                 
                 $nodes->next();
 
-                $node = strval($node);
+                $node = $this->_textualize($node);
                 if (strpos($node, ':') === false) {
                     logg(
                         'Paragraph "%s" ignored since ":" is missed',
@@ -148,10 +148,11 @@ class Model_Asset_Opportunities_Fazend_Trac extends Model_Asset_Opportunities_Ab
     {
         foreach ($ul->xpath('li') as $li) {
             $subItem = $item->addChild('item', '');
-            if (strpos($li, ':') === false) {
-                $subItem->addAttribute('value', $this->_trim($li));
+            $liTxt = $this->_textualize($li);
+            if (strpos($liTxt, ':') === false) {
+                $subItem->addAttribute('value', $this->_trim($liTxt));
             } else {
-                list($n, $v) = explode(':', $li);
+                list($n, $v) = explode(':', $liTxt, 2);
                 $subItem->addAttribute('name', $this->_trim($n));
                 $subItem->addAttribute('value', $this->_trim($v));
             }
@@ -160,6 +161,25 @@ class Model_Asset_Opportunities_Fazend_Trac extends Model_Asset_Opportunities_Ab
                 $this->_parseUl($subUl, $subItem);
             }
         }
+    }
+    
+    /**
+     * Get text
+     *
+     * @param SimpleXMLElement Xml to work with
+     * @return string
+     */
+    protected function _textualize(SimpleXMLElement $xml) 
+    {
+        $replacers = array(
+            '/^<\w+>(.*?)<\/\w+>$/s' => '${1}', 
+            '/<ul>.*?<\/ul>/s' => '',
+        );
+        return preg_replace(
+            array_keys($replacers),
+            $replacers,
+            $xml->asXML()
+        );
     }
     
     /**

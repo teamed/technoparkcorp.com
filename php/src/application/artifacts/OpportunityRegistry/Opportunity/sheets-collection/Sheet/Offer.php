@@ -37,7 +37,10 @@ class Sheet_Offer extends Sheet_Abstract
     protected $_defaults = array(
         'price' => '25 EUR',
         'deposit' => '25%',
+        'low' => false,
+        'high' => false,
         'objectives' => array(),
+        'intro' => array(),
     );
     
     /**
@@ -68,10 +71,12 @@ class Sheet_Offer extends Sheet_Abstract
     protected function _getDepositAmount() 
     {
         if (preg_match('/^(\d+(?:\.\d+)?)\%$/', $this->deposit, $matches)) {
-            return $this->highAmount
+            $amount = clone $this->highAmount;
+            return $amount
                 ->add($this->lowAmount)
                 ->div(2)
-                ->mul($matches[1] / 100);
+                ->mul($matches[1] / 100)
+                ->round(-2);
         } else {
             return new FaZend_Bo_Money($this->deposit);
         }

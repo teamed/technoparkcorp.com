@@ -69,7 +69,7 @@ class Sheet_Vision extends Sheet_Abstract
         $diagram->setOptions(
             array(
                 'width' => 14,
-                'height' => 6,
+                'height' => 8,
                 'actorWidth' => 2,
                 'actorHeight' => 1.1,
 

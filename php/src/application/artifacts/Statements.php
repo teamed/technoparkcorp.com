@@ -215,8 +215,9 @@ class theStatements implements ArrayAccess, Iterator, Countable, Model_Artifact_
      **/
     protected function _getRowset() 
     {
-        if (!isset($this->_rowset))
+        if (!isset($this->_rowset)) {
             $this->_rowset = theStatement::retrieveAll();
+        }
         return $this->_rowset;
         
     }

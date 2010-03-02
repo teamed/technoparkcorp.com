@@ -25,7 +25,7 @@
     
     {\setstretch{1.1}
     <? foreach (array_keys($this->sheets['Contacts']->defaults) as $name): ?>
-        <? if ($this->sheets['Contacts']->exists($name)): ?>
+        <? if ($this->sheets['Contacts']->exists($name) && $this->sheets['Contacts']->$name): ?>
             <?=$this->tex($this->sheets['Contacts']->$name)?>\\
         <? endif; ?>
     <? endforeach; ?>}
@@ -65,6 +65,10 @@ tel. +1 (239) 935 5429
 
 \clearpage
 \section{Proposal}
+
+<? foreach ($this->sheets['Offer']->intro as $intro): ?> 
+    <?=$this->tex($intro['value']) . "\n\n"?>
+<? endforeach; ?>
 
 <? foreach ($this->sheets as $sheet): ?> 
     <? if (!$sheet->getProposalFile()) continue; ?>

@@ -164,6 +164,7 @@ abstract class Sheet_Abstract
             if (array_key_exists($method, $this->_cached)) {
                 return $this->_cached[$method];
             } else {
+                // logg('cached %s to %s', $method, $this->$method());
                 return $this->_cached[$method] = $this->$method();
             }
         }

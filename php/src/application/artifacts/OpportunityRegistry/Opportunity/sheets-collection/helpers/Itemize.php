@@ -44,8 +44,8 @@ class Sheet_Helper_Itemize extends FaZend_View_Helper
                     $tex = "\\begin{{$style}}\n";
                     foreach ($items as $name=>$value) {
                         $tex .= sprintf(
-                            "\t\item %s\n",
-                            $this->getView()->tex($value)
+                            "\t\\item %s\n",
+                            $value
                         );
                     }
                     $tex .= "\\end{{$style}}";
@@ -59,9 +59,9 @@ class Sheet_Helper_Itemize extends FaZend_View_Helper
                     $tex = "\\begin{{$style}}\n";
                     foreach ($items as $name=>$value) {
                         $tex .= sprintf(
-                            "\t\item[%s] %s\n",
-                            $this->getView()->tex($name),
-                            $this->getView()->tex($value)
+                            "\t\\item[%s] %s\n",
+                            $name,
+                            $value
                         );
                     }
                     $tex .= "\\end{{$style}}";
@@ -71,7 +71,7 @@ class Sheet_Helper_Itemize extends FaZend_View_Helper
             case 'inline':
                 switch (true) {
                     case !count($items):
-                        $tex = "$\dots$";
+                        $tex = "$\\dots$";
                         break;
                     case count($items) < 2:
                         $tex = implode('', $items);
@@ -88,7 +88,7 @@ class Sheet_Helper_Itemize extends FaZend_View_Helper
         
             case 'inparaenum':
                 if (!count($items)) {
-                    $tex = "$\dots$";
+                    $tex = "$\\dots$";
                 } else {
                     $tex = "\\begin{inparaenum}[\\itshape a\\upshape)]\n\t" .
                     implode(";\n\t\\item ", $items) .

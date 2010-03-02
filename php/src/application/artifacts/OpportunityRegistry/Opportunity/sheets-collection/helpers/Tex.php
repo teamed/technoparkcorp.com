@@ -33,9 +33,14 @@ class Sheet_Helper_Tex
      */
     public function tex($str) 
     {
-        $str = addcslashes($str, '[]{}^%&\\$_#');
-        $str = preg_replace('/"(.*?)"/', "``\${1}''", $str);
-        return $str;
+        $replacers = array(
+            '/([\[\]\{\}\^%&\\\$\_\#])/' => '\\\\${1}',
+            '/"(.*?)"/'                  => "``\${1}''",
+            '/<b>(.*?)<\/b>/'            => '\\textbf{${1}}',
+            '/<i>(.*?)<\/i>/'            => '\\textit{${1}}',
+            '/<tt>(.*?)<\/tt>/'          => '\\texttt{${1}}',
+        );
+        return preg_replace(array_keys($replacers), $replacers, strval($str));
     }
 
 }

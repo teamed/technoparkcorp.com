@@ -77,7 +77,7 @@ class theStatement extends Zend_Db_Table_Row implements ArrayAccess, Iterator, C
      * Get full list of statements
      *
      * @return theStatement[]
-     **/
+     */
     public static function retrieveAll() 
     {
         return thePayment::retrieve(false)
@@ -91,7 +91,7 @@ class theStatement extends Zend_Db_Table_Row implements ArrayAccess, Iterator, C
      * Send this statement by email to the supplier
      *
      * @return void
-     **/
+     */
     public function sendByEmail() 
     {
         validate()

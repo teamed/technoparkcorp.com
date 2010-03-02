@@ -87,9 +87,9 @@ class Sheet_ROM extends Sheet_Abstract
      */
     protected function _getHours() 
     {
-        $hours[] = array();
+        $hours = array();
         foreach ($this->_estimates as $estimate) {
-            $hours[] = $estimate->hours;
+            $hours[] = intval($estimate->hours);
         }
         if (!count($hours)) {
             return 0;
