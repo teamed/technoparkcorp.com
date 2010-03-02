@@ -117,7 +117,7 @@ class Sheet_Helper_Itemize extends FaZend_View_Helper
         $items = array();
         foreach ($collection as $name=>$item) {
             if (is_scalar($item)) {
-                $items[$name] = $item;
+                $items[$this->getView()->tex($name)] = $this->getView()->tex($item);
             } else {
                 $items[$this->getView()->tex($item['name'])] = 
                     $this->getView()->tex($item['value']);
