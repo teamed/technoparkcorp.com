@@ -13,27 +13,35 @@
  * tel. +1 (239) 935 5429
  *
  * @copyright Copyright (c) FaZend.com
- * @version $Id$
+ * @version $Id: YesNo.php 611 2010-02-07 07:43:45Z yegor256@yahoo.com $
  * @category FaZend
  */
 
 /**
- * POST given param
+ * Show diff between two strings
  *
  * @package helpers
  */
-class Helper_Post extends FaZend_View_Helper
+class Helper_Diff
 {
 
     /**
-     * Returns POST param, if exists, otherwise NULL
+     * Show diff
      *
-     * @param string Name of param
      * @return string
      */
-    public function post($name)
+    public function diff($source, $changes)
     {
-        return strval(Zend_Controller_Front::getInstance()->getRequest()->getPost($name));
+        $from = tempnam(TEMP_PATH, 'panel2diff');
+        $to = tempnam(TEMP_PATH, 'panel2diff');
+        file_put_contents($from, $source);
+        file_put_contents($to, $changes);
+        $diff = shell_exec(
+            'diff ' . escapeshellarg($from) . ' ' . escapeshellarg($to) . ' 2>&1'
+        );
+        unlink($from);
+        unlink($to);
+        return '<pre>' . $diff . '</pre>';
     }
 
 }

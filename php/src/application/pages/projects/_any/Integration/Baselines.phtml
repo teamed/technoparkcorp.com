@@ -24,12 +24,29 @@
     ->addColumn('__key', _t('Name'))
     ->addColumn('description', _t('Description'))
     ->addColumn('length', _t('Length'))
-    ->addOption('switch to', '{__key}/switch')
-    ->addOption('diff', '{__key}/diff')
+    ->addOption('switch to', '?switch={__key}')
+    ->addOption('diff', '?diff={__key}')
+    ->addOption('__key', '?view={__key}')
     ?>
     
-<h2>Current project snapshot:</h2>
+<? if ($name = $this->httpGet('diff')): ?>
+    
+    <h2>Diff between "<?=$name?>" and "trunk":</h2>
+    <?=$this->diff(
+        $this->project->baselines[$name]->text,
+        $this->project->baselines['trunk']->text
+    )?>
+    
+<? elseif ($name = $this->httpGet('view')): ?>
+    
+    <h2>Baseline "<?=$name?>":</h2>
+    <pre>
+<?=$this->project->baselines[$name]->text?></pre>
 
-<pre>
-<?=$this->project->baselines->getSnapshot()?>
-</pre>
+<? else: ?>
+
+    <h2>Current project snapshot:</h2>
+    <pre>
+<?=$this->project->baselines['trunk']->text?></pre>
+
+<? endif; ?>

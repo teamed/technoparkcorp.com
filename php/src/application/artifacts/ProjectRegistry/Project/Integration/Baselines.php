@@ -26,9 +26,6 @@
 class theBaselines extends Model_Artifact_Bag implements Model_Artifact_Passive
 {
     
-    const CHAPTER_MARKER = '===';
-    const TEXT_WIDTH = 80;
-    
     /**
      * Reload information about baselines
      *
@@ -36,7 +33,10 @@ class theBaselines extends Model_Artifact_Bag implements Model_Artifact_Passive
      */
     public function reload() 
     {
-        //...
+        $this['trunk'] = new theBaseline(
+            'current versions on ' . Zend_Date::now(),
+            theBaseline::collect($this->ps()->parent)
+        );
     }
     
     /**
@@ -68,49 +68,6 @@ class theBaselines extends Model_Artifact_Bag implements Model_Artifact_Passive
     }
     
     /**
-     * Get project snapshot
-     *
-     * @return string
-     */
-    public function getSnapshot() 
-    {
-        $lines = array();
-        $project = $this->ps()->parent;
-        foreach ($project->ps()->properties as $property) {
-            // if this is not a property, but an item?
-            if (!isset($project->$property)) {
-                continue;
-            }
-                
-            // we're interested only in artifacts not in scope
-            if (!($project->$property instanceof Model_Artifact_InScope)) {
-                continue;
-            }
-            
-            $lines = array_merge(
-                $lines, 
-                array(
-                    '', // just empty line before new deliverable section
-                    self::CHAPTER_MARKER . ' ' . ucfirst($property),
-                ),
-                $project->$property->getSnapshot()
-            );
-        }
-        
-        // break long lines onto shorter
-        foreach ($lines as &$line) {
-            if (preg_match('/^(\s+)/', $line, $matches)) {
-                $prefix = $matches[1];
-            } else {
-                $prefix = '';
-            }
-            $line = wordwrap($line, self::TEXT_WIDTH, " \\\n" . $prefix);
-        }
-        
-        return implode("\n", $lines);
-    }
-    
-    /**
      * Add new snapshot to the collection, and create baseline
      *
      * @param string Name of snapshot
@@ -124,22 +81,10 @@ class theBaselines extends Model_Artifact_Bag implements Model_Artifact_Passive
             ->alnum($name, "Only letters and numbers, '{$name}' is not valid")
             ->true(strlen($name) > 0, 'Empty names are prohibited');
             
-        $snapshots = array();
-        
-        // remove line braking symbols
-        $text = preg_replace('/\\\\\n\s*/', '', $text);
-        
-        $marker = preg_quote(self::CHAPTER_MARKER, '/');
-        if (preg_match_all("/{$marker}\s?(\w+)\s?\n([^({$marker})]*)/s", $text, $matches)) {
-            foreach ($matches[1] as $id=>$artifact) {
-                $lines = array_filter(explode("\n", $matches[2][$id]));
-                foreach ($lines as &$line) {
-                    $line = trim($line);
-                }
-                $snapshots[lcfirst($artifact)] = $lines;
-            }
-        }
-        return $this[$name] = new theBaseline($description, $snapshots);
+        return $this[$name] = new theBaseline(
+            $description, 
+            theBaseline::reverse($text)
+        );
     }
     
 }

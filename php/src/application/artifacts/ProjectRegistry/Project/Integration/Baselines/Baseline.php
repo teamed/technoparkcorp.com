@@ -22,9 +22,14 @@
  * One project baseline
  *
  * @package Artifacts
+ * @property string $text Baseline as text, see {@link $this->_getText()}
+ * @property integer $length Length of text, see {@link $this->_getLength()}
  */
 class theBaseline
 {
+    
+    const CHAPTER_MARKER = '===';
+    const TEXT_WIDTH = 80;
     
     /**
      * Textual description of the baseline
@@ -101,13 +106,91 @@ class theBaseline
     }
     
     /**
+     * Collect information
+     *
+     * @param theProject
+     * @return array[]
+     */
+    public static function collect(theProject $project) 
+    {
+        $lines = array();
+        foreach ($project->ps()->properties as $property) {
+            // if this is not a property, but an item?
+            if (!isset($project->$property)) {
+                continue;
+            }
+                
+            // we're interested only in artifacts not in scope
+            if (!($project->$property instanceof Model_Artifact_InScope)) {
+                continue;
+            }
+            
+            $lines[$property] = $project->$property->getSnapshot();
+        }
+        return $lines;
+    }
+    
+    /**
+     * Convert text back to lines
+     *
+     * @param string Text received from tickets...
+     * @return array[]
+     */
+    public static function reverse($text) 
+    {
+        $lines = array();
+        // remove line braking symbols
+        $text = preg_replace('/\\\\\n\s*/', '', $text);
+        
+        $marker = preg_quote(self::CHAPTER_MARKER, '/');
+        if (preg_match_all("/{$marker}\s?(\w+)\s?\n([^({$marker})]*)/s", $text, $matches)) {
+            foreach ($matches[1] as $id=>$artifact) {
+                $lines[lcfirst($artifact)] = array_filter(explode("\n", $matches[2][$id]));
+            }
+        }
+        return $lines;
+    }
+    
+    /**
      * Length of baseline text, in char
      *
      * @return void
      */
     protected function _getLength() 
     {
+        return strlen($this->text);
+    }
+    
+    /**
+     * Get this baseline in text form
+     *
+     * @return string
+     */
+    protected function _getText() 
+    {
+        $lines = array();
+        foreach ($this->_snapshots as $artifact=>$lns) {
+            $lines = array_merge(
+                $lines, 
+                array(
+                    '', // just empty line before new deliverable section
+                    self::CHAPTER_MARKER . ' ' . ucfirst($artifact),
+                ),
+                $lns
+            );
+        }
         
+        // break long lines onto shorter
+        foreach ($lines as &$line) {
+            if (preg_match('/^(\s+)/', $line, $matches)) {
+                $prefix = $matches[1];
+            } else {
+                $prefix = '';
+            }
+            $line = wordwrap($line, self::TEXT_WIDTH, " \\\n" . $prefix);
+        }
+        
+        return implode("\n", $lines);
     }
     
 }
