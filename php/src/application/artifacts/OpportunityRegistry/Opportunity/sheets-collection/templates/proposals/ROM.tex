@@ -5,7 +5,11 @@
 
 Rough-Order-of-Magnitude (ROM) Estimate was made by our technical and 
 management specialists: 
-<?=$this->itemize($this->sheet->estimators, 'inline')?>.
+<?=$this->itemize(
+    $this->sheet->estimators, 
+    'inline',
+    array('mask' => 'sprintf("\\\\textbf{%s}: %s", ${a1}, ${a2})')
+)?>.
 We're using our own patent-pending estimating method (based on COCOMO-II, 
 three-point estimate and function point analysis).
 According to the estimate

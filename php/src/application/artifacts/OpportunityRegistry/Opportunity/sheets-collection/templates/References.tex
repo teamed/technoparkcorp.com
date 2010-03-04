@@ -1,0 +1,19 @@
+%%
+%% Copyright TechnoPark Corp., 2010
+%% @version $Id: RiskAnalysis.tex 677 2010-02-15 21:20:44Z yegor256@yahoo.com $
+%%
+
+\section*{List of References}
+
+TechnoPark Corp. has operated in the software development market since 2001. One of
+the most important corporate values of our company is a happy client, who is happy enough to recommend us. 
+The list below includes some of our clients who are ready to give us a
+reference:
+
+<? foreach ($this->sheet->accounts as $account): ?>
+    <?=$this->render('References/' . $account['name'] . '.tex')?>{}
+    <?=$this->tex($account['value'])?>{}
+    
+<? endforeach; ?>
+
+Feel free to email or call them.

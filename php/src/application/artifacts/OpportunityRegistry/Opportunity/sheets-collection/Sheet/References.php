@@ -1,5 +1,5 @@
-<!--
- *
+<?php
+/**
  * thePanel v2.0, Project Management Software Toolkit
  *
  * Redistribution and use in source and binary forms, with or without 
@@ -12,27 +12,30 @@
  * 568 Ninth Street South 202, Naples, Florida 34102, USA
  * tel. +1 (239) 935 5429
  *
--->
- 
-<? $statements = $this->root->statements ?>
+ * @author Yegor Bugayenko <egor@tpc2.com>
+ * @copyright Copyright (c) TechnoPark Corp., 2001-2009
+ * @version $Id: Vision.php 818 2010-03-02 13:50:37Z yegor256@yahoo.com $
+ *
+ */
 
-<h1>Statements</h1>
+require_once 'artifacts/OpportunityRegistry/Opportunity/sheets-collection/Sheet/Abstract.php';
 
-<?=$this->bar()
-    ->addLink('create', 'Create new payment')
-    ?>
-
-<p>Balance to pay: <b><?=$statements->balance?></b>,
-    volume: <?=$statements->volume?>.</p>
-
-<?=$this->table()
-    ->setSource($statements)
-    ->addColumn('supplier', 'Email')
-    ->addColumn('balance', 'Balance')
-    ->addColumn('volume', 'Volume')
-    ->addColumn('rate', 'Rate')
+/**
+ * List of references
+ *
+ * @package Artifacts
+ */
+class Sheet_References extends Sheet_Abstract
+{
     
-    ->addOption('supplier', '{supplier}')
-    ->addOption('email', '{supplier}/email')
-    ?>
+    /**
+     * Defaults
+     *
+     * @var array
+     * @see __get()
+     */
+    protected $_defaults = array(
+        'accounts' => array(),
+    );
     
+}

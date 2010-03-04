@@ -156,7 +156,15 @@ class theSheetsCollection implements ArrayAccess, Iterator, Countable
                 'SheetsCollection_RenderingException'
             );
         }
-        return $this->getView()->render($template);
+        try {
+            return $this->getView()->render($template);
+        } catch (Exception $e) {
+            FaZend_Exception::raise(
+                'SheetsCollection_UnknownException', 
+                get_class($e) . ': ' . $e->getMessage(),
+                'SheetsCollection_RenderingException'
+            );
+        }
     }
     
     /**

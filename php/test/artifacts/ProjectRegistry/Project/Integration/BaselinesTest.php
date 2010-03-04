@@ -41,6 +41,9 @@ class BaselinesTest extends AbstractProjectTest
         $lines = explode("\n", $text);
         $inject = 'oops';
         foreach ($lines as &$line) {
+            if (strlen($line) < 10) {
+                continue;
+            }
             if ((strpos($line, theBaseline::CHAPTER_MARKER) === false) && (rand(0, 9) > 6)) {
                 $pos = rand(0, strlen($line) - strlen($inject));
                 $line = substr($line, 0, $pos) . $inject . substr($line, $pos + strlen($inject));

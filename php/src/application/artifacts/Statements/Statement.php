@@ -50,11 +50,7 @@ class theStatement extends Zend_Db_Table_Row implements ArrayAccess, Iterator, C
         if (property_exists($this, $var)) {
             return $this->$var;
         }
-        
-        FaZend_Exception::raise(
-            'Statement_PropertyOrMethodNotFound', 
-            "Can't find what is '$name' in " . get_class($this)
-        );
+        return parent::__get($name);
     }
 
     /**
@@ -163,14 +159,17 @@ class theStatement extends Zend_Db_Table_Row implements ArrayAccess, Iterator, C
     }
     
     /**
-     * Get email of supplier
+     * Get rate of supplier, if possible
      *
-     * @return string
-     **/
-    protected function _getSupplier() 
+     * @return FaZend_Bo_Money|null
+     */
+    protected function _getRate() 
     {
-        return parent::__get('supplier');
-    }
+        if (isset(Model_Artifact::root()->supplierRegistry[$this->supplier])) {
+            return Model_Artifact::root()->supplierRegistry[$this->supplier]->rate;
+        }
+        return null;
+    }    
     
     /**
      * Payment exists?

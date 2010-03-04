@@ -18,11 +18,4 @@ C = \frac{BC + WC + 4 \times ML}{6} \times {<?=sprintf('%0.2f', $this->estimate-
 The multiplier \texttt{<?=sprintf('%0.2f', $this->estimate->multiplier)?>} indicates
 our typical assumption that we will spend
 approximately <?=round(100/$this->estimate->multiplier)?>\% of the budget for programming.
-The numbers are:
-
-\begin{equation}
-C = \frac{<?=$this->estimate->bc?> + 
-    <?=$this->estimate->wc?> + 
-    4 \times <?=$this->estimate->ml?>}{6} \times {<?=$this->estimate->multiplier?>} =
-    <?=$this->estimate->hours?>
-\end{equation}
+The result is \textbf{<?=$this->estimate->hours?> staff-hours}.

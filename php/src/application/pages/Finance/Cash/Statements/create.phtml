@@ -18,6 +18,8 @@
 <h1>Create new payment</h1>
 
 <?=$this->forma()
+    ->addBehavior('flash', 'sprintf("Payment added")')
+    ->addBehavior('redirect')
     ->addField('text', 'original')
         ->fieldLabel('Original amount', true)
         ->fieldAttrib('maxlength', 10)

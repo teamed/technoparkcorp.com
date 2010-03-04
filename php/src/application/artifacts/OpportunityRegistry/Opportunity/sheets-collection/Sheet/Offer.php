@@ -86,12 +86,19 @@ class Sheet_Offer extends Sheet_Abstract
      * Get lower amount
      *
      * @return FaZend_Bo_Money
+     * @throws Sheet_Offer_InsufficientDataException
      */
     protected function _getLowAmount() 
     {
         if ($this->low) {
             $hours = $this->low;
         } else {
+            if (!isset($this->sheets['ROM'])) {
+                FaZend_Exception::raise(
+                    'Sheet_Offer_InsufficientDataException',
+                    "Can't find 'low' in 'Offer' and 'ROM' is absent, how to calculate size?"
+                );
+            }
             $hours = $this->sheets['ROM']->lowBoundary;
         }
         $amount = clone $this->pricePerHour;
@@ -102,12 +109,19 @@ class Sheet_Offer extends Sheet_Abstract
      * Get higher amount
      *
      * @return FaZend_Bo_Money
+     * @throws Sheet_Offer_InsufficientDataException
      */
     protected function _getHighAmount() 
     {
         if ($this->high) {
             $hours = $this->high;
         } else {
+            if (!isset($this->sheets['ROM'])) {
+                FaZend_Exception::raise(
+                    'Sheet_Offer_InsufficientDataException',
+                    "Can't find 'high' in 'Offer' and 'ROM' is absent, how to calculate size?"
+                );
+            }
             $hours = $this->sheets['ROM']->highBoundary;
         }
         $amount = clone $this->pricePerHour;

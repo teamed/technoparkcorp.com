@@ -28,6 +28,9 @@ require_once 'artifacts/OpportunityRegistry/Opportunity/sheets-collection/Sheet/
 class Sheet_Vision extends Sheet_Abstract
 {
     
+    const UC_WIDTH = 2;
+    const UC_HEIGHT = 1.2;
+    
     /**
      * Defaults
      *
@@ -55,6 +58,7 @@ class Sheet_Vision extends Sheet_Abstract
         
         foreach ($this->features as $feature) {
             $feature = strval($feature['value']);
+            $matches = array();
             if (preg_match('/^"(.*?)"\s*(.*)$/', $feature, $matches)) {
                 $feat = $matches[1];
                 $feature = $matches[2];
@@ -66,17 +70,21 @@ class Sheet_Vision extends Sheet_Abstract
             $diagram->addFeature($feat, $actor);
         }
         
+        $width = min(4, sqrt(count($this->features)));
+        $height = max(
+            count($this->features) / $width, 
+            sqrt(count($this->features))
+        );
+        
         $diagram->setOptions(
             array(
-                'width' => 14,
-                'height' => 8,
-                'actorWidth' => 2,
-                'actorHeight' => 1.1,
+                'width' => false,
+                'height' => false,
 
-                'cellWidth' => 1.6,
-                'cellHeight' => 0.8,
-                'cellsTotalX' => 4,
-                'cellsTotalY' => 4,
+                'cellWidth' => self::UC_WIDTH * 1.2,
+                'cellHeight' => self::UC_HEIGHT * 1.2,
+                'cellsTotalX' => ceil($width),
+                'cellsTotalY' => ceil($height),
             )
         );
         

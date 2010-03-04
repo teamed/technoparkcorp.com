@@ -197,6 +197,8 @@ class PanelController extends FaZend_Controller_Action
             $this->view->document = $this->_pages->buildDocumentHtml($doc, $params);
         } catch (AccessRestrictedException $e) {
             return $this->_restrict($e->getMessage());
+        } catch (Exception $e) {
+            return $this->_restrict(get_class($e) . ': '. $e->getMessage());
         }
     }
     

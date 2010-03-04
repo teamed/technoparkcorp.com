@@ -162,9 +162,10 @@ class Helper_Table extends FaZend_View_Helper
      *
      * @param string Name of the option
      * @param string Link to the operation
+     * @param mixed Callback to skip option
      * @return Helper_Table
      */
-    public function addOption($name, $link)
+    public function addOption($name, $link, $skip = null)
     {
         // this params will be sent to the htmlTable() helper
         $urlParams = array(
@@ -179,13 +180,18 @@ class Helper_Table extends FaZend_View_Helper
 
         // it will automatically understand whether the option should
         // stay in 'OPTIONS' column, or should be attached to the data column
-        if (in_array($name, $this->_columns))
+        if (in_array($name, $this->_columns)) {
             $func = 'addColumnLink';
-        else
+        } else {
             $func = 'addOption';
+        }
 
         // attach option to the htmlTable helper
         call_user_func_array(array($this->_table, $func), $params);
+        
+        if (!is_null($skip)) {
+            $this->_table->skipOption($name, $skip);
+        }
 
         // return itself, to allow fluent interface
         return $this;

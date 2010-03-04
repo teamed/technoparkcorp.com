@@ -27,6 +27,7 @@
     ->addBehavior('redirect')
     ->addField('text', 'email')
         ->fieldLabel('Email', true)
+        ->fieldValue(Model_User::me()->email)
         ->fieldAttrib('size', 40)
     ->addField('submit', 'submit')
         ->fieldValue('Send')

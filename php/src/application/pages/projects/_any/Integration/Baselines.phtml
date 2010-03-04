@@ -25,7 +25,7 @@
     ->addColumn('description', _t('Description'))
     ->addColumn('length', _t('Length'))
     ->addOption('switch to', '?switch={__key}')
-    ->addOption('diff', '?diff={__key}')
+    ->addOption('diff', '?diff={__key}'/*, '${a2} == "trunk"'*/)
     ->addOption('__key', '?view={__key}')
     ?>
     

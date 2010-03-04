@@ -45,6 +45,16 @@ class Sheet_Contacts extends Sheet_Abstract
         'zip' => '10001',
         'phone' => '239 935 5429',
         'email' => 'sales@tpc2.com',
+        
+        // to be shown in first page, in this specific order
+        'headlines' => array(
+            'fullname', 
+            'company', 
+            'position', 
+            'address',
+            'country',
+            'email',
+        ),
     );
     
     /**

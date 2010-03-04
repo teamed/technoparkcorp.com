@@ -35,7 +35,7 @@ class Sheet_Vision_Diagram
         'width' => 100,
         'height' => 100,
 
-        'tikzActor' => 'actor',
+        'texActor' => '\visionActor',
         'tikzUC' => 'uc',
         'tikzUsageLine' => 'ln',
         'tikzBoundary' => 'boundary',
@@ -138,15 +138,15 @@ class Sheet_Vision_Diagram
         $centerY = $this->_options['height'] / 2;
 
         // radius for actors allocation
-        $radiusX = $this->_options['width'] / 2 - $this->_options['actorWidth'] / 2;
-        $radiusY = $this->_options['height'] / 2 - $this->_options['actorHeight'] / 2;
+        $radiusX = ($centerX + ($this->_options['cellsTotalX'] * $this->_options['cellWidth'])/2)/2;
+        $radiusY = ($centerY + ($this->_options['cellsTotalY'] * $this->_options['cellHeight'])/2)/2;
 
         $actorNum = $featureNum = 1;
         $tex ="\\begin{tikzpicture}\n";
         foreach ($actors as $actor=>$angle) {
             $x = $centerX + $radiusX * cos($angle);
             $y = $centerY + $radiusY * sin($angle);
-            $tex .= "\\node [{$this->_options['tikzActor']}] (actor{$actorNum}) at($x, $y) {{$view->tex($actor)}};\n";
+            $tex .= "{$this->_options['texActor']}{actor{$actorNum}}{{$x}}{{$y}}{{$view->tex($actor)}}\n";
             
             foreach ($features as $feature=>$coordinates) {
                 if (!in_array($feature, $this->_features[$actor])) {
@@ -155,8 +155,8 @@ class Sheet_Vision_Diagram
                 
                 list($cellX, $cellY) = $coordinates;
                 
-                $ucX = $centerX + ($cellX - $this->_options['cellsTotalX']/2) * $this->_options['cellWidth'];
-                $ucY = $centerY + ($cellY - $this->_options['cellsTotalY']/2) * $this->_options['cellHeight'];
+                $ucX = $centerX + ($cellX - ($this->_options['cellsTotalX']-1)/2) * $this->_options['cellWidth'];
+                $ucY = $centerY + ($cellY - ($this->_options['cellsTotalY']-1)/2) * $this->_options['cellHeight'];
                 
                 $tex .= "\\node [{$this->_options['tikzUC']}] (feature{$featureNum}) " .
                 "at($ucX, $ucY) {``{$view->tex($feature)}''};\n" .
@@ -186,7 +186,14 @@ class Sheet_Vision_Diagram
      */
     protected function _normalizeOptions() 
     {
-        // ...
+        if (empty($this->_options['width'])) {
+            $this->_options['width'] = 
+            $this->_options['cellsTotalX'] * ($this->_options['cellWidth'] + 4);
+        }
+        if (empty($this->_options['height'])) {
+            $this->_options['height'] = 
+            $this->_options['cellsTotalY'] * ($this->_options['cellHeight'] + 4);
+        }
     }
     
     /**

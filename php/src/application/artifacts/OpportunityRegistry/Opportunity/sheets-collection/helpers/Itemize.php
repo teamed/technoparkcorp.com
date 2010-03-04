@@ -29,12 +29,15 @@ class Sheet_Helper_Itemize extends FaZend_View_Helper
     /**
      * List in TeX
      *
+     * @param mixed Array of items, SimpleXMLElement or just array
+     * @param string Type of itemized list
+     * @param array Options, optional
      * @return SimpleXMLElement|mixed
      * @throws Sheet_Helper_Itemize_InvalidStyleException
      */
-    public function itemize($collection, $style = 'itemize') 
+    public function itemize($collection, $style = 'itemize', array $options = array()) 
     {
-        $items = $this->_deriveList($collection);
+        $items = $this->_deriveList($collection, $options);
         switch ($style) {
             case 'itemize':
             case 'enumerate':
@@ -69,6 +72,12 @@ class Sheet_Helper_Itemize extends FaZend_View_Helper
                 break;
         
             case 'inline':
+                if (!empty($options['mask'])) {
+                    $mask = FaZend_Callback::factory($options['mask']);
+                    foreach ($items as $name=>&$value) {
+                        $value = $mask->call($name, $value);
+                    }
+                }
                 switch (true) {
                     case !count($items):
                         $tex = "$\\dots$";
@@ -110,18 +119,26 @@ class Sheet_Helper_Itemize extends FaZend_View_Helper
      * Derive array of items from XML
      *
      * @param SimpleXMLElement|mixed
+     * @param array List of options, if provided
      * @return string[]
      */
-    protected function _deriveList($collection) 
+    protected function _deriveList($collection, array $options) 
     {
         $items = array();
         foreach ($collection as $name=>$item) {
             if (is_scalar($item)) {
-                $items[$this->getView()->tex($name)] = $this->getView()->tex($item);
+                $items[$name] = $item;
             } else {
-                $items[$this->getView()->tex($item['name'])] = 
-                    $this->getView()->tex($item['value']);
+                $items[strval($item['name'])] = strval($item['value']);
             }
+        }
+        
+        if (empty($options['rawTex'])) {
+            $temp = array();
+            foreach ($items as $key=>$value) {
+                $temp[$this->getView()->tex($key)] = $this->getView()->tex($value);
+            }
+            $items = $temp;
         }
         return $items;
     }

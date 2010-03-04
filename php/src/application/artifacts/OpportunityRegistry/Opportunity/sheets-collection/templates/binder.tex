@@ -21,10 +21,12 @@
 \vspace*{5cm}
 \begin{flushright}
     {\LARGE\setstretch{1.3}
-    <?=$this->tex($this->sheets['Contacts']->title)?>}
+    ``<?=$this->tex($this->sheets['Contacts']->title)?>''}
+    
+    business proposal for:
     
     {\setstretch{1.1}
-    <? foreach (array_keys($this->sheets['Contacts']->defaults) as $name): ?>
+    <? foreach ($this->sheets['Contacts']->headlines as $name): ?>
         <? if ($this->sheets['Contacts']->exists($name) && $this->sheets['Contacts']->$name): ?>
             <?=$this->tex($this->sheets['Contacts']->$name)?>\\
         <? endif; ?>
@@ -35,7 +37,7 @@
 \clearpage
 \section*{Cover Letter}
 
-Dear <?=$this->tex($this->sheets['Contacts']->fullname)?>,
+Dear <?=$this->tex(FaZend_Bo_Name::factory($this->sheets['Contacts']->fullname)->first)?>,
 
 In reply to your request we are sending you the documents (in PDF
 format), which include the answers to the questions asked in your RFP,

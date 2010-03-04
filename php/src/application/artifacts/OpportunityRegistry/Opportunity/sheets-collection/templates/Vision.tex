@@ -13,6 +13,15 @@ Actors (users of the system) are:
     <?=$this->itemize($this->sheet->actors, 'description')?>{}
 
 \begin{center}
+    \newcommand{\visionActor}[4]{
+        \draw [thick] (#2, #3) -- +(0,-0.5) % body 
+            -- +(-0.5,-1) % left leg
+            +(0,-0.5) -- +(0.5,-1) % right leg
+            +(-0.5,-0.1) -- +(0.5,-0.1) % hands
+            +(0,+0.25) circle (0.25); %head
+        \node [outer sep=5mm] (#1) at (#2, #3) {};
+        \node [below=3mm of #1.south, anchor=north] {#4};
+    }
     \tikzstyle{uc} = [
         ellipse, 
         font={\scriptsize\setstretch{1.0}}, 
@@ -22,9 +31,9 @@ Actors (users of the system) are:
         inner sep=-3mm,
         draw=tpcRUPBorder,
         fill=tpcRUPBody, 
-        minimum width=2cm,
-        minimum height=1cm,
-        text width=2cm,
+        minimum width=<?=Sheet_Vision::UC_WIDTH?>cm,
+        minimum height=<?=Sheet_Vision::UC_HEIGHT?>cm,
+        text width=<?=Sheet_Vision::UC_WIDTH?>cm,
         anchor=center,
         thick
     ]
@@ -32,15 +41,6 @@ Actors (users of the system) are:
         draw=tpcBlack,
         -triangle 60,
         thick
-    ]
-    \tikzstyle{actor} = [
-        font=\footnotesize\setstretch{1}, 
-        outer sep=3mm, 
-        text width=2cm, 
-        text centered, 
-        anchor=center,
-        draw=tpcGrey,
-        thin
     ]
     \tikzstyle{boundary} = [
         rectangle,
@@ -57,17 +57,17 @@ Actors (users of the system) are:
         inner sep=0mm,
         font={\scriptsize}
     ]
-    <?=$this->sheet->getUseCaseDiagram()?>
+    <?=$this->sheet->getUseCaseDiagram()?>{}
 \end{center}
 
-Key system <?=$this->href('process/scope/feature', 'Features')?> are:
+Key system <?=$this->href('process/scope/feature', 'features')?> are:
     <?=$this->itemize($this->sheet->features, 'enumerate')?>{}
 	
-Quality requirements (non-functional) are:
+Most important quality requirements (non-functional) to the system are:
     <?=$this->itemize($this->sheet->quality, 'description')?>{}
 
 More detailed functional and non-functional 
 <?=$this->href('process/scope/requirement', 'requirements')?>{}
-to the project will be supplied by the Customer 
+to the project will be supplied by requirements specifier (you or someone you delegate this task) 
 during <?=$this->href('process/time/inception', 'Inception Phase')?>. 
 All project documents and software comments will be in English.
