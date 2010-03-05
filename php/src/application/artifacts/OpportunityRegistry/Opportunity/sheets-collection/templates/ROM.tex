@@ -28,7 +28,8 @@ The bottom line is:
 Math average of the numbers received is \textbf{<?=$this->sheet->hours?> staff-hours}.
 Rough order of magnitude estimate of project size is
 <?=$this->sheet->lowBoundary?>--<?=$this->sheet->highBoundary?>{}
-staff-hours.
+staff-hours. The spread is so large due to well-known effect called
+\href{http://en.wikipedia.org/wiki/Cone_of_Uncertainty}{cone of uncertainty}.
 
 Read more information about <?=$this->href('process/cost/rom', 'ROM Estimate')?>{}
 and our <?=$this->href('process/cost', 'two-step quotation process')?>.
