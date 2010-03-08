@@ -44,6 +44,31 @@ class theStaffResponse extends ArrayIterator
     }
     
     /**
+     * Invite everybody in the list to the project
+     *
+     * @param theStaffRequest Request
+     * @param string Message to add to the message
+     * @return void
+     */
+    public function invite(theStaffRequest $request, $message) 
+    {
+        foreach ($this as $item) {
+            // he is already here?
+            if (isset($request->project->staffAssignments[$item->supplier->email])) {
+                continue;
+            }
+            FaZend_Email::create('artifacts/SupplierRegistry/StaffResponse/invitation.tmpl')
+                ->set('toEmail', $item->supplier->email)
+                ->set('toName', $item->supplier->email)
+                ->set('fromEmail', 'pmo@tpc2.com')
+                ->set('fromName', 'TechnoPark Corp.')
+                ->set('cc', array('yegor@tpc2.com'=>'Yegor Bugayenko'))
+                ->set('message', $message)
+                ->send();
+        }
+    }
+    
+    /**
      * Hook adding function in order to sort the array on-fly
      *
      * @param mixed Index in array

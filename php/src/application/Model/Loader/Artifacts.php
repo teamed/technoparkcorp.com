@@ -44,8 +44,9 @@ class Model_Loader_Artifacts implements Zend_Loader_Autoloader_Interface
      */
     public function autoload($class)
     {
-        if (class_exists($class, false))
+        if (class_exists($class, false)) {
             return;
+        }
 
         if (substr($class, 0, 3) !== 'the') {
             FaZend_Exception::raise(
@@ -76,10 +77,11 @@ class Model_Loader_Artifacts implements Zend_Loader_Autoloader_Interface
             $this->_mapping = $this->_grab(APPLICATION_PATH . '/artifacts');
         }
 
-        if (!is_null($class))
+        if (!is_null($class)) {
             return $this->_mapping[$class];
-        else
+        } else {
             return $this->_mapping;
+        }
     }
 
     /**
@@ -114,10 +116,11 @@ class Model_Loader_Artifacts implements Zend_Loader_Autoloader_Interface
     {
         $files = array();
         foreach (glob($path . '/*') as $file) {
-            if (is_dir($file))
+            if (is_dir($file)) {
                 $files += $this->_grab($file);
-            else
+            } else {
                 $files['the' . pathinfo($file, PATHINFO_FILENAME)] = $file;
+            }
         }
         return $files;
     }
