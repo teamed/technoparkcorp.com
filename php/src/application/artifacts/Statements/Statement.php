@@ -165,8 +165,9 @@ class theStatement extends Zend_Db_Table_Row implements ArrayAccess, Iterator, C
      */
     protected function _getRate() 
     {
-        if (isset(Model_Artifact::root()->supplierRegistry[$this->supplier])) {
-            return Model_Artifact::root()->supplierRegistry[$this->supplier]->rate;
+        $registry = Model_Artifact::root()->supplierRegistry;
+        if (isset($registry[$this->supplier])) {
+            return $registry[$this->supplier]->rate;
         }
         return null;
     }    

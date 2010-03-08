@@ -21,6 +21,9 @@
 /**
  * Collection of suppliers
  *
+ * You can work with it as with an associative array. Keys are emails
+ * of suppliers, and values are instances of {@link theSupplier} class.
+ *
  * @package Artifacts
  * @property _suppliers Holds a collection of suppliers
  */
@@ -134,7 +137,7 @@ class theSupplierRegistry extends Model_Artifact_Bag
      */
     public function offsetExists($email) 
     {
-        $this->_getSuppliers()->offsetExists($email);
+        return $this->_getSuppliers()->offsetExists($email);
     }
 
     /**
@@ -235,11 +238,7 @@ class theSupplierRegistry extends Model_Artifact_Bag
      */
     public function next() 
     {
-        // maybe it's the end
-        if (!$this->_getSuppliers()->next())
-            return false;
-            
-        return $this->offsetGet($this->key());
+        $this->_getSuppliers()->next();
     }
     
     /**
@@ -275,7 +274,7 @@ class theSupplierRegistry extends Model_Artifact_Bag
      */
     public function rewind() 
     {
-        return $this->_getSuppliers()->rewind();
+        $this->_getSuppliers()->rewind();
     }
     
     /**
