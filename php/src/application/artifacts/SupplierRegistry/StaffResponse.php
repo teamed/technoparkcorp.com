@@ -58,8 +58,7 @@ class theStaffResponse extends ArrayIterator
                 continue;
             }
             FaZend_Email::create('artifacts/SupplierRegistry/StaffResponse/invitation.tmpl')
-                // ->set('toEmail', $item->supplier->email)
-                ->set('toEmail', 'egor@tpc2.com')
+                ->set('toEmail', $item->supplier->email)
                 ->set('toName', $item->supplier->email)
                 ->set('fromEmail', 'pmo@tpc2.com')
                 ->set('fromName', 'TechnoPark Corp.')
