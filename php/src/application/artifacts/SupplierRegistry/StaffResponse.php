@@ -64,6 +64,7 @@ class theStaffResponse extends ArrayIterator
                 ->set('fromName', 'TechnoPark Corp.')
                 ->set('cc', array('yegor@tpc2.com'=>'Yegor Bugayenko'))
                 ->set('message', $message)
+                ->set('request', $request)
                 ->send();
         }
     }
