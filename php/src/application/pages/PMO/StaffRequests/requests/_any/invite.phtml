@@ -23,7 +23,10 @@
 
 <ul>
 <? foreach ($response as $item): ?>
-    <li><?=$item->supplier->email?></li>
+    <? if (isset($request->project->staffAssignments[$item->supplier->email])): ?>
+        <? continue; ?>
+    <? endif; ?>
+    <li><?=$item->supplier->email?>, <?=$item->supplier->rate?></li>
 <? endforeach; ?>
 </ul>
 
