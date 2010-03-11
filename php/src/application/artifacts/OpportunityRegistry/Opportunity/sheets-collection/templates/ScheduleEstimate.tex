@@ -1,0 +1,58 @@
+%%
+%% Copyright TechnoPark Corp., 2010
+%% @version $Id: RiskAnalysis.tex 677 2010-02-15 21:20:44Z yegor256@yahoo.com $
+%%
+
+\section*{Preliminary Schedule Estimate}
+
+Project schedule will be developed by the project manager
+during <?=$this->href('process/time/inception', 'Inception Phase')?>
+and approved with you on <?=$this->href('process/time/lco', 'LCO Milestone')?>.
+So far, this is a preliminary estimate of the project duration and
+project milestones (in form of a \href{http://en.wikipedia.org/wiki/Gantt_chart}{Gantt Chart}).
+
+{
+	\tikzstyle{timescale} = [
+		draw=tpcGrey,
+		very thin
+	]
+
+	\tikzstyle{bar} = [
+		anchor=west,
+		draw=tpcBlack,
+		fill=tpcBlue, 
+		text centered, 
+		thick,
+		inner sep=0,
+		inner ysep=0.2em,
+	]
+
+	\tikzstyle{worstBar} = [
+		anchor=west,
+		draw=tpcGrey,
+		fill=tpcBlue!40, 
+		text centered, 
+		minimum height=1.4em,
+	]
+
+	\tikzstyle{milestone} = [
+		shape=diamond,
+		draw=tpcBlack,
+		fill=tpcBlue, 
+	]
+
+	\tikzstyle{worstMilestone} = [
+		shape=diamond,
+		draw=tpcGrey,
+		fill=tpcBlue!40, 
+	]
+
+	\tikzstyle{connector} = [
+		-triangle 60,
+		draw=tpcBlack,
+		fill=tpcBlack, 
+		very thick,
+	]
+
+	<?=$this->sheet->getChart()?>
+}

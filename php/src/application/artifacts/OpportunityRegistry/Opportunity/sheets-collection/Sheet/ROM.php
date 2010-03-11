@@ -41,7 +41,7 @@ class Sheet_ROM extends Sheet_Abstract
     /**
      * Estimates provided
      *
-     * @var string
+     * @var Sheet_ROM_Estimate_Abstract[]
      */
     protected $_estimates;
     
