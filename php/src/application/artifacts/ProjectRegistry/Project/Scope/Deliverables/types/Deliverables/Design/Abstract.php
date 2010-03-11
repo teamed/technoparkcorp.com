@@ -27,4 +27,24 @@ require_once 'artifacts/ProjectRegistry/Project/Scope/Deliverables/types/Deliver
  */
 abstract class Deliverables_Design_Abstract extends Deliverables_Abstract
 {
+    
+    /**
+     * List of tickets (ticket names) that are waiting
+     *
+     * @var string[]
+     */
+    protected $_todoTickets;
+
+    /**
+     * Set list of tickets waiting
+     *
+     * @param array List of ticket names
+     * @return void
+     * @see DeliverablesLoaders_Design::load()
+     */
+    public function setTodoTickets(array $tickets) 
+    {
+        $this->_todoTickets = $tickets;
+    }
+    
 }

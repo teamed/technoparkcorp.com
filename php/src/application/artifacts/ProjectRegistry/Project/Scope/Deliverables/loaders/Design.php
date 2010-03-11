@@ -48,6 +48,9 @@ class DeliverablesLoaders_Design extends DeliverablesLoaders_Abstract
                 $component->name
             );
             
+            // save here a list of tickets waiting for implementation
+            $deliverable->setTodoTickets($component->todoTickets);
+            
             if (isset($project->deliverables[$deliverable->name])) {
                 logg('Duplicate deliverable: %s (%s)', $deliverable->name, $deliverable->type);
                 continue;

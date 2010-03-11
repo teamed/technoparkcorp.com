@@ -75,6 +75,7 @@ class Model_Asset_Design_Fazend_Linux extends Model_Asset_Design_Abstract
                 ->set('type', $data['type'])
                 ->set('name', $data['fullName'])
                 ->set('description', '...')
+                ->set('todoTickets', $data['todo'])
                 ->set('traces', $data['traces']);
         }
         return $return;

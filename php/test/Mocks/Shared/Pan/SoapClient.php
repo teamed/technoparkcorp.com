@@ -23,12 +23,14 @@ class Mocks_Shared_Pan_SoapClient
                 'fullName' => 'FaZend.System',
                 'type' => 'package',
                 'traces' => array('#1', 'FaZend.System.MyClass'),
+                'todo' => array('#1', '#2'),
             ),
             array(
                 'name' => 'MyClass',
                 'fullName' => 'FaZend.System.MyClass',
                 'type' => 'class',
                 'traces' => array('#2', 'FaZend.System'),
+                'todo' => array('#3', '#4'),
             ),
         );
     }    
