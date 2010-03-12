@@ -23,7 +23,7 @@ class Sheet_SAOTest extends AbstractTest
     {
         $tex = $this->_sao->getDiagram();
         $this->assertTrue(strlen($tex) > 0);
-        logg($tex);
+        // logg($tex);
     }
 
 }

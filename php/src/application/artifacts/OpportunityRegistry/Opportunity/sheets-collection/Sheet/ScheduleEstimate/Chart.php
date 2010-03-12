@@ -48,6 +48,8 @@ class Sheet_ScheduleEstimate_Chart
         'tikzMilestone' => 'milestone',
         'tikzWorstMilestone' => 'worstMilestone',
         'tikzConnector' => 'connector',
+        'tikzComment' => 'comment',
+        'tikzXScale' => 'xLabels',
     );
     
     /**
@@ -92,6 +94,34 @@ class Sheet_ScheduleEstimate_Chart
     protected $_dependencies = array();
     
     /**
+     * Scale to use for x-axis
+     *
+     * Array of two elements. First one is delta to use, second one is a callback
+     * to call in order to get the string to show. For example:
+     *
+     * <code>
+     * array(30, 'sprintf("%d-th month", ${a1}/30)')
+     * </code>
+     *
+     * @var array
+     */
+    protected $_xScale;
+    
+    /**
+     * Set x-scale
+     *
+     * @return void
+     * @see $this->_xScale
+     */
+    public function setXScale($delta, $callback) 
+    {
+        $this->_xScale = array(
+            $delta,
+            FaZend_Callback::factory($callback)
+        );
+    }
+    
+    /**
      * Add new bar
      *
      * @param string Name of the bar
@@ -99,9 +129,29 @@ class Sheet_ScheduleEstimate_Chart
      * @param string Comment
      * @param float Accuracy
      * @return void
+     * @throws Sheet_ScheduleEstimate_Chart_AccuracyProhibitedException
+     * @throws Sheet_ScheduleEstimate_Chart_DuplicateException
      */
     public function addBar($name, $size, $comment = null, $accuracy  = 1) 
     {
+        if (!$size && ($accuracy != 1)) {
+            FaZend_Exception::raise(
+                'Sheet_ScheduleEstimate_Chart_AccuracyProhibitedException',
+                "Accuracy can't be set to milestone '{$name}'"
+            );
+        }
+        $found = false;
+        foreach ($this->_bars as $id=>$bar) {
+            if ($bar['name'] == strval($name)) {
+                $found = $id;
+            }
+        }
+        if ($found !== false) {
+            FaZend_Exception::raise(
+                'Sheet_ScheduleEstimate_Chart_DuplicateException',
+                "Bar '{$name}' (#{$found}) already exists in the chart"
+            );
+        }
         $this->_bars[] = array(
             'name' => strval($name),
             'size' => floatval($size),
@@ -120,6 +170,7 @@ class Sheet_ScheduleEstimate_Chart
      * @param string Comment
      * @return void
      * @throws Sheet_ScheduleEstimate_Chart_NotFoundException
+     * @throws Sheet_ScheduleEstimate_Chart_SelfLinkException
      */
     public function addDependency($from, $to, $type = self::DEP_FS, $lag = 0, $comment = null) 
     {
@@ -151,6 +202,12 @@ class Sheet_ScheduleEstimate_Chart
         }
         $to = $found;
         
+        if ($from === $to) {
+            FaZend_Exception::raise(
+                'Sheet_ScheduleEstimate_Chart_SelfLinkException',
+                "Bar '{$from}' can't link to itself"
+            );
+        }
         $this->_dependencies[] = array(
             'from' => $from,
             'to' => $to,
@@ -236,12 +293,20 @@ class Sheet_ScheduleEstimate_Chart
                 "at ({$bestX}, {$y}) (bar{$id}) {{$view->tex($bar['name'])}};\n";
             } else {
                 $tex .= "\\node [{$this->_options['tikzMilestone']}] " .
-                "at ({$bestX}, {$y}) (bar{$id}) {};" .
-                "\\node [anchor=west, right=0mm of bar{$id}] {{$view->tex($bar['name'])}};\n";
+                "at ({$bestX}, {$y}) (bar{$id}) {};\n\t" .
+                "\\node [{$this->_options['tikzComment']}, right=0mm of bar{$id}] " .
+                "{{$view->tex($bar['comment'])}}; " .
+                "% {$view->tex($bar['name'])}\n";
             }
         }
         
+        // draw lines from one bar to another
         $tex .= $this->_drawLines();
+        
+        // draw X and Y scales
+        if (isset($this->_xScale)) {
+            $tex .= $this->_drawXScale($view);
+        }
         
         return $tex . "\\end{tikzpicture}\n";
     }
@@ -263,6 +328,8 @@ class Sheet_ScheduleEstimate_Chart
     protected function _drawLines() 
     {
         $tex = '';
+        $out = 0.3; //$this->_options['width'] / 30;
+        
         // arrows!
         foreach ($this->_dependencies as $dep) {
             $path = '--';
@@ -270,7 +337,7 @@ class Sheet_ScheduleEstimate_Chart
                 case $this->_isMilestone($dep['from']) && !$dep['lag']:
                     $left = 'south';
                     $right = 'west';
-                    $path = '|- +(-0.5,-0.5) |-';
+                    $path = "|- +(-{$out},-{$out}) |-";
                     break;
                 case $this->_isMilestone($dep['from']) && $dep['lag']:
                     $left = 'south';
@@ -280,12 +347,17 @@ class Sheet_ScheduleEstimate_Chart
                 case !$this->_isMilestone($dep['from']) && !$this->_isMilestone($dep['to']):
                     $left = 'east';
                     $right = 'north west';
-                    $path = '-| +(0.5,-0.5) -|';
+                    $path = "-| +({$out},-{$out}) -|";
                     break;
-                case !$this->_isMilestone($dep['from']) && $this->_isMilestone($dep['to']):
+                case !$this->_isMilestone($dep['from']) && $this->_isMilestone($dep['to']) && !$dep['lag']:
                     $left = 'east';
                     $right = 'north';
-                    $path = '-| +(0.5,-0.5) -|';
+                    $path = "-| +({$out},-{$out}) -|";
+                    break;
+                case !$this->_isMilestone($dep['from']) && $this->_isMilestone($dep['to']) && $dep['lag']:
+                    $left = 'east';
+                    $right = 'north';
+                    $path = '-|';
                     break;
                 default:
                     FaZend_Exception::raise(
@@ -299,6 +371,25 @@ class Sheet_ScheduleEstimate_Chart
         return $tex;
     }
 
+    /**
+     * Draw X scale
+     *
+     * @return void
+     */
+    protected function _drawXScale(Zend_View $view) 
+    {
+        list($delta, $callback) = $this->_xScale;
+        $num = 0;
+        $width = $this->_calculateWidth();
+        $tex = '';
+        while ($num < $width) {
+            $x = $this->_options['width'] * $num / $width;
+            $tex .= "\\node[{$this->_options['tikzXScale']}] at ({$x},0) {{$view->tex($callback->call($num))}};\n";
+            $num += $delta;
+        }
+        return $tex;
+    }
+    
     /**
      * Is it a milesone?
      *
@@ -342,7 +433,7 @@ class Sheet_ScheduleEstimate_Chart
                     $this->_getStart($dep['from'], $useAccuracy)
                     + $dep['lag']
                     + $this->_bars[$dep['from']]['size']
-                    * ($useAccuracy ? 1 : $this->_bars[$dep['from']]['accuracy'])
+                    * ($useAccuracy ? $this->_bars[$dep['from']]['accuracy'] : 1)
                 );
             }
         }

@@ -52,13 +52,21 @@ class Sheet_ScheduleEstimate extends Sheet_Abstract
      */
     protected function _init() 
     {
+        // dependency injection
+        Sheet_ScheduleEstimate_Package_Abstract::setSheet($this);
+        
         $this->_packages = array();
         foreach ($this->works as $work) {
-            $lines = array();
+            $params = array();
             foreach ($work as $item) {
                 $params[strval($item['name'])] = strval($item['value']);
             }
-            $this->_packages[] = Sheet_ScheduleEstimate_Package_Abstract::factory($params);
+            Sheet_ScheduleEstimate_Package_Abstract::factory(
+                strval($work['name']),
+                strval($work['value']),
+                $params,
+                $this->_packages
+            );
         }
     }
 
@@ -69,7 +77,26 @@ class Sheet_ScheduleEstimate extends Sheet_Abstract
      */
     public function getChart() 
     {
-        return 'test';
+        $chart = new Sheet_ScheduleEstimate_Chart();
+        
+        $packages = count($this->_packages);
+        $chart->setOptions(
+            array(
+                'width' => 14, // cm
+                'height' => $packages * 0.8, // cm
+                'useAccuracy' => false,
+            )
+        );
+        
+        $chart->setXScale(
+            30,
+            'sprintf("%s", intval(${a1}/30))'
+        );
+        
+        foreach ($this->_packages as $package) {
+            $package->addYourself($chart);
+        }
+        return $chart->getLatex($this->sheets->getView());
     }
 
 }

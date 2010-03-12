@@ -6,25 +6,25 @@
 \section*{Preliminary Schedule Estimate}
 
 Project schedule will be developed by the project manager
-during <?=$this->href('process/time/inception', 'Inception Phase')?>
+during <?=$this->href('process/time/inception', 'Inception Phase')?>{}
 and approved with you on <?=$this->href('process/time/lco', 'LCO Milestone')?>.
 So far, this is a preliminary estimate of the project duration and
 project milestones (in form of a \href{http://en.wikipedia.org/wiki/Gantt_chart}{Gantt Chart}).
 
-{
+\begin{wideTable}
 	\tikzstyle{timescale} = [
-		draw=tpcGrey,
+		draw=tpcGrey!30,
 		very thin
 	]
 
 	\tikzstyle{bar} = [
 		anchor=west,
-		draw=tpcBlack,
 		fill=tpcBlue, 
-		text centered, 
+		text ragged, 
 		thick,
 		inner sep=0,
 		inner ysep=0.2em,
+		font=\scriptsize
 	]
 
 	\tikzstyle{worstBar} = [
@@ -39,6 +39,7 @@ project milestones (in form of a \href{http://en.wikipedia.org/wiki/Gantt_chart}
 		shape=diamond,
 		draw=tpcBlack,
 		fill=tpcBlue, 
+		inner sep=0.2em
 	]
 
 	\tikzstyle{worstMilestone} = [
@@ -47,12 +48,28 @@ project milestones (in form of a \href{http://en.wikipedia.org/wiki/Gantt_chart}
 		fill=tpcBlue!40, 
 	]
 
+	\tikzstyle{comment} = [
+		anchor=west,
+		font=\scriptsize,
+		fill=white,
+	]
+
 	\tikzstyle{connector} = [
-		-triangle 60,
-		draw=tpcBlack,
-		fill=tpcBlack, 
-		very thick,
+		-angle 60,
+		draw=tpcGrey,
+		thick,
+	]
+
+	\tikzstyle{xLabels} = [
+		anchor=north,
+		font=\scriptsize
 	]
 
 	<?=$this->sheet->getChart()?>
-}
+\end{wideTable}
+
+Total planned project duration is <?=$this->sheets['Offer']->duration?>{}
+months. The Gantt Chart above indicates a preliminary allocation of
+work packages and milestones in project timeline:
+
+<?=$this->itemize($this->sheet->works, 'description')?>

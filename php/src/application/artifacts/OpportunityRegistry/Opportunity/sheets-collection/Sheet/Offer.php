@@ -35,12 +35,13 @@ class Sheet_Offer extends Sheet_Abstract
      * @see __get()
      */
     protected $_defaults = array(
-        'price' => '25 EUR',
-        'deposit' => '25%',
-        'low' => false,
-        'high' => false,
+        'price'      => '25 EUR',
+        'deposit'    => '25%',
+        'low'        => false,
+        'high'       => false,
         'objectives' => array(),
-        'intro' => array(),
+        'intro'      => array(),
+        'months'     => false, // duration
     );
     
     /**
@@ -128,4 +129,25 @@ class Sheet_Offer extends Sheet_Abstract
         return $amount->mul($hours);
     }
 
+    /**
+     * Get project duration in months
+     *
+     * @return float
+     * @throws Sheet_Offer_InsufficientDataException
+     */
+    protected function _getDuration() 
+    {
+        if ($this->months) {
+            return $this->months;
+        }
+
+        if (!isset($this->sheets['ROM'])) {
+            FaZend_Exception::raise(
+                'Sheet_Offer_InsufficientDataException',
+                "Can't find 'months' in 'Offer' and 'ROM' is absent, how to calculate duration?"
+            );
+        }
+        return $this->sheets['ROM']->tdev;
+    }
+    
 }
