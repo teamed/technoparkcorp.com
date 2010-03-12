@@ -109,6 +109,7 @@ class DeliverablesLoaders_Srs extends DeliverablesLoaders_Abstract
                     $parent = $this->_deliverables[$parent->parentName];
                 } else {
                     // yes, it's possible. for example R4.3 is defined, but R4 is missed.
+                    // in such a case we just ignore this item.
                     break;
                 }
             }
