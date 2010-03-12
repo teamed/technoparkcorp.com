@@ -21,6 +21,8 @@
 /**
  * Gantt Chart
  *
+ * Universal builder of a Gantt Chart, rendering it in LaTeX.
+ *
  * @package Artifacts
  */
 class Sheet_ScheduleEstimate_Chart
