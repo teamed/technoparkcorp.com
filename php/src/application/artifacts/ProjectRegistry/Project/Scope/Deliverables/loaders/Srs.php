@@ -105,7 +105,12 @@ class DeliverablesLoaders_Srs extends DeliverablesLoaders_Abstract
                     $priority = max($parent->priority->value, $priority);
                     break;
                 }
-                $parent = $this->_deliverables[$parent->parentName];
+                if (isset($this->_deliverables[$parent->parentName])) {
+                    $parent = $this->_deliverables[$parent->parentName];
+                } else {
+                    // yes, it's possible. for example R4.3 is defined, but R4 is missed.
+                    break;
+                }
             }
             
             $req->attributes['priority']->add($priority);
