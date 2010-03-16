@@ -22,9 +22,18 @@
  * Gantt Chart
  *
  * Universal builder of a Gantt Chart, rendering it in LaTeX. Can be used
- * either in sales documentation or anywhere else.
+ * either in sales documentation or anywhere else. It is initialized and
+ * configured like this:
+ *
+ * <code>
+ * $chart = new Sheet_ScheduleEstimate_Chart();
+ * $chart->addBar(...);
+ * $chart->addDependency(...);
+ * echo $chart->getLatex($view);
+ * </code>
  *
  * @package Artifacts
+ * @see Sheet_ScheduleEstimate::getChart()
  */
 class Sheet_ScheduleEstimate_Chart
 {
