@@ -21,7 +21,8 @@
 /**
  * Gantt Chart
  *
- * Universal builder of a Gantt Chart, rendering it in LaTeX.
+ * Universal builder of a Gantt Chart, rendering it in LaTeX. Can be used
+ * either in sales documentation or anywhere else.
  *
  * @package Artifacts
  */
