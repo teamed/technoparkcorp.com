@@ -85,12 +85,40 @@ class Sheet_ScheduleEstimate_Package_Milestone extends Sheet_ScheduleEstimate_Pa
      */
     public function addYourself(Sheet_ScheduleEstimate_Chart $chart)
     {
-        $chart->addBar(
-            $this->_name, // name
-            0, // size, should be ZERO, since it's milestone!
-            isset($this->_cost) ? $this->_cost : $this->_name // comment
-        );
+        if (isset($this->_cost)) {
+            $chart->addBar(
+                $this->_name, // name
+                0, // size, should be ZERO, since it's milestone!
+                $this->_scaleCost($this->_cost), // comment
+                1, // accuracy
+                $this->_accuracy != 1 ? 
+                $this->_scaleCost($this->_cost, $this->_accuracy) : false // worst comment
+            );
+        } else {
+            $chart->addBar(
+                $this->_name, // name
+                0, // size, should be ZERO, since it's milestone!
+                $this->_name // comment
+            );
+        }
         parent::addYourself($chart);
+    }
+    
+    /**
+     * Scale cost to the best string presentation
+     *
+     * @param FaZend_Bo_Money Cost to scale
+     * @param float Accuracy to use, if necessary
+     * @return string
+     * @see addYourself()
+     * @todo implement it properly
+     */
+    protected function _scaleCost(FaZend_Bo_Money $cost, $accuracy = 1) 
+    {
+        $total = self::$_sheet->sheets['Offer']->highAmount->original;
+        $val = $cost->original * $accuracy;
+        
+        return $cost->currency->getSymbol() . round($val);
     }
 
 }

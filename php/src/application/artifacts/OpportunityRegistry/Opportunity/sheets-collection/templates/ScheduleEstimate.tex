@@ -24,34 +24,44 @@ project milestones (in form of a \href{http://en.wikipedia.org/wiki/Gantt_chart}
 		thick,
 		inner sep=0,
 		inner ysep=0.2em,
-		font=\scriptsize
+		minimum height=1.4em,
+	]
+
+	\tikzstyle{barText} = [
+		font=\scriptsize,
 	]
 
 	\tikzstyle{worstBar} = [
 		anchor=west,
-		draw=tpcGrey,
 		fill=tpcBlue!40, 
 		text centered, 
 		minimum height=1.4em,
+		inner xsep=0mm,
 	]
 
 	\tikzstyle{milestone} = [
 		shape=diamond,
-		draw=tpcBlack,
 		fill=tpcBlue, 
 		inner sep=0.2em
 	]
 
 	\tikzstyle{worstMilestone} = [
 		shape=diamond,
-		draw=tpcGrey,
 		fill=tpcBlue!40, 
+		inner sep=0.2em
 	]
 
 	\tikzstyle{comment} = [
 		anchor=west,
 		font=\scriptsize,
 		fill=white,
+	]
+
+	\tikzstyle{worstComment} = [
+		anchor=west,
+		font=\scriptsize,
+		fill=white,
+		text=tpcGrey
 	]
 
 	\tikzstyle{connector} = [
@@ -63,6 +73,13 @@ project milestones (in form of a \href{http://en.wikipedia.org/wiki/Gantt_chart}
 	\tikzstyle{xLabels} = [
 		anchor=north,
 		font=\scriptsize
+	]
+
+	\tikzstyle{runningDots} = [
+		dotted,
+		ultra thick,
+		draw=tpcBlue!40,
+		fill=white,
 	]
 
 	<?=$this->sheet->getChart()?>

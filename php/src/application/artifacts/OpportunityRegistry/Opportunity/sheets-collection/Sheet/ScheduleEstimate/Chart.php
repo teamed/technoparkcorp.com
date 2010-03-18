@@ -53,15 +53,19 @@ class Sheet_ScheduleEstimate_Chart
         'height' => 5,
         
         'useAccuracy' => true,
+        'renderLegend' => true,
         
         'tikzGrid' => 'timescale',
         'tikzBar' => 'bar',
+        'tikzBarText' => 'barText',
         'tikzWorstBar' => 'worstBar',
         'tikzMilestone' => 'milestone',
         'tikzWorstMilestone' => 'worstMilestone',
         'tikzConnector' => 'connector',
         'tikzComment' => 'comment',
+        'tikzWorstComment' => 'worstComment',
         'tikzXScale' => 'xLabels',
+        'tikzRunningDots' => 'runningDots',
     );
     
     /**
@@ -140,16 +144,24 @@ class Sheet_ScheduleEstimate_Chart
      * @param float Size of the bar
      * @param string Comment
      * @param float Accuracy
+     * @param string Comment to show for the worst scenario
      * @return void
      * @throws Sheet_ScheduleEstimate_Chart_AccuracyProhibitedException
      * @throws Sheet_ScheduleEstimate_Chart_DuplicateException
+     * @throws Sheet_ScheduleEstimate_Chart_AccuracyInvalidException
      */
-    public function addBar($name, $size, $comment = null, $accuracy  = 1) 
+    public function addBar($name, $size, $comment = null, $accuracy  = 1, $worstComment = null) 
     {
         if (!$size && ($accuracy != 1)) {
             FaZend_Exception::raise(
                 'Sheet_ScheduleEstimate_Chart_AccuracyProhibitedException',
                 "Accuracy can't be set to milestone '{$name}'"
+            );
+        }
+        if ($accuracy < 1) {
+            FaZend_Exception::raise(
+                'Sheet_ScheduleEstimate_Chart_AccuracyInvalidException',
+                "Accuracy can't be less than 1 for '{$name}': {$accuracy}"
             );
         }
         $found = false;
@@ -168,6 +180,7 @@ class Sheet_ScheduleEstimate_Chart
             'name' => strval($name),
             'size' => floatval($size),
             'comment' => strval($comment),
+            'worstComment' => strval($worstComment),
             'accuracy' => floatval($accuracy),
         );
     }
@@ -277,9 +290,17 @@ class Sheet_ScheduleEstimate_Chart
         $stepX = max($scaleX, $this->_options['width'] / 10);
         $stepY = $scaleY;
         
-        $tex ="\\begin{tikzpicture}\n" .
-        "\\draw [{$this->_options['tikzGrid']}, xstep={$stepX}, ystep={$stepY}] " .
-        "(0,0) grid ({$this->_options['width']}, {$this->_options['height']});\n";
+        $tex = "\\begin{tikzpicture}\n";
+        
+        // grid
+        $tex .= sprintf(
+            "\\draw [%s, xstep=%f, ystep=%f] (0,0) grid (%f, %f);\n",
+            $this->_options['tikzGrid'],
+            $stepX,
+            $stepY,
+            $this->_options['width'],
+            $this->_options['height']
+        );
         
         $line = count($this->_bars) - 1;
         foreach ($this->_bars as $id=>$bar) {
@@ -288,28 +309,81 @@ class Sheet_ScheduleEstimate_Chart
             
             $y = $scaleY * ($line--);
             
+            // just a comment
+            $tex .= sprintf(
+                "\n%% %s: %s, %s\n",
+                $id,
+                $view->tex($bar['name']),
+                $view->tex($bar['comment'])
+            );
+            
             if ($bar['accuracy'] && $this->_options['useAccuracy']) {
                 $worstX = $scaleX * $bar['worstStart'];
                 $worstWidth = $scaleX * $bar['size'] * $bar['accuracy'];
                 if (!$this->_isMilestone($id)) {
-                    $tex .= "\\node [{$this->_options['tikzWorstBar']}, text width={$worstWidth}cm] " .
-                    "at ({$worstX}, {$y}) {};\n";
+                    $tex .= sprintf(
+                        "\\node [%s, text width=%fcm] at (%f, %f) (barWorst%s) {};\n",
+                        $this->_options['tikzWorstBar'],
+                        $worstWidth,
+                        $worstX,
+                        $y,
+                        $id
+                    );
                 } else {
-                    $tex .= "\\node [{$this->_options['tikzWorstMilestone']}] " .
-                    "at ({$worstX}, {$y}) {};\n";
+                    $tex .= sprintf(
+                        "\\node [%s] at (%f, %f) (barWorst%s) {};\n" .
+                        "\t\\node [%s, right=0mm of barWorst%s] {%s};\n",
+                        $this->_options['tikzWorstMilestone'],
+                        $worstX,
+                        $y,
+                        $id,
+                        $this->_options['tikzWorstComment'],
+                        $id,
+                        isset($bar['worstComment']) ? $view->tex($bar['worstComment']) : ''
+                    );
                 }
             }
             
             if (!$this->_isMilestone($id)) {
-                $tex .= "\\node [{$this->_options['tikzBar']}, text width={$bestWidth}cm] " .
-                "at ({$bestX}, {$y}) (bar{$id}) {{$view->tex($bar['name'])}};\n";
+                $tex .= sprintf(
+                    "\\node [%s, text width=%fcm] at (%f, %f) (bar%s) {};\n" .
+                    "\\node [%s, right=0mm of bar%s.west, anchor=west] {%s};\n",
+                    $this->_options['tikzBar'],
+                    $bestWidth,
+                    $bestX,
+                    $y,
+                    $id, 
+                    $this->_options['tikzBarText'],
+                    $id,
+                    $view->tex($bar['name'])
+                );
             } else {
-                $tex .= "\\node [{$this->_options['tikzMilestone']}] " .
-                "at ({$bestX}, {$y}) (bar{$id}) {};\n\t" .
-                "\\node [{$this->_options['tikzComment']}, right=0mm of bar{$id}] " .
-                "{{$view->tex($bar['comment'])}}; " .
-                "% {$view->tex($bar['name'])}\n";
+                $tex .= sprintf(
+                    "\\node [%s] at (%f, %f) (bar%s) {};\n" .
+                    "\t\\node [%s, %s=0mm of bar%s] {%s}; %% %s\n",
+                    $this->_options['tikzMilestone'],
+                    $bestX,
+                    $y,
+                    $id,
+                    $this->_options['tikzComment'],
+                    $this->_options['useAccuracy'] ? 'left' : 'right',
+                    $id,
+                    $view->tex($bar['comment']),
+                    $view->tex($bar['name'])
+                );
             }
+            
+            // running dots
+            if ($bar['accuracy'] && $this->_options['useAccuracy']) {
+                $tex .= sprintf(
+                    "\\draw [%s] (bar%s.east) -- (barWorst%s.%s);\n",
+                    $this->_options['tikzRunningDots'],
+                    $id,
+                    $id,
+                    $this->_isMilestone($id) ? 'west' : 'east'
+                );
+            }
+            
         }
         
         // draw lines from one bar to another
@@ -318,6 +392,17 @@ class Sheet_ScheduleEstimate_Chart
         // draw X and Y scales
         if (isset($this->_xScale)) {
             $tex .= $this->_drawXScale($view);
+        }
+        
+        if (!empty($this->_options['renderLegend'])) {
+            $tex .= sprintf(
+                "\\node [%s, anchor=east] at (%f, %f) (legend) {optimistic};\n" .
+                "\\node [%s, below=2em of legend.east, anchor=east] {pessimistic};\n",
+                $this->_options['tikzBar'],
+                $this->_options['width'],
+                $this->_options['height'],
+                $this->_options['tikzWorstBar']
+            );
         }
         
         return $tex . "\\end{tikzpicture}\n";
@@ -339,7 +424,7 @@ class Sheet_ScheduleEstimate_Chart
      */
     protected function _drawLines() 
     {
-        $tex = '';
+        $tex = "\n";
         $out = 0.3; //$this->_options['width'] / 30;
         
         // arrows!
@@ -377,8 +462,15 @@ class Sheet_ScheduleEstimate_Chart
                         "Strange path"
                     );
             }
-            $tex .= "\\draw [{$this->_options['tikzConnector']}] " .
-            "(bar{$dep['from']}.{$left}) {$path} (bar{$dep['to']}.{$right});\n";
+            $tex .= sprintf(
+                "\\draw [%s] (bar%s.%s) %s (bar%s.%s);\n",
+                $this->_options['tikzConnector'],
+                $dep['from'],
+                $left,
+                $path,
+                $dep['to'],
+                $right
+            );
         }
         return $tex;
     }
@@ -396,7 +488,12 @@ class Sheet_ScheduleEstimate_Chart
         $tex = '';
         while ($num < $width) {
             $x = $this->_options['width'] * $num / $width;
-            $tex .= "\\node[{$this->_options['tikzXScale']}] at ({$x},0) {{$view->tex($callback->call($num))}};\n";
+            $tex .= sprintf(
+                "\\node[%s] at (%f,0) {%s};\n",
+                $this->_options['tikzXScale'],
+                $x,
+                $view->tex($callback->call($num))
+            );
             $num += $delta;
         }
         return $tex;

@@ -83,8 +83,8 @@ class Sheet_ScheduleEstimate extends Sheet_Abstract
         $chart->setOptions(
             array(
                 'width' => 14, // cm
-                'height' => $packages * 0.8, // cm
-                'useAccuracy' => false,
+                'height' => $packages * 0.7, // cm
+                'useAccuracy' => true,
             )
         );
         

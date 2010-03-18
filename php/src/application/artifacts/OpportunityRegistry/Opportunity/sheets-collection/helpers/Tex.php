@@ -39,6 +39,7 @@ class Sheet_Helper_Tex
             '/<b>(.*?)<\/b>/'            => '\\textbf{${1}}',
             '/<i>(.*?)<\/i>/'            => '\\textit{${1}}',
             '/<tt>(.*?)<\/tt>/'          => '\\texttt{${1}}',
+            '/€/'                        => '\euro{}',
         );
         return preg_replace(array_keys($replacers), $replacers, strval($str));
     }

@@ -59,6 +59,14 @@ abstract class Sheet_ScheduleEstimate_Package_Abstract
     protected $_comment;
     
     /**
+     * Accuracy to use
+     *
+     * @var float
+     * @see setAccuracy()
+     */
+    protected $_accuracy;
+    
+    /**
      * Inject Sheet
      *
      * @param Sheet_Abstract Sheet to inject
@@ -114,6 +122,18 @@ abstract class Sheet_ScheduleEstimate_Package_Abstract
     }
     
     /**
+     * Set accuracy of the bar
+     *
+     * @param float Accuracy
+     * @return $this
+     */
+    public function setAccuracy($accuracy) 
+    {
+        $this->_accuracy = $accuracy;
+        return $this;
+    }
+
+    /**
      * Create new class using the params provided
      *
      * @param array Associative array of params
@@ -124,46 +144,32 @@ abstract class Sheet_ScheduleEstimate_Package_Abstract
      */
     public static function factory($name, $comment, array $params, array &$packages) 
     {
-        if (array_key_exists('depends', $params)) {
-            FaZend_Exception::raise(
-                'Sheet_ScheduleEstimate_NotSupportedException',
-                "Explicit dependency declaration is not supported yet"
-            );
-        } else {
-            if (count($packages) > 0) {
-                $dependencies = array(
-                    array(
-                        $packages[count($packages)-1]->name,
-                        Sheet_ScheduleEstimate_Chart::DEP_FS,
-                        0
-                    )
-                );
-            } else {
-                $dependencies = array();
-            }
-        }
-        
         // is it a milestone?
         if (!array_key_exists('duration', $params)) {
             $packages[] = $m = new Sheet_ScheduleEstimate_Package_Milestone(
                 $name,
-                $dependencies,
+                self::_calculateDependencies($packages, $params),
                 $comment
             );
             return $m;
         }
         
+        $accuracy = self::_calculateAccuracy($packages);
+
+        // milestone right before it
+        $m = self::factory($name . '-milestone', null, array(), $packages);
+        $m->setCost($params['cost']);
+        $m->setAccuracy($accuracy);
+
         // bar
         $packages[] = $bar = new Sheet_ScheduleEstimate_Package_Bar(
             $name,
-            $dependencies,
+            self::_calculateDependencies($packages, $params),
             $comment
         );
         $bar->setDuration($params['duration']);
-        // milestone right after it
-        $m = self::factory($name . '-milestone', null, array(), $packages);
-        $m->setCost($params['cost']);
-        return $m;
+        $bar->setAccuracy($accuracy);
+        return $bar;
     }
     
     /**
@@ -178,6 +184,64 @@ abstract class Sheet_ScheduleEstimate_Package_Abstract
             list($from, $type, $lag) = $dep;
             $chart->addDependency($from, $this->_name, $type, $lag);
         }
+    }
+    
+    /**
+     * Calculate accuracy to use now
+     *
+     * @param array List of packages so far
+     * @return float
+     * @see factory()
+     */
+    protected static function _calculateAccuracy(array $packages) 
+    {
+        $duration = self::$_sheet->sheets['Offer']->duration * 30;
+        if (!$duration) {
+            return 1;
+        }
+
+        $ratio = self::$_sheet->sheets['Offer']->ratio;
+
+        $sofar = 0;
+        foreach ($packages as $package) {
+            if ($package instanceof Sheet_ScheduleEstimate_Package_Bar) {
+                $sofar += $package->duration;
+            }
+        }
+        if (!$sofar) {
+            return 1;
+        }
+        return 1 + $ratio * ($sofar / $duration);
+    }
+    
+    /**
+     * Calculate latest dependency
+     *
+     * @param array List of packages
+     * @param array params
+     * @return void
+     * @see factory()
+     */
+    protected static function _calculateDependencies(array $packages, array $params) 
+    {
+        // todo it in the future
+        if (array_key_exists('depends', $params)) {
+            FaZend_Exception::raise(
+                'Sheet_ScheduleEstimate_NotSupportedException',
+                "Explicit dependency declaration is not supported yet"
+            );
+        }
+
+        if (!count($packages)) {
+            return array();
+        }
+        return array(
+            array(
+                $packages[count($packages)-1]->name,
+                Sheet_ScheduleEstimate_Chart::DEP_FS,
+                0
+            )
+        );
     }
 
 }

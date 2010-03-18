@@ -48,11 +48,11 @@ class Sheet_ScheduleEstimate_Package_Bar extends Sheet_ScheduleEstimate_Package_
             $this->_name,
             $this->_duration,
             $this->_comment,
-            1
+            $this->_accuracy
         );
         parent::addYourself($chart);
     }
-
+    
     /**
      * Set duration of the bar
      *

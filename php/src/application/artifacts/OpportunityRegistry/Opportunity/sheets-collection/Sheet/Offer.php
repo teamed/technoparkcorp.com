@@ -84,6 +84,17 @@ class Sheet_Offer extends Sheet_Abstract
     }
     
     /**
+     * Get estimation ratio, relation between HIGH and LOW
+     *
+     * @return float
+     */
+    protected function _getRatio() 
+    {
+        $high = clone $this->highAmount;
+        return $high->div($this->lowAmount);
+    }
+    
+    /**
      * Get lower amount
      *
      * @return FaZend_Bo_Money

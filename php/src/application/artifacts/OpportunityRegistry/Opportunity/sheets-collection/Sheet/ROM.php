@@ -28,6 +28,9 @@ require_once 'artifacts/OpportunityRegistry/Opportunity/sheets-collection/Sheet/
 class Sheet_ROM extends Sheet_Abstract
 {
     
+    const LOW_RATIO = 0.75;
+    const HIGH_RATIO = 3;
+    
     /**
      * Defaults
      *
@@ -104,7 +107,7 @@ class Sheet_ROM extends Sheet_Abstract
      */
     protected function _getLowBoundary() 
     {
-        return self::round($this->hours * 0.75);
+        return self::round($this->hours * self::LOW_RATIO);
     }
     
     /**
@@ -114,7 +117,7 @@ class Sheet_ROM extends Sheet_Abstract
      */
     protected function _getHighBoundary() 
     {
-        return self::round($this->hours * 3);
+        return self::round($this->hours * self::HIGH_RATIO);
     }
     
     /**
