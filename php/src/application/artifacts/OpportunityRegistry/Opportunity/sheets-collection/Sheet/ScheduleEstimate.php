@@ -68,8 +68,28 @@ class Sheet_ScheduleEstimate extends Sheet_Abstract
                 $this->_packages
             );
         }
+        
+        // make sure that the total cost of all packages
+        // equal to the project "lowAmount", from "Offer"
+        $this->_adjustCost($this->_packages);
+
+        // make sure that the total duration of all packages
+        // equal to the project "duration", from "Offer"
+        $this->_adjustDuration($this->_packages);
     }
 
+    /**
+     * Restore object after serialization
+     *
+     * @return void
+     */
+    public function __wakeup() 
+    {
+        parent::__wakeup();
+        // dependency injection
+        Sheet_ScheduleEstimate_Package_Abstract::setSheet($this);
+    }
+    
     /**
      * Builds and returns Gantt Chart in TeX
      *
@@ -97,6 +117,88 @@ class Sheet_ScheduleEstimate extends Sheet_Abstract
             $package->addYourself($chart);
         }
         return $chart->getLatex($this->sheets->getView());
+    }
+
+    /**
+     * Adjust cost
+     *
+     * @param array List of packages
+     * @return void
+     * @throws Sheet_ScheduleEstimate_CostOverrunException
+     * @throws Sheet_ScheduleEstimate_CostInsufficientException
+     */
+    protected function _adjustCost(array $packages) 
+    {
+        $cost = new FaZend_Bo_Money();
+        foreach ($packages as $package) {
+            if ($package instanceof Sheet_ScheduleEstimate_Package_Milestone) {
+                $cost->add($package->cost);
+            }
+        }
+        $totalCost = clone $this->_sheets['Offer']->lowAmount;
+        if ($cost->isGreater($totalCost)) {
+            FaZend_Exception::raise(
+                'Sheet_ScheduleEstimate_CostOverrunException', 
+                "Total cost of {$cost} is bigger than {$totalCost}"
+            );
+        }
+        if ($cost->isLess($totalCost)) {
+            for ($i=count($packages)-1; $i>=0; $i--) {
+                $package = $packages[$i];
+                if ($package instanceof Sheet_ScheduleEstimate_Package_Milestone) {
+                    $package->cost->add($totalCost->sub($cost)->inverse());
+                    $adjusted = true;
+                    break;
+                }
+            }
+        }
+        if (!isset($adjusted) && !$cost->equalsTo($totalCost)) {
+            FaZend_Exception::raise(
+                'Sheet_ScheduleEstimate_CostInsufficientException', 
+                "Total cost of {$cost} is less than {$totalCost}, and can't be adjusted"
+            );
+        }
+    }
+
+    /**
+     * Adjust duration
+     *
+     * @param array List of packages
+     * @return void
+     * @throws Sheet_ScheduleEstimate_DurationOverrunException
+     * @throws Sheet_ScheduleEstimate_DurationInsufficientException
+     */
+    protected function _adjustDuration(array $packages) 
+    {
+        $duration = 0;
+        foreach ($packages as $package) {
+            if ($package instanceof Sheet_ScheduleEstimate_Package_Bar) {
+                $duration += $package->duration;
+            }
+        }
+        $totalDuration = $this->_sheets['Offer']->duration * 30;
+        if ($duration > $totalDuration) {
+            FaZend_Exception::raise(
+                'Sheet_ScheduleEstimate_DurationOverrunException', 
+                "Total duration of {$duration}days is bigger than {$totalDuration}days"
+            );
+        }
+        if ($duration < $totalDuration) {
+            for ($i=count($packages)-1; $i>=0; $i--) {
+                $package = $packages[$i];
+                if ($package instanceof Sheet_ScheduleEstimate_Package_Bar) {
+                    $package->setDuration($package->duration + $totalDuration - $duration);
+                    $adjusted = true;
+                    break;
+                }
+            }
+        }
+        if (!isset($adjusted) && ($duration != $totalDuration)) {
+            FaZend_Exception::raise(
+                'Sheet_ScheduleEstimate_DurationInsufficientException', 
+                "Total duration of {$duration} is less than {$totalDuration}, and can't be adjusted"
+            );
+        }
     }
 
 }

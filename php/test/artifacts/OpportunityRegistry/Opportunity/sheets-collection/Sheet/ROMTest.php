@@ -40,8 +40,8 @@ class Sheet_ROMTest extends AbstractTest
         foreach ($this->_rom->estimates as $estimate) {
             $hours[] = $estimate->hours;
         }
-        $avg = array_sum($hours) / count($hours);
-        $this->assertEquals($avg, $this->_rom->hours);
+        $avg = round(array_sum($hours) / count($hours));
+        $this->assertEquals($avg, round($this->_rom->hours));
     }
 
 }

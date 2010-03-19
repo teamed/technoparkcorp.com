@@ -89,10 +89,10 @@ class Sheet_ScheduleEstimate_Package_Milestone extends Sheet_ScheduleEstimate_Pa
             $chart->addBar(
                 $this->_name, // name
                 0, // size, should be ZERO, since it's milestone!
-                $this->_scaleCost($this->_cost), // comment
+                self::_scaleCost($this->_cost), // comment
                 1, // accuracy
                 $this->_accuracy != 1 ? 
-                $this->_scaleCost($this->_cost, $this->_accuracy) : false // worst comment
+                self::_scaleCost($this->_cost, $this->_accuracy) : false // worst comment
             );
         } else {
             $chart->addBar(
@@ -113,7 +113,7 @@ class Sheet_ScheduleEstimate_Package_Milestone extends Sheet_ScheduleEstimate_Pa
      * @see addYourself()
      * @todo implement it properly
      */
-    protected function _scaleCost(FaZend_Bo_Money $cost, $accuracy = 1) 
+    protected static function _scaleCost(FaZend_Bo_Money $cost, $accuracy = 1) 
     {
         $total = self::$_sheet->sheets['Offer']->highAmount->original;
         $val = $cost->original * $accuracy;

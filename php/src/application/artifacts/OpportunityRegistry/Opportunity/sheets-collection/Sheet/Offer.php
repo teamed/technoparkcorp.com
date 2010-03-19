@@ -72,10 +72,8 @@ class Sheet_Offer extends Sheet_Abstract
     protected function _getDepositAmount() 
     {
         if (preg_match('/^(\d+(?:\.\d+)?)\%$/', $this->deposit, $matches)) {
-            $amount = clone $this->highAmount;
+            $amount = clone $this->lowAmount;
             return $amount
-                ->add($this->lowAmount)
-                ->div(2)
                 ->mul($matches[1] / 100)
                 ->round(-2);
         } else {
