@@ -21,6 +21,10 @@
 global $phpRackConfig;
 $phpRackConfig = array(
     'dir' => dirname(__FILE__) . '/../rack-tests',
+    'auth' => array(
+        'username' => 'egor',
+        'password' => 'aF41Atlz',
+    ),
 );
 
 include dirname(__FILE__) . '/../library/phpRack/bootstrap.php';
