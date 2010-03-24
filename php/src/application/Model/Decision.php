@@ -227,7 +227,8 @@ abstract class Model_Decision implements Model_Decision_Interface
                 logg('Failed to rollback the DB transaction: ' . $e->getMessage());
             }
         }
-        logg('%ssec spent', microtime(true) - $start);
+        $cost = microtime(true) - $start;
+        logg('%ssec spent', $cost);
         
         // stop logging to file
         FaZend_Log::getInstance()->removeWriter('stream');
@@ -236,7 +237,7 @@ abstract class Model_Decision implements Model_Decision_Interface
         $log = FaZend_Log::getInstance()->getWriterAndRemove('decision')->getLog();
         
         // protocol this decision, if something was said
-        $history->recordResult($decision, $log);
+        $history->recordResult($decision, $log, $cost);
         
         return $decision;
     }

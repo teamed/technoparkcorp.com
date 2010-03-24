@@ -53,12 +53,14 @@ class Model_Decision_History extends FaZend_Db_Table_ActiveRow_history
      *
      * @param string|false Decision made
      * @param string Log of the decision made
+     * @param integer Cost of this decision, in seconds
      * @return void
      */
-    public function recordResult($result, $log) 
+    public function recordResult($result, $log, $cost) 
     {
         $this->result = $result;
         $this->protocol = $log;
+        $this->cost = intval($cost);
         $this->save();
     }
 

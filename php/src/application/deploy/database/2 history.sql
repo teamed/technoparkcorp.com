@@ -13,10 +13,12 @@ CREATE TABLE IF NOT EXISTS `history` (
 
     `result` VARCHAR(255) COMMENT 'Decision made, NULL = failed decision',
     `protocol` LONGTEXT NOT NULL COMMENT 'Protocol of decision',
+    `cost` INT COMMENT 'CPU resources spent on this decision (in seconds)',
 
     PRIMARY KEY (`id`)
 )
 ENGINE=InnoDB
 DEFAULT CHARSET=utf8
-AUTO_INCREMENT=1;
+AUTO_INCREMENT=1
+COMMENT="List of decisions made by wobots";
 
