@@ -228,7 +228,7 @@ abstract class Model_Decision implements Model_Decision_Interface
             }
         }
         $cost = microtime(true) - $start;
-        logg('%ssec spent', $cost);
+        logg('%0.2fsec spent', $cost);
         
         // stop logging to file
         FaZend_Log::getInstance()->removeWriter('stream');
