@@ -203,9 +203,8 @@ abstract class Model_Decision implements Model_Decision_Interface
             $db->commit();
             
             logg(
-                'Decision execution finished (%s) in %0.2fsec, DB transaction committed', 
-                pathinfo($this->_file, PATHINFO_FILENAME),
-                microtime(true) - $start
+                'Decision execution finished (%s), DB transaction committed', 
+                pathinfo($this->_file, PATHINFO_FILENAME)
             );
         } catch (Exception $e) {
             // some error inside - we skip the process
@@ -227,6 +226,7 @@ abstract class Model_Decision implements Model_Decision_Interface
                 logg('Failed to rollback the DB transaction: ' . $e->getMessage());
             }
         }
+        logg('%ssec spent', microtime(true) - $start);
         
         // stop logging to file
         FaZend_Log::getInstance()->removeWriter('stream');
