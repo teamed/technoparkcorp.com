@@ -153,13 +153,17 @@ class Model_User
      *
      * @param string Name of the variable
      * @return string
+     * @throws Model_User_InvalidPropertyException
      */
     public function __get($name) 
     {
         if ($name == 'email') {
             return $this->_email;
         }
-        return parent::__get($name);
+        FaZend_Exception::raise(
+            'Model_User_InvalidPropertyException', 
+            "Property is not found: '{$name}'"
+        );
     }
     
     /**
