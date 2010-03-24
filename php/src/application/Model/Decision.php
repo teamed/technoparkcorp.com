@@ -69,8 +69,9 @@ abstract class Model_Decision implements Model_Decision_Interface
      */
     public static function factory($file, Model_Wobot $wobot)
     {
-        if (!file_exists($file))
+        if (!file_exists($file)) {
             $file = APPLICATION_PATH . '/wobots/' . $wobot->getName() . '/' . $file . '.php';
+        }
         
         $className = pathinfo($file, PATHINFO_FILENAME);
         require_once $file;
