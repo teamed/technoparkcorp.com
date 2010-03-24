@@ -33,7 +33,7 @@ class Wobots extends FaZend_Cli_Abstract
      *
      * @var string
      */
-    protected $_flag = TEMP_PATH . '/wbts-busy-flag.txt';
+    protected $_flag;
 
     /**
      * Executor of a command-line command
@@ -42,6 +42,8 @@ class Wobots extends FaZend_Cli_Abstract
      */
     public function execute()
     {
+        $this->_flag = TEMP_PATH . '/wbts-busy-flag.txt';
+        
         // if we're working with another wobot at the moment
         if ($this->_serverIsBusyNow()) {
             return self::RETURNCODE_OK;
