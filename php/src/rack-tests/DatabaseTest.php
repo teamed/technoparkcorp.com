@@ -9,7 +9,7 @@ class DatabaseTest extends PhpRack_Test
     public function testDatabaseExists()
     {
         $ini = parse_ini_file(APPLICATION_PATH . '/config/app.ini', true);
-        $production = $ini['production'];
+        $production = $ini['production : global'];
         $this->assert->db->mysql
             ->connect(
                 'localhost',
