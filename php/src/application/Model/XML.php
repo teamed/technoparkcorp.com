@@ -281,7 +281,7 @@ class Model_XML
 
         // try to get PNG from IPF10
         try {
-            $png = Model_IPF10::getInstance()->TikzImage(self::_cache()->load($md5));
+            // $png = Model_IPF10::getInstance()->TikzImage(self::_cache()->load($md5));
         } catch (Exception $e) {
             return self::_errorPNG($md5, Model_Colors::RED);
         }
