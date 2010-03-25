@@ -6,10 +6,6 @@
 class EnvironmentTest extends PhpRack_Test
 {
 
-    public function testSvnExists()
-    {
-    }
-
     public function testPhpIsConfigured()
     {
         $this->assert->php->version->atLeast('5.2');

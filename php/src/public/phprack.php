@@ -27,4 +27,5 @@ $phpRackConfig = array(
     ),
 );
 
+define('APPLICATION_PATH', realpath(dirname(__FILE__) . '/../application'));
 include dirname(__FILE__) . '/../library/phpRack/bootstrap.php';
