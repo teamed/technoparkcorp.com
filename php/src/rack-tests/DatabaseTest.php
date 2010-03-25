@@ -1,6 +1,6 @@
 <?php
 /**
- * @version $Id: EnvironmentTest.php 837 2010-03-16 14:37:24Z yegor256@yahoo.com $
+ * @version $Id$
  */
 
 class DatabaseTest extends PhpRack_Test
