@@ -39,6 +39,7 @@ class Model_Asset_Design_Fazend_Linux extends Model_Asset_Design_Abstract
      *
      * @return mixed[]
      * @throws Model_Asset_Design_Fazend_Linux_SoapFailure
+     * @throws Model_Asset_Design_Fazend_Linux_MissedPropertyException
      */
     public function getComponents() 
     {
@@ -70,13 +71,23 @@ class Model_Asset_Design_Fazend_Linux extends Model_Asset_Design_Abstract
                     $data['type'] = 'class';
                     break;
             }
+
+            // validate data received
+            foreach (array('type', 'fullName', 'todo', 'traces') as $property) {
+                if (!array_key_exists($property, $data)) {
+                    FaZend_Exception::raise(
+                        'Model_Asset_Design_Fazend_Linux_MissedPropertyException',
+                        "Property '{$property}' not found in data, project {$this->_project->name}"
+                    );
+                }
+            }
             
             $return[] = FaZend_StdObject::create()
                 ->set('type', $data['type'])
                 ->set('name', $data['fullName'])
                 ->set('description', '...')
-                ->set('todoTickets', is_array($data['todo']) ? $data['todo'] : array())
-                ->set('traces', is_array($data['traces']) ? $data['traces'] : array());
+                ->set('todoTickets', $data['todo'])
+                ->set('traces', $data['traces']);
         }
         return $return;
     }
