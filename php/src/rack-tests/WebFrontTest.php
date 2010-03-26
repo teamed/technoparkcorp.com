@@ -1,6 +1,6 @@
 <?php
 /**
- * @version $Id: PhpinfoTest.php 856 2010-03-25 08:59:11Z yegor256@yahoo.com $
+ * @version $Id$
  */
 
 class WebFrontTest extends PhpRack_Test
