@@ -14,7 +14,7 @@
  *
  * @author Yegor Bugayenko <egor@tpc2.com>
  * @copyright Copyright (c) TechnoPark Corp., 2001-2009
- * @version $Id: Supplier.php 637 2010-02-09 09:49:56Z yegor256@yahoo.com $
+ * @version $Id$
  *
  */
 
