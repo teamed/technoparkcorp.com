@@ -289,7 +289,7 @@ class Model_XML
         
         // maybe the result returned is empty?
         if (!$png) {
-            FaZend_Log::err('Error in XML/tikzShow - empty PNG, will try again next time');
+            // FaZend_Log::err('Error in XML/tikzShow - empty PNG, will try again next time');
             return self::_errorPNG($md5, Model_Colors::GRAY);
         }
         
