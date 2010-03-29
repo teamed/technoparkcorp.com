@@ -1,6 +1,6 @@
 <?php
 /**
- * @version $Id: ProcessesTest.php 1469 2010-03-26 17:07:00Z yegor256@yahoo.com $
+ * @version $Id$
  */
 
 class ServerTest extends PhpRack_Test
