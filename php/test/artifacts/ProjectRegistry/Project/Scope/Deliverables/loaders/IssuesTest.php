@@ -1,6 +1,6 @@
 <?php
 /**
- * @version $Id: DeliverablesTest.php 716 2010-02-21 14:20:35Z yegor256@yahoo.com $
+ * @version $Id$
  */
 
 require_once 'AbstractProjectTest.php';

@@ -27,10 +27,18 @@ abstract class Model_Asset_Srs_Abstract extends Model_Asset_Abstract
 {
     
     /**
+     * Execute RQDQL query and return a result
+     *
+     * @param string Query
+     * @return SimpleXMLElement
+     */
+    abstract public function rqdqlQuery($query);
+    
+    /**
      * Get full list of SRS entities
      *
      * @return mixed[]
-     **/
+     */
     abstract public function getEntities();
     
 }

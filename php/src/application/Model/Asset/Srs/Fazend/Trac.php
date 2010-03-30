@@ -27,11 +27,27 @@ class Model_Asset_Srs_Fazend_Trac extends Model_Asset_Srs_Abstract
 {
     
     /**
+     * Execute RQDQL query and return a result
+     *
+     * @param string Query
+     * @return SimpleXMLElement
+     * @see Model_Asset_Srs_Abstract::rqdqlQuery()
+     */
+    public function rqdqlQuery($query)
+    {
+        $wiki = new Shared_Wiki($this->_project);
+        return $wiki->rqdqlQuery($query);
+    }
+    
+    
+    /**
      * Get full list of SRS entities
      *
-     * @return mixed[]
-     **/
-    public function getEntities() 
+     * @see Shared_Wiki_Entity
+     * @return Shared_Wiki_Entity[]
+     * @see Model_Asset_Srs_Abstract::getEntities()
+     */
+    public function getEntities()
     {
         $wiki = new Shared_Wiki($this->_project);
         return $wiki->retrieveAll();
