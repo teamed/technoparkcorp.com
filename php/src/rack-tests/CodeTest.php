@@ -6,7 +6,7 @@
 class CodeTest extends PhpRack_Test
 {
 
-    public function setUp()
+    protected function _init()
     {
         $this->_setAjaxOptions(
             array(
