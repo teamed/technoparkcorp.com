@@ -1,3 +1,4 @@
+<?=$this->doctype()?>
 <!--
  *
  * thePanel v2.0, Project Management Software Toolkit
@@ -15,15 +16,11 @@
 -->
  
 <?
-
-    $this->headMeta()
-        ->appendHttpEquiv('Content-Type', 'text/html; charset=utf-8');
-
+    $this->headMeta()->appendHttpEquiv('Content-Type', 'text/html; charset=utf-8');
     $this->includeCSS('panel.css');
     $this->includeJQuery();
     $this->headTitle('thePanel');
-
-?><?=$this->doctype()?>
+?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>  
     <?=$this->headTitle()?>
@@ -34,7 +31,6 @@
 <body>
 
     <div class="header">
-
         <? if (Model_Pages::getInstance()->getAcl()->hasRole(Model_User::me()->email)): ?>
             <div class="path">
                 <?=$this->navigation(Model_Pages::getInstance())
@@ -56,15 +52,11 @@
         <div class="r1"></div>
         <div class="r2"></div>
         <div class="r3"></div>
-
     </div>
 
     <div class="wrapper">
-
         <?=$this->flashMessage()?>
-
         <?=$this->layout()->content?>
-
     </div>
 
     <div class="btm">
