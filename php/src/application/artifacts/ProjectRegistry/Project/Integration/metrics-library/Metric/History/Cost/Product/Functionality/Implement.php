@@ -14,22 +14,24 @@
  *
  * @author Yegor Bugayenko <egor@tpc2.com>
  * @copyright Copyright (c) TechnoPark Corp., 2001-2009
- * @version $Id: Total.php 611 2010-02-07 07:43:45Z yegor256@yahoo.com $
+ * @version $Id$
  *
  */
 
 /**
- * Cost of one class in design
+ * Cost of one functional requirement to implement
  * 
  * @package Artifacts
+ * @see Metric_Artifacts_Product_Functionality_Implemented
  */
-class Metric_History_Cost_Product_Functional extends Metric_Abstract
+class Metric_History_Cost_Product_Functionality_Implement extends Metric_Abstract
 {
 
     /**
      * Load this metric
      *
      * @return void
+     * @see theMetrics::_attachMetric()
      */
     public function reload()
     {

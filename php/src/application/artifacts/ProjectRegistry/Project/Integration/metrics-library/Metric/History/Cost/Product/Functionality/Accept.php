@@ -14,40 +14,29 @@
  *
  * @author Yegor Bugayenko <egor@tpc2.com>
  * @copyright Copyright (c) TechnoPark Corp., 2001-2009
- * @version $Id$
+ * @version $Id: Total.php 611 2010-02-07 07:43:45Z yegor256@yahoo.com $
  *
  */
-
-require_once 'artifacts/ProjectRegistry/Project/Scope/Deliverables/types/Deliverables/Requirements/Requirement.php';
 
 /**
- * One functional requirement
- *
+ * Cost of one functional requirement to accept by end-user, architect, etc.
+ * 
  * @package Artifacts
+ * @see Metric_Artifacts_Product_Functionality_Accepted
  */
-class Deliverables_Requirements_Requirement_Functional extends Deliverables_Requirements_Requirement
+class Metric_History_Cost_Product_Functionality_Accept extends Metric_Abstract
 {
-    
+
     /**
-     * Priority of the requirement
+     * Load this metric
      *
-     * @return integer
+     * @return void
+     * @see theMetrics::_attachMetric()
      */
-    protected function _getPriority() 
+    public function reload()
     {
-        return $this->attributes['priority']->value;
+        // in USD
+        $this->value = 10;
     }
-    
-    /**
-     * Is it already implemented?
-     *
-     * @return boolean
-     * @see Metric_Artifacts_Product_Functionality_Implemented::reload()
-     * @todo implement it properly
-     */
-    public function isImplemented() 
-    {
-        return (bool)rand(0, 1);
-    }
-    
+            
 }

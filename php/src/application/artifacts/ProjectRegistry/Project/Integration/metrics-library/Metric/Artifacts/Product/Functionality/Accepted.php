@@ -14,41 +14,23 @@
  *
  * @author Yegor Bugayenko <egor@tpc2.com>
  * @copyright Copyright (c) TechnoPark Corp., 2001-2009
- * @version $Id$
+ * @version $Id: Implemented.php 882 2010-03-31 16:27:01Z yegor256@yahoo.com $
  *
  */
 
 /**
- * Percentage of functionality implemented
+ * Percentage of functionality accepted by end-users (and other stakeholders)
  *
- * This metric's current value is the total number of functional
- * requirements implemented so far, in relation to the total number
- * of functional requirements. By "implemented" we mean that
- * requirement is finished in implementation by a designated programmer
- * and the ticket is closed. This is realized in
- * {@link Deliverables_Requirements_Requirement_Functional::isImplemented()}.
- *
- * Target value of the metric is always 1.00.
- *
- * The difference between target and current value is used to calculate the
- * size of work package, in {@link _derive()}.
- * 
  * @package Artifacts
  */
-class Metric_Artifacts_Product_Functionality_Implemented extends Metric_Abstract
+class Metric_Artifacts_Product_Functionality_Accepted extends Metric_Abstract
 {
 
     /**
-     * How many functional requirements are implemented already, in relation to total
+     * How big percentage of functional requirements is accepted
      *
      * Value of the metric is the percentage of functional requirements already
-     * implemented by programmers, to the total amount of requirements we are going
-     * to have in the project. Doesn't mean that requirements are delivered to
-     * users, or approved.
-     *
-     * For example, we are planning to have 50 requirements, according to our
-     * objectives. Now we have 10 requirements specified in SRS and 5 of them
-     * are implemented. The value of this metric will be 0.1 (10%).
+     * accepted by end-users.
      *
      * @return void
      * @see theMetrics::_attachMetric()
@@ -57,10 +39,9 @@ class Metric_Artifacts_Product_Functionality_Implemented extends Metric_Abstract
     {
         $this->value = $this->_percentage(
             $this->_project->deliverables->functional,
-            'isImplemented',
-            $this->_project->metrics['artifacts/requirements/functional/accepted']->objective
+            'isAccepted'
         );
-        $this->default = 1; // by default all requirements shall be implemented
+        $this->default = 1; // all of them should be accepted
     }
     
     /**
@@ -80,15 +61,14 @@ class Metric_Artifacts_Product_Functionality_Implemented extends Metric_Abstract
     protected function _derive(array &$metrics = array())
     {
         // this is how many requirements we should implement
-        $toImplement = $this->delta 
-        * $this->_project->metrics['artifacts/requirements/functional/accepted']->objective;
-        if ($toImplement <= 0) {
+        $toAccept = $this->delta * count($this->_project->deliverables->functional);
+        if ($toAccept <= 0) {
             return null;
         }
         
-        // price of one functional requirement implementation
+        // price of one functional requirement acceptance
         $price = new FaZend_Bo_Money(
-            $this->_project->metrics['history/cost/product/functionality/implement']->value
+            $this->_project->metrics['history/cost/product/functionality/accept']->value
         );
 
         return $this->_makeWp(

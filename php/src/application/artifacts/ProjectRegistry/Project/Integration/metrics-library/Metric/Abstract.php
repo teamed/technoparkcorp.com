@@ -262,11 +262,14 @@ abstract class Metric_Abstract
      */
     public final function isMatched($pattern)
     {
-        if (!isset($this->_patterns))
+        if (!isset($this->_patterns)) {
             return false;
-        foreach (array_keys($this->_patterns) as $regex)
-            if (preg_match($regex, $pattern))
+        }
+        foreach (array_keys($this->_patterns) as $regex) {
+            if (preg_match($regex, $pattern)) {
                 return true;
+            }
+        }
         return false;
     }
 
@@ -282,15 +285,17 @@ abstract class Metric_Abstract
         validate()->true(isset($this->_patterns));
         
         foreach ($this->_patterns as $regex=>$opts) {
-            if (!preg_match($regex, $pattern, $matches))
+            if (!preg_match($regex, $pattern, $matches)) {
                 continue;
+            }
                 
             $options = array();
                 
             // $opts comes in with this format: "level, status, name, ..."
             $vars = explode(',', $opts);
-            foreach ($vars as $i=>$var)
+            foreach ($vars as $i=>$var) {
                 $options[trim($var)] = $matches[$i+1];
+            }
             
             $className = get_class($this);
             $metric = new $className();
@@ -387,8 +392,9 @@ abstract class Metric_Abstract
      */
     protected final function _makeWp($cost, $title)
     {
-        if (!($cost instanceof FaZend_Bo_Money))
+        if (!($cost instanceof FaZend_Bo_Money)) {
             $cost = new FaZend_Bo_Money($cost);
+        }
         return new theWorkPackage($this->_name, $cost, $title);
     }
     
@@ -400,6 +406,32 @@ abstract class Metric_Abstract
     protected function _pingPattern($pattern)
     {
         $this->_project->metrics[$this->_name . '/' . $pattern];
+    }
+    
+    /**
+     * Calculate percentage from collection
+     *
+     * @param mixed Collection of elements
+     * @param string Method to check
+     * @param float Base to use, instead of count($collection)
+     * @return float
+     */
+    protected function _percentage($collection, $method, $base = null) 
+    {
+        if (!count($collection)) {
+            return 0;
+        }
+        
+        $found = 0;
+        foreach ($collection as $item) {
+            if ($item->$method()) {
+                $found++;
+            }
+        }
+        if (is_null($base)) {
+            $base = count($collection);
+        }
+        return round($found / $base, 2);
     }
         
 }
