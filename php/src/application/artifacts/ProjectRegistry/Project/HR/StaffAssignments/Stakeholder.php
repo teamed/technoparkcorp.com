@@ -47,7 +47,7 @@ class theStakeholder implements Model_Artifact_Stateless
      * @param theStaffAssignments The holder of this stakeholder
      * @param string Email of the stakeholder
      * @return void
-     **/
+     */
     public final function __construct(theStaffAssignments $staffAssignments, $email) 
     {
         validate()->emailAddress($email, array());
@@ -60,7 +60,7 @@ class theStakeholder implements Model_Artifact_Stateless
      *
      * @param string Name of property to get
      * @return mixed
-     **/
+     */
     public function __get($name) 
     {
         $method = '_get' . ucfirst($name);
@@ -81,7 +81,7 @@ class theStakeholder implements Model_Artifact_Stateless
      * Show stakeholders in string
      *
      * @return string
-     **/
+     */
     public function __toString() 
     {
         return $this->email;
@@ -107,7 +107,7 @@ class theStakeholder implements Model_Artifact_Stateless
      * How much this supplier already get in the given project?
      *
      * @return FaZend_Bo_Money
-     **/
+     */
     public function getPaidInProject(theProject $project) 
     {
         return thePayment::getPaidInProjectToStakeholder($this, $project);
@@ -117,7 +117,7 @@ class theStakeholder implements Model_Artifact_Stateless
      * Get email
      *
      * @return string
-     **/
+     */
     protected function _getEmail() 
     {
         return $this->_email;
@@ -127,7 +127,7 @@ class theStakeholder implements Model_Artifact_Stateless
      * Get list of my roles
      *
      * @return theProjectRole[]
-     **/
+     */
     protected function _getRoles() 
     {
         return $this->_staffAssignments->retrieveRolesByStakeholder($this);
@@ -137,7 +137,7 @@ class theStakeholder implements Model_Artifact_Stateless
      * Get list of my roles, in string
      *
      * @return string
-     **/
+     */
     protected function _getRolesString() 
     {
         return implode(', ', $this->roles);

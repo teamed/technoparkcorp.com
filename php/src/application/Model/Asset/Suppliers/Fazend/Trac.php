@@ -33,14 +33,14 @@ class Model_Asset_Suppliers_Fazend_Trac extends Model_Asset_Suppliers_Abstract
      * Instance of Shared_Trac
      *
      * @var string
-     **/
+     */
     protected $_trac;
     
     /**
      * Initializer
      *
      * @return void
-     **/
+     */
     protected function _init() 
     {
         parent::_init();
@@ -51,7 +51,7 @@ class Model_Asset_Suppliers_Fazend_Trac extends Model_Asset_Suppliers_Abstract
      * Get full list of suppliers (emails)
      *
      * @return string[]
-     **/
+     */
     public function retrieveAll() 
     {
         $list = $this->_trac->query(self::QUERY_ALL);
@@ -70,7 +70,7 @@ class Model_Asset_Suppliers_Fazend_Trac extends Model_Asset_Suppliers_Abstract
      * @param string Email of the supplier
      * @param theSupplier Object to fill with data
      * @return mixed
-     **/
+     */
     public function deriveByEmail($email, theSupplier $supplier) 
     {
         $list = $this->_trac->query(self::QUERY_SINGLE . $email);

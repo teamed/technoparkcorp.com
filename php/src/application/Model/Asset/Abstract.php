@@ -38,7 +38,7 @@ abstract class Model_Asset_Abstract
      *
      * @param Model_Project Which project we're working with
      * @return void
-     **/
+     */
     public function __construct(Model_Project $project) 
     {
         $this->_project = $project;
@@ -49,7 +49,7 @@ abstract class Model_Asset_Abstract
      * Initializer
      *
      * @return void
-     **/
+     */
     protected function _init() 
     {
         // ...

@@ -41,7 +41,7 @@ class Model_Asset_Defects_Issue_Trac extends Model_Asset_Defects_Issue_Abstract
      * @param string Text of the message
      * @param integer|null How many days before we can ask again, NULL means - never ask again
      * @return boolean The ticket is alredy asked (FALSE) or asked now (TRUE)
-     **/
+     */
     public function askOnce($code, $text, $lag = null) 
     {
         foreach ($this->changelog->get('comment')->getChanges() as $change) {
@@ -87,7 +87,7 @@ class Model_Asset_Defects_Issue_Trac extends Model_Asset_Defects_Issue_Abstract
      * Issue really exists in tracker?
      *
      * @return integer ID of this issue in Trac
-     **/
+     */
     public function exists() 
     {
         // if TRAC id already exists in the class - we are sure that issue exists in trac
@@ -123,7 +123,7 @@ class Model_Asset_Defects_Issue_Trac extends Model_Asset_Defects_Issue_Abstract
      * Load changelog data
      *
      * @return void
-     **/
+     */
     protected function _loadChangelog() 
     {
         $log = $this->_tracker->getXmlProxy()->changeLog($this->_id);
@@ -173,7 +173,7 @@ class Model_Asset_Defects_Issue_Trac extends Model_Asset_Defects_Issue_Abstract
      * Save all changes made in changelog and create issue before, if necessary
      *
      * @return void
-     **/
+     */
     protected function _saveChangelog() 
     {
         $pairs = $this->_changelog->whatToSave();
@@ -217,7 +217,7 @@ class Model_Asset_Defects_Issue_Trac extends Model_Asset_Defects_Issue_Abstract
      * @param string Date of change of the field
      * @return array
      * @throws Model_Asset_Defects_Issue_Trac_UnknownField
-     **/
+     */
     protected function _translateFromTrac($name, $value, $author, $date) 
     {
         switch ($name) {
@@ -340,7 +340,7 @@ class Model_Asset_Defects_Issue_Trac extends Model_Asset_Defects_Issue_Abstract
      * @param array List of pairs to be sent to trac
      * @return array
      * @throws Model_Asset_Defects_Issue_Trac_UnknownField
-     **/
+     */
     protected function _translateToTrac(array $pairs) 
     {
         foreach ($pairs as $name=>&$value) {

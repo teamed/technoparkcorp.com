@@ -30,22 +30,23 @@ class theWbs extends Model_Artifact_Bag implements Model_Artifact_Passive
      * Load work packages into the WBS, before iteration
      *
      * @return void
-     **/
+     */
     public function reload() 
     {
         // remove all items from the array
         $this->ps()->cleanArray();
         
         // add new from metrics
-        foreach ($this->ps()->parent->metrics as $metric)
+        foreach ($this->ps()->parent->metrics as $metric) {
             $this->_findWorkPackage($metric->name);
+        }
     }
     
     /**
      * WBS is loaded?
      *
      * @return boolean
-     **/
+     */
     public function isLoaded() 
     {
         return (bool)count($this);
@@ -56,7 +57,7 @@ class theWbs extends Model_Artifact_Bag implements Model_Artifact_Passive
      *
      * @return theWorkPackage
      * @throws Wbs_WorkPackageAbsentException
-     **/
+     */
     public function offsetGet($name) 
     {
         $wp = $this->_findWorkPackage($name);
@@ -74,7 +75,7 @@ class theWbs extends Model_Artifact_Bag implements Model_Artifact_Passive
      *
      * @param array|string Name or list of names - regular expressions
      * @return FaZend_Bo_Money
-     **/
+     */
     public function sum($regexs = '/.*/') 
     {
         if (!is_array($regexs)) {
@@ -101,7 +102,7 @@ class theWbs extends Model_Artifact_Bag implements Model_Artifact_Passive
      *
      * @param string Prefix
      * @return theWorkPackage[]
-     **/
+     */
     public function getWorkPackagesByPrefix($prefix = '') 
     {
         $list = new ArrayIterator();
@@ -114,8 +115,9 @@ class theWbs extends Model_Artifact_Bag implements Model_Artifact_Passive
                 '([\w\d]+)(?:' . preg_quote(theMetrics::SEPARATOR, '/') . '(.*))?$/', 
                 $code, 
                 $matches
-            ))
+            )) {
                 continue;
+            }
                 
             // bug($matches);
             // we are right here, not below, not in sub-packages!
@@ -143,7 +145,7 @@ class theWbs extends Model_Artifact_Bag implements Model_Artifact_Passive
      * @param string Code of WP to be found or built
      * @return theWorkPackage
      * @throws WorkPackageCantBeMade
-     **/
+     */
     public function findOrMakeWp($code) 
     {
         try {
@@ -185,7 +187,7 @@ class theWbs extends Model_Artifact_Bag implements Model_Artifact_Passive
      * @param string Name of the work package
      * @return theWorkPackage
      * @throws WorkPackageNotFound
-     **/
+     */
     protected function _findWorkPackage($code) 
     {
         $wps = $this->getArrayCopy();
@@ -208,8 +210,9 @@ class theWbs extends Model_Artifact_Bag implements Model_Artifact_Passive
         }
         
         $wp = $metric->getWorkPackage();
-        if (!$wp)
+        if (!$wp) {
             return false;
+        }
             
         $this->_attachItem($wp->code, $wp, 'setWbs');
         return $wp;

@@ -32,14 +32,14 @@ class Model_Asset_Opportunities_Fazend_Trac extends Model_Asset_Opportunities_Ab
      * Instance of Shared_Wiki
      *
      * @var Shared_Wiki
-     **/
+     */
     protected $_wiki;
     
     /**
      * Initializer
      *
      * @return void
-     **/
+     */
     protected function _init() 
     {
         parent::_init();
@@ -50,7 +50,7 @@ class Model_Asset_Opportunities_Fazend_Trac extends Model_Asset_Opportunities_Ab
      * Get full list of Opportunities (IDs)
      *
      * @return string[]
-     **/
+     */
     public function retrieveAll() 
     {
         $list = array();
@@ -66,7 +66,7 @@ class Model_Asset_Opportunities_Fazend_Trac extends Model_Asset_Opportunities_Ab
      * @param string ID of the Opportunity
      * @param theOpportunity Object to fill with data
      * @return mixed
-     **/
+     */
     public function deriveById($id, theOpportunity $opportunity) 
     {
         $xml =

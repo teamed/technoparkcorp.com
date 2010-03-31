@@ -40,7 +40,7 @@ class Slice_Plugin_CodeRegex extends Slice_Plugin_Abstract
      *
      * @param theActivity Activity to check
      * @return boolean
-     **/
+     */
     protected function _isInside(theActivity $activity)
     {
         return preg_match($this->_regex, $activity->code);
@@ -51,7 +51,7 @@ class Slice_Plugin_CodeRegex extends Slice_Plugin_Abstract
      *
      * @param string Mask
      * @return Slice_Plugin_CodeRegex
-     **/
+     */
     public function execute($regex)
     {
         $this->_regex = $regex;

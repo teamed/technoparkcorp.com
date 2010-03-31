@@ -41,7 +41,7 @@ class Metric_Artifacts_Product_Functionality_Implemented extends Metric_Abstract
      *
      * @return void
      * @throws Metric_Artifact_Defects_Total_InvalidClass
-     **/
+     */
     public function reload()
     {
         if ($this->_getOption('requirement')) {
@@ -69,7 +69,7 @@ class Metric_Artifacts_Product_Functionality_Implemented extends Metric_Abstract
      *
      * @param string[] Names of metrics, to consider after this one
      * @return theWorkPackage
-     **/
+     */
     protected function _derive(array &$metrics = array())
     {
         if ($this->_getOption('requirement')) {

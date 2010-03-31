@@ -76,7 +76,7 @@ class Model_Artifact_Attachments_Attachment implements Model_Artifact_Stateless
      *
      * @param string Name of property to get
      * @return mixed
-     **/
+     */
     public function __get($name)
     {
         $method = '_get' . ucfirst($name);

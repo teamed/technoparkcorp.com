@@ -40,7 +40,7 @@ class Slice_Plugin_SelectedOnly extends Slice_Plugin_Abstract
      *
      * @param theActivity Activity to check
      * @return boolean
-     **/
+     */
     protected function _isInside(theActivity $activity)
     {
         return in_array($activity->name, $this->_names);
@@ -51,7 +51,7 @@ class Slice_Plugin_SelectedOnly extends Slice_Plugin_Abstract
      *
      * @param array List of activity names
      * @return $this
-     **/
+     */
     public function execute(array $names = array())
     {
         $this->_names = $names;

@@ -80,7 +80,7 @@ class StaticController extends FaZend_Controller_Action
      * Download document in PDF
      *
      * @return void
-     **/
+     */
     public function pdfAction() 
     {
         $article = Model_Article::createByLabel($this->_getParam('page'));

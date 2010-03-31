@@ -32,7 +32,7 @@ class Metric_Artifacts_Requirements_Actors_Total extends Metric_Abstract
      * Load this metric
      *
      * @return void
-     **/
+     */
     public function reload()
     {
         // we can't calculate metrics here if deliverables are not loaded
@@ -49,7 +49,7 @@ class Metric_Artifacts_Requirements_Actors_Total extends Metric_Abstract
      * @param Slice_Plugin_Abstract
      * @return void
      * @deprecated Delete it!
-     **/
+     */
     protected function _split(Slice_Plugin_Abstract $slice)
     {
         // split the activity onto smaller pieces

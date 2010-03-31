@@ -30,14 +30,14 @@ class theActivityPredecessors implements ArrayAccess, Iterator, Countable
      * Predecessors
      *
      * @var ArrayIterator
-     **/
+     */
     protected $_predecessors;
     
     /**
      * Constructor
      *
      * @return void
-     **/
+     */
     public function __construct() 
     {
         $this->_predecessors = new ArrayIterator();
@@ -75,7 +75,7 @@ class theActivityPredecessors implements ArrayAccess, Iterator, Countable
      *
      * @param theActivity We shall use it as a basis, to calculate ITS start
      * @return Zend_Date
-     **/
+     */
     public function calculateStart(theActivity $activity)
     {
         $start = new FaZend_Date();
@@ -91,7 +91,7 @@ class theActivityPredecessors implements ArrayAccess, Iterator, Countable
      * Method from Iterator interface
      *
      * @return void
-     **/
+     */
     public function rewind() 
     {
         return $this->_predecessors->rewind();
@@ -101,7 +101,7 @@ class theActivityPredecessors implements ArrayAccess, Iterator, Countable
      * Method from Iterator interface
      *
      * @return void
-     **/
+     */
     public function next() 
     {
         return $this->_predecessors->next();
@@ -111,7 +111,7 @@ class theActivityPredecessors implements ArrayAccess, Iterator, Countable
      * Method from Iterator interface
      *
      * @return void
-     **/
+     */
     public function key() 
     {
         return $this->_predecessors->key();
@@ -121,7 +121,7 @@ class theActivityPredecessors implements ArrayAccess, Iterator, Countable
      * Method from Iterator interface
      *
      * @return void
-     **/
+     */
     public function valid() 
     {
         return $this->_predecessors->valid();
@@ -131,7 +131,7 @@ class theActivityPredecessors implements ArrayAccess, Iterator, Countable
      * Method from Iterator interface
      *
      * @return void
-     **/
+     */
     public function current() 
     {
         return $this->_predecessors->current();
@@ -141,7 +141,7 @@ class theActivityPredecessors implements ArrayAccess, Iterator, Countable
      * Method from Countable interface
      *
      * @return void
-     **/
+     */
     public function count() 
     {
         return $this->_predecessors->count();
@@ -151,7 +151,7 @@ class theActivityPredecessors implements ArrayAccess, Iterator, Countable
      * Method from ArrayAccess interface
      *
      * @return void
-     **/
+     */
     public function offsetGet($name) 
     {
         return $this->_predecessors->offsetGet($name);
@@ -161,7 +161,7 @@ class theActivityPredecessors implements ArrayAccess, Iterator, Countable
      * Method from ArrayAccess interface
      *
      * @return void
-     **/
+     */
     public function offsetSet($name, $value) 
     {
         return $this->_predecessors->offsetSet($name, $value);
@@ -171,7 +171,7 @@ class theActivityPredecessors implements ArrayAccess, Iterator, Countable
      * Method from ArrayAccess interface
      *
      * @return void
-     **/
+     */
     public function offsetExists($name) 
     {
         return $this->_predecessors->offsetExists($name);
@@ -181,7 +181,7 @@ class theActivityPredecessors implements ArrayAccess, Iterator, Countable
      * Method from ArrayAccess interface
      *
      * @return void
-     **/
+     */
     public function offsetUnset($name) 
     {
         return $this->_predecessors->offsetUnset($name);

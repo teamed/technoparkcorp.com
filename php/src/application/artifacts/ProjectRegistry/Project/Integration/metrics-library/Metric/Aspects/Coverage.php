@@ -40,7 +40,7 @@ class Metric_Aspects_Coverage extends Metric_Abstract
      * Load this metric
      *
      * @return void
-     **/
+     */
     public function reload() 
     {
         // general coverage? something unknown

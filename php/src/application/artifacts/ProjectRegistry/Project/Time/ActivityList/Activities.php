@@ -37,7 +37,7 @@ class theActivities implements ArrayAccess, Iterator, Countable, Model_Artifact_
      * Activities
      *
      * @var theActivity[]
-     **/
+     */
     protected $_activities;
 
     /**
@@ -54,7 +54,7 @@ class theActivities implements ArrayAccess, Iterator, Countable, Model_Artifact_
      * Set project
      *
      * @return void
-     **/
+     */
     public function setActivityList(theActivityList $list)
     {
         $this->_project = $list->ps()->parent;
@@ -64,7 +64,7 @@ class theActivities implements ArrayAccess, Iterator, Countable, Model_Artifact_
      * Reload it
      *
      * @return void
-     **/
+     */
     public function reload()
     {
         $this->_activities = new ArrayIterator();
@@ -79,7 +79,7 @@ class theActivities implements ArrayAccess, Iterator, Countable, Model_Artifact_
      * Is it loaded?
      *
      * @return boolean
-     **/
+     */
     public function isLoaded()
     {
         return (bool)count($this);
@@ -89,7 +89,7 @@ class theActivities implements ArrayAccess, Iterator, Countable, Model_Artifact_
      * Get project
      *
      * @return theProject
-     **/
+     */
     public function getProject()
     {
         return $this->_project;
@@ -99,7 +99,7 @@ class theActivities implements ArrayAccess, Iterator, Countable, Model_Artifact_
      * Get new slice
      *
      * @return Slice_Plugin_Simple
-     **/
+     */
     public function getSlice()
     {
         require_once dirname(__FILE__) . '/slice-plugins/Abstract.php';
@@ -111,7 +111,7 @@ class theActivities implements ArrayAccess, Iterator, Countable, Model_Artifact_
      *
      * @param theWorkPackage Work package to narrow activities to
      * @return Slice_Plugin_Simple
-     **/
+     */
     public function getSliceByWp(theWorkPackage $wp)
     {
         return $this->getSlice()->setWp($wp);
@@ -122,7 +122,7 @@ class theActivities implements ArrayAccess, Iterator, Countable, Model_Artifact_
      *
      * @param string Alnum ID of the activity
      * @return theActivity
-     **/
+     */
     public function findById($id)
     {
         return $this->findByName(Model_Pages_Encoder::decode($id));
@@ -133,7 +133,7 @@ class theActivities implements ArrayAccess, Iterator, Countable, Model_Artifact_
      *
      * @param string Name of the activity
      * @return theActivity
-     **/
+     */
     public function findByName($name)
     {
         foreach ($this as $activity) {
@@ -152,7 +152,7 @@ class theActivities implements ArrayAccess, Iterator, Countable, Model_Artifact_
      *
      * @param theActivity Activity to add
      * @return theActivity
-     **/
+     */
     public final function add(theActivity $activity)
     {
         validate()->true($activity instanceof theActivity);
@@ -165,7 +165,7 @@ class theActivities implements ArrayAccess, Iterator, Countable, Model_Artifact_
      *
      * @param theActivity Activity to delete
      * @return void
-     **/
+     */
     public final function delete(theActivity $toKill)
     {
         validate()->true($toKill instanceof theActivity);
@@ -180,7 +180,7 @@ class theActivities implements ArrayAccess, Iterator, Countable, Model_Artifact_
      * Method from Iterator interface
      *
      * @return void
-     **/
+     */
     public function rewind() 
     {
         return $this->_activities->rewind();
@@ -190,7 +190,7 @@ class theActivities implements ArrayAccess, Iterator, Countable, Model_Artifact_
      * Method from Iterator interface
      *
      * @return void
-     **/
+     */
     public function next() 
     {
         return $this->_activities->next();
@@ -200,7 +200,7 @@ class theActivities implements ArrayAccess, Iterator, Countable, Model_Artifact_
      * Method from Iterator interface
      *
      * @return void
-     **/
+     */
     public function key() 
     {
         return $this->_activities->key();
@@ -210,7 +210,7 @@ class theActivities implements ArrayAccess, Iterator, Countable, Model_Artifact_
      * Method from Iterator interface
      *
      * @return void
-     **/
+     */
     public function valid() 
     {
         return $this->_activities->valid();
@@ -220,7 +220,7 @@ class theActivities implements ArrayAccess, Iterator, Countable, Model_Artifact_
      * Method from Iterator interface
      *
      * @return void
-     **/
+     */
     public function current() 
     {
         return $this->_activities->current();
@@ -230,7 +230,7 @@ class theActivities implements ArrayAccess, Iterator, Countable, Model_Artifact_
      * Method from Countable interface
      *
      * @return void
-     **/
+     */
     public function count() 
     {
         return $this->_activities->count();
@@ -240,7 +240,7 @@ class theActivities implements ArrayAccess, Iterator, Countable, Model_Artifact_
      * Method from ArrayAccess interface
      *
      * @return void
-     **/
+     */
     public function offsetGet($name) 
     {
         return $this->_activities->offsetGet($name);
@@ -250,7 +250,7 @@ class theActivities implements ArrayAccess, Iterator, Countable, Model_Artifact_
      * Method from ArrayAccess interface
      *
      * @return void
-     **/
+     */
     public function offsetSet($name, $value) 
     {
         return $this->_activities->offsetSet($name, $value);
@@ -260,7 +260,7 @@ class theActivities implements ArrayAccess, Iterator, Countable, Model_Artifact_
      * Method from ArrayAccess interface
      *
      * @return void
-     **/
+     */
     public function offsetExists($name) 
     {
         return $this->_activities->offsetExists($name);
@@ -270,7 +270,7 @@ class theActivities implements ArrayAccess, Iterator, Countable, Model_Artifact_
      * Method from ArrayAccess interface
      *
      * @return void
-     **/
+     */
     public function offsetUnset($name) 
     {
         return $this->_activities->offsetUnset($name);

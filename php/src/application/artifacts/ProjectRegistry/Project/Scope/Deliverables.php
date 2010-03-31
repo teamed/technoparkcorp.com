@@ -80,7 +80,7 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
      * Load all deliverables
      *
      * @return void
-     **/
+     */
     public function reload() 
     {
         // clean traceability links
@@ -109,7 +109,7 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
      * Deliverables are loaded?
      *
      * @return boolean
-     **/
+     */
     public function isLoaded() 
     {
         return (bool)count($this);
@@ -183,7 +183,7 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
      * @param string Type of it, which will be added to "Deliverables_"
      * @param string Name of the deliverable, unique!
      * @return Deliverables_Abstract
-     **/
+     */
     public static function factory($type, $name) 
     {
         $className = 'Deliverables_' . ucfirst($type);
@@ -196,7 +196,7 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
      * @param Deliverables_Abstract The element to add
      * @return void
      * @throws DuplicateDeliverable
-     **/
+     */
     public function add(Deliverables_Abstract $deliverable) 
     {
         // check against double adding

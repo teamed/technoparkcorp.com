@@ -39,7 +39,7 @@ class theWorkOrders implements Model_Artifact_Stateless
      * @param Model_Decision_PM|string Decision class or name
      * @param string|null ID of the order if required
      * @return void
-     **/
+     */
     public function get($decision, $id = null)
     {
         if ($decision instanceof Model_Decision)

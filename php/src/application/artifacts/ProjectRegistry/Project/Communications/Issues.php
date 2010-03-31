@@ -192,7 +192,7 @@ class theIssues implements Model_Artifact_Interface, Model_Artifact_Stateless, A
      *
      * @return array()
      * @see $this->_issues
-     **/
+     */
     protected function _getIssues()
     {
         if (is_null($this->_issues)) {

@@ -40,7 +40,7 @@ class Metric_History_Cost_Defects extends Metric_Abstract
      * Load this metric
      *
      * @return void
-     **/
+     */
     public function reload()
     {
         $action = $this->_getOption('action');

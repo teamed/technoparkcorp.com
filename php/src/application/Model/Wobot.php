@@ -63,9 +63,11 @@ abstract class Model_Wobot implements Model_Wobot_Interface
                 );
             }
             
+            $names = null; // for ZCA
             eval("\$names = $wobotClass::getAllNames();");
-            foreach ($names as $wobotName)
+            foreach ($names as $wobotName) {
                 self::$_wobots[$wobotName] = self::factory($wobotName);
+            }
         }
         // logg("Wobots found: " . implode(', ', array_keys(self::$_wobots->getArrayCopy())));
             
@@ -226,7 +228,7 @@ abstract class Model_Wobot implements Model_Wobot_Interface
      *
      * @param string Absolute file name of PHP file with decision class
      * @return Model_Decision
-     **/
+     */
     public function decisionFactory($file) 
     {
         return Model_Decision::factory($file, $this);
@@ -236,7 +238,7 @@ abstract class Model_Wobot implements Model_Wobot_Interface
      * Returns a list of all possible wobot names (using /wobots directory)
      *
      * @return string[]
-     **/
+     */
     protected static function _getAllNames() 
     {
         $dir = APPLICATION_PATH . '/wobots';

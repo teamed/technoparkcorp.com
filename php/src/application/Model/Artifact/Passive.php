@@ -30,14 +30,14 @@ interface Model_Artifact_Passive
      * Reloads this artifact and makes it current
      *
      * @return void
-     **/
+     */
     public function reload();
 
     /**
      * Does it have any value now or we need to reload to work with?
      *
      * @return boolean
-     **/
+     */
     public function isLoaded();
 
 }

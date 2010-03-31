@@ -39,7 +39,7 @@ class Slice_Plugin_Simple extends Slice_Plugin_Abstract
      * Set name of the holder
      *
      * @return void
-     **/
+     */
     public function setWp(theWorkPackage $wp)
     {
         $this->_wp = $wp;
@@ -51,7 +51,7 @@ class Slice_Plugin_Simple extends Slice_Plugin_Abstract
      *
      * @param theActivity Activity to delete
      * @return void
-     **/
+     */
     public final function delete(theActivity $toKill)
     {
         $this->_activities->delete($toKill);
@@ -62,7 +62,7 @@ class Slice_Plugin_Simple extends Slice_Plugin_Abstract
      *
      * @param string Code of new activity
      * @return theActivity
-     **/
+     */
     public final function add($code)
     {
         if (!isset($this->_wp))
@@ -78,7 +78,7 @@ class Slice_Plugin_Simple extends Slice_Plugin_Abstract
      *
      * @param string Code of new milestone
      * @return theMilestone
-     **/
+     */
     public final function addMilestone($code)
     {
         if (!isset($this->_wp))
@@ -94,7 +94,7 @@ class Slice_Plugin_Simple extends Slice_Plugin_Abstract
      *
      * @param theActivity Activity to check
      * @return boolean
-     **/
+     */
     protected function _isInside(theActivity $activity)
     {
         if (!isset($this->_wp))

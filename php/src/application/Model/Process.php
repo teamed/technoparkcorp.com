@@ -22,6 +22,7 @@
  * One process
  * 
  * @package Model
+ * @see Model_Wobot_QC
  */
 class Model_Process
 {
@@ -52,12 +53,14 @@ class Model_Process
      * Get list of all processes
      *
      * @return Model_Process[]
+     * @see Model_Wobot_QC::getAllNames()
      */
     public static function retrieveAll() 
     {
         $processes = new ArrayIterator();
-        foreach (self::$_names as $name)
+        foreach (self::$_names as $name) {
             $processes[] = new self($name);
+        }
         return $processes;
     }
     
@@ -69,8 +72,12 @@ class Model_Process
      */
     public static function findByName($name) 
     {
-        if (!in_array($name, self::$_names))
-            FaZend_Exception::raise('Model_Process_NotFound', "Process '$name' not found");
+        if (!in_array($name, self::$_names)) {
+            FaZend_Exception::raise(
+                'Model_Process_NotFound', 
+                "Process '$name' not found"
+            );
+        }
         return new self($name);
     }
     
@@ -98,7 +105,7 @@ class Model_Process
      * Get project for this process
      *
      * @return Model_Project
-     **/
+     */
     public function getProject() 
     {
         return Model_Project::findByName($this->_name);
@@ -108,13 +115,14 @@ class Model_Process
      * Project exists for this process?
      *
      * @return boolean
-     **/
+     */
     public function projectExists() 
     {
         try {
             $this->getProject();
             return true;
         } catch (Shared_Project_NotFoundException $e) {
+            assert($e instanceof Exception); // for ZCA and PHPMD
             return false;
         }
     }

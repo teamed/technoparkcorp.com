@@ -33,7 +33,7 @@ class Slice_Plugin_AfterEachOther extends Slice_Plugin_Abstract
      *
      * @param array List of options
      * @return $this
-     **/
+     */
     public function execute(array $options = array())
     {
         $this->_normalizeOptions(

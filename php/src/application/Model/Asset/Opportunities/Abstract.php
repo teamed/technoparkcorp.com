@@ -30,7 +30,7 @@ abstract class Model_Asset_Opportunities_Abstract extends Model_Asset_Abstract
      * Get full list of Opportunities (IDs)
      *
      * @return string[]
-     **/
+     */
     abstract public function retrieveAll();
     
     /**
@@ -39,7 +39,7 @@ abstract class Model_Asset_Opportunities_Abstract extends Model_Asset_Abstract
      * @param string Id of the Opportunity
      * @param theOpportunity Object to fill with data
      * @return mixed
-     **/
+     */
     abstract public function deriveById($id, theOpportunity $opportunity);
     
 }

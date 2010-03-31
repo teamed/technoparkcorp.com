@@ -38,7 +38,7 @@ class Model_Shortcut extends FaZend_Db_Table_ActiveRow_shortcut
      * @param array Associative array of params
      * @param boolean Shall we clean all previous links to this document?
      * @return Model_Shortcut
-     **/
+     */
     public static function create($document, array $emails, array $params, $clean) 
     {
         validate()
@@ -68,7 +68,7 @@ class Model_Shortcut extends FaZend_Db_Table_ActiveRow_shortcut
      * Get URL of the shortcut
      *
      * @return string
-     **/
+     */
     public function getUrl() 
     {
         return Zend_Registry::getInstance()->view
@@ -80,7 +80,7 @@ class Model_Shortcut extends FaZend_Db_Table_ActiveRow_shortcut
      *
      * @param string Hash
      * @return Model_Shortcut
-     **/
+     */
     public static function findByHash($hash) 
     {
         $hash = substr($hash, self::PREFIX_LENGTH) / self::MULTIPLY - self::PLUS;
@@ -94,7 +94,7 @@ class Model_Shortcut extends FaZend_Db_Table_ActiveRow_shortcut
      * Get hash of the object
      *
      * @return string
-     **/
+     */
     public function getHash() 
     {
         return substr(md5(time()), 0, self::PREFIX_LENGTH) . // just a random prefix
@@ -105,7 +105,7 @@ class Model_Shortcut extends FaZend_Db_Table_ActiveRow_shortcut
      * Get params
      *
      * @return array
-     **/
+     */
     public function getParams() 
     {
         return unserialize($this->params);
@@ -115,7 +115,7 @@ class Model_Shortcut extends FaZend_Db_Table_ActiveRow_shortcut
      * Get list of emails
      *
      * @return array
-     **/
+     */
     public function getEmails() 
     {
         return unserialize($this->emails);

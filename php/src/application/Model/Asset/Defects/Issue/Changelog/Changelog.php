@@ -39,7 +39,7 @@ class Model_Asset_Defects_Issue_Changelog_Changelog
      * Initialize the internal structure
      *
      * @return void
-     **/
+     */
     public function __construct()
     {
         foreach (Model_Asset_Defects_Issue_Changelog_Field_Abstract::getAllTypes() as $type)
@@ -51,7 +51,7 @@ class Model_Asset_Defects_Issue_Changelog_Changelog
      *
      * @param string Name of the field
      * @return boolean
-     **/
+     */
     public function allowsField($name)
     {
         return isset($this->_fields[$name]);
@@ -63,7 +63,7 @@ class Model_Asset_Defects_Issue_Changelog_Changelog
      * @param string Name of field
      * @return mixed
      * @throws Model_Asset_Defects_Issue_Changelog_FieldNotFound
-     **/
+     */
     public function get($name)
     {
         if (!$this->allowsField($name)) {
@@ -87,7 +87,7 @@ class Model_Asset_Defects_Issue_Changelog_Changelog
      * @param string Name of field
      * @param mixed Value to set
      * @return $this
-     **/
+     */
     public function set($name, $value)
     {
         $this->get($name)->setValue($value);
@@ -102,7 +102,7 @@ class Model_Asset_Defects_Issue_Changelog_Changelog
      * @param string Changer of the field (email)
      * @param Zend_Date When this change happened
      * @return $this
-     **/
+     */
     public function load($name, $value, $author, Zend_Date $date)
     {
         $this->get($name)->load($value, $author, $date);

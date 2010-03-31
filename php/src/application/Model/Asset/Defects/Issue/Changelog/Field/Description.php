@@ -32,7 +32,7 @@ class Model_Asset_Defects_Issue_Changelog_Field_Description extends Model_Asset_
      * @param mixed Value to set
      * @return void
      * @throws Exception if failed
-     **/
+     */
     protected function _validate($value)
     {
         return true;

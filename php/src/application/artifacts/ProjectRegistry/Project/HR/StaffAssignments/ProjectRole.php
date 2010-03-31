@@ -46,7 +46,7 @@ class theProjectRole implements Model_Artifact_Stateless
      * @param theStaffAssignments The holder of this stakeholder
      * @param string The role title, alnum only
      * @return void
-     **/
+     */
     public function __construct(theStaffAssignments $staffAssignments, $title)
     {
         validate()->regex($title, '/^[\sa-zA-Z]+$/');
@@ -58,7 +58,7 @@ class theProjectRole implements Model_Artifact_Stateless
      * Show role in string
      *
      * @return string
-     **/
+     */
     public function __toString()
     {
         return $this->_title;
@@ -68,7 +68,7 @@ class theProjectRole implements Model_Artifact_Stateless
      * Get random stakeholder, if exists
      *
      * @return theStakeholder
-     **/
+     */
     public function random()
     {
         return $this->_staffAssignments->findRandomStakeholderByRole($this);

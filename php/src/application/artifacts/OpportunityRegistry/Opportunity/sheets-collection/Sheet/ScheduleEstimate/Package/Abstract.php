@@ -102,7 +102,7 @@ abstract class Sheet_ScheduleEstimate_Package_Abstract
      * @param string Name of property to get
      * @return mixed
      * @throws Opportunity_PropertyOrMethodNotFound
-     **/
+     */
     public function __get($name) 
     {
         $method = '_get' . ucfirst($name);

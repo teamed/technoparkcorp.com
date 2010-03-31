@@ -61,7 +61,7 @@ class theWorkPackage implements Model_Artifact_Stateless
      * @param FaZend_Bo_Money Cost of work package
      * @param string Title of it
      * @return void
-     **/
+     */
     public function __construct($code, FaZend_Bo_Money $cost = null, $title = null)
     {
         $this->_code = $code;
@@ -84,7 +84,7 @@ class theWorkPackage implements Model_Artifact_Stateless
      * Getter
      *
      * @return mixed
-     **/
+     */
     public function __get($name)
     {
         switch ($name) {
@@ -105,7 +105,7 @@ class theWorkPackage implements Model_Artifact_Stateless
      * Split work package to activities
      *
      * @return void
-     **/
+     */
     public function split(theActivities $list)
     {
         return $this->_project->metrics[$this->_code]->split($list);

@@ -119,7 +119,7 @@ class theTraceabilityLink implements Model_Algo_PathFinder_Pair
      * Convert it to string
      *
      * @return string
-     **/
+     */
     public function __toString() 
     {
         return $this->_from . '->' . $this->_to;
@@ -130,7 +130,7 @@ class theTraceabilityLink implements Model_Algo_PathFinder_Pair
      *
      * @param string Name of property to get
      * @return string
-     **/
+     */
     public function __get($name)
     {
         $method = '_get' . ucfirst($name);

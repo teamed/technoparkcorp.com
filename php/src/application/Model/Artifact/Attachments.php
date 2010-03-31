@@ -37,7 +37,7 @@ class Model_Artifact_Attachments extends ArrayIterator implements Model_Artifact
      * Get location of all attachments
      *
      * @return string Absolute directory name
-     **/
+     */
     public static function getLocation()
     {
         if (self::$_location === null)
@@ -50,7 +50,7 @@ class Model_Artifact_Attachments extends ArrayIterator implements Model_Artifact
      *
      * @param string New location
      * @return string Absolute directory name
-     **/
+     */
     public static function setLocation($location)
     {
         self::$_location = $location;

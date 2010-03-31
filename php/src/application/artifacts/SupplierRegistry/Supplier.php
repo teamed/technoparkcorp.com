@@ -95,7 +95,7 @@ class theSupplier
      * @param string Name of property to get
      * @return mixed
      * @throws Supplier_PropertyOrMethodNotFound
-     **/
+     */
     public function __get($name) 
     {
         $method = '_get' . ucfirst($name);
@@ -119,7 +119,7 @@ class theSupplier
      *
      * @param string Email
      * @return void
-     **/
+     */
     public function setEmail($email) 
     {
         validate()
@@ -133,7 +133,7 @@ class theSupplier
      *
      * @param FaZend_Bo_Money Rate
      * @return void
-     **/
+     */
     public function setRate(FaZend_Bo_Money $rate) 
     {
         $this->_rate = $rate;
@@ -145,7 +145,7 @@ class theSupplier
      *
      * @param string Full name of supplier
      * @return void
-     **/
+     */
     public function setName($name) 
     {
         $this->_name = $name;
@@ -168,7 +168,7 @@ class theSupplier
      *
      * @param string Skill provided
      * @return void
-     **/
+     */
     public function addSkill($skill) 
     {
         if (!$this->hasSkill($skill)) {
@@ -182,7 +182,7 @@ class theSupplier
      *
      * @param string Role to add
      * @return void
-     **/
+     */
     public function addRole($role) 
     {
         if (!$this->hasRole($role)) {
@@ -196,7 +196,7 @@ class theSupplier
      *
      * @param string Role
      * @return boolean
-     **/
+     */
     public function hasRole($role) 
     {
         return in_array($role, $this->_roles);
@@ -207,7 +207,7 @@ class theSupplier
      *
      * @param string Skill
      * @return boolean
-     **/
+     */
     public function hasSkill($skill) 
     {
         return in_array($skill, $this->_skills);
@@ -218,7 +218,7 @@ class theSupplier
      *
      * @param string Skill
      * @return integer 0..100
-     **/
+     */
     public function getCompliance($skill) 
     {
         return $this->hasSkill($skill) * 100;

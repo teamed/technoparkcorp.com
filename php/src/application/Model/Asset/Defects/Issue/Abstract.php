@@ -104,7 +104,7 @@ abstract class Model_Asset_Defects_Issue_Abstract
      * @param string Name of property to get
      * @return string
      * @throws Model_Asset_Defects_Issue_PropertyOrMethodNotFound
-     **/
+     */
     public function __get($name) 
     {
         $method = '_get' . ucfirst($name);
@@ -125,14 +125,14 @@ abstract class Model_Asset_Defects_Issue_Abstract
      * This issue really exist in tracker now?
      *
      * @return integer ID in tracker
-     **/
+     */
     abstract public function exists();
 
     /**
      * Cost is estimated?
      *
      * @return boolean
-     **/
+     */
     public function isCostEstimated() 
     {
         return $this->changelog->get('cost') && $this->changelog->get('cost')->getValue();
@@ -142,7 +142,7 @@ abstract class Model_Asset_Defects_Issue_Abstract
      * Duration is estimated?
      *
      * @return boolean
-     **/
+     */
     public function isDurationEstimated() 
     {
         return $this->changelog->get('duration') && $this->changelog->get('duration')->getValue();
@@ -152,7 +152,7 @@ abstract class Model_Asset_Defects_Issue_Abstract
      * Is it closed?
      *
      * @return boolean
-     **/
+     */
     public function isClosed() 
     {
         return ($this->changelog->get('status')->getValue() != Model_Asset_Defects_Issue_Changelog_Field_Status::OPEN);
@@ -162,7 +162,7 @@ abstract class Model_Asset_Defects_Issue_Abstract
      * Is it assigned?
      *
      * @return boolean
-     **/
+     */
     public function isAssigned() 
     {
         return (bool)$this->changelog->get('owner')->getValue();
@@ -199,7 +199,7 @@ abstract class Model_Asset_Defects_Issue_Abstract
      * @param string Text of the message
      * @param integer|null How many days before we can ask again, NULL means - never ask again
      * @return boolean The ticket is alredy asked (FALSE) or asked now (TRUE)
-     **/
+     */
     abstract public function askOnce($code, $text, $lag = null);
     
     /**

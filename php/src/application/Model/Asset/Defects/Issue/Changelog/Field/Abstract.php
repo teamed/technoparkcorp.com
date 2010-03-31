@@ -41,7 +41,7 @@ abstract class Model_Asset_Defects_Issue_Changelog_Field_Abstract
      * Get all types of fields
      *
      * @return string[]
-     **/
+     */
     public static function getAllTypes()
     {
         $list = array();
@@ -60,7 +60,7 @@ abstract class Model_Asset_Defects_Issue_Changelog_Field_Abstract
      * @param mixed Value to set
      * @return $this
      * @throws Model_Asset_Defects_Issue_Changelog_Field_CantChange
-     **/
+     */
     public function setValue($value)
     {
         if (!$this->_validate($value)) {
@@ -79,7 +79,7 @@ abstract class Model_Asset_Defects_Issue_Changelog_Field_Abstract
      * @param string Email of the author
      * @param Zend_Date When changes were made
      * @return $this
-     **/
+     */
     public function load($value, $author, Zend_Date $date)
     {
         $this->_validate($value);
@@ -90,7 +90,7 @@ abstract class Model_Asset_Defects_Issue_Changelog_Field_Abstract
      * Was it changed during this session?
      *
      * @return boolean
-     **/
+     */
     public function wasChanged()
     {
         // empty DATE means that the value was changed
@@ -107,7 +107,7 @@ abstract class Model_Asset_Defects_Issue_Changelog_Field_Abstract
      * Get the date of last change
      *
      * @return Zend_Date
-     **/
+     */
     public function getLastDate()
     {
         $date = null;
@@ -126,7 +126,7 @@ abstract class Model_Asset_Defects_Issue_Changelog_Field_Abstract
      * Get the author of the last change
      *
      * @return string Email of the author
-     **/
+     */
     public function getLastAuthor()
     {
         $date = $author = null;
@@ -147,7 +147,7 @@ abstract class Model_Asset_Defects_Issue_Changelog_Field_Abstract
      * Get current value
      *
      * @return mixed NULL means that there are no changed yet, no value yet
-     **/
+     */
     public function getValue()
     {
         if (!count($this->_changes)) {
@@ -161,7 +161,7 @@ abstract class Model_Asset_Defects_Issue_Changelog_Field_Abstract
      * Get a list of changes
      *
      * @return FaZend_StdObject[]
-     **/
+     */
     public function getChanges()
     {
         return $this->_changes;
@@ -174,7 +174,7 @@ abstract class Model_Asset_Defects_Issue_Changelog_Field_Abstract
      * @param string Email of the author
      * @param Zend_Date|null When changes were made, NULL if now
      * @return void
-     **/
+     */
     protected function _addChange($value, $author = null, Zend_Date $date = null)
     {
         if (!is_null($author)) {
@@ -198,7 +198,7 @@ abstract class Model_Asset_Defects_Issue_Changelog_Field_Abstract
      * @param mixed Value to set
      * @return void
      * @throws Exception if failed
-     **/
+     */
     abstract protected function _validate($value);
 
 }

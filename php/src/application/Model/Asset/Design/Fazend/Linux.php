@@ -31,7 +31,7 @@ class Model_Asset_Design_Fazend_Linux extends Model_Asset_Design_Abstract
      *
      * @var Shared_Pan
      * @see _init()
-     **/
+     */
     protected $_pan;
     
     /**
@@ -96,7 +96,7 @@ class Model_Asset_Design_Fazend_Linux extends Model_Asset_Design_Abstract
      * Initializer
      *
      * @return void
-     **/
+     */
     protected function _init() 
     {
         $this->_pan = new Shared_Pan($this->_project);

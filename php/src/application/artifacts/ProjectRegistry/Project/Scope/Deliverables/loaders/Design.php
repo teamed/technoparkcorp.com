@@ -32,7 +32,7 @@ class DeliverablesLoaders_Design extends DeliverablesLoaders_Abstract
      * Load all deliverables
      *
      * @return void
-     **/
+     */
     public function load() 
     {
         logg('Design loading started...');

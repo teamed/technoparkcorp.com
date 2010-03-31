@@ -44,7 +44,7 @@ class Model_Article_SearchProxy
      * Directory name of the lucene storag
      *
      * @var string
-     **/
+     */
     protected $_lucenePath = null;
 
     /**
@@ -116,7 +116,7 @@ class Model_Article_SearchProxy
      * Get directory name of the LUCENE storage
      *
      * @return string
-     **/
+     */
     public function getLucenePath() 
     {
         if (is_null($this->_lucenePath)) {
@@ -131,7 +131,7 @@ class Model_Article_SearchProxy
      * @param string Directory path
      * @return void
      * @throws Model_Article_InvalidLucenePath
-     **/
+     */
     public function setLucenePath($path) 
     {
         // it is absent? we should create it

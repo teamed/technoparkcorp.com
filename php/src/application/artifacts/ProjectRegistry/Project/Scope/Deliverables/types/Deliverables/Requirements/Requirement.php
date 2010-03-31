@@ -46,7 +46,7 @@ abstract class Deliverables_Requirements_Requirement extends Deliverables_Requir
      * @param theProject Project to work with
      * @param array List of links
      * @return void
-     **/
+     */
     public function discoverTraceabilityLinks(theProject $project, array &$links) 
     {
         parent::discoverTraceabilityLinks($project, $links);

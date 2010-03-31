@@ -33,7 +33,7 @@ class theMilestone extends theActivity
      * @param theWorkPackage Originator of the activity
      * @param string Unique code for this work package
      * @return theMilestone
-     **/
+     */
     public static function factoryMilestone(theActivities $activities, $wp, $code)
     {
         return new theMilestone($activities, $wp, $code);

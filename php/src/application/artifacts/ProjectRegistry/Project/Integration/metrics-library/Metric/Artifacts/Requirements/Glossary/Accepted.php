@@ -30,7 +30,7 @@ class Metric_Artifacts_Requirements_Glossary_Accepted extends Metric_Abstract
      * Load this metric
      *
      * @return void
-     **/
+     */
     public function reload()
     {
         // we can't calculate metrics here if deliverables are not loaded
@@ -56,7 +56,7 @@ class Metric_Artifacts_Requirements_Glossary_Accepted extends Metric_Abstract
      *
      * @param string[] Names of metrics, to consider after this one
      * @return theWorkPackage
-     **/
+     */
     protected function _derive(array &$metrics = array())
     {
         // if nothing to specify, skip it

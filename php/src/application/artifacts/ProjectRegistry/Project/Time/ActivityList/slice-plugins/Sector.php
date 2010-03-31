@@ -47,7 +47,7 @@ class Slice_Plugin_Sector extends Slice_Plugin_Abstract
      *
      * @param theActivity Activity to check
      * @return boolean
-     **/
+     */
     protected function _isInside(theActivity $activity)
     {
         return ($activity->code >= $this->_start) &&
@@ -60,7 +60,7 @@ class Slice_Plugin_Sector extends Slice_Plugin_Abstract
      * @param integer First element (start with 0)
      * @param integer Last element (NULL means 'till the end')
      * @return Slice_Plugin_Simple
-     **/
+     */
     public function execute($start, $end)
     {
         $this->_start = $start;

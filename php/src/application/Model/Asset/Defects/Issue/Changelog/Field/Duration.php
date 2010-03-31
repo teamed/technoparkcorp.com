@@ -32,7 +32,7 @@ class Model_Asset_Defects_Issue_Changelog_Field_Duration extends Model_Asset_Def
      * @param mixed Value to set
      * @return void
      * @throws Exception if failed
-     **/
+     */
     protected function _validate($value)
     {
         validate()->type($value, 'integer', "Duration shall be INT, in days");

@@ -188,7 +188,7 @@ class PanelController extends FaZend_Controller_Action
      * @param string Name of the document to render
      * @param array Associative array of params to pass to the view
      * @return string HTML
-     **/
+     */
     protected function _buildDocument($doc, array $params = array()) 
     {
         $this->view->headTitle($doc . ' -- ');
@@ -206,7 +206,7 @@ class PanelController extends FaZend_Controller_Action
      * Restrict access
      *
      * @return void
-     **/
+     */
     protected function _restrict($message) 
     {
         return $this->_forward(

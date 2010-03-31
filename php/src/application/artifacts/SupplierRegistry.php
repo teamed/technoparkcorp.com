@@ -35,7 +35,7 @@ class theSupplierRegistry extends Model_Artifact_Bag
      * The list is loaded? It is always loaded, meaning that only explicit reloading may reload it
      *
      * @return true
-     **/
+     */
     public function isLoaded() 
     {
         return true;
@@ -45,7 +45,7 @@ class theSupplierRegistry extends Model_Artifact_Bag
      * Reload list of suppliers
      *
      * @return void
-     **/
+     */
     public function reload() 
     {
         $this->_suppliers = new ArrayIterator();
@@ -62,13 +62,14 @@ class theSupplierRegistry extends Model_Artifact_Bag
      *
      * @param theStaffRequest
      * @return theStaffResponse
-     **/
+     */
     public function resolve(theStaffRequest $request) 
     {
         $response = new theStaffResponse();
         foreach ($this as $supplier) {
-            if (!$supplier->hasRole($request->role))
+            if (!$supplier->hasRole($request->role)) {
                 continue;
+            }
             
             // start logging everything that happens later
             FaZend_Log::getInstance()->addWriter('Memory', 'staffResponse');
@@ -293,7 +294,7 @@ class theSupplierRegistry extends Model_Artifact_Bag
      * Get a list of suppliers, internal holder
      *
      * @return theSupplier[]
-     **/
+     */
     protected function _getSuppliers() 
     {
         if (!isset($this->_suppliers)) {

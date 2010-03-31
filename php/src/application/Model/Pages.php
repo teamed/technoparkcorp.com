@@ -110,7 +110,7 @@ class Model_Pages extends Zend_Navigation
      *
      * @param string Absolute name of the page, without leading slash
      * @return boolean
-     **/
+     */
     public function hasScript($page) 
     {
         try {
@@ -278,7 +278,7 @@ class Model_Pages extends Zend_Navigation
      * @param string Name of the document to render
      * @param array Associative array of params to pass to the view
      * @return string HTML
-     **/
+     */
     public function buildDocumentHtml($doc, array $params = array()) 
     {
         $view = clone $this->_view;
@@ -409,7 +409,7 @@ class Model_Pages extends Zend_Navigation
      *
      * @param string Absolute directory path
      * @return boolean
-     **/
+     */
     protected function _hasPages($path) 
     {
         $files = scandir($path);

@@ -56,7 +56,7 @@ class Metric_Artifacts_Design_Classes_Accepted extends Metric_Abstract
      *
      * @param string[] Names of metrics, to consider after this one
      * @return theWorkPackage
-     **/
+     */
     protected function _derive(array &$metrics = array())
     {
         // to avoid division by zero

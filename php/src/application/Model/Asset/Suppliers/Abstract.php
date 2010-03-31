@@ -30,7 +30,7 @@ abstract class Model_Asset_Suppliers_Abstract extends Model_Asset_Abstract
      * Get full list of suppliers (emails)
      *
      * @return string[]
-     **/
+     */
     abstract public function retrieveAll();
     
     /**
@@ -39,7 +39,7 @@ abstract class Model_Asset_Suppliers_Abstract extends Model_Asset_Abstract
      * @param string Email of the supplier
      * @param theSupplier Object to fill with data
      * @return mixed
-     **/
+     */
     abstract public function deriveByEmail($email, theSupplier $supplier);
     
 }
