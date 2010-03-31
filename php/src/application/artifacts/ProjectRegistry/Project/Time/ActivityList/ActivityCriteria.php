@@ -30,7 +30,7 @@ class theActivityCriteria implements ArrayAccess, Countable, Iterator
      * List of criteria
      *
      * @var string
-     **/
+     */
     protected $_criteria;
 
     /**
@@ -71,7 +71,7 @@ class theActivityCriteria implements ArrayAccess, Countable, Iterator
      *
      * @param theProject What is the source of metrics
      * @return boolean
-     **/
+     */
     public function isTrue(theProject $project)
     {
         foreach ($this as $when) {
@@ -86,7 +86,7 @@ class theActivityCriteria implements ArrayAccess, Countable, Iterator
      *
      * @param theProject What is the source of metrics
      * @return string
-     **/
+     */
     public function asHtml(theProject $project)
     {
         $html = '<p>All of the below shall be true:</p><ul>';
@@ -111,7 +111,7 @@ class theActivityCriteria implements ArrayAccess, Countable, Iterator
      * Return a list of all metrics involved here, that affect this activity
      *
      * @return string[]
-     **/
+     */
     public function getAffectors()
     {
         $metrics = array();
@@ -125,7 +125,7 @@ class theActivityCriteria implements ArrayAccess, Countable, Iterator
      * Method from Iterator interface
      *
      * @return void
-     **/
+     */
     public function rewind() 
     {
         return $this->_criteria->rewind();
@@ -135,7 +135,7 @@ class theActivityCriteria implements ArrayAccess, Countable, Iterator
      * Method from Iterator interface
      *
      * @return void
-     **/
+     */
     public function next() 
     {
         return $this->_criteria->next();
@@ -145,7 +145,7 @@ class theActivityCriteria implements ArrayAccess, Countable, Iterator
      * Method from Iterator interface
      *
      * @return void
-     **/
+     */
     public function key() 
     {
         return $this->_criteria->key();
@@ -155,7 +155,7 @@ class theActivityCriteria implements ArrayAccess, Countable, Iterator
      * Method from Iterator interface
      *
      * @return void
-     **/
+     */
     public function valid() 
     {
         return $this->_criteria->valid();
@@ -165,7 +165,7 @@ class theActivityCriteria implements ArrayAccess, Countable, Iterator
      * Method from Iterator interface
      *
      * @return void
-     **/
+     */
     public function current() 
     {
         return $this->_criteria->current();
@@ -175,7 +175,7 @@ class theActivityCriteria implements ArrayAccess, Countable, Iterator
      * Method from Countable interface
      *
      * @return void
-     **/
+     */
     public function count() 
     {
         return $this->_criteria->count();
@@ -185,7 +185,7 @@ class theActivityCriteria implements ArrayAccess, Countable, Iterator
      * Method from ArrayAccess interface
      *
      * @return void
-     **/
+     */
     public function offsetGet($name) 
     {
         return $this->_criteria->offsetGet($name);
@@ -195,7 +195,7 @@ class theActivityCriteria implements ArrayAccess, Countable, Iterator
      * Method from ArrayAccess interface
      *
      * @return void
-     **/
+     */
     public function offsetSet($name, $value) 
     {
         return $this->_criteria->offsetSet($name, $value);
@@ -205,7 +205,7 @@ class theActivityCriteria implements ArrayAccess, Countable, Iterator
      * Method from ArrayAccess interface
      *
      * @return void
-     **/
+     */
     public function offsetExists($name) 
     {
         return $this->_criteria->offsetExists($name);
@@ -215,7 +215,7 @@ class theActivityCriteria implements ArrayAccess, Countable, Iterator
      * Method from ArrayAccess interface
      *
      * @return void
-     **/
+     */
     public function offsetUnset($name) 
     {
         return $this->_criteria->offsetUnset($name);

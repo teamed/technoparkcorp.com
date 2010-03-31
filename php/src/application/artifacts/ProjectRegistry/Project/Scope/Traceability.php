@@ -30,7 +30,7 @@ class theTraceability extends Model_Artifact_Bag
      * Clean all traceability links
      *
      * @return void
-     **/
+     */
     public function clean()
     {
         // remove all items from the array
@@ -42,7 +42,7 @@ class theTraceability extends Model_Artifact_Bag
      *
      * @param theTraceabilityLink The element to add
      * @return $this
-     **/
+     */
     public function add(theTraceabilityLink $link)
     {
         $this[] = $link;
@@ -54,7 +54,7 @@ class theTraceability extends Model_Artifact_Bag
      * Get list of all known source types
      *
      * @return string[]
-     **/
+     */
     public function getAllSourceTypes() 
     {
         $types = array();
@@ -68,7 +68,7 @@ class theTraceability extends Model_Artifact_Bag
      * Get list of all known destination types
      *
      * @return string[]
-     **/
+     */
     public function getAllDestinationTypes() 
     {
         $types = array();
@@ -83,7 +83,7 @@ class theTraceability extends Model_Artifact_Bag
      *
      * @param string Type, e.g. "interface" or "method"
      * @return Deliverables_Abstract
-     **/
+     */
     public function getSourcesByType($type) 
     {
         $deliverables = array();
@@ -100,7 +100,7 @@ class theTraceability extends Model_Artifact_Bag
      *
      * @param string|Deliverables_Abstract Source of traceability
      * @return theTraceabilityLink[]
-     **/
+     */
     public function getLinksBySource($source) 
     {
         $this->_normalize($source);
@@ -118,7 +118,7 @@ class theTraceability extends Model_Artifact_Bag
      *
      * @param string|Deliverables_Abstract Destination of traceability
      * @return theTraceabilityLink[]
-     **/
+     */
     public function getLinksByDestination($dest) 
     {
         $this->_normalize($dest);
@@ -137,7 +137,7 @@ class theTraceability extends Model_Artifact_Bag
      * @param string|array Name of deliverable or name of class who should be covered
      * @param string|array Name of deliverable or name of class who should cover
      * @return float
-     **/
+     */
     public function getDeep($froms, $tos)
     {
         // todo
@@ -239,7 +239,7 @@ class theTraceability extends Model_Artifact_Bag
      * @param string|array Name of deliverable or name of class who should cover
      * @param string|array Name of deliverable or name of class who should be covered
      * @return float
-     **/
+     */
     public function getCoverage($from, $to)
     {
         $this->_normalize($from);

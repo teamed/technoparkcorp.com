@@ -32,7 +32,7 @@ class Activity_Plugin_RequestEstimate extends Activity_Plugin_Abstract
      * Execute it
      *
      * @return boolean
-     **/
+     */
     public function execute() 
     {
         if ($this->_activity->isMilestone())

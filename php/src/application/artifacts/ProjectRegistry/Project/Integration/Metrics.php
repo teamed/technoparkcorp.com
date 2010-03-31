@@ -32,14 +32,14 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
      * Autoloader of metrics
      *
      * @var Zend_Loader_Autoloader
-     **/
+     */
     protected static $_autoloader = null;
 
     /**
      * Initialize autoloader of metrics, to be called from bootstrap
      *
      * @return void
-     **/
+     */
     public static function initAutoloader() 
     {
         // enable this directory for class loading
@@ -61,7 +61,7 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
      * Is it reloaded?
      *
      * @return boolean
-     **/
+     */
     public function isLoaded() 
     {
         return count($this) > 1;
@@ -71,7 +71,7 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
      * Reload all metrics
      *
      * @return void
-     **/
+     */
     public function reload() 
     {
         // remove all items from the array
@@ -104,7 +104,7 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
      *
      * @param string ID of the metric to find
      * @return Metric_Abstract
-     **/
+     */
     public function findById($id) 
     {
         return $this[Model_Pages_Encoder::decode($id)];
@@ -119,7 +119,7 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
      * @param string Full name of metric, e.g. 'requirements/useCases/total'
      * @return Metric_Abstract
      * @throws MetricNotFound
-     **/
+     */
     public function offsetGet($name) 
     {
         // if the metric is in array - we just return it
@@ -139,7 +139,7 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
      * @return Metric_Abstract
      * @throws MetricNotFound
      * @throws MetricDoesntMatch
-     **/
+     */
     protected function _findMetric($name) 
     {
         // maybe we can load it straight away?
@@ -197,7 +197,7 @@ class theMetrics extends Model_Artifact_Bag implements Model_Artifact_Passive
      * @param null|Metric_Abstract Metric class, if we already instantiated it
      * @return boolean Attached or not?
      * @throws MetricLoadingFailure
-     **/
+     */
     protected function _attachMetric($name, Metric_Abstract $metric = null) 
     {
         // don't add it again, if it exists

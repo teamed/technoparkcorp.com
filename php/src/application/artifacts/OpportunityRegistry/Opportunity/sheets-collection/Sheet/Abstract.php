@@ -156,7 +156,7 @@ abstract class Sheet_Abstract
      * @param string Name of property to get
      * @return mixed
      * @throws Opportunity_PropertyOrMethodNotFound
-     **/
+     */
     public final function __get($name) 
     {
         $method = '_get' . ucfirst($name);

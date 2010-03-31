@@ -78,7 +78,7 @@ class Model_Wobot_PM extends Model_Wobot
      * The list returned with contain names like "PM.test", "PM.project", etc.
      *
      * @return string[]
-     **/
+     */
     public static function getAllNames() 
     {
         $list = array();
@@ -123,7 +123,7 @@ class Model_Wobot_PM extends Model_Wobot
      *
      * @param string Project name
      * @return string
-     **/
+     */
     public static function getEmailByProjectName($projectName) 
     {
         return self::_humanToEmailPrefix(self::_projectToHumanName($projectName)) . 
@@ -135,7 +135,7 @@ class Model_Wobot_PM extends Model_Wobot
      *
      * @param string Absolute file name of PHP file
      * @return Model_Decision
-     **/
+     */
     public function decisionFactory($file) 
     {
         $decision = parent::decisionFactory($file);
@@ -149,7 +149,7 @@ class Model_Wobot_PM extends Model_Wobot
      * @param string Project name
      * @return string Name of the wobot, like "John Smith"
      * @throws Model_Wobot_NameNotFound
-     **/
+     */
     protected static function _projectToHumanName($projectName) 
     {
         foreach (self::$_names as $regexp=>$name)
@@ -167,7 +167,7 @@ class Model_Wobot_PM extends Model_Wobot
      *
      * @param string Human name, like "John Smith"
      * @return string Email prefix, like "j.smith"
-     **/
+     */
     protected static function _humanToEmailPrefix($name) 
     {
         list($first, $last) = explode(' ', strtolower($name));

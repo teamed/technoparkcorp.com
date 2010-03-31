@@ -52,7 +52,7 @@ class theStaffResponseItem
      *
      * @param string Name of property to get
      * @return mixed
-     **/
+     */
     public function __get($name) 
     {
         $method = '_get' . ucfirst($name);
@@ -74,7 +74,7 @@ class theStaffResponseItem
      *
      * @param theSupplier
      * @return void
-     **/
+     */
     public function setSupplier(theSupplier $supplier) 
     {
         $this->_supplier = $supplier;
@@ -86,7 +86,7 @@ class theStaffResponseItem
      *
      * @param integer Quality
      * @return void
-     **/
+     */
     public function setQuality($quality) 
     {
         validate()
@@ -102,7 +102,7 @@ class theStaffResponseItem
      *
      * @param string Reason
      * @return void
-     **/
+     */
     public function setReason($reason) 
     {
         $this->_reason = $reason;

@@ -46,7 +46,7 @@ class Metric_Artifacts_Defects_Found extends Metric_Abstract
      *
      * @return void
      * @throws Metric_Artifact_Defects_Total_InvalidClass
-     **/
+     */
     public function reload()
     {
         // go to the metric required
@@ -74,7 +74,7 @@ class Metric_Artifacts_Defects_Found extends Metric_Abstract
      *
      * @param string Reporter's email
      * @return void
-     **/
+     */
     protected function _reloadByReporter($reporter) 
     {
         $this->value = count($this->_retrieveBy(array('reporter'=>$reporter)));
@@ -85,7 +85,7 @@ class Metric_Artifacts_Defects_Found extends Metric_Abstract
      *
      * @param string Owner's email
      * @return void
-     **/
+     */
     protected function _reloadByOwner($owner) 
     {
         $this->value = count($this->_retrieveBy(array('owner'=>$owner)));
@@ -141,7 +141,7 @@ class Metric_Artifacts_Defects_Found extends Metric_Abstract
      *
      * @param string Name of milestone
      * @return void
-     **/
+     */
     protected function _reloadByMilestone($milestone) 
     {
         $this->value = count($this->_retrieveBy(array('milestone'=>$milestone)));
@@ -152,7 +152,7 @@ class Metric_Artifacts_Defects_Found extends Metric_Abstract
      *
      * @param string Name of severity
      * @return void
-     **/
+     */
     protected function _reloadBySeverity($severity) 
     {
         $this->value = count($this->_retrieveBy(array('severity'=>$severity)));
@@ -163,7 +163,7 @@ class Metric_Artifacts_Defects_Found extends Metric_Abstract
      *
      * @param string Name of the status
      * @return void
-     **/
+     */
     protected function _reloadByStatus($status) 
     {
         $this->value = count($this->_retrieveBy(array('status'=>$status)));
@@ -188,7 +188,7 @@ class Metric_Artifacts_Defects_Found extends Metric_Abstract
      *
      * @param string[] Names of metrics, to consider after this one
      * @return theWorkPackage
-     **/
+     */
     protected function _derive(array &$metrics = array())
     {
         $component = $this->_getOption('byComponent');

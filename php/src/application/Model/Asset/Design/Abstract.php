@@ -30,7 +30,7 @@ abstract class Model_Asset_Design_Abstract extends Model_Asset_Abstract
      * Get full list of components
      *
      * @return mixed[]
-     **/
+     */
     abstract public function getComponents();
     
 }

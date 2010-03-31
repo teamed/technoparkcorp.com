@@ -30,7 +30,7 @@ class theStatements implements ArrayAccess, Iterator, Countable, Model_Artifact_
      * Rowset from theStatement
      *
      * @var theStatement[]
-     **/
+     */
     protected $_rowset = null;
 
     /**
@@ -38,17 +38,17 @@ class theStatements implements ArrayAccess, Iterator, Countable, Model_Artifact_
      *
      * @param string Name of property to get
      * @return mixed
-     **/
+     */
     public function __get($name) 
     {
         $method = '_get' . ucfirst($name);
-        if (method_exists($this, $method))
+        if (method_exists($this, $method)) {
             return $this->$method();
-            
+        }    
         $var = '_' . $name;
-        if (property_exists($this, $var))
+        if (property_exists($this, $var)) {
             return $this->$var;
-        
+        }
         FaZend_Exception::raise(
             'Statements_PropertyOrMethodNotFound', 
             "Can't find what is '$name' in " . get_class($this)
@@ -59,7 +59,7 @@ class theStatements implements ArrayAccess, Iterator, Countable, Model_Artifact_
      * Calculate balance of all statements
      *
      * @return FaZend_Bo_Money
-     **/
+     */
     protected function _getBalance() 
     {
         return thePayment::getBalance();
@@ -69,7 +69,7 @@ class theStatements implements ArrayAccess, Iterator, Countable, Model_Artifact_
      * Calculate total volume of all statements together
      *
      * @return FaZend_Bo_Money
-     **/
+     */
     protected function _getVolume() 
     {
         return thePayment::getVolume();
@@ -212,7 +212,7 @@ class theStatements implements ArrayAccess, Iterator, Countable, Model_Artifact_
      * Returns rowset with statements
      *
      * @return theStatement[]
-     **/
+     */
     protected function _getRowset() 
     {
         if (!isset($this->_rowset)) {

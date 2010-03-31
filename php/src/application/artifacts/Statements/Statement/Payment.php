@@ -36,7 +36,7 @@ class thePayment extends FaZend_Db_Table_ActiveRow_payment
      * @param string Reason of the payment
      * @param string Details of the payment
      * @return FaZend_Db_Table_ActiveRow_payment
-     **/
+     */
     public static function create(
         $supplier, 
         FaZend_Bo_Money $rate, 
@@ -67,7 +67,7 @@ class thePayment extends FaZend_Db_Table_ActiveRow_payment
      *
      * @param theStatement The statement to get payments from
      * @return thePayment[]
-     **/
+     */
     public static function retrieveByStatement(theStatement $statement) 
     {
         return self::retrieve()
@@ -107,7 +107,7 @@ class thePayment extends FaZend_Db_Table_ActiveRow_payment
      * Get total volume
      *
      * @return FaZend_Bo_Money
-     **/
+     */
     public static function getVolume() 
     {
         return self::retrieve()
@@ -122,7 +122,7 @@ class thePayment extends FaZend_Db_Table_ActiveRow_payment
      * Get total balance
      *
      * @return FaZend_Bo_Money
-     **/
+     */
     public static function getBalance() 
     {
         return self::retrieve()
@@ -138,7 +138,7 @@ class thePayment extends FaZend_Db_Table_ActiveRow_payment
      *
      * @param theStatement The statement to analyze
      * @return FaZend_Bo_Money
-     **/
+     */
     public static function getStatementVolume(theStatement $statement) 
     {
         return self::retrieve()
@@ -155,7 +155,7 @@ class thePayment extends FaZend_Db_Table_ActiveRow_payment
      *
      * @param theStatement The statement to analyze
      * @return FaZend_Bo_Money
-     **/
+     */
     public static function getStatementBalance(theStatement $statement) 
     {
         return self::retrieve()
@@ -173,7 +173,7 @@ class thePayment extends FaZend_Db_Table_ActiveRow_payment
      * @param theStakeholder
      * @param theProject
      * @return FaZend_Bo_Money
-     **/
+     */
     public static function getPaidInProjectToStakeholder(theStakeholder $stakeholder, theProject $project) 
     {
         return self::retrieve()
@@ -192,7 +192,7 @@ class thePayment extends FaZend_Db_Table_ActiveRow_payment
      *
      * @param string Name of property to get
      * @return mixed
-     **/
+     */
     public function __get($name) 
     {
         $method = '_get' . ucfirst($name);

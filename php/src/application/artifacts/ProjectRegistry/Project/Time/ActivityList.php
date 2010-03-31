@@ -59,7 +59,7 @@ class theActivityList extends Model_Artifact_Bag implements Model_Artifact_Passi
      * @return Model_Artifact_Passive_Loader
      * @see isLoaded()
      * @see reload()
-     **/
+     */
     protected function _passiveLoader() 
     {
         return Model_Artifact_Passive_Loader::factory($this)

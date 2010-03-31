@@ -69,7 +69,7 @@ class theObjectives extends Model_Artifact implements Model_Artifact_InScope
      * @param string Name of the objective
      * @param integer|null Value of the objective or NULL if you want to remove it
      * @return void
-     **/
+     */
     public function setObjective($name, $value) 
     {
         if (is_null($value)) {

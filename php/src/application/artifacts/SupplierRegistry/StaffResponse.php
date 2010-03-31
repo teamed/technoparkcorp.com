@@ -30,7 +30,7 @@ class theStaffResponse extends ArrayIterator
      * Show as a string
      *
      * @return string
-     **/
+     */
     public function __toString()
     {
         if (!count($this))
@@ -75,7 +75,7 @@ class theStaffResponse extends ArrayIterator
      * @param mixed Index in array
      * @param mixed Value to add
      * @return void
-     **/
+     */
     public function offsetSet($index, $value) 
     {
         parent::offsetSet($index, $value);

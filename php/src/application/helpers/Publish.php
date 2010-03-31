@@ -151,7 +151,7 @@ class Helper_Publish extends FaZend_View_Helper
      *
      * @param FaZend_StdObject Page resource
      * @return string HTML
-     **/
+     */
     protected function _executePage(FaZend_StdObject $page) 
     {
         return $this->getView()->render($page->path);
@@ -161,7 +161,7 @@ class Helper_Publish extends FaZend_View_Helper
      * Loads local ACL for all possible pages for this document and user
      *
      * @return void
-     **/
+     */
     protected function _loadAcl() 
     {
         $this->_acl = new Zend_Acl();

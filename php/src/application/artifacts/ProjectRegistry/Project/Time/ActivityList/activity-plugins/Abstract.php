@@ -53,7 +53,7 @@ abstract class Activity_Plugin_Abstract
      * @param string Name of plugin to create
      * @param theActivity Activity to work with
      * @return void
-     **/
+     */
     public static function factory($name, theActivity $activity) 
     {
         if (!isset(self::$_loader)) {
@@ -69,7 +69,7 @@ abstract class Activity_Plugin_Abstract
      *
      * @param theActivity Activity to work with
      * @return void
-     **/
+     */
     public function __construct(theActivity $activity) 
     {
         $this->_activity = $activity;

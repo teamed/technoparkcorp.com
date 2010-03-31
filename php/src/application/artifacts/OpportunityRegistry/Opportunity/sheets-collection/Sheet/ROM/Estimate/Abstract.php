@@ -107,7 +107,7 @@ abstract class Sheet_ROM_Estimate_Abstract
      * @param string Name of property to get
      * @return mixed
      * @throws Sheet_ROM_Estimate_Abstract_PropertyOrMethodNotFound
-     **/
+     */
     public final function __get($name) 
     {
         $method = '_get' . ucfirst($name);

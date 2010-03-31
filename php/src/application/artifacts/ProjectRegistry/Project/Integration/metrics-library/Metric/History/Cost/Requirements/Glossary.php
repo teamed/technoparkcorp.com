@@ -30,7 +30,7 @@ class Metric_History_Cost_Requirements_Glossary extends Metric_Abstract
      * Load this metric
      *
      * @return void
-     **/
+     */
     public function reload()
     {
         // in USD

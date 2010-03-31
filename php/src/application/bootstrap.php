@@ -152,7 +152,7 @@ class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap
      * Make corrections to global logger
      *
      * @return void
-     **/
+     */
     protected function _initGlobalLogger() 
     {
         // do it after fazend only

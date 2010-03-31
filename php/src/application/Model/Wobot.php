@@ -226,7 +226,7 @@ abstract class Model_Wobot implements Model_Wobot_Interface
      *
      * @param string Absolute file name of PHP file with decision class
      * @return Model_Decision
-     **/
+     */
     public function decisionFactory($file) 
     {
         return Model_Decision::factory($file, $this);
@@ -236,7 +236,7 @@ abstract class Model_Wobot implements Model_Wobot_Interface
      * Returns a list of all possible wobot names (using /wobots directory)
      *
      * @return string[]
-     **/
+     */
     protected static function _getAllNames() 
     {
         $dir = APPLICATION_PATH . '/wobots';

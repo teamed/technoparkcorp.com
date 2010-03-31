@@ -32,7 +32,7 @@ class Activity_Plugin_IsStarted extends Activity_Plugin_Abstract
      * Execute it
      *
      * @return boolean
-     **/
+     */
     public function execute()
     {
         if (!$this->_activity->isIssueExist())

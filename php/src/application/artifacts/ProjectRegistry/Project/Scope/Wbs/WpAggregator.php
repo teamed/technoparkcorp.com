@@ -39,7 +39,7 @@ class theWpAggregator extends theWorkPackage
      * Getter
      *
      * @return mixed
-     **/
+     */
     public function __get($name)
     {
         switch ($name) {
@@ -55,7 +55,7 @@ class theWpAggregator extends theWorkPackage
      * Split work package to activities
      *
      * @return void
-     **/
+     */
     public function split(theActivities $list)
     {
         // don't split anything
@@ -65,7 +65,7 @@ class theWpAggregator extends theWorkPackage
      * Add one more work package to the aggregator
      *
      * @return void
-     **/
+     */
     public function addWorkPackage(theWorkPackage $wp)
     {
         $this->_aggregatedWps[$wp->code] = $wp;
@@ -76,7 +76,7 @@ class theWpAggregator extends theWorkPackage
      * Calculate and return cost
      *
      * @return FaZend_Bo_Money
-     **/
+     */
     protected function _getCost()
     {
         if (is_null($this->_cost)) {
@@ -91,7 +91,7 @@ class theWpAggregator extends theWorkPackage
      * Calculate and return title of this aggregator
      *
      * @return string
-     **/
+     */
     protected function _getTitle()
     {
         $cnt = count($this->_aggregatedWps);

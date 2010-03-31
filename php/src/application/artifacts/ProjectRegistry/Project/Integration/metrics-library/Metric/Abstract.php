@@ -94,7 +94,7 @@ abstract class Metric_Abstract
      * Load this metric
      *
      * @return void
-     **/
+     */
     public function reload()
     {
         // you should override this method in child class
@@ -131,7 +131,7 @@ abstract class Metric_Abstract
      *
      * @param string Name of the metric
      * @return void
-     **/
+     */
     public final function setName($name)
     {
         $this->_name = $name;
@@ -166,7 +166,7 @@ abstract class Metric_Abstract
      * @return numeric
      * @throws Metrics_ReloadingExceptions
      * @throws Metrics_AccessException
-     **/
+     */
     public final function __get($name)
     {
         switch ($name) {
@@ -229,7 +229,7 @@ abstract class Metric_Abstract
      * @param string Name of the property
      * @param integer Value to save
      * @return void
-     **/
+     */
     public final function __set($name, $value)
     {
         validate()
@@ -259,7 +259,7 @@ abstract class Metric_Abstract
      *
      * @param string Regex pattern
      * @return boolean
-     **/
+     */
     public final function isMatched($pattern)
     {
         if (!isset($this->_patterns))
@@ -276,7 +276,7 @@ abstract class Metric_Abstract
      * @param string Regex pattern
      * @return Metric_Abstract
      * @throws MetricPatternMismatch
-     **/
+     */
     public final function cloneByPattern($pattern)
     {
         validate()->true(isset($this->_patterns));
@@ -309,7 +309,7 @@ abstract class Metric_Abstract
      *
      * @param string Name of option
      * @return mixed|null
-     **/
+     */
     protected final function _getOption($name)
     {
         if (isset($this->_options[$name]))
@@ -371,7 +371,7 @@ abstract class Metric_Abstract
      *
      * @param Slice_Plugin_Abstract Slice to use
      * @return void
-     **/
+     */
     protected function _split(Slice_Plugin_Abstract $slice)
     {
         // override it
@@ -384,7 +384,7 @@ abstract class Metric_Abstract
      * @param string|integer|FaZend_Bo_Money Cost, param for FaZend_Bo_Money::__construct()
      * @param string Title of work package
      * @return theWorkPackage
-     **/
+     */
     protected final function _makeWp($cost, $title)
     {
         if (!($cost instanceof FaZend_Bo_Money))
@@ -396,7 +396,7 @@ abstract class Metric_Abstract
      * Make sure the sub-metric with this pattern is loaded
      *
      * @return void
-     **/
+     */
     protected function _pingPattern($pattern)
     {
         $this->_project->metrics[$this->_name . '/' . $pattern];

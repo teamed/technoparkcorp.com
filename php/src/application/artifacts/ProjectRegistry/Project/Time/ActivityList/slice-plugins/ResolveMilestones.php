@@ -32,7 +32,7 @@ class Slice_Plugin_ResolveMilestones extends Slice_Plugin_Abstract
      * Resolve milestones
      *
      * @return $this
-     **/
+     */
     public function execute()
     {
         foreach ($this as $activity) {
@@ -46,7 +46,7 @@ class Slice_Plugin_ResolveMilestones extends Slice_Plugin_Abstract
      *
      * @param theMilestone The milestone to resolve
      * @return void
-     **/
+     */
     protected function _addPredecessors(theMilestone $milestone)
     {
         return ;
@@ -124,7 +124,7 @@ class Slice_Plugin_ResolveMilestones extends Slice_Plugin_Abstract
      *
      * @param theMilestone The milestone to compare with
      * @return array List of metric names
-     **/
+     */
     protected function _getKidMetrics(theMilestone $milestone)
     {
         return $milestone->criteria->getAffectors();
@@ -135,7 +135,7 @@ class Slice_Plugin_ResolveMilestones extends Slice_Plugin_Abstract
      *
      * @param array List of metrics
      * @return array Matrix to work with
-     **/
+     */
     protected function _getMatrix(array $metrics)
     {
         return $metrics;
@@ -147,7 +147,7 @@ class Slice_Plugin_ResolveMilestones extends Slice_Plugin_Abstract
      * @param array Matrix of activities, values and metric names
      * @param theMilestone The milestone to compare with
      * @return void
-     **/
+     */
     protected function _orderByImpact(array &$matrix, theMilestone $milestone)
     {
     }
@@ -159,7 +159,7 @@ class Slice_Plugin_ResolveMilestones extends Slice_Plugin_Abstract
      * @param theMilestone The milestone to compare with
      * @param array Collection of metric names and activity codes (key=>value)
      * @return boolean
-     **/
+     */
     protected function _isMatrixPositive(array $matrix, theMilestone $milestone, array $position = array())
     {
         return false;
@@ -172,7 +172,7 @@ class Slice_Plugin_ResolveMilestones extends Slice_Plugin_Abstract
      * @param theMilestone The milestone to compare with
      * @param array Collection of metric names and activity codes (key=>value)
      * @return array New position
-     **/
+     */
     protected function _getNewPosition(array $matrix, theMilestone $milestone, array $position)
     {
         return $position;

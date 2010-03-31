@@ -84,7 +84,7 @@ class theStaffRequest
      *
      * @param string Name of property to get
      * @return mixed
-     **/
+     */
     public function __get($name) 
     {
         $method = '_get' . ucfirst($name);
@@ -106,7 +106,7 @@ class theStaffRequest
      *
      * @param theProject Project which requires staff
      * @return void
-     **/
+     */
     public function setProject(theProject $project) 
     {
         $this->_project = $project;
@@ -118,7 +118,7 @@ class theStaffRequest
      *
      * @param theProjectRole Project which requires staff
      * @return void
-     **/
+     */
     public function setRole(theProjectRole $role) 
     {
         $this->_role = $role;
@@ -130,7 +130,7 @@ class theStaffRequest
      *
      * @param integer Threshold
      * @return void
-     **/
+     */
     public function setThreshold($threshold) 
     {
         validate()
@@ -147,7 +147,7 @@ class theStaffRequest
      * @param string Skill required, with grade
      * @param importance 0..100
      * @return void
-     **/
+     */
     public function addSkill($skill, $grade) 
     {
         validate()
@@ -162,7 +162,7 @@ class theStaffRequest
      *
      * @param theActivity Activity that is planned for this person
      * @return void
-     **/
+     */
     public function addActivity(theActivity $activity) 
     {
         $this->_activity[] = $activity;
@@ -173,7 +173,7 @@ class theStaffRequest
      * Total duration in days of this request
      *
      * @return integer
-     **/
+     */
     protected function _getDuration() 
     {
         $duration = 0;
@@ -186,7 +186,7 @@ class theStaffRequest
      * Total cost of this request
      *
      * @return FaZend_Bo_Money
-     **/
+     */
     protected function _getCost() 
     {
         $cost = new FaZend_Bo_Money();
@@ -199,7 +199,7 @@ class theStaffRequest
      * Get list of skills in HTML
      *
      * @return string Html
-     **/
+     */
     protected function _getSkillsHtml() 
     {
         arsort($this->_skills);
@@ -210,7 +210,7 @@ class theStaffRequest
      * Get response
      *
      * @return theStaffResponse
-     **/
+     */
     protected function _getResponse() 
     {
         return Model_Artifact::root()->supplierRegistry->resolve($this);

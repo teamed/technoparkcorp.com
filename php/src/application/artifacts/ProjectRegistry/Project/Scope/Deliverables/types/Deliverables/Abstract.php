@@ -58,7 +58,7 @@ abstract class Deliverables_Abstract
      * Convert it to string
      *
      * @return string
-     **/
+     */
     public function __toString()
     {
         return $this->_name;
@@ -69,7 +69,7 @@ abstract class Deliverables_Abstract
      *
      * @param string Name of property to get
      * @return string
-     **/
+     */
     public function __get($name)
     {
         $method = '_get' . ucfirst($name);
@@ -114,7 +114,7 @@ abstract class Deliverables_Abstract
      * @param theProject Project to work with
      * @param array List of links
      * @return void
-     **/
+     */
     public function discoverTraceabilityLinks(theProject $project, array &$links) 
     {
         $description = $this->attributes['description'];
@@ -146,7 +146,7 @@ abstract class Deliverables_Abstract
      * Return type of this deliverable
      *
      * @return string
-     **/
+     */
     protected function _getType()
     {
         return preg_replace('/^Deliverables_/', '', get_class($this));

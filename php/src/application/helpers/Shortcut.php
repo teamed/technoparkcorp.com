@@ -67,7 +67,7 @@ class Helper_Shortcut extends FaZend_View_Helper
      * Convert it to string
      *
      * @return string
-     **/
+     */
     public function __toString()
     {
         try {
@@ -81,7 +81,7 @@ class Helper_Shortcut extends FaZend_View_Helper
      * Make it look like URL
      *
      * @return string
-     **/
+     */
     public function _render()
     {
         return Model_Shortcut::create($document, $this->_emails, $this->_params, $this->_uniqueAccess)
@@ -93,7 +93,7 @@ class Helper_Shortcut extends FaZend_View_Helper
      *
      * @param string Document to share
      * @return $this
-     **/
+     */
     public function setDocument($document)
     {
         $this->_document = $document;
@@ -105,7 +105,7 @@ class Helper_Shortcut extends FaZend_View_Helper
      *
      * @param string Email of accessor
      * @return $this
-     **/
+     */
     public function addEmail($email)
     {
         validate()->emailAddress($email, array());
@@ -119,7 +119,7 @@ class Helper_Shortcut extends FaZend_View_Helper
      * @param string Name of parameter
      * @param string Value of it
      * @return $this
-     **/
+     */
     public function addParam($name, $value)
     {
         $this->_params[$name] = $value;
@@ -130,7 +130,7 @@ class Helper_Shortcut extends FaZend_View_Helper
      * Make sure the document is accessible ONLY to the people specified
      *
      * @return $this
-     **/
+     */
     public function setUniqueAccess()
     {
         $this->_uniqueAccess = true;

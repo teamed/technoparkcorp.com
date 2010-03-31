@@ -32,7 +32,7 @@ class Activity_Plugin_IsDurationEstimated extends Activity_Plugin_Abstract
      * Execute it
      *
      * @return boolean
-     **/
+     */
     public function execute()
     {
         // milestones can't become alive in tracker

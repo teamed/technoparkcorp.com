@@ -47,7 +47,7 @@ abstract class DeliverablesLoaders_Abstract
      * instance is FALSE it means that it was loaded already.
      *
      * @var DeliverablesLoaders_Abstract[]
-     **/
+     */
     protected static $_waiting = array();
      
     /**
@@ -56,7 +56,7 @@ abstract class DeliverablesLoaders_Abstract
      * @param string Name of plugin to create
      * @param theDeliverables The holder which has to be filled with new items
      * @return DeliverablesLoaders_Abstract
-     **/
+     */
     public static function factory($name, theDeliverables $deliverables)
     {
         if (!isset(self::$_loader)) {
@@ -72,7 +72,7 @@ abstract class DeliverablesLoaders_Abstract
      *
      * @param theDeliverables The holder which has to be filled with new items
      * @return void
-     **/
+     */
     protected function __construct(theDeliverables $deliverables)
     {
         $this->_deliverables = $deliverables;
@@ -83,7 +83,7 @@ abstract class DeliverablesLoaders_Abstract
      *
      * @param theDeliverables The holder which has to be filled with new items
      * @return DeliverablesLoaders_Abstract[]
-     **/
+     */
     public static function retrieveAll(theDeliverables $deliverables)
     {
         $list = array();
@@ -104,7 +104,7 @@ abstract class DeliverablesLoaders_Abstract
      * Load all deliverables
      *
      * @return void
-     **/
+     */
     abstract public function load();
     
     /**
@@ -112,7 +112,7 @@ abstract class DeliverablesLoaders_Abstract
      *
      * @param theDeliverables The holder which has to be filled with new items
      * @return void
-     **/
+     */
     public static function reloadAll(theDeliverables $deliverables) 
     {
         // execute ALL loaders one after another
@@ -141,7 +141,7 @@ abstract class DeliverablesLoaders_Abstract
      *
      * @return void
      * @throws RequiresLoaderLoading
-     **/
+     */
     protected function _loadFirst($name) 
     {
         if (!self::$_waiting[$name]) {

@@ -98,7 +98,7 @@ class Model_Process
      * Get project for this process
      *
      * @return Model_Project
-     **/
+     */
     public function getProject() 
     {
         return Model_Project::findByName($this->_name);
@@ -108,7 +108,7 @@ class Model_Process
      * Project exists for this process?
      *
      * @return boolean
-     **/
+     */
     public function projectExists() 
     {
         try {

@@ -40,7 +40,7 @@ class theWorkOrder implements Model_Artifact_Stateless
      * @param string Name of decision
      * @param string ID of decision
      * @return void
-     **/
+     */
     public function __construct(theWorkOrders $workOrders, $decision, $id)
     {
         $this->_project = Model_Project::findByName($project->name);
@@ -55,7 +55,7 @@ class theWorkOrder implements Model_Artifact_Stateless
      * This order is paid?
      *
      * @return boolean
-     **/
+     */
     public function isPaid()
     {
         return true;
@@ -65,7 +65,7 @@ class theWorkOrder implements Model_Artifact_Stateless
      * Execute
      *
      * @return boolean
-     **/
+     */
     public function create()
     {
         $this->_issue

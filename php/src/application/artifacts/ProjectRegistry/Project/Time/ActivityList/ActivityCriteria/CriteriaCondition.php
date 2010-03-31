@@ -61,7 +61,7 @@ class theCriteriaCondition
      *
      * @param theProject What is the source of metrics
      * @return boolean
-     **/
+     */
     public function isTrue(theProject $project)
     {
         $formula = $this->_text;
@@ -85,7 +85,7 @@ class theCriteriaCondition
      * @param theProject What is the source of metrics
      * @param array List of metrics mentioned, it will be updated
      * @return string
-     **/
+     */
     public function asHtml(theProject $project, array &$variables)
     {
         $text = $this->_text;
@@ -110,7 +110,7 @@ class theCriteriaCondition
      * Get full list of metrics that are here
      *
      * @return string[]
-     **/
+     */
     public function getAffectors()
     {
         preg_match_all(self::REGEX, $this->_text, $matches);
@@ -123,7 +123,7 @@ class theCriteriaCondition
      * @param array List of variables/metrics already there
      * @param Metric_Abstract The metric to add to the array
      * @return string
-     **/
+     */
     protected function _newVariable(&$variables, Metric_Abstract $metric)
     {
         $name = 'A';

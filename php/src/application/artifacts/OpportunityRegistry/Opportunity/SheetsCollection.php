@@ -91,7 +91,7 @@ class theSheetsCollection implements ArrayAccess, Iterator, Countable
      * @param string Name of property to get
      * @return mixed
      * @throws Opportunity_PropertyOrMethodNotFound
-     **/
+     */
     public function __get($name) 
     {
         $method = '_get' . ucfirst($name);
@@ -114,7 +114,7 @@ class theSheetsCollection implements ArrayAccess, Iterator, Countable
      * @param string Name of the sheet
      * @param Sheet_Abstract Sheet instance
      * @return void
-     **/
+     */
     public function add(Sheet_Abstract $sheet) 
     {
         validate()->true($sheet instanceof Sheet_Abstract);
@@ -253,7 +253,7 @@ class theSheetsCollection implements ArrayAccess, Iterator, Countable
      * Method from Iterator interface
      *
      * @return void
-     **/
+     */
     public function rewind() 
     {
         return $this->_sheets->rewind();
@@ -263,7 +263,7 @@ class theSheetsCollection implements ArrayAccess, Iterator, Countable
      * Method from Iterator interface
      *
      * @return void
-     **/
+     */
     public function next() 
     {
         return $this->_sheets->next();
@@ -273,7 +273,7 @@ class theSheetsCollection implements ArrayAccess, Iterator, Countable
      * Method from Iterator interface
      *
      * @return void
-     **/
+     */
     public function key() 
     {
         return $this->_sheets->key();
@@ -283,7 +283,7 @@ class theSheetsCollection implements ArrayAccess, Iterator, Countable
      * Method from Iterator interface
      *
      * @return void
-     **/
+     */
     public function valid() 
     {
         return $this->_sheets->valid();
@@ -293,7 +293,7 @@ class theSheetsCollection implements ArrayAccess, Iterator, Countable
      * Method from Iterator interface
      *
      * @return void
-     **/
+     */
     public function current() 
     {
         return $this->_sheets->current();
@@ -303,7 +303,7 @@ class theSheetsCollection implements ArrayAccess, Iterator, Countable
      * Method from Countable interface
      *
      * @return void
-     **/
+     */
     public function count() 
     {
         return $this->_sheets->count();
@@ -313,7 +313,7 @@ class theSheetsCollection implements ArrayAccess, Iterator, Countable
      * Method from ArrayAccess interface
      *
      * @return void
-     **/
+     */
     public function offsetGet($name) 
     {
         return $this->_sheets->offsetGet($name);
@@ -325,7 +325,7 @@ class theSheetsCollection implements ArrayAccess, Iterator, Countable
      * @param string Name of the sheet
      * @param Sheet_Abstract Sheet instance
      * @return void
-     **/
+     */
     public function offsetSet($name, $sheet) 
     {
         return $this->_sheets->offsetSet($name, $sheet);
@@ -335,7 +335,7 @@ class theSheetsCollection implements ArrayAccess, Iterator, Countable
      * Method from ArrayAccess interface
      *
      * @return void
-     **/
+     */
     public function offsetExists($name) 
     {
         return $this->_sheets->offsetExists($name);
@@ -345,7 +345,7 @@ class theSheetsCollection implements ArrayAccess, Iterator, Countable
      * Method from ArrayAccess interface
      *
      * @return void
-     **/
+     */
     public function offsetUnset($name) 
     {
         return $this->_sheets->offsetUnset($name);

@@ -80,7 +80,7 @@ class Metric_Artifacts_Requirements_Functional_Total extends Metric_Abstract
      * Load this metric
      *
      * @return void
-     **/
+     */
     public function reload()
     {
         // we can't calculate metrics here if deliverables are not loaded

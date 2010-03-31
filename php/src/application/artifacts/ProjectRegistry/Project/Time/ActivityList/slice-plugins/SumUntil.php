@@ -32,7 +32,7 @@ class Slice_Plugin_SumUntil extends Slice_Plugin_Abstract
      * Sum them!
      *
      * @return FaZend_Bo_Money
-     **/
+     */
     public function execute(theActivity $stop)
     {
         $sum = new FaZend_Bo_Money();

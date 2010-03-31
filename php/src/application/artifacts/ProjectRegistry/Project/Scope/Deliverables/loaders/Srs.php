@@ -32,27 +32,20 @@ class DeliverablesLoaders_Srs extends DeliverablesLoaders_Abstract
      * Load all deliverables
      *
      * @return void
-     **/
+     */
     public function load() 
     {
         logg('SRS loading started...');
-        $entities = $this->_deliverables->ps()->parent->fzProject()
-            ->getAsset(Model_Project::ASSET_SRS)->getEntities();
+        $xml = $this->_deliverables->ps()->parent->fzProject()
+            ->getAsset(Model_Project::ASSET_SRS)->rqdqlQuery('');
 
-        foreach ($entities as $entity) {
-            $type = ucfirst($entity->type);
-            switch ($type) {
-                case 'Functional':
-                case 'Qos':
-                    $type = 'Requirements_Requirement_' . $type;
-                    break;
-                default:
-                    $type = 'Requirements_' . $type;
-                    break;
-            }
+        foreach ($xml->xpath('//') as $actor) {
+            $deliverable = theDeliverables::factory(
+                '',
+                $actor->name
+            );
             
-            $deliverable = theDeliverables::factory($type, $entity->name);
-            $deliverable->attributes['description']->add($entity->description);
+            $deliverable->attributes['description']->add($actor->description);
 
             foreach (array_filter($entity->attributes) as $attrib=>$value) {
                 switch (true) {

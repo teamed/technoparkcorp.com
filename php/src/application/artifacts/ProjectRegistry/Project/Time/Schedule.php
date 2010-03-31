@@ -69,7 +69,7 @@ class theSchedule extends Model_Artifact_Bag implements Model_Artifact_Passive
      *
      * @param string Name of property to get
      * @return mixed
-     **/
+     */
     public function __get($name) 
     {
         $method = '_get' . ucfirst($name);
@@ -87,7 +87,7 @@ class theSchedule extends Model_Artifact_Bag implements Model_Artifact_Passive
      * Get finish date of schedule
      *
      * @return Zend_Date
-     **/
+     */
     protected function _getFinish() 
     {
         $finish = new Zend_Date();

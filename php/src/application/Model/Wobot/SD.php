@@ -30,7 +30,7 @@ class Model_Wobot_SD extends Model_Wobot
      * Returns a list of all possible wobot names of this given type/class
      *
      * @return string[]
-     **/
+     */
     public static function getAllNames() 
     {
         return array('SD');

@@ -32,7 +32,7 @@ class Slice_Plugin_Iterate extends Slice_Plugin_Abstract
      * Iterate
      *
      * @return mixed
-     **/
+     */
     public function execute($style, array $options = array())
     {
         validate()->true(count($this) == 1, 

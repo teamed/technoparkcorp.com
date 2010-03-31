@@ -30,14 +30,14 @@ class Model_Artifact_Passive_Loader
      * Class to load
      *
      * @var Model_Artifact_Passive
-     **/
+     */
     protected $_class;
     
     /**
      * List of vars to attach
      *
      * @var array
-     **/
+     */
     protected $_toAttach = array();
 
     /**
@@ -45,7 +45,7 @@ class Model_Artifact_Passive_Loader
      *
      * @param Model_Artifact_Passive Class to load
      * @return Model_Artifact_Passive_Loader
-     **/
+     */
     public static function factory(Model_Artifact_Passive $class) 
     {
         return new self($class);
@@ -66,7 +66,7 @@ class Model_Artifact_Passive_Loader
      * undocumented function
      *
      * @return $this
-     **/
+     */
     public function attach($var, Model_Artifact_Interface $kid, $property = null) 
     {
         $this->_toAttach[$var] = array(
@@ -80,7 +80,7 @@ class Model_Artifact_Passive_Loader
      * The class is loaded?
      *
      * @return boolean
-     **/
+     */
     public function isLoaded() 
     {
         foreach ($this->_toAttach as $name=>$attach) {
@@ -94,7 +94,7 @@ class Model_Artifact_Passive_Loader
      * Reload everything
      *
      * @return void
-     **/
+     */
     public function reload() 
     {
         $className = get_class($this->_class);

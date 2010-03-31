@@ -51,7 +51,7 @@ class DeliverablesLoaders_Issues extends DeliverablesLoaders_Abstract
      * Load all tickets and understand them
      *
      * @return void
-     **/
+     */
     public function load() 
     {
         $this->_loadFirst('srs');

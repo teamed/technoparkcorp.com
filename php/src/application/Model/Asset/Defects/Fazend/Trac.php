@@ -39,7 +39,7 @@ class Model_Asset_Defects_Fazend_Trac extends Model_Asset_Defects_Abstract
      * Trac from Shared lib
      *
      * @var Shared_Trac
-     **/
+     */
     protected $_trac;
     
     /**
@@ -58,7 +58,7 @@ class Model_Asset_Defects_Fazend_Trac extends Model_Asset_Defects_Abstract
      *
      * @return mixed
      * @see Model_Asset_Defects_Abstract::findById()
-     **/
+     */
     public function findById($id) 
     {
         return FaZend_Flyweight::factory(
@@ -74,7 +74,7 @@ class Model_Asset_Defects_Fazend_Trac extends Model_Asset_Defects_Abstract
      *
      * @return mixed
      * @see Model_Asset_Defects_Abstract::findByCode()
-     **/
+     */
     public function findByCode($code) 
     {
         return FaZend_Flyweight::factory(
@@ -88,7 +88,7 @@ class Model_Asset_Defects_Fazend_Trac extends Model_Asset_Defects_Abstract
      * Get proxy
      *
      * @return mixed
-     **/
+     */
     public function getXmlProxy()
     {
         return $this->_trac->getXmlProxy();
@@ -102,7 +102,7 @@ class Model_Asset_Defects_Fazend_Trac extends Model_Asset_Defects_Abstract
      * @param array The same, but negative
      * @return array List of ID's, integers
      * @throws Model_Asset_Defects_Fazend_Trac_SoapFault
-     **/
+     */
     public function retrieveBy(array $conditions = array(), array $negative = array())
     {
         $lemmas = array();
@@ -146,7 +146,7 @@ class Model_Asset_Defects_Fazend_Trac extends Model_Asset_Defects_Abstract
      * Get full list of all known ticket severities
      *
      * @return string[]
-     **/
+     */
     public function getSeverities()
     {
         return $this->_trac->getSeverities();
@@ -156,7 +156,7 @@ class Model_Asset_Defects_Fazend_Trac extends Model_Asset_Defects_Abstract
      * Get full list of all known ticket statuses
      *
      * @return string[]
-     **/
+     */
     public function getStatuses()
     {
         return $this->_trac->getStatuses();
@@ -166,7 +166,7 @@ class Model_Asset_Defects_Fazend_Trac extends Model_Asset_Defects_Abstract
      * Initializer
      *
      * @return void
-     **/
+     */
     protected function _init() 
     {
         $this->_trac = new Shared_Trac($this->_project);

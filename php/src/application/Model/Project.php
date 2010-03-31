@@ -48,7 +48,7 @@ class Model_Project extends Shared_Project
      *
      * @param boolean Shall we?
      * @return void
-     **/
+     */
     public static function setWeAreManaging($weAreManaging = true) 
     {
         self::$_weAreManaging = $weAreManaging;
@@ -58,7 +58,7 @@ class Model_Project extends Shared_Project
      * Shall we manage any projects?
      *
      * @return boolean
-     **/
+     */
     public static function getWeAreManaging() 
     {
         return self::$_weAreManaging;
@@ -146,7 +146,7 @@ class Model_Project extends Shared_Project
      * @param string Name of the asset to get
      * @return Model_Asset_Abstract
      * @todo Should be configurable
-     **/
+     */
     public function getAsset($name) 
     {
         // we will be able later to configure which project

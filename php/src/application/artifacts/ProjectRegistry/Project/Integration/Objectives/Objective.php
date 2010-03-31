@@ -30,7 +30,7 @@ class theObjective
      * Value of the objective
      *
      * @var string
-     **/
+     */
     protected $_value;
     
     /**
@@ -61,7 +61,7 @@ class theObjective
      *
      * @param string Name of property to get
      * @return mixed
-     **/
+     */
     public function __get($name) 
     {
         $method = '_get' . ucfirst($name);
@@ -84,7 +84,7 @@ class theObjective
      * Get value of the objectiv
      *
      * @return integer
-     **/
+     */
     protected function _getValue() 
     {
         return $this->_value;

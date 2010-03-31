@@ -87,7 +87,7 @@ class theActivityPredecessor
      *
      * @param theActivity We shall use it as a basis, to calculate ITS start
      * @return Zend_Date
-     **/
+     */
     public function calculateStart(theActivity $activity)
     {
         switch ($this->_type) {

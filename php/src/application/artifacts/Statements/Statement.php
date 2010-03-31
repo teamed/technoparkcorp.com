@@ -30,7 +30,7 @@ class theStatement extends Zend_Db_Table_Row implements ArrayAccess, Iterator, C
      * Rowset with payments
      *
      * @var thePayment[]
-     **/
+     */
     protected $_rowset;
     
     /**
@@ -38,7 +38,7 @@ class theStatement extends Zend_Db_Table_Row implements ArrayAccess, Iterator, C
      *
      * @param string Name of property to get
      * @return mixed
-     **/
+     */
     public function __get($name) 
     {
         $method = '_get' . ucfirst($name);
@@ -58,7 +58,7 @@ class theStatement extends Zend_Db_Table_Row implements ArrayAccess, Iterator, C
      *
      * @param string Email of the supplier
      * @return theStatement
-     **/
+     */
     public static function findBySupplier($email) 
     {
         return thePayment::retrieve(false)
@@ -109,7 +109,7 @@ class theStatement extends Zend_Db_Table_Row implements ArrayAccess, Iterator, C
      * Get it as text
      *
      * @return string
-     **/
+     */
     protected function _getAsText() 
     {
         $text = 
@@ -142,7 +142,7 @@ class theStatement extends Zend_Db_Table_Row implements ArrayAccess, Iterator, C
      * Calculate balance
      *
      * @return FaZend_Bo_Money
-     **/
+     */
     protected function _getBalance() 
     {
         return thePayment::getStatementBalance($this);
@@ -152,7 +152,7 @@ class theStatement extends Zend_Db_Table_Row implements ArrayAccess, Iterator, C
      * Calculate total volume
      *
      * @return FaZend_Bo_Money
-     **/
+     */
     protected function _getVolume() 
     {
         return thePayment::getStatementVolume($this);
@@ -305,7 +305,7 @@ class theStatement extends Zend_Db_Table_Row implements ArrayAccess, Iterator, C
      * Get rowset with payments
      *
      * @return thePayment[]
-     **/
+     */
     protected function _getRowset() 
     {
         if (!isset($this->_rowset))

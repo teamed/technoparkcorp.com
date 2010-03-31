@@ -33,7 +33,7 @@ class Slice_Plugin_OnlyActivities extends Slice_Plugin_Abstract
      *
      * @param theActivity Activity to check
      * @return boolean
-     **/
+     */
     protected function _isInside(theActivity $activity)
     {
         return !$activity->isMilestone();

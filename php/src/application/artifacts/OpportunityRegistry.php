@@ -32,7 +32,7 @@ class theOpportunityRegistry extends Model_Artifact_Bag
      * The list is loaded? It is always loaded, meaning that only explicit reloading may reload it
      *
      * @return true
-     **/
+     */
     public function isLoaded() 
     {
         return true;
@@ -42,7 +42,7 @@ class theOpportunityRegistry extends Model_Artifact_Bag
      * Reload list of opportunities
      *
      * @return void
-     **/
+     */
     public function reload() 
     {
         $this->_opportunities = new ArrayIterator();
@@ -228,7 +228,7 @@ class theOpportunityRegistry extends Model_Artifact_Bag
      * Get a list of opportunities, internal holder
      *
      * @return theOpportunity[]
-     **/
+     */
     protected function _getOpportunities() 
     {
         if (!isset($this->_opportunities)) {

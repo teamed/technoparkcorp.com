@@ -35,7 +35,7 @@ abstract class Model_Asset_Defects_Abstract extends Model_Asset_Abstract
      *
      * @param integer Unique number of the ticket
      * @return mixed
-     **/
+     */
     abstract public function findById($id);
     
     /**
@@ -44,7 +44,7 @@ abstract class Model_Asset_Defects_Abstract extends Model_Asset_Abstract
      * @param string Code of the ticket to find
      * @return mixed
      * @see findById()
-     **/
+     */
     abstract public function findByCode($code);
     
     /**
@@ -55,21 +55,21 @@ abstract class Model_Asset_Defects_Abstract extends Model_Asset_Abstract
      * @param array The same, but negative
      * @return int[]
      * @see findById() Tickets returned are objects, without types
-     **/
+     */
     abstract public function retrieveBy(array $conditions = array(), array $negative = array());
 
     /**
      * Get full list of all known ticket severities
      *
      * @return string[]
-     **/
+     */
     abstract public function getSeverities();
     
     /**
      * Get full list of all known ticket statuses
      *
      * @return string[]
-     **/
+     */
     abstract public function getStatuses();
     
 }

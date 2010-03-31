@@ -51,17 +51,17 @@ class theProject extends Model_Artifact_Bag implements Model_Artifact_Passive
      *
      * @param string Name of property to get
      * @return mixed
-     **/
+     */
     public function __get($name) 
     {
         $method = '_get' . ucfirst($name);
-        if (method_exists($this, $method))
+        if (method_exists($this, $method)) {
             return $this->$method();
-            
+        }
         $var = '_' . $name;
-        if (property_exists($this, $var))
+        if (property_exists($this, $var)) {
             return $this->$var;
-            
+        }
         return parent::__get($name);
     }
 
@@ -79,7 +79,7 @@ class theProject extends Model_Artifact_Bag implements Model_Artifact_Passive
      * Show project as a string
      *
      * @return string
-     **/
+     */
     public function __toString() 
     {
         return $this->name;
@@ -89,7 +89,7 @@ class theProject extends Model_Artifact_Bag implements Model_Artifact_Passive
      * Get name of the project
      *
      * @return string
-     **/
+     */
     protected function _getName() 
     {
         return $this->ps()->name;
@@ -105,7 +105,7 @@ class theProject extends Model_Artifact_Bag implements Model_Artifact_Passive
      * @return Model_Artifact_Passive_Loader
      * @see isLoaded()
      * @see reload()
-     **/
+     */
     protected function _passiveLoader() 
     {
         return Model_Artifact_Passive_Loader::factory($this)

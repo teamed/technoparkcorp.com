@@ -100,7 +100,7 @@ class theActivity
      * @param theWorkPackage Originator of the activity
      * @param string Unique code for this work package
      * @return void
-     **/
+     */
     public function __construct(theActivities $activities, $wp, $code)
     {
         $this->_activities = $activities;
@@ -115,7 +115,7 @@ class theActivity
      * @param theWorkPackage Originator of the activity
      * @param string Unique code for this work package
      * @return theActivity
-     **/
+     */
     public static function factory(theActivities $activities, $wp, $code)
     {
         return new theActivity($activities, $wp, $code);
@@ -127,7 +127,7 @@ class theActivity
      * @param string Name of plugin, lowercase first letter
      * @param array List of arguments
      * @return Activity_Plugin_Abstract
-     **/
+     */
     public function __call($method, array $args)
     {
         require_once dirname(__FILE__) . '/activity-plugins/Abstract.php';
@@ -143,7 +143,7 @@ class theActivity
      * @param string Name of property to get
      * @return mixed
      * @throws Activity_PropertyOrMethodNotFound
-     **/
+     */
     public function __get($name)
     {
         $method = '_get' . ucfirst($name);
@@ -164,7 +164,7 @@ class theActivity
      * Show activity as a string
      *
      * @return string
-     **/
+     */
     public function __toString()
     {
         return $this->name;

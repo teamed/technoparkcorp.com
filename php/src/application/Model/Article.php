@@ -85,7 +85,7 @@ class Model_Article
      *
      * @param mixed Search proxy
      * @return void
-     **/
+     */
     public static function setSearchProxy($proxy) 
     {
         self::$_searchProxy = $proxy;
@@ -95,7 +95,7 @@ class Model_Article
      * Get search proxy
      *
      * @return mixed
-     **/
+     */
     public static function getSearchProxy() 
     {
         if (is_null(self::$_searchProxy))
@@ -163,7 +163,7 @@ class Model_Article
      *
      * @return PDF
      * @todo To be implemented later
-     **/
+     */
     public function asPdf() 
     {
         $pdf = new Zend_Pdf();

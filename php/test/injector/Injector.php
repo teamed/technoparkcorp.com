@@ -32,6 +32,7 @@ class Injector extends FaZend_Test_Injector
         // don't go into real Shared resources
         Shared_XmlRpc::setXmlRpcClientClass('Mocks_Shared_XmlRpc');
         Shared_Trac::setTicketClass('Mocks_Shared_Trac_Ticket');
+        Shared_Wiki::setRqdqlProxy('Mocks_Shared_Wiki_RqdqlProxy');
         Shared_Pan::setSoapClient(Mocks_Shared_Pan_SoapClient::get());
         
         // make sure we are getting just small number of test tickets
@@ -90,8 +91,9 @@ class Injector extends FaZend_Test_Injector
         
             // add this role to ACL
             $email = Model_User::getCurrentUser()->email;
-            if (!$acl->hasRole($email))
+            if (!$acl->hasRole($email)) {
                 $acl->addRole($email);
+            }
         
             // give access to everything for the testing user
             $acl->allow($email);

@@ -30,7 +30,7 @@ class Metric_Aspects_Readiness extends Metric_Abstract
      * Load this metric
      *
      * @return void
-     **/
+     */
     public function reload()
     {
         $this->value = 0.99;

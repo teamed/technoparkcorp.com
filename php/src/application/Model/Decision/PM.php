@@ -38,7 +38,7 @@ abstract class Model_Decision_PM extends Model_Decision
      *
      * @param theProject Project, the holder of the decision
      * @return void
-     **/
+     */
     public function setProject(theProject $project)
     {
         $this->_project = $project;

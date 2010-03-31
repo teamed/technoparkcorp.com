@@ -40,7 +40,7 @@ class theStaffAssignments implements ArrayAccess, Countable, Iterator, Model_Art
      * Collection of stakeholders
      *
      * @var theStakeholder[]
-     **/
+     */
     protected $_stakeholders;
 
     /**
@@ -51,7 +51,7 @@ class theStaffAssignments implements ArrayAccess, Countable, Iterator, Model_Art
      *
      * @return theProjectRole The role
      * @throws Exception If the role is not found
-     **/
+     */
     public function __get($name) 
     {
         $list = $this->_project()->getStakeholdersByRole($name);
@@ -70,7 +70,7 @@ class theStaffAssignments implements ArrayAccess, Countable, Iterator, Model_Art
      * are assigned - FALSE.
      *
      * @return boolean
-     **/
+     */
     public function hasRole($role) 
     {
         return (bool)count($this->_project()->getStakeholdersByRole($role));
@@ -81,7 +81,7 @@ class theStaffAssignments implements ArrayAccess, Countable, Iterator, Model_Art
      *
      * @return theStakeholder One stakeholder for this role
      * @throws Exception If the role is not found
-     **/
+     */
     public function findRandomStakeholderByRole(theProjectRole $role) 
     {
         $list = $this->_project()->getStakeholdersByRole((string)$role);
@@ -97,7 +97,7 @@ class theStaffAssignments implements ArrayAccess, Countable, Iterator, Model_Art
      *
      * @param theStakeholder The person
      * @return theProjectRole[] List of roles
-     **/
+     */
     public function retrieveRolesByStakeholder(theStakeholder $person) 
     {
         $roles = $this->_project()->getRolesByStakeholder((string)$person);
@@ -111,7 +111,7 @@ class theStaffAssignments implements ArrayAccess, Countable, Iterator, Model_Art
      *
      * @param theProjectRole The role
      * @return theStakeholder[] List of stakeholders
-     **/
+     */
     public function retrieveStakeholdersByRole(theProjectRole $role) 
     {
         $emails = $this->_project()->getStakeholdersByRole((string)$role);
@@ -124,7 +124,7 @@ class theStaffAssignments implements ArrayAccess, Countable, Iterator, Model_Art
      * Create project role object
      *
      * @return theProjectRole
-     **/
+     */
     public function createRole($name) 
     {
         return FaZend_Flyweight::factory('theProjectRole', $this, $name);
@@ -134,7 +134,7 @@ class theStaffAssignments implements ArrayAccess, Countable, Iterator, Model_Art
      * Get stakeholder which is LOGGED IN now
      *
      * @return theStakeholder
-     **/
+     */
     public function getActiveStakeholder() 
     {
         return $this[Model_User::getCurrentUser()->email];
@@ -144,7 +144,7 @@ class theStaffAssignments implements ArrayAccess, Countable, Iterator, Model_Art
      * Get Model_Project object
      *
      * @return Model_Project
-     **/
+     */
     protected function _project() 
     {
         return $this->project->fzProject();
@@ -154,7 +154,7 @@ class theStaffAssignments implements ArrayAccess, Countable, Iterator, Model_Art
     * Iterator interface required method
      *
      * @return void
-     **/
+     */
     public function rewind() 
     {
         return $this->_getStakeholders()->rewind();
@@ -164,7 +164,7 @@ class theStaffAssignments implements ArrayAccess, Countable, Iterator, Model_Art
     * Iterator interface required method
      *
      * @return void
-     **/
+     */
     public function key() 
     {
         return $this->_getStakeholders()->key();
@@ -174,7 +174,7 @@ class theStaffAssignments implements ArrayAccess, Countable, Iterator, Model_Art
     * Iterator interface required method
      *
      * @return void
-     **/
+     */
     public function next() 
     {
         return $this->_getStakeholders()->next();
@@ -184,7 +184,7 @@ class theStaffAssignments implements ArrayAccess, Countable, Iterator, Model_Art
      * Iterator interface required method
      *
      * @return void
-     **/
+     */
     public function valid() 
     {
         return $this->_getStakeholders()->valid();
@@ -194,7 +194,7 @@ class theStaffAssignments implements ArrayAccess, Countable, Iterator, Model_Art
      * Iterator interface required method
      *
      * @return void
-     **/
+     */
     public function current() 
     {
         return $this->_getStakeholders()->current();
@@ -204,7 +204,7 @@ class theStaffAssignments implements ArrayAccess, Countable, Iterator, Model_Art
      * Countable method
      *
      * @return void
-     **/
+     */
     public function count() 
     {
         return $this->_getStakeholders()->count();
@@ -214,7 +214,7 @@ class theStaffAssignments implements ArrayAccess, Countable, Iterator, Model_Art
      * ArrayAccess method
      *
      * @return void
-     **/
+     */
     public function offsetGet($name) 
     {
         validate()->emailAddress($name, array(), "Email is wrong: '{$name}'");
@@ -226,7 +226,7 @@ class theStaffAssignments implements ArrayAccess, Countable, Iterator, Model_Art
      *
      * @return void
      * @throws StaffAssignmentsAreStatic
-     **/
+     */
     public function offsetSet($name, $value) 
     {
         FaZend_Exception::raise(
@@ -240,7 +240,7 @@ class theStaffAssignments implements ArrayAccess, Countable, Iterator, Model_Art
      *
      * @return void
      * @throws StaffAssignmentsAreStatic
-     **/
+     */
     public function offsetUnset($name) 
     {
         FaZend_Exception::raise(
@@ -253,7 +253,7 @@ class theStaffAssignments implements ArrayAccess, Countable, Iterator, Model_Art
      * ArrayAccess method
      *
      * @return void
-     **/
+     */
     public function offsetExists($name) 
     {
         validate()->emailAddress($name, array(), "Email is wrong: '{$name}'");
@@ -264,7 +264,7 @@ class theStaffAssignments implements ArrayAccess, Countable, Iterator, Model_Art
      * Reload list of stakeholders
      *
      * @return ArrayIterator
-     **/
+     */
     protected function _getStakeholders() 
     {
         if (!isset($this->_stakeholders)) {

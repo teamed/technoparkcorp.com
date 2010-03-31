@@ -30,14 +30,14 @@ class theProjectRegistry extends Model_Artifact_Bag implements Model_Artifact_Pa
      * Extra projects to load
      *
      * @var array
-     **/
+     */
     protected static $_extra = array();
     
     /**
      * The registry is loaded already?
      *
      * @return boolean
-     **/
+     */
     protected static $_isFresh = false;
 
     /**
@@ -49,7 +49,7 @@ class theProjectRegistry extends Model_Artifact_Bag implements Model_Artifact_Pa
      * @param string Name of if
      * @param theProject the Project to add
      * @return void
-     **/
+     */
     public static function addExtra($name, theProject $project) 
     {
         self::$_extra[$name] = $project;
@@ -75,16 +75,18 @@ class theProjectRegistry extends Model_Artifact_Bag implements Model_Artifact_Pa
         
         foreach ($fzProjects as $project) {
             // if we DON'T manage this project - skip it
-            if (!$project->isManaged())
+            if (!$project->isManaged()) {
                 continue;
+            }
                 
             // create new instance and add it to registry
             $this->add($project->name, new theProject());
         }
         
         // add extras
-        foreach (self::$_extra as $name=>$project)
+        foreach (self::$_extra as $name=>$project) {
             $this->add($name, $project);
+        }
             
         self::$_isFresh = true;
     }
@@ -106,7 +108,7 @@ class theProjectRegistry extends Model_Artifact_Bag implements Model_Artifact_Pa
      * @param string Name of the project to add
      * @param theProject Project to add
      * @return void
-     **/
+     */
     public function add($name, theProject $project) 
     {
         $this->_attachItem($name, $project);            
@@ -117,7 +119,7 @@ class theProjectRegistry extends Model_Artifact_Bag implements Model_Artifact_Pa
      * Return a list of needed people
      *
      * @return theStaffRequest[]
-     **/
+     */
     public function getStaffRequests() 
     {
         $ini = new Zend_Config_Ini(dirname(__FILE__) . '/ProjectRegistry/wanted.ini', 
@@ -135,8 +137,9 @@ class theProjectRegistry extends Model_Artifact_Bag implements Model_Artifact_Pa
             $request->setProject($project);
             $request->setRole($project->staffAssignments->createRole($person->role));
             
-            foreach ($person->skills as $skill=>$grade)
+            foreach ($person->skills as $skill=>$grade) {
                 $request->addSkill($skill, $grade);
+            }
             
             $requests[$id] = $request;
         }
@@ -148,7 +151,7 @@ class theProjectRegistry extends Model_Artifact_Bag implements Model_Artifact_Pa
      *
      * @param string ID of the request to return
      * @return theStaffRequest
-     **/
+     */
     public function getStaffRequestById($id) 
     {
         $requests = $this->getStaffRequests();

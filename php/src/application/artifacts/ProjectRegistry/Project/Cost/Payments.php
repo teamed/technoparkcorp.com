@@ -41,7 +41,7 @@ class thePayments implements Model_Artifact_Stateless
      * @param string Context, for example name of project
      * @param string Details of the payment
      * @return thePayment
-     **/
+     */
     public function createSpecific($user, $original, $context, $details)
     {
         return thePayment::create($user, null, $original, $context, $details);
@@ -54,7 +54,7 @@ class thePayments implements Model_Artifact_Stateless
      * @param string Context, for example name of project
      * @param string Details of the payment
      * @return thePayment
-     **/
+     */
     public function createGeneric($original, $context, $details)
     {
         return thePayment::create(null, null, $original, $context, $details);

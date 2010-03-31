@@ -32,7 +32,7 @@ class Slice_Plugin_Sum extends Slice_Plugin_Abstract
      * Summarize them
      *
      * @return FaZend_Bo_Money
-     **/
+     */
     public function execute()
     {
         $sum = new FaZend_Bo_Money();

@@ -146,7 +146,7 @@ abstract class Model_Decision implements Model_Decision_Interface
      * Get instance of Model_Decision_History for this decision
      *
      * @return Model_Decision_History
-     **/
+     */
     public function getHistory()
     {
         return Model_Decision_History::findByHash($this->getHash());
