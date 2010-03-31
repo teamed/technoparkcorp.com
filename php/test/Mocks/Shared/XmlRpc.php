@@ -18,7 +18,6 @@ class Mocks_Shared_XmlRpc
 
     public function rqdqlQuery($query, $text = null) 
     {
-        return file_get_contents(dirname(__FILE__) . '/wiki/model.xml');
     }
 
     public function getAllPages() 
