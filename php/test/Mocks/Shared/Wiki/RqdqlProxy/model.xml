@@ -5,6 +5,9 @@
 <scope>
     <raw>raw text, before processing</raw>
     <entities>
+        <object id="ImageFile">
+            <description>some file on the disc</description>
+        </object>
         <object id="ActorUser" type="actor">
             <description>registered user of the system</description>
             <parent>ActorVisitor</parent>
@@ -22,7 +25,7 @@
                 </part>
             </part>
         </object>
-        <fur id="R5.6">
+        <fur id="R1">
             <actor link="//actor[@id='ActorUser']"/>
             <attr id="p7"/>
             <action>
@@ -31,6 +34,16 @@
                         <verb link="infinitive[@id='compressed']" />
                     </predicate>
                 </subject>
+                <verb link="infinitive[@id='list']" />
+            </action>
+            <explanation>
+                textual explanation of this FUR
+            </explanation>
+        </fur>
+        <fur id="R1.2">
+            <actor link="//actor[@id='ActorUser']"/>
+            <action>
+                <subject link="part[@id='photo']/part[@id='file']"/>
                 <verb link="infinitive[@id='list']" />
             </action>
             <explanation>

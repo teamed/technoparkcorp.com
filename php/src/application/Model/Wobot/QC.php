@@ -34,8 +34,9 @@ class Model_Wobot_QC extends Model_Wobot
     public static function getAllNames() 
     {
         $names = array();
-        foreach (Model_Process::retrieveAll() as $process);
+        foreach (Model_Process::retrieveAll() as $process) {
             $names[] = 'QC.' . strval($process);
+        }
         return $names;
     }
 

@@ -19,7 +19,16 @@ class Deliverables_loaders_SrsTest extends AbstractProjectTest
 
     public function testLoadingWorks()
     {
+        $d = $this->_project->deliverables;
+        $d->ps()->cleanArray();
         $this->_loader->load();
+        
+        foreach (array('actors', 'glossary', 'requirements') as $shortcut) {
+            $this->assertTrue(
+                count($d->{$shortcut}) > 0, 
+                "{$shortcut} is empty, why?"
+            );
+        }
     }
 
 }

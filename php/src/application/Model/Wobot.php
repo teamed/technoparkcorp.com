@@ -63,9 +63,11 @@ abstract class Model_Wobot implements Model_Wobot_Interface
                 );
             }
             
+            $names = null; // for ZCA
             eval("\$names = $wobotClass::getAllNames();");
-            foreach ($names as $wobotName)
+            foreach ($names as $wobotName) {
                 self::$_wobots[$wobotName] = self::factory($wobotName);
+            }
         }
         // logg("Wobots found: " . implode(', ', array_keys(self::$_wobots->getArrayCopy())));
             

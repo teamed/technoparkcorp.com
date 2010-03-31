@@ -22,6 +22,7 @@
  * One project
  *
  * @package Model
+ * @see Shared_Project
  */
 class Model_Project extends Shared_Project
 {
@@ -40,6 +41,9 @@ class Model_Project extends Shared_Project
      * We manage anything? If set to FALSE - none of the projects are managed
      *
      * @var boolean
+     * @see isManaged()
+     * @see setWeAreManaging()
+     * @see getWeAreManaging()
      */
     protected static $_weAreManaging = true;
     
@@ -48,6 +52,9 @@ class Model_Project extends Shared_Project
      *
      * @param boolean Shall we?
      * @return void
+     * @see $this->_weAreManaging
+     * @see getWeAreManaging()
+     * @see isManaged()
      */
     public static function setWeAreManaging($weAreManaging = true) 
     {
@@ -58,6 +65,9 @@ class Model_Project extends Shared_Project
      * Shall we manage any projects?
      *
      * @return boolean
+     * @see $this->_weAreManaging
+     * @see setWeAreManaging()
+     * @see isManaged()
      */
     public static function getWeAreManaging() 
     {
@@ -72,35 +82,19 @@ class Model_Project extends Shared_Project
      * of the wobot you can get from Model_Wobot class, getEmail() method
      *
      * @return boolean
+     * @see Model_Wobot_PM::__construct()
      */
     public function isManaged() 
     {
-        if (!self::$_weAreManaging)
+        if (!self::$_weAreManaging) {
             return false;
+        }
         return in_array(
             Model_Wobot_PM::getEmailByProjectName($this->name),
-            $this->getWobots()
+            $this->_getWobots()
         );
     }
 
-
-    /**
-     * Get list of wobots (emails), who have access to the project
-     *
-     * These emails are specified in FaZend platform, or maybe in some other
-     * place, outside of thePanel.
-     *
-     * @return string[]
-     */
-    public function getWobots()
-    {
-        $list = array();
-        foreach ($this->getStakeholders() as $email=>$password) {
-            if (preg_match('/^.*@' . preg_quote(Model_Wobot::EMAIL_DOMAIN, '/') . '$/i', $email))
-                $list[] = strtolower($email);
-        }
-        return $list;
-    }
 
     /**
      * Get list of emails for a given role
@@ -117,6 +111,7 @@ class Model_Project extends Shared_Project
      *
      * @param string Name of the role
      * @return string[]
+     * @see theStaffAssignments
      */
     public function getStakeholdersByRole($role) 
     {
@@ -129,6 +124,7 @@ class Model_Project extends Shared_Project
      *
      * @param string Name of the role
      * @return string[]
+     * @see theStaffAssignments::retrieveRolesByStakeholder()
      */
     public function getRolesByStakeholder($email) 
     {
@@ -169,4 +165,24 @@ class Model_Project extends Shared_Project
         );
     }
     
+    /**
+     * Get list of wobots (emails), who have access to the project
+     *
+     * These emails are specified in FaZend platform, or maybe in some other
+     * place, outside of thePanel.
+     *
+     * @return string[]
+     * @see isManaged()
+     */
+    protected function _getWobots()
+    {
+        $list = array();
+        foreach (array_keys($this->getStakeholders()) as $email) {
+            if (preg_match('/^.*@' . preg_quote(Model_Wobot::EMAIL_DOMAIN, '/') . '$/i', $email)) {
+                $list[] = strtolower($email);
+            }
+        }
+        return $list;
+    }
+
 }

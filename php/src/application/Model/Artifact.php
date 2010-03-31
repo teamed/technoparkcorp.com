@@ -30,6 +30,7 @@ class Model_Artifact extends FaZend_Pos_Abstract implements Model_Artifact_Inter
      * When we ping-ed DB last time
      *
      * @var integer
+     * @see __get()
      */
     protected static $_lastPingTime = null;
 
@@ -37,6 +38,7 @@ class Model_Artifact extends FaZend_Pos_Abstract implements Model_Artifact_Inter
      * Get ROOT of the entire storage
      *
      * @return FaZend_Pos_Abstract
+     * @see Model_Pages::_parse()
      */
     public static function root() 
     {
@@ -48,6 +50,7 @@ class Model_Artifact extends FaZend_Pos_Abstract implements Model_Artifact_Inter
      *
      * @param string Name of property to get
      * @return mixed
+     * @see $this->_lastPingTime
      */
     public function __get($name) 
     {
@@ -80,7 +83,7 @@ class Model_Artifact extends FaZend_Pos_Abstract implements Model_Artifact_Inter
         // don't attach again, if it's already here
         if (!isset($this->$name)) {
             $this->$name = $artifact;
-            logg($this->ps()->path . "->{$name} attached");
+            // logg($this->ps()->path . "->{$name} attached");
         } else {
             // We need this in order to get the POS object, and work with it
             // later. Otherwise, we will have $artifact, which is NOT in POS
@@ -105,11 +108,12 @@ class Model_Artifact extends FaZend_Pos_Abstract implements Model_Artifact_Inter
     {
         if (!isset($this[$key])) {
             // attach as "new" element to the array or as associative value
-            if ($key === false)
+            if ($key === false) {
                 $this[] = $artifact;
-            else
+            } else {
                 $this[$key] = $artifact;
-            logg($this->ps()->path . "[{$key}] attached");
+            }
+            // logg($this->ps()->path . "[{$key}] attached");
         } else {
             // We need this in order to get the POS object, and work with it
             // later. Otherwise, we will have $artifact, which is NOT in POS
@@ -136,10 +140,11 @@ class Model_Artifact extends FaZend_Pos_Abstract implements Model_Artifact_Inter
         $property) 
     {
         if (!is_null($property) && !($artifact instanceof Model_Artifact)) {
-            if (method_exists($artifact, $property))
+            if (method_exists($artifact, $property)) {
                 $artifact->$property($root);
-            else
+            } else {
                 $artifact->$property = $root;
+            }
         }
         return $root;
     }

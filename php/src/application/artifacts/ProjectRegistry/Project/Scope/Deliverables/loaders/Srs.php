@@ -27,6 +27,21 @@ require_once 'artifacts/ProjectRegistry/Project/Scope/Deliverables/loaders/Abstr
  */
 class DeliverablesLoaders_Srs extends DeliverablesLoaders_Abstract
 {
+
+    /**
+     * Collection of XPATH-s and class names
+     *
+     * @var string
+     * @see load()
+     */
+    protected static $_xpaths = array(
+        '//object[@type!="actor" or not(@type)]' => 'Requirements_Object',
+        '//object[@type="actor"]' => 'Requirements_Actor',
+        '//fur' => 'Requirements_Requirement_Functional',
+        '//qos' => 'Requirements_Requirement_Qos',
+        '//interface' => 'Requirements_Interface',
+        '//usecase' => 'Requirements_UseCase',
+    );
     
     /**
      * Load all deliverables
@@ -39,44 +54,55 @@ class DeliverablesLoaders_Srs extends DeliverablesLoaders_Abstract
         $xml = $this->_deliverables->ps()->parent->fzProject()
             ->getAsset(Model_Project::ASSET_SRS)->rqdqlQuery('');
 
-        foreach ($xml->xpath('//') as $actor) {
-            $deliverable = theDeliverables::factory(
-                '',
-                $actor->name
-            );
+        $found = array();
+        foreach (self::$_xpaths as $xpath=>$className) {
+            foreach ($xml->xpath($xpath) as $entity) {
+                $deliverable = theDeliverables::factory(
+                    $className,
+                    strval($entity->attributes()->id)
+                );
+                $found[] = $deliverable->name;
             
-            $deliverable->attributes['description']->add($actor->description);
+                $deliverable->attributes['description']->add(
+                    strval($entity->description)
+                );
 
-            foreach (array_filter($entity->attributes) as $attrib=>$value) {
-                switch (true) {
-                    case $attrib == 'out':
-                        $deliverable->attributes['out']->add(true);
-                        break;
+                foreach ($entity->xpath('//attr') as $attrib) {
+                    $id = strval($attrib->attributes()->id);
+                    switch (true) {
+                        case ($id == 'out'):
+                            $deliverable->attributes['out']->add(true);
+                            break;
 
-                    case $attrib == 'must':
-                        $deliverable->attributes['priority']->add(9);
-                        break;
+                        case ($id == 'must'):
+                            $deliverable->attributes['priority']->add(9);
+                            break;
 
-                    case preg_match('/^p(\d+)$/i', $attrib, $matches):
-                        $deliverable->attributes['priority']->add(intval($matches[1]));
-                        break;
+                        case preg_match('/^p(\d+)$/i', $id, $matches):
+                            $deliverable->attributes['priority']->add(intval($matches[1]));
+                            break;
 
-                    case preg_match('/^c(\d+)$/i', $attrib, $matches):
-                        $deliverable->attributes['complexity']->add(intval($matches[1]));
-                        break;
+                        case preg_match('/^c(\d+)$/i', $id, $matches):
+                            $deliverable->attributes['complexity']->add(intval($matches[1]));
+                            break;
 
-                    default:
-                        // ignore it...
+                        default:
+                            // ignore it...
+                    }
                 }
-            }
 
-            $this->_deliverables->add($deliverable);
+                $this->_deliverables->add($deliverable);
+            }
         }
         
         // update priorities of all functional requirements
         $this->_updatePriorities();
         
-        logg('SRS loading finished, %d deliverables found', count($entities));
+        logg(
+            'SRS loading finished, %d deliverables found: %s',
+            count($found),
+            implode(', ', $found)
+        );
     }
     
     /**

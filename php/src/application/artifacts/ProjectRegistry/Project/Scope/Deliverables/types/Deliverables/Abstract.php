@@ -50,6 +50,7 @@ abstract class Deliverables_Abstract
      */
     public function __construct($name)
     {
+        validate()->false(empty($name), "Deliverable name can't be empty in " . get_class($this));
         $this->_name = $name;
         $this->_attributes = new theDeliverableAttributes();
     }

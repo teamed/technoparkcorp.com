@@ -63,7 +63,7 @@ class Model_Wobot_PM extends Model_Wobot
         } catch (Shared_Project_NotFoundException $e) {
             FaZend_Exception::raise(
                 'Model_Wobot_PM_ProjectMissed', 
-                "Project '{$context}' is absent, can't initialize PM wobot"
+                "Project '{$context}' is absent, can't initialize PM wobot: {$e->getMessage()}"
             );
         }
 

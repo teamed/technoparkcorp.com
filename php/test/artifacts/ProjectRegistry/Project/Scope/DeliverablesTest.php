@@ -17,7 +17,10 @@ class DeliverablesTest extends AbstractProjectTest
 
     public function testReloadingOfDeliverablesWorks()
     {
-        $this->assertTrue(count($this->_deliverables) > 0, 'empty list of deliverables, why?');
+        $this->assertTrue(
+            count($this->_deliverables) > 0, 
+            'empty list of deliverables, why?'
+        );
     }
 
     public function testDeliverablesAreAccessedByShortcuts()

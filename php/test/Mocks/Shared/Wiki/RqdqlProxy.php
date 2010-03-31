@@ -8,7 +8,7 @@ class Mocks_Shared_Wiki_RqdqlProxy
 
     public function query($query) 
     {
-        return file_get_contents(dirname(__FILE__) . 'RqdqlProxy/model.xml');
+        return simplexml_load_file(dirname(__FILE__) . '/RqdqlProxy/model.xml');
     }
 
 }

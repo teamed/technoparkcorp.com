@@ -122,8 +122,10 @@ class theProjectRegistry extends Model_Artifact_Bag implements Model_Artifact_Pa
      */
     public function getStaffRequests() 
     {
-        $ini = new Zend_Config_Ini(dirname(__FILE__) . '/ProjectRegistry/wanted.ini', 
-            APPLICATION_ENV);
+        $ini = new Zend_Config_Ini(
+            dirname(__FILE__) . '/ProjectRegistry/wanted.ini', 
+            APPLICATION_ENV
+        );
         $requests = new ArrayIterator();
         foreach ($ini as $id=>$person) {
             $request = new theStaffRequest($id);
