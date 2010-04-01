@@ -26,6 +26,7 @@
  * has enough information about suppliers.
  *
  * @package wobots
+ * @see Model_Decision::factory()
  */
 class ReloadSupplierRegistry extends Model_Decision
 {
@@ -34,6 +35,7 @@ class ReloadSupplierRegistry extends Model_Decision
      * Reload it
      *
      * @return string|false
+     * @see Model_Decision::make()
      */
     protected function _make()
     {

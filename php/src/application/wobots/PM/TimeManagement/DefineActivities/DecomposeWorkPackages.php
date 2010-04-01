@@ -22,6 +22,7 @@
  * Decompose work packages
  *
  * @package wobots
+ * @see Model_Decision::factory()
  */
 class DecomposeWorkPackages extends Model_Decision_PM
 {
@@ -31,6 +32,7 @@ class DecomposeWorkPackages extends Model_Decision_PM
      *
      * @return string|false
      * @throws FaZend_Validator_Failure If something happens 
+     * @see Model_Decision::make()
      */
     protected function _make()
     {

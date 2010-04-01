@@ -27,6 +27,7 @@
  * and initiate a payment in the booking system.
  *
  * @package wobots
+ * @see Model_Decision::factory()
  */
 class PayClosedOrders extends Model_Decision_PM
 {
@@ -36,6 +37,7 @@ class PayClosedOrders extends Model_Decision_PM
      *
      * @return string|false
      * @throws Exception If something happens 
+     * @see Model_Decision::make()
      */
     protected function _make() 
     {

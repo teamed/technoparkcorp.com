@@ -22,6 +22,7 @@
  * Determine dependencies amongst activities
  *
  * @package wobots
+ * @see Model_Decision::factory()
  */
 class DetermineDependencies extends Model_Decision_PM
 {
@@ -30,7 +31,7 @@ class DetermineDependencies extends Model_Decision_PM
      * Determine dependencies
      *
      * @return string|false
-     * @throws FaZend_Validator_Failure If something happens 
+     * @see Model_Decision::make()
      */
     protected function _make()
     {

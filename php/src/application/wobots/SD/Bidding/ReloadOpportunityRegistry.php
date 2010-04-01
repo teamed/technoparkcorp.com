@@ -22,6 +22,7 @@
  * Reload opportunity registry
  *
  * @package wobots
+ * @see Model_Decision::factory()
  */
 class ReloadOpportunityRegistry extends Model_Decision
 {
@@ -30,6 +31,7 @@ class ReloadOpportunityRegistry extends Model_Decision
      * Reload it
      *
      * @return string|false
+     * @see Model_Decision::make()
      */
     protected function _make()
     {

@@ -22,6 +22,7 @@
  * Request estimate of an activity
  *
  * @package wobots
+ * @see Model_Decision::factory()
  */
 class RequestEstimate extends Model_Decision_PM
 {
@@ -31,6 +32,7 @@ class RequestEstimate extends Model_Decision_PM
      *
      * @return string|false
      * @throws FaZend_Validator_Failure If something happens 
+     * @see Model_Decision::make()
      */
     protected function _make() 
     {

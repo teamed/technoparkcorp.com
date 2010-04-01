@@ -27,6 +27,7 @@
  * tickets will be assigned to project PM.
  *
  * @package wobots
+ * @see Model_Decision::factory()
  */
 class RescueAbandonedTickets extends Model_Decision_PM
 {
@@ -35,6 +36,7 @@ class RescueAbandonedTickets extends Model_Decision_PM
      * Find and rescue
      *
      * @return string|false
+     * @see Model_Decision::make()
      */
     protected function _make()
     {

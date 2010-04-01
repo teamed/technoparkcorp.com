@@ -26,6 +26,7 @@
  * reload them all.
  *
  * @package wobots
+ * @see Model_Decision::factory()
  */
 class ReloadProjectArtifacts extends Model_Decision_PM
 {
@@ -36,6 +37,7 @@ class ReloadProjectArtifacts extends Model_Decision_PM
      * Reload the oldest one
      *
      * @return string|false
+     * @see Model_Decision::make()
      */
     protected function _make()
     {
