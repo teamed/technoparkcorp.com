@@ -146,6 +146,7 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
     public function setSnapshot(array $lines)
     {
         // ignore...
+        assert(is_array($lines));
     }
     
     /**
@@ -172,6 +173,7 @@ class theDeliverables extends Model_Artifact_Bag implements Model_Artifact_Passi
             return Deliverables_Plugin_Abstract::factory($name, $this);
         } catch (Deliverables_Plugin_InvalidPluginException $e) {
             // ignore it
+            assert($e instanceof Exception);
         }
         
         return $this->_getByTypes($name);

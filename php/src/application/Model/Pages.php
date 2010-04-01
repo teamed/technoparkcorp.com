@@ -258,8 +258,9 @@ class Model_Pages extends Zend_Navigation
         }
 
         // get default user email
-        if (is_null($email))
+        if (is_null($email)) {
             $email = Model_User::me()->email;
+        }
 
         // recursively check parent
         // DELETE IT!

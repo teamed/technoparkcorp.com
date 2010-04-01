@@ -46,7 +46,7 @@ class Model_Asset_Defects_Issue_Trac extends Model_Asset_Defects_Issue_Abstract
     {
         foreach ($this->changelog->get('comment')->getChanges() as $change) {
             // not from me
-            if ($change->author != Model_User::getCurrentUser()->email)
+            if ($change->author != Model_User::me()->email)
                 continue;
                 
             // not with a code

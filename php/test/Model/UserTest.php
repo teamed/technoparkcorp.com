@@ -14,7 +14,7 @@ class Model_UserTest extends AbstractTest
     {
         parent::setUp();
         $this->assertTrue(Model_User::isLoggedIn());
-        $this->_was = Model_User::getCurrentUser();
+        $this->_was = Model_User::me();
         $this->assertTrue($this->_was instanceof Model_User);
     }
 
@@ -22,7 +22,7 @@ class Model_UserTest extends AbstractTest
     {
         Model_User::logIn(self::EMAIL);
         $this->assertTrue(Model_User::isLoggedIn());
-        $this->assertEquals(self::EMAIL, Model_User::getCurrentUser()->email);
+        $this->assertEquals(self::EMAIL, Model_User::me()->email);
         Model_User::logOut();
         $this->assertFalse(Model_User::isLoggedIn());
     }

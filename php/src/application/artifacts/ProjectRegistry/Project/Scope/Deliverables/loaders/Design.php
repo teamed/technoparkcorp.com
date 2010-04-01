@@ -77,6 +77,7 @@ class DeliverablesLoaders_Design extends DeliverablesLoaders_Abstract
                     );
                 } catch (TraceabilityLink_ReversedLinkException $e) {
                     // ignore it...
+                    assert($e instanceof Exception);
                 }
             }
         }

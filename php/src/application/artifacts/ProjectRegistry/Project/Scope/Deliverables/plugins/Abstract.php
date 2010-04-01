@@ -90,7 +90,7 @@ abstract class Deliverables_Plugin_Abstract extends FilterIterator implements Co
      */
     protected function _init(theDeliverables $iterator) 
     {
-        // ...
+        assert($iterator instanceof theDeliverables); // for ZCA only
     }
         
 }

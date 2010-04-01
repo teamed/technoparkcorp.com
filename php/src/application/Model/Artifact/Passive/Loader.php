@@ -83,7 +83,7 @@ class Model_Artifact_Passive_Loader
      */
     public function isLoaded() 
     {
-        foreach ($this->_toAttach as $name=>$attach) {
+        foreach (array_keys($this->_toAttach) as $name) {
             if (!isset($this->_class->{$name}))
                 return false;
         }
@@ -102,7 +102,8 @@ class Model_Artifact_Passive_Loader
         
         if (!class_exists($mediator, false)) {
             eval(
-                "class {$mediator} extends {$className}
+                "
+                class {$mediator} extends {$className}
                 {
                     public static function load_{$mediator}(\$class)
                     {
@@ -110,16 +111,22 @@ class Model_Artifact_Passive_Loader
                         array_shift(\$args);
                         call_user_func_array(array(\$class, '_attach'), \$args);
                     }
-                }"
+                }
+                "
             );
         }
             
         foreach ($this->_toAttach as $name=>$attach) {
+            assert(array_key_exists('property', $attach)); // for ZCA
             eval(
-                "{$mediator}::load_{$mediator}(\$this->_class, 
-                '{$name}', 
-                \$attach['artifact'], 
-                \$attach['property']);"
+                "
+                {$mediator}::load_{$mediator}(
+                    \$this->_class, 
+                    '{$name}', 
+                    \$attach['artifact'], 
+                    \$attach['property']
+                );
+                "
             );
         }
         

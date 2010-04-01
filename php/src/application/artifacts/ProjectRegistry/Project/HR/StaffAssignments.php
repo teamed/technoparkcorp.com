@@ -137,7 +137,7 @@ class theStaffAssignments implements ArrayAccess, Countable, Iterator, Model_Art
      */
     public function getActiveStakeholder() 
     {
-        return $this[Model_User::getCurrentUser()->email];
+        return $this[Model_User::me()->email];
     }
     
     /**

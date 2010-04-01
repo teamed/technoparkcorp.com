@@ -37,6 +37,7 @@ class StaticController extends FaZend_Controller_Action
             // try to create an article with the give PAGE address
             $article = $this->view->article = Model_Article::createByLabel($this->_getParam('page'));
         } catch (Model_Article_NotFound $e) {
+            assert($e instanceof Exception); // for ZCA only
             return $this->_redirect('system/404');
         }    
 

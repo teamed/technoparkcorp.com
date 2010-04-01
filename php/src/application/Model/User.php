@@ -22,6 +22,7 @@
  * One user
  *
  * @package Model
+ * @see PanelController
  */
 class Model_User
 {
@@ -30,6 +31,8 @@ class Model_User
      * Session namespace
      *
      * @var Zend_Session_Namespace
+     * @see setSession()
+     * @see _session()
      */
     protected static $_session = null;
 
@@ -37,6 +40,7 @@ class Model_User
      * The email of the user
      *
      * @var string
+     * @see __construct()
      */
     protected $_email;
     
@@ -45,6 +49,7 @@ class Model_User
      *
      * @param mixed Session to use
      * @return void
+     * @see Injector::_injectTesterIsLoggedIn()
      */
     public static function setSession($session) 
     {
@@ -55,6 +60,7 @@ class Model_User
      * Construct the object
      *
      * @return void
+     * @see getCurrentUser()
      */
     public function __construct($email) 
     {
@@ -62,23 +68,32 @@ class Model_User
     }
 
     /**
-     * Returns current user (email)
+     * Is it logged in?
+     *
+     * @return boolean
+     * @see PanelController::preDispatch()
+     */
+    public static function isLoggedIn() 
+    {
+        try {
+            self::me();
+        } catch (FaZend_User_NotLoggedIn $e) {
+            assert($e instanceof Exception); // for ZCA only
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Returns current user (instance of class)
      *
      * @return Model_User
      * @throws FaZend_User_NotLoggedIn
+     * @see Helper_Publish::_render()
+     * @see panel.phtml
+     * @see Model_Pages::isAllowed()
      */
     public static function me() 
-    {
-        return self::getCurrentUser();
-    }
-    
-    /**
-     * Returns current user
-     *
-     * @return Model_User
-     * @throws FaZend_User_NotLoggedIn
-     */
-    public static function getCurrentUser() 
     {
         $email = self::_session()->email;
         if (!$email) {
@@ -87,15 +102,16 @@ class Model_User
                 'User is not logged in'
             );
         }
-        return FaZend_Flyweight::factory('Model_User', $email);    
+        return FaZend_Flyweight::factory(__CLASS__, $email);    
     }
-
+    
     /**
      * Set current user
      *
      * @param string Email of the user
      * @return void
      * @throws Exception
+     * @see PanelController::preDispatch()
      */
     public static function logIn($email) 
     {
@@ -134,26 +150,12 @@ class Model_User
     }
 
     /**
-     * Is it logged in?
-     *
-     * @return boolean
-     */
-    public static function isLoggedIn() 
-    {
-        try {
-            self::getCurrentUser();
-        } catch (FaZend_User_NotLoggedIn $e) {
-            return false;
-        }
-        return true;
-    }
-
-    /**
      * Getter dispatcher
      *
      * @param string Name of the variable
      * @return string
      * @throws Model_User_InvalidPropertyException
+     * @see Model_User
      */
     public function __get($name) 
     {
@@ -170,6 +172,9 @@ class Model_User
      * Create and return session
      *
      * @return Zend_Session_Namespace
+     * @see me()
+     * @see logIn()
+     * @see logOut()
      */
     protected static function _session() 
     {

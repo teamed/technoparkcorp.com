@@ -84,7 +84,12 @@ class Helper_Shortcut extends FaZend_View_Helper
      */
     public function _render()
     {
-        return Model_Shortcut::create($document, $this->_emails, $this->_params, $this->_uniqueAccess)
+        return Model_Shortcut::create(
+            $this->_document, 
+            $this->_emails, 
+            $this->_params, 
+            $this->_uniqueAccess
+        )
             ->getUrl();
     }
     

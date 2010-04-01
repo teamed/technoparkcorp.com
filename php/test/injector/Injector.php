@@ -90,7 +90,7 @@ class Injector extends FaZend_Test_Injector
             $acl = Model_Pages::getInstance()->getAcl();
         
             // add this role to ACL
-            $email = Model_User::getCurrentUser()->email;
+            $email = Model_User::me()->email;
             if (!$acl->hasRole($email)) {
                 $acl->addRole($email);
             }

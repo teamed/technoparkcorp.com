@@ -59,6 +59,7 @@ class theWpAggregator extends theWorkPackage
     public function split(theActivities $list)
     {
         // don't split anything
+        assert($list instanceof theActivities); // for ZCA only
     }
     
     /**

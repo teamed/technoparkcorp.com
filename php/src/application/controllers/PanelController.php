@@ -134,8 +134,9 @@ class PanelController extends FaZend_Controller_Action
 
         if ($current) {
             foreach ($current->parent->getPages() as $page) {
-                if (!$this->_pages->isAllowed($page->resource))
+                if (!$this->_pages->isAllowed($page->resource)) {
                     continue;
+                }
                 $list[$page->title] = $page->label;
             }
         }
@@ -164,11 +165,14 @@ class PanelController extends FaZend_Controller_Action
         try {
             $shortcut = Model_Shortcut::findByHash($this->_getParam('doc'));
         } catch (Model_Shortcut_NotFoundException $e) {
-            return $this->_restrict(_t('The link you are using is not valid any more'));
+            return $this->_restrict(
+                _t('The link you are using is not valid any more') . 
+                ' (' . $e->getMessage() . ')'
+            );
         }
 
         // access control
-        if (!in_array(Model_User::getCurrentUser()->email, $shortcut->getEmails())) {
+        if (!in_array(Model_User::me()->email, $shortcut->getEmails())) {
             return $this->_restrict(
                 _t(
                     'Sorry, this document "%s" is not shared with you, but only with %s',
@@ -179,7 +183,7 @@ class PanelController extends FaZend_Controller_Action
         }
         
         // build document and show it
-        $this->_buildDocument($shortcut->document, $shortcuts->getParams());
+        $this->_buildDocument($shortcut->document, $shortcut->getParams());
     }
 
     /**

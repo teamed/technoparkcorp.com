@@ -130,6 +130,7 @@ abstract class DeliverablesLoaders_Abstract
                     self::$_waiting[$name] = false;
                 } catch (RequiresLoaderLoading $e) {
                     // ignore it and go back again
+                    assert($e instanceof Exception);
                 }
             }
         }

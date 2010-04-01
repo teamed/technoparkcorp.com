@@ -64,7 +64,7 @@ class theWbs extends Model_Artifact_Bag implements Model_Artifact_Passive
         if (is_null($wp)) {
             FaZend_Exception::raise(
                 'Wbs_WorkPackageAbsentException', 
-                "Metric '{$name}' does not have a work package in " . get_class($metric) . "::getWorkPackage()"
+                "Metric '{$name}' does not have a work package in " . get_class($this) . "::getWorkPackage()"
             );
         }
         return $wp;
@@ -159,6 +159,7 @@ class theWbs extends Model_Artifact_Bag implements Model_Artifact_Passive
             return $wp;
         } catch (WorkPackageNotFound $e) {
             // just go forward
+            assert($e instanceof Exception); // for ZCA only
         }
 
         if (strpos($code, theMetrics::SEPARATOR) === false) {

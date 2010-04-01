@@ -19,5 +19,5 @@
 <?=$this->bar()
     ->setStyle('stairs')
     ->addLink('Payments', 'List of payments made')
-    ->addLink('Statement/' . Model_User::getCurrentUser()->email, 'My statement (' . Model_User::getCurrentUser()->email . ')')
+    ->addLink('Statement/' . Model_User::me()->email, 'My statement (' . Model_User::me()->email . ')')
     ?>
