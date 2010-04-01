@@ -95,7 +95,10 @@ class theStatement extends Zend_Db_Table_Row implements ArrayAccess, Iterator, C
             
         FaZend_Email::create()
             ->set('body', $this->asText)
-            ->set('subject', 'TechnoPark Corp. is ready to pay ' . $this->balance)
+            ->set(
+                'subject', 
+                'TechnoPark Corp. is ready to pay ' . $this->balance . ' to ' . $this->supplier
+            )
             ->set('toEmail', $this->supplier)
             ->set('toName', $this->supplier)
             ->set('fromEmail', 'finance@tpc2.com')
