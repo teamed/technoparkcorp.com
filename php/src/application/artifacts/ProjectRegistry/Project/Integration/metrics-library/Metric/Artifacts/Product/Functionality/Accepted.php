@@ -22,6 +22,7 @@
  * Percentage of functionality accepted by end-users (and other stakeholders)
  *
  * @package Artifacts
+ * @see Metric_Artifacts_Product_Functionality_Implemented
  */
 class Metric_Artifacts_Product_Functionality_Accepted extends Metric_Abstract
 {
@@ -30,7 +31,9 @@ class Metric_Artifacts_Product_Functionality_Accepted extends Metric_Abstract
      * How big percentage of functional requirements is accepted
      *
      * Value of the metric is the percentage of functional requirements already
-     * accepted by end-users.
+     * accepted by end-users. This is a relation between currently accepted
+     * requirements and total number of requirements we're expecting to see
+     * in the SRS.
      *
      * @return void
      * @see theMetrics::_attachMetric()
@@ -39,7 +42,8 @@ class Metric_Artifacts_Product_Functionality_Accepted extends Metric_Abstract
     {
         $this->value = $this->_percentage(
             $this->_project->deliverables->functional,
-            'isAccepted'
+            'isAccepted',
+            $this->_project->metrics['artifacts/requirements/functional/accepted']->objective            
         );
         $this->default = 1; // all of them should be accepted
     }
@@ -48,20 +52,21 @@ class Metric_Artifacts_Product_Functionality_Accepted extends Metric_Abstract
      * Get work package
      *
      * Work package derived here is about a work to be done
-     * in order to implement all functional requiremnts which are not
-     * implemented yet.
+     * in order to accept all functional requiremnts which are not
+     * accepted yet.
      *
      * @param string[] Names of metrics, to consider after this one
      * @return theWorkPackage|null
      * @todo here we don't take into account the fact that some
-     *      functional requirements WERE implemented before and we
+     *      functional requirements WERE accepted before and we
      *      should spend less time for them than for requirements that
-     *      are going to be implemented for the first time
+     *      are going to be accepted for the first time
      */
     protected function _derive(array &$metrics = array())
     {
         // this is how many requirements we should implement
-        $toAccept = $this->delta * count($this->_project->deliverables->functional);
+        $toAccept = $this->delta
+            * $this->_project->metrics['artifacts/requirements/functional/accepted']->objective;
         if ($toAccept <= 0) {
             return null;
         }
@@ -72,10 +77,10 @@ class Metric_Artifacts_Product_Functionality_Accepted extends Metric_Abstract
         );
 
         return $this->_makeWp(
-            $price->mul($toImplement), 
+            $price->mul($toAccept), 
             sprintf(
-                'to implement +%d functional requirements',
-                $toImplement
+                'to accept +%d functional requirements',
+                $toAccept
             )
         );
     }

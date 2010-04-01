@@ -89,6 +89,7 @@ class theStatements implements ArrayAccess, Iterator, Countable, Model_Artifact_
             $this->offsetGet($email);
             return true;
         } catch (Exception $e) {
+            assert($e instanceof Exception); // for ZCA only
             return false;
         }
     }
@@ -117,7 +118,7 @@ class theStatements implements ArrayAccess, Iterator, Countable, Model_Artifact_
     {
         FaZend_Exception::raise(
             'StatementsException', 
-            "Statements are not editable directly"
+            "Statements are not editable directly: '{$email}'/'{$value}'"
         );
     }
 
@@ -132,7 +133,7 @@ class theStatements implements ArrayAccess, Iterator, Countable, Model_Artifact_
     {
         FaZend_Exception::raise(
             'StatementsException', 
-            "Statements are not editable directly"
+            "Statements are not editable directly: '{$email}'"
         );
     }
 

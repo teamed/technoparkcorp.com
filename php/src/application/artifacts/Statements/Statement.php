@@ -213,7 +213,7 @@ class theStatement extends Zend_Db_Table_Row implements ArrayAccess, Iterator, C
     {
         FaZend_Exception::raise(
             'StatementException', 
-            "Statements are not editable directly"
+            "Statements are not editable directly: '{$email}'/'{$value}'"
         );
     }
 
@@ -228,7 +228,7 @@ class theStatement extends Zend_Db_Table_Row implements ArrayAccess, Iterator, C
     {
         FaZend_Exception::raise(
             'StatementException', 
-            "Statements are not editable directly"
+            "Statements are not editable directly: '{$email}'"
         );
     }
 

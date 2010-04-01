@@ -81,7 +81,7 @@ class Metric_Artifacts_Product_Functionality_Implemented extends Metric_Abstract
     {
         // this is how many requirements we should implement
         $toImplement = $this->delta 
-        * $this->_project->metrics['artifacts/requirements/functional/accepted']->objective;
+            * $this->_project->metrics['artifacts/requirements/functional/accepted']->objective;
         if ($toImplement <= 0) {
             return null;
         }

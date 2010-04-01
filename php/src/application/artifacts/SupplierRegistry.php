@@ -75,7 +75,7 @@ class theSupplierRegistry extends Model_Artifact_Bag
             FaZend_Log::getInstance()->addWriter('Memory', 'staffResponse');
 
             $qualities = array();
-            foreach ($request->skills as $skill=>$grade) {
+            foreach (array_keys($request->skills) as $skill) {
                 if (!$supplier->hasSkill($skill)) {
                     logg("Skill '{$skill}' is absent");
                     $qualities[] = 0;
@@ -186,7 +186,7 @@ class theSupplierRegistry extends Model_Artifact_Bag
     {
         FaZend_Exception::raise(
             'SupplierRegistryException', 
-            "Suppliers are not editable directly"
+            "Suppliers are not editable directly: '{$email}'/'{$value}'"
         );
     }
 
@@ -202,7 +202,7 @@ class theSupplierRegistry extends Model_Artifact_Bag
     {
         FaZend_Exception::raise(
             'SupplierRegistryException', 
-            "Suppliers are not editable directly"
+            "Suppliers are not editable directly: '{$email}'"
         );
     }
 
