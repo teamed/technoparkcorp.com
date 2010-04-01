@@ -128,7 +128,7 @@ class theStatement extends Zend_Db_Table_Row implements ArrayAccess, Iterator, C
                 "%10s: %12s   %s\n",
                 FaZend_Date::make($payment->created)->get(Zend_Date::DATE_SHORT), 
                 $payment->amount,
-                ($payment->reason ? "[{$payment->context}/{$payment->reason}] " : false) .
+                ($payment->context ? "[{$payment->context}/{$payment->reason}] " : false) .
                 $payment->details
             );
         }
