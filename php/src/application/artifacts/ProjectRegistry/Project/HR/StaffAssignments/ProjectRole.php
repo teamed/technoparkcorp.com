@@ -51,7 +51,7 @@ class theProjectRole implements Model_Artifact_Stateless
     {
         validate()->regex($title, '/^[\sa-zA-Z]+$/');
         $this->_staffAssignments = $staffAssignments;
-        $this->_title = $title;
+        $this->_title = strtolower($title);
     }
 
     /**

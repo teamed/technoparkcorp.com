@@ -97,12 +97,14 @@ class theStaffAssignments implements ArrayAccess, Countable, Iterator, Model_Art
      *
      * @param theStakeholder The person
      * @return theProjectRole[] List of roles
+     * @see theStakeholder::hasRole()
      */
     public function retrieveRolesByStakeholder(theStakeholder $person) 
     {
         $roles = $this->_project()->getRolesByStakeholder((string)$person);
-        foreach ($roles as &$role)
+        foreach ($roles as &$role) {
             $role = $this->createRole($role);
+        }
         return $roles;
     }
     
@@ -115,8 +117,9 @@ class theStaffAssignments implements ArrayAccess, Countable, Iterator, Model_Art
     public function retrieveStakeholdersByRole(theProjectRole $role) 
     {
         $emails = $this->_project()->getStakeholdersByRole((string)$role);
-        foreach ($emails as &$email)
+        foreach ($emails as &$email) {
             $email = $this[$email];
+        }
         return $emails;
     }
     

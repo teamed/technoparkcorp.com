@@ -90,6 +90,12 @@ class theStakeholder implements Model_Artifact_Stateless
     /**
      * This stakeholder has this role?
      *
+     * You should use it like this:
+     *
+     * <code>
+     * $user->hasRole($project->staffAssignment->createRole('architect'));
+     * </code>
+     *
      * @param theProjectRole Role to find
      * @return boolean
      */
@@ -97,8 +103,9 @@ class theStakeholder implements Model_Artifact_Stateless
     {
         $roles = $this->_staffAssignments->retrieveRolesByStakeholder($this);
         foreach ($roles as $myRole) {
-            if ($myRole === $role)
+            if ($myRole === $role) {
                 return true;
+            }
         }
         return false;
     }

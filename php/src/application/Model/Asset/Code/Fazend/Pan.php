@@ -19,10 +19,52 @@
  */
 
 /**
- * Interface to "Pan" code analyzer, at Fazend.com platform
+ * Interface to "Pan" in LINUX.FAZEND.COM
  *
  * @package Model
  */
 class Model_Asset_Code_Fazend_Pan extends Model_Asset_Code_Abstract
 {
+    
+    /**
+     * Shared_Pan connector
+     *
+     * @var Shared_Pan
+     * @see _init()
+     */
+    protected $_pan;
+    
+    /**
+     * Reintegrate
+     *
+     * @param string Script unique name
+     * @param string Bash script
+     * @return mixed
+     * @throws Model_Asset_Design_Fazend_Pan_SoapFailure
+     * @see ReintegrateBranches
+     */
+    public function reintegrate($key, $script) 
+    {
+        try {
+            return $this->_pan->reintegrate($key, $script);
+        } catch (Shared_Pan_SoapFailure $e) {
+            FaZend_Exception::raise(
+                'Model_Asset_Design_Fazend_Pan_SoapFailure',
+                $e->getMessage()
+            );
+        }
+        return false;
+    }
+    
+    /**
+     * Initializer
+     *
+     * @return void
+     */
+    protected function _init() 
+    {
+        $this->_pan = new Shared_Pan($this->_project);
+    }
+
+    
 }
