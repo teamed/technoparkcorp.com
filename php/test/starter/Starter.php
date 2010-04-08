@@ -10,7 +10,8 @@ class Starter extends FaZend_Test_Starter
 
     protected function _startDatabase() 
     {
-        $this->_dropDatabase();
+        // $this->_bootstrap('fz_deployer');
+        // $this->_dropDatabase();
     }
         
 }

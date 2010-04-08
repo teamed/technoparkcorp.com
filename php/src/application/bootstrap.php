@@ -47,6 +47,8 @@ class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap
      */
     protected function _initOrmMapping() 
     {
+        // do it after fazend only
+        $this->bootstrap('fz_orm');
         $converters = array(
             'dates' => array(
                 'regexs' => array(
@@ -92,7 +94,7 @@ class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap
      */
     protected function _initTexry() 
     {        
-        Model_Texry::addTemplateDir(APPLICATION_PATH . '/tikz');
+        Model_Texry::addTemplateDir(APPLICATION_PATH . '/views/tikz');
     }
     
     /**
@@ -156,7 +158,7 @@ class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap
     protected function _initGlobalLogger() 
     {
         // do it after fazend only
-        $this->bootstrap('Fazend');
+        $this->bootstrap('fz_logger');
         
         // filter out all INFO messages
         if (APPLICATION_ENV === 'production') {
@@ -174,7 +176,7 @@ class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap
      */
     protected function _initSessionInDatabase() 
     {
-        $this->bootstrap('Db');
+        $this->bootstrap('db');
         Zend_Session::setSaveHandler(
             new Zend_Session_SaveHandler_DbTable(
                 array(

@@ -65,6 +65,9 @@ class Injector extends FaZend_Test_Injector
 
     protected function _injectTesterIsLoggedIn() 
     {
+        // do it after fazend only
+        $this->_bootstrap('fz_orm');
+        $this->_bootstrap('fz_deployer');
         // in testing environment you do EVERYTHING under this role
         // in order to avoid conflicts with real documents in
         // real environment (fazend for example)
@@ -76,6 +79,9 @@ class Injector extends FaZend_Test_Injector
 
     protected function _injectTestProject() 
     {
+        // do it after fazend only
+        $this->_bootstrap('fz_orm');
+        $this->_bootstrap('fz_deployer');
         // disable any activities with any LIVE projects
         Model_Project::setWeAreManaging(false);
 
@@ -85,6 +91,11 @@ class Injector extends FaZend_Test_Injector
 
     protected function _injectAccessRights() 
     {
+        // do it after fazend only
+        $this->_bootstrap('fz_orm');
+        $this->_bootstrap('fz_deployer');
+        $this->_bootstrap('fz_view');
+        $this->_bootstrap('fz_routes');
         if (Model_User::isLoggedIn()) {
             // initialize ACL
             $acl = Model_Pages::getInstance()->getAcl();
