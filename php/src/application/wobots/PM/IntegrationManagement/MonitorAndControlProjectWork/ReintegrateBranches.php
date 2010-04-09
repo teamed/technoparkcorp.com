@@ -44,6 +44,7 @@ class ReintegrateBranches extends Model_Decision_PM
             return 'No architect in the project';
         }
 
+        // full list of tickets used in reintegration process
         $reintegrated = array();
         logg('Found %d tickets totally', count($this->_project->issues));
         foreach ($this->_project->issues as $issue) {
