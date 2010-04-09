@@ -61,8 +61,6 @@ class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap
      */
     protected function _initAutoLoaders() 
     {
-        $this->bootstrap('fz_injector');
-        $this->bootstrap('fz_deployer');
         $autoloader = Zend_Loader_Autoloader::getInstance();
         $autoloader->pushAutoloader(new Model_Loader_Artifacts(), 'the');
         
@@ -79,8 +77,6 @@ class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap
      */
     protected function _initPos() 
     {
-        $this->bootstrap('fz_injector');
-        $this->bootstrap('fz_deployer');
         // make sure all artifacts are attached to OUR root
         FaZend_Pos_Properties::setRootClass('Model_Artifact_Root');
     }
