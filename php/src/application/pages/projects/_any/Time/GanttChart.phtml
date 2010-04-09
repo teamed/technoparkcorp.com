@@ -21,7 +21,7 @@
 <h1>Gantt Chart</h1>
 
 <? $finish = $this->project->schedule->finish->setWeekday(7) ?>
-<? $start = new Zend_Date::now()
+<? $start = Zend_Date::now()
     ->setHour(0)
     ->setMinute(0) ?>
 <? $increment = Zend_Date::WEEK ?>
