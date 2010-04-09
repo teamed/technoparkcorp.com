@@ -63,6 +63,9 @@ class ReintegrateBranches extends Model_Decision_PM
             $architect = $this->_project->staffAssignments[$architect];
             if (!$architect->hasRole($this->_project->staffAssignments->createRole('architect'))) {
                 logg('%s is not an architect, we ignore the message', $architect->email);
+                // we don't return a message back to this person
+                // since other wobots might be interested in his
+                // message
                 continue;
             }
 
