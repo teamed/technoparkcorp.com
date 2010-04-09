@@ -31,7 +31,7 @@ class ReintegrateBranches extends Model_Decision_PM
 {
 
     /**
-     * Make decision, close the first non-yet-closed order
+     * Reintegrate branches, if architects request this operation
      *
      * @return string|false
      * @throws Exception If something happens 
