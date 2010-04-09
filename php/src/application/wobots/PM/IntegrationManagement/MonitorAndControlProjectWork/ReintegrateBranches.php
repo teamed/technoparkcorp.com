@@ -98,6 +98,7 @@ class ReintegrateBranches extends Model_Decision_PM
             echo '{$signature}'
             ";
             
+            // log everything that is ready for sending to testing server.
             logg(
                 "branch: '%s', trunk: '%s', username: '%s', password: '%s'\n"
                 . "key: '%s', signature: '%s'\n%s",
