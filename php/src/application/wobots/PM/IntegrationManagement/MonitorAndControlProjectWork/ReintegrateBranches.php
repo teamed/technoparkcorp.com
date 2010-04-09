@@ -72,7 +72,7 @@ class ReintegrateBranches extends Model_Decision_PM
             $comment = $issue->changelog->get('comment')->getValue();
             $matches = array();
             if (!preg_match('/reintegrate\s+(\/branches\/[\w_-]+)\s+into\s+(\/trunk)/', $comment, $matches)) {
-                logg('message is not clear: %s', $comment);
+                logg("message is not clear: '%s'", $comment);
                 continue;
             }
             
