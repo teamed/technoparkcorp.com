@@ -51,7 +51,18 @@ class theProjectRole implements Model_Artifact_Stateless
     {
         validate()->regex($title, '/^[\sa-zA-Z]+$/');
         $this->_staffAssignments = $staffAssignments;
-        $this->_title = strtolower($title);
+        $this->_title = $title;
+    }
+
+    /**
+     * Compares two roles
+     *
+     * @param theProjectRole Role to compare with
+     * @return boolean
+     */
+    public function equalsTo(theProjectRole $role) 
+    {
+        return strtolower($this->_title) === strtolower($role->_title);
     }
 
     /**

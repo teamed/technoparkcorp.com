@@ -64,13 +64,13 @@ class theStakeholder implements Model_Artifact_Stateless
     public function __get($name) 
     {
         $method = '_get' . ucfirst($name);
-        if (method_exists($this, $method))
+        if (method_exists($this, $method)) {
             return $this->$method();
-            
+        }
         $var = '_' . $name;
-        if (property_exists($this, $var))
+        if (property_exists($this, $var)) {
             return $this->$var;
-        
+        }
         FaZend_Exception::raise(
             'Stakeholder_PropertyOrMethodNotFound', 
             "Can't find what is '$name' in " . get_class($this)
@@ -103,7 +103,7 @@ class theStakeholder implements Model_Artifact_Stateless
     {
         $roles = $this->_staffAssignments->retrieveRolesByStakeholder($this);
         foreach ($roles as $myRole) {
-            if ($myRole === $role) {
+            if ($myRole->equalsTo($role)) {
                 return true;
             }
         }

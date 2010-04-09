@@ -54,11 +54,11 @@ class theStaffAssignments implements ArrayAccess, Countable, Iterator, Model_Art
      */
     public function __get($name) 
     {
-        $list = $this->_project()->getStakeholdersByRole($name);
-        
-        // if nothing found - throw an exception
-        validate()->true(count($list) > 0, 
-            "Role '{$name}' is not found in project '{$this->_project()->name}'");
+        // we validate that this role has any stakeholders
+        validate()->true(
+            count($this->_project()->getStakeholdersByRole($name)) > 0, 
+            "Role '{$name}' is not found in project '{$this->_project()->name}'"
+        );
                 
         return $this->createRole($name);
     }
@@ -69,6 +69,7 @@ class theStaffAssignments implements ArrayAccess, Countable, Iterator, Model_Art
      * If anybody is assigned to this role, the method will return true. If nobody
      * are assigned - FALSE.
      *
+     * @param string Name of the role
      * @return boolean
      */
     public function hasRole($role) 
@@ -272,8 +273,9 @@ class theStaffAssignments implements ArrayAccess, Countable, Iterator, Model_Art
     {
         if (!isset($this->_stakeholders)) {
             $this->_stakeholders = new ArrayIterator();
-            foreach (array_keys($this->_project()->getStakeholders()) as $email)
+            foreach (array_keys($this->_project()->getStakeholders()) as $email) {
                 $this->_stakeholders[$email] = FaZend_Flyweight::factory('theStakeholder', $this, $email);
+            }
         }
         return $this->_stakeholders;
     }    

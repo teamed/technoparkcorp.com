@@ -26,6 +26,20 @@ class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap
 {
     
     /**
+     * Initialize SHARED library for connecting to FaZend
+     *
+     * @return void
+     */
+    protected function _initSharedLib() 
+    {        
+        require_once 'Model/Project.php';
+        Model_Project::setClassName('Model_Project');
+
+        require_once 'Shared/Cache.php';
+        Shared_Cache::setLifecycle(5 * 60); // 5 hours cache lifecycle
+    }
+
+    /**
      * Init forma() helper
      *
      * @return void
@@ -41,6 +55,33 @@ class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap
     }
     
     /**
+     * Initialize autoloader for artifacts
+     *
+     * @return void
+     */
+    protected function _initAutoLoaders() 
+    {
+        $autoloader = Zend_Loader_Autoloader::getInstance();
+        $autoloader->pushAutoloader(new Model_Loader_Artifacts(), 'the');
+        
+        // some artifacts have their own loader
+        theMetrics::initAutoloader();
+        theDeliverables::initAutoloader();
+        theSheetsCollection::initAutoloader();
+    }
+
+    /**
+     * Initialize POS
+     *
+     * @return void
+     */
+    protected function _initPos() 
+    {
+        // make sure all artifacts are attached to OUR root
+        FaZend_Pos_Properties::setRootClass('Model_Artifact_Root');
+    }
+
+    /**
      * Init non-explicit ORM mapping rules
      *
      * @return void
@@ -48,6 +89,7 @@ class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap
     protected function _initOrmMapping() 
     {
         // do it after fazend only
+        $this->bootstrap('fz_injector');
         $this->bootstrap('fz_orm');
         $converters = array(
             'dates' => array(
@@ -72,22 +114,6 @@ class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap
     }
     
     /**
-     * Initialize autoloader for artifacts
-     *
-     * @return void
-     */
-    protected function _initAutoLoaders() 
-    {
-        $autoloader = Zend_Loader_Autoloader::getInstance();
-        $autoloader->pushAutoloader(new Model_Loader_Artifacts(), 'the');
-        
-        // some artifacts have their own loader
-        theMetrics::initAutoloader();
-        theDeliverables::initAutoloader();
-        theSheetsCollection::initAutoloader();
-    }
-
-    /**
      * Initialize Model_Texry
      *
      * @return void
@@ -95,59 +121,6 @@ class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap
     protected function _initTexry() 
     {        
         Model_Texry::addTemplateDir(APPLICATION_PATH . '/views/tikz');
-    }
-    
-    /**
-     * Initialize SHARED library for connecting to FaZend
-     *
-     * @return void
-     */
-    protected function _initSharedLib() 
-    {        
-        require_once 'Model/Project.php';
-        Model_Project::setClassName('Model_Project');
-
-        require_once 'Shared/Cache.php';
-        Shared_Cache::setLifecycle(5 * 60); // 5 hours cache lifecycle
-    }
-
-    /**
-     * Initialize POS
-     *
-     * @return void
-     */
-    protected function _initPos() 
-    {
-        // make sure all artifacts are attached to OUR root
-        FaZend_Pos_Properties::setRootClass('Model_Artifact_Root');
-    }
-
-    /**
-     * Localize, if necessary
-     *
-     * @return void
-     */
-    protected function _initLocalization() 
-    {
-        $locale = new Zend_Locale();
-        Zend_Registry::set('Zend_Locale', $locale);
-        
-        $translate = new Zend_Translate(
-            'gettext', 
-            realpath(APPLICATION_PATH . '/../languages'), 
-            null,
-            array(
-                'ignore' => '.',
-                'scan' => Zend_Translate::LOCALE_FILENAME,
-                'disableNotices' => true,
-            )
-        );
-        Zend_Registry::set('Zend_Translate', $translate);
-        
-        if (!$translate->isAvailable($locale->getLanguage())) {
-            // not available languages are rerouted to another language
-            $translate->setLocale('en');
-        }
     }
     
     /**

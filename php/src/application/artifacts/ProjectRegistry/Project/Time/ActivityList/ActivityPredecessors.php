@@ -51,8 +51,9 @@ class theActivityPredecessors implements ArrayAccess, Iterator, Countable
     public function __toString()
     {
         $predecessors = array();
-        foreach ($this as $p)
+        foreach ($this as $p) {
             $predecessors[] = (string)$p;
+        }
         return (string)implode('; ', $predecessors);
     }
     
@@ -78,11 +79,12 @@ class theActivityPredecessors implements ArrayAccess, Iterator, Countable
      */
     public function calculateStart(theActivity $activity)
     {
-        $start = new FaZend_Date();
+        $start = new Zend_Date();
         foreach ($this as $pred) {
             $predStart = $pred->calculateStart($activity);
-            if ($predStart->isLater($start))
+            if ($predStart->isLater($start)) {
                 $start = $predStart;
+            }
         }
         return $start;
     }

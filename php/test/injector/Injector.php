@@ -49,6 +49,7 @@ class Injector extends FaZend_Test_Injector
         Model_Artifact_Attachments::setLocation(false);
 
         // just to try the translation
+        $this->_bootstrap('fz_translate');
         Zend_Registry::get('Zend_Translate')->setLocale(new Zend_Locale('ru'));
     }
     

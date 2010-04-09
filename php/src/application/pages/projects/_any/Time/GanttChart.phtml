@@ -21,9 +21,9 @@
 <h1>Gantt Chart</h1>
 
 <? $finish = $this->project->schedule->finish->setWeekday(7) ?>
-<? $start = new FaZend_Date(Zend_Date::now()
+<? $start = new Zend_Date::now()
     ->setHour(0)
-    ->setMinute(0)) ?>
+    ->setMinute(0) ?>
 <? $increment = Zend_Date::WEEK ?>
 <? if ($increment == Zend_Date::WEEK) $start->setWeekday(1) ?>
 <? $date = clone $start; ?>
@@ -68,7 +68,7 @@
     <? endfor; ?>
 </tr>
 
-<? $weekEnd = new FaZend_Date() ?>
+<? $weekEnd = new Zend_Date() ?>
 <? foreach ($this->project->schedule->activities as $activity): ?>
 <tr>
     <td><?=cutLongLine($activity->sow, 50)?></td>
