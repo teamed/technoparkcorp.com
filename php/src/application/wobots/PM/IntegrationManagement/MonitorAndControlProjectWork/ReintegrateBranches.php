@@ -73,31 +73,41 @@ class ReintegrateBranches extends Model_Decision_PM
             
             $branch = $matches[1];
             $trunk = $matches[2];
-            $username = '';
-            $password = '';
+            $username = escapeshellarg('');
+            $password = escapeshellarg('');
+            $key = $this->_project->name . '-reintegrate-' . $branch;
+            $signature = 'success:' . md5($key);
+            $script = "#!/bin/bash 
+            svn co --username {$username} --password {$password} \\
+                svn://svn.fazend.com/{$this->_project->name}{$trunk} project
+            cd project/php
+            phing -Dto.lint=true -Dto.phpcs=true -Dto.phpmd=true
+            svn merge --reintegrate ^{$branch} ..
+            phing
+            svn ci --username {$username} --password {$password} \\
+                -m 'refs #{$issue->id} - branch {$branch} merged into {$trunk}' ..
+            svn del --username {$username} --password {$password}
+                -m 'refs #{$issue->id} - branch {$branch} closed after integration with {$trunk}' ..
+            cd ../..
+            rm -rf project
+            echo '{$signature}'
+            ";
+            
+            logg(
+                "branch: '%s', trunk: '%s', username: '%s', password: '%s'\n"
+                . "key: '%s', signature: '%s'\n%s",
+                $branch,
+                $trunk,
+                $username,
+                $password,
+                $key,
+                $signature,
+                $script
+            );
             
             $asset = $this->_project->getAsset(Model_Project::ASSET_CODE);
-            $key = $this->_project->name . '-reintegrate-' . $branch;
-            $result = $asset->reintegrate(
-                $key,
-                "#!/bin/bash\n" 
-                . 'svn co --username ' . escapeshellarg($username) 
-                . ' --password ' . escapeshellarg($password) 
-                . " svn://svn.fazend.com/{$this->_project->name}{$trunk} project\n"
-                . "cd project/php\n"
-                . "phing\n"
-                . "svn merge --reintegrate ^{$branch} ..\n"
-                . "phing\n"
-                . 'svn ci --username' . escapeshellarg($username)
-                . ' --password ' . escapeshellarg($password) 
-                . ' -m "refs #{$issue->id} - branch {$branch} merged into {$trunk}"' . " ..\n"
-                . 'svn del --username' . escapeshellarg($username)
-                . ' --password ' . escapeshellarg($password) 
-                . ' -m "refs #{$issue->id} - branch {$branch} closed after integration with {$trunk}"' . " ..\n"
-                . "cd ../..\n"
-                . "rm -rf project\n"
-                . 'echo "' . md5($key) . "\"\n"
-            );
+            // $result = $asset->reintegrate($key, $script);
+            $result = 123;
             
             if (is_numeric($result)) {
                 logg('Asset returned PID of the process (%d), we shall wait', $result);
@@ -105,7 +115,7 @@ class ReintegrateBranches extends Model_Decision_PM
             }
 
             // finished?
-            if (strpos($result, md5($key))) {
+            if (strpos($result, $signature)) {
                 $issue->say('done');
             } else {
                 $issue->say("failed, see log:\n{{{{$result}}}}");
