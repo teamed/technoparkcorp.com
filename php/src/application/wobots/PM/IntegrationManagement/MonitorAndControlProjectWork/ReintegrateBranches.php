@@ -39,6 +39,7 @@ class ReintegrateBranches extends Model_Decision_PM
      */
     protected function _make() 
     {
+        // maybe there are no architects now in the project?
         if ($this->_project->staffAssignments->hasRole('architect')) {
             return 'No architect in the project';
         }
