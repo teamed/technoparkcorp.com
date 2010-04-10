@@ -91,7 +91,7 @@ class ReintegrateBranches extends Model_Decision_PM
             phing
             svn ci --username {$username} --password {$password} \\
                 -m 'refs #{$issue->id} - branch {$branch} merged into {$trunk}' ..
-            svn del --username {$username} --password {$password}
+            svn del --username {$username} --password {$password} \\
                 -m 'refs #{$issue->id} - branch {$branch} closed after integration with {$trunk}' ..
             cd ../..
             rm -rf project
