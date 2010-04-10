@@ -21,6 +21,8 @@
 /**
  * Factory of algorithms
  *
+ * Individual algorithms are stored in Model/Algo/*
+ *
  * @package Model
  */
 class Model_Algo
