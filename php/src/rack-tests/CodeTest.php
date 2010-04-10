@@ -8,7 +8,7 @@ class CodeTest extends PhpRack_Test
 
     protected function _init()
     {
-        $this->_setAjaxOptions(
+        $this->setAjaxOptions(
             array(
                 'autoStart' => false, // don't reload it from start
             )

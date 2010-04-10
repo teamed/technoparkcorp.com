@@ -9,7 +9,7 @@ class ServerTest extends PhpRack_Test
     public function setUp()
     {
         parent::setUp();
-        $this->_setAjaxOptions(
+        $this->setAjaxOptions(
             array(
                 'reload' => 5, // every 5 seconds, if possible
             )
