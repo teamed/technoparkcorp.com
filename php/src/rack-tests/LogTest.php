@@ -8,8 +8,11 @@ class LogTest extends PhpRack_Test
 
     public function testShowLogFile()
     {
+        $file = APPLICATION_PATH . '/../../log/php_errors.log';
         $this->assert->disc->file
-            ->tailf(APPLICATION_PATH . '/../../log/php_errors.log');
+            ->isReadable($file)
+            ->isWritable($file)
+            ->tailf($file);
     }
 
 }
