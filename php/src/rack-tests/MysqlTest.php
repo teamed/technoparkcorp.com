@@ -1,6 +1,6 @@
 <?php
 /**
- * @version $Id: MysqlTest.php 1608 2010-04-11 06:48:44Z yegor256@yahoo.com $
+ * @version $Id$
  */
 
 class MysqlTest extends PhpRack_Test

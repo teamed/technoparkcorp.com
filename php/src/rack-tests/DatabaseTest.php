@@ -18,7 +18,8 @@ class DatabaseTest extends PhpRack_Test
                 $production['resources.db.params.password']
             )
             ->dbExists($production['resources.db.params.dbname'])
-            ->tableExists('session');
+            ->tableExists('session')
+            ->showSchema();
     }
 
 }
