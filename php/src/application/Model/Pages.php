@@ -616,7 +616,15 @@ class Model_Pages extends Zend_Navigation
         }
 
         $this->_addResource($doc);
-        $parentContainer = isset($parent) ? $this->findOneBy('title', $parent) : $this;
+        if (isset($parent)) {
+            $parentContainer = $this->findOneBy('title', $parent);
+            if (!$parentContainer) {
+                FaZend_Log::info("parent not found by title '{$parent}'");
+                return false;
+            }
+        } else {
+            $parentContainer = $this;
+        }
 
         $parentContainer->addPage($this->_createPage($doc));
         return true;

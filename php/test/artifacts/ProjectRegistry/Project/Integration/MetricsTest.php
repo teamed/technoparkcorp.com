@@ -31,13 +31,12 @@ class MetricsTest extends AbstractProjectTest
             logg("Metric [$name]: {$metric->value}, {$metric->default}, {$metric->objective}, {$metric->delta}");
     }
     
-    public static function providerMetricNames()
+    public function providerMetricNames()
     {
-        $project = Mocks_theProject::get();
         return array(
             array('artifacts/requirements/functional/total/level/third'),
-            array('artifacts/defects/found/byOwner/' . $project->staffAssignments->PM->random()),
-            array('artifacts/defects/found/byReporter/' . $project->staffAssignments->PM->random()),
+            array('artifacts/defects/found/byOwner/tester@tpc2.com'),
+            array('artifacts/defects/found/byReporter/tester@tpc2.com'),
             array('aspects/coverage/classes/issues'),
             array('aspects/coverage/functional/classes'),
         );

@@ -4,7 +4,7 @@
  */
 
 require_once 'AbstractTest.php';
-require_once 'artifacts/OpportunityRegistry/Opportunity/sheets-collection/Sheet/Vision/Diagram.php';
+require_once 'artifacts/OpportunityRegistry/Opportunity/sheets-collection/Sheet/ScheduleEstimate/Chart.php';
 
 class FooChart extends Sheet_ScheduleEstimate_Chart
 {

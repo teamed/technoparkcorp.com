@@ -110,8 +110,9 @@ abstract class Model_Decision implements Model_Decision_Interface
         // get through all files in the directory and collect PHP decisions
         $files = array();
         foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path)) as $file) {
-            if (!preg_match('/\.php$/', $file))
+            if (!preg_match('/\.php$/', $file)) {
                 continue;
+            }
             $files[substr($file, strlen($path)+1, -4)] = $file;
         }
 

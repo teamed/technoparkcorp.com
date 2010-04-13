@@ -10,6 +10,7 @@ class pages_CoverageOfVisibilityTest extends AbstractPageTest
 
     public static function providerPageNames()
     {
+        require_once 'Mocks/Model/Project.php';
         $name = Mocks_Model_Project::get()->name;
         $pages = array(
             "projects/$name/Integration/Metrics",
