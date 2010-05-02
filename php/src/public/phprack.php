@@ -23,7 +23,12 @@ $phpRackConfig = array(
     'dir' => dirname(__FILE__) . '/../rack-tests',
     'auth' => array(
         'username' => 'egor',
-        'password' => 'aF41Atlz',
+        'password' => 'tpc2',
+    ),
+    'notify' => array(
+        'email' => array(
+            'recipients' => 'bugs@tpc2.com',
+        ),
     ),
 );
 
