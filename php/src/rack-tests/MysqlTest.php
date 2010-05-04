@@ -26,8 +26,7 @@ class MysqlTest extends PhpRack_Test
                 $production['resources.db.params.username'],
                 $production['resources.db.params.password']
             )
-            ->dbExists($production['resources.db.params.dbname'])
-            ->showConnections();
+            ->dbExists($production['resources.db.params.dbname']);
     }
 
 }   
