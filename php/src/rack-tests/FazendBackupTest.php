@@ -10,7 +10,7 @@ class FazendBackupTest extends PhpRack_Test
     {
         // execute fazend backup script
         $this->assert->shell->exec(
-            'cd ' . escapeshellarg(APPLICATION_PATH . '/../public') . '; env -i php index.php FzBackup'
+            'cd ' . escapeshellarg(APPLICATION_PATH . '/../public') . '; php index.php FzBackup'
         );
     }
 
