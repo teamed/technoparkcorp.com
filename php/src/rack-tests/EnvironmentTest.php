@@ -17,8 +17,6 @@ class EnvironmentTest extends PhpRack_Test
             ->isLoaded('dom')
             ->isLoaded('pdo_mysql')
             ->isLoaded('xsl');
-
-        $this->assert->php->extensions->fileinfo->isAlive();
     }
 
 }
