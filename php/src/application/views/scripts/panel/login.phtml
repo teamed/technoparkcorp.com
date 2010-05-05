@@ -44,14 +44,17 @@
                 $pwd = $resolver->resolve(${email}, "");
             } while (!$pwd && $resolver->hasMore());
             if (!$pwd) {
-                logg("Invalid login attempt: %s", ${email});
+                FaZend_Log::err("Invalid login attempt: " . ${email});
                 FaZend_Exception::raise(
                     "Login_Exception",
                     "User with this email is not found"
                 );
             }
             if ($pwd != ${password}) {
-                logg("Invalid password provided for: \'%s\' (\'%s\' expected)", ${email}, $pwd);
+                FaZend_Log::err(
+                    "Invalid password provided for " . ${email} 
+                    . " (\'" . $pwd . "\' expected)"
+                );
                 FaZend_Exception::raise(
                     "Login_Exception",
                     "Invalid password"
