@@ -19,4 +19,12 @@ class EnvironmentTest extends PhpRack_Test
             ->isLoaded('xsl');
     }
 
+    public function testShowLogFile()
+    {
+        $file = APPLICATION_PATH . '/../../tpc2.log';
+        $this->assert->disc->file
+            ->isReadable($file)
+            ->isWritable($file);
+    }
+
 }
