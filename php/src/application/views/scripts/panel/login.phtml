@@ -51,7 +51,7 @@
                 );
             }
             if ($pwd != ${password}) {
-                logg("Invalid password provided for: %s", ${email});
+                logg("Invalid password provided for: \'%s\' (\'%s\' expected)", ${email}, $pwd);
                 FaZend_Exception::raise(
                     "Login_Exception",
                     "Invalid password"
