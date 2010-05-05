@@ -76,7 +76,7 @@ class Injector extends FaZend_Test_Injector
         Model_User::setSession(new FaZend_StdObject());
         $pms = Mocks_Model_Project::get()->getStakeholdersByRole('PM');
         $pm = array_shift($pms);
-        // Model_User::logIn($pm);
+        Model_User::logIn($pm);
     }
 
     protected function _injectTestProject() 
