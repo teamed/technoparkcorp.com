@@ -34,47 +34,17 @@ class PanelController extends FaZend_Controller_Action
     public function preDispatch()
     {
         // if the user is not logged in - try to log him in
-        if (!Model_User::isLoggedIn()) {
-            // show as much information as possible
-            $adapter = new Model_Auth_Adapter(
-                array(
-                    'accept_schemes' => 'basic',
-                    'realm' => 'thePanel 2.0 beta'
-                )
-            );
+        if (Model_User::isLoggedIn()) {
+            // change layout of the view
+            Zend_Layout::getMvcInstance()->setLayout('panel');
 
-            $adapter->setBasicResolver(new Model_Auth_Resolver());
-            $adapter->setRequest($this->getRequest());
-            $adapter->setResponse($this->getResponse());
-
-            $result = $adapter->authenticate();
-            if (!$result->isValid()) {
-                FaZend_Log::err(
-                    sprintf(
-                        'Invalid login attempt (code: %d, identity: %s). %s',
-                        $result->getCode(),
-                        serialize($result->getIdentity()),
-                        implode('; ', $result->getMessages())
-                    )
-                );
-                return $this->_forward(
-                    'index', // action
-                    'static', // controller
-                    null, // module, use default
-                    array('page' => 'system/404') // params
-                );
+            // get pages instance for the controller to user later
+            $this->_pages = Model_Pages::getInstance();
+        } else {
+            if ($this->getRequest()->getActionName() != 'login') {
+                return $this->_forward('login');
             }
-
-            $identity = $result->getIdentity();
-            $identity = $identity['username'];
-            Model_User::logIn($identity);
         }
-
-        // change layout of the view
-        Zend_Layout::getMvcInstance()->setLayout('panel');
-
-        // get pages instance for the controller to user later
-        $this->_pages = Model_Pages::getInstance();
         return null;
     }
 
@@ -107,6 +77,27 @@ class PanelController extends FaZend_Controller_Action
     }
 
     /**
+     * Login the user
+     *
+     * @return void
+     */
+    public function loginAction() 
+    {
+        // change layout of the view
+        Zend_Layout::getMvcInstance()->disableLayout();
+
+        // if the user is already logged in
+        if (Model_User::isLoggedIn()) {
+            return $this->_forward(
+                'index', // action
+                null, // the same controller
+                null, // the same module
+                array('doc' => 'root') // params
+            );
+        }
+    }
+
+    /**
      * Access restricted
      *
      * @return void
@@ -124,6 +115,10 @@ class PanelController extends FaZend_Controller_Action
      */
     public function optsAction() 
     {
+        if (!Model_User::isLoggedIn()) {
+            return $this->_returnJSON(array());
+        }
+        
         $title = $this->getRequest()->getPost('title');
 
         // this is required in order to INIT the list of pages

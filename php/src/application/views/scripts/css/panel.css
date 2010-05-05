@@ -205,17 +205,18 @@ div.wrapper {
         margin-left: 20px;
     }
     
-    div.wrapper ul.errors {
-        color: <?=Model_Colors::RED?>;
-        background-color: inherit;
-        margin-left: 0 !important;
-        font-size: 0.8em;
-    }
+/* form errors */
+ul.errors {
+    color: <?=Model_Colors::RED?>;
+    background-color: inherit;
+    margin-left: 0 !important;
+    font-size: 0.8em;
+}
 
-        div.wrapper ul.errors li {
-            list-style-type: none;
-            padding-bottom: 10px;
-        }
+    ul.errors li {
+        list-style-type: none;
+        padding-bottom: 10px;
+    }
 
     /* normal links and link-free hrefs */
     div.wrapper a {
