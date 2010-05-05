@@ -59,7 +59,7 @@ class Model_XML
 
         if (!isset(self::$_view)) {
             self::$_view = clone Zend_Registry::getInstance()->view;    
-            self::$_view->setScriptPath(APPLICATION_PATH . '/tikz');
+            self::$_view->setScriptPath(APPLICATION_PATH . '/views/tikz');
             self::$_view->setFilter(null);
         }
     }
