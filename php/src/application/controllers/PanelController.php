@@ -19,7 +19,7 @@
  */
 
 /**
- * Panel pages
+ * Panel pages, accessible only by logged-in users
  *
  * @package Controllers
  */
