@@ -238,6 +238,7 @@ class Model_Asset_Defects_Issue_Trac extends Model_Asset_Defects_Issue_Abstract
             case 'keywords':
             case 'milestone':
             case 'attachment':
+            case 'changetime':
             case 'version':
                 $name = null;
                 break;
