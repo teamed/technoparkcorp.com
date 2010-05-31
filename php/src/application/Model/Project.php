@@ -19,6 +19,11 @@
  */
 
 /**
+ * @see Shared_Project
+ */
+require_once 'Shared/Project.php';
+
+/**
  * One project
  *
  * @package Model

@@ -19,6 +19,11 @@
  */
 
 /**
+ * @see FaZend_View_Helper
+ */
+require_once 'FaZend/View/Helper.php';
+
+/**
  * Href to embed
  *
  * @package Artifacts

@@ -3,6 +3,9 @@
  * @version $Id$
  */
 
+/**
+ * @see FaZend_Test_TestCase
+ */
 require_once 'FaZend/Test/TestCase.php';
 
 abstract class AbstractTest extends FaZend_Test_TestCase

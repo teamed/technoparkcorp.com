@@ -12,6 +12,9 @@ class Injector extends FaZend_Test_Injector
     {
         // log errors in ALL environments
         // ...
+        
+        // keep it on top of everything else!
+        $this->_bootstrap('db');
     }
     
     protected function _injectSoapClient() 

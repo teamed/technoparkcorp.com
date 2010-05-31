@@ -5,6 +5,11 @@
 
 require_once 'AbstractTest.php';
 
+/**
+ * @see Model_Algo_PathFinder_Pair
+ */
+require_once 'Model/Algo/PathFinder/Pair.php';
+
 class pair implements Model_Algo_PathFinder_Pair
 {
     protected $_left;

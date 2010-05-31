@@ -3,6 +3,11 @@
  * @version $Id$
  */
 
+/**
+ * @see Model_Project
+ */
+require_once 'Model/Project.php';
+
 class Mocks_Model_Project extends Model_Project 
 {
 
