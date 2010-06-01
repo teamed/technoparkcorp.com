@@ -23,7 +23,7 @@
  *
  * @package Artifacts
  */
-class theStatement extends Zend_Db_Table_Row implements ArrayAccess, Iterator, Countable
+class theStatement extends Zend_Db_Table_Row implements ArrayAccess, Countable
 {
     
     /**
@@ -233,63 +233,13 @@ class theStatement extends Zend_Db_Table_Row implements ArrayAccess, Iterator, C
     }
 
     /**
-     * Return current element
+     * Return iterator for IteratorAggregate
      * 
-     * The method is required by Iterator interface, don't delete it.
-     *
      * @return theStatement
      */
-    public function current() 
+    public function getIterator() 
     {
-        return $this->_getRowset()->current();
-    }
-    
-    /**
-     * Return next
-     * 
-     * The method is required by Iterator interface, don't delete it.
-     *
-     * @return theStatement
-     */
-    public function next() 
-    {
-        return $this->_getRowset()->next();
-    }
-    
-    /**
-     * Return key
-     * 
-     * The method is required by Iterator interface, don't delete it.
-     *
-     * @return theStatement
-     */
-    public function key() 
-    {
-        return $this->_getRowset()->key();
-    }
-    
-    /**
-     * Is valid?
-     * 
-     * The method is required by Iterator interface, don't delete it.
-     *
-     * @return boolean
-     */
-    public function valid() 
-    {
-        return $this->_getRowset()->valid();
-    }
-    
-    /**
-     * Rewind
-     * 
-     * The method is required by Iterator interface, don't delete it.
-     *
-     * @return theStatement
-     */
-    public function rewind() 
-    {
-        return $this->_getRowset()->rewind();
+        return $this->_getRowset();
     }
     
     /**
