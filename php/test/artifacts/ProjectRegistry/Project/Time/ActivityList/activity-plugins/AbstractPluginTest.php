@@ -34,5 +34,13 @@ class AbstractPluginTest extends AbstractProjectTest
             "Activity is not an instance of theActivity, but of " . get_class($this->_activity)
         );
     }
+    
+    /**
+     * @todo This is a temprorary measure in order to make this test
+     * case start-able
+     */
+    public function testMe()
+    {
+    }
 
 }

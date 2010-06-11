@@ -91,8 +91,9 @@ abstract class Model_Asset_Defects_Issue_Abstract
     public function __destruct() 
     {
         try {
-            if (isset($this->_changelog))
+            if (isset($this->_changelog)) {
                 $this->_saveChangelog();
+            }
         } catch (Exception $e) {
             FaZend_Log::err('failed to save changes to ticket #' . $this->_id);
         }
@@ -108,13 +109,13 @@ abstract class Model_Asset_Defects_Issue_Abstract
     public function __get($name) 
     {
         $method = '_get' . ucfirst($name);
-        if (method_exists($this, $method))
+        if (method_exists($this, $method)) {
             return $this->$method();
-            
+        }
         $var = '_' . $name;
-        if (property_exists($this, $var))
+        if (property_exists($this, $var)) {
             return $this->$var;
-        
+        }
         FaZend_Exception::raise(
             'Model_Asset_Defects_Issue_PropertyOrMethodNotFound', 
             "Can't find what is '$name' in " . get_class($this)

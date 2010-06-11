@@ -18,6 +18,14 @@ class Model_UserTest extends AbstractTest
         $this->assertTrue($this->_was instanceof Model_User);
     }
 
+    public function tearDown() 
+    {
+        Model_User::logIn($this->_was->email);
+        $this->assertTrue(Model_User::isLoggedIn());
+
+        parent::tearDown();
+    }
+
     public function testLoginWorks() 
     {
         Model_User::logIn(self::EMAIL);
@@ -25,13 +33,6 @@ class Model_UserTest extends AbstractTest
         $this->assertEquals(self::EMAIL, Model_User::me()->email);
         Model_User::logOut();
         $this->assertFalse(Model_User::isLoggedIn());
-    }
-
-    public function tearDown() 
-    {
-        parent::tearDown();
-        Model_User::logIn($this->_was->email);
-        $this->assertTrue(Model_User::isLoggedIn());
     }
 
 }
