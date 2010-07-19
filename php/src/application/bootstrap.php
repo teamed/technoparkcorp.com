@@ -26,20 +26,6 @@ class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap
 {
     
     /**
-     * Initialize SHARED library for connecting to FaZend
-     *
-     * @return void
-     */
-    protected function _initSharedLib() 
-    {        
-        require_once 'Model/Project.php';
-        Model_Project::setClassName('Model_Project');
-
-        require_once 'Shared/Cache.php';
-        Shared_Cache::setLifecycle(5 * 60); // 5 hours cache lifecycle
-    }
-
-    /**
      * Init forma() helper
      *
      * @return void
@@ -50,115 +36,6 @@ class Bootstrap extends FaZend_Application_Bootstrap_Bootstrap
             array(
                 true => '<span style="color:red">*</span>:',
                 false => ':',
-            )
-        );
-    }
-    
-    /**
-     * Initialize autoloader for artifacts
-     *
-     * @return void
-     */
-    protected function _initAutoLoaders() 
-    {
-        $autoloader = Zend_Loader_Autoloader::getInstance();
-        $autoloader->pushAutoloader(new Model_Loader_Artifacts(), 'the');
-        
-        // some artifacts have their own loader
-        theMetrics::initAutoloader();
-        theDeliverables::initAutoloader();
-        theSheetsCollection::initAutoloader();
-    }
-
-    /**
-     * Initialize POS
-     *
-     * @return void
-     */
-    protected function _initPos() 
-    {
-        // make sure all artifacts are attached to OUR root
-        FaZend_Pos_Properties::setRootClass('Model_Artifact_Root');
-    }
-
-    /**
-     * Init non-explicit ORM mapping rules
-     *
-     * @return void
-     */
-    protected function _initOrmMapping() 
-    {
-        // do it after fazend only
-        $this->bootstrap('fz_injector');
-        $this->bootstrap('fz_orm');
-        $converters = array(
-            'dates' => array(
-                'regexs' => array(
-                    '/^payment\.date$/',
-                ),
-                'converter' => 'new Zend_Date(${a1}, Zend_Date::ISO_8601)'
-            ),
-            'costs' => array(
-                'regexs' => array(
-                    '/^payment\.(?:amount|volume|balance|paid|earned)$/',
-                ),
-                'converter' => 'FaZend_Bo_Money::convertFromCents(${a1})'
-            ),
-        );
-        
-        foreach ($converters as $converter) {
-            foreach ($converter['regexs'] as $regex) {
-                FaZend_Db_Table_ActiveRow::addMapping($regex, $converter['converter']);
-            }
-        }
-    }
-    
-    /**
-     * Initialize Model_Texry
-     *
-     * @return void
-     */
-    protected function _initTexry() 
-    {        
-        Model_Texry::addTemplateDir(APPLICATION_PATH . '/views/tikz');
-    }
-    
-    /**
-     * Make corrections to global logger
-     *
-     * @return void
-     */
-    protected function _initGlobalLogger() 
-    {
-        // do it after fazend only
-        $this->bootstrap('fz_logger');
-        
-        // filter out all INFO messages
-        if (APPLICATION_ENV === 'production') {
-            FaZend_Log::getInstance()->getWriter('ErrorLog')
-                ->addFilter(new Zend_Log_Filter_Priority(Zend_Log::ERR));    
-        }
-    }
-
-    /**
-     * Init session in DB
-     *
-     * @return void
-     * @see session.sql
-     * @see http://framework.zend.com/manual/en/zend.session.savehandler.dbtable.html
-     */
-    protected function _initSessionInDatabase() 
-    {
-        $this->bootstrap('db');
-        Zend_Session::setSaveHandler(
-            new Zend_Session_SaveHandler_DbTable(
-                array(
-                    'name'           => 'session',
-                    'primary'        => 'id',
-                    'modifiedColumn' => 'modified',
-                    'dataColumn'     => 'data',
-                    'lifetimeColumn' => 'lifetime'
-                )
             )
         );
     }

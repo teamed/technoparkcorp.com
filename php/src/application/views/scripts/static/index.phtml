@@ -22,8 +22,7 @@
 
 <!-- Login line -->
 <div class="ll">
-    <span style="margin-left: 39px;">Welcome, Dear Visitor! |
-        <a href="<?=$this->url(array(), 'panel', true)?>">thePanel 2.0</a></span>
+    <span style="margin-left: 39px;">Welcome, Dear Visitor</span>
     <?=FaZend_Form::create('Search')->setAction($this->staticUrl('system/search'))?>
 </div>
 
@@ -114,9 +113,6 @@
     -->
 
     <span class="rev">
-        <!-- 
-        <a href="<?=$this->url(array('page'=>$this->article->page), 'pdf', true, false)?>">Download in PDF</a> |
-        --> 
         Last update on <span style="color:<?=Model_Colors::BLUE?>"><?=$this->article->updated->get(Zend_Date::DATE_MEDIUM)?></span>
     </span>
 </p>
