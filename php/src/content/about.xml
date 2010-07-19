@@ -64,11 +64,11 @@
         height="297" 
         style="border: 1px solid ${def:Colors::DARK_GRAY};">
         <param name="allowScriptAccess" value="sameDomain" />
-        <param name="movie" value="http://ipf10.tpc-svn.com/video.php?file=about.swf" />
+        <param name="movie" value="http://tracfacade.fazend.com/about.swf" />
         <param name="quality" value="high" />
         <param name="bgcolor" value="#ffffff" />
         <param name="allowFullScreen" value="false" />
-        <embed src="http://ipf10.tpc-svn.com/video.php?file=about.swf" 
+        <embed src="http://tracfacade.fazend.com/about.swf" 
             quality="high" 
             bgcolor="#ffffff" 
             width="396" 
