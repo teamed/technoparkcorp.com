@@ -66,12 +66,16 @@
         
         <tr><td>Profile:</td><td>Custom software development company</td></tr>
         
-        <tr><td>Patents:</td><td>pending US 12/193,010, 12/264,370</td></tr>
+        <tr><td>Patents (including pending ones):</td><td>
+            <a href="http://www.google.com/patents/about?id=QjDNAAAAEBAJ">12/193,010</a>, 
+            12/264,370,
+            12/703,202
+        </td></tr>
         
         <tr><td>Certificates:</td><td><a href="${url:news/year2008/iso9001}">ISO 9001:2000</a> since Jan-08</td></tr>
 
-        <tr><td>Seals:</td><td><a href="${url:about/privacypolicy}">BBB</a> Online Seal<br/>
-            <a href="${url:about/privacypolicy}">TRUSTe</a> Privacy Seal</td></tr>
+        <!-- <tr><td>Seals:</td><td><a href="${url:about/privacypolicy}">BBB</a> Online Seal<br/>
+            <a href="${url:about/privacypolicy}">TRUSTe</a> Privacy Seal</td></tr> -->
 
         <tr><td>Copyrights:</td><td>
             
