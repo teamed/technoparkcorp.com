@@ -106,7 +106,7 @@ class Model_Navigation
                     'label' => $article->label,
                     'title' => $article->title,
                     'path' => $fullLabel,
-                    'uri' => Zend_Registry::getInstance()->view->staticUrl($fullLabel),
+                    'uri' => Zend_Registry::get('Zend_View')->staticUrl($fullLabel),
                     'class' => 'l' . substr_count($fullLabel, '/'),
                 )
             );
