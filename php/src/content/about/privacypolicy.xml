@@ -55,7 +55,7 @@
     TPC's privacy practices. This policy covers the TPC corporate website 
     (www.technoparkcorp.com) and is applicable worldwide.</p>
 
-    <a href="http://www.truste.org/ivalidate.php?url=www.technoparkcorp.com&amp;sealid=101" 
+    <!-- <a href="http://www.truste.org/ivalidate.php?url=www.technoparkcorp.com&amp;sealid=101" 
         style="float: left; padding-right: 20px; border: none;" alt="TRUSTe.org"><png>//images/truste</png></a>
 
     <p>TechnoPark Corp is a licensee of the <ahref name="http://www.truste.org">TRUSTe</ahref> Web Privacy Seal Program.  
@@ -74,13 +74,14 @@
     a company is an accredited business in the BBB where they are based, has 
     met truth in advertising guidelines, discloses information about the business and its 
     policies, follows basic privacy and security practices, and responds appropriately 
-    to problems that arise.</p>
+    to problems that arise.</p> -->
 
     <p>If you have questions or concerns regarding this statement, you should first contact 
     Arthur Petrenko at 568 Ninth Street South 202, Naples, Florida, 34102, 
     <a href="${mailto:privacy}">${mailto:privacy}</a>.  If you do not 
     receive acknowledgement of your inquiry or your inquiry has not been satisfactorily 
-    addressed, you should contact TRUSTe at <a href="http://www.truste.org/consumers/watchdog_complaint.php">http://www.truste.org/consumers/watchdog_complaint.php</a>.
+    addressed, you should contact TRUSTe at 
+    <a href="http://www.truste.org/consumers/watchdog_complaint.php">http://www.truste.org/consumers/watchdog_complaint.php</a>.
     TRUSTe will then serve as a liaison with us to resolve your concerns.</p>
 
     
@@ -253,11 +254,6 @@
     <p>Our websites may provide links to other third-party websites which are outside 
     our control and not covered by this policy. We encourage you to review the privacy 
     policies posted on these (and all) sites.</p>
-
-    <p>TPC uses live chat tool provided by <a href="http://www.liveperson.com">LivePerson.com</a>.
-    You should be aware that information submitted by you in live chat may be read, collected
-    or used by LivePerson.com, according to their privacy policies. For more information about
-    LivePerson.com privacy policies follow <a href="http://liveperson.com/about/privacy.asp">the link</a>.</p>
 
     <p>TPC classifies your PII as confidential information. Confidential 
     information is protected by being stored on secure servers that only select TechnoPark 
