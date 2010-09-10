@@ -19,6 +19,13 @@
 
 <? $opp = $this->root->opportunityRegistry[$this->segment()]?>
 
+<? if ($this->httpGet('pdf')): ?>
+    <? Zend_Controller_Front::getInstance()->getResponse()
+        ->setHeader('Content-Type', 'application/pdf')
+        ->setBody(Model_Texry::toPdf($opp->getLatex()));
+    return;?>
+<? endif; ?>
+
 <h1>Opportunity "<?=$opp->id?>"</h1>
 
 <?=$this->forma()

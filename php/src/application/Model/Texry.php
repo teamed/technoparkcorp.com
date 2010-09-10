@@ -93,5 +93,33 @@ class Model_Texry
     {
         return $this->_view->render($this->_template);
     }
+    
+    /**
+     * Convert TeX to PDF.
+     *
+     * @param string TeX source
+     * @return string
+     */
+    public static function toPdf($tex) 
+    {
+        $tmp = tempnam(TEMP_PATH, 'panel2-');
+        unlink($tmp);
+        mkdir($tmp);
+        $doc = $tmp . '/document.tex';
+        file_put_contents($doc, $tex);
+        for ($i=0; $i<2; $i++) {
+            $result = FaZend_Exec::exec(
+                '/opt/local/bin/latex'
+                . ' --output-format=pdf'
+                . ' --interaction=nonstopmode'
+                . ' ' . escapeshellarg($doc)
+                . ' 2>&1',
+                $tmp
+            );
+        }
+        $pdf = file_get_contents($tmp . '/document.pdf');
+        FaZend_Exec::exec('rm -rf ' . escapeshellarg($tmp));
+        return $pdf;
+    }
 
 }
