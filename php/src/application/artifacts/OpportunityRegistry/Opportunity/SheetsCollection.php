@@ -177,7 +177,7 @@ class theSheetsCollection implements ArrayAccess, Iterator, Countable
         if (isset($this->_view)) {
             return $this->_view;
         }
-        $this->_view = clone Zend_Registry::getInstance()->view;
+        $this->_view = clone Zend_Registry::get('Zend_View');
         $this->_view
             ->addHelperPath(dirname(__FILE__) . '/sheets-collection/helpers', 'Sheet_Helper_')
             ->addScriptPath(dirname(__FILE__) . '/sheets-collection/templates')

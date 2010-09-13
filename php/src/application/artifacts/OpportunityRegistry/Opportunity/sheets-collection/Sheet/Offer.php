@@ -45,6 +45,22 @@ class Sheet_Offer extends Sheet_Abstract
     );
     
     /**
+     * The offer has price?
+     *
+     * @return boolean
+     */
+    public function hasPrice() 
+    {
+        if ($this->low) {
+            return true;
+        }
+        if (isset($this->sheets['ROM'])) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
      * Get name of the template file, like "Vision.tex", "ROM.tex", etc.
      *
      * @return string

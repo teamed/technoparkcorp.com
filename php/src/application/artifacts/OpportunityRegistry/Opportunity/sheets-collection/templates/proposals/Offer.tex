@@ -3,13 +3,23 @@
 %% @version $Id$
 %%
 
-Project size is calculated in flat staff-hours, where one staff-hour
-will cost you \textbf{<?=$this->tex($this->sheet->pricePerHour)?>}. This includes
-all direct and indirect expenses, like payments to technicians and project 
-manager, equipment rental, communications, management reserve, warranty,
-and our profit. Fixed project budget will be calculated and announced
-right after the specification is developed, and we guarantee that it
-will be somewhere between \textbf{<?=$this->tex($this->sheet->lowAmount)?>{}
-and <?=$this->tex($this->sheet->highAmount)?>}.
-To start a project we will kindly ask you for a deposit
-of <?=$this->tex($this->sheet->depositAmount)?>.
+<? if ($this->sheet->hasPrice()): ?>
+
+    Project size is calculated in flat staff-hours, where one staff-hour
+    will cost you \textbf{<?=$this->tex($this->sheet->pricePerHour)?>}. This includes
+    all direct and indirect expenses, like payments to technicians and project 
+    manager, equipment rental, communications, management reserve, warranty,
+    and our profit. Fixed project budget will be calculated and announced
+    right after the specification is developed, and we guarantee that it
+    will be somewhere between \textbf{<?=$this->tex($this->sheet->lowAmount)?>{}
+    and <?=$this->tex($this->sheet->highAmount)?>}.
+    To start a project we will kindly ask you for a deposit
+    of <?=$this->tex($this->sheet->depositAmount)?>.
+
+<? else: ?>
+
+    \textbf{The proposal is still in DRAFT MODE and we can't calculate
+    the price/duration of the project. Some information is missing
+    and we expect to receive it soon from you. Thanks.}
+
+<? endif; ?>
