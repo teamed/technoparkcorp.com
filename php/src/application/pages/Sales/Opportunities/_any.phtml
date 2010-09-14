@@ -19,12 +19,19 @@
 
 <? $opp = $this->root->opportunityRegistry[$this->segment()]?>
 
-<? if ($this->httpGet('pdf')): ?>
-    <? Zend_Controller_Front::getInstance()->getResponse()
+<? 
+$pdf = $this->httpGet('pdf');
+if ($pdf) {
+    Zend_Controller_Front::getInstance()->getResponse()
         ->setHeader('Content-Type', 'application/pdf')
         ->setBody(Model_Texry::toPdf($opp->getLatex()));
-    return;?>
-<? endif; ?>
+    if (strlen($pdf) > 1) {
+        Zend_Controller_Front::getInstance()->getResponse()
+            ->setHeader('Content-Disposition', 'attachment; filename=' . $pdf);
+    }
+    return;
+}
+?>
 
 <h1>Opportunity "<?=$opp->id?>"</h1>
 

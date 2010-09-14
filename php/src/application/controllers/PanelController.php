@@ -59,21 +59,27 @@ class PanelController extends FaZend_Controller_Action
 
         // permission check for current user
         if (!$this->_pages->isAllowed($doc)) {
-            return $this->_restrict(_t('Sorry, the document "%s" is not available for you', $doc));
+            $this->_restrict(_t('Sorry, the document "%s" is not available for you', $doc));
+            return;
         }
         
         try {
             $this->_buildDocument($doc);
         } catch (Model_Pages_DocumentNotFound $e) {
-            return $this->_restrict(
+            $this->_restrict(
                 _t(
                     'Sorry, the document "%s" is not found: %s',
                     $doc,
                     $e->getMessage()
                 )
             );
+            return;
         }
-        return null;
+        
+        if ($this->getResponse()->getBody()) {
+            $this->_helper->layout->disableLayout();
+            $this->_helper->viewRenderer->setNoRender();
+        }
     }
 
     /**

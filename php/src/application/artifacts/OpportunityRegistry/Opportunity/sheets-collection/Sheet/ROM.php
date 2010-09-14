@@ -29,7 +29,7 @@ class Sheet_ROM extends Sheet_Abstract
 {
     
     const LOW_RATIO = 0.75;
-    const HIGH_RATIO = 3;
+    const HIGH_RATIO = 2;
     
     /**
      * Defaults

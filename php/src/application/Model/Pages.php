@@ -433,7 +433,7 @@ class Model_Pages extends Zend_Navigation
         // if there is not VIEW - don't parse the file
         if (is_null($this->_view)) {
             // clone view from the system-wide object
-            $this->_view = clone Zend_Registry::getInstance()->view;
+            $this->_view = clone Zend_Registry::get('Zend_View');
             
             // disable all filters
             $this->_view->setFilter(null);
@@ -642,7 +642,7 @@ class Model_Pages extends Zend_Navigation
             array(
                 'label' => (strrpos($doc, '/') ? substr(strrchr($doc, '/'), 1) : $doc),
                 'title' => $doc,
-                'uri' => Zend_Registry::getInstance()->view->panelUrl($doc),
+                'uri' => Zend_Registry::get('Zend_View')->panelUrl($doc),
                 'resource' => $doc,
             )
         );

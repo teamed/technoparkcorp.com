@@ -52,7 +52,9 @@ class Sheet_Contacts extends Sheet_Abstract
             'company', 
             'position', 
             'address',
+            'city',
             'country',
+            'phone',
             'email',
         ),
     );
