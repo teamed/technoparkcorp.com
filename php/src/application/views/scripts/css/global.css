@@ -37,8 +37,15 @@ div.wrapper {
     margin-right: auto;
     position: relative;
     width: 814px;
-    padding: 0px;
-    height: 118px;
+    padding: 0;
+}
+
+/* holder of content, between top and bottom */
+/* static pages */
+div.contents {
+    line-height: 1.2em;
+    background-color: white;
+    margin: 0 7px 0 7px;
 }
 
 /* top line with links */
@@ -164,12 +171,4 @@ p.sub {
         top: 5px; 
         right: 36px;
     }
-
-/* holder of content, between top and bottom */
-/* static pages */
-div.contents {
-    line-height: 1.2em;
-    background-color: white;
-    margin: 0 7px 0 7px;
-}
 
