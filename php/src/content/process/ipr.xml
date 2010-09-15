@@ -54,8 +54,8 @@
     internal <a href="${url:process/ipr/security}">Information Security Policy</a> designed in 
     compliance with ISO 27001.</p>
 
-    <p>We are a proud holder of <a href="${url:about/privacypolicy}">TRUSTe Online Privacy Seal</a>
-    and a member of <a href="http://www.bbb.org">Better Business Bureau (BBB)</a>.</p>
+    <!-- <p>We are a proud holder of <a href="${url:about/privacypolicy}">TRUSTe Online Privacy Seal</a>
+    and a member of <a href="http://www.bbb.org">Better Business Bureau (BBB)</a>.</p> -->
 
 </text>
 
