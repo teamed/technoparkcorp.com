@@ -115,6 +115,11 @@ div.lft div.menu {
                         display: none;
                     }
 
+        /* show active items */
+        div.menu li.active > a {
+            color: <?=Model_Colors::BLUE?>;
+        }
+
         /* all menu items */
         div.menu ul.body li a.l0 {
             border-bottom: 1px solid <?=Model_Colors::DARK_GRAY?>;
