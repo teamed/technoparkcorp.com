@@ -85,7 +85,6 @@ class Model_Navigation
     {
         // get full list of XML files in content directory
         foreach (glob($path . '/*.xml') as $file) {
-
             // get the file name, without extension
             $label = pathinfo($file, PATHINFO_FILENAME);
 
@@ -125,6 +124,7 @@ class Model_Navigation
                 self::_addMenuPages($page, $path . '/' . $label, $fullLabel);
             }
         }
+        Model_Article::getSearchProxy()->commit();
     }
 
     /**

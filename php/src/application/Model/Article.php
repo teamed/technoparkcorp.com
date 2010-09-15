@@ -98,8 +98,9 @@ class Model_Article
      */
     public static function getSearchProxy() 
     {
-        if (is_null(self::$_searchProxy))
+        if (is_null(self::$_searchProxy)) {
             self::$_searchProxy = new Model_Article_SearchProxy;
+        }
         return self::$_searchProxy;
     }
 

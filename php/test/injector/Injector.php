@@ -24,7 +24,7 @@ class Injector extends FaZend_Test_Injector
     
     protected function _injectSearchProxy() 
     {
-        Model_Article::setSearchProxy(new Mocks_Model_Article_SearchProxy());
+        // Model_Article::setSearchProxy(new Mocks_Model_Article_SearchProxy());
     }
 
 }

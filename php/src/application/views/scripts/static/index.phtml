@@ -23,7 +23,16 @@
 <!-- Login line -->
 <div class="ll">
     <span style="margin-left: 39px;">Welcome, Dear Visitor</span>
-    <?=FaZend_Form::create('Search')->setAction($this->staticUrl('system/search'))?>
+    <?=$this->forma()
+        ->setFormAction($this->staticUrl('system/search'))
+        ->addField('text', 'keyword')
+            ->fieldAttrib('class', 'searchText')
+            ->fieldAttrib('autocomplete', 'off')
+        ->addField('submit', 'search')
+            ->fieldValue('')
+            ->fieldAttrib('class', 'searchButton')
+            ->fieldAction('false;');
+        ?>
 </div>
 
 <!-- Show page path -->

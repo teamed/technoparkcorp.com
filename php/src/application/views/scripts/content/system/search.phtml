@@ -16,15 +16,19 @@
  
 <?=$this->article->text?>
 
-<? foreach (Model_Article::getSearchProxy()->findArticles(
-    Zend_Controller_Front::getInstance()->getRequest()->getPost('keyword')
-) as $article): ?>
+<?$keyword = Zend_Controller_Front::getInstance()->getRequest()->getPost('keyword', 'software')?>
+<?$articles = Model_Article::getSearchProxy()->findArticles($keyword)?>
 
+<? foreach ($articles as $article): ?>
     <p>
-        <b><a title="<?=$article->title?>" 
-            href="<?=$this->staticUrl($article->page)?>"><?=$article->title?></a></b><br/> 
+        <b>
+            <a title="<?=$article->title?>" 
+                href="<?=$this->staticUrl($article->page)?>">
+                <?=$article->title?>
+            </a>
+        </b>
+        <br/> 
         <?=$this->escape($article->description)?>
     </p>
-
 <? endforeach; ?>
 

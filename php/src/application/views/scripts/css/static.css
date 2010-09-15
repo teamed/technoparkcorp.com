@@ -172,7 +172,7 @@ div.ll form {
 }
 
     /* input field for search */
-    div.ll form input.srch {
+    div.ll form input.searchText {
         <?=$this->squeezePNG('search-field.png')?>
         border: none; 
         position: absolute;
@@ -186,7 +186,7 @@ div.ll form {
     }
 
     /* search field submit button */
-    div.ll form input.btn {
+    div.ll form input.searchButton {
         <?=$this->squeezePNG('search-button.png')?> 
         cursor: pointer; 
         border: none; 

@@ -85,16 +85,7 @@ class StaticController extends FaZend_Controller_Action
     public function pdfAction() 
     {
         $article = Model_Article::createByLabel($this->_getParam('page'));
-        $pdf = $article->asPdf();
-
-            $this->_helper->layout->disableLayout();
-            $this->_helper->viewRenderer->setNoRender();
-
-            $this->getResponse()
-                ->setHeader('Content-Type', 'application/pdf')
-                ->setHeader('Content-Length', strlen($pdf))
-                ->setBody($pdf);
-        // return $this->_returnPDF($pdf);
+        return $this->_returnPDF($article->asPdf());
     }
 
 }

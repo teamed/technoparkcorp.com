@@ -31,7 +31,7 @@ class Model_Article_SearchProxy
      *
      * @var boolean
      */
-    protected $_enabled = false;
+    protected $_enabled = true;
 
     /**
      * Lucene search instance
@@ -55,7 +55,7 @@ class Model_Article_SearchProxy
     public function clean() 
     {
         if ($this->_enabled) {
-            $this->lucene(true);
+            $this->_lucene(true);
         }
     }
 
@@ -71,6 +71,16 @@ class Model_Article_SearchProxy
         } else {
             return 0;
         }
+    }
+
+    /**
+     * Commit changes.
+     *
+     * @return void
+     */
+    public function commit()
+    {
+        $this->_lucene()->commit();
     }
 
     /**
@@ -91,8 +101,7 @@ class Model_Article_SearchProxy
         }
         
         // disable for now
-        // $this->_lucene()->addDocument($doc);
-        // $this->_lucene()->commit();
+        $this->_lucene()->addDocument($doc);
     }
     
     /**
@@ -106,7 +115,7 @@ class Model_Article_SearchProxy
         if ($this->_enabled) {
             foreach ($this->_lucene()->find($mask) as $hit) {
                 $doc = $hit->getDocument();
-                $article = Model_Article::createByLabel($doc->page);
+                $articles[] = Model_Article::createByLabel($doc->page);
             }
         }
         return $articles;
@@ -169,7 +178,7 @@ class Model_Article_SearchProxy
      * @param boolean Shall we kill the existing index and start over?
      * @return Zend_Search_Lucene_Proxy
      */
-    protected function _lucene($refresh = false) 
+    protected function _lucene($refresh = false)
     {
         if (!isset($this->_lucene) || $refresh) {        
             $path = $this->getLucenePath();
