@@ -20,6 +20,9 @@
     $this->includeCSS('global.css');
     $this->includeJQuery();
 
+    $this->headLink()
+        ->appendAlternate($this->staticUrl('about/rss'), 'application/rss+xml', 'Latest news');
+
     if ($this->article instanceof Model_Article) {
         // set charset
         $this->headMeta()->appendHttpEquiv('Content-Type', 'text/html; charset=' . $this->article->charset);
