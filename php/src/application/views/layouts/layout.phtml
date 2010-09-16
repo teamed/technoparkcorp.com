@@ -20,6 +20,9 @@
     $this->includeCSS('global.css');
     $this->includeJQuery();
 
+    $this->headMeta()
+        ->appendName('google-site-verification', 'DUQ2AEfaUaWaVwyjNnYnf4jvx7D_9zin-i7dZCReeOI');
+
     $this->headLink()
         ->appendAlternate($this->staticUrl('about/rss'), 'application/rss+xml', 'Latest news');
 
