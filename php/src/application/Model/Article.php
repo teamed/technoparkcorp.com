@@ -226,6 +226,14 @@ class Model_Article
             if ($this->_xml->text->attributes()->class == 'tex') {
                 $converter = new Model_Article_TexToHtml();
                 $text = $converter->convert($text);
+                $text = strval(
+                    Model_XML::loadXML(
+                        '<?xml version="1.0" encoding="utf-8"?>'
+                        . '<article>' 
+                        . html_entity_decode($text, 0, 'UTF-8')
+                        . '</article>'
+                    )
+                );
             }
             return $text;
         }
@@ -353,23 +361,36 @@ class Model_Article
      */
     protected function _getShowRightColumn() 
     {
-        if ($this->_xml->hideRightColumn)
+        if ($this->_xml->hideRightColumn) {
             return false;
-
+        }
         return true;
+    }
+
+    /**
+     * Was it published?
+     *
+     * @return boolean
+     */
+    public function isPublished() 
+    {
+        return (bool)$this->_xml->date;
     }
 
     /**
      * When the article was published
      *
-     * @return Zend_Date|false
+     * @return Zend_Date
      */
     protected function _getPublished() 
     {
-        if ($this->_xml->date) {
-            return new Zend_Date($this->_xml->date);
+        if (!$this->isPublished()) {
+            FaZend_Exception::raise(
+                'Model_Article_Exception',
+                "The article '{$this->page}' has no DATE element"
+            );
         }
-        return false;
+        return new Zend_Date($this->_xml->date);
     }
 
     /**
@@ -379,9 +400,9 @@ class Model_Article
      */
     protected function _getIntro() 
     {
-        if (!$this->_xml->intro)
+        if (!$this->_xml->intro) {
             return $this->title;
-
+        }
         return (string)$this->_xml->intro;
     }
 
@@ -441,9 +462,11 @@ class Model_Article
         $steps = $article->_getSteps($maximum - 1);
 
         // if we already have this step - skip the adding process
-        foreach ($steps as $existing)
-            if ($existing->page === $article->page)
+        foreach ($steps as $existing) {
+            if ($existing->page === $article->page) {
                 return $steps;
+            }
+        }
 
         // add this new step ON TOP of the list
         return array_merge(array($this->_createStep($article->page, $article->intro)), $steps);

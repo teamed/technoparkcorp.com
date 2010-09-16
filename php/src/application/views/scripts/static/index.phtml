@@ -63,9 +63,9 @@
     <div class="article<?=!$this->article->showRightColumn ? " noRightCol" : false?>">
         <div class="title"><?=$this->article->title?></div>
 
-        <? if ($this->article->published):?>
+        <? if ($this->article->isPublished()):?>
             <p style="color: <?=Model_Colors::LIGHT_GRAY?>">
-                published on <?=$this->article->published?>
+                published on <?=$this->article->published->get(Zend_Date::DATE_MEDIUM)?>
             </p>
         <? endif; ?>
 

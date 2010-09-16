@@ -16,6 +16,7 @@
 
 <article>
 
+<date>12/07/2005</date>
 <categories>
 
     <category>Continuous Integration</category>
@@ -25,7 +26,7 @@
 </categories>
 
 <title>Risk mitigation approach</title>
-<label></label>
+<label>Risk mitigation</label>
 <intro></intro>
 <next></next>
 <invisible/>
@@ -42,7 +43,7 @@
 
 </description>
 
-<tex>
+<text class="tex">
 
     The project objectives were to implement additional functionality to 
     the existing internet application. The new application features were: 
@@ -86,7 +87,7 @@
     auto-deployed and auto tested. This was a very efficient tool to 
     develop this project on.
 
-</tex>
+</text>
 
 </article>
 

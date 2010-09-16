@@ -16,6 +16,7 @@
 
 <article>
 
+<date>07/21/2007</date>
 <categories>
 
     <category>User Acceptance Testing</category>
@@ -26,7 +27,7 @@
 </categories>
 
 <title>User acceptance testing instead of manual testing, sometimes it works</title>
-<label></label>
+<label>UAT vs. Manual</label>
 <intro></intro>
 <next></next>
 <invisible/>
@@ -40,7 +41,7 @@
 
 </description>
 
-<tex>
+<text class="tex">
 
     After deep analysis two main risks for the project appeared -- normal completion of 
     the whole project itself and elaboration of clear SRS.
@@ -71,7 +72,7 @@
     As a result, the customer received his system and our company spent 
     only that money that we planned at the beginning.
 
-</tex>
+</text>
 
 </article>
 

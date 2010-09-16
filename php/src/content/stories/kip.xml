@@ -16,6 +16,7 @@
 
 <article>
 
+<date>11/09/2006</date>
 <categories>
 
     <category>Risk Management</category>
@@ -25,7 +26,7 @@
 </categories>
 
 <title>Clarification of Vague scope definition in MESSQ project</title>
-<label></label>
+<label>Vague scope definition</label>
 <intro></intro>
 <next></next>
 <invisible/>
@@ -40,7 +41,7 @@
 
 </description>
 
-<tex>
+<text class="tex">
 
     MESSQ project is an information corporate portal with the functions of project 
     management and corporate document circulation. It is a long-lasting 
@@ -73,7 +74,7 @@
     product (deliverables of MESSQ project) we met all of the customer expectations. 
     The MESSQ project was successfully finished in time and even with a budget savings.
 
-</tex>
+</text>
 
 </article>
 

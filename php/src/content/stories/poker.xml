@@ -16,6 +16,7 @@
 
 <article>
 
+<date>12/21/2005</date>
 <categories>
 
     <category>Continuous Integration</category>
@@ -24,9 +25,8 @@
 
 </categories>
 
-<title>Customizing of Poker room project through establishment of automatic 
-building and deployment environment for multi-parts project</title>
-<label></label>
+<title>Automated deployment environment for multi-parts project</title>
+<label>Automated environment</label>
 <intro></intro>
 <next></next>
 <invisible/>
@@ -41,7 +41,7 @@ building and deployment environment for multi-parts project</title>
 
 </description>
 
-<tex>
+<text class="tex">
 
     Poker-room is a multi player system for playing in different kinds of poker 
     throughout the Internet. Poker-room is third-party software for us and 
@@ -54,7 +54,8 @@ building and deployment environment for multi-parts project</title>
     and undocumented deployment activity for each project component.  All 
     of the aforementioned problems led to great risk of failed customizing and lost money and time. 
 
-    The obvious decision for poker-room was architecture description, but our prelimnary estimation stated it would take us up to 500 hours. So we 
+    The obvious decision for poker-room was architecture description, but our 
+    preliminary estimation stated it would take us up to 500 hours. So we 
     decided to organize for all participants' integration environment. 
     Our main goals were to reduce the cost of the integration work for deployment of 
     the multi-parts project on a target customer server. We used Apache Continuum 
@@ -78,7 +79,7 @@ building and deployment environment for multi-parts project</title>
     management work under "black box" software as well as allows us to 
     organize daily building for such third-party source code projects.
 
-</tex>
+</text>
 
 </article>
 

@@ -81,7 +81,14 @@ class Model_XML
      */
     public static final function loadXML($text)
     {
-        return new Model_XML(simplexml_load_string($text));
+        $xml = @simplexml_load_string($text);
+        if ($xml === false) {
+            FaZend_Exception::raise(
+                'Model_XML_Exception',
+                "Invalid XML: '{$text}'"
+            );
+        }
+        return new Model_XML($xml);
     }
 
     /**
@@ -91,8 +98,9 @@ class Model_XML
      */
     public function __get($key)
     {
-        if (isset($this->_xml->$key))
+        if (isset($this->_xml->$key)) {
             return new Model_XML($this->_xml->$key);
+        }
         return false;
     }
 

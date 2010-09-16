@@ -38,7 +38,7 @@
             continue;
         }
         // backward chronological order
-        $page->order = 1-strtotime($article->published);
+        $page->order = 1-$article->published->getTimestamp();
 
         // add the article to the holder, to show later
         $news->addPage($page);

@@ -16,6 +16,7 @@
 
 <article>
 
+<date>11/28/2006</date>
 <categories>
 
     <category>Testing</category>
@@ -25,7 +26,7 @@
 </categories>
 
 <title>Quantitative quality control</title>
-<label></label>
+<label>Quality control</label>
 <intro></intro>
 <next></next>
 <invisible/>
@@ -45,7 +46,7 @@
 
 </description>
 
-<tex>
+<text class="tex">
 
     The objectives of this Project were to develop the company's 
     corporate system with file storage, data analysis and visualization, 
@@ -75,7 +76,7 @@
     system gained an acceptable quality level. Quantitative quality control 
     is a powerful tool to manage a project's quality.
 
-</tex>
+</text>
 
 </article>
 

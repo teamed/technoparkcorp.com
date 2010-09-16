@@ -16,6 +16,7 @@
 
 <article>
 
+<date>02/05/2007</date>
 <categories>
 
     <category>Architecture</category>
@@ -25,7 +26,7 @@
 </categories>
 
 <title>Early architecture decomposition</title>
-<label></label>
+<label>Architecture decomposition</label>
 <intro></intro>
 <next></next>
 <invisible/>
@@ -39,7 +40,7 @@
 
 </description>
 
-<tex>
+<text class="tex">
 
     The main project's outcome was an on-line ad serving program for 
     Advertisers and Publishers, which would give them the ability to manage 
@@ -112,7 +113,7 @@
     system definition, architecture elaboration and decomposition. In this 
     way we appreciably decrease project risk scores and save budget.
 
-</tex>
+</text>
 
 </article>
 

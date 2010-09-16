@@ -56,10 +56,12 @@ class ArticleTest extends AbstractTest
             'Model_Article::description returned something strange, why?'
         );
 
-        $this->assertTrue(
-            ($article->published instanceof Zend_Date) || ($article->published === false), 
-            'Model_Article::published returned something strange, why?'
-        );
+        if ($article->isPublished()) {
+            $this->assertTrue(
+                ($article->published instanceof Zend_Date) || ($article->published === false), 
+                'Model_Article::published returned something strange, why?'
+            );
+        }
 
         $this->assertTrue(
             is_string($article->intro), 

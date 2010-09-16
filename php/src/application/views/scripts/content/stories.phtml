@@ -12,7 +12,7 @@
  * 568 Ninth Street South 202, Naples, Florida 34102, USA
  * tel. +1 (239) 935 5429
  *
- * @version $Id$
+ * @version $Id: innovations.phtml 837 2010-03-16 14:37:24Z yegor256@yahoo.com $
 -->
  
 <? $this->includeCSS('innovations.css');?>
@@ -20,11 +20,10 @@
 <?=$this->article->text?>
 
 <?
-    // new holder of articles elements
+    // new holder of stories elements
     $articles = Zend_Navigation_Page::factory(array('type'=>'uri'));
 
     foreach ($this->navigation()->findOneBy('path', $this->article->page)->getPages() as $page) {
-
         // load news article
         $article = Model_Article::createByLabel($page->path);
             
@@ -36,19 +35,19 @@
 
         // add the article to the holder, to show later
         $articles->addPage($page);
-
     }
 ?>
 
 <? foreach ($articles as $page): ?>
-
     <p class="innovation">
-        <b><a href="<?=$page->href?>">
-        <?=$page->article->title?></a></b>, 
-        <?=$page->article->description?><br/>
-        <span>published on <?=$page->article->published->get(Zend_Date::DATE_MEDIUM)?></span>
+        <b>
+            <a href="<?=$page->href?>">
+                <?=$page->article->title?></a></b>, 
+        <?=$page->article->description?>
+        <br/>
+        <span>
+            published on <?=$page->article->published->get(Zend_Date::DATE_MEDIUM)?>
+        </span>
     </p>
-
-
 <? endforeach; ?>
 
