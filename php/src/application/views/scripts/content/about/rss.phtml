@@ -24,7 +24,7 @@ foreach ($this->navigation()->findOneBy('path', 'about/news')->getPages() as $pa
     $article = Model_Article::createByLabel($page->path);
     $entries[] = array(
         'title' => $article->title,
-        'link' => $this->staticUrl($article->page),
+        'link' => $this->serverUrl() . $this->staticUrl($article->page),
         'lastUpdate' => $article->published->getTimestamp(),
         'description' => $article->description,
     );

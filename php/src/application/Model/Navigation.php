@@ -122,6 +122,7 @@ class Model_Navigation
                     'path' => $fullLabel,
                     'uri' => Zend_Registry::get('Zend_View')->staticUrl($fullLabel),
                     'class' => 'l' . substr_count($fullLabel, '/'),
+                    'map' => true,
                 )
             );
 
