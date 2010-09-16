@@ -52,8 +52,8 @@ class StaticController extends FaZend_Controller_Action
 
         // change content if the PHTML script found    
         $scripts = array(
-            APPLICATION_PATH . '/views/scripts/content' => $article->page . '.phtml',
             dirname(APPLICATION_PATH . '/views/scripts/content/' . $article->page) => '_any.phtml',
+            APPLICATION_PATH . '/views/scripts/content' => $article->page . '.phtml',
         );
 
         // try to render all scripts, one-by-one
