@@ -26,4 +26,9 @@ class Mocks_Model_Article_SearchProxy extends Model_Article_SearchProxy
         return 1;
     }
 
+    public function commit()
+    {
+        // nothing
+    }
+
 }
