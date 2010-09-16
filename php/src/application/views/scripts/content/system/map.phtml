@@ -34,7 +34,7 @@ foreach ($this->navigation()->findAllBy('map', true) as $page) {
     $url->appendChild(
         $xml->createElement(
             'lastmod', 
-            $date->get('MM/dd/Y')
+            $date->get('Y-MM-dd')
         )
     );
     $root->appendChild($url);
