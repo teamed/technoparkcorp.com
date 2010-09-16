@@ -366,9 +366,9 @@ class Model_Article
      */
     protected function _getPublished() 
     {
-        if ($this->_xml->date)
+        if ($this->_xml->date) {
             return new Zend_Date($this->_xml->date);
-
+        }
         return false;
     }
 

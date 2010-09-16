@@ -72,6 +72,10 @@ class StaticController extends FaZend_Controller_Action
             $page->parent->visible = true;
         }
 
+        if ($this->getResponse()->getBody()) {
+            $this->_helper->layout->disableLayout();
+            $this->_helper->viewRenderer->setNoRender();
+        }
         // parse special XML meta symbols, like ${url:about/news}
         //$this->view->content = XMLDocument::parseText($this->view->content);
     }

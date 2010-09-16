@@ -18,7 +18,7 @@
 
 <div class="rss">
     <div class="img"></div><br/>
-    <a href="<?=$this->staticUrl('map/news')?>">RSS XML News Feed, Stay updated!</a>
+    <a href="<?=$this->staticUrl('about/rss')?>">RSS XML News Feed, Stay updated!</a>
 </div>    
 
 <?=$this->article->text?>
@@ -28,22 +28,20 @@
     $news = Zend_Navigation_Page::factory(array('type'=>'uri'));
 
     foreach ($this->navigation()->findOneBy('path', $this->article->page)->getPages() as $page) {
-
         // load news article
         $article = Model_Article::createByLabel($page->path);
             
         // save article for future use
         $page->article = $article;
 
-        if (preg_match('/year(\d+)$/', $page->path))
+        if (preg_match('/year(\d+)$/', $page->path)) {
             continue;
-
+        }
         // backward chronological order
         $page->order = 1-strtotime($article->published);
 
         // add the article to the holder, to show later
         $news->addPage($page);
-
     }
 
     // new holder of years elements
@@ -57,8 +55,9 @@
         // save article for future use
         $page->article = $article;
 
-        if (!preg_match('/year(\d+)$/', $page->path, $matches))
+        if (!preg_match('/year(\d+)$/', $page->path, $matches)) {
             continue;
+        }
                                
         // backward chronological order
         $page->order = -(int)$matches[1];
