@@ -31,7 +31,7 @@ class Model_Article_SearchProxy
      *
      * @var boolean
      */
-    protected $_enabled = true;
+    protected $_enabled = false;
 
     /**
      * Lucene search instance
