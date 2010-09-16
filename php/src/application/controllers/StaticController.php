@@ -52,18 +52,17 @@ class StaticController extends FaZend_Controller_Action
 
         // change content if the PHTML script found    
         $scripts = array(
-            APPLICATION_PATH . '/views/scripts/content/' => $article->page . '.phtml',
-            APPLICATION_PATH . '/views/scripts/content/' . $article->page . '/..' => '_any.phtml',
+            APPLICATION_PATH . '/views/scripts/content' => $article->page . '.phtml',
+            dirname(APPLICATION_PATH . '/views/scripts/content/' . $article->page) => '_any.phtml',
         );
 
         // try to render all scripts, one-by-one
         foreach ($scripts as $path=>$script) {
-            if (!file_exists($path . '/' . $script))
+            if (!file_exists($path . '/' . $script)) {
                 continue;
-
+            }
             $this->view->addScriptPath($path);
             $article->text = $this->view->render($script);
-
         }
 
         // make this menu element visible, no matter what

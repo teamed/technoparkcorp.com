@@ -27,4 +27,9 @@ class Injector extends FaZend_Test_Injector
         Model_Article::setSearchProxy(new Mocks_Model_Article_SearchProxy());
     }
 
+    protected function _injectDisableNavigationCache() 
+    {
+        Model_Navigation::setUseCache(false);
+    }
+
 }

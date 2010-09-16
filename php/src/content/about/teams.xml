@@ -48,24 +48,26 @@
     interact with documents, project manager and the team effectively
     and without redundant communications.</p>
 
-    <p><tikz>
-    \begin{tikzpicture}[font=\small]
-    \tikzstyle{part} = [draw=tpcBlue, text width=25mm, text centered, minimum height=15mm]
-    \tikzstyle{ln} = [draw=tpcBlue, fill=tpcBlue, -triangle 60, line width=2mm]
-    \tikzstyle{ln2} = [draw=tpcGreen, fill=tpcGreen, -triangle 60, line width=2mm]
+    <p align="center">
+        <tikz>
+            \begin{tikzpicture}[font=\small]
+            \tikzstyle{part} = [draw=tpcBlue, text width=25mm, text centered, minimum height=15mm]
+            \tikzstyle{ln} = [draw=tpcBlue, fill=tpcBlue, -triangle 60, line width=2mm]
+            \tikzstyle{ln2} = [draw=tpcGreen, fill=tpcGreen, -triangle 60, line width=2mm]
 
-    \node [draw=tpcBlue, fill=tpcBlue!50, minimum height=15mm] (tpc) {\begin{minipage}{40mm}\begin{center}TechnoPark Corp.'s\\ Management System\end{center}\end{minipage}};
-    \node [part, right=20mm of tpc] (user) {Product End-Users};
-    \node [part, above=20mm of tpc] (customer) {You};
-    \node [part, below=20mm of tpc] (techs) {Technicians};
-    \node [part, left=20mm of tpc] (pm) {Project Manager};
+            \node [draw=tpcBlue, fill=tpcBlue!50, minimum height=15mm] (tpc) {\begin{minipage}{40mm}\begin{center}TechnoPark Corp.'s\\ Management System\end{center}\end{minipage}};
+            \node [part, right=20mm of tpc] (user) {Product End-Users};
+            \node [part, above=20mm of tpc] (customer) {You};
+            \node [part, below=20mm of tpc] (techs) {Technicians};
+            \node [part, left=20mm of tpc] (pm) {Project Manager};
 
-    \draw [ln2] (tpc) -- (user);
-    \draw [ln] (customer) -- (tpc);
-    \draw [ln] (techs) -- (tpc);
-    \draw [ln] (pm) -- (tpc);
-    \end{tikzpicture}
-    </tikz></p>
+            \draw [ln2] (tpc) -- (user);
+            \draw [ln] (customer) -- (tpc);
+            \draw [ln] (techs) -- (tpc);
+            \draw [ln] (pm) -- (tpc);
+            \end{tikzpicture}
+        </tikz>
+    </p>
 
     <p>Our typical projects require system analysts, 
     software architects, software designers, programmers, test analysts,

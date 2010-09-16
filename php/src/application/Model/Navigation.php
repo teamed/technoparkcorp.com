@@ -25,8 +25,13 @@
  */
 class Model_Navigation
 {
-    
-    const USE_CACHE = true;
+
+    /**
+     * Shall we use cache at all?
+     *
+     * @var boolean
+     */
+    protected static $_useCache = true;
 
     /**
      * Cache of navigation map
@@ -41,6 +46,16 @@ class Model_Navigation
      * @var XMLDocument
      */
     protected $_xml;
+
+    /**
+     * Shall we use cache?
+     *
+     * @return void
+     */
+    public static function setUseCache($useCache = true) 
+    {
+        self::$_useCache = $useCache;
+    }
 
     /**
      * Populate nagivation containter with pages
@@ -165,7 +180,7 @@ class Model_Navigation
             'Core', 
             'File', 
             array(
-                'caching' => self::USE_CACHE,
+                'caching' => self::$_useCache,
                 'cache_id_prefix' => 'panel2nav' . FaZend_Revision::get(),
                 'lifetime' => null, // live forever
                 'automatic_serialization' => true,
