@@ -290,4 +290,16 @@ div.article hr {
     margin-bottom: 12px;
 }
 
+div.article ol.inparaenum {
+    list-style-type: lower-alpha;
+    counter-reset: inparaitem;
+}
 
+    div.article ol.inparaenum li {
+        counter-increment: inparaitem;
+        display: inline;
+    }
+    
+        div.article ol.inparaenum li:before {
+            content: counter(inparaitem, lower-alpha) ") ";
+        }

@@ -86,19 +86,13 @@ class Model_Article_TexToHtml
         '/\\\\hyperref\[(.*?)\]\{(.*?)\}/' => "<a href='#\${1}'>\${2}</a>",
         '/\\\\(page)?ref\{.*?\}/' => '?',
 
-        // convert it to normal 'itemize'
-        '/\s*\\\\begin\{inparaenum\}\[.*?\]/' => '\begin{itemize}',
-        '/\s*\\\\end\{inparaenum\}/' => '\end{itemize}',
-
-        // convert 'itemize' into <ul>
-        '/\s*\\\\begin\{itemize\}/' => '<ul>',
-        '/\s*\\\\begin\{enumerate\}/' => '<ol>',
-        '/\s*\\\\item\s(.*?)\s?(\<\/p\>\<p\>|\\\\item|\\\\end\{itemize\})/' => '<li>${1}</li>${2}',
-        '/\s*\\\\item\s(.*?)(<li>)/' => '<li>${1}</li>${2}',
+        '/\s*\\\\item\s(.*?)(?=\\\\item|\\\\end{(?:itemize|enumerate|inparaenum)})/' => '<li>${1}</li>',
         '/\s*\\\\end\{itemize\}/' => '</ul>',
         '/\s*\\\\end\{enumerate\}/' => '</ol>',
-        '/\s*\\\\item\s(.*?)(<\/(ul|ol)>)/' => '<li>${1}</li>${2}',
-        '/\s*<\/li><\/p><p>/' => '</li>',
+        '/\s*\\\\begin\{itemize\}/' => '<ul>',
+        '/\s*\\\\begin\{enumerate\}/' => '<ol>',
+        '/\s*\\\\begin\{inparaenum\}\[.*?\]/' => '<ol class="inparaenum">',
+        '/\s*\\\\end\{inparaenum\}/' => '</ol>',
 
         // sections
         '/\\\\section\*?\{(.*?)\}/' => '<h2>${1}</h2>',

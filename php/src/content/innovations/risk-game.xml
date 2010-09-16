@@ -50,10 +50,10 @@
 
 <text class="tex">
 
-        \textbf{Disclaimer:} This web page contains just an abstract of a research
-        report that will be presented on \href{http://seafood.inf.ethz.ch/2009/}{SEAFOOD 2009} conference
-        in Zurich, Switzerland, on 3rd of July, 2009. Materials of the conference will be
-        published by Springer Verlag..
+    \textbf{Disclaimer:} This web page contains just an abstract of a research
+    report that will be presented on \href{http://seafood.inf.ethz.ch/2009/}{SEAFOOD 2009} conference
+    in Zurich, Switzerland, on 3rd of July, 2009. Materials of the conference will be
+    published by Springer Verlag.
         
     One of the most important ``process area'' in project management is risk
     management, which includes risk planning, risk identification,
@@ -76,31 +76,30 @@
         expert interviews,
         Nominal Group Technique, and others.
         
-        Every method has its own advantages and 
-        drawbacks. However, any of them
-        when applied to a project with the following constraints, will fail
-        to produce a required result:
-                 \begin{inparaenum}[\itshape a\upshape)]
-                 \item project team is multi-lingual and distributed (online text chats only), 
-                 \item risk identification meetings must take less than one hour,
-                 \item meetings are held regularly (every iteration), and
-                 \item each meeting shall produce at least a hundrend risks.
-                 \end{inparaenum}
+    Every method has its own advantages and 
+    drawbacks. However, any of them
+    when applied to a project with the following constraints, will fail
+    to produce a required result:
+         \begin{inparaenum}[\itshape a\upshape)]
+         \item project team is multi-lingual and distributed (online text chats only), 
+         \item risk identification meetings must take less than one hour,
+         \item meetings are held regularly (every iteration), and
+         \item each meeting shall produce at least a hundred risks.
+         \end{inparaenum}
 
     Existing methods will fail in these circumstances 
     because of (most common causes):
-                \begin{inparaenum}[\itshape a\upshape)]
+        \begin{inparaenum}[\itshape a\upshape)]
         \item Inattention;
         \item Language barriers;
         \item Unavoidable personal criticism;
         \item Weariness after repeating meetings; and
         \item Untrained risk identifiers.
-                \end{inparaenum}
+        \end{inparaenum}
 
-        A good solution to the outlined problems could be a method that will reduce
-        the amount of efforts required for risk identification, at the same time 
-        increasing personnel engagement and motivation.
-
+    A good solution to the outlined problems could be a method that will reduce
+    the amount of efforts required for risk identification, at the same time 
+    increasing personnel engagement and motivation.
 
     \section*{Method}
 
@@ -111,31 +110,31 @@
 
         The meeting facilitator prepares and presents to the meeting participants
         the list of five key project objectives and a list of risk sources (up to dozen).
-    The objectives go horizontally, while risk sources vertically. The
-    matrix becomes a field for the Risk Game.
+        The objectives go horizontally, while risk sources vertically. The
+        matrix becomes a field for the Risk Game.
 
-    The rules of the Risk Game are:
+        The rules of the Risk Game are:
 
-                 \begin{enumerate}
-                 \item Facilitator announces the next row (risk source);
-                 \item Everyone invents risks for the given risk source;
-                 \item Facilitator chooses the winner for the row;
-                 \item Matrix gets the name of the winner in a corresponding cell;
-                 \item The person who has the most cells wins the game.
-                 \end{enumerate}
+             \begin{enumerate}
+             \item Facilitator announces the next row (risk source);
+             \item Everyone invents risks for the given risk source;
+             \item Facilitator chooses the winner for the row;
+             \item Matrix gets the name of the winner in a corresponding cell;
+             \item The person who has the most cells wins the game.
+             \end{enumerate}
 
-    The meeting recorder maintans the list of all invented risks. This list is passed
-    to the facilitator by the end of the meeting. 
-    The result of the Risk Game is a long list of raw unsorted risks, which will
-    be used by the project management for quantitative and qualitative risk analysis.
+        The meeting recorder maintains the list of all invented risks. This list is passed
+        to the facilitator by the end of the meeting. 
+        The result of the Risk Game is a long list of raw unsorted risks, which will
+        be used by the project management for quantitative and qualitative risk analysis.
 
-    The proposed method is more effective than other existing methods when
-    meeting time is limited (less than one hour) and 
-    a big list of risks is required (more than a hundred).
-    The method is more effective in such circumstances 
-    because it quickly involves everybody in the process, 
-    converts individual cricism into a fair competition and 
-    stimulates group thinking.
+        The proposed method is more effective than other existing methods when
+        meeting time is limited (less than one hour) and 
+        a big list of risks is required (more than a hundred).
+        The method is more effective in such circumstances 
+        because it quickly involves everybody in the process, 
+        converts individual criticism into a fair competition and 
+        stimulates group thinking.
 
 </text>
 
