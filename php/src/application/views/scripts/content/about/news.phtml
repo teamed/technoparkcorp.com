@@ -72,15 +72,12 @@
 ?>
 
 <? foreach ($news as $page): ?>
-
     <p class="news">
         <b><a href="<?=$page->href?>">
         <?=$page->article->title?></a></b>, 
         <?=$page->article->description?><br/>
         <span>published on <?=$page->article->published->get(Zend_Date::DATE_MEDIUM)?></span>
     </p>
-
-
 <? endforeach; ?>
 
 <p>Read news from <?=(($this->article->page == 'about/news') ? 'previous' : 'other')?> years:

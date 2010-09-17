@@ -60,7 +60,8 @@
         <tr><td>Legal status:</td><td>Corporation</td></tr>
         <tr><td>Full-time Employees:</td><td>12</td></tr>
         
-        <tr><td>Headquarters and Sales Office:</td><td>568 Ninth Street South 202,<br/>
+        <tr><td>Headquarters and Sales Office:</td>
+        <td>568 Ninth Street South 202,<br/>
             Naples, Florida 34102, USA<br/>
             tel. +1 (239) 935 5429</td></tr>
         
@@ -73,7 +74,8 @@
             12/840,306
         </td></tr>
         
-        <tr><td>Certificates:</td><td><a href="${url:news/year2008/iso9001}">ISO 9001:2000</a> since Jan-08</td></tr>
+        <tr><td>Certificates:</td><td>
+            <a href="${url:news/year2008/iso9001}">ISO 9001:2000</a> since Jan-08</td></tr>
 
         <!-- <tr><td>Seals:</td><td><a href="${url:about/privacypolicy}">BBB</a> Online Seal<br/>
             <a href="${url:about/privacypolicy}">TRUSTe</a> Privacy Seal</td></tr> -->
@@ -92,6 +94,9 @@
 
             </td></tr>
     </table>
+    
+    <p><a href="${url:contacts}">Contact us</a> and we disclose more information:
+        references, pricing, existing success clients, etc.</p>
     
 </text>
 </article>

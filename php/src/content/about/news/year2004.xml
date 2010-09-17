@@ -1,25 +1,11 @@
 <?xml version="1.0"?>
-
-<!-- 
-    Version tracking section:
-
-    9/15/07 Yegor, first version
-
--->
-
-
 <article>
-
-<invisible/>
-
-<title>History of 2004</title>
-
-<text>
-
-    <p>News archive of 2004 year:</p>
-
-</text>
-
+    <invisible/>
+    <title>History of 2004</title>
+    <label>2004</label>
+    <text>
+        <p>News archive of 2004 year:</p>
+    </text>
 </article>
 
 
