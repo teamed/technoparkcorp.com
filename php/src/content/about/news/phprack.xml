@@ -14,7 +14,7 @@
  *
  * @author Yegor Bugayenko <egor@tpc2.com>
  * @copyright Copyright (c) TechnoPark Corp., 2001-2009
- * @version $Id: profes.xml -1   $
+ * @version $Id$
  *
 -->
 
@@ -99,10 +99,8 @@
         works as if it is being installed on your local machine. Easy!</p>
 
         <p><b>phpRack</b> simplifies this work, and lets you write integration tests
-        fast and easy. <b>phpRack</b> is the first unique product of its kind (at least, I didn't find
-        any other integration testing frameworks on the market). <b>phpRack</b> is
-        a free open-source product. I'll explain further how to start using it in only 
-        five minutes, and how to write different integration tests.</p>
+        fast and easy. <b>phpRack</b> is the first unique product of its kind. <b>phpRack</b> is
+        a free open-source product.</p>
 
 </text>
 </article>
