@@ -1,0 +1,82 @@
+<?xml version="1.0" ?>
+<!--
+ *
+ * Copyright (c) 2008, TechnoPark Corp., Florida, USA
+ * All rights reserved. THIS IS PRIVATE SOFTWARE.
+ *
+ * Redistribution and use in source and binary forms, with or without modification, are PROHIBITED
+ * without prior written permission from the author. This product may NOT be used anywhere
+ * and on any computer except the server platform of TechnoPark Corp. located at
+ * www.technoparkcorp.com. If you received this code occacionally and without intent to use
+ * it, please report this incident to the author by email: privacy@technoparkcorp.com or
+ * by mail: 568 Ninth Street South 202 Naples, Florida 34102, the United States of America,
+ * tel. +1 (239) 243 0206, fax +1 (239) 236-0738.
+ *
+ * @author Yegor Bugayenko <egor@tpc2.com>
+ * @copyright Copyright (c) TechnoPark Corp., 2001-2009
+ * @version $Id: pdd.xml 991 2010-09-17 11:19:35Z yegor256@yahoo.com $
+ *
+-->
+
+<article>
+
+<date>7/21/2010</date>
+<invisible/>
+<label>PDD Patent</label>
+<title>
+    PDD, Patent Application no. 12/840,306
+</title>     
+
+<keywords>
+    puzzle driven development,
+    distributed programming,
+    remote team,
+    quality control,
+    continuous integration
+</keywords>
+
+<description>
+    Patent for Puzzle Driven Development (PDD) mechanism that helps 
+    distributed software development teams to keep changes
+    under control has been submitted to USPTO.
+</description>
+
+<text>
+
+    <p>Patent application no. 12/840,306 has been submitted to
+        United States Patent and Trademark Office on 21st of July
+        by Yegor Bugayenko, lead architect of TechnoPark Corp.</p>
+
+    <p>The invention includes a specific method and software that
+    	resolves the problem of "delayed branches" conflict in
+    	concurrent distributed software development, and in many other types of software
+    	development projects.</p>
+
+    <p>Every time a developer is working with a branch and sees a problem
+    	or a question that needs the participation of another programmer,
+    	he implements a temporary solution that keeps the code compilable.
+    	He marks the place in the code with <tt>@todo</tt> 
+    	tag (called "<b>puzzle</b>") and merges
+    	the branch into <tt>trunk</tt>. The "<b>puzzle</b>"
+    	includes the identifier of a task he was working with. As long as the 
+    	"<b>puzzle</b>" stays in source code, a project manager considers the task as
+    	incomplete and pending resolution. The project manager assigns "<b>puzzle</b>" resolution
+    	to other team members. When all "<b>puzzles</b>" are resolved, the project manager
+    	returns the task back to the programmer, asking him to continue with development.</p>
+
+    <p>The key advantage of the PDD method, comparing with all other known approaches,
+    	is the absence of long branches. Implementation of every task, no matter
+    	how difficult it is, takes a few hours in one iteration. Then the task
+    	is set to pending state and new "<b>puzzles</b>" are merged into <tt>trunk</tt>. Project
+    	planning becomes more predictable and simple, since the project manager is
+    	dealing with a large amount of small isolated tasks, instead of long and risky
+    	activities. With this method, cost and scope control also becomes more effective.</p>
+
+    <p>Properly used "<b>puzzles</b>" becomes the main management and communication
+    	mechanism in a distributed software project, replacing e-mails, online
+    	discussions and phone calls. Moreover, the PDD software
+    	collects "<b>puzzles</b>" from source code and builds short-term
+    	plans of key development tasks.</p>
+
+</text>
+</article>

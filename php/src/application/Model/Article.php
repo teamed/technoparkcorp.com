@@ -374,7 +374,7 @@ class Model_Article
      */
     public function isPublished() 
     {
-        return (bool)$this->_xml->date;
+        return (bool)strval($this->_xml->date);
     }
 
     /**
