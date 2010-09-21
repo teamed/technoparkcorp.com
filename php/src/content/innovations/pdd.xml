@@ -1,0 +1,239 @@
+<?xml version="1.0"?>
+<!--
+ *
+ * Copyright (c) 2008, TechnoPark Corp., Florida, USA
+ * All rights reserved. THIS IS PRIVATE SOFTWARE.
+ *
+ * Redistribution and use in source and binary forms, with or without modification, are PROHIBITED
+ * without prior written permission from the author. This product may NOT be used anywhere
+ * and on any computer except the server platform of TechnoPark Corp. located at
+ * www.technoparkcorp.com. If you received this code occacionally and without intent to use
+ * it, please report this incident to the author by email: privacy@technoparkcorp.com or
+ * by mail: 568 Ninth Street South 202 Naples, Florida 34102, the United States of America,
+ * tel. +1 (239) 243 0206, fax +1 (239) 236-0738.
+ *
+ * @author Yegor Bugayenko <egor@tpc2.com>
+ * @copyright Copyright (c) TechnoPark Corp., 2001-2009
+ * @version $Id: metrics.xml 837 2010-03-16 14:37:24Z yegor256@yahoo.com $
+ *
+-->
+
+<article>
+
+<hideRightColumn />
+<showVoting />
+<date>7/21/2010</date>
+
+<title>Puzzle Driven Development (PDD)</title>
+<label>PDD</label>
+<intro>
+    One of the biggest problems in parallel distributed
+    programming has been solved with a patent-pending method
+    called Puzzle Driven Development (PDD).
+</intro>
+<next>innovations/test-planning</next>
+
+<description>
+    One of the biggest problems in parallel distributed
+    programming has been solved with a patent-pending method
+    called Puzzle Driven Development (PDD).
+</description>
+
+<keywords>
+    puzzle driven development,
+    unit testing,
+    distributed development,
+    parallel programming,
+    remote development,
+    delayed branches,
+    branching,
+    version control,
+    branches in version control
+</keywords>
+
+<text class="tex">
+
+        Distributed software development is rapidly becoming the norm for
+        technology companies.
+        The ability of a company to successfully carry out its tasks
+        depends on the appropriate combination of organizational
+        structure, processes, and collaborative tools.
+        Recent studies show that existing collaborative software tools
+        are used mostly as ``shared repositories'', while
+        discussions take place outside of the tool in e-mails,
+        chats or phone calls.
+
+        Consider an example where a programmer was assigned 
+        to implement a new software function. He created a new
+        separate version control ``branch'', and
+        was aware of ``continuous integration'' principle
+        advocated in the project. The implementation was planned to take
+        a few days, but he faced a few problems
+        and raised a number of questions during development. Once his questions 
+        were answered and the branch was ready for 
+        integration with the main stream, he realized that
+        the main stream received a number of important changes.
+        Synchronization of the branch with the main stream took some time, 
+        and produced new questions and problems. After a number of
+        such synchronization iterations, the branch was considered as out-dated
+        and was closed.
+
+        The example illustrates a ``delayed branch'' problem, which does not
+        have a solution in existing software development methodologies.
+        There are a number of possible workarounds, including:
+            \begin{inparaenum}[\itshape a\upshape)]
+            \item breaking the principle of continuous integration and merging of a ``broken'' branch with the main stream;
+            \item closing the branch after the first problem or question, in order to minimize time and cost losses; or
+            \item pausing the branch and hoping for the best.
+            \end{inparaenum}
+        None of these workarounds really solve the problem.  
+        However, a solution is needed because its absence can effectively
+        ruin the development of an enterprise project, especially if the team
+        is remotely distributed.
+
+    \section*{Summary}
+
+    	The invented ``PDD'' includes a specific method and software that
+    	resolves the problem of ``delayed branches'' conflict in
+    	concurrent distributed software development, and in many other types of software
+    	development projects.
+
+    	Every time a developer is working with a branch and sees a problem
+    	or a question that needs the participation of another programmer,
+    	he implements a temporary solution that keeps the code compilable.
+    	He marks the place in the code with \texttt{@todo} tag (called ``puzzle'') and merges
+    	the branch into \texttt{trunk}. The ``puzzle''
+    	includes the identifier of a task he was working with. As long as the 
+    	``puzzle'' stays in source code, a project manager considers the task as
+    	incomplete and pending resolution. The project manager assigns ``puzzle'' resolution
+    	to other team members. When all ``puzzles'' are resolved, the project manager
+    	returns the task back to the programmer, asking him to continue with development.
+
+    	The key advantage of the PDD method, comparing with all other known approaches,
+    	is the absence of long branches. Implementation of every task, no matter
+    	how difficult it is, takes a few hours in one iteration. Then the task
+    	is set to pending state and new ``puzzles'' are merged into \texttt{trunk}. Project
+    	planning becomes more predictable and simple, since the project manager is
+    	dealing with a large amount of small isolated tasks, instead of long and risky
+    	activities. With this method, cost and scope control also becomes more effective.
+
+    	Properly used ``puzzles'' becomes the main management and communication
+    	mechanism in a distributed software project, replacing e-mails, online
+    	discussions and phone calls. Moreover, the PDD software
+    	collects ``puzzles'' from source code and builds short-term
+    	plans of key development tasks.
+
+    \section*{Example}
+
+    	The diagram compares two approaches visually
+    	explaining source code repository changes and merges. Workflow \textbf{A} uses PDD concept
+    	and creates three branches during the development of the feature. Workflow \textbf{B} uses
+    	a ``delayed branch'' approach and creates just one branch during the development
+    	of the same feature. The picture clearly indicates that Workflow \textbf{B} has much higher
+    	risk of conflict during branch merging with the \texttt{trunk}.
+
+        \begin{tikzpicture}
+            \newcounter{revenv}
+            \setcounter{revenv}{0}
+            \newcommand{\rev}[3][0]{
+                \path (env\therevenv{}rev0)+(#2,#1) node [revstyle] (env\therevenv{}rev#2) {r#2};
+                \revlink{#2}{#3}
+            }
+            \newcommand{\revlink}[3][--]{
+                \draw [revlinkstyle] (env\therevenv{}rev#3) #1 (env\therevenv{}rev#2);
+            }
+            \newcommand{\revzero}[1]{
+                \node[coordinate] (env\therevenv{}rev0) at #1 {};
+            }
+            \newenvironment{revisions}{
+                \stepcounter{revenv}
+                \tikzstyle{revstyle}=[circle, draw=black, fill=white, font=\small\ttfamily, very thick, inner sep=0em, text centered, text width=1.8em]
+                \tikzstyle{revlinkstyle}=[->, draw=black, very thick, rounded corners]
+            }
+            {
+            }
+            \draw[dashed, very thin, draw=black!50] (0,0) grid (13,7);
+            \begin{revisions}
+                \revzero{(1,5)}
+                \node [left] at (1,5) {\textbf{\large{}Workflow A}};
+                \rev{1}{0}
+                \rev[1]{2}{1}
+                \rev{3}{1}
+                \rev{4}{3}
+                \rev{5}{4}
+                    \revlink[{-|}]{5}{2}
+                \rev{6}{5}
+                \rev[1]{7}{6}
+                \rev{8}{6}
+                    \revlink{8}{7}
+                \rev[1]{9}{8}
+                \rev{10}{8}
+                \rev{11}{10}
+                    \revlink[{-|}]{11}{9}
+            \end{revisions}
+
+            \begin{revisions}
+                \revzero{(1,1)}
+                \node [left] at (1,1) {\textbf{\large{}Workflow B}};
+                \rev{1}{0}
+                \rev[1]{2}{1}
+                \rev{3}{1}
+                \rev{4}{3}
+                \rev{6}{4}
+                \rev{8}{6}
+                \rev{9}{8}
+                \rev[1]{5}{2}
+                \rev[1]{7}{5}
+                    \revlink[{-|}]{9}{7}
+            \end{revisions}
+        \end{tikzpicture}
+
+    	\textbf{Workflow B} in details (the workflow is a simplified example of a real-life software project):
+    	The source code repository is in revision \texttt{1}, and the programmer
+    	receives a task from the project manager and starts a new branch in order to implement it.
+    	The programmer makes initial implementation and commits changes with \texttt{2}. Suddenly,
+    	the programmer understands that he does not have enough information in order to complete
+    	the task, so he asks the project manager for help.
+    	The project manager decides that the architect should be helpful in this situation and
+    	forwards the request to him. Once the answer is ready, the programmer receives it
+    	(by e-mail).
+    	According to the information received, the programmer makes his next commit to the
+    	repository. While the programmer was waiting for the answer, the repository received
+    	two changes from other team members, in revisions \texttt{3} and \texttt{4}. Thus, the programmer
+    	commits his changes in revision \texttt{5}. Now, the feature is almost finished and only one final
+    	change has to be done before returning it back to the \texttt{trunk}. The programmer 
+    	makes that change and commits it to the repository, in revision \texttt{7}. The project manager
+    	is notified about the finished feature and merges the branch into the \texttt{trunk} 
+    	in \texttt{9}. Revisions \texttt{7} and \texttt{8} were committed to the repository by other
+    	project team members. The distance between merging the branch into
+    	the \texttt{trunk} and starting the branch is 7 revisions.
+
+    	To the contrary, \textbf{Workflow A} looks differently: The repository is in revision \texttt{1}
+    	and the programmer makes her first changes in \texttt{2} (similar to Workflow B). Now the
+    	programmer understands the necessity of additional information and refers to the 
+    	project manager. The programmer makes the branch ready for merging into \texttt{trunk}
+    	by means of ``stubs'' and properly commented places, which are not implemented yet. The
+    	project manager merges the branch into \texttt{trunk} in revision \texttt{5} (the distance
+    	is 2 revisions and the risk of conflict is much lower than in Workflow B). The project
+    	manager decides who is going to resolve the question asked by the programmer, finds the
+    	right person, assigns this problem to him and waits for the answer. The answer 
+    	comes in a new branch, revision \texttt{7}, where the architect (author of the answer) makes comment
+    	right inside the source code. This branch immediately goes into \texttt{trunk}, in revision \texttt{8}.
+    	The project manager returns the task back to the programmer and asks him to finish the task,
+    	since all answers are received and embedded in the source code. The programmer starts a new
+    	branch and implements the code she could not implement before. The programmer makes
+    	changes in revision \texttt{9} and the project manager merges them into \texttt{trunk} in \texttt{11}.
+    	The longest distance is 2 revisions and the risk of conflict during merging is much smaller
+    	than in Workflow B. 
+
+    	It is obvious that a long-lasting branch (as in Workflow B) will cause higher
+    	risks of conflicts during merging into the \texttt{trunk}. With shorter branches,
+    	every programmer has more flexibility and freedom to make risky changes without
+    	a high risk of being rejected during merging.
+
+
+</text>
+
+</article>
+
+
