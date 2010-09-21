@@ -149,10 +149,11 @@ class Model_XML
         $xml = preg_replace(array('/\<'.preg_quote($name).'.*?\>/', '/\<\/'.preg_quote($name).'\>/'), '', $xml);
 
         try {
-            return $this->_parseImages($this->_parseMetas($xml));
+            $str = $this->_parseImages($this->_parseMetas($xml));
         } catch (Exception $e) {
-            return get_class($e) . ': ' . $e->getMessage();
+            $str = get_class($e) . ': ' . $e->getMessage();
         }
+        return $str;
     }
 
     /**
@@ -167,8 +168,10 @@ class Model_XML
         $text = preg_replace('/\&lt\;(\/?)tikz(\s.*?)?\&gt\;/m', '<${1}tikz${2}>', $text);
 
         // see this documentation on patterns: http://www.php.net/manual/en/reference.pcre.pattern.modifiers.php
-        if (!preg_match_all('/\<(tikz|png)(.*)\>(.*)\<\/(tikz|png)\>/ismU', $text, $matches))
+        $matches = array();
+        if (!preg_match_all('/\<(tikz|png)(.*)\>(.*)\<\/(tikz|png)\>/ismU', $text, $matches)) {
             return $text;
+        }
 
         // replace them with proper image callings
         foreach ($matches[3] as $key=>$match) {
@@ -226,14 +229,14 @@ class Model_XML
      */
     protected function _parseMetas($text)
     {
-        if (!preg_match_all('/\${(\w+)\:(.*)}/smU', $text, $matches))
+        $matches = array();
+        if (!preg_match_all('/\${(\w+)\:(.*)}/smU', $text, $matches)) {
             return $text;
+        }
 
         // replace them with proper image callings
         foreach ($matches[1] as $key=>$match) {
-
             switch ($match) {
-
                 case 'url':
                     $replacement = self::$_view->staticUrl($matches[2][$key]);
                     break;
@@ -246,16 +249,12 @@ class Model_XML
                     $replacement = 'mailto:' . $matches[2][$key] . 
                     '@' . preg_replace('/^https?\:\/\//', '', WEBSITE_URL);
                     break;
-
             }
-
             if (isset($replacement)) {
                 $text = str_replace($matches[0][$key], $replacement, $text);
                 unset($replacement);
             }
-
         }                                   
-
         return $text;
     }
 
@@ -283,30 +282,52 @@ class Model_XML
 
         // even if the source is absent?    
         if (!self::_cache()->test($md5)) {
-            FaZend_Log::err('Call made to an absent TIKZ image: ' . $md5);
-            return self::_errorPNG($md5, Model_Colors::BLUE);
+            return self::_errorPNG(
+                $md5, 
+                Model_Colors::BLUE,
+                'Call made to an absent TIKZ image: ' . $md5
+            );
         }
 
         // try to get PNG from IPF10
         try {
-            // $png = Model_IPF10::getInstance()->TikzImage(self::_cache()->load($md5));
-            $png = '';
+            $tikz = self::_cache()->load($md5);
+            $client = new Zend_Http_Client('http://ccfacade.fazend.com/tikz');
+            $client
+                ->setMethod(Zend_Http_Client::POST)
+                ->setParameterPost('tikz', $tikz);
+            $response = $client->request();
+            if (!$response->isSuccessful()) {
+                FaZend_Exception::raise(
+                    'Model_XML_Exception',
+                    $response->getBody()
+                );
+            }
+            $png = $response->getBody();
         } catch (Exception $e) {
-            return self::_errorPNG($md5, Model_Colors::RED);
+            return self::_errorPNG(
+                $md5,
+                Model_Colors::RED,
+                $e->getMessage()
+            );
         }
         
         // maybe the result returned is empty?
         if (!$png) {
-            // FaZend_Log::err('Error in XML/tikzShow - empty PNG, will try again next time');
-            return self::_errorPNG($md5, Model_Colors::GRAY);
+            return self::_errorPNG(
+                $md5, 
+                Model_Colors::GRAY,
+                'Error in XML/tikzShow - empty PNG, will try again next time'
+            );
         }
         
         // maybe the PNG is not a valid image?
         if (imagecreatefromstring($png) === false) {
-            FaZend_Log::err(
+            return self::_errorPNG(
+                $md5, 
+                Model_Colors::YELLOW,
                 'Error in XML/tikzShow - invalid PNG (' . strlen($png) . ' bytes), will try again next time'
             );
-            return self::_errorPNG($md5, Model_Colors::YELLOW);
         }
 
         self::_cache()->save($png, $md5 . '_png');
@@ -320,10 +341,16 @@ class Model_XML
      * Show error message in PNG
      *
      * @param string MD5 code of the requested (and failed) image
+     * @param string Color of the box to show
+     * @param string Message to protocol
      * @return string
      */
-    protected static function _errorPNG($md5, $color = Model_Colors::RED)
+    protected static function _errorPNG($md5, $color = Model_Colors::RED, $message = null)
     {
+        if ($message) {
+            FaZend_Log::err($md5 . ': ' . $message);
+        }
+        
         $img = imagecreatetruecolor(50, 30);
 
         imagefill($img, 0, 0, Model_Colors::getForImage($img, $color));
