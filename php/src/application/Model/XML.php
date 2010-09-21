@@ -295,7 +295,7 @@ class Model_XML
             $client = new Zend_Http_Client(
                 'http://ccfacade.fazend.com/tikz',
                 array(
-                    'timeout' => 30,
+                    'timeout' => 60,
                 )
             );
             $client
@@ -327,7 +327,7 @@ class Model_XML
         }
         
         // maybe the PNG is not a valid image?
-        if (imagecreatefromstring($png) === false) {
+        if (@imagecreatefromstring($png) === false) {
             return self::_errorPNG(
                 $md5, 
                 Model_Colors::YELLOW,
