@@ -1,0 +1,65 @@
+<?xml version="1.0" ?>
+<!--
+ *
+ * Copyright (c) 2008, TechnoPark Corp., Florida, USA
+ * All rights reserved. THIS IS PRIVATE SOFTWARE.
+ *
+ * Redistribution and use in source and binary forms, with or without modification, are PROHIBITED
+ * without prior written permission from the author. This product may NOT be used anywhere
+ * and on any computer except the server platform of TechnoPark Corp. located at
+ * www.technoparkcorp.com. If you received this code occacionally and without intent to use
+ * it, please report this incident to the author by email: privacy@technoparkcorp.com or
+ * by mail: 568 Ninth Street South 202 Naples, Florida 34102, the United States of America,
+ * tel. +1 (239) 243 0206, fax +1 (239) 236-0738.
+ *
+ * @author Yegor Bugayenko <egor@tpc2.com>
+ * @copyright Copyright (c) TechnoPark Corp., 2001-2009
+ * @version $Id: pdd.xml 997 2010-09-21 16:02:23Z yegor256@yahoo.com $
+ *
+-->
+
+<article>
+
+<date>4/15/2010</date>
+
+<invisible/>
+<label>RQDQL</label>
+<title>
+    Formal and Easy to Understand Software Requirements
+</title>     
+
+<keywords>
+    requirements definition,
+    software requirements,
+    requirements query,
+    software requirements language,
+    RQDQL,
+    distributed programming,
+    remote team,
+    quality control,
+    continuous integration
+</keywords>
+
+<description>
+    Requirements Definition and Query Language (RQDQL)
+    is a open-source initiative started by TechnoPark Corp.
+    engineers and system analysts
+</description>
+
+<text>
+
+    <p>Read more on this topic
+        at <a href="http://www.rqdql.com/rqdql.html">RQDQL website</a>.</p>
+
+    <p>TechnoPark Corp. started a new initiative, called 
+        Requirements Definition and Query Language (RQDQL), which
+        is going to design a method and software for automated
+        specification of software requirements in formal way
+        at the same time easy to understand for non-professional
+        reader (project sponsor).</p>
+        
+    <p>The project is still in development and preliminary
+        results will be published before the end of this year.</p>
+
+</text>
+</article>
