@@ -292,7 +292,12 @@ class Model_XML
         // try to get PNG from IPF10
         try {
             $tikz = self::_cache()->load($md5);
-            $client = new Zend_Http_Client('http://ccfacade.fazend.com/tikz');
+            $client = new Zend_Http_Client(
+                'http://ccfacade.fazend.com/tikz',
+                array(
+                    'timeout' => 30,
+                )
+            );
             $client
                 ->setMethod(Zend_Http_Client::POST)
                 ->setParameterPost('tikz', $tikz);
