@@ -1,0 +1,139 @@
+
+R1; Detail a Use Case; 15; Analyze requirements and document Use Cases
+R2; Detail the Software Requirements; 15; Resolve conflicts and defects in requirements
+R3; Capture a Common Library
+R4; Find Actors and Use Cases
+R5; Develop Requirements Management Plan
+R6; Manage Dependencies
+R7; Develop Vision
+R8; Structure the Use Case Model
+R9; Elicit Stakeholder Requests; 5; Collect requirements from the customer
+R10; Prioritize Use Cases
+R11; Review Requirements; 10; Review requirements and document defects
+R12; Develop Supplementary Specifications
+
+A1; Construct Architectural Proof-of-Concept; 10; Design and implement proof-of-concept
+A2; Assess Viability of Architectural Proof-of-Concept
+A3; Architectural Analysis
+A4; Incorporate Existing Design Elements
+A5; Identify Design Mechanisms
+A6; Describe the Run-Time Architecture
+A7; Identify Design Elements
+A7; Describe Distribution
+A8; Use Case Analysis
+A9; Use Case Design
+A10; Subsystem Design
+A11; Class Design; 5; Design classes and packages, document them
+A12; Design Testability Elements
+A13; Design the User Interface; 10; Design user interface components
+A14; Prototype the User Interface; 5; Prototype the user interface with mock ups
+A15; Database Design
+A16; Capsule Design
+A17; Review the Architecture; 5; Review the architecture and document defects
+A18; Review the Design
+A19; Define System Context
+A20; Identify Security Patterns
+
+T1; Assess and Advocate Quality
+T2; Assess and Improve Test Effort
+T3; Obtain Testability Commitment
+T4; Identify Test Motivators
+T5; Agree on the Mission
+T6; Identify Targets of Test
+T7; Identify Test Ideas
+T8; Define Test Details
+T9; Define Assessment and Traceability Needs
+T10; Determine Test Results
+T11; Define Test Approach
+T12; Define Test Environment Configurations
+T13; Identify Testability Mechanisms
+T14; Structure the Test Implementation
+T15; Define Testability Elements
+T16; Implement Test
+T17; Implement Test Suite
+T18; Execute Test Suite; 25; Test the functionality, report defects found
+T19; Analyze Test Failure
+
+D1; Develop Deployment Plan
+D2; Manage Acceptance Test; 5; Deliver the product to customer, document conflicts
+D3; Manage Beta Test
+D4; Verify Manufactured Product
+D5; Release To Manufacturing
+D6; Provide Access to Download Site
+D7; Define Bill of Materials
+D8; Write Release Notes
+D9; Create Deployment Unit
+D10; Support Development
+D11; Develop Installation Artifacts
+D12; Develop Support Material; 5; Write support and maintenance documentation
+D13; Create Product Artwork
+D14; Develop Training Materials
+
+C1; Review Change Request
+C2; Confirm Duplicate or Reject CR
+C3; Establish Change Control Process; 5; Configure development environment and version control
+C4; Setup Configuration Management Environment
+C5; Report on Configuration Status
+C6; Perform Configuration Audit
+C7; Establish Configuration Management Policies
+C8; Write Configuration Management Plan
+C9; Create Deployment Unit
+C10; Verify Changes in Build
+C11; Create Integration Workspaces
+C12; Create Baselines
+C13; Promote Baselines
+
+P1; Develop Business Case
+P2; Plan Phase and Iterations; 7; Plan iterations, activities and responsibilities
+P3; Identify and Assess Risks; 9; Identify and assess risks, develop mitigation plans
+P4; Develop Iteration Plan(s)
+P5; Assess Iteration(s)
+P6; Report Status; 3; Report project status to the customer
+P7; Define Monitoring and Control Processes
+P8; Develop Quality Assurance Plan
+P9; Develop Problem Resolution Plan
+P10; Develop Risk Management Plan
+P11; Develop Product Acceptance Plan
+P12; Compile Software Development Plan
+P13; Develop Measurement Plan
+P14; Prepare for Project Close-Out
+P15; Prepare for Phase Close-Out
+P16; Handle Exceptions and Problems; 7; Resolve unknown issues, conflicts and problems
+P17; Monitor Project Status
+P18; Define Project Organization and Staffing
+P19; Initiate Project
+P20; Acquire Staff; 3; Acquire manage distributed project team
+P21; Schedule and Assign Work
+P22; Initiate Iteration
+P23; Project Acceptance Review
+P24; PRA Project Review
+P25; Lifecycle Milestone Review
+P26; Iteration Acceptance Review
+P27; Iteration Evaluation Criteria Review
+P28; Iteration Plan Review
+P29; Project Planning Review
+P30; Project Approval Review
+P31; Organize Review
+
+E1; Tailor the Process for the Project
+E2; Develop Development Case
+E3; Prepare Templates for the Project
+E4; Prepare Guidelines for the Project
+E5; Launch Development Process
+E6; Select and Acquire Tools
+E7; Setup Tools; 4; Setup continuous integration environment and process
+E8; Verify Tool Configuration and Installation
+E9; Develop Manual Style-guide
+E10; Support Development
+
+I1; Structure the Implementation Model
+I2; Implement Developer Test
+I3; Implement Design Elements; 25; Implement classes and methods (hands-on programming)
+I4; Execute Developer Test
+I5; Implement Testability Elements; 25; Implement unit-tests, mocked objects and stubs
+I6; Analyze Run-Time Behavior
+I7; Plan System Integration
+I8; Plan Subsystem Integration
+I9; Integrate Subsystem
+I10; Integrate System; 10; Integrate packages and classes, achieve success in daily builds
+I11; Review Code; 10; Code peer review and document the most critical defects

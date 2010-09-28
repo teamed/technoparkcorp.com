@@ -14,35 +14,28 @@
  *
  * @author Yegor Bugayenko <egor@tpc2.com>
  * @copyright Copyright (c) TechnoPark Corp., 2001-2009
- * @version $Id: Vision.php 651 2010-02-10 17:50:05Z yegor256@yahoo.com $
+ * @version $Id: References.php 861 2010-03-26 08:40:23Z yegor256@yahoo.com $
  *
  */
 
+require_once 'artifacts/OpportunityRegistry/Opportunity/sheets-collection/Sheet/Abstract.php';
+
 /**
- * Escape TeX symbols
+ * List of references
  *
  * @package Artifacts
  */
-class Sheet_Helper_Tex
+class Sheet_Extras extends Sheet_Abstract
 {
-
+    
     /**
-     * Escape TeX chars
+     * Defaults
      *
-     * @return string
+     * @var array
+     * @see __get()
      */
-    public function tex($str) 
-    {
-        $replacers = array(
-            '/([\[\]\{\}\^%&\\\$\_\#])/' => '\\\\${1}',
-            '/<a\shref="(.*?)">(.*?)<\/a>/' => '\\href{${1}}{${2}}',
-            '/"(.*?)"/'                  => "``\${1}''",
-            '/<b>(.*?)<\/b>/'            => '\\textbf{${1}}',
-            '/<i>(.*?)<\/i>/'            => '\\textit{${1}}',
-            '/<tt>(.*?)<\/tt>/'          => '\\texttt{${1}}',
-            '/€/'                        => '\euro{}',
-        );
-        return preg_replace(array_keys($replacers), $replacers, strval($str));
-    }
-
+    protected $_defaults = array(
+        'pages' => array(),
+    );
+    
 }

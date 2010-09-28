@@ -47,6 +47,20 @@ developed in the project, and interconnections between them.
             inner sep=0mm] {};
 }
 
+\newcommand{\saoExternal}[4]{
+    \node [
+        draw=tpcRUPBorder, 
+        fill=tpcRUPBody, 
+        font=\footnotesize, 
+        inner sep=0mm, 
+        text width=2cm, 
+        text centered,
+        minimum width=2cm, 
+        minimum height=1cm, 
+        anchor=center] 
+        (#1) at(#2, #3) {#4};
+}
+
 \newcommand{\saoBoundary}[1]{
     \node [
         draw=tpcGrey, 

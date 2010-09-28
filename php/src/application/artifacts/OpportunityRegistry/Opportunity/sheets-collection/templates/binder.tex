@@ -3,6 +3,17 @@
 %% @version $Id$
 %%
 
+% watermark 
+<? if (!$this->sheets['Offer']->hasPrice()): ?>
+    \chead{
+        \begin{textblock}{16}(0,0)
+            \tikz{
+                \node [rotate=45, scale=20, text=tpcGrey!3, font=\ttfamily\bfseries] at (0,0) {draft};
+            }
+        \end{textblock}
+    }
+<? endif; ?>
+
 \thispagestyle{empty}
 \begin{textblock}{2}[1,1](15,2)\raggedleft\theTPCLogo{0.04}\end{textblock}
 \begin{textblock}{8}[1,1](15,15)%
@@ -32,6 +43,14 @@
         <? endif; ?>
     <? endforeach; ?>}
 \end{flushright}
+
+\vspace*{3cm}
+\parbox{\linewidth}{\linespread{1}\selectfont\small
+TechnoPark Corp. accepts no liability for the content of this document, 
+or for the consequences of any actions taken on the basis 
+of the information provided. This document is not a contract or a binding agreement
+of any kind, but merely a sales brochure.\linebreak
+}
 \clearpage
 
 <? if ($this->sheets['Offer']->hasPrice()): ?>
@@ -75,10 +94,10 @@
 <? endforeach; ?>
 
 <? foreach ($this->sheets as $sheet): ?> 
-    <? if (!$sheet->getProposalFile()) continue; ?>
+    <? if (!Sheet_Abstract::isTemplateExists($sheet->getProposalFile())) continue; ?>
     <? $this->assign('sheet', $sheet) ?>
     <?=$this->render($sheet->getProposalFile())?>
-    <? if ($sheet->getTemplateFile()): ?>
+    <? if (Sheet_Abstract::isTemplateExists($sheet->getTemplateFile())): ?>
         Read more about it in Appendix~\ref{sheet:<?=$sheet->getSheetName()?>}
         (page~\pageref{sheet:<?=$sheet->getSheetName()?>}).
     <? endif; ?>
@@ -86,7 +105,7 @@
 
 \appendix
 <? foreach ($this->sheets as $sheet): ?>
-    <? if (!$sheet->getTemplateFile()) continue; ?>
+    <? if (!Sheet_Abstract::isTemplateExists($sheet->getTemplateFile())) continue; ?>
     
     \clearpage
     <? $this->assign('sheet', $sheet) ?>

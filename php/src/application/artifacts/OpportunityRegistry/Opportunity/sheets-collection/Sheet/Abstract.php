@@ -174,7 +174,7 @@ abstract class Sheet_Abstract
             return $this->$var;
         }
         
-        $items = $this->_config->xpath("//item[@name='{$name}']");
+        $items = $this->_config->xpath("//item[@name='" . strtolower($name) . "']");
         if (count($items) > 0) {
             if (isset($items[0]['value'])) {
                 return strval($items[0]['value']);
@@ -250,11 +250,12 @@ abstract class Sheet_Abstract
      * Given template exists?
      *
      * @param string Name of template, like "Vision.tex" or "promo/FinanceInfo.tex"
-     * @return void
+     * @return boolean
      */
     public static function isTemplateExists($name) 
     {
-        return file_exists(dirname(__FILE__) . '/../templates/' . $name);
+        $file = dirname(__FILE__) . '/../templates/' . $name;
+        return file_exists($file) && !is_dir($file);
     }
     
     /**
@@ -280,7 +281,7 @@ abstract class Sheet_Abstract
     /**
      * Get name of the template file, like "Vision.tex", "ROM.tex", etc.
      *
-     * @return string
+     * @return string|null
      */
     public function getProposalFile() 
     {

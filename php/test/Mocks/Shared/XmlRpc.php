@@ -31,11 +31,13 @@ class Mocks_Shared_XmlRpc
     public function getPageHTML($name) 
     {
         $html = file_get_contents(dirname(__FILE__) . '/wiki-pages/' . $name . '.html');
-        $html = preg_replace(
-            '/\{(.*?)\}/', 
-            '<a href="http://trac.fazend.com/' . Mocks_Model_Project::NAME . '/wiki-pages/${1}">${1}</a>', 
-            $html
-        );
+        if (strpos($name, 'opp-') !== 0) {
+            $html = preg_replace(
+                '/\{(.*?)\}/', 
+                '<a href="http://trac.fazend.com/' . Mocks_Model_Project::NAME . '/wiki-pages/${1}">${1}</a>', 
+                $html
+            );
+        }
         return $html;
     }
     

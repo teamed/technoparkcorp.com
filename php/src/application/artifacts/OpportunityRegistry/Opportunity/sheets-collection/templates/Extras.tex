@@ -1,0 +1,12 @@
+%%
+%% Copyright TechnoPark Corp., 2010
+%% @version $Id: SAO.tex 861 2010-03-26 08:40:23Z yegor256@yahoo.com $
+%%
+
+<? foreach ($this->sheet->pages as $page): ?>
+    
+    \section{<?=$this->tex($page['name'])?>}
+    
+    <?=$page['value']?>{}
+    
+<? endforeach; ?>

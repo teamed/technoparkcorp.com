@@ -130,29 +130,38 @@ class Sheet_ScheduleEstimate extends Sheet_Abstract
     protected function _adjustCost(array $packages) 
     {
         $cost = new FaZend_Bo_Money();
+        $added = array();
+        foreach ($packages as $package) {
+            if ($package instanceof Sheet_ScheduleEstimate_Package_Milestone) {
+                $cost->add($package->cost);
+                $added[] = $package->cost;
+            }
+        }
+        $totalCost = clone $this->_sheets['Offer']->fixedAmount;
+        if ($cost->isGreater($totalCost)) {
+            FaZend_Exception::raise(
+                'Sheet_ScheduleEstimate_CostOverrunException', 
+                "Total cost of {$cost} is bigger than {$totalCost}: " . implode(' + ', $added)
+            );
+        }
+        if ($cost->isLess($totalCost)) {
+            for ($i=count($packages)-1; $i>=0; $i--) {
+                if ($packages[$i] instanceof Sheet_ScheduleEstimate_Package_Milestone) {
+                    logg('before='. $packages[$i]->cost);
+                    $packages[$i]->cost->sub($cost)->add($totalCost);
+                    logg('after='. $packages[$i]->cost);
+                    break;
+                }
+            }
+        }
+        // calculate it again
+        $cost = new FaZend_Bo_Money();
         foreach ($packages as $package) {
             if ($package instanceof Sheet_ScheduleEstimate_Package_Milestone) {
                 $cost->add($package->cost);
             }
         }
-        $totalCost = clone $this->_sheets['Offer']->lowAmount;
-        if ($cost->isGreater($totalCost)) {
-            FaZend_Exception::raise(
-                'Sheet_ScheduleEstimate_CostOverrunException', 
-                "Total cost of {$cost} is bigger than {$totalCost}"
-            );
-        }
-        if ($cost->isLess($totalCost)) {
-            for ($i=count($packages)-1; $i>=0; $i--) {
-                $package = $packages[$i];
-                if ($package instanceof Sheet_ScheduleEstimate_Package_Milestone) {
-                    $package->cost->add($totalCost->sub($cost)->inverse());
-                    $adjusted = true;
-                    break;
-                }
-            }
-        }
-        if (!isset($adjusted) && !$cost->equalsTo($totalCost)) {
+        if (!$cost->equalsTo($totalCost)) {
             FaZend_Exception::raise(
                 'Sheet_ScheduleEstimate_CostInsufficientException', 
                 "Total cost of {$cost} is less than {$totalCost}, and can't be adjusted"

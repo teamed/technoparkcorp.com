@@ -48,6 +48,8 @@ class Sheet_Vision_Diagram
         'cellHeight' => 10,
         'cellsTotalX' => 4,
         'cellsTotalY' => 4,
+        
+        'startAngle' => 0,
     );
     
     /**
@@ -205,7 +207,7 @@ class Sheet_Vision_Diagram
     protected function _getActorsLocation() 
     {
         $actors = array();
-        $angle = 0;
+        $angle = $this->_options['startAngle'];
         foreach (array_keys($this->_features) as $actor) {
             $actors[$actor] = $angle;
             $angle += pi() * 2 / count($this->_features);

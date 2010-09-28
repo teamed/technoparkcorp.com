@@ -8,44 +8,35 @@
     <p>deposit: 20%</p>
     <p>weeks: 8</p>
     
-    <p>objectives:</p>
-    
+    <!-- <p>objectives:</p>
     <ul>
         <li>cost/total: 100 USD</li>
         <li>ROM/estimators: 3</li>
         <li>Vision/analysts: 2</li>
         <li>RiskAnalysis/analysts: 2</li>
-    </ul>
+    </ul> -->
     
     <p>intro:</p>
 
     <ul>
-        <li>The information we received from ATG about "betting arbitrage"
-            business concept and proposed automation of its manual routine operation
-            was sufficient to understand software project scope, complexity, risks and
-            to estimate its cost. We understood that the system to be
-            developed shall semi-automatically execute "contradictory" orders
-            for automatically discovered betting opportunities. The system shall
-            automatically interact with many (from several to several dozens)
-            betting websites, collect betting lines from them and place bets.</li>
-        <li>We understand that there are some risks in the proposed business model,
-            including financial (e.g., bettors eventual shutdown), technical
-            (eventual account closing, protocol changes, etc.) and organizational
-            (strategy is highly dependable on proprietary non-formal knowledge
-            possessed by in-house ATG individuals). Despite the risky nature
-            of this business we still find it feasible for us to participate,
-            as a technical developer of the software solution.</li>
-        <li>The software will be developed in an iterative manner, incrementally
-            increasing the number of features and amount of implemented functionality.
-            This proposal and its numbers are related to the first release
-            of the system, which is rather clear for us in scope.</li>
+        <li>The information we received through vWorker.com website
+            is rather limited in terms of business objectives and
+            applicability of the developed system. We still don't know
+            who is the target customer of the system, who are the users,
+            when and how the system is going to reach them. We hope
+            to receive this information later, during the system analysis
+            phase and development.</li>
+        <li>We have received one PDF document (7 pages), and a collection
+            of user interface mock-up PDF files (8 files). Also we have
+            a number of workflow diagrams that help us in understanding
+            of user functionality (3 PDF files).</li>
     </ul>
     
 <h1>Contacts</h1>
 
-    <p>title: Betting Arbitrage Robot</p>
-    <p>fullname: Darren Heyman</p>
-    <p>company: Arbitrage Trading Group (ATG)</p>
+    <p>title: Home Automation System</p>
+    <p>fullname: unknown</p>
+    <p>company: Ruzoid.com</p>
     <p>address: </p>
     <p>country: United Kingdom</p>
     <p>city: </p>
@@ -53,51 +44,79 @@
 
 <h1>Vision</h1>
 
-    <p>Statement: There is a strong marketing opportunity to automate
-        an experience earned by ATG during the last 5 years of
-        doing manual "betting arbitrage". The sports betting marketplace is still 
-        extremely inefficient and there are arbitrage opportunities (called "<i>arbs</i>") between two 
-        sports books somewhere in the world every second of every day. It is 
-        a risk-free arbitrage because there is an overlap in pricing for the exact 
-        same event, in the exact same market, with the exact same rules. 
-        We are creating an automated algorithmic trading software, based on years 
-        of experience, that will find these short-lasting opportunities 
-        across the globe and with lightening-fast execution bet both sides of 
-        the opportunity within seconds.</p>
+    <p>Statement: Nowadays the amount of different devices
+        installed and used in a typical living house is growing. At least 
+        every modern house has a TV, a few computers, a few laptops,
+        sound system with home cinema, lights control system, 
+        and security system. Sooner or later every component 
+        will provide a digital interface to its functionality, through
+        Wi-Fi, Bluetooth or some other interface. There is a market
+        opportunity to give end user the ability to control all 
+        devices through one simple and intuitive interface, preferably through
+        TV panel. The customer is trying to pursue this opportunity
+        and develop such an integrating system. Moreover, with the
+        fast growing of Internet and its presence in almost every house
+        there is an opportunity to interconnect such an integrating system
+        with a central server and make it networking instead of standalone.</p>
     
-    <p>Product: Semi-automated betting comparison robotic software
-        system, that compares betting rates, discovers arbs, 
-        and places bets. The system is intended for
-        private use by a limited number of managers, mostly in-house
-        staff of ATG. The system is a pure "web system" to be hosted
-        on a server in Internet.</p>
+    <p>Product: This SUD is a software component installed on one
+        of home computers, and connected to TV. The SUD acts as
+        a mediator between end user and all other components. The
+        user communicates with them through one simple and unified
+        user interface. Every component is represented in the SUD
+        by its "Gadget" or "Application" (Gadget's viewpoint is limited
+        and fixed, while Application has bigger space and more flexibility
+        in interaction with end user). The SUD when working becomes a
+        network element of a web system, with a center at <tt>ruzoid.com</tt>.</p>
     
     <p>Actors:</p>
     
     <ul>
-        <li>Bettor: Betting web site, e.g. <tt>pinnaclesports.com</tt>,
-            <tt>ladbrokes.com</tt>, <tt>williamhill.com</tt>, and <tt>bwin.com</tt>. In first
-            version of the system we will use <b>two websites</b> and <b>one sport</b> only.
+        <li>Householder: a human being managing the system in his own (or rented) house,
+            also known as "administrator". Householder is a User as well and all functionality
+            available for a User is available for a Householder.
             <ul>
-                <li>F1: "Feed XML" Bettor can feed the system with XML-formatted betting lines,
-                    according to its internal structure of data, the system can
-                    receive said data and parse them before processing, the system
-                    can understand betting lines, store them in the database
-                    and prepare for analysis.</li>
-                <li>F4: "40 sites" Bettor can be one of 40 betting sites,
-                    with 5 accounts for each. The system can manage accounts
-                    of these sites, and fully automate the entire betting process.</li>
+                <li>F1: "Manage Gadgets" Householder 
+                    can install, configure and remove gadgets and applications;
+                    can grant/revoke permissions to other users for particular gadgets and applications;
+                    can get access to "security zone" of every gadget and application.
+                </li>
+                <li>F2: "Manage Users" Householder 
+                    can create, delete, change/configure other users;
+                    can monitor protocols of users activity;
+                    can block certain types of access for particular users.
+                </li>
             </ul>
         </li>
-        <li>Manager: Representative of ATG controlling the system results
+        <li>User: a regular user of the system, probably one of Householder's relatives
+            or guests
             <ul>
-                <li>F2: "Confirm Bets" Manager can review arbs discovered, can review
-                    bets suggested by the system, can confirm bets, can monitor how the
-                    system is placing bets with bettors (in automated mode)</li>
-                <li>F3: "Monitoring" Manager can review system statistic reports,
-                    can review performance reports, can change system configuration
-                    parameters without changing of source code, can make corrections
-                    to the core algorithm/strategy of the system.</li>
+                <li>F3: "Play with Gadgets" User 
+                    can start and stop any Application;
+                    can add and remove certain Gadgets to his "panel";
+                    can play with gadgets and applications according to the rules/terms of their usage.
+                </li>
+            </ul>
+        </li>
+        <li>Gadget: a software component provided by a third-party or by the customer, that
+            comply to some requirements for its application programming interface (API). Gadget
+            and Application are almost the same type of an actor, but they differ in
+            their user interface capabilities.
+            <ul>
+                <li>F4: "Perform" Gadget 
+                    can interact with a User through the SUD, 
+                    sending to us its output and receiving back users' input. 
+                </li>
+            </ul>
+        </li>
+        <li>Server: a web service provider hosted at <tt>ruzoid.com</tt>
+            <ul>
+                <li>F5: "Web Service" Server 
+                    can receive logs from SUD, keep them in secure place, and return on demand;
+                    can authenticate users and authorize their access requests;
+                    can "rent" Applications and Gadgets to the SUD;
+                    can send emails to users through built-in SMTP server.
+                </li>
             </ul>
         </li>
     </ul>
@@ -105,20 +124,29 @@
     <p>Quality:</p>
     
     <ul>
-        <li>Reliability: Due to the nature of the business and high
-            probability of financial risks the system shall be extremely reliable
-            in terms of financial transactions. No event either from end-user
-            or from technical equipment shall lead to invalid financial transactions
-            executed.</li>
-        <li>Extendability: Since the betting strategy is very volatile and
-            not fixed in time, the system shall be easily configurable and changeable.
-            Adding of new bettors, new strategy mechanisms, new protocols shall
-            be done fast and seamlessly.</li>
+        <li>Attractiveness: The user interface of the SUD has to be comfortable
+            for a modern user, used to work with iPhone, iPad and similar
+            devices. It is desired to have an ability to use the majority of
+            functions without keyboard or mouse. Alternatives are touch-screen,
+            a simple few-buttons TV remote control, or something like 
+            Apple remote control.
+        </li>
+        <li>Interoperability: The SUD has to work both on Windows
+            and Mac OS platforms. The Customer proposed to use Silverlight
+            and Managed Extensibility Framework (MEF)
+            as a software platform. The SUD has to have a properly documented
+            interface available to third-party developers, since they
+            might be interested to develop their own Gadgets and Applications
+            (most possible they will be manufacturers of house equipment).
+            <i>If Silverlight is selected as a target software platform, all
+            Gadgets and Applications will have to be developed in Silverlight,
+            which imply certain limitation on marketing of the entire product.</i>
+        </li>
     </ul>
 
 <h1>To ignore</h1>
 
-<h1>ROM</h1>
+<h1>ROM (to ignore)</h1>
 
     <p>Estimators:</p>
     
@@ -169,7 +197,7 @@
     </ul>
 -->
 
-<h1>Promo</h1>
+<h1>Promo (to ignore)</h1>
     
     <p>Pages:</p>
     
@@ -190,7 +218,7 @@
     </ul>    
 -->
     
-<h1 id="ScheduleEstimate">ScheduleEstimate</h1>
+<h1>ScheduleEstimate (to ignore)</h1>
 
     <p>Works:</p>
     <ul>
@@ -240,16 +268,13 @@
     <p>Components:</p>
 
     <ul>
-        <li>DBMS: Database management system</li>
-        <li>Facade: SOAP Facade
+        <li>Gadgets: collection of Silverlight/MEF gadgets stored locally, but
+            originally retrieved from the Server.</li>
+        <li>Front: set of UI components interacting with the end-user</li>
+        <li>Dispatcher: controller, interacting with Front, Gadgets and Server
             <ul>
-                <li>DBMS: data management</li>
-                <li>Business Logic: business rules processing</li>
-            </ul>
-        </li>
-        <li>Business Logic: Business logic processor
-            <ul>
-                <li>DBMS: data management</li>
+                <li>Gadgets: installing, configuring, rendering</li>
+                <li>Front: collecting inputs, producing outputs</li>
             </ul>
         </li>
     </ul>
@@ -257,6 +282,8 @@
     <p>Concepts:</p>
 
     <ul>
-        <li>Multi-tiers: many tiers...</li>
-        <li>SOA: service oriented architecture</li>
+        <li>MVC: There is a good situation to apply a classic Model-View-Controller
+            design pattern, where Model is a collection of Gadgets and Applications,
+            View is Front, and Controller is a Dispatcher. Thus we have
+            a strict separation of Front and Gadgets.</li>
     </ul>

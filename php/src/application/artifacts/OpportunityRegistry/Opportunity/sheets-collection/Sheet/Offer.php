@@ -39,9 +39,9 @@ class Sheet_Offer extends Sheet_Abstract
         'deposit'    => '25%',
         'low'        => false,
         'high'       => false,
-        'objectives' => array(),
         'intro'      => array(),
         'months'     => false, // duration
+        'showInterval' => false,
     );
     
     /**
@@ -60,16 +60,6 @@ class Sheet_Offer extends Sheet_Abstract
         return false;
     }
 
-    /**
-     * Get name of the template file, like "Vision.tex", "ROM.tex", etc.
-     *
-     * @return string
-     */
-    public function getTemplateFile() 
-    {
-        return null;
-    }
-    
     /**
      * Get price per hour
      *
@@ -108,6 +98,25 @@ class Sheet_Offer extends Sheet_Abstract
         return $high->div($this->lowAmount);
     }
     
+    /**
+     * Get fixed amount.
+     *
+     * @return FaZend_Bo_Money
+     * @throws Sheet_Offer_InsufficientDataException
+     */
+    protected function _getFixedAmount() 
+    {
+        if (!isset($this->sheets['ROM'])) {
+            FaZend_Exception::raise(
+                'Sheet_Offer_InsufficientDataException',
+                "Can't find 'low' in 'Offer' and 'ROM' is absent, how to calculate size?"
+            );
+        }
+        $hours = $this->sheets['ROM']->hours;
+        $amount = clone $this->pricePerHour;
+        return $amount->mul($hours);
+    }
+
     /**
      * Get lower amount
      *

@@ -35,6 +35,7 @@ class Sheet_SAO_Diagram
         'width' => 100,
         'height' => 100,
         'texComponent' => '\\saoComponent',
+        'texExternal' => '\\saoExternal',
         'texBoundary' => '\\saoBoundary',
         'texConnector' => '\\saoConnector',
     );
@@ -45,6 +46,13 @@ class Sheet_SAO_Diagram
      * @var string
      */
     protected $_components = array();
+    
+    /**
+     * List of externals
+     *
+     * @var string
+     */
+    protected $_externals = array();
     
     /**
      * Links between components
@@ -71,6 +79,21 @@ class Sheet_SAO_Diagram
     }
     
     /**
+     * Add external.
+     *
+     * @param string External component
+     * @return void
+     */
+    public function addExternal($ex) 
+    {
+        $id = 1;
+        foreach (array_keys($this->_externals) as $exists) {
+            $id = max($id, intval(substr($exists, 1))) + 1;
+        }
+        $this->_externals['e' . $id] = $ex;
+    }
+    
+    /**
      * Add new link
      *
      * @param string From component name
@@ -81,21 +104,9 @@ class Sheet_SAO_Diagram
      */
     public function addLink($from, $to, $text) 
     {
-        if (!in_array($from, $this->_components)) {
-            FaZend_Exception::raise(
-                'Sheet_SAO_Diagram_InvalidComponentException',
-                "Component not found: '{$from}'"
-            );
-        }
-        if (!in_array($to, $this->_components)) {
-            FaZend_Exception::raise(
-                'Sheet_SAO_Diagram_InvalidComponentException',
-                "Component not found: '{$to}'"
-            );
-        }
         $this->_links[] = array(
-            array_search($from, $this->_components), 
-            array_search($to, $this->_components), 
+            $this->_find($from),  // "e3" or "c4" for example
+            $this->_find($to), 
             $text
         );
     }
@@ -137,8 +148,12 @@ class Sheet_SAO_Diagram
         $centerY = $this->_options['height'] / 2;
 
         // radius for components allocation
-        $radiusX = $centerX * 0.8;
-        $radiusY = $centerY * 0.8;
+        $radiusX = $centerX * 0.9;
+        $radiusY = $centerY * 0.7;
+        $radiusExX = $radiusX * 2.5;
+        $radiusExY = $radiusY * 2;
+
+        $externalsRendered = array();
 
         $angle = 0;
         $angleDelta = pi() * 2 / count($this->_components);
@@ -148,11 +163,30 @@ class Sheet_SAO_Diagram
             $x = $centerX + $radiusX * cos($angle);
             $y = $centerY + $radiusY * sin($angle);
             $tex .= "{$this->_options['texComponent']}{{$id}}{{$x}}{{$y}}\n\t{{$view->tex($component)}}\n";
+
+            // create external components and link them
+            foreach ($this->_links as $link) {
+                list($from, $to, $text) = $link;
+                if (($id != $from) && ($id != $to)) {
+                    continue;
+                }
+                foreach ($this->_externals as $ex=>$external) {
+                    if (($ex == $from) || ($ex == $to)) {
+                        // render external for the first time
+                        if (!isset($externalsRendered[$ex])) {
+                            $exX = $centerX + $radiusExX * cos($angle);
+                            $exY = $centerY + $radiusExY * sin($angle);
+                            $tex .= "{$this->_options['texExternal']}{{$ex}}{{$exX}}{{$exY}}\n\t{{$view->tex($external)}}\n";
+                            $externalsRendered[$ex] = true;
+                        }
+                        $tex .= "{$this->_options['texConnector']}{{$from}}{{$to}}{{$text}}\n";
+                    }
+                }
+            }
         }
          
         foreach ($this->_links as $link) {
             list($from, $to, $text) = $link;
-            
             $tex .= "{$this->_options['texConnector']}{{$from}}{{$to}}{{$text}}\n";
         }
         
@@ -169,6 +203,25 @@ class Sheet_SAO_Diagram
      */
     protected function _normalizeOptions() 
     {
+    }
+    
+    /**
+     * Find one component or external.
+     *
+     * @return string Internal name of it
+     */
+    protected function _find($name) 
+    {
+        if (in_array($name, $this->_components)) {
+            return array_search($name, $this->_components);
+        }
+        if (in_array($name, $this->_externals)) {
+            return array_search($name, $this->_externals);
+        }
+        FaZend_Exception::raise(
+            'Sheet_SAO_Diagram_InvalidComponentException',
+            "Component not found: '{$name}'"
+        );
     }
         
 }

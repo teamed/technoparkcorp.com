@@ -37,6 +37,7 @@ class Sheet_SAO extends Sheet_Abstract
     protected $_defaults = array(
         'components' => array(),
         'concepts' => array(),
+        'externals' => array(),
     );
     
     /**
@@ -51,10 +52,23 @@ class Sheet_SAO extends Sheet_Abstract
             $diagram->addComponent(strval($component['name']));
         }
         
+        foreach ($this->externals as $external) {
+            $diagram->addExternal(strval($external['name']));
+        }
+        
         foreach ($this->components as $component) {
             foreach ($component as $to)
             $diagram->addLink(
                 strval($component['name']), 
+                strval($to['name']), 
+                strval($to['value'])
+            );
+        }
+        
+        foreach ($this->externals as $external) {
+            foreach ($external as $to)
+            $diagram->addLink(
+                strval($external['name']), 
                 strval($to['name']), 
                 strval($to['value'])
             );

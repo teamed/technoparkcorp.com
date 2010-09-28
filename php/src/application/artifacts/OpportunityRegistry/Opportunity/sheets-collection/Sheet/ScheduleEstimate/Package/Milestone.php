@@ -53,7 +53,7 @@ class Sheet_ScheduleEstimate_Package_Milestone extends Sheet_ScheduleEstimate_Pa
                 
             // percents, like "5%" or "15.4%"
             case preg_match('/^(\d+(?:\.\d+)?)%$/', $cost, $matches):
-                $this->_cost = FaZend_Bo_Money::factory(self::$_sheet->sheets['Offer']->lowAmount)
+                $this->_cost = FaZend_Bo_Money::factory(self::$_sheet->sheets['Offer']->fixedAmount)
                     ->mul(intval($matches[1])/100);
                 break;
                 

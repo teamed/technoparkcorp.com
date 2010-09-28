@@ -10,11 +10,20 @@
     all direct and indirect expenses, like payments to technicians and project 
     manager, equipment rental, communications, management reserve, warranty,
     and our profit. Fixed project budget will be calculated and announced
-    right after the specification is developed, and we guarantee that it
-    will be somewhere between \textbf{<?=$this->tex($this->sheet->lowAmount)?>{}
-    and <?=$this->tex($this->sheet->highAmount)?>}.
+    right after the specification is developed. 
+    <? if ($this->sheet->showInterval): ?>
+        Its exact amount will be somewhere around
+        <?=$this->sheets['ROM']->hours?> staff-hours,
+        <?=$this->tex($this->sheet->fixedAmount)?>
+        (-<?=(1-$this->sheets['ROM']->lowRatio) * 100?>\%/+<?=(1-$this->sheets['ROM']->highRatio) * 100?>\%)
+        as explained below.
+    <? else: ?>
+        Its exact amount
+        will be around <?=$this->tex($this->sheet->fixedAmount)?>{}.
+    <? endif; ?>
     To start a project we will kindly ask you for a deposit
-    of <?=$this->tex($this->sheet->depositAmount)?>.
+    of 
+    \textbf{<?=$this->tex($this->sheet->depositAmount)?>}.
 
 <? else: ?>
 

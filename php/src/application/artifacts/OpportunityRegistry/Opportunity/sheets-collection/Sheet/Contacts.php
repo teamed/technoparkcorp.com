@@ -59,24 +59,4 @@ class Sheet_Contacts extends Sheet_Abstract
         ),
     );
     
-    /**
-     * Get name of the template file, like "Vision.tex", "ROM.tex", etc.
-     *
-     * @return string|null
-     */
-    public function getTemplateFile() 
-    {
-        return null;
-    }
-
-    /**
-     * Get name of the template file for proposal
-     *
-     * @return string|null
-     */
-    public function getProposalFile() 
-    {
-        return null;
-    }
-
 }

@@ -85,6 +85,8 @@ class Sheet_Vision extends Sheet_Abstract
                 'cellHeight' => self::UC_HEIGHT * 1.2,
                 'cellsTotalX' => ceil($width),
                 'cellsTotalY' => ceil($height),
+                
+                'startAngle' => 15,
             )
         );
         
