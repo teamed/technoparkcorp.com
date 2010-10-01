@@ -295,7 +295,7 @@ class Model_XML
             $client = new Zend_Http_Client(
                 'http://ccfacade.fazend.com/tikz',
                 array(
-                    'timeout' => 60,
+                    'timeout' => 120,
                 )
             );
             $client
