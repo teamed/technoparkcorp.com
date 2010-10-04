@@ -245,6 +245,10 @@ class Model_XML
                     $replacement = self::$_view->viewFile($matches[2][$key]);
                     break;
 
+                case 'base64':
+                    $replacement = base64_encode(file_get_contents(CONTENT_PATH . $matches[2][$key]));
+                    break;
+
                 case 'mailto':
                     $replacement = 'mailto:' . $matches[2][$key] . 
                     '@' . preg_replace('/^https?\:\/\//', '', WEBSITE_URL);
