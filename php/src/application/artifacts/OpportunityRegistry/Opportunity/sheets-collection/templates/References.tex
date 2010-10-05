@@ -5,15 +5,20 @@
 
 \section*{List of References}
 
-TechnoPark Corp. has operated in the software development market since 2001. One of
-the most important corporate values of our company is a happy client, who is happy enough to recommend us. 
-The list below includes some of our clients who are ready to give us a
-reference:
+TechnoPark Corp., as a group of engineers, has been operated 
+in the software development market since 2000. One of
+the most important corporate values of our company is 
+a happy client who is happy enough to recommend us. 
+The list below includes some of those who are ready to give us 
+such a reference:
 
 <? foreach ($this->sheet->accounts as $account): ?>
     <?=$this->render('References/' . $account['name'] . '.tex')?>{}
     <?=$this->tex($account['value'])?>{}
-    
+        
 <? endforeach; ?>
 
-Feel free to email or call them.
+When contacting any of them please mention
+that the reference was given by Yegor Bugayenko,
+a Director of TechnoPark Corp.  Even better, put
+\href{mailto:egor@technoparkcorp.com}{egor@technoparkcorp.com} into \texttt{CC:}.
