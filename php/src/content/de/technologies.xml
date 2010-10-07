@@ -1,26 +1,9 @@
 <?xml version="1.0"?>
-<!DOCTYPE tpc [
-<!ENTITY nbsp "&#160;">
-<!ENTITY uml "&#168;">
-<!ENTITY Auml "&#196;">
-<!ENTITY Euml "&#203;">
-<!ENTITY Iuml "&#207;">
-<!ENTITY Ouml "&#214;">
-<!ENTITY Uuml "&#220;">
-<!ENTITY auml "&#228;">
-<!ENTITY euml "&#235;">
-<!ENTITY iuml "&#239;">
-<!ENTITY ouml "&#246;">
-<!ENTITY uuml "&#252;">
-<!ENTITY yuml "&#255;">
-<!ENTITY amp "&#38;#38;">
-<!ENTITY szlig  "&#223;">
-]>
 
 <article>
 
 <title>Technologien</title>
-<label></label>
+<label>Technologien</label>
 <intro></intro>
 <next></next>
 
@@ -57,15 +40,15 @@
             <td style="text-align: right; width: 20%;">Level 4</td>
             <td style="border: 1px dotted black; background-color: #DBE5F1; width: 20%;">PMP</td>
             <td style="border: 1px dotted black; background-color: #F2DBDB" width="20%">SCEA</td>
-            <td width="20%">&nbsp;</td>
-            <td width="20%">&nbsp;</td>
+            <td width="20%"></td>
+            <td width="20%"></td>
         </tr>
         <tr>
             <td style="text-align: right">Level 3</td>
             <td style="border: 1px dotted black; background-color: #DBE5F1">CompTIA Project+</td>
             <td style="border: 1px dotted black; background-color: #F2DBDB">IBM OOAD w/UML</td>
             <td style="border: 1px dotted black; background-color: #DAEEF3">ASQ CSQE</td>
-            <td>&nbsp;</td>
+            <td></td>
         </tr>
         <tr>
             <td style="text-align: right">Level 2</td>
@@ -79,7 +62,7 @@
             <td style="border: 1px dotted black; background-color: #F2F2F2; text-align: center;" colspan="4">Internal Assessment Test</td>
         </tr>
         <tr>
-            <td>&nbsp;</td>
+            <td></td>
             <td style="border-right: 1px dotted black;">Project Manager</td>
             <td style="border-right: 1px dotted black;">Software Architect &amp;<br/> Programmer</td>
             <td style="border-right: 1px dotted black;">Test Analyst &amp;<br/> Tester</td>
@@ -87,9 +70,9 @@
         </tr>
         </table>
 
-        <p>Jeder neue Mitarbeiter muss unsere internen Regeln und Qualit&auml;tsstandards erlernen und beherrschen. 
+        <p>Jeder neue Mitarbeiter muss unsere internen Regeln und Qualitätsstandards erlernen und beherrschen. 
         Deswegen wird von den neuen Mitarbeitern unbedingt verlangt, innerhalb der ersten drei Monate der Arbeit den 
-        Internal Assessment Test durchzuf&uuml;hren. Erst nach der erfolgreichen Teilnahme dieser internen Attestierung 
+        Internal Assessment Test durchzuführen. Erst nach der erfolgreichen Teilnahme dieser internen Attestierung 
         kann der Neuling in die Belegschaft aufgenommen werden.</p>
 
 </text>

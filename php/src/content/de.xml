@@ -1,22 +1,4 @@
 <?xml version="1.0"?>
-<!DOCTYPE tpc [
-<!ENTITY reg "&#174;">
-<!ENTITY nbsp "&#160;">
-<!ENTITY uml "&#168;">
-<!ENTITY Auml "&#196;">
-<!ENTITY Euml "&#203;">
-<!ENTITY Iuml "&#207;">
-<!ENTITY Ouml "&#214;">
-<!ENTITY Uuml "&#220;">
-<!ENTITY auml "&#228;">
-<!ENTITY euml "&#235;">
-<!ENTITY iuml "&#239;">
-<!ENTITY ouml "&#246;">
-<!ENTITY uuml "&#252;">
-<!ENTITY yuml "&#255;">
-<!ENTITY amp "&#38;#38;">
-<!ENTITY szlig  "&#223;">
-]>
 
 <article>
 
@@ -25,7 +7,7 @@
 <title>Software-Entwicklung</title>
 <label>Deutsche</label>
 <intro></intro>
-<next></next>
+<next>de/quality</next>
 
 <description>
     Individuelle Software-Entwicklung, 
@@ -69,30 +51,30 @@
 <text>
 
     <p>TechnoPark Corp. ist eine SoftwareVerwertungsgesellschaft mit einer erfinderischen 
-    Ann&auml;herung zum Projekt Management in den virtuellen verteilten Mannschaften. 
+    Annäherung zum Projekt Management in den virtuellen verteilten Mannschaften. 
     Wenn Sie uns einstellen, wie eine allgemeine Fremdfirma, die Sie aktiv 
-    ausf&uuml;hrlich jedes letzte der internen Angelegenheiten eines Projektes mit 
-    einbezogen bleiben. Sie steuern Ihr Gesch&auml;ftserfolg mittels unserer 
-    automatisierten sofortigen Metrik, die mit <a href="http://en.wikipedia.org/wiki/Project_Management_Body_of_Knowledge">PMBOK&reg;</a>, 
-    <a href="http://www.sei.cmu.edu/cmmi/general/">CMMI&reg;</a>, 
+    ausführlich jedes letzte der internen Angelegenheiten eines Projektes mit 
+    einbezogen bleiben. Sie steuern Ihr Geschäftserfolg mittels unserer 
+    automatisierten sofortigen Metrik, die mit <a href="http://en.wikipedia.org/wiki/Project_Management_Body_of_Knowledge">PMBOK®</a>, 
+    <a href="http://www.sei.cmu.edu/cmmi/general/">CMMI®</a>, 
     <a href="http://en.wikipedia.org/wiki/IBM_Rational_Unified_Process">RUP</a> and 
-    <a href="http://en.wikipedia.org/wiki/ISO_9001">ISO 9001</a> gef&auml;llig ist.</p>
+    <a href="http://en.wikipedia.org/wiki/ISO_9001">ISO 9001</a> gefällig ist.</p>
     
-    <p>Wir arbeiten nur mit &Ouml;rtlich festgelegtpreis Projekten, wo <a href="${url:process/scope}">Kosten</a> 
-    und <a href="${url:process/schedule}">Zeitplan</a> festgelegt sein. Sie bezahlen kein Lohngeh&auml;lter oder 
+    <p>Wir arbeiten nur mit Örtlich festgelegtpreis Projekten, wo <a href="${url:process/scope}">Kosten</a> 
+    und <a href="${url:process/schedule}">Zeitplan</a> festgelegt sein. Sie bezahlen kein Lohngehälter oder 
     irgendwelche anderen Gemeinkosten, nur ein Festpreis von den <a href="${url:process/warranty/deliverables}">Leistungen</a>.</p>
     
     <p>Ein Projekt wird als <a href="${url:about/teams}">virtuelle Mannschaft</a> der schmal-erfahrenen Techniker 
     organisiert, wenn Sie die besten verwendbaren Talente durch gerade 
-    eine Fremdfirma aufnehmen k&ouml;nnen - uns. Es gibt Berufs-Gruppen der 
+    eine Fremdfirma aufnehmen können - uns. Es gibt Berufs-Gruppen der 
     Software 40+ und Einzelpersonen in unserer Datenbank, die zu 
-    Ihrem Projekt mit einbezogen werden k&ouml;nnte. </p>
+    Ihrem Projekt mit einbezogen werden könnte. </p>
 
-    <p>Sie stellen die Funktions- und unfunktionalen Anforderungen zur Verf&uuml;gung. 
-    Wir erfassen eine Projektmannschaft und r&uuml;sten sie mit unserem eigenen 
+    <p>Sie stellen die Funktions- und unfunktionalen Anforderungen zur Verfügung. 
+    Wir erfassen eine Projektmannschaft und rüsten sie mit unserem eigenen 
     on-line-Projektleitersystem aus. Techniker erbringen Programmierungs-, 
-    Pr&uuml;fungs-, Entwurfs- und Analysendienstleistungen. Unser 
-    Projektleiter integriert alle diese Bem&uuml;hungen, um ein Produkt an 
+    Prüfungs-, Entwurfs- und Analysendienstleistungen. Unser 
+    Projektleiter integriert alle diese Bemühungen, um ein Produkt an 
     Ihre Endbenutzer zusammen zu liefern.</p>
 
 </text>

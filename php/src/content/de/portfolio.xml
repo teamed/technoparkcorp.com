@@ -1,33 +1,16 @@
-<?xml version="1.0" encoding="Windows-1251"?>
-<!DOCTYPE tpc [
-<!ENTITY nbsp "&#160;">
-<!ENTITY uml "&#168;">
-<!ENTITY Auml "&#196;">
-<!ENTITY Euml "&#203;">
-<!ENTITY Iuml "&#207;">
-<!ENTITY Ouml "&#214;">
-<!ENTITY Uuml "&#220;">
-<!ENTITY auml "&#228;">
-<!ENTITY euml "&#235;">
-<!ENTITY iuml "&#239;">
-<!ENTITY ouml "&#246;">
-<!ENTITY uuml "&#252;">
-<!ENTITY yuml "&#255;">
-<!ENTITY amp "&#38;#38;">
-<!ENTITY szlig  "&#223;">
-]>
+<?xml version="1.0"?>
 
 <article>
 
 <title>Portfolio</title>
-<label></label>
+<label>Portfolio</label>
 <intro></intro>
 <next></next>
 
 <text>
 
-<p>In den letzten f&uuml;nf Jahren unserer T&auml;tigkeit haben wir mehr als 50 erfolgreiche 
-Projekte unterschiedlicher Gr&ouml;&szlig;e und Komplexit&auml;t ausgef&uuml;hrt. Hier sind einige von ihnen:</p>
+<p>In den letzten fünf Jahren unserer Tätigkeit haben wir mehr als 50 erfolgreiche 
+Projekte unterschiedlicher Größe und Komplexität ausgeführt. Hier sind einige von ihnen:</p>
 
 <table>
 <tr>
@@ -48,13 +31,13 @@ Projekte unterschiedlicher Gr&ouml;&szlig;e und Komplexit&auml;t ausgef&uuml;hrt
 </tr>
 </table>
 
-<p>Damit Sie sich ein Bild von unserer Erfahrung machen k&ouml;nnen, sind hier einige Gebiete, auf denen 
+<p>Damit Sie sich ein Bild von unserer Erfahrung machen können, sind hier einige Gebiete, auf denen 
 wir bereits gearbeitet haben oder weiterhin arbeiten:</p>
 
 <table>
 <tr>
-    <th>&nbsp;</th>
-    <th>&nbsp;</th>
+    <th></th>
+    <th></th>
 </tr>
 <tr>
     <td>Graphic trend analysis of trading indexes at FOREX and NASDAQ, C++/PostgreSQL</td>
@@ -114,7 +97,7 @@ wir bereits gearbeitet haben oder weiterhin arbeiten:</p>
 </tr>
 </table>
 
-<p>Jedes neue Gebiet bedeutet f&uuml;r unser Team, unser Qualit&auml;tssystem und unser Management eine neue Lernaufgabe.</p>
+<p>Jedes neue Gebiet bedeutet für unser Team, unser Qualitätssystem und unser Management eine neue Lernaufgabe.</p>
 
 </text>
 

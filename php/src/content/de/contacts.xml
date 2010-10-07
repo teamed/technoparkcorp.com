@@ -1,36 +1,11 @@
 <?xml version="1.0"?>
-<!DOCTYPE tpc [
-<!ENTITY nbsp "&#160;">
-<!ENTITY uml "&#168;">
-<!ENTITY Auml "&#196;">
-<!ENTITY Euml "&#203;">
-<!ENTITY Iuml "&#207;">
-<!ENTITY Ouml "&#214;">
-<!ENTITY Uuml "&#220;">
-<!ENTITY auml "&#228;">
-<!ENTITY euml "&#235;">
-<!ENTITY iuml "&#239;">
-<!ENTITY ouml "&#246;">
-<!ENTITY uuml "&#252;">
-<!ENTITY yuml "&#255;">
-<!ENTITY amp "&#38;#38;">
-<!ENTITY szlig  "&#223;">
-]>
-
-<!-- 
-    Version tracking section:
-
-    9/15/07 Yegor - first version
-
--->
-
 
 <article>
 
 <title>Contacts</title>
-<label></label>
+<label>Contacts</label>
 <intro></intro>
-<next></next>
+<next>de/quality</next>
 
 <description>
     Individuelle Software-Entwicklung, 
@@ -50,11 +25,11 @@
 <text>
 
     <p>Am bequemsten ist es, Kontakte per E-mail auszutauschen und 
-    sich anschlie&szlig;end zu Gespr&auml;chen zu treffen: <a href="${mailto:sales}">email</a></p>
+    sich anschließend zu Gesprächen zu treffen: <a href="${mailto:sales}">email</a></p>
 
     <p> Wahrscheinlich arbeiten Sie schon mit Auftragnehmern oder hatten bereits Arbeitserfahrungen mit entfernt arbeitenden Teams. 
-    M&ouml;glicherweise ist diese Erfahrung negativ. Wir werden Ihnen vorschlagen, wie es am besten ist, die Arbeit mit uns 
-    aufzubauen, damit die Projekte f&uuml;r Sie und uns erfolgreich sind. </p>
+    Möglicherweise ist diese Erfahrung negativ. Wir werden Ihnen vorschlagen, wie es am besten ist, die Arbeit mit uns 
+    aufzubauen, damit die Projekte für Sie und uns erfolgreich sind. </p>
 
     <p>Naples, Florida<br/>
     tel. +1 (239) 935 5429</p>
