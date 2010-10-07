@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="Windows-1251" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!--
  *
  * Copyright (c) 2008, TechnoPark Corp., Florida, USA
@@ -20,22 +20,46 @@
 
 <article>
 
-<charset>Windows-1251</charset>
-
 <invisible/>
 
-<title>Iterative and incremental software development process</title>
-<label>Process</label>
-<intro>Learn about our key project management processes</intro>
+<title>Уникальный процесс разработки ПО в распределенных командах</title>
+<label>По русски</label>
+<intro>Узнайте больше о нашем изобретении</intro>
 <next>process/scope</next>
 
 <description>
+    Мы изобрели и патентуем уникальную технологию разработки
+    программного обеспечения в распределенных командах. Технология
+    позволяет добиться высокого качества конечного продукта в 
+    условиях сжатого графика, ограниченного бюджета и разработчиках
+    удаленных друг от друга.
 </description>
 
 <keywords>
 </keywords>
 
 <text>
+
+    <p>
+        Зачастую, удачный выбор разработчика программного продукта
+        не является гарантией успеха в конкретном проекте. Даже если
+        разработчик качественно управляет своими процессами Вы, как
+        клиент, хотите быть детально информированы и ходе работ. Очень часто
+        участие закачика в работе проекта является важным фактором успеха
+        всего предприятия. Наша разработка позволяет Вам получать
+        качественный результат, будучи активным участником всего процесса.
+    </p>
+
+    <p style="z-index:100; background-color: white; position: relative;">
+    <iframe src="https://docs.google.com/present/embed?id=dvcq5nb_45xtvq5cgg&amp;interval=10&amp;autoStart=true&amp;loop=true&amp;size=m" 
+        frameborder="0" width="555" height="451">
+    </iframe>
+    </p>
+    
+    <p>
+        Как сказано в презентации, мы активно ищем клиентов для выполнения
+        пилотных проектов, с применением нашей разработки.
+    </p>
 
 </text>
 
