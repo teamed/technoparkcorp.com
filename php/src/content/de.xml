@@ -78,28 +78,6 @@
     <a href="http://en.wikipedia.org/wiki/IBM_Rational_Unified_Process">RUP</a> and 
     <a href="http://en.wikipedia.org/wiki/ISO_9001">ISO 9001</a> gef&auml;llig ist.</p>
     
-    <p><object id="video"
-        width="396" 
-        height="297" 
-        style="border: 1px solid ${def:ColorsDARK_GRAY};">
-        <param name="allowScriptAccess" value="sameDomain" />
-        <param name="movie" value="http://ipf10.tpc-svn.com/video.php?file=about.swf" />
-        <param name="quality" value="high" />
-        <param name="bgcolor" value="#ffffff" />
-        <param name="allowFullScreen" value="false" />
-        <embed src="http://ipf10.tpc-svn.com/video.php?file=about.swf" 
-            quality="high" 
-            bgcolor="#ffffff" 
-            width="396" 
-            height="297" 
-            name="video" 
-            allowScriptAccess="sameDomain" 
-            type="application/x-shockwave-flash" 
-            pluginspage="http://www.adobe.com/go/getflashplayer" 
-            allowFullScreen="false" />
-    </object><br/>
-    <span class='fieldhelp'>1-minute Flash video presentation of the services you buy (2.1Mb)</span></p>
-
     <p>Wir arbeiten nur mit &Ouml;rtlich festgelegtpreis Projekten, wo <a href="${url:process/scope}">Kosten</a> 
     und <a href="${url:process/schedule}">Zeitplan</a> festgelegt sein. Sie bezahlen kein Lohngeh&auml;lter oder 
     irgendwelche anderen Gemeinkosten, nur ein Festpreis von den <a href="${url:process/warranty/deliverables}">Leistungen</a>.</p>
