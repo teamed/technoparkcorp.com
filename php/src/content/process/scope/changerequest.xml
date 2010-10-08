@@ -36,7 +36,11 @@
     SRS,
     software requirements specification,
     change control,
-    software changes tracking
+    software changes tracking,
+    continuous integration,
+    software outsourcing,
+    offshore development,
+    distributed programming,
 </keywords>
 
 <term>requestedchanges</term>

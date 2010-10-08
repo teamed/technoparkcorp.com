@@ -282,37 +282,54 @@ class Model_Article
      * The function builds the keywords from the text of the article.
      * If the keywords are defined in the special keywords.xml file - the
      * function uses this file. Also, if the article/keywords is defined,
-     * it is returned
+     * it is returned.
      *
      * @return string
      */
     protected function _getKeywords() 
     {
-        if ($this->_xml->keywords)
-            return ucwords(trim((string)$this->_xml->keywords));
+        if ($this->_xml->keywords) {
+            $words = explode(',', trim((string)$this->_xml->keywords));
+        } else {
+            // Remove spaces and other un-readable symbols
+            $txt = preg_replace(
+                '/(\s*[^a-z0-9A-Z]\s*)/', 
+                ' ', 
+                strip_tags((string)$this->_xml->text)
+            );
+            $words = explode(' ', $txt);
+        }
 
-        // Remove spaces and other un-readable symbols
-        $txt = ucwords(preg_replace('/(\s*[^a-z0-9A-Z]\s*)/', ' ', strip_tags((string)$this->_xml->text)));
-        
+        // make them look nice
+        array_walk($words, create_function('&$v', '$v = ucwords(trim($v, "\n\t\r "));'));
+
         // Filter the words that are longer than 3 symbols and counts them
         $words = array_count_values(
             array_filter(
-                explode(' ', $txt), 
+                $words, 
                 create_function(
                     '$word', 
                     'return(strlen($word) > 3) && ((int) $word[0] == 0);'
                 )
             )
         );
-
         // Sort in reverse mode(top elements are the most popular words)
         arsort($words);
+        $words = array_keys($words);
 
-        // Move words back to value(they are in indexes now)
-        array_walk($words, create_function('&$item, $key', '$item = $key;'));
-
+        $words[] = 'Continuous Integration';
+        $words[] = 'Software Outsourcing';
+        $words[] = 'Software Development';
+        $words[] = 'Software Quality';
+        
+        if (strpos($this->page, '/') !== false) {
+            $words[] = ucwords(substr(strrchr($this->page, '/'), 1));
+        }
+        
+        $words = array_unique($words);
+        
         // Get the top 20 of them
-        return substr(strrchr($this->page, '/'), 1).', '.implode(', ', array_slice($words, 0, 20));
+        return implode(', ', array_slice($words, 0, 20));
     }    
 
     /**
