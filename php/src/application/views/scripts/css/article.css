@@ -1,13 +1,13 @@
 /**
  * thePanel v2.0, Project Management Software Toolkit
  *
- * Redistribution and use in source and binary forms, with or without 
- * modification, are PROHIBITED without prior written permission from 
- * the author. This product may NOT be used anywhere and on any computer 
- * except the server platform of TechnoPark Corp. located at 
- * www.technoparkcorp.com. If you received this code occasionally and 
- * without intent to use it, please report this incident to the author 
- * by email: privacy@technoparkcorp.com or by mail: 
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are PROHIBITED without prior written permission from
+ * the author. This product may NOT be used anywhere and on any computer
+ * except the server platform of TechnoPark Corp. located at
+ * www.technoparkcorp.com. If you received this code occasionally and
+ * without intent to use it, please report this incident to the author
+ * by email: privacy@technoparkcorp.com or by mail:
  * 568 Ninth Street South 202, Naples, Florida 34102, USA
  * tel. +1 (239) 935 5429
  *
@@ -51,7 +51,7 @@ div.noRightCol {
     div.article p,
     div.article ol,
     div.article form,
-    div.article table, 
+    div.article table,
     div.article ul {
         padding-top: 12px;
         padding-bottom: 0px;
@@ -109,7 +109,7 @@ div.noRightCol {
         border-bottom: 1px <?=Model_Colors::BLACK?> dotted;
     }
 
-        div.article a:hover { 
+        div.article a:hover {
             color: <?=Model_Colors::BLUE?>;
             background-color: transparent;
         }
@@ -157,7 +157,7 @@ div.noRightCol {
         div.article option {
             padding: 2px;
             padding-right: 10px;
-        }      
+        }
 
     /* INPUT element */
     div.article input,
@@ -169,7 +169,7 @@ div.noRightCol {
         font-size: 1.2em;
         margin: 2px 0 2px 0;
     }
-                        
+
         div.article input.button {
             background-color: <?=Model_Colors::GRAY?>;
             cursor: pointer;
@@ -232,9 +232,9 @@ div.right {
             }
 
                 div.livechat a {
-                    position: absolute; 
-                    top: 12px; 
-                    left: 17px; 
+                    position: absolute;
+                    top: 12px;
+                    left: 17px;
                     color: <?=Model_Colors::BLACK?>;
                     background-color: transparent;
                 }
@@ -245,9 +245,9 @@ div.right {
                     }
 
                     div.livechat a.label {
-                        position: absolute; 
-                        top: 85px; 
-                        left: 67px; 
+                        position: absolute;
+                        top: 85px;
+                        left: 67px;
                         color: <?=Model_Colors::BLACK?>;
                         background-color: transparent;
                     }
@@ -269,13 +269,22 @@ div.right {
 ul.concepts {
     font-size: 11px;
     line-height: 1.5em;
-    padding: 10px;    
+    padding: 10px;
     width: 405px;
 }
 
     ul.concepts li {
         list-style: none;
     }
+
+        ul.concepts li a {
+            color: <?=Model_Colors::BLUE?>;
+            text-decoration: none;
+        }
+
+            ul.concepts li a:hover {
+                color: <?=Model_Colors::BLACK?>;
+            }
 
 /* boxed element */
 div.article .boxed {
@@ -299,7 +308,7 @@ div.article ol.inparaenum {
         counter-increment: inparaitem;
         display: inline;
     }
-    
+
         div.article ol.inparaenum li:before {
             content: counter(inparaitem, lower-alpha) ") ";
         }
