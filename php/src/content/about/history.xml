@@ -20,33 +20,46 @@
 
 <article>
 
-<title>History of TechnoPark Corp.</title>
-<label>History</label>
+<title>History of growth</title>
+<label>History of growth</label>
 <intro>Review our latest history with key events, achievements and awards</intro>
 <next>about/facts</next>
 
 <keywords>
-    ISO 9001,
-    TechnoPark Corp,
-    TRUSTe,
-    Online privacy
-    custom software development
+    ISO:9001,
+    custom software development,
+    quality of software,
+    respectful team,
+    software development references,
 </keywords>
 
 <description>
-    Custom software development company from Florida with a history of 
-    achievements and a great future. Contact us to get more information.
+    Custom software development company
+    from Florida with a history of achievements
+    and a great future. Contact us to get more information.
 </description>
 
 <text>
 
-    <p>Our company is doing custom software development since 2001, here is a list of
-    key facts and events:</p>
+    <p>
+        We are doing custom software development
+        since 2001, here is a list of key facts and events:
+    </p>
 
     <table>
     <tr>
         <th style="width: 110px;">Date</th>
         <th>Event</th>
+    </tr>
+
+    <tr>
+        <td>October, 2010</td>
+        <td>
+            We took active participation in development and design
+            of a first draft of <a href="http://www.xdsd.org">XDSD</a>
+            (eXtremely Distributed Software Development)
+            open methodology
+        </td>
     </tr>
 
     <tr>
@@ -59,15 +72,15 @@
     <tr>
         <td>March, 2010</td>
         <td>A dedicated team of PHP programmers working under TechnoPark Corp.'s
-            management finished the first version of 
-            <a href="http://www.phprack.com">phpRack</a>, 
+            management finished the first version of
+            <a href="http://www.phprack.com">phpRack</a>,
             an open-source project for automation of integration testing
             </td>
     </tr>
 
     <tr>
         <td>November, 2009</td>
-        <td>TechnoPark Corp. signed a long term software development 
+        <td>TechnoPark Corp. signed a long term software development
             contract with a North American investment management company working
             in Oil &amp; Gas market</td>
     </tr>
@@ -89,7 +102,7 @@
 
     <tr>
         <td>June, 2008</td>
-        <td>TechnoPark Corp. registered copyright for online project management 
+        <td>TechnoPark Corp. registered copyright for online project management
         materials published on the corporate site, <a href="${url:about/news/uacopyright}">read more</a></td>
     </tr>
 
@@ -111,20 +124,20 @@
 
     <tr>
         <td>March, 2007</td>
-        <td>TechnoPark Corp. becomes a member of 
-        <a href="http://www.russoft.org/russoft/?members">RUSSOFT.org</a>, 
+        <td>TechnoPark Corp. becomes a member of
+        <a href="http://www.russoft.org/russoft/?members">RUSSOFT.org</a>,
         <a href="${url:about/news/news11}">read more</a></td>
     </tr>
 
     <tr>
         <td>November, 2006</td>
-        <td>Mobile payment processing software, developed by TechnoPark Corp., is certified by Visa/Mastercard as 
+        <td>Mobile payment processing software, developed by TechnoPark Corp., is certified by Visa/Mastercard as
         compliant to PCI DSS Level 1, <a href="${url:about/news/year2006/news16}">read more</a></td>
     </tr>
 
     <tr>
         <td>March, 2006</td>
-        <td>TechnoPark Corp. becomes a member of <a href="http://www.hi-tech.org.ua">Hi-Tech Initiative</a>, 
+        <td>TechnoPark Corp. becomes a member of <a href="http://www.hi-tech.org.ua">Hi-Tech Initiative</a>,
         Ukraine.</td>
     </tr>
 
@@ -135,7 +148,7 @@
 
     <tr>
         <td>March, 2000</td>
-        <td>Custom software development business is started in Florida, United States and 
+        <td>Custom software development business is started in Florida, United States and
         Dnepropetrovsk, Ukraine.</td>
     </tr>
 

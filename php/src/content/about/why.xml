@@ -27,9 +27,9 @@
 
 <description>
     TechnoPark Corp. is a custom software development general contractor, with
-    innovative full-scale project management toolkit, 
+    innovative full-scale project management toolkit,
     automated quality of process control,
-    agile best practices, 
+    agile best practices,
     and a virtual team project model.
 </description>
 
@@ -46,44 +46,32 @@
 
 <text>
 
-    <p>Successful selection of a reliable contractor is not a success guarantee in
-    a particular project. Even when the contractor conducts proper
-    project management you want to be an informed stakeholder
-    and want to get a clear picture of project performance.
-    Nowadays it is difficult to get such cumulative and honest picture 
-    without personal intrusion into management process, compromising and 
-    interrupting the work. On the other hand, lack or delay in such report
-    leads to missed deadlines, cost overrun and business failure.</p>
-    
-    <p style="z-index:100; background-color: white; position: relative;">
-    <iframe src="https://docs.google.com/present/embed?id=dvcq5nb_323jbscnfs&amp;interval=10&amp;autoStart=true&amp;loop=true&amp;size=m" 
-        frameborder="0" width="555" height="451">
-    </iframe>
+    <p>
+        We are one of the authors of a new open methodology called
+        <b>eXtremely Distributed Software Development (<a href="http://www.xdsd.org">XDSD</a>)</b>.
+        We are the only company who provides a proprietary implementation
+        of it, combining together tools, technologies, and talents.
+        Application of XDSD in your project guarantees you:
     </p>
-    
-    <p>In our projects we implement full-scale project management and make its
-    every last detail valuable and easy-to-understand
-    by means of instant automated metrics. You become a real stakeholder, 
-    working together with the remote team and getting that clear picture
-    by means of instant automated metrics. Other reasons:</p>
-    
+
     <ul>
-        <li>Unique <a href="${url:about/teams}">virtual team</a> concept</li>
-        <li>Our contract contains no hidden costs due to the <a href="${url:process/cost/budget}">fixed-price</a></li>
+        <li>No hidden costs due to the <a href="${url:process/cost/budget}">fixed-price</a></li>
         <li><a href="${url:process/communication/incremental}">Incremental</a> delivery of product</li>
         <li><a href="${url:about/facts}">ISO 9001</a> Certified Quality Management System</li>
         <li>Adherence to UML in software architecture and design</li>
+        <li>Continuous Delivery</li>
         <li>Pro-active <a href="${url:process/risk}">risk</a> identification and planning</li>
         <li>Two-step "win-win" <a href="${url:process/cost}">project quotation</a> process</li>
         <li>Detailed and precise software development contract</li>
-        <li><a href="${url:process/quality/unit}">Unit test coverage over 75%</a> as a rule</li>
-        <li>Planned and plan-driven <a href="${url:process/quality/manual}">manual</a> and <a href="${url:process/quality/system}">system</a> testing</li>
+        <li><a href="${url:process/quality/unit}">Unit testing</a> as a rule</li>
+        <li>Plan-driven <a href="${url:process/quality/manual}">manual</a> and <a href="${url:process/quality/system}">system</a> testing</li>
         <li>Information security processes compliant with ISO 27001</li>
-        <li>Continuous Integration with daily builds</li>
     </ul>
 
-    <p>Our quality is constantly being improved and we are proud of our
-    standards and rules.</p>
+    <p>
+        Interested to know more about <a href="http://www.xdsd.org">XDSD</a>?
+        <a href="${mailto:sales}">Email us</a> to get a white paper.
+    </p>
 
 </text>
 

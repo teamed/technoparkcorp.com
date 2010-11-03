@@ -27,26 +27,32 @@
 
 <text>
 
-    <p>There are a number of available positions on our team.  
-    Please apply online if you have the necessary skills and experience our company desires. 
+    <p>
+        There are a number of available positions on our team.
+        Please apply online if you have the necessary
+        skills and experience our company desires.
     </p>
-    
+
     <ul>
-        <li>PHP Senior Developer</li>
+        <li>Senior Developer (Java, PHP, C++)</li>
         <li>System Analyst</li>
         <li>Software Architect</li>
-        <li>Tester</li>
+        <li>Manual Functional Tester</li>
     </ul>
 
-    <p>Apply online with your personal information and short message
-    and our HR Director will get
-    back to you with an offer. You may join our team on a full-time or
-    <a href="${url:about/teams}">part-time basis</a>. 
-    If you work <a href="${url:about/teams}">part-time</a> we pay you by bank
-    transfer or cashier check, no matter what country you are from. 
-    We need your talent!</p>
-    
-    <p><a href="${mailto:hr}">HR Director</a> is available by email.</p>
+    <p>
+        Apply online with your personal information and short message
+        and our HR Director will get
+        back to you with an offer. You may join our team on a full-time or
+        <a href="${url:about/teams}">part-time basis</a>.
+        If you work <a href="${url:about/teams}">part-time</a> we pay you by bank
+        transfer or cashier check, no matter what country you are from.
+        We need your talent!
+    </p>
+
+    <p>
+        <a href="${mailto:hr}">HR Director</a> is available by email.
+    </p>
 
 </text>
 

@@ -2,13 +2,13 @@
 /**
  * thePanel v2.0, Project Management Software Toolkit
  *
- * Redistribution and use in source and binary forms, with or without 
- * modification, are PROHIBITED without prior written permission from 
- * the author. This product may NOT be used anywhere and on any computer 
- * except the server platform of TechnoPark Corp. located at 
- * www.technoparkcorp.com. If you received this code occasionally and 
- * without intent to use it, please report this incident to the author 
- * by email: privacy@technoparkcorp.com or by mail: 
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are PROHIBITED without prior written permission from
+ * the author. This product may NOT be used anywhere and on any computer
+ * except the server platform of TechnoPark Corp. located at
+ * www.technoparkcorp.com. If you received this code occasionally and
+ * without intent to use it, please report this incident to the author
+ * by email: privacy@technoparkcorp.com or by mail:
  * 568 Ninth Street South 202, Naples, Florida 34102, USA
  * tel. +1 (239) 935 5429
  *
@@ -69,24 +69,24 @@ class Model_Article
      * @var Model_Article_SearchProxy|mixed
      */
     protected static $_searchProxy = null;
-    
+
     /**
      * Create new article
      *
      * @return void
      * @throws Model_Article_NotFound
      */
-    protected function __construct() 
+    protected function __construct()
     {
     }
-    
+
     /**
      * Set search proxy
      *
      * @param mixed Search proxy
      * @return void
      */
-    public static function setSearchProxy($proxy) 
+    public static function setSearchProxy($proxy)
     {
         self::$_searchProxy = $proxy;
     }
@@ -96,7 +96,7 @@ class Model_Article
      *
      * @return mixed
      */
-    public static function getSearchProxy() 
+    public static function getSearchProxy()
     {
         if (is_null(self::$_searchProxy)) {
             self::$_searchProxy = new Model_Article_SearchProxy();
@@ -112,7 +112,7 @@ class Model_Article
      * @return Model_Article
      * @throws Model_Article_NotFound
      */
-    public static function createFromFile($file, $page) 
+    public static function createFromFile($file, $page)
     {
         $article = new Model_Article();
 
@@ -129,25 +129,25 @@ class Model_Article
      * @return Model_Article
      * @throws Model_Article_NotFound
      */
-    public static function createByLabel($page) 
+    public static function createByLabel($page)
     {
         $xmlFile = '/' . $page;
 
         if (!file_exists(CONTENT_PATH . '/' . $xmlFile . '.xml')) {
-            $xmlFile .= '/intro'; 
+            $xmlFile .= '/intro';
 
             // if it's absent - we go away
             if (!file_exists(CONTENT_PATH . '/' . $xmlFile . '.xml')) {
                 FaZend_Exception::raise(
-                    'Model_Article_NotFound', 
+                    'Model_Article_NotFound',
                     "Page '{$page}' not found: (tried '{$xmlFile}.xml')"
                 );
             }
-        }    
+        }
 
         return self::createFromFile(CONTENT_PATH . '/' . $xmlFile . '.xml', $page);
 
-        // get content from XML file    
+        // get content from XML file
         /*
         if (isset($this->_xml->text)) {
             $this->view->content = $this->_xml->text->asClearXML();
@@ -156,21 +156,21 @@ class Model_Article
             }
         } else {
         }
-        */   
+        */
     }
-    
+
     /**
      * Return PDF copy of this article
      *
      * @return PDF
      * @todo To be implemented later
      */
-    public function asPdf() 
+    public function asPdf()
     {
         $pdf = new Zend_Pdf();
-        
+
         // to be implemented!
-        
+
         return $pdf->render();
     }
 
@@ -180,7 +180,7 @@ class Model_Article
      * @param string Name of the key, mapped to _$key method, like: $this->title ---> $this->getTitle()
      * @return string
      */
-    public function __get($key) 
+    public function __get($key)
     {
         // maybe we already calculated it before?
         if (isset($this->_cache[$key]))
@@ -206,12 +206,12 @@ class Model_Article
      *
      * @return Zend_Date
      */
-    protected function _getUpdated() 
+    protected function _getUpdated()
     {
         if (file_exists(CONTENT_PATH . '/' . $this->_page . '.xml')) {
             return new Zend_Date(filemtime(CONTENT_PATH . '/' . $this->_page . '.xml'));
         }
-        return Zend_Date::now();    
+        return Zend_Date::now();
     }
 
     /**
@@ -219,7 +219,7 @@ class Model_Article
      *
      * @return string
      */
-    protected function _getText() 
+    protected function _getText()
     {
         if ($this->_xml->text) {
             $text = (string)$this->_xml->text;
@@ -229,7 +229,7 @@ class Model_Article
                 $text = strval(
                     Model_XML::loadXML(
                         '<?xml version="1.0" encoding="utf-8"?>'
-                        . '<article>' 
+                        . '<article>'
                         . html_entity_decode($text, 0, 'UTF-8')
                         . '</article>'
                     )
@@ -245,7 +245,7 @@ class Model_Article
      *
      * @return string
      */
-    protected function _getLabel() 
+    protected function _getLabel()
     {
         if (!$this->_xml->label) {
             return $this->page;
@@ -258,7 +258,7 @@ class Model_Article
      *
      * @return boolean
      */
-    protected function _getVisible() 
+    protected function _getVisible()
     {
         if ($this->_xml->invisible) {
             return false;
@@ -271,10 +271,10 @@ class Model_Article
      *
      * @return string
      */
-    protected function _getTitle() 
+    protected function _getTitle()
     {
         return trim(ucwords((string)$this->_xml->title));
-    }    
+    }
 
     /**
      * Get the HTML keywords for the article
@@ -286,15 +286,15 @@ class Model_Article
      *
      * @return string
      */
-    protected function _getKeywords() 
+    protected function _getKeywords()
     {
         if ($this->_xml->keywords) {
             $words = explode(',', trim((string)$this->_xml->keywords));
         } else {
             // Remove spaces and other un-readable symbols
             $txt = preg_replace(
-                '/(\s*[^a-z0-9A-Z]\s*)/', 
-                ' ', 
+                '/(\s*[^a-z0-9A-Z]\s*)/',
+                ' ',
                 strip_tags((string)$this->_xml->text)
             );
             $words = explode(' ', $txt);
@@ -306,9 +306,9 @@ class Model_Article
         // Filter the words that are longer than 3 symbols and counts them
         $words = array_count_values(
             array_filter(
-                $words, 
+                $words,
                 create_function(
-                    '$word', 
+                    '$word',
                     'return(strlen($word) > 3) && ((int) $word[0] == 0);'
                 )
             )
@@ -321,62 +321,63 @@ class Model_Article
         $words[] = 'Software Outsourcing';
         $words[] = 'Software Development';
         $words[] = 'Software Quality';
-        
+
         if (strpos($this->page, '/') !== false) {
             $words[] = ucwords(substr(strrchr($this->page, '/'), 1));
         }
-        
+
         $words = array_unique($words);
-        
+
         // Get the top 20 of them
         return implode(', ', array_slice($words, 0, 20));
-    }    
+    }
 
     /**
      * Returns the HTML description for the page
      *
      * @return string
      */
-    protected function _getDescription() 
+    protected function _getDescription()
     {
-        if ($this->_xml->description)
-            return trim(preg_replace("/[\t\n\r]+/", ' ', (string)$this->_xml->description));
+        if ($this->_xml->description) {
+            return trim(preg_replace('/\s+/', ' ', (string)$this->_xml->description));
+        }
 
         // Remove all unreadable symbols and cut the line to 500 symbols
         if ($this->_xml->text) {
             return cutLongLine(
                 preg_replace(
-                    '/(\s*[^a-z0-9A-Z\-\.\,]\s*)/', 
+                    '/(\s*[^a-z0-9A-Z\-\.\,]\s*)/',
                     ' ',
                     trim(strip_tags((string)$this->_xml->text), "\t\n ")
-                ), 
+                ),
                 500
             );
         }
 
         // no text, no description
         return '...';
-    }    
+    }
 
     /**
      * Charset
      *
      * @return string
      */
-    protected function _getCharset() 
+    protected function _getCharset()
     {
         if ($this->_xml->charset)
             return (string)$this->_xml->charset;
 
-        return 'UTF-8';    
-    }    
+        return 'UTF-8';
+    }
 
     /**
      * Show right column or not?
      *
      * @return boolean
      */
-    protected function _getShowRightColumn() 
+    protected function _getShowRightColumn()
     {
         if ($this->_xml->hideRightColumn) {
             return false;
@@ -389,7 +390,7 @@ class Model_Article
      *
      * @return boolean
      */
-    public function isPublished() 
+    public function isPublished()
     {
         return (bool)strval($this->_xml->date);
     }
@@ -399,7 +400,7 @@ class Model_Article
      *
      * @return Zend_Date
      */
-    protected function _getPublished() 
+    protected function _getPublished()
     {
         if (!$this->isPublished()) {
             FaZend_Exception::raise(
@@ -415,7 +416,7 @@ class Model_Article
      *
      * @return string
      */
-    protected function _getIntro() 
+    protected function _getIntro()
     {
         if (!$this->_xml->intro) {
             return $this->title;
@@ -428,7 +429,7 @@ class Model_Article
      *
      * @return stdObject[]|false
      */
-    protected function _getConcepts() 
+    protected function _getConcepts()
     {
         if (!$this->_xml->concepts)
             return false;
@@ -449,7 +450,7 @@ class Model_Article
      *
      * @return string|false
      */
-    protected function _getTerm() 
+    protected function _getTerm()
     {
         if (!$this->_xml->term)
             return false;
@@ -469,7 +470,7 @@ class Model_Article
      * @param integer Maximum amount of steps to get
      * @return stdObject[]
      */
-    protected function _getSteps($maximum = 3) 
+    protected function _getSteps($maximum = 3)
     {
         $next = (string)$this->_xml->next;
         if (!$next || ($maximum < 1))
@@ -496,7 +497,7 @@ class Model_Article
      * @param string Title
      * @return stdObject
      */
-    protected function _createStep($page = null, $title = null) 
+    protected function _createStep($page = null, $title = null)
     {
         $step = new FaZend_StdObject();
 

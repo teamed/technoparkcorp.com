@@ -20,31 +20,34 @@
 
 <article>
 
-<title>Facts about TechnoPark Corp.</title>
+<title>Facts about us</title>
 <label>Facts Sheet</label>
 <intro>Review key facts about TPC, shareholders, offices and legal status</intro>
 <next>about/history</next>
 
 <keywords>
-    Florida,
+    eXtremely Distributed Software Development,
     software development,
-    Custom Software Development,
-    Ukraine,
-    TechnoPark Corporation,
-    ISO 9001,
-    ISO 9001:2000
+    custom software development,
+    quality of software,
+    quality of code,
+    puzzle driven development
 </keywords>
 
 <description>
-    ISO 9001 certified custom software development company from Florida. Working
-    since 2001, have certificates of quality, pending trademarks and patents
+    ISO:9001 certified custom software development company from Florida, equipped
+    with a revolutionary method of management of remote teams, called
+    eXtremely Distributed Software Development
 </description>
 
 <text>
 
-    <p>TechnoPark Corp. is a custom software development company with a unique methodology
-    of project management in agile projects. The company was founded during 2001 in Florida, U.S.A.
-    The majority of our in-house personnel is located in Florida, U.S.A. (headquarters).</p>    
+    <p>
+        TechnoPark Corp. is a custom software development
+        company equipped with a unique proprietary implementation
+        of eXtremely Distributed Software Development (<a href="http://www.xdsd.org">XDSD</a>), a
+        unique project management methodology.
+    </p>
 
     <p>Key facts about TechnoPark Corp.:</p>
 
@@ -58,22 +61,22 @@
         <tr><td>Incorporated on:</td><td>20-Feb-2006</td></tr>
         <tr><td>Incorporated in:</td><td>State of Florida, USA</td></tr>
         <tr><td>Legal status:</td><td>Corporation</td></tr>
-        <tr><td>Full-time Employees:</td><td>12</td></tr>
-        
+        <tr><td>Full-time Employees:</td><td>6</td></tr>
+
         <tr><td>Headquarters and Sales Office:</td>
         <td>568 Ninth Street South 202,<br/>
             Naples, Florida 34102, USA<br/>
             tel. +1 (239) 935 5429</td></tr>
-        
+
         <tr><td>Profile:</td><td>Custom software development company</td></tr>
-        
+
         <tr><td>Patents (including pending ones):</td><td>
-            <a href="http://www.google.com/patents/about?id=QjDNAAAAEBAJ">12/193,010</a>, 
+            <a href="http://www.google.com/patents/about?id=QjDNAAAAEBAJ">12/193,010</a>,
             12/264,370,
             12/703,202,
             12/840,306
         </td></tr>
-        
+
         <tr><td>Certificates:</td><td>
             <a href="${url:news/year2008/iso9001}">ISO 9001:2000</a> since Jan-08</td></tr>
 
@@ -81,12 +84,12 @@
             <a href="${url:about/privacypolicy}">TRUSTe</a> Privacy Seal</td></tr> -->
 
         <tr><td>Copyrights:</td><td>
-            
-            TPC Logo with a slogan "Plan Your Success" 
-            <a href="http://tarr.uspto.gov/servlet/tarr?regser=serial&amp;entry=77438094">registered</a> 
+
+            TPC Logo with a slogan "Plan Your Success"
+            <a href="http://tarr.uspto.gov/servlet/tarr?regser=serial&amp;entry=77438094">registered</a>
             on 11-Nov-08 in US Patent and Trademark Office (USPTO)<br/><br/>
 
-            Copyright for online project management materials 
+            Copyright for online project management materials
             <a href="${url:about/news/uacopyright}">is registered in Ukraine</a><br/><br/>
 
             Text of our software development contract is registered
@@ -94,9 +97,9 @@
 
             </td></tr>
     </table>
-    
+
     <p><a href="${url:contacts}">Contact us</a> and we disclose more information:
         references, pricing, existing success clients, etc.</p>
-    
+
 </text>
 </article>
