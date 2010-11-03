@@ -49,36 +49,39 @@
 <text>
 
     <p>TechnoPark Corp. is a software development <a href='http://en.wikipedia.org/wiki/General_contractor'>general contractor</a>
-    with an innovative approach to project management in <a href="${url:about/teams}">virtual distributed teams</a>. 
+    with an innovative approach to project management in
+    <a href="${url:about/teams}">distributed software development teams</a>.
     Like nowhere else, when you hire us as a general contractor
-    you stay actively involved in every last detail of a project internal affairs. 
+    you stay actively involved in every last detail of a project internal affairs.
     You control your business success by means of our
     automated instant metrics,
-    compliant with <a href="http://en.wikipedia.org/wiki/Project_Management_Body_of_Knowledge">PMBOK&reg;</a>, 
-    <a href="http://www.sei.cmu.edu/cmmi/general/">CMMI&reg;</a>, 
-    <a href="http://en.wikipedia.org/wiki/IBM_Rational_Unified_Process">RUP</a> and 
+    compliant with <a href="http://en.wikipedia.org/wiki/Project_Management_Body_of_Knowledge">PMBOK&reg;</a>,
+    <a href="http://www.sei.cmu.edu/cmmi/general/">CMMI&reg;</a>,
+    <a href="http://en.wikipedia.org/wiki/IBM_Rational_Unified_Process">RUP</a> and
     <a href="http://en.wikipedia.org/wiki/ISO_9001">ISO 9001</a>.</p>
-    
+
     <p>
-        <embed src="http://blip.tv/play/AYH87j4A" 
-            type="application/x-shockwave-flash" width="398" height="329" 
+        <embed src="http://blip.tv/play/AYH87j4A"
+            type="application/x-shockwave-flash" width="398" height="329"
             allowscriptaccess="always" allowfullscreen="true"></embed>
     </p>
 
-    <p>We work only with fixed-price projects, where 
-    <a href="${url:process/scope}">Scope</a>, 
-    <a href="${url:process/cost}">Cost</a> and 
+    <p>We work only with fixed-price projects, where
+    <a href="${url:process/scope}">Scope</a>,
+    <a href="${url:process/cost}">Cost</a> and
     <a href="${url:process/time}">Schedule</a> are always baselined.
-    You do not pay salaries or any other indirect costs, only a fixed price of 
+    You do not pay salaries or any other indirect costs, only a fixed price of
     <a href="${url:process/warranty/deliverables}">Deliverables</a>.</p>
-    
-    <p>A project is organized as a <a href="${url:about/teams}">virtual team</a> of narrow-skilled
-    engineers when you can pick-up the best suitable talents through
-    just one contractor - us. There are 70+ professional software
-    groups and individuals in our database who could be involved to your project.</p>
 
-    <p>You provide functional and non-functional requirements. 
-    We gather a project team and equip it with our proprietary 
+    <p>A project is organized as a
+    <a href="${url:about/teams}">distributed team</a> of narrow-skilled
+    engineers when you can pick-up the best suitable talents through
+    just one contractor. There are 70+ professional software
+    groups and individuals in our database
+    who can be involved in your project.</p>
+
+    <p>You provide functional and non-functional requirements.
+    We gather a project team and equip it with our proprietary
     online project management system. Technicians provide programming,
     testing, design and analysis services. Our project manager integrates
     all these efforts together in order to deliver a product to your end-users.</p>

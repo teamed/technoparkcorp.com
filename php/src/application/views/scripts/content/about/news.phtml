@@ -2,24 +2,24 @@
  *
  * thePanel v2.0, Project Management Software Toolkit
  *
- * Redistribution and use in source and binary forms, with or without 
- * modification, are PROHIBITED without prior written permission from 
- * the author. This product may NOT be used anywhere and on any computer 
- * except the server platform of TechnoPark Corp. located at 
- * www.technoparkcorp.com. If you received this code occasionally and 
- * without intent to use it, please report this incident to the author 
- * by email: privacy@technoparkcorp.com or by mail: 
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are PROHIBITED without prior written permission from
+ * the author. This product may NOT be used anywhere and on any computer
+ * except the server platform of TechnoPark Corp. located at
+ * www.technoparkcorp.com. If you received this code occasionally and
+ * without intent to use it, please report this incident to the author
+ * by email: privacy@technoparkcorp.com or by mail:
  * 568 Ninth Street South 202, Naples, Florida 34102, USA
  * tel. +1 (239) 935 5429
  *
 -->
- 
+
 <? $this->includeCSS('news.css');?>
 
 <div class="rss">
     <div class="img"></div><br/>
     <a href="<?=$this->staticUrl('about/rss')?>">RSS XML News Feed, Stay updated!</a>
-</div>    
+</div>
 
 <?=$this->article->text?>
 
@@ -27,10 +27,14 @@
     // new holder of news elements
     $news = Zend_Navigation_Page::factory(array('type'=>'uri'));
 
-    foreach ($this->navigation()->findOneBy('path', $this->article->page)->getPages() as $page) {
+    $root = $this->article->page;
+    if ($root == 'about/news') {
+        $root = 'about/news/year' . Zend_Date::now()->get(Zend_Date::YEAR);
+    }
+    foreach ($this->navigation()->findOneBy('path', $root)->getPages() as $page) {
         // load news article
         $article = Model_Article::createByLabel($page->path);
-            
+
         // save article for future use
         $page->article = $article;
 
@@ -46,19 +50,17 @@
 
     // new holder of years elements
     $years = Zend_Navigation_Page::factory(array('type'=>'uri'));
-
     foreach ($this->navigation()->findOneBy('path', 'about/news')->getPages() as $page) {
-
         // load news article
         $article = Model_Article::createByLabel($page->path);
-            
+
         // save article for future use
         $page->article = $article;
 
         if (!preg_match('/year(\d+)$/', $page->path, $matches)) {
             continue;
         }
-                               
+
         // backward chronological order
         $page->order = -(int)$matches[1];
 
@@ -67,28 +69,20 @@
 
         // add the article to the holder, to show later
         $years->addPage($page);
-
     }
 ?>
 
 <? foreach ($news as $page): ?>
     <p class="news">
         <b><a href="<?=$page->href?>">
-        <?=$page->article->title?></a></b>.&nbsp; 
+        <?=$page->article->title?></a></b>.&nbsp;
         <?=$page->article->description?><br/>
         <span>published on <?=$page->article->published->get(Zend_Date::DATE_MEDIUM)?></span>
     </p>
 <? endforeach; ?>
 
 <p>Read news from <?=(($this->article->page == 'about/news') ? 'previous' : 'other')?> years:
-
-    <? if ($this->article->page != 'about/news'): ?>
-        <a href="<?=$this->staticUrl('about/news')?>">
-            <?=date('Y')?>
-        </a>
-    <? endif; ?>    
-
-    <? foreach ($years as $year): ?> 
+    <? foreach ($years as $year): ?>
         <a title="<?=$year->title?>" href="<?=$year->href?>"><?=$year->year?></a>&#32;&#32;
-    <? endforeach; ?>    
+    <? endforeach; ?>
 </p>
