@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!--
+ *
+ * Copyright (c) 2008, TechnoPark Corp., Florida, USA
+ * All rights reserved. THIS IS PRIVATE SOFTWARE.
+ *
+ * Redistribution and use in source and binary forms, with or without modification, are PROHIBITED
+ * without prior written permission from the author. This product may NOT be used anywhere
+ * and on any computer except the server platform of TechnoPark Corp. located at
+ * www.technoparkcorp.com. If you received this code accidentally and without intent to use
+ * it, please report this incident to the author by email: privacy@technoparkcorp.com or
+ * by mail: 568 Ninth Street South 202 Naples, Florida 34102, the United States of America,
+ * tel. +1 (239) 243 0206, fax +1 (239) 236-0738.
+ *
+-->
+
+<article>
+
+<date>11/03/2010</date>
+<categories>
+    <category>Continuous Integration</category>
+    <category>Deployment</category>
+</categories>
+
+<title>Free Hosted Continuous Integration Platform</title>
+<label>FaZend.com</label>
+<intro></intro>
+<next></next>
+<invisible/>
+
+<description>
+
+    A dedicated team of Java and PHP engineers managed by
+    TechnoPark Corp. developed an free hosted continuous integration
+    platform unique in its class.
+
+</description>
+
+<text>
+
+    <a href="http://www.fazend.com">
+        <img src='data:image/png;base64,${base64:/stories/fazend-logo.png}'
+            alt='FaZend Logo'
+            style="float:right; margin-left: 2em; margin-bottom: 2em;"
+        />
+    </a>
+
+    <p>
+        The development of <b><a href="http://fazend.com">FaZend.com</a></b>
+        started in July 2009, when an open source PHP framework
+        (<a href="http://code.google.com/p/fazend/">FaZend Framework</a>) was
+        created and hosted at Google Code. The FaZend Framework was designed
+        on top of <a href="http://framework.zend.com">Zend Framework</a>,
+        a very famous open-source web development toolkit, in order to
+        make it more suitable for continuously delivered web systems.
+    </p>
+
+    <p>
+        FaZend Framework proved its success with a number of open source
+        and commercial web products. At the end of 2009 a group of
+        engineers managed by our staff started the development of
+        <a href="http://www.fazend.com">fazend.com</a>,
+        a free hosted solution for continuous integration of
+        PHP, Java, Python, and Ruby projects (this list is not exhaustive).
+    </p>
+
+    <p>
+        Nowadays this platform is unique in its class because it combines
+        together the service of private Subversion repository, Trac
+        environment and continuous integration environment. The
+        development is still in progress, but we already identify a
+        significant success with this endeavor.
+    </p>
+
+</text>
+
+</article>
+
