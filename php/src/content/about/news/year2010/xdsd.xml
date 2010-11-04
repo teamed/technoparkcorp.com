@@ -57,14 +57,14 @@
     </p>
 
     <p>
-        The principles are:
+        The XDSD principles are:
     </p>
 
     <ul>
         <li>Everyone gets paid for verified deliverables</li>
         <li>Defects are planned and don't block delivery</li>
         <li>Quality-of-code metrics are CI gate conditions</li>
-        <li>VCS commits to trunk are prohibited</li>
+        <li>VCS commits to <tt>trunk</tt> are prohibited</li>
     </ul>
 
     <p>
