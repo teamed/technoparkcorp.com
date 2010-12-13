@@ -10,20 +10,7 @@ require_once 'FaZend/Test/TestCase.php';
 
 abstract class AbstractTest extends FaZend_Test_TestCase
 {
-    
-    public function setUp()
-    {
-        parent::setUp();
-    }
 
-    public function tearDown()
-    {
-        // save all changes made to POS, if they were made
-        FaZend_Pos_Properties::saveAll();
-        
-        parent::tearDown();
-    }
-    
     public function assertStringEquals($str1, $str2)
     {
         if ($str1 !== $str2) {
