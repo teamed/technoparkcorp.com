@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!--
+ *
+ * Copyright (c) 2008, TechnoPark Corp., Florida, USA
+ * All rights reserved. THIS IS PRIVATE SOFTWARE.
+ *
+ * Redistribution and use in source and binary forms, with or without modification, are PROHIBITED
+ * without prior written permission from the author. This product may NOT be used anywhere
+ * and on any computer except the server platform of TechnoPark Corp. located at
+ * www.technoparkcorp.com. If you received this code occacionally and without intent to use
+ * it, please report this incident to the author by email: privacy@technoparkcorp.com or
+ * by mail: 568 Ninth Street South 202 Naples, Florida 34102, the United States of America,
+ * tel. +1 (239) 243 0206, fax +1 (239) 236-0738.
+ *
+ * @author Yegor Bugayenko <egor@tpc2.com>
+ * @copyright Copyright (c) TechnoPark Corp., 2001-2009
+ * @version $Id$
+ *
+-->
+
+<article>
+
+<title>Executive Team</title>
+<label>Executive Team</label>
+<intro>Our executive team of software development professionals</intro>
+<next>about/facts</next>
+
+<keywords>
+    software development experts
+</keywords>
+
+<description>
+    TechnoPark Corp. was founded by Yegor Bugayenko and Noah Lieske
+
+</description>
+
+<text>
+
+    <p>
+        <strong>Yegor Bugayenko</strong> is a co-founder and director of
+        TechnoPark Corp., its lead software architect, and project
+        management guru.
+    </p>
+
+    <p>
+        Yegor began his career in Ukraine, as a C++/Java software developer,
+        in a private hardware engineering company, owned by his father.
+        Yegor founded TechnoPark Corp. when he was 23 years old, in order
+        to deliver custom software development services to North American and
+        European clients. Since that time, under Yegor's management, the
+        company completed over a hundred successful projects. Yegor is
+        a proud holder of most valuable industry certifications, including
+        <a href="http://en.wikipedia.org/wiki/Project_Management_Professional">Project Management Professional (PMP&#174;)</a>,
+        <a href="http://www-03.ibm.com/certify/certs/38008003.shtml">IBM RUP Certified Solution Designer</a>,
+        <a href="http://www.omg.org/uml-certification/">OMG Certified UML Professional (OCUP)</a>,
+        <a href="http://www.prince2.com/">PRINCE2</a>,
+        <a href="http://www.microsoft.com/learning/mcp/mcp/">Microsoft Certified Professional</a>,
+        and
+        Zend/ZF Certified PHP Engineer
+        (<a href="http://www.zend.com/en/services/certification/">ZCE</a>/<a href="http://www.zend.com/en/services/certification/">ZFCE</a>).
+    </p>
+
+    <p>
+        Yegor dedicated recent years of his career to the research and development of
+        software methodologies designed to improve quality. He is a regular academic
+        writer and an author of almost all TechnoPark Corp. patents.
+    </p>
+
+</text>
+</article>
