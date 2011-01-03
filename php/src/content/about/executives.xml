@@ -61,9 +61,13 @@
     </p>
 
     <p>
-        Yegor dedicated recent years of his career to the research and development of
+        Yegor has been dedicating recent years of his career to the research and development of
         software methodologies designed to improve quality. He is a regular academic
-        writer and an author of almost all TechnoPark Corp. patents.
+        writer and an author of almost all proprietary patent-pending
+        and open source innovations of TechnoPark Corp., including
+        <a href="${about/news/year2010/xdsd}">eXtremely Distributed Software Development (XDSD)</a>.
+        <a href="${innovations/pdd}">Puzzle Driven Development (PDD)</a>, and
+        <a href="${stories}/fazend">FaZend Hosted CI Platform</a>.
     </p>
 
 </text>
