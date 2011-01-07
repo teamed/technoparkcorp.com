@@ -38,17 +38,18 @@
 
     <p>
         <strong>Yegor Bugayenko</strong> is a co-founder and director of
-        TechnoPark Corp., its lead software architect, and project
+        the company, its lead software architect, and project
         management guru.
     </p>
 
     <p>
         Yegor began his career in Ukraine, as a C++/Java software developer,
         in a private hardware engineering company, owned by his father.
-        Yegor founded TechnoPark Corp. when he was 23 years old, in order
+        Yegor founded the company when he was 23 years old, in order
         to deliver custom software development services to North American and
         European clients. Since that time, under Yegor's management, the
-        company completed over a hundred successful projects. Yegor is
+        company completed over a hundred successful projects. Yegor
+        possesses Master's Degree in Computer Science, and is
         a proud holder of most valuable industry certifications, including
         <a href="http://en.wikipedia.org/wiki/Project_Management_Professional">Project Management Professional (PMP&#174;)</a>,
         <a href="http://www-03.ibm.com/certify/certs/38008003.shtml">IBM RUP Certified Solution Designer</a>,
@@ -64,10 +65,32 @@
         Yegor has been dedicating recent years of his career to the research and development of
         software methodologies designed to improve quality. He is a regular academic
         writer and an author of almost all proprietary patent-pending
-        and open source innovations of TechnoPark Corp., including
+        and open source innovations of the company, including
         <a href="${about/news/year2010/xdsd}">eXtremely Distributed Software Development (XDSD)</a>.
         <a href="${innovations/pdd}">Puzzle Driven Development (PDD)</a>, and
         <a href="${stories}/fazend">FaZend Hosted CI Platform</a>.
+    </p>
+
+    <p>
+        <strong>Noah Lieske</strong> is a co-founder, early angel investor,
+        and strategic advisor of the company.
+    </p>
+
+    <p>
+        Noah is an accomplished business executive, having
+        over twenty-five years of entrepreneurial experience with
+        a strong focus on telecommunications, finance, domain registration,
+        and pay-per-click/cost-per-acquisition online advertising.
+        Mr. Lieske has held the position of managing member,
+        Founder/Co-Founder, Director,
+        Chairman of the Board, CTO, CFO, COO, and CEO for a number
+        of organizations which he founded or co-founded. In lieu of college,
+        as a self-made man, Noah focused his efforts on business operations.
+        He is self-taught in general business, finance, communications,
+        software engineering, and network engineering.
+        Through his extensive experience in a number of diverse industries,
+        Noah has accumulated a large network of professional associates
+        that add value to our company.
     </p>
 
 </text>
