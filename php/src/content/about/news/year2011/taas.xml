@@ -1,0 +1,69 @@
+<?xml version="1.0" ?>
+<!--
+ *
+ * Copyright (c) 2008, TechnoPark Corp., Florida, USA
+ * All rights reserved. THIS IS PRIVATE SOFTWARE.
+ *
+ * Redistribution and use in source and binary forms, with or without modification, are PROHIBITED
+ * without prior written permission from the author. This product may NOT be used anywhere
+ * and on any computer except the server platform of TechnoPark Corp. located at
+ * www.technoparkcorp.com. If you received this code occacionally and without intent to use
+ * it, please report this incident to the author by email: privacy@technoparkcorp.com or
+ * by mail: 568 Ninth Street South 202 Naples, Florida 34102, the United States of America,
+ * tel. +1 (239) 243 0206, fax +1 (239) 236-0738.
+ *
+ * @author Yegor Bugayenko <egor@tpc2.com>
+ * @copyright Copyright (c) TechnoPark Corp., 2001-2009
+ * @version $Id$
+ *
+-->
+
+<article>
+
+<date>1/20/2011</date>
+
+<invisible/>
+<label>TaaS</label>
+<title>
+    Team as a Service (Taas)
+</title>
+
+<keywords>
+    Team as a Service,
+    team-as-a-service,
+    distributed development,
+    XDSD,
+    remote programming,
+    outsourcing
+</keywords>
+
+<description>
+    Team as a Service (TaaS) business model to be presented to
+    Californian software development companies in January 2011
+</description>
+
+<text>
+
+    <p>
+        All details about Team as a Service (TaaS) business
+        model are explained
+        in <a href="http://www.tpc2.com/">tpc2.com</a> website.
+    </p>
+
+    <p>
+        Understanding a fast growing necessity for professional
+        software development in distributed teams TechnoPark Corp.
+        launched a new service called "<strong>Team as a Service (TaaS)</strong>". TaaS
+        enables on-demand creation and management of distributed
+        software development teams, effectively tailored for
+        unique business requirements.
+    </p>
+
+    <p>
+        The service will be provided for a few companies in
+        North California. The results of this experiment will
+        be published as success stories on our website.
+    </p>
+
+</text>
+</article>
