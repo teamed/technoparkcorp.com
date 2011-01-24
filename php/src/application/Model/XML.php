@@ -2,13 +2,13 @@
 /**
  * thePanel v2.0, Project Management Software Toolkit
  *
- * Redistribution and use in source and binary forms, with or without 
- * modification, are PROHIBITED without prior written permission from 
- * the author. This product may NOT be used anywhere and on any computer 
- * except the server platform of TechnoPark Corp. located at 
- * www.technoparkcorp.com. If you received this code occasionally and 
- * without intent to use it, please report this incident to the author 
- * by email: privacy@technoparkcorp.com or by mail: 
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are PROHIBITED without prior written permission from
+ * the author. This product may NOT be used anywhere and on any computer
+ * except the server platform of TechnoPark Corp. located at
+ * www.technoparkcorp.com. If you received this code occasionally and
+ * without intent to use it, please report this incident to the author
+ * by email: privacy@technoparkcorp.com or by mail:
  * 568 Ninth Street South 202, Naples, Florida 34102, USA
  * tel. +1 (239) 935 5429
  *
@@ -27,26 +27,31 @@ class Model_XML
 {
 
     /**
+     * Tikz converter.
+     */
+    const TIKZ_URL = 'http://ci.rest.fazend.com/tikz';
+
+    /**
      * Cache of PNG/TIKZ images
      *
      * @var Zend_Cache
      */
     protected static $_cache;
-    
+
     /**
      * View to render TIKZ/TEX files
      *
      * @var Zend_Cache
      */
     protected static $_view = null;
-    
+
     /**
      * SimpleXML document
      *
      * @var SimpleXML
      */
     protected $_xml;
-    
+
     /**
      * Create an instance of this class
      *
@@ -58,7 +63,7 @@ class Model_XML
         $this->_xml = $xml;
 
         if (!isset(self::$_view)) {
-            self::$_view = clone Zend_Registry::get('Zend_View');    
+            self::$_view = clone Zend_Registry::get('Zend_View');
             self::$_view->setScriptPath(APPLICATION_PATH . '/views/tikz');
             self::$_view->setFilter(null);
         }
@@ -123,13 +128,13 @@ class Model_XML
     {
         return call_user_func_array(array($this->_xml, $method), $args);
     }
-    
+
     /**
      * Get list of attributes
      *
      * @return SimpleXMLElement
      */
-    public function attributes() 
+    public function attributes()
     {
         return $this->_xml->attributes();
     }
@@ -178,28 +183,28 @@ class Model_XML
             $md5 = md5($match);
 
             $text = str_replace(
-                $matches[0][$key], 
+                $matches[0][$key],
                 "<img alt='loading...' src='" .
-                self::$_view->url(array('tikz'=>$md5), 'tikz', true) . "' " . $matches[2][$key] . " />", 
+                self::$_view->url(array('tikz'=>$md5), 'tikz', true) . "' " . $matches[2][$key] . " />",
                 $text
             );
 
-            // what type of image it is?    
-            switch ($matches[1][$key]) {    
-                
+            // what type of image it is?
+            switch ($matches[1][$key]) {
+
                 case 'tikz':
 
                     // if this image is already in cache, either
                     // in PNG or in TEX form
                     if (self::_cache()->test($md5) || self::_cache()->test($md5 . '_png'))
-                        continue;    
+                        continue;
 
                     self::$_view->tikz = $match;
 
                     // save the file, which will be used later, but HTTP call
-                    self::_cache()->save(self::$_view->render('image.tex'), $md5);    
+                    self::_cache()->save(self::$_view->render('image.tex'), $md5);
 
-                    break;    
+                    break;
 
                 case 'png':
 
@@ -208,16 +213,16 @@ class Model_XML
                         $listOfImages = $this->xpath($match);
                         $png = (string)$listOfImages[0];
                     } else {
-                        $png = $match;      
+                        $png = $match;
                     }
 
                     // just save what you see in the <png> tag
                     self::_cache()->save(convert_uudecode(htmlspecialchars_decode(trim($png))), $md5 . '_png');
 
-                    break;    
+                    break;
 
-            }    
-        }    
+            }
+        }
         return $text;
     }
 
@@ -250,7 +255,7 @@ class Model_XML
                     break;
 
                 case 'mailto':
-                    $replacement = 'mailto:' . $matches[2][$key] . 
+                    $replacement = 'mailto:' . $matches[2][$key] .
                     '@' . preg_replace('/^https?\:\/\//', '', WEBSITE_URL);
                     break;
             }
@@ -258,7 +263,7 @@ class Model_XML
                 $text = str_replace($matches[0][$key], $replacement, $text);
                 unset($replacement);
             }
-        }                                   
+        }
         return $text;
     }
 
@@ -281,13 +286,13 @@ class Model_XML
     public static final function tikzShow($md5)
     {
         // if this PNG already exists
-        if (self::_cache()->test($md5 . '_png')) 
+        if (self::_cache()->test($md5 . '_png'))
             return self::_cache()->load($md5 . '_png');
 
-        // even if the source is absent?    
+        // even if the source is absent?
         if (!self::_cache()->test($md5)) {
             return self::_errorPNG(
-                $md5, 
+                $md5,
                 Model_Colors::BLUE,
                 'Call made to an absent TIKZ image: ' . $md5
             );
@@ -297,7 +302,7 @@ class Model_XML
         try {
             $tikz = self::_cache()->load($md5);
             $client = new Zend_Http_Client(
-                'http://ccfacade.fazend.com/tikz',
+                self::TIKZ_URL,
                 array(
                     'timeout' => 120,
                 )
@@ -320,20 +325,20 @@ class Model_XML
                 $e->getMessage()
             );
         }
-        
+
         // maybe the result returned is empty?
         if (!$png) {
             return self::_errorPNG(
-                $md5, 
+                $md5,
                 Model_Colors::GRAY,
                 'Error in XML/tikzShow - empty PNG, will try again next time'
             );
         }
-        
+
         // maybe the PNG is not a valid image?
         if (@imagecreatefromstring($png) === false) {
             return self::_errorPNG(
-                $md5, 
+                $md5,
                 Model_Colors::YELLOW,
                 'Error in XML/tikzShow - invalid PNG (' . strlen($png) . ' bytes), will try again next time'
             );
@@ -359,17 +364,17 @@ class Model_XML
         if ($message) {
             FaZend_Log::err($md5 . ': ' . $message);
         }
-        
+
         $img = imagecreatetruecolor(50, 30);
 
         imagefill($img, 0, 0, Model_Colors::getForImage($img, $color));
         imageline($img, 0, 0, 49, 29, Model_Colors::getForImage($img, Model_Colors::WHITE));
         imageline($img, 0, 29, 49, 0, Model_Colors::getForImage($img, Model_Colors::WHITE));
-            
+
         ob_start();
         imagepng($img);
         return ob_get_clean();
-    }    
+    }
 
     /**
      * Get an instance of cache
@@ -382,8 +387,8 @@ class Model_XML
             return self::$_cache;
 
         self::$_cache = Zend_Cache::factory(
-            'Core', 
-            'File', 
+            'Core',
+            'File',
             array(
                 'caching' => true,
                 'cache_id_prefix' => 'panel2tikz',
@@ -393,7 +398,7 @@ class Model_XML
                 'write_control' => true,
                 'logging' => false,
                 'ignore_user_abort' => true
-            ), 
+            ),
             array(
                 'cache_dir' => sys_get_temp_dir(),
                 'hashed_directory_level' => 0,
