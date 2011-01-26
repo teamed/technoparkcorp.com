@@ -28,16 +28,25 @@
 <text>
 
     <p>
-        There are a number of available positions on our team.
-        Please apply online if you have the necessary
-        skills and experience our company desires.
+        There are a number of full-time positions available in our team.
+        Please apply online if you have necessary skills and experience.
     </p>
 
     <ul>
-        <li>Senior Developer (Java, PHP, C++)</li>
-        <li>System Analyst</li>
-        <li>Software Architect</li>
-        <li>Manual Functional Tester</li>
+        <li>
+            <b>CEO</b>.
+            PMP, SCEA, UML, and RUP certifications are mandatory.
+            10+ years of business development. 5+ years
+            of software development and system architecture.
+            Strong leadership skills.
+            Permission to work in the United States.
+        </li>
+        <li>
+            <p>Project Manager</b>.
+            PMP certification is mandatory. 5+ years of project management
+            of software development projects. Distributed development
+            experience. Permission to work in the United States.
+        </li>
     </ul>
 
     <p>
