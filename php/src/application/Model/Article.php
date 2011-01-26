@@ -273,7 +273,7 @@ class Model_Article
      */
     protected function _getTitle()
     {
-        return trim(ucwords((string)$this->_xml->title));
+        return trim((string)$this->_xml->title);
     }
 
     /**
