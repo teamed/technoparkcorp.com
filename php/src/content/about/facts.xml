@@ -57,7 +57,8 @@
             <th>Value</th>
         </tr>
         <tr><td>Business name:</td><td>TECHNOPARK CORPORATION</td></tr>
-        <tr><td>DUNS<a href="https://smallbusiness.dnb.com">?</a> Number:</td><td>62-773-2535</td></tr>
+        <tr><td>DUNS<a href="https://smallbusiness.dnb.com/">?</a> Number:</td><td>62-773-2535</td></tr>
+        <tr><td>NAICS<a href="http://www.census.gov/naics/">?</a> code:</td><td>541511</td></tr>
         <tr><td>Incorporated on:</td><td>20-Feb-2006</td></tr>
         <tr><td>Incorporated in:</td><td>State of Florida, USA</td></tr>
         <tr><td>Legal status:</td><td>Corporation</td></tr>
