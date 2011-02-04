@@ -1,0 +1,85 @@
+<?xml version="1.0" ?>
+<!--
+ *
+ * Copyright (c) 2008, TechnoPark Corp., Florida, USA
+ * All rights reserved. THIS IS PRIVATE SOFTWARE.
+ *
+ * Redistribution and use in source and binary forms, with or without modification, are PROHIBITED
+ * without prior written permission from the author. This product may NOT be used anywhere
+ * and on any computer except the server platform of TechnoPark Corp. located at
+ * www.technoparkcorp.com. If you received this code occacionally and without intent to use
+ * it, please report this incident to the author by email: privacy@technoparkcorp.com or
+ * by mail: 568 Ninth Street South 202 Naples, Florida 34102, the United States of America,
+ * tel. +1 (239) 243 0206, fax +1 (239) 236-0738.
+ *
+ * @author Yegor Bugayenko <egor@tpc2.com>
+ * @copyright Copyright (c) TechnoPark Corp., 2001-2009
+ * @version $Id$
+ *
+-->
+
+<article>
+
+<title>CEO wanted</title>
+<label>CEO wanted</label>
+<intro>Talented and experienced CEO wanted for our growing company</intro>
+<next>about/jobs</next>
+
+<text>
+
+    <p>
+        TechnoPark Corp., an angel-funded Florida-based custom software
+        development company, has an opportunity for a Chief Executive Officer (CEO).
+        This is a great position for a talented and self-motivated individual,
+        located in Naples, Florida (relocation sponsorship is negotiable). We pay
+        $120K salary, usual benefits, and a great cash + equity bonus on
+        every successful milestone.
+    </p>
+
+    <p>Qualifications expected:</p>
+
+    <ul>
+        <li>At least 10 years experience in software development industry</li>
+        <li>Master's (MSc) or Doctorate (PhD) Degree in Computer Science</li>
+        <li>Valid PMP certification from PMI</li>
+        <li>SCEA Certification from Oracle/Sun</li>
+        <li>Academic and research background (recently published articles)</li>
+        <li>Active participation in open source projects</li>
+        <li>Patent writing and filing experience</li>
+        <li>Polish, Russian, Ukrainian, or Czech as a second language</li>
+        <li>Accountable for aggressive sales goals</li>
+        <li>Excellent communication and presentation skills</li>
+        <li>Ability and willingness to travel 25% of time</li>
+    </ul>
+
+    <p>Extra qualifications are a great plus:</p>
+
+    <ul>
+        <li>Master of Business Administration (MBA)</li>
+        <li>PHP, Python, Ruby, or C++ certifications</li>
+        <li>XML and UML certifications</li>
+    </ul>
+
+    <p>We expect you to be an expert in cutting edge software technologies, including:</p>
+
+    <ul>
+        <li>Continuous Integration (CI)</li>
+        <li>RESTful Architecture</li>
+        <li>Service Oriented Architecture (SOA)</li>
+        <li>Build Automation</li>
+        <li>Cloud Computing</li>
+        <li>Agile/Scrum/XP methodologies</li>
+        <li>Distributed Development</li>
+    </ul>
+
+    <p>
+        Email directly to <a href="${mailto:hr}">HR Director</a> to setup
+        a phone interview. Please, don't call us directly, just send
+        your resume for review. We promise to reply to ALL emails. Thanks!
+    </p>
+
+</text>
+
+</article>
+
+

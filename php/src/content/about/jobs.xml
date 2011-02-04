@@ -25,6 +25,20 @@
 <intro>Read how you can join our team</intro>
 <next>about/facts</next>
 
+<description>
+    We are looking for new full-time and part-time talents to join
+    our fast-growing software development company
+</description>
+
+<keywords>
+    Project Management Job,
+    Custom Software Development Job,
+    Management Jobs,
+    Engineering Jobs,
+    Java Jobs, PHP Jobs, C++ Jobs,
+    Remote programming jobs
+</keywords>
+
 <text>
 
     <p>
@@ -40,12 +54,14 @@
             of software development and system architecture.
             Strong leadership skills.
             Permission to work in the United States.
+            <a href="${url:about/jobs/CEO}">more...</a>
         </li>
         <li>
             <b>Project Manager</b>.
             PMP certification is mandatory. 5+ years of project management
             of software development projects. Distributed development
             experience. Permission to work in the United States.
+            <a href="${url:about/jobs/PM}">more...</a>
         </li>
     </ul>
 
