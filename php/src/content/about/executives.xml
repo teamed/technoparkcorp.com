@@ -36,6 +36,12 @@
 
 <text>
 
+    <img src='data:image/png;base64,${base64:/about/yegor.png}'
+        alt='Yegor Bugayenko'
+        style="float:left; margin-right: 1em; margin-bottom: 1em;
+            width: 110px; height: 110px;"
+    />
+
     <p>
         <strong>Yegor Bugayenko</strong> is a co-founder and a general manager of
         the company, its lead software architect, and project
@@ -51,14 +57,13 @@
         company completed over a hundred successful projects. Yegor
         possesses Master's Degree in Computer Science, and is
         a proud holder of most valuable industry certifications, including
-        <a href="http://en.wikipedia.org/wiki/Project_Management_Professional">Project Management Professional (PMP&#174;)</a>,
-        <a href="http://www-03.ibm.com/certify/certs/38008003.shtml">IBM RUP Certified Solution Designer</a>,
-        <a href="http://www.omg.org/uml-certification/">OMG Certified UML Professional (OCUP)</a>,
+        <a href="http://en.wikipedia.org/wiki/Project_Management_Professional">PMP&#174;</a>,
+        <a href="http://www-03.ibm.com/certify/certs/38008003.shtml">IBM RUP</a>,
+        <a href="http://www.omg.org/uml-certification/">OCUP</a>,
         <a href="http://www.prince2.com/">PRINCE2</a>,
-        <a href="http://www.microsoft.com/learning/mcp/mcp/">Microsoft Certified Professional</a>,
+        <a href="http://www.microsoft.com/learning/mcp/mcp/">MCP</a>,
         and
-        Zend/ZF Certified PHP Engineer
-        (<a href="http://www.zend.com/en/services/certification/">ZCE</a>/<a href="http://www.zend.com/en/services/certification/">ZFCE</a>).
+        <a href="http://www.zend.com/en/services/certification/">ZCE</a>/<a href="http://www.zend.com/en/services/certification/">ZFCE</a>.
     </p>
 
     <p>
@@ -70,6 +75,12 @@
         <a href="${innovations/pdd}">Puzzle Driven Development (PDD)</a>, and
         <a href="${stories}/fazend">FaZend Hosted CI Platform</a>.
     </p>
+
+    <img src='data:image/png;base64,${base64:/about/noah.png}'
+        alt='Noah Lieske'
+        style="float:left; margin-right: 1em; margin-bottom: 1em;
+            width: 110px; height: 110px;"
+    />
 
     <p>
         <strong>Noah Lieske</strong> is a co-founder, early angel investor,
