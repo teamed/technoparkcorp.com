@@ -43,7 +43,7 @@
 
 <text>
 
-    <p>In order to get a gambling license in Malta and run <a href="${url:cots/poker}">GS-Poker</a>-empowered 
+    <p>In order to get a gambling license in Malta and run <a href="${url:cots/poker}">GS-Poker</a>-empowered
     online poker site legally as a Maltese company, you will need to do the following:</p>
 
     <ol>
@@ -53,22 +53,30 @@
         <li>Maintain your license</li>
     </ol>
 
-    <p><a style="border: none;" href="http://cslmalta.com/service.aspx?id=7"><png style="float: left; padding-right: 10px;">//images/csl</png></a>
-    Our partner <ahref name="http://cslmalta.com/service.aspx?id=7">Corporate Services Ltd.</ahref>, 
-    a well-established, experienced and competent firm,
-    will provide the legal services you will need to obtain the Maltese gambling license. 
-    They offer fast, reliable and specialist 
-    advice and assistance in all the necessary corporate, trust and investment services 
-    relating to the financial services business in Malta. Contact them at 5/2 Merchants Street,
-    Valletta VLT 1171, Malta, tel. +356 212 22097. 
-    See also: <a href='http://www.lga.org.mt/lga/content.aspx?id=87374'>Maltese Lotteries and Gaming Authority (LGA)</a>.</p>
+    <a style="border: none;" href="http://www.fidesmalta.com">
+        <img src='data:image/png;base64,${base64:/cots/poker/fides.png}'
+            alt='Fides Corporate Services Ltd.'
+            style="float:left; margin-right: 1em;"
+        />
+    </a>
 
-    <p>The steps mentioned above are detailed below. 
+    <p>
+        Our partner <a href="http://www.fidesmalta.com">Fides Corporate Services Ltd.</a>,
+        a well-established, experienced and competent firm,
+        will provide the legal services you will need to obtain the Maltese gambling license.
+        They offer fast, reliable and specialist
+        advice and assistance in all the necessary corporate, trust and investment services
+        relating to the financial services business in Malta. Contact them at 5/1 Merchants Street,
+        Valletta VLT 1171, Malta, tel. +356 2010 7755.
+        See also: <a href='http://www.lga.org.mt/lga/content.aspx?id=87374'>Maltese Lotteries and Gaming Authority (LGA)</a>.
+    </p>
+
+    <p>The steps mentioned above are detailed below.
     We can also put you in touch with a Maltese law &amp; consulting company that will help.</p>
 
     <h1>Step 1: Setup a Maltese Company and Apply for a Gambling License</h1>
 
-            <p>The initial cost of setting up a Maltese company in order to apply for an online 
+            <p>The initial cost of setting up a Maltese company in order to apply for an online
             gaming licence will amount to around <b>5,500 EUR</b>, which includes:</p>
 
             <ul>
@@ -80,24 +88,24 @@
                 <li>Company secretary</li>
                 <li>Two nominee shareholders</li>
                 <li>Registered office in Malta</li>
-            </ul>    
+            </ul>
 
-            <p>The application for the gambling license will cost an initial <b>2,330 EUR</b>. 
+            <p>The application for the gambling license will cost an initial <b>2,330 EUR</b>.
             This application fee is not refundable should the application fail to be accepted.</p>
 
-            <p>After you gather all necessary documentation and information, a law firm can file the application 
-            within two weeks. The application will take around 1 1/2 months to be processed, and 
-            then you will be given a six-month period within which to establish the business 
-            in Malta, conclude all necessary agreements and carry out the necessary testing of the 
-            set-up. After this six-month period, LGA will issue a formal licence after 
+            <p>After you gather all necessary documentation and information, a law firm can file the application
+            within two weeks. The application will take around 1 1/2 months to be processed, and
+            then you will be given a six-month period within which to establish the business
+            in Malta, conclude all necessary agreements and carry out the necessary testing of the
+            set-up. After this six-month period, LGA will issue a formal licence after
             the compliance certificate is obtained, which normally takes two weeks.</p>
-                
+
     <h1>Step 2: LGA Examination</h1>
 
             <p>The first stage is to conduct a fit and proper exercise on the applicant. LGA
-            analyses all information related to persons involved in financing and management and 
-            on the business viability of the operation. LGA conducts probity investigations 
-            with other national and international regulatory bodies and law enforcement agencies. 
+            analyses all information related to persons involved in financing and management and
+            on the business viability of the operation. LGA conducts probity investigations
+            with other national and international regulatory bodies and law enforcement agencies.
             It also carries out a financial analysis of the business plan. At this step, you will
             need legal guidance (<b>EUR 11,800</b>) and key official fees (<b>EUR 6,800</b>).</p>
 
@@ -123,30 +131,30 @@
                     <li>Nature of games to be offered</li>
                     <li>Technologies to be used</li>
                     <li>Overview of application software</li>
-                    <li>Three year business plan including: 
+                    <li>Three year business plan including:
                     (i) Marketing &amp; Sales Plan
-                    (ii) Forecast profit &amp; loss and balance sheets 
-                    (iii) Forecast cash flow statement 
+                    (ii) Forecast profit &amp; loss and balance sheets
+                    (iii) Forecast cash flow statement
                     (iv) Financing plan</li>
             </ol>
 
             <p>Once the documents above have been successfully inspected,
-            the instruments required to conduct your business will be examined as well. 
-            This process includes examining 
-            incorporation documents; the games; the business processes related to conducting 
-            the remote games; the rules, terms, conditions and procedures of the games; 
+            the instruments required to conduct your business will be examined as well.
+            This process includes examining
+            incorporation documents; the games; the business processes related to conducting
+            the remote games; the rules, terms, conditions and procedures of the games;
             the application architecture and system architecture of the gaming and control systems.</p>
 
             <p>The following documentations must be submitted at this stage:</p>
 
-            <p>Statutory Documentation:</p> 
+            <p>Statutory Documentation:</p>
 
             <ol>
                     <li>A Maltese Registration Certificate</li>
                     <li>International Trading Company Certificate - Advanced Revenue Ruling from Inland Revenue</li>
                     <li>Memorandum &amp; Articles of Association</li>
-                    <li>Business Entity Information form (form LGA/51/2004-3): 
-                    (i) Name of Merchant Bankers, 
+                    <li>Business Entity Information form (form LGA/51/2004-3):
+                    (i) Name of Merchant Bankers,
                     (ii) Operating Account Number/s,
                     (iii) Players Account Number/s,
                     (iv) Bank Declaration of Players' funds</li>
@@ -160,7 +168,7 @@
                     <li>User Management Policy</li>
             </ol>
 
-            <p>Company Procedures:</p> 
+            <p>Company Procedures:</p>
 
             <ol>
                      <li>Human Resources Roles &amp; Responsibilities</li>
@@ -169,11 +177,11 @@
                      <li>Business Continuity &amp; Disaster Recovery</li>
                      <li>Backup Procedures</li>
                      <li>Change Management Procedures</li>
-                     <li>3.7 Fraud Management Procedures: (i) Know Your Client (KYC) Procedures, 
+                     <li>3.7 Fraud Management Procedures: (i) Know Your Client (KYC) Procedures,
                      (ii) Anti Money Laundering (AML) Procedures, (iii) Payout management</li>
             </ol>
 
-            <p>Detailed description about:</p> 
+            <p>Detailed description about:</p>
 
             <ol>
                     <li>Application Architecture - outlining player and game management modules</li>
@@ -194,12 +202,12 @@
             <p>Specification of the Gaming System To submit following information: </p>
 
             <ol>
-            <li>Name of the owner of the software</li> 
+            <li>Name of the owner of the software</li>
             <li>Name of organisation which did the testing</li>
             <li>Processes, rules and parameters of the games</li>
             </ol>
 
-            <p>Online text/symbols:</p> 
+            <p>Online text/symbols:</p>
 
             <ol>
             <li>Operator Details</li>
@@ -218,7 +226,7 @@
             <li>Provision of Self Protection/Exclusion</li>
             </ol>
 
-            <p>Contracts with Business Partners:</p> 
+            <p>Contracts with Business Partners:</p>
 
             <ol>
                     <li>Payment Systems/Gateways</li>
@@ -226,58 +234,58 @@
                     <li>Other Contracts with Parent/Group/Affiliate Companies</li>
             </ol>
 
-            <p>At the end of the examination the applicant is given a Letter of 
-            Intent (LOI) to operate remote gaming with the intent of obtaining a certification 
-            of compliance within six months. The applicant may then establish the business in 
-            Malta, conclude all agreements and carry out testing of the set-up. A formal 
-            licence is issued when LGA obtains approval from the compliance 
-            certification entity. A normal compliance certification procedure takes two 
+            <p>At the end of the examination the applicant is given a Letter of
+            Intent (LOI) to operate remote gaming with the intent of obtaining a certification
+            of compliance within six months. The applicant may then establish the business in
+            Malta, conclude all agreements and carry out testing of the set-up. A formal
+            licence is issued when LGA obtains approval from the compliance
+            certification entity. A normal compliance certification procedure takes two
             weeks to be carried out.</p>
 
             <p>A Service Provider Authorisation Form, if applicable, shall be included.
-            This shall include the agreement with the 
-            equipment hosting provider in Malta, outlining clearly the functions and responsibilities to 
-            be carried out by such provider. A site plan of the data floor indicating the location 
-            of the equipment must be attached to the agreement. Serial numbers for all equipment 
+            This shall include the agreement with the
+            equipment hosting provider in Malta, outlining clearly the functions and responsibilities to
+            be carried out by such provider. A site plan of the data floor indicating the location
+            of the equipment must be attached to the agreement. Serial numbers for all equipment
             installed are to be attached. </p>
-             
-            <p>Details or copies of agreements with all third parties which may impact the licensee's 
-            gaming or control systems are also required by LGA (such third parties include the gaming software provider, 
-            all payment service providers, any odds/results provider used, and any other software partners).</p> 
+
+            <p>Details or copies of agreements with all third parties which may impact the licensee's
+            gaming or control systems are also required by LGA (such third parties include the gaming software provider,
+            all payment service providers, any odds/results provider used, and any other software partners).</p>
 
                <ul>
-                
-                    <li>Before certification, the Control System submission will be reviewed and tests made 
-                    on the live data and procedures. Sample reports from the live system will be 
+
+                    <li>Before certification, the Control System submission will be reviewed and tests made
+                    on the live data and procedures. Sample reports from the live system will be
                     requested to show how the management of the betting system is conducted. </li>
-                     
-                    <li>An assessment of the information management in the operations will be made; 
+
+                    <li>An assessment of the information management in the operations will be made;
                     recommendations may be made to improve security of the players' data. </li>
-                     
-                    <li>The backup and disaster recovery procedures will be reviewed. Change 
+
+                    <li>The backup and disaster recovery procedures will be reviewed. Change
                     management procedures will also be reviewed. </li>
-                     
-                    <li>The online website will be reviewed via a test account to see that 
-                    the site operates in accordance with the regulations and with the operator's 
-                    declared procedures (including notifying changes).  The player protection measures 
+
+                    <li>The online website will be reviewed via a test account to see that
+                    the site operates in accordance with the regulations and with the operator's
+                    declared procedures (including notifying changes).  The player protection measures
                     required by LGA will be confirmed. </li>
-                     
-                    <li>Bank account balances will be compared with online player account balances 
+
+                    <li>Bank account balances will be compared with online player account balances
                     to ensure that the liabilities are sufficiently covered. </li>
-                     
-                    <li>Routine data submitted on a monthly basis to LGA will be reviewed.  Any anomalies 
-                    will be investigated with the operator to ensure that correct data is available to 
-                    LGA and rules relating to test data are observed.  Spot checks on the odds, 
+
+                    <li>Routine data submitted on a monthly basis to LGA will be reviewed.  Any anomalies
+                    will be investigated with the operator to ensure that correct data is available to
+                    LGA and rules relating to test data are observed.  Spot checks on the odds,
                     payout ratios, and randomness, as applicable, may be made. </li>
-                     
-                    <li>Any agents acting for the operator will be scrutinised for probity.  Copies 
-                    of all relevant agreements and national licenses 
+
+                    <li>Any agents acting for the operator will be scrutinised for probity.  Copies
+                    of all relevant agreements and national licenses
                     will be required by LGA for review and filing. </li>
-                     
+
                     <li>Staff lists and duties will be checked against the records held at LGA. </li>
 
-                </ul>    
-     
+                </ul>
+
     <h1>Step 3: Deployment</h1>
 
         <p>After the "Letter of Intent" is issued by LGA, you will deploy your system
@@ -305,154 +313,20 @@
             20 April 2004,
             <a href="http://www.lga.org.mt/common/file_provider.aspx?id=633570872482030000">lga.org.mt</a>.</p>
 
-            <p>[2] Companies Act, 
+            <p>[2] Companies Act,
             To regulate in place of the Commercial Partnerships Ordinance,
             limited liability companies and other commercial partnerships, 1st January 1996,
             <a href="http://docs.justice.gov.mt/lom/legislation/english/leg/vol_11/chapt386.pdf">justice.gov.mt</a>.</p>
 
-            <p>[3] The BOV Group (owner of <a href="http://www.bov.com">Bank Of Valletta</a>) is 
-            a leading financial services provider in Malta, providing a 
-            full range of financial services including investment banking, private 
-            banking, fund management, bancassurance and stockbroking. 
-            Domestic operations include a national network of 41 branches, 
-            a Corporate Centre, 5 Business Centres and a Wealth Management arm, 
+            <p>[3] The BOV Group (owner of <a href="http://www.bov.com">Bank Of Valletta</a>) is
+            a leading financial services provider in Malta, providing a
+            full range of financial services including investment banking, private
+            banking, fund management, bancassurance and stockbroking.
+            Domestic operations include a national network of 41 branches,
+            a Corporate Centre, 5 Business Centres and a Wealth Management arm,
             <a href="http://bov.com/filebank/documents/Charges.pdf">tariff of charges</a>.</p>
 
-
-
 </text>
-
-<images>
-    <csl>
-MB5!.1PT*&amp;@H````-24A$4@```&#039;@```!+&quot;`,```&quot;,5+/C````&quot;7!(67,```L3
-M```+$P$`FIP8```*3VE#0U!0:&amp;]T;W-H;W`@24-#(&#039;!R;V9I;&amp;4``&#039;C:G5-G
-M5%/I%CWWWO1&quot;2XB`E$MO4A4((%)&quot;BX`4D28J(0D02H@AH=D54&lt;$1144$&amp;\B@
-MB`..CH&quot;,%5$L#(H*V`?D(:*.@Z.(BLK[X7NC:]:\]^;-_K77/N&gt;L\YVSSP?`
-M&quot;`R62#-1-8`,J4(&gt;$&gt;&quot;#Q\3&amp;X&gt;0N0($*)&#039;``$`BS9&quot;%S_2,!`/A^/#PK(L`&#039;
-MO@`!&gt;-,+&quot;`#`39O`,!R&#039;_P_J0IE&lt;`8&quot;$`&lt;!TD3A+&quot;(`4`$!ZCD*F`$!&amp;`8&quot;=
-MF&quot;93`*`$`&amp;#+8V+C`%`M`&amp;`G?^;3`(&quot;=^)E[`0!;E&quot;$5`:&quot;1`&quot;`398A$`&amp;@[
-M`*S/5HI%`%@P`!1F2\0Y`-@M`#!)5V9(`+&quot;W`,#.$`NR``@,`#!1B(4I``1[
-M`&amp;#((R-X`(29`!1&amp;\E&lt;\\2NN$.&lt;J``!XF;(\N20Y18%;&quot;&quot;UQ!U=7+AXHSDD7
-M*Q0V80)AFD`NPGF9&amp;3*!-`_@\\P``*&quot;1%1&#039;@@_/]&gt;,X.KL[.-HZV#E\MZK\&amp;
-M_R)B8N/^Y&lt;^K&lt;$```.%T?M&#039;^+&quot;^S&amp;H`[!H!M_J(E[@1H7@N@=?&gt;+9K(/0+4`
-MH.G:5_-P^&#039;X\/$6AD+G9V&gt;7DY-A*Q$);8&lt;I7??YGPE_`5_UL^7X\_/?UX+[B
-M)($R78%&#039;!/C@PLST3*4&lt;SY()A&amp;+&lt;YH]&#039;_+&lt;+__P=TR+$26*Y6&quot;H4XU$2&lt;8Y$
-MFHSS,J4BB4*2*&lt;4ETO]DXM\L^P,^WS4`L&amp;H^`7N1+:A=8P/V2R&lt;06&#039;3`XO&lt;`
-M`/*[;\&#039;4*`@#@&amp;B#X&lt;]W_^\__4&gt;@)0&quot;`9DF2&lt;0``7D0D+E3*LS_&#039;&quot;```1*&quot;!
-M*K!!&amp;_3!&amp;&quot;S`!AS!!=S!&quot;_Q@-H1&quot;),3&quot;0A!&quot;&quot;F2`&#039;&#039;)@*:R&quot;0BB&amp;S;`=*F`O
-MU$`=-,!1:(:3&lt;`XNPE6X#CUP#_IA&quot;)[!*+R!&quot;01!R`@382&#039;:B`%BBE@CC@@7
-MF87X(&lt;%(!!*+)&quot;#)B!11(DN1-4@Q4HI4(%5(&#039;?(]&lt;@(YAUQ&amp;NI$[R``R@OR&amp;
-MO$&lt;QE(&amp;R43W4#+5#N:@W&amp;H1&amp;H@O09&#039;0QFH\6H)O0&lt;K0:/8PVH&gt;?0JV@/VH\^
-M0\&lt;PP.@8!S/$;#`NQL-&quot;L3@L&quot;9-CR[$BK`RKQAJP5JP#NXGU8\^Q=P02@47`
-M&quot;38$=T(@81Y!2%A,6$[82*@@&#039;&quot;0T$=H)-PD#A%&#039;&quot;)R*3J$NT)KH1^&lt;088C(Q
-MAUA(+&quot;/6$H\3+Q![B$/$-R02B4,R)[F0`DFQI%32$M)&amp;TFY2(^DLJ9LT2!HC
-MD\G:9&amp;NR!SF4+&quot;`KR(7DG&gt;3#Y#/D&amp;^0A\EL*G6)`&lt;:3X4^(H4LIJ2AGE$.4T
-MY09EF#)!5:.:4MVHH501-8]:0JVAME*O48&gt;H$S1UFCG-@Q9)2Z6MHI73&amp;F@7
-M:/=IK^ATNA&#039;=E1Y.E]!7TLOI1^B7Z`/T=PP-AA6#QXAG*!F;&amp;`&lt;89QEW&amp;*^8
-M3*89TXL9QU0P-S&#039;KF.&gt;9#YEO55@JMBI\%9&#039;*&quot;I5*E2:5&amp;RHO5*FJIJK&gt;J@M5
-M\U7+5(^I7E-]KD95,U/CJ0G4EJM5JIU0ZU,;4V&gt;I.ZB&#039;JF&gt;H;U0_I&#039;Y9_8D&amp;
-M6&lt;-,PT]#I%&amp;@L5_CO,8@&quot;V,9LW@L(6L-JX9U@37$)K&#039;-V7QV*KN8_1V[BSVJ
-MJ:$Y0S-*,U&gt;S4O.49C\&#039;XYAQ^)QT3@GG**&gt;7\WZ*WA3O*&gt;(I&amp;Z8T3+DQ95QK
-MJI:7EEBK2*M1JT?KO3:N[:&gt;=IKU%NUG[@0Y!QTHG7&quot;=&#039;9X_.!9WG4]E3W:&lt;*
-MIQ9-/3KUKBZJ:Z4;H;M$=[]NI^Z8GKY&gt;@)Y,;Z?&gt;&gt;;WG^AQ]+_U4_6WZI_5&#039;
-M#%@&amp;LPPD!ML,SA@\Q35Q;SP=+\?;\5%#7&lt;-`0Z5AE6&amp;7X821N=$\H]5&amp;C48/
-MC&amp;G&amp;7.,DXVW&amp;;&lt;:C)@8F(29+3&gt;I-[II23;FF*:8[3#M,Q\W,S:+-UIDUFSTQ
-MUS+GF^&gt;;UYO?MV!:&gt;%HLMJBVN&amp;5)LN1:IEGNMKQNA5HY6:5855I=LT:MG:TE
-MUKNMNZ&lt;1I[E.DTZKGM9GP[#QMLFVJ;&lt;9L.78!MNNMFVV?6%G8A=GM\6NP^Z3
-MO9-]NGV-_3T&#039;#8?9#JL=6AU^&lt;[1R%#I6.MZ:SISN/WW%]);I+V=8SQ#/V#/C
-MMA/+*&lt;1IG5.;TT=G%V&gt;Y&lt;X/SB(N)2X+++I&lt;^+IL;QMW(O&gt;1*=/5Q7&gt;%ZTO6=
-MF[.;PNVHVZ_N-NYI[H?&lt;G\PTGRF&gt;63-ST,/(0^!1Y=$_&quot;Y^5,&amp;O?K&#039;Y/0T^!
-M9[7G(R]C+Y%7K=&gt;PMZ5WJO=A[Q&lt;^]CYRG^,^XSPWWC+&gt;65_,-\&quot;WR+?+3\-O
-MGE^%WT-_(_]D_WK_T0&quot;G@&quot;4!9P.)@4&amp;!6P+[^&#039;I\(;^./SK;9?:RV&gt;U!C*&quot;Y
-M015!CX*M@N7!K2%HR.R0K2&#039;WYYC.D&lt;YI#H50?NC6T`=AYF&amp;+PWX,)X6&#039;A5&gt;&amp;
-M/XYPB%@:T3&amp;7-7?1W$-SWT3Z1)9$WIMG,4\YKRU*-2H^JBYJ/-HWNC2Z/\8N
-M9EG,U5B=6$EL2QPY+BJN-FYLOM_\[?.&#039;XIWB&quot;^-[%Y@OR%UP&gt;:&#039;.PO2%IQ:I
-M+A(L.I9`3(A..)3P01`JJ!:,)?(3=R6.&quot;GG&quot;&#039;&lt;)G(B_1-M&amp;(V$-&lt;*AY.\D@J
-M37J2[)&amp;\-7DDQ3.E+.6YA&quot;&gt;ID+Q,#4S=FSJ&gt;%IIV(&amp;TR/3J],8.2D9!Q0JHA
-M39.V9^IGYF9VRZQEA;+^Q6Z+MR\&gt;E0?):[.0K`59+0JV0J;H5%HHURH&#039;LF=E
-M5V:_S8G*.9:KGBO-[&lt;RSRMN0-YSOG__M$L(2X9*VI89+5RT=6.:]K&amp;HYLCQQ
-M&gt;=L*XQ4%*X96!JP\N(JV*FW53ZOM5Y&gt;N?KTF&gt;DUK@5[!RH+!M0%KZPM5&quot;N6%
-M?&gt;O&lt;U^U=3U@O6=^U8?J&amp;G1L^%8F*KA3;%Y&lt;5?]@HW&#039;CE&amp;X=ORK^9W)2TJ:O$
-MN63/9M)FZ&gt;;&gt;+9Y;#I:JE^:7#FX-V=JT#=]6M.WU]D7;+Y?-*-N[@[9#N:._
-M/+B\9:?)SLT[/U2D5/14^E0V[M+=M6&#039;7^&amp;[1[AM[O/8T[-7;6[SW_3[)OMM5
-M`55-U6;59?M)^[/W/ZZ)JNGXEOMM7:U.;7&#039;MQP/2`_T&#039;(PZVU[G4U1W2/512
-MC]8KZT&lt;.QQ^^_IWO=RT--@U5C9S&amp;XB-P1&#039;GDZ?&lt;)W_&lt;&gt;#3K:=HQ[K.$&#039;TQ]V
-M&#039;6&lt;=+VI&quot;FO*:1IM3FOM;8ENZ3\P^T=;JWGK\1]L?#YPT/%EY2O-4R6G:Z8+3
-MDV?RSXR=E9U]?B[YW&amp;#;HK9[YV/.WVH/;^^Z$&#039;3ATD7_B^&lt;[O#O.7/*X=/*R
-MV^435[A7FJ\Z7VWJ=.H\_I/33\&gt;[G+N:KKE&lt;:[GN&gt;KVU&gt;V;WZ1N&gt;-\[=]+UY
-M\1;_UM6&gt;.3W=O?-Z;_?%]_7?%MU^&lt;B?]SLN[V7&lt;G[JV\3[Q?]$#M0=E#W8?5
-M/UO^W-COW&#039;]JP&#039;&gt;@\]&#039;&lt;1_&lt;&amp;A8//_I&#039;UCP]#!8^9C\N&amp;#8;KGC@^.3GB/W+]
-MZ?RG0\]DSR:&gt;%_ZB_LNN%Q8O?OC5Z]?.T9C1H9?REY._;7RE_&gt;K`ZQFOV\;&quot;
-MQAZ^R7@S,5[T5OOMP7?&lt;=QWOH]\/3^1\(&#039;\H_VCYL?53T*?[DQF3D_\$`YCS
-M_&amp;,S+=L````@8TA230``&gt;B4``(&quot;#``#Y_P``@.D``&#039;4P``#J8```.I@``!=O
-MDE_%1@```P!03%1%`!-=]_O^]OK]`$&gt;0`$.,`&amp;*P`%FF`%&gt;D`$^:`&amp;6T`$B2
-M`&amp;&gt;V`#N&quot;`%&amp;&lt;`%2@`&amp;&quot;N`%:B`$6.`&quot;=M`$**`$J4`%VJ`#Z&amp;`%NH`$V8`&amp;.R
-M`$&quot;(`#R$`#F``#=^`%.&gt;;:G7`$R6/4R%`#)X`&quot;]T`#!V`#1Z`%ZLO\K&lt;`#9\
-M&gt;X&gt;M^OO]&gt;X:MN&lt;&#039;5/4V%]OG^]_O\]?C]`%^L@):Y&gt;X&gt;LN,#50&amp;*6N+_5N\&#039;5
-MO\S&gt;N&lt;&#039;4+CY[VM[IR\_?&gt;H6MF:+!ZNSSQ\W?/4V$=I&amp;W=Y&amp;V,%6-=9&quot;V&gt;)*W
-M($B$[_&#039;V:W&gt;CW^3MF:/!BI2W7&amp;J98&#039;RG7&amp;F9;Z713%N/R,_?&gt;86MG[#*#R%G
-M=I&quot;W&lt;(FPBI6WJ;++YNOS?8&gt;M;&#039;BBU]WIM[[5S]?DC)6W&#039;C!Q$#M[B9.WV-[I
-M[_+VCZ/!Y&gt;GSY^SRFJ3!K[W34&amp;^&gt;&#039;B]QO\O&lt;&lt;Y*Z&lt;9[(&gt;8^T&lt;I&gt;_&lt;IG&quot;CZ?%
-M&lt;*&#039;,;&#039;BC&lt;9_+;Z?5=)&amp;X=)*Y&lt;9S%&lt;YC!=Y&amp;W;J30=)&amp;V;Z&#039;-&gt;)*X&lt;9K#U]SI
-M=9&amp;V&lt;9[*&lt;9W&amp;&lt;Y2\&lt;9G&quot;&lt;9O$J;&#039;+&gt;).W&lt;9S&amp;=I&quot;V;Z+.I,KG3%J/;JG7&lt;*#+
-M&lt;Y;`&lt;Y6];J?4;Z//;Z;3=).[&lt;Y:^;JC6Y^SS+CYZ35N.J;+*Q\[?#R%F:WBC
-MO\O=FJ3`J+#+/V69W^7NV-[H#T*$BI6V3W.C7WVIS]CFJ[++7&amp;J8#T&quot;&quot;+UN4
-MR,_&gt;O\S=S]GF+UB1/V.63W&quot;?7X&amp;MG[+,S]CD#SQ^K[[3G[&#039;*;XNSCZ;$/V:;
-M&#039;C!P+U:/&#039;TF%W^7M&#039;TV*35N/6VB9UMOI?YB[/V.8`2YS____````````````
-M````````````````````````````````````````````````````````````
-M````````````````````````````````````````````````````````````
-M````````````````````````````````````````````````````````````
-M````````````````````U80HA0``&quot;!U)1$%4&gt;-KLF7]L$^&lt;9Q[_OV8XO\8\X
-M3AS7B,@$TJ0-I**EHW148E+1).A:*&gt;NFKNJ2T*(VC$V=Q!CM%.:FT=)?(YO:
-M=5/1FHE!1#55&amp;ELGP9K!1D,%&#039;4W4%4CX80%Q`F%&lt;P&#039;9B)SECGY_]&lt;;:Q&#039;=][
-M(4/;/SS_^&#039;WON&lt;]][WG?YWWNO3,[CAS[]&amp;UHV@\?P;&gt;UO?A0#\XQ8YY?N*;-
-M&quot;@#&#039;JP]SA8N3VFPQD.0*Z\!&lt;X0L.;?;&quot;_7!PA75@KG`59[2J](9:!^;/&lt;0EW
-MFDKX&lt;UPR_SGN=6NSO0_&quot;S17N7&lt;R%N&lt;((&lt;2_-]^*2MLNK$W&#039;#,6VV8?:`W1+,
-M%;Z+$]-=&gt;A&#039;KP%QAF6FS,L&quot;XPCHP5WBR6)N=G%T&amp;;@GF&quot;D]QBL^47N72@?D%
-MQ,&amp;M`?S*I0-SA2]S\N.R7G+IP%QA&gt;UR;M0-QKK`.S!4&gt;YXS6N-Y0Z\!&lt;X4I1
-MFZT$1*ZP#LP5+HIJLT5`E&quot;NL`W.%0]/&lt;0CW-K^33&lt;Z_RLY(KQLV/&amp;#^Y8O-/
-MKIA=FXW-QF\)YL]QA#M-$?X&lt;1^8_Q^.EW!51RE].I?-?3L5F[D;1S-]EFN&gt;_
-MRW0GM%DWD.`*Z\!&lt;X8LF;?;B*IBXPCHP5[AN0INM`R:XPCHP5SC.*;=QO5JM
-M`W.%(YS=2T1OZZ,#&lt;X7++)GFZY^N^&lt;M)X!W_KU8_^&quot;H`E`$9[RO]:UX#T`#[
-MHUORX-??3/?#V1?6$3ZMI%OOV9X*K#L,Q/`.H@H`G%Z!M/=G!]?^&quot;`#6*=[,
-ML32\#3L\`*YLS;WP&quot;OZ;A45)V78;$-NJ*$J+$QA3%$51+$#*^8N#S_U$411%
-MV5J6.:;&lt;A,,`$%9RS*(3,:7NY+5%`-J%U-*O$0&quot;`,O=9^OQPJJ5DWWL:[K\7
-M0&#039;]N3*3S+E5$1$34_3&lt;`&gt;]3VQB&quot;N$1%1$:`&gt;&gt;5M$F=JBS&gt;&#039;4,:(,G-*@&#039;-.K
-MU::]`(#?/P^@5VVC&lt;_NK&gt;P&amp;@%U&quot;/?.\]E&quot;YM2SOWYL-H;LJBTR]M.A&#039;W`0!\
-M&amp;P!@3&gt;I8A2_;E[+M/_^!^KAKRH&lt;+6Y].Q*JIQ;Y_H]IKS7??K29O^[]=&#039;&gt;C`
-M_,PXIX=GGJ769SO05-&lt;V3^&#039;\H587Y&lt;F&quot;YV86;,=;Z=:&gt;[;]I*W`&quot;#]80GIO]
-M&gt;%&gt;F^7UCVVV)&gt;([6TN7+A%]T6X0K&quot;KZ^9_M4V[)@4WNJV;Z[T`D9:]M9T%&lt;X
-MN2[D=GWFW.%LJVU!*_!3[Z5V`#C6S-T!GIQ3Q+4``&amp;?&gt;AY.S63X`$QM\`-&quot;Q
-M\96;(YYS0O9-MQ?VY0NKC_+.]IQWZ9%L7\XWG&quot;T)7VI9YYV05Q)F^_*%#Q28
-M@=T=.;Z&lt;[TJ=$G`]#RY8$@[,+:O;F@`L276NSO;?3&quot;B@J9,WQ=.WN)Q6[P+:
-MU0G&lt;N:V`_V#F^Y6OBJ&gt;;GF)=84/JM[7EU\!P[O&gt;:M`^E/NQ)A=F-1.&lt;L.,N&amp;
-MM7Q&amp;S7O=W!79L^MSP+NMW9875&quot;&gt;Z)CK&gt;_P)8&amp;?UL]:R!;ANM!H#J9@&quot;K]FA=
-MGN7]-;!_7;;`)0`PO)O.C_59^XC=QP#&lt;&#039;&lt;YZ.+%&lt;.#]KU_,C/IK-YE7AH]EL
-M&lt;X&amp;J&lt;90C?&#039;0]?X[7&lt;A)EK5[]O14X/^(QSDTW`QPO_JH&#039;&lt;X5&#039;@]KL*!#D1JP#
-MWX[&#039;XG]O^5G]/[/_6\1WA.\(WQ&amp;^?05D^7T7:XW_?&quot;AQKOJ$(_#B&#039;ZM/&gt;,XL
-M?*$KJP^[Y8KG#%!E.0.4`@X%M0/V4&lt;&quot;;&#039;.UY^&lt;V7#&amp;%,&gt;(NO/)0X]T*7(P!4
-MW3N$V@$`GBN`&#039;4+`&amp;\9$E5`\-0K&lt;,Z5R&quot;ZM/&amp;#8?CU\&lt;8:;(9/CQ08P^UE4Y
-M9F.83(0CX&lt;&lt;&#039;I^OKNRKI:0Q&#039;S#=L\IC-;&quot;8B0]GDH&#039;W&quot;))IGIAP?3_ZAZC(S
-M3Q&gt;-%)G&quot;D26GX],VLTSQF(%FB,:*B*9F6&#039;V`F&gt;M&#039;V`B9;]@B4R;1/#.UL78D
-M:K&quot;(?=?&gt;^JWS&#039;V,-8Y&#039;$P*%O&gt;2[YQR1CA:6W82PR\^=#].C?SQ9/?RDY_)+#
-M+TF2)*U0^KY1&lt;05#DN0R#KSA?^;ZD5*3&lt;&lt;;?8.DU6*(S?DFJ*^K[BN.0)#G\
-MDN2&quot;\?S2(\N_-!EG_)+#+[DP)$FN&lt;SV+RHSG#81G$2$$%,-BMFSPU#+&quot;UPSO
-M,P04@\&gt;R;/&quot;#QB6C-0.P$JSU&gt;+$58)5/]&gt;&quot;&gt;&amp;K:J.UDC[PMM?)@$DJWT(&lt;-^
-M+/58:O&lt;]L:NN!P&quot;L!&quot;0A6Q/$Q*1L)5@)R1JVJCLI4X`)@L@88U&#039;&amp;1$$\M20V
-MR**+%DF_`V.B(#ZPI**!Q4Y_/&lt;98E+$HT1&#039;&amp;V)\2GSW!A%/T+R;,3-%9YG[Z
-MY)`896&quot;,,?$!BK%-BUYZ.&#039;5-)@AB],GO&amp;@5!C#(692E.9&amp;)42,I$=60EDI.R
-M^)&amp;#R#H\O)]`)&quot;?E3SZZ6D)&quot;\)&lt;.(BN1=6BHAXBH9WB\-2D.#5#R_/TO$YF_
-M:&quot;#92B!ZKE[^9&amp;@_T0?/KFXE(BL1)9.R]6-K33(I6XFL1&quot;HGDVP5EBO`*M@`
-M93F`:]]1D_VKC6I?CF+XV*G^G5GK8&quot;L0.IQJ[^O&gt;B1NG$REB2GWYWM2(`X&gt;S
-M/YU=F_WG3/52PR-/CE=&gt;=9&#039;&#039;NSD8$EPMU8%RN]OMI@66S&lt;&amp;0W=ZR&gt;,$W`^[[
-M%@^7V]WE3H_&#039;Y78_TWC9813*G9X=_27.B@9_Z(U!I]5NIP46N&gt;WS&#039;2&lt;]WL81
-M2_V&amp;&quot;VYWN=/C%4PE]O--RXZ92NQV=[G=;2YW&gt;G;T^TR/76?U3J_IXCA6Q@-!
-M5R($6\09!*#VE2!L8B*$,H2&lt;03CC0`1P+42CKRP!B`GCN$L)PAF$2PEB9;S1
-MYY(!8VAEW&#039;0&lt;@#,.(V!4@LY@&amp;8SJB2J7@#&#039;TGP$`-,1C1`1/#D8`````245.
-%1*Y&quot;8((`
-`
-    </csl>
-</images>
 
 </article>
 
