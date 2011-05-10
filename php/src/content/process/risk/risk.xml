@@ -26,7 +26,7 @@
 <next>process/risk/risklist</next>
 
 <description>
-    A Risk in software development project is an event that may have an impact 
+    A Risk in software development project is an event that may have an impact
     on the outcome of the project. Risk differs from problems or issues because a risk refers
     to the future potential of loss/benefit. Problems or issues, however, are conditions or states
     of affairs that exist in a project at present time.
@@ -47,7 +47,7 @@
 
 <text>
 
-    <p>A Risk in software development project is an event that may have an impact 
+    <p>A Risk in software development project is an event that may have an impact
     on the outcome of the project. Risk differs from problems or issues because a risk refers
     to the future potential of loss/benefit. Problems or issues, however, are conditions or states
     of affairs that exist in a project at present time.</p>
@@ -61,13 +61,13 @@
         <li>Outcomes are more predictable if the project team is prepared to handle unexpected negative interruptions</li>
     </ul>
 
-    <p>Risks are found and identified by the project team, project manager and you during the 
+    <p>Risks are found and identified by the project team, project manager and you during the
     whole project lifecycle. Risk management is an iterative process. The sooner a Risk
     is identified, the faster it can be managed and mitigated.</p>
 
     <p>Major Risk identification
-    activities are performed during the <a href="${url:process/time/inception}">Inception Phase</a>. 
-    <a href="${url:process/risk/strategy}">Risk Strategies</a> 
+    activities are performed during the <a href="${url:process/time/inception}">Inception Phase</a>.
+    <a href="${url:process/risk/strategy}">Risk Strategies</a>
     and Risk response plans are baselined on a
     <a href="${url:process/time/lco}">LCO Milestone</a> in the <a href="${url:process/risk/risklist}">Risk List</a>.</p>
 
@@ -75,7 +75,7 @@
     Mid-size software projects include hundreds of Risks.  Not all Risks are identified and managed,
     only those that appear to be the most severe.</p>
 
-    <p>Each Risk is defined in a 'Cause-Risk-Effect' format. The cause may be the 
+    <p>Each Risk is defined in a 'Cause-Risk-Effect' format. The cause may be the
     source of the Risk, the Risk is what may or may not happen, and the effect is the impact to the project
     objectives, should the Risk actually happen.</p>
 
@@ -90,22 +90,22 @@
         </tr>
         <tr><td>RISK1</td>
         <td>Deployment server will be purchased by the customer on 8/26</td>
-        <td>System installation and configuration may take more than 3 days</td>
+        <td>System installation and configuration take more than 3 days</td>
         <td>Project will be delayed</td></tr>
 
         <tr><td>RISK2</td>
         <td>Data provider changes API on its own schedule, without prior notification</td>
-        <td>Next change may happen before the end of project release Milestone</td>
+        <td>Next change happen before the end of project release Milestone</td>
         <td>Integration module re-factoring will take and 40+ additional staff-hours</td></tr>
 
         <tr><td>RISK3</td>
         <td>System analyst doesn't have experience in medical business software</td>
-        <td>System analyst and the customer may have difficulty communicating and understanding </td>
+        <td>System analyst and the customer have difficulty in communicating and understanding </td>
         <td>Inception Phase will take more than 3 weeks, the customer may become frustrated, and the project may be canceled</td></tr>
-    </table>    
+    </table>
 
     <p>When Risks are identified and discussed with the project team, the project
-    is prepared to handle any negative interruptions. 
+    is prepared to handle any negative interruptions.
     This decreases the probability of a Risk taking place throughout the course of the project.</p>
 
 </text>
