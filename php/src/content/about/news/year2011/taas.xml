@@ -25,7 +25,7 @@
 <invisible/>
 <label>TaaS</label>
 <title>
-    Team as a Service&#x2122; (TaaS)
+    Team as a Service&#x2122;
 </title>
 
 <keywords>
@@ -38,22 +38,30 @@
 </keywords>
 
 <description>
-    Team as a Service&#x2122; (TaaS) business model to be presented to
+    Team as a Service&#x2122; business model to be presented to
     Californian software development companies in January 2011
 </description>
 
 <text>
 
     <p>
-        All details about Team as a Service (TaaS) business
+        All details about Team as a Service business
         model are explained
         in <a href="http://www.tpc2.com/">tpc2.com</a> website.
     </p>
 
+    <a href="http://www.tpc2.com">
+        <img src='data:image/png;base64,${base64:/about/news/year2011/taas.png}'
+            alt='Team as a Service logo'
+            style="float:right; margin-left: 2em; margin-bottom: 2em;"
+        />
+    </a>
+
     <p>
         Understanding a fast growing necessity for professional
         software development in distributed teams TechnoPark Corp.
-        launched a new service called "<strong>Team as a Service (TaaS)</strong>". TaaS
+        launched a new service called "<strong>Team as a Service</strong>".
+        The concept
         enables on-demand creation and management of distributed
         software development teams, effectively tailored for
         unique business requirements.
