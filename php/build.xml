@@ -21,22 +21,23 @@
 <project name="panel2" basedir="." default="main">
 
     <!-- get properties from file -->
-	<property file="./build.properties" />
+    <property file="./build.properties" />
+    <property file="../../closures/external.properties" />
 
-	<target name="main">
-		<phing phingfile="${project.basedir}/src/library/FaZend/Application/Phing/build.xml" 
-		    inheritRefs="true" 
-		    haltonfailure="true"
-		    target="main" />
-	</target>
-	
-	<target name="za">
-    	<zendcodeanalyzer 
-    	    analyzerPath="...">
+    <target name="main">
+        <phing phingfile="${project.basedir}/src/library/FaZend/Application/Phing/build.xml"
+            inheritRefs="true"
+            haltonfailure="true"
+            target="main" />
+    </target>
+
+    <target name="za">
+        <zendcodeanalyzer
+            analyzerPath="...">
           <fileset dir=".">
             <include name="**/*.php"/>
           </fileset>
         </zendcodeanalyzer>
     </target>
-	
+
 </project>
