@@ -14,7 +14,7 @@ class WebFrontTest extends PhpRack_Test
             )
         );
         $this->assert->network->url
-            ->url('http://www.technoparkcorp.com')
+            ->url('http://www.technoparkcorp.com/')
             ->regex('TechnoPark');
     }
 
