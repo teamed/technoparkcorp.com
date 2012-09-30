@@ -1,0 +1,60 @@
+<?xml version="1.0" ?>
+<!--
+ *
+ * Copyright (c) 2008, TechnoPark Corp., Florida, USA
+ * All rights reserved. THIS IS PRIVATE SOFTWARE.
+ *
+ * Redistribution and use in source and binary forms, with or without modification, are PROHIBITED
+ * without prior written permission from the author. This product may NOT be used anywhere
+ * and on any computer except the server platform of TechnoPark Corp. located at
+ * www.technoparkcorp.com. If you received this code occacionally and without intent to use
+ * it, please report this incident to the author by email: privacy@technoparkcorp.com or
+ * by mail: 568 Ninth Street South 202 Naples, Florida 34102, the United States of America,
+ * tel. +1 (239) 243 0206, fax +1 (239) 236-0738.
+ *
+ * @author Yegor Bugayenko <egor@tpc2.com>
+ * @copyright Copyright (c) TechnoPark Corp., 2001-2009
+ * @version $Id: taas.xml 1054 2011-09-13 13:39:55Z yegor256@yahoo.com $
+ *
+-->
+
+<article>
+
+<date>09/22/2012</date>
+
+<invisible/>
+<label>s3auth.com</label>
+<title>
+    s3auth.com, a free HTTP Auth gateway in front of Amazon S3 bucket
+</title>
+
+<keywords>
+    Amazon S3,
+    S3 Bucket,
+    S3 Auth,
+    S3 Basic Auth,
+</keywords>
+
+<description>
+    TechnoPark Corp. sponsors a free hosted service for Amazon S3
+    bucket owners who need HTTP Basic authentication for their private content
+</description>
+
+<text>
+
+    <p>
+        We sponsored a small hosted service for owners of Amazon S3 buckets:
+        <a href="http://www.s3auth.com/">s3auth.com</a>. Amazon S3 doesn't
+        provide an ability to deliver private content through HTTP Basic/Digest
+        authentication mechanisms. Our hosted service fills this gap.
+    </p>
+
+    <p>
+        The product already received good feedback from users worldwide.
+        What is especially interesting is that the web service is fully
+        open source and hosted at <a href="https://github.com/yegor256/s3auth">github</a>.
+        The service itself, of course, is hosted at Amazon EC2.
+    </p>
+
+</text>
+</article>
