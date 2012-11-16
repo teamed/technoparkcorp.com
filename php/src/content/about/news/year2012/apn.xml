@@ -34,7 +34,7 @@
     </description>
     <text>
         <a href="http://www.tpc2.com">
-            <img src="data:image/png;base64,${base64:/about/news/year2012/aws-logo.png}" alt="APN Standard Technology Partner" style="float:right; margin-left: 2em; margin-bottom: 2em; width: 20%;"/>
+            <img src="data:image/png;base64,${base64:/about/news/year2012/aws-logo.png}" alt="APN Standard Technology Partner" style="float:right; margin-left: 2em; margin-bottom: 2em; width: 200px;"/>
         </a>
         <p>
         TechnoPark Corp. have been an active user of Amazon Web Services (AWS) for the
