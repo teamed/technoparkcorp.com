@@ -1,4 +1,4 @@
-<?xml version="1.0" ?>
+<?xml version="1.0"?>
 <!--
  *
  * Copyright (c) 2008, TechnoPark Corp., Florida, USA
@@ -17,44 +17,34 @@
  * @version $Id: taas.xml 1054 2011-09-13 13:39:55Z yegor256@yahoo.com $
  *
 -->
-
 <article>
-
-<date>09/22/2012</date>
-
-<invisible/>
-<label>s3auth.com</label>
-<title>
-    s3auth.com, a free HTTP Auth gateway in front of Amazon S3 bucket
-</title>
-
-<keywords>
+    <date>09/22/2012</date>
+    <invisible/>
+    <label>s3auth.com</label>
+    <title>s3auth.com, a free HTTP Auth gateway in front of Amazon S3 bucket</title>
+    <keywords>
     Amazon S3,
     S3 Bucket,
     S3 Auth,
     S3 Basic Auth,
-</keywords>
-
-<description>
+    </keywords>
+    <description>
     TechnoPark Corp. sponsors a free hosted service for Amazon S3
     bucket owners who need HTTP Basic authentication for their private content
-</description>
-
-<text>
-
-    <p>
+    </description>
+    <text>
+        <img src="http://img.s3auth.com/logo.png" alt="s3auth.com" style="float:right; margin-left: 2em; margin-bottom: 2em;"/>
+        <p>
         We sponsored a small hosted service for owners of Amazon S3 buckets:
         <a href="http://www.s3auth.com/">s3auth.com</a>. Amazon S3 doesn't
         provide an ability to deliver private content through HTTP Basic/Digest
         authentication mechanisms. Our hosted service fills this gap.
-    </p>
-
-    <p>
+        </p>
+        <p>
         The product already received good feedback from users worldwide.
         What is especially interesting is that the web service is fully
         open source and hosted at <a href="https://github.com/yegor256/s3auth">github</a>.
         The service itself, of course, is hosted at Amazon EC2.
     </p>
-
-</text>
+    </text>
 </article>

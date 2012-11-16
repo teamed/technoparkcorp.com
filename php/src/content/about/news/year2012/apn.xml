@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!--
+ *
+ * Copyright (c) 2008, TechnoPark Corp., Florida, USA
+ * All rights reserved. THIS IS PRIVATE SOFTWARE.
+ *
+ * Redistribution and use in source and binary forms, with or without modification, are PROHIBITED
+ * without prior written permission from the author. This product may NOT be used anywhere
+ * and on any computer except the server platform of TechnoPark Corp. located at
+ * www.technoparkcorp.com. If you received this code occacionally and without intent to use
+ * it, please report this incident to the author by email: privacy@technoparkcorp.com or
+ * by mail: 568 Ninth Street South 202 Naples, Florida 34102, the United States of America,
+ * tel. +1 (239) 243 0206, fax +1 (239) 236-0738.
+ *
+ * @author Yegor Bugayenko <egor@tpc2.com>
+ * @copyright Copyright (c) TechnoPark Corp., 2001-2009
+ * @version $Id$
+ *
+-->
+<article>
+    <date>11/16/2012</date>
+    <invisible/>
+    <label>apn</label>
+    <title>TechnoPark Corp. is an Official APN Partner</title>
+    <keywords>
+    Amazon Web Services,
+    Official APN Partner,
+    Amazon partner,
+    APN partner of Amazon
+    </keywords>
+    <description>
+    Technopark Corp. is among the first AWS Partners ever to gain public
+    designation as a Standard Technology Partner.
+    </description>
+    <text>
+        <a href="http://www.tpc2.com">
+            <img src="data:image/png;base64,${base64:/about/news/year2012/aws-logo.png}" alt="APN Standard Technology Partner" style="float:right; margin-left: 2em; margin-bottom: 2em;"/>
+        </a>
+        <p>
+        TechnoPark Corp. have been an active user of Amazon Web Services (AWS) for the
+        the last three years. In our software solutions we're actively using
+        Elastic Beanstalk, S3, EC2/EBS, CloudFront, and other services of AWS.
+        <a href="http://www.s3auth.com/">s3auth.com</a> was one of the latest
+        products developed and made public by our team.
+        </p>
+        <p>
+        A few days ago we were qualified by AWS
+        as a Standard Technology Partner. This new title makes TechnoPark
+        a reliable and trustable developer of your software projects.
+        </p>
+    </text>
+</article>
