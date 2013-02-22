@@ -2,19 +2,19 @@
  *
  * thePanel v2.0, Project Management Software Toolkit
  *
- * Redistribution and use in source and binary forms, with or without 
- * modification, are PROHIBITED without prior written permission from 
- * the author. This product may NOT be used anywhere and on any computer 
- * except the server platform of TechnoPark Corp. located at 
- * www.technoparkcorp.com. If you received this code occasionally and 
- * without intent to use it, please report this incident to the author 
- * by email: privacy@technoparkcorp.com or by mail: 
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are PROHIBITED without prior written permission from
+ * the author. This product may NOT be used anywhere and on any computer
+ * except the server platform of TechnoPark Corp. located at
+ * www.technoparkcorp.com. If you received this code occasionally and
+ * without intent to use it, please report this incident to the author
+ * by email: privacy@technoparkcorp.com or by mail:
  * 568 Ninth Street South 202, Naples, Florida 34102, USA
  * tel. +1 (239) 935 5429
  *
  * @version $Id$
 -->
- 
+
 <?
     $this->includeCSS('static.css');
     $this->includeCSS('article.css');
@@ -79,11 +79,11 @@
             <li>
                 <a href="<?=$this->staticUrl($concept->page)?>"><?=$concept->title?></a>
             </li>
-        <? endforeach; ?>    
+        <? endforeach; ?>
         </ul>
     <? endif; ?>
 
-    <? if ($this->article->showRightColumn): ?> 
+    <? if ($this->article->showRightColumn): ?>
         <div class="right">
             <ul class="steps">
 
@@ -96,9 +96,9 @@
                         </li>
                     <? endforeach; ?>
                 <? endif; ?>
-            
+
             </ul>
-                            
+
             <? if ($this->article->term):?>
                 <p class="term">
                     Citation from our software development contract:
@@ -110,19 +110,22 @@
     <? endif; ?>
 
 <!-- end of RIGHT -->
-</div>    
+</div>
 
 <!-- wide line at the bottom of the page -->
 <p class="wl">
-    
+
     <!--
     <span>
         <script type='text/javascript' src='http://w.sharethis.com/button/sharethis.js#tabs=post%2Cemail%2Cweb&amp;charset=utf-8&amp;style=rotate&amp;publisher=bd1d09bf-bb3e-433e-aa72-29bfdfa237d9&amp;headerbg=%237d8f9b&amp;inactivebg=%235a5a5a&amp;inactivefg=%23ffffff&amp;linkfg=%230093d0'></script>
-    </span>    
+    </span>
     -->
 
     <span class="rev">
         Last update on <span style="color:<?=Model_Colors::BLUE?>"><?=$this->article->updated->get(Zend_Date::DATE_MEDIUM)?></span>
+        by <a rel="author"
+            style="color:<?=Model_Colors::BLUE?>"
+            href="https://plus.google.com/u/0/114792568016408327418?rel=author"/>Yegor Bugayenko</a>
     </span>
 </p>
 
