@@ -36,12 +36,6 @@
         description="Validate, compile, deploy and clean">
     </target>
 
-    <!-- get revision number -->
-    <svnlastrevision
-        workingcopy="${project.basedir}"
-        propertyname="svn.revision"/>
-    <echo msg="SVN revision: ${svn.revision}" />
-
     <target name="svn" description="Get all necessary information about current build" >
         <!--
             {to.deploy} asks the builder to deploy everything created to the
