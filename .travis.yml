@@ -6,4 +6,4 @@ install:
   - sudo add-apt-repository -y ppa:resmo/git-ftp
   - sudo apt-get -y update
   - sudo apt-get -y install git-ftp
-script: git ftp push www.technoparkcorp.com --user "$LOGIN" --passwd "$PASSWORD" --syncroot src --active
+script: ./deploy.sh
