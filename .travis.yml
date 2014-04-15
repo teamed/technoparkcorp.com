@@ -1,5 +1,6 @@
-secure: "PRf7ysUT1BkwH7eAVJdqfksbAiE5/e1PXJuTF6SV2PQZCIyJsbGCnqT9xemm87j2OIVD5NDyKIUAgiZo/JVxGekop9RYuuIffj/9MMfngO1ewJbYSOCTJDPT7wUMmiEPBcZ2LAP2U7geKzABKzeuurSm8B5W3l1b7Mg93E+e+Qo="
-secure: "NLQUlj0EpI3U1zYEfMY9oUMAqSSqLmd5POsShxd/7wN8ifC/0B7+qo0nJ40fYM9y/qB/NWJnsPrcDY9s1bRye1dxsvjwqmwx4sV78Hry5b7Ii+lx6rH2FYqOC8x7iAOsoV2eBWBBJFa6jt2QVOzOAB13FY5tPLx/m6cP/HdmvhQ="
+env:
+  - secure: "PRf7ysUT1BkwH7eAVJdqfksbAiE5/e1PXJuTF6SV2PQZCIyJsbGCnqT9xemm87j2OIVD5NDyKIUAgiZo/JVxGekop9RYuuIffj/9MMfngO1ewJbYSOCTJDPT7wUMmiEPBcZ2LAP2U7geKzABKzeuurSm8B5W3l1b7Mg93E+e+Qo="
+  - secure: "NLQUlj0EpI3U1zYEfMY9oUMAqSSqLmd5POsShxd/7wN8ifC/0B7+qo0nJ40fYM9y/qB/NWJnsPrcDY9s1bRye1dxsvjwqmwx4sV78Hry5b7Ii+lx6rH2FYqOC8x7iAOsoV2eBWBBJFa6jt2QVOzOAB13FY5tPLx/m6cP/HdmvhQ="
 install:
   - sudo add-apt-repository ppa:resmo/git-ftp
   - sudo aptitude update
