@@ -2,13 +2,13 @@
 /**
  * thePanel v2.0, Project Management Software Toolkit
  *
- * Redistribution and use in source and binary forms, with or without 
- * modification, are PROHIBITED without prior written permission from 
- * the author. This product may NOT be used anywhere and on any computer 
- * except the server platform of TechnoPark Corp. located at 
- * www.technoparkcorp.com. If you received this code occasionally and 
- * without intent to use it, please report this incident to the author 
- * by email: privacy@technoparkcorp.com or by mail: 
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are PROHIBITED without prior written permission from
+ * the author. This product may NOT be used anywhere and on any computer
+ * except the server platform of TechnoPark Corp. located at
+ * www.technoparkcorp.com. If you received this code occasionally and
+ * without intent to use it, please report this incident to the author
+ * by email: privacy@technoparkcorp.com or by mail:
  * 568 Ninth Street South 202, Naples, Florida 34102, USA
  * tel. +1 (239) 935 5429
  *
@@ -39,7 +39,7 @@ class Model_Navigation
      * @var Zend_Cache
      */
     protected static $_cache;
-    
+
     /**
      * XML text for the article, if given
      *
@@ -52,7 +52,7 @@ class Model_Navigation
      *
      * @return void
      */
-    public static function setUseCache($useCache = true) 
+    public static function setUseCache($useCache = true)
     {
         self::$_useCache = $useCache;
     }
@@ -78,7 +78,7 @@ class Model_Navigation
 
             // and save to cache
             self::_cache()->save($container->getPages(), 'map');
-            
+
             logg('Indexed ' . Model_Article::getSearchProxy()->numDocs() . ' articles in Lucene');
         }
 
@@ -89,14 +89,14 @@ class Model_Navigation
     /**
      * Add pages to menu from XML files
      *
-     * The method is called recursively, i.e. will call itself for each 
+     * The method is called recursively, i.e. will call itself for each
      * sub-directory
      *
      * @param Zend_Navigation
      * @param string File path with XML files
      * @return void
      */
-    protected static function _addMenuPages($container, $path = CONTENT_PATH, $prefix = '') 
+    protected static function _addMenuPages($container, $path = CONTENT_PATH, $prefix = '')
     {
         // get full list of XML files in content directory
         foreach (glob($path . '/*.xml') as $file) {
@@ -108,7 +108,7 @@ class Model_Navigation
 
             // load the article
             $article = Model_Article::createByLabel($fullLabel);
-            
+
             // add this article to search
             // this operation takes time, but since the entire navigation-building
             // process is cached - it's OK
@@ -150,7 +150,7 @@ class Model_Navigation
      * @param string Page path
      * @return void
      */
-    protected static function _markActivePage($container, $activePage) 
+    protected static function _markActivePage($container, $activePage)
     {
         // page label "about/facts" will be converted to ("about", "facts")
         $sections = explode('/', $activePage);
@@ -171,31 +171,31 @@ class Model_Navigation
      *
      * @return Zend_Cache
      */
-    protected static function _cache() 
+    protected static function _cache()
     {
         if (self::$_cache != false) {
             return self::$_cache;
         }
 
         return self::$_cache = Zend_Cache::factory(
-            'Core', 
-            'File', 
+            'Core',
+            'File',
             array(
                 'caching' => self::$_useCache,
-                'cache_id_prefix' => 'panel2nav' . FaZend_Revision::get(),
+                'cache_id_prefix' => 'tpc2nav' . FaZend_Revision::get(),
                 'lifetime' => null, // live forever
                 'automatic_serialization' => true,
                 'automatic_cleaning_factor' => false,
                 'write_control' => true,
                 'logging' => false,
                 'ignore_user_abort' => true
-            ), 
+            ),
             array(
                 'cache_dir' => TEMP_PATH,
                 'hashed_directory_level' => 0,
                 'read_control' => true,
                 'file_locking' => true,
-                'file_name_prefix' => 'panel2navigation'
+                'file_name_prefix' => 'tpc2navigation'
             )
         );
     }
