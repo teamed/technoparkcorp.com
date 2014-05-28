@@ -24,43 +24,11 @@
     Naples, Florida, 34102<br/>
     United States of America<br/>
     <a href="mailto:sales@technoparkcorp.com">sales@technoparkcorp.com</a><br/>
-    tel. (239) 935-5429
+    tel. (860) 506 5536
 </p>
 
 <p>
     We respond to email inquiries in 24 hours or less.
-    Please, use the form below to expedite the
-    process and automate it.
 </p>
-
-<?=$this->forma()
-    ->addBehavior('replace', '"<p><b>Your enquire was sent, thank you very much!</b></p>"')
-    ->addField('text', 'a1')
-        ->fieldLabel('Your name')
-    ->addField('text', 'a2')
-        ->fieldLabel('Email address for reply')
-    ->addField('textarea', 'a3')
-        ->fieldLabel('Your question to us')
-        ->fieldAttrib('cols', 40)
-        ->fieldAttrib('rows', 4)
-    ->addField('submit', 'submit')
-        ->fieldValue('Send Query')
-        ->fieldAction(
-            '
-            FaZend_Email::create()
-                ->set("toEmail", "sales@technoparkcorp.com")
-                ->set(
-                    "body",
-                    sprintf(
-                        "Name: %s, Email: %s, Query: %s",
-                        ${a1},
-                        ${a2},
-                        ${a3}
-                    )
-                )
-                ->send();
-            '
-        )
-    ?>
 
 <?=$this->article->text?>
