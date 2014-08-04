@@ -30,7 +30,19 @@ Dir.glob('src/content/**/*.xml') do |file|
   if xml.xpath('/article/next/text()').length > 0
     md += "next: " + xml.xpath('/article/next/text()')[0].to_s.strip + "\n"
   end
-  md += "---\n\n"
+  md += "---"
+
+  xml.xpath('/article/text/*').each { |par|
+    md += "\n"
+    if par.name == 'p'
+      txt = par.xpath('text()').to_s.strip.gsub(/\s+/, ' ') \
+        .gsub(/(.{1,60})(\s+|\Z)/, "\n\\1")
+    else
+      txt = "\n" + par.to_s
+    end
+    md += txt
+  }
+
   output = "output/#{File.dirname(file)}/#{File.basename(file,'.xml')}.md"
   FileUtils.mkdir_p(File.dirname(output))
   File.write(output, md)
