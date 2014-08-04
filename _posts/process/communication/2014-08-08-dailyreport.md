@@ -13,11 +13,11 @@ keywords:
   - project reporting
   - project communications plan
   - project tracking
-next: process/communication
+next_step: process/communication
 ---
 
-The Project manager reports to you on a daily basis by the conclusion of each [business 
-day](/process/communication/availability). No matter what was done during a day by the project team, 
+The Project manager reports to you on a daily basis by the conclusion of each [business
+day](/process/communication/availability). No matter what was done during a day by the project team,
 and what results were obtained, a Daily Report is sent by email to you.
 
 The Daily Report includes:
@@ -55,6 +55,6 @@ The closest Milestone is on 12-Jan (end of the day).
 Liza Peterson, PM
 </pre>
 
-Since we do [incremental delivery](/process/communication/incremental) of 
-[Deliverables](/process/warranty/deliverables), each Daily Report may include new functionality 
+Since we do [incremental delivery](/process/communication/incremental) of
+[Deliverables](/process/warranty/deliverables), each Daily Report may include new functionality
 implemented and tested. Your feedback on each Daily Report is expected and welcomed.

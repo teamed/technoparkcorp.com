@@ -25,21 +25,21 @@ keywords:
   - software outsourcing
   - offshore development
   - distributed programming
-next: process/scope/matrix
+next_step: process/scope/matrix
 ---
 
-A Requirement is a type of contractual clause between the user and their system. A Requirement 
-states exactly what each user can do with the system. It is important to note that a system will not 
+A Requirement is a type of contractual clause between the user and their system. A Requirement
+states exactly what each user can do with the system. It is important to note that a system will not
 perform any functions outside of those stated in the Requirements.
 
-There are Functional and Non-functional Requirements. A Functional Requirement answers the question 
-"what should the system do", and a Non-functional Requirement provides an answer to "how will the 
+There are Functional and Non-functional Requirements. A Functional Requirement answers the question
+"what should the system do", and a Non-functional Requirement provides an answer to "how will the
 system do this"?
 
-Functional Requirements respond when the user makes a 'Request', causing the system to create a 
-'Reply'. A 'Request' is a formal interaction between the user and system through one of its external 
-interfaces. A 'Reply' is the term for how the system reacts after receiving a Request from the user. 
-Functional Requirements are supported with Non-functional Requirements, which are supplementary 
+Functional Requirements respond when the user makes a 'Request', causing the system to create a
+'Reply'. A 'Request' is a formal interaction between the user and system through one of its external
+interfaces. A 'Reply' is the term for how the system reacts after receiving a Request from the user.
+Functional Requirements are supported with Non-functional Requirements, which are supplementary
 specifications in a [SRS](/process/scope/srs).
 
 Examples of Functional Requirements and their supplementary specifications include the following:
@@ -85,5 +85,5 @@ Examples of Non-functional Requirements (for the classifications above) include 
         <tr><td>SS2</td><td>System responds to any type of report request within a 500ms timeframe on the server equipment defined in SRS, and with up to 500 concurrent users, over the course of 100 minutes.</td><td>Performance</td></tr>
     </table>
 
-Requirements are listed in the SRS, which also includes the Glossary, Use Cases, Functional 
+Requirements are listed in the SRS, which also includes the Glossary, Use Cases, Functional
 Requirements, and Non-Functional Requirements.

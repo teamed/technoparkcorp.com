@@ -17,11 +17,11 @@ keywords:
   - software builds
   - iterations
   - traceability matrix
-next: process/quality
+next_step: process/quality
 ---
 
-Incremental delivery of software means that software product is specified, designed, implemented, 
-tested and deployed in a number of builds. Each build has a new portion of functionality. All builds 
+Incremental delivery of software means that software product is specified, designed, implemented,
+tested and deployed in a number of builds. Each build has a new portion of functionality. All builds
 together constitute the project [scope](/process/scope).
 
 Consider the example development steps in a sample software project. Project statement is:
@@ -68,8 +68,8 @@ This is an example of the [Schedule](/process/time/schedule) for the sample proj
         <tr><td>M</td><td>Project finished (Release Milestone)</td><td>3-Apr</td><td/></tr>
     </table>
 
-Imagine that the project is in [Iteration](/process/time/iteration) #3 and right now the project 
+Imagine that the project is in [Iteration](/process/time/iteration) #3 and right now the project
 team is performing user acceptance testing with you for build #3.
 
-The example illustrates that each new Iteration gives you a new workable product, and serves as an 
+The example illustrates that each new Iteration gives you a new workable product, and serves as an
 extension to the previous build.

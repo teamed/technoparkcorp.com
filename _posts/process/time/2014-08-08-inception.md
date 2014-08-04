@@ -22,16 +22,16 @@ keywords:
   - software outsourcing
   - offshore development
   - distributed programming
-next: process/time/lco
+next_step: process/time/lco
 ---
 
-When a [ROM Estimate](/process/cost/rom) is approved and the project is started, the project team 
-has documentation that you provided to us - we call it an informal request (also called stakeholder 
+When a [ROM Estimate](/process/cost/rom) is approved and the project is started, the project team
+has documentation that you provided to us - we call it an informal request (also called stakeholder
 request in [RUP](http://www.ibm.com/rational)).
 
-Your informal requests may include diagrams, specifications, spreadsheets, and other forms. All of 
-this information is very important to the project team. This information shall be converted to 
-[Specification](/process/scope/specification), as required by our process. This is the goal of the 
+Your informal requests may include diagrams, specifications, spreadsheets, and other forms. All of
+this information is very important to the project team. This information shall be converted to
+[Specification](/process/scope/specification), as required by our process. This is the goal of the
 Inception Phase - to convert your informal requests into very detailed and well-structured Specifications.
 
 Inception Phase includes:

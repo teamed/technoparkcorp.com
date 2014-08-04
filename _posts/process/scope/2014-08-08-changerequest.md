@@ -20,15 +20,15 @@ keywords:
   - software outsourcing
   - offshore development
   - distributed programming
-next: process/time
+next_step: process/time
 ---
 
-Changes are inevitable in software development projects and we recognize that change and the 
-resulting uncertainty are inherent aspects of the IT life cycle. A change has potential to ruin the 
-project, or it can creatively increase the value of the business. The outcome depends on an 
+Changes are inevitable in software development projects and we recognize that change and the
+resulting uncertainty are inherent aspects of the IT life cycle. A change has potential to ruin the
+project, or it can creatively increase the value of the business. The outcome depends on an
 established change control procedure created during the project.
 
-We advocate a strict approach to change management. Each new change is formally reviewed, estimated, 
+We advocate a strict approach to change management. Each new change is formally reviewed, estimated,
 and approved prior to being implemented.
 
 <tikz>
@@ -76,5 +76,5 @@ There are several consecutive steps in a change control procedure:
         <li>You approve or reject the changes.</li>
     </ol>
 
-When the above procedure is finished, the changes become effective and the project team works with 
+When the above procedure is finished, the changes become effective and the project team works with
 the new Schedule, Budget and Risks.

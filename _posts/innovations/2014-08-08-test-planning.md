@@ -19,7 +19,7 @@ keywords:
   - defective software
   - software quality
   - quality control
-next: innovations/metrics
+next_step: innovations/metrics
 ---
 
 You won't build a quality software product if your mindset is as follows:
@@ -32,7 +32,7 @@ You won't build a quality software product if your mindset is as follows:
 
         The above statements are common for
         testers, programmers and project sponsors~\cite[pp. 17--26]{kaner99}.
-        During the last 40 years, software books have told us that 
+        During the last 40 years, software books have told us that
         the assumptions above are the biggest software problems themselves~\cite{brooks95}, but
         software teams still operate under these assumptions.
 
@@ -51,13 +51,13 @@ You won't build a quality software product if your mindset is as follows:
         \textbf{Axiom 2: Quality is the degree to which \\
         a set of characteristics fulfills requirements}~\cite[p. 180]{pmbok}.
 
-        Quality shows how \textit{good} your product is compared to 
+        Quality shows how \textit{good} your product is compared to
         your initial expectations. In combining these two axioms we can say
-        that the software product will be ``better'' when you 
-        find and fix more bugs. 
+        that the software product will be ``better'' when you
+        find and fix more bugs.
         The characteristics are the number of fixed bugs, while
         requirements are the number of bugs anticipated.
-        
+
         Formally, Quality of Implementation (\textbf{QoI}) is a relation between
         the number of fixed bugs (\textbf{F}) and number of bugs anticipated (\textbf{P}):
 
@@ -79,15 +79,15 @@ You won't build a quality software product if your mindset is as follows:
         \end{equation*}
         \end{center}
 
-        The more bugs you anticipate you will discover, the larger 
+        The more bugs you anticipate you will discover, the larger
         your testing budget, the more time you need, and the higher you Quality of Product.
 
         When you say ``\textit{I want to create a quality product}'' it means that
         you are planning to develop the software and to find/fix more
-        bugs than usual leading to a QoP higher than usual. For example 
-        the product specification will have 100 functional requirements. 
-        Usually, your testers find 5 bugs per one functional requirement, 
-        spending 0.5 man-hours per one bug (250 totall man-hours). 
+        bugs than usual leading to a QoP higher than usual. For example
+        the product specification will have 100 functional requirements.
+        Usually, your testers find 5 bugs per one functional requirement,
+        spending 0.5 man-hours per one bug (250 totall man-hours).
         ``Software of higher quality'' will mean, for example, 10 bugs per one requirement, and 1000
         bugs in the entire product. This will require additional budget and may
         increase the average cost of one bug, this will honestly
@@ -105,7 +105,7 @@ You won't build a quality software product if your mindset is as follows:
         Testers are not performing quality control, they are discovering bugs.
         Testers don't know how this process affects your
         judgment about product release. You release the product to the
-        market when you think the QoI/QoP is sufficient. 
+        market when you think the QoI/QoP is sufficient.
 
             \textbf{The software quality is validated by testers} (wrong).
         The testers's job is to discover bugs. They don't control
@@ -115,9 +115,9 @@ You won't build a quality software product if your mindset is as follows:
 
             \textbf{High quality means a complete lack of bugs} (wrong).
             The more bugs you are anticipating to discover,
-            the higher the Quality of Product you are going to achieve. The more bugs you  
+            the higher the Quality of Product you are going to achieve. The more bugs you
             discover and fix, the higher the Quality of Implementation.
-            When the team reports to you that there have been no bugs found, 
+            When the team reports to you that there have been no bugs found,
             you know that the project has been
             poorly planned and testing poorly performed.
 
@@ -131,8 +131,8 @@ You won't build a quality software product if your mindset is as follows:
         Remember, that you may always change this number during
         the course of project. After all, we do this iteratively, don't we? You
         anticipate the number of bugs according to your own judgment. It's
-        good to start with something like (this is \textbf{k} in the formula above): 
-        
+        good to start with something like (this is \textbf{k} in the formula above):
+
         \begin{itemize}
             \item bugs per line of code
             \item bugs per functional requirement
@@ -142,13 +142,13 @@ You won't build a quality software product if your mindset is as follows:
 
         You can create your own metrics. Your first priority is to anticipate
         the number of bugs and your second priority is to anticipate it correctly.
-        
+
         \section*{How to Estimate Discovery Time for Bugs?}
 
             Do this in the same manner in which your programmers estimate their time.
             Testing is the same process as programming
-            and any other engineering task. 
-            
+            and any other engineering task.
+
             Before the next iteration quality tester receives the SRS,
             the list of functional requirements to be tested in a particular
             iteration, the required numbers of bugs to be detected should be decided and
@@ -159,11 +159,11 @@ You won't build a quality software product if your mindset is as follows:
 
     \section*{Conclusion or What Do You Do Next}
 
-        Bugs have to be anticipated the same way as you plan new 
+        Bugs have to be anticipated the same way as you plan new
         features and new releases. You have to plan your quality
-        and control it during the entire project. Your plan may 
-        fall wide of the mark in the beginning of the project, 
-        you may underestimate testing efforts, 
+        and control it during the entire project. Your plan may
+        fall wide of the mark in the beginning of the project,
+        you may underestimate testing efforts,
         and your important assumptions may be incorrect.
         But the biggest mistake you could make is not to anticipate bugs at all.
 
@@ -183,9 +183,9 @@ You won't build a quality software product if your mindset is as follows:
             Nguyen Hung Quoc, Johnson Bob, Hackett Michael,
             Testing applications on the Web, Second Edition,
             John Wiley and Sons, New York, USA (2003)
-            
-            \bibitem[myers04]{myers04} 
-            Myers, Glenford J., 
+
+            \bibitem[myers04]{myers04}
+            Myers, Glenford J.,
             The art of software testing, 2nd edition,
             John Wiley and Sons, New Jersey, USA (2004)
 

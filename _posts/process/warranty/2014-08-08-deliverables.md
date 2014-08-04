@@ -12,10 +12,10 @@ keywords:
   - software outsourcing
   - offshore development
   - distributed programming
-next: process/scope/srs
+next_step: process/scope/srs
 ---
 
-Deliverables are what you pay for and what the project team produces. There is nothing more 
+Deliverables are what you pay for and what the project team produces. There is nothing more
 important in a project than the Deliverables.
 
 You receive the following:

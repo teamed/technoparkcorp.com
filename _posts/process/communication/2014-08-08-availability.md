@@ -13,13 +13,13 @@ keywords:
   - Project communications
   - project team communications
   - communication management plan
-next: process/communication
+next_step: process/communication
 ---
 
-During the project execution, you communicate with project manager and project team by email, phone 
+During the project execution, you communicate with project manager and project team by email, phone
 or an instant messaging tool (Skype, YahooIM, MSN or GoogleTalk).
 
-We work 5 days a week from Monday till Friday. The project manager is online from 6:00am-12:00pm EST 
+We work 5 days a week from Monday till Friday. The project manager is online from 6:00am-12:00pm EST
 (6 hours daily).
 
 Project communication language is English.

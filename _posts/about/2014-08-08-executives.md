@@ -10,40 +10,40 @@ description: |
   Lieske
 keywords:
   - software development experts
-next: about/facts
+next_step: about/facts
 ---
 
 <img src="data:image/png;base64,${base64:/about/yegor.png}" alt="Yegor Bugayenko" style="float:left; margin-right: 1em; margin-bottom: 1em;             width: 110px; height: 110px;"/>
 
 is a co-founder and CTO of the company, its lead software architect, and project management guru.
 
-Yegor began his career in Ukraine, as a C++/Java software developer, in a private hardware 
-engineering company, owned by his father. Yegor founded the company when he was 23 years old, in 
-order to deliver custom software development services to North American and European clients. Since 
-that time, under Yegor's management, the company completed over a hundred successful projects. Yegor 
-possesses Master's Degree in Computer Science, and is a proud holder of most valuable industry 
+Yegor began his career in Ukraine, as a C++/Java software developer, in a private hardware
+engineering company, owned by his father. Yegor founded the company when he was 23 years old, in
+order to deliver custom software development services to North American and European clients. Since
+that time, under Yegor's management, the company completed over a hundred successful projects. Yegor
+possesses Master's Degree in Computer Science, and is a proud holder of most valuable industry
 certifications, including [PMP®](http://en.wikipedia.org/wiki/Project\_Management\_Professional), [OCMJEA](http://en.wikipedi
-a.org/wiki/Sun\_Certified\_Enterprise\_Architect#Sun\_Certified\_Enterprise\_Architect\_.28SCEA.29), 
-[IBM RUP](http://www-03.ibm.com/certify/certs/38008003.shtml), 
-[OCUP](http://www.omg.org/uml-certification/), [PRINCE2](http://www.prince2.com/), 
+a.org/wiki/Sun\_Certified\_Enterprise\_Architect#Sun\_Certified\_Enterprise\_Architect\_.28SCEA.29),
+[IBM RUP](http://www-03.ibm.com/certify/certs/38008003.shtml),
+[OCUP](http://www.omg.org/uml-certification/), [PRINCE2](http://www.prince2.com/),
 [MCP](http://www.microsoft.com/learning/mcp/mcp/), and [ZFCE](http://www.zend.com/en/services/certification/)/[ZCE](http://www.zend.com/en/services/certification/).
 
-Yegor has been dedicating recent years of his career to the research and development of software 
-methodologies designed to improve quality. He is a regular academic writer and an author of almost 
-all proprietary patent-pending and open source innovations of the company, including [eXtremely 
-Distributed Software Development (XDSD)](/about/news/year2010/xdsd). [Puzzle Driven Development 
+Yegor has been dedicating recent years of his career to the research and development of software
+methodologies designed to improve quality. He is a regular academic writer and an author of almost
+all proprietary patent-pending and open source innovations of the company, including [eXtremely
+Distributed Software Development (XDSD)](/about/news/year2010/xdsd). [Puzzle Driven Development
 (PDD)](/innovations/pdd), and [FaZend Hosted CI Platform](${stories}/fazend).
 
 <img src="data:image/png;base64,${base64:/about/noah.png}" alt="Noah Lieske" style="float:left; margin-right: 1em; margin-bottom: 1em;             width: 110px; height: 110px;"/>
 
 is a co-founder, early angel investor, and strategic advisor of the company.
 
-Noah is an accomplished business executive, having over twenty-five years of entrepreneurial 
-experience with a strong focus on telecommunications, finance, domain registration, and 
-pay-per-click/cost-per-acquisition online advertising. Mr. Lieske has held the position of managing 
-member, Founder/Co-Founder, Director, Chairman of the Board, CTO, CFO, COO, and CEO for a number of 
-organizations which he founded or co-founded. In lieu of college, as a self-made man, Noah focused 
-his efforts on business operations. He is self-taught in general business, finance, communications, 
-software engineering, and network engineering. Through his extensive experience in a number of 
-diverse industries, Noah has accumulated a large network of professional associates that add value 
+Noah is an accomplished business executive, having over twenty-five years of entrepreneurial
+experience with a strong focus on telecommunications, finance, domain registration, and
+pay-per-click/cost-per-acquisition online advertising. Mr. Lieske has held the position of managing
+member, Founder/Co-Founder, Director, Chairman of the Board, CTO, CFO, COO, and CEO for a number of
+organizations which he founded or co-founded. In lieu of college, as a self-made man, Noah focused
+his efforts on business operations. He is self-taught in general business, finance, communications,
+software engineering, and network engineering. Through his extensive experience in a number of
+diverse industries, Noah has accumulated a large network of professional associates that add value
 to our company.
