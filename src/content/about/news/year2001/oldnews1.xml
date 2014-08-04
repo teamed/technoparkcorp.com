@@ -1,5 +1,5 @@
-<?xml version="1.0" ?> 
-<!-- 
+<?xml version="1.0" ?>
+<!--
     Version tracking section:
 
     10/03/07 Amy M. Wolfe-text edit
@@ -12,28 +12,28 @@
 
 <title>TechnoPark Corp. Visited Vienne Conference</title>
 
-<description>September 10-14, 2001 TechnoPark Corp. visited the European Software 
+<description>September 10-14, 2001 TechnoPark Corp. visited the European Software
 Engineering Conference in Vienne. </description>
 
 <text>
-<p>From September 10 to September 14, the Vienna University of Technology hosted the 
+<p>From September 10 to September 14, the Vienna University of Technology hosted the
 third Vienne software conference, ESEC/FSE 2001.</p>
- 
-<p>ESEC 2001 is a European event. It gathered representatives of software 
-engineering business as well as software-related academicians.  The conference 
-provided workshops, tutorials, and discussions of the major problems in 
+
+<p>ESEC 2001 is a European event. It gathered representatives of software
+engineering business as well as software-related academicians.  The conference
+provided workshops, tutorials, and discussions of the major problems in
 software engineering. </p>
- 
-<p>The conference offered tutorials on software architecture design strategies, 
-component technologies, component-based software engineering, web development 
-with XML and XSL, software development with UML, peer-to-peer information 
-systems, and some others. Among the offered tutorials, the most popular one 
-covered requirements-based engineering providing new approach to software 
+
+<p>The conference offered tutorials on software architecture design strategies,
+component technologies, component-based software engineering, web development
+with XML and XSL, software development with UML, peer-to-peer information
+systems, and some others. Among the offered tutorials, the most popular one
+covered requirements-based engineering providing new approach to software
 development process.</p>
- 
-<p>From TechnoPark Corp. representatives, they have already started the 
-integration of Requirements-Based software development process into company's 
-operation.</p>   
+
+<p>From TechnoPark Corp. representatives, they have already started the
+integration of Requirements-Based software development process into company's
+operation.</p>
 
 
 </text>
