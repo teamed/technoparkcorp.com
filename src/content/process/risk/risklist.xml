@@ -131,7 +131,7 @@
 
     <p>As shown in the diagram, Risk management is an iterative process:</p>
 
-    <p align="center"><tikz>
+    <tikz>
 \begin{tikzpicture}
     [node distance = 2.5cm,
     auto, thick]
@@ -146,7 +146,7 @@
     \path [line] (strategies) -- (changes);
     \path [line, fill=none] (changes.east) -| (4,2) -| (identified.north);
 \end{tikzpicture}
-    </tikz></p>
+    </tikz>
 
     <p>New Risks can possibly be revealed during the whole lifecycle of the project until the final Release Milestone
     is reached. A Risk List is only provided to you during the Inception Phase. You are

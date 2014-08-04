@@ -78,7 +78,7 @@
     (following a [LCO Milestone](/process/time/lco)), the Beta-Specification becomes
     an effective [Specification](/process/scope/specification).</p>
 
-    <p align="center"><tikz>
+    <tikz>
 \usepgflibrary{shapes.symbols}
 \begin{tikzpicture}
     [node distance = 2.5cm,
@@ -98,7 +98,7 @@
     \draw [line, triangle 60-triangle 60] (scope.north west) -- (scope.north east);
 
 \end{tikzpicture}
-    </tikz></p>
+    </tikz>
 
     <p>A fully-dressed Specification is called a [SRS](/process/scope/srs) (Software Requirements Specification) and is
     compliant with <a href="http://standards.ieee.org/reading/ieee/std_public/description/se/830-1998_desc.html">IEEE

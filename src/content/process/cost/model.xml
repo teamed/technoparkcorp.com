@@ -45,7 +45,7 @@
     staff-hours paid for task executors.
     This diagram shows the dynamic nature of project payments:</p>
 
-    <p align="center"><tikz>
+    <tikz>
 \begin{tikzpicture}
     \tikzstyle{ln} = [draw=tpcBlack, -triangle 60]
 
@@ -107,7 +107,7 @@
         (10.5,6.25)
     } node [anchor=west, text=tpcBlue, fill=white, draw=tpcBlue, thin] {Actual Cost (AC)};
 \end{tikzpicture}
-    </tikz></p>
+    </tikz>
 
     <p>You will make payments (P<sub>1</sub>, P<sub>2</sub>, P<sub>3</sub> and P<sub>4</sub>) in order
     to cover actual cost of the project, but strictly according to

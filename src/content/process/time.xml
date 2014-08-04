@@ -72,7 +72,7 @@
     As soon as the customer signs the Schedule, it obtains the status of a contractual provision
     and can't be missed.</p>
 
-    <p align="center"><tikz>
+    <tikz>
 \begin{tikzpicture}
     [auto, thick]
 
@@ -106,7 +106,7 @@
     \draw [-angle 90] (note4) -- (Iteration4.south east);
 
 \end{tikzpicture}
-    </tikz></p>
+    </tikz>
 
     <p>The objective of each Iteration is to implement, test, and deliver a certain part of the product functionality.
     Iteration normally takes 8-12 working days and starts with a fine-grained Iteration Plan, which is

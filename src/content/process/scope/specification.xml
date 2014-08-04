@@ -62,7 +62,7 @@
         <li>[Support](/process/warranty/support) and enhancements are easy, even if the team experiences changes</li>
     </ul>
 
-    <p align="center"><tikz>
+    <tikz>
 \begin{tikzpicture}
     [node distance = 2.5cm,
     auto, thick]
@@ -85,7 +85,7 @@
     \node [below=0.3cm of group.south east, anchor=east] {Inception Phase};
 
 \end{tikzpicture}
-    </tikz></p>
+    </tikz>
 
     <p>Requirements are gathered from your informal customer.
     A preliminary Specification, called the [Vision](/process/scope/vision),

@@ -91,7 +91,7 @@
     \path [line] (deliverables) -- node [right] {User Acceptance Testing} (accepted);
 
 \end{tikzpicture}
-    </tikz></p>
+    </tikz>
 
     <p>We work only with fixed-price projects that are estimated in two steps: 1)
     [ROM Estimate](/process/cost/rom)

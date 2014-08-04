@@ -127,7 +127,7 @@
         <p>In our management panel you get a graph that indicates current value
         of the metric and a history of change, like you see in the sample below:</p>
 
-        <p align="center"><tikz>
+        <tikz>
 \begin{tikzpicture}[font=\small]
           \draw [very thin, color=tpcGrey] (0,0) grid [step=0.57] (14,8);
         \draw [-triangle 60, semithick, draw=tpcBlack] (0,0) -- coordinate (x axis mid) (14.85,0) node[right] {$t$};
@@ -152,7 +152,7 @@
 \draw [draw=tpcBlack] (0,0.2) -- (0,-0.2) node [below] {02/05/08};
 \draw [draw=tpcBlack] (14,0.2) -- (14,-0.2) node [below] {02/27/09};
 \end{tikzpicture}
-        </tikz></p>
+        </tikz>
 
         <p>This graph is available for you and your coders. It is instantly updated
         by our software according to the source code from SVN repository.</p>
@@ -167,7 +167,7 @@
         Coders as usualy commit their changes to SVN, and you monitor
         quality-of-code in our online project management system (thePanel):</p>
 
-        <p align="center"><tikz>
+        <tikz>
 \begin{tikzpicture}
     \tikzstyle{ln} = [draw=tpcBlue!50, line width=1mm, -triangle 60, fill=tpcBlue!50]
     \tikzstyle{ln1} = [draw=tpcGreen, line width=0.3mm, -triangle 60, fill=tpcGreen, dashed]
@@ -202,7 +202,7 @@
 
     \path [draw=tpcRed, dashed, very thick] ([yshift=-2mm]svn.south west) -- ([yshift=-2mm]panel.south east);
 \end{tikzpicture}
-        </tikz></p>
+        </tikz>
 
         <p>The cycle is repeated every day and is initiated by Continuum,
         an open-source continuous integration software by [Apache Group](http://www.apache.org):</p>

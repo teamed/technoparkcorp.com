@@ -55,7 +55,7 @@
     plans for each Risk.
     Usually, a Risk List identifies up to 20 areas of concern.</p>
 
-    <p align="center"><tikz>
+    <tikz>
 \begin{tikzpicture}
     [node distance = 2.5cm,
     auto, thick]
@@ -76,7 +76,7 @@
     \node [right=1cm of group, text width=3cm, inner sep=5mm]
         {This activites are performed first time during Inception Phase, and later on each Iteration};
 \end{tikzpicture}
-    </tikz></p>
+    </tikz>
 
     <p>You select a strategy for addressing each Risk and the [Scope](/process/scope),
     [Cost](/process/cost),
