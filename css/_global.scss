@@ -16,7 +16,7 @@
  *
  */
 
-@import 'colors';
+@import 'defs';
 
 * {
   padding: 0;
@@ -26,7 +26,7 @@
 }
 
 body {
-  font-size: 12px;
+  font-size: $em;
   font-family: 'Verdana', sans-serif;
   color: $black;
   background-color: $gray;

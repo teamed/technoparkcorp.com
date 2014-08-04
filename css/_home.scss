@@ -16,6 +16,8 @@
  *
  */
 
+@import 'defs';
+
 /* central image */
 .frontimg {
   width: 800px;
@@ -35,7 +37,7 @@
       text-align: left;
     }
     td {
-      line-height: 1.3em;
+      line-height: 1.3 * $em;
       width: 33%;
       vertical-align: top;
       padding-right: 70px;

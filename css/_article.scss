@@ -16,6 +16,8 @@
  *
  */
 
+@import 'defs';
+
 .main {
   background-color: $gray;
   position: relative;
@@ -24,6 +26,33 @@
     text-align: right;
     padding: 5px 37px;
     z-index: 100;
+    input {
+      font-size: $em;
+      padding: 2px 5px;
+    }
+    #search-results {
+      display: none;
+      position: absolute;
+      top: 25px;
+      right: 0;
+      background-color: $gray;
+      border: 1px solid $lightgray;
+      padding: 15px;
+      width: 600px;
+      max-height: 300px;
+      overflow-y: auto;
+      .entries {
+        list-style: none;
+        li {
+          a {
+            color: inherit;
+            &:hover {
+              color: $blue;
+            }
+          }
+        }
+      }
+    }
   }
   .crumbs {
     padding: 5px 5px 5px 210px;
@@ -54,15 +83,15 @@
     .page {
       padding: 20px;
       h1 {
-        font-size: 2.4em;
+        font-size: 2.4 * $em;
         font-weight: normal;
         color: $blue;
-        letter-spacing: -0.05em;
-        line-height: 1.2em;
+        letter-spacing: -0.05 * $em;
+        line-height: 2.6 * $em;
       }
       p {
         padding-top: 12px;
-        line-height: 1.9em;
+        line-height: 1.9 * $em;
       }
       a {
         color: inherit;
@@ -86,7 +115,7 @@
           border-top: none;
         }
         a {
-          font-size: 0.9em;
+          font-size: 0.9 * $em;
           text-decoration: none;
           color: $darkgray;
           &:hover {

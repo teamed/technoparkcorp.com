@@ -4,7 +4,17 @@ layout: default
 
 <section class="main">
   <div class="sl">
-    <input/>
+    {% raw %}
+    <script id="search-results-template" type="text/mustache">
+      {{#entries}}
+        <li><a href="{{url}}">{{title}}</a></li>
+      {{/entries}}
+    </script>
+    {% endraw %}
+    <input id="search-query" name="q" placeholder="Search..." autocomplete="off" size="35"/>
+    <div id="search-results">
+      <ul class="entries"></ul>
+    </div>
   </div>
   <div class="crumbs" role="navigation">
     bread
