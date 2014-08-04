@@ -64,6 +64,12 @@
         padding-top: 12px;
         line-height: 1.9em;
       }
+      a {
+        color: inherit;
+        &:hover {
+          color: $blue;
+        }
+      }
     }
     .steps {
       width: 157px;
