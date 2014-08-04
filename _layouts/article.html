@@ -28,6 +28,9 @@ layout: default
     <li>Contacts</li>
   </ul>
   <div class="wl">
-    Last update on today
+    Last update on
+    <time itemprop="datePublished" datetime="{{ page.date | date_to_xmlschema }}">
+      {{ page.date | date: "%-d %b %Y" }}
+    </time>
   </div>
 </section>
