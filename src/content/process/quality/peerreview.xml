@@ -36,26 +36,26 @@
 <text>
 
     <p>Peer Review is a collaborative event in the project team when an engineer or specialist
-    from another team, author of the document, and project manager review certain 
-    project artifacts and identify <a href="${url:process/quality/defect}">Defects</a>.</p>
+    from another team, author of the document, and project manager review certain
+    project artifacts and identify [Defects]({% href process/quality/defect %}).</p>
 
-    <p>We perform Peer Reviews at least once per <a href="${url:process/time/iteration}">Iteration</a>.</p>
+    <p>We perform Peer Reviews at least once per [Iteration]({% href process/time/iteration %}).</p>
 
     <p>The benefits and advantages of Peer Reviews when compared to other methods
     of Defects revealing are:</p>
 
     <ul>
         <li>High team morale and motivation</li>
-        <li>Improved <a href="${url:process/quality}">Quality</a> of document content</li>
+        <li>Improved [Quality]({% href process/quality %}) of document content</li>
         <li>Early defect identification and removal</li>
         <li>Glass-box testing of code</li>
         <li>Commented and clear code</li>
-        <li>Optimized <a href="${url:process/quality/coq}">quality cost</a></li>
+        <li>Optimized [quality cost]({% href process/quality/coq %})</li>
     </ul>
 
-    <p><a href="${url:process/scope/srs}">SRS</a>, 
-    <a href="${url:process/scope/vision}">Vision</a>, 
-    <a href="${url:process/time/schedule}">Schedule</a>, 
+    <p>[SRS]({% href process/scope/srs %}),
+    [Vision]({% href process/scope/vision %}),
+    [Schedule]({% href process/time/schedule %}),
     architecture, design, and software code are subject to Peer Reviews.</p>
 
 </text>

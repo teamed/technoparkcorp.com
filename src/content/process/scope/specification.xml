@@ -47,24 +47,24 @@
 
 <text>
 
-    <p>Specifications define the boundaries of a system. 
+    <p>Specifications define the boundaries of a system.
     A Specification is the core document in any software project,
     and is so important that its value cannot be overestimated.</p>
-    
+
     <p>The following advantages are brought to the project by a properly defined Specification:</p>
 
     <ul>
         <li>Your involvement is high from early Iterations</li>
-        <li><a href="${url:process/time/schedule}">Schedule</a> is accurate and the Milestones are met without delays</li>
-        <li><a href="${url:process/risk}">Risks</a> are identified and managed in advance, the project is stable</li>
-        <li><a href="${url:process/cost/budget}">Budget</a> includes only real numbers and is optimal</li>
+        <li>[Schedule]({% href process/time/schedule %}) is accurate and the Milestones are met without delays</li>
+        <li>[Risks]({% href process/risk %}) are identified and managed in advance, the project is stable</li>
+        <li>[Budget]({% href process/cost/budget %}) includes only real numbers and is optimal</li>
         <li>Team morale is high since all parties involved know the project objectives</li>
-        <li><a href="${url:process/warranty/support}">Support</a> and enhancements are easy, even if the team experiences changes</li>
+        <li>[Support]({% href process/warranty/support %}) and enhancements are easy, even if the team experiences changes</li>
     </ul>
 
     <p align="center"><tikz>
 \begin{tikzpicture}
-    [node distance = 2.5cm, 
+    [node distance = 2.5cm,
     auto, thick]
 
     \node [cloud, draw=tpcRed, cloud ignores aspect, fill=tpcRed!40] (request) {Informal Request};
@@ -87,35 +87,35 @@
 \end{tikzpicture}
     </tikz></p>
 
-    <p>Requirements are gathered from your informal customer. 
-    A preliminary Specification, called the <a href="${url:process/scope/vision}">Vision</a>, 
+    <p>Requirements are gathered from your informal customer.
+    A preliminary Specification, called the [Vision]({% href process/scope/vision %}),
     is then created. Utilizing more defined details, an
-    Alpha-Specification is subsequently created based upon the <a href="${url:process/scope/vision}">Vision</a>. 
+    Alpha-Specification is subsequently created based upon the [Vision]({% href process/scope/vision %}).
     You are an active participant throughout this entire process.
-    The Alpha-Specification is created during the <a href="${url:process/time/inception}">Inception Phase</a>.</p>
+    The Alpha-Specification is created during the [Inception Phase]({% href process/time/inception %}).</p>
 
-    <p>When the Alpha-Specification is ready and receives your approval, 
+    <p>When the Alpha-Specification is ready and receives your approval,
     it becomes a Beta-Specification
-    on a <a href="${url:process/time/lco}">LCO Milestone</a>. 
+    on a [LCO Milestone]({% href process/time/lco %}).
     The Beta-Specification is a paper prototype of the system, and is
-    presented in the form of a <a href="${url:process/scope/srs}">SRS</a>.</p>
+    presented in the form of a [SRS]({% href process/scope/srs %}).</p>
 
-    <p>On the LCO Milestone, you approve the continuation of the project, 
+    <p>On the LCO Milestone, you approve the continuation of the project,
     and the Specification becomes effective.</p>
 
     <p>The effective Specification is used by the project team. All
-    Requirements are <a href="${url:process/communication}">communicated</a> with you 
+    Requirements are [communicated]({% href process/communication %}) with you
     through documented changes in the effective Specification.
-    Communicating any changes ensures that you will be aware of the project status and 
+    Communicating any changes ensures that you will be aware of the project status and
     the activities of the project team at all times.</p>
 
     <p>The Specification can be changed at any time during project lifecycle. All changes to the
     effective Specification are implemented as new Specifications through a process
-    called <a href="${url:process/scope/changerequest}">Change Requests</a>. <a href="${url:process/scope/changerequest}">Change Requests</a>
+    called [Change Requests]({% href process/scope/changerequest}">Change Requests</a>. <a href="${url:process/scope/changerequest %})
     are small documents (1-2 pages) created by a system analyst in response to concerns about the project from you
     and other stakeholders.</p>
 
-    <p>Specification is part of contractual <a href="${url:process/warranty/deliverables}">Deliverables</a>.</p>
+    <p>Specification is part of contractual [Deliverables]({% href process/warranty/deliverables %}).</p>
 
 </text>
 

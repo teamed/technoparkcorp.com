@@ -46,12 +46,12 @@
 
 <text>
 
-    <p>A system boundary is defined by <a href="${url:process/scope/requirement}">Requirements</a>. 
+    <p>A system boundary is defined by [Requirements]({% href process/scope/requirement %}).
     A Feature is a type of high-level
     user Requirement that explains what the user wants to do with the system
     in order to satisfy their needs.</p>
 
-    <p>A Feature describes what the user can do with the system. Features are listed in the <a href="${url:process/scope/vision}">Vision</a>.</p>
+    <p>A Feature describes what the user can do with the system. Features are listed in the [Vision]({% href process/scope/vision %}).</p>
 
     <p>Examples of Features include:</p>
 
@@ -65,14 +65,14 @@
         <tr><td>FEAT2</td><td>Administrator can manage users, view reports, print reports, send reports by email, and configure reporting system.</td></tr>
 
         <tr><td>FEAT3</td><td>Affiliate can access system database reports via XML, obtain the latest user data or statistics, and payout reports.</td></tr>
-    </table>    
+    </table>
 
-    <p>The key difference between a Feature and a Functional Requirement is that the Feature is a 
+    <p>The key difference between a Feature and a Functional Requirement is that the Feature is a
     non-formal statement.  A Feature resembles a wide and uncertain definition of functionality, while
     a Functional Requirement resembles a strict and unambiguous formula.</p>
 
-    <p>Each Functional Requirement is traced back to a Feature in the 
-    <a href="${url:process/scope/matrix}">Traceability Matrix</a>.</p>
+    <p>Each Functional Requirement is traced back to a Feature in the
+    [Traceability Matrix]({% href process/scope/matrix %}).</p>
 
 </text>
 

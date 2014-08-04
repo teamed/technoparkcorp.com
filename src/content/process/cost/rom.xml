@@ -45,20 +45,20 @@
 
 <text>
 
-    <p>When a project is started and Requirements are not specified in great detail, 
-    the exact project <a href="${url:process/cost/budget}">Budget</a>
-    can not be calculated without mistakes (due to the well-known <a href="http://www.construx.com/Page.aspx?hid=1648">Cone of Uncertainty</a>). 
+    <p>When a project is started and Requirements are not specified in great detail,
+    the exact project [Budget]({% href process/cost/budget %})
+    can not be calculated without mistakes (due to the well-known <a href="http://www.construx.com/Page.aspx?hid=1648">Cone of Uncertainty</a>).
     Concrete numbers in this stage will lead to an ineffective
     situation in which you or us may experience loss.</p>
-    
-    <p>To avoid the possibility of such an ineffective situation, 
-    we provide a Rough Order-of-Magnitude (ROM) Estimate of costs
-    and time when Requirements are not specified in the early stages of the project. 
-    The ROM Estimate is based on 
-    <a href="${url:process/scope/vision}">Vision</a> document that includes 
-    a list of <a href="${url:process/scope/feature}">Features</a>.</p>
 
-    <p>The ROM Estimate includes the following project parameters 
+    <p>To avoid the possibility of such an ineffective situation,
+    we provide a Rough Order-of-Magnitude (ROM) Estimate of costs
+    and time when Requirements are not specified in the early stages of the project.
+    The ROM Estimate is based on
+    [Vision]({% href process/scope/vision %}) document that includes
+    a list of [Features]({% href process/scope/feature %}).</p>
+
+    <p>The ROM Estimate includes the following project parameters
     which are the foundation for estimation:</p>
 
     <table>
@@ -69,13 +69,13 @@
 
         <tr>
         <td>Interval, staff-hours</td>
-        <td>Project may be completed within this range if all Requirements 
+        <td>Project may be completed within this range if all Requirements
         will be within the scope specified by Vision document.</td>
         </tr>
 
         <tr>
         <td>Accuracy, %</td>
-        <td>ROM Estimate is created by three estimators. Accuracy equals to 100% minus the 
+        <td>ROM Estimate is created by three estimators. Accuracy equals to 100% minus the
         biggest difference between one individual estimate and the mean.</td>
         </tr>
 
@@ -104,25 +104,25 @@
 
         <tr>
         <td>Features, BC/WC/ML</td>
-        <td>List of Features from Vision document that were used by estimators. Best Case (BC), 
+        <td>List of Features from Vision document that were used by estimators. Best Case (BC),
         Worst Case (WC), and Most Likely (ML) are the output numbers of three-point estimate method.
         The numbers are just programming staff-hours by the estimate of programmers.</td>
         </tr>
 
-    </table>    
+    </table>
 
     <p>In order to calculate the numbers above, we use our own patent-pending estimation method,
-    that is based on 
-    <a href="http://sunset.usc.edu/research/COCOMOII/">COCOMO-II Software Cost Estimation Technology</a>, 
-    <a href="http://en.wikipedia.org/wiki/Program_Evaluation_and_Review_Technique">PERT (Program Evaluation and Review Technique)</a> and 
+    that is based on
+    <a href="http://sunset.usc.edu/research/COCOMOII/">COCOMO-II Software Cost Estimation Technology</a>,
+    <a href="http://en.wikipedia.org/wiki/Program_Evaluation_and_Review_Technique">PERT (Program Evaluation and Review Technique)</a> and
     <a href="http://en.wikipedia.org/wiki/Wideband_delphi">Wideband Delphi</a>.</p>
 
     <p>Completion of the ROM Estimate takes up to 48 hours.</p>
 
     <p>Projects smaller than 1500 staff-hours and larger than 5,000 staff-hours are not subject to
     ROM Estimation. When Specification is defined and project scope is baselined,
-    we use our innovative method for project cost estimating called 
-    "<a href="${url:innovations/scope-champions}">Scope Champions</a>".</p>
+    we use our innovative method for project cost estimating called
+    "[Scope Champions]({% href innovations/scope-champions %})".</p>
 
 </text>
 

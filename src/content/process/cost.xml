@@ -46,11 +46,11 @@
 
 <text>
 
-    <p>We do projects in fixed-price contracts, meaning that the price is defined 
-    according to <a href="${url:process/scope}">scope</a> definition
-    and is not changed unless there are changes to <a href="${url:process/scope/specification}">Specification</a>. 
+    <p>We do projects in fixed-price contracts, meaning that the price is defined
+    according to [scope]({% href process/scope %}) definition
+    and is not changed unless there are changes to [Specification]({% href process/scope/specification %}).
     We take all risks of cost overrun so that you
-    pay only the price defined in project <a href="${url:process/cost/budget}">Budget</a>.</p>
+    pay only the price defined in project [Budget]({% href process/cost/budget %}).</p>
 
     <p>Our two-step quotation process has a number of important advantages:</p>
 
@@ -60,39 +60,39 @@
         <li>Avoids cost overrun</li>
         <li>Guarantees project success</li>
     </ul>
-    
+
     <p>We calculate and communicate all project costs in staff-hours. Actual monetary size of
-    project is a multiple of staff-hours and <a href="${url:process/cost/prices}">price per hour</a>.</p>
+    project is a multiple of staff-hours and [price per hour]({% href process/cost/prices %}).</p>
 
     <p>Cost is estimated in two steps:</p>
 
     <ol>
-        <li><a href="${url:process/cost/rom}">ROM Estimate</a> and Retainer</li>
+        <li>[ROM Estimate]({% href process/cost/rom %}) and Retainer</li>
         <li>Budget</li>
     </ol>
 
-    <p>The ROM Estimate is provided to you in response to your informal request 
-    and is based on the <a href="${url:process/scope/vision}">Vision</a> document.
-    ROM Estimate gives a range (low and high boundary) of the expected Budget. 
+    <p>The ROM Estimate is provided to you in response to your informal request
+    and is based on the [Vision]({% href process/scope/vision %}) document.
+    ROM Estimate gives a range (low and high boundary) of the expected Budget.
     You approve the range
-    and the project team performs <a href="${url:process/scope/requirement}">requirements</a> gathering 
-    and analysis during the <a href="${url:process/scope/inception}">Inception Phase</a>.  
+    and the project team performs [requirements]({% href process/scope/requirement %}) gathering
+    and analysis during the [Inception Phase]({% href process/scope/inception %}).
     These steps result in the creation of a
-    <a href="${url:process/scope/srs}">SRS</a> document.</p>
+    [SRS]({% href process/scope/srs %}) document.</p>
 
     <p>When the SRS is ready and you approved it, the project team estimates project Budget
-    as an exact amount of staff-hours. The Budget can only be within the range provided in ROM Estimate. 
+    as an exact amount of staff-hours. The Budget can only be within the range provided in ROM Estimate.
     Upon your approval of the Budget, the project continues.</p>
 
     <p>If you don't approve the Budget for any reason, you pay only the Retainer, which
     covers the efforts for Requirements gathering and Specification development.</p>
 
-    <p><a href="${url:process/cost/model}">Payments</a> are made according to Milestones defined in the
-    <a href="${url:process/time/schedule}">Schedule</a>, which is approved together with the Budget.</p>
+    <p>[Payments]({% href process/cost/model %}) are made according to Milestones defined in the
+    [Schedule]({% href process/time/schedule %}), which is approved together with the Budget.</p>
 
     <p>Budget covers all costs, including programming, requirements analysis, management,
     project management, architecture and design, testing and quality assurance.</p>
-        
+
 </text>
 
 <concepts>
@@ -105,4 +105,4 @@
 </article>
 
 
-          
+

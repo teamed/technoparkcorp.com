@@ -28,7 +28,7 @@
 <next>process/quality/coq</next>
 
 <description>
-    Price per hour includes direct and indirect expenses and is the 
+    Price per hour includes direct and indirect expenses and is the
     only monetary value used for project cost calculation.
 </description>
 
@@ -42,16 +42,16 @@
 
 <text>
 
-    <p>We only work with fixed-price contracts. 
-    Staff-hours are used to calculate the price. 
-    The <a href="${url:process/cost/budget}">Budget</a> is the amount of required staff-hours multiplied by the price of one staff-hour.</p>
-                             
+    <p>We only work with fixed-price contracts.
+    Staff-hours are used to calculate the price.
+    The [Budget]({% href process/cost/budget %}) is the amount of required staff-hours multiplied by the price of one staff-hour.</p>
+
     <p>The price per staff-hour includes direct expenses, indirect expenses, and our profit.
     Depending on the size of the project and cost of technical specialists' efforts
     price per hour may vary in interval between $25 and $60.</p>
 
-    <p>Direct expenses include:</p> 
-    
+    <p>Direct expenses include:</p>
+
     <ul>
         <li>Expenses for technicians/suppliers;</li>
         <li>Salary and bonuses of project manager;</li>
@@ -59,7 +59,7 @@
         <li>Equipment rental;</li>
         <li>Local and state taxes.</li>
     </ul>
-    
+
     <p>Indirect expenses include:</p>
 
     <ul>
@@ -70,7 +70,7 @@
         <li>Management reserve.</li>
     </ul>
 
-    <p>You approve a Budget as the fixed amount of staff-hours and monetary value required to complete the project. 
+    <p>You approve a Budget as the fixed amount of staff-hours and monetary value required to complete the project.
     The Budget is never changed if scope of the work is not changed.</p>
 
 </text>

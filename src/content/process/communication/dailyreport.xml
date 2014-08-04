@@ -40,10 +40,10 @@
 
 <text>
 
-    <p>The Project manager reports to you on a daily basis by the conclusion of each 
-    <a href="${url:process/communication/availability}">business day</a>. No matter what was done
+    <p>The Project manager reports to you on a daily basis by the conclusion of each
+    [business day]({% href process/communication/availability %}). No matter what was done
     during a day by the project team, and what results were obtained, a
-    Daily Report is sent by email to you.</p>    
+    Daily Report is sent by email to you.</p>
 
     <p>The Daily Report includes:</p>
 
@@ -60,7 +60,7 @@
 John,
 
 According to the Iteration Plan we committed, today
-we've done the following (an aggregation of reports 
+we've done the following (an aggregation of reports
 I've received from team members and re-worked):
 
 - SRS refined (R15-R22)
@@ -82,10 +82,10 @@ The closest Milestone is on 12-Jan (end of the day).
 Liza Peterson, PM
 </pre>
 
-    <p>Since we do <a href="${url:process/communication/incremental}">incremental delivery</a> 
-    of <a href="${url:process/warranty/deliverables}">Deliverables</a>, 
+    <p>Since we do [incremental delivery]({% href process/communication/incremental %})
+    of [Deliverables]({% href process/warranty/deliverables %}),
     each Daily Report may include
-    new functionality implemented and tested. 
+    new functionality implemented and tested.
     Your feedback on each Daily Report is expected and welcomed.</p>
 
 </text>

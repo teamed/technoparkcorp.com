@@ -55,9 +55,9 @@
     <p>Risks should be identified for the following reasons:</p>
 
     <ul>
-        <li><a href="${url:process/time/schedule}">Schedule</a> can be developed more realistically based on accurate Risk planning</li>
-        <li><a href="${url:process/cost/budget}">Budget</a> is more accurate when it includes reservations for possible Risks</li>
-        <li><a href="${url:process/scope/specification}">Specification</a> is unambiguous when Risks are revealed in advance</li>
+        <li>[Schedule]({% href process/time/schedule %}) can be developed more realistically based on accurate Risk planning</li>
+        <li>[Budget]({% href process/cost/budget %}) is more accurate when it includes reservations for possible Risks</li>
+        <li>[Specification]({% href process/scope/specification %}) is unambiguous when Risks are revealed in advance</li>
         <li>Outcomes are more predictable if the project team is prepared to handle unexpected negative interruptions</li>
     </ul>
 
@@ -66,10 +66,10 @@
     is identified, the faster it can be managed and mitigated.</p>
 
     <p>Major Risk identification
-    activities are performed during the <a href="${url:process/time/inception}">Inception Phase</a>.
-    <a href="${url:process/risk/strategy}">Risk Strategies</a>
+    activities are performed during the [Inception Phase]({% href process/time/inception %}).
+    [Risk Strategies]({% href process/risk/strategy %})
     and Risk response plans are baselined on a
-    <a href="${url:process/time/lco}">LCO Milestone</a> in the <a href="${url:process/risk/risklist}">Risk List</a>.</p>
+    [Risk List]({% href process/time/lco}">LCO Milestone</a> in the <a href="${url:process/risk/risklist %}).</p>
 
     <p>Risks are typically <i>sourced</i> by people, Requirements, software, hardware, and communications.
     Mid-size software projects include hundreds of Risks.  Not all Risks are identified and managed,

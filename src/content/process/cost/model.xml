@@ -35,14 +35,14 @@
 
 <text>
 
-    <p>Payments are done according to an approved <a href="${url:process/time/schedule}">Schedule</a>. 
+    <p>Payments are done according to an approved [Schedule]({% href process/time/schedule %}).
     Each payment is connected
     to a certain Milestone, and is paid when all of the acceptance criteria is met by
     the project team.</p>
 
-    <p>What is important for the project is to keep total amount of 
+    <p>What is important for the project is to keep total amount of
     payments received higher than actual project cost, as total amount of
-    staff-hours paid for task executors. 
+    staff-hours paid for task executors.
     This diagram shows the dynamic nature of project payments:</p>
 
     <p align="center"><tikz>
@@ -51,7 +51,7 @@
 
     \draw [-triangle 60, semithick] (0,0) -- coordinate (x axis mid) (12,0) node[right] {$t$};
     \draw [-triangle 60, semithick] (0,0) -- coordinate (y axis mid) (0,7) node[above] {hours};
-                                                 
+
     % the grid
     \draw [very thin, color=gray] (0,0) grid [step=0.5] (12,7);
 
@@ -83,24 +83,24 @@
     \draw [pln] (m3) -- (8,0);
 
     \draw [draw=tpcBlue, thick, mark=*] plot coordinates {
-        (0,0) 
+        (0,0)
         (0.5,0.3)
-        (1,0.4) 
-        (1.5,0.6) 
-        (2,0.8) 
-        (2.5,0.9) 
-        (3,1.6) 
-        (3.5,2.4) 
-        (4,3.7) 
-        (4.5,4.6) 
-        (5,4.9) 
-        (5.5,5.1) 
-        (6,5.3) 
-        (6.5,5.4) 
-        (7,5.6) 
-        (7.5,5.8) 
-        (8,5.9) 
-        (8.5,6.0) 
+        (1,0.4)
+        (1.5,0.6)
+        (2,0.8)
+        (2.5,0.9)
+        (3,1.6)
+        (3.5,2.4)
+        (4,3.7)
+        (4.5,4.6)
+        (5,4.9)
+        (5.5,5.1)
+        (6,5.3)
+        (6.5,5.4)
+        (7,5.6)
+        (7.5,5.8)
+        (8,5.9)
+        (8.5,6.0)
         (9,6.1)
         (9.5,6.15)
         (10,6.2)
@@ -112,10 +112,10 @@
     <p>You will make payments (P<sub>1</sub>, P<sub>2</sub>, P<sub>3</sub> and P<sub>4</sub>) in order
     to cover actual cost of the project, but strictly according to
     the approved Schedule document with a list of Milestones (M<sub>1</sub>, M<sub>2</sub>, and M<sub>3</sub>)</p>
-    
-    <p>We accept different payment options: cashier checks, wire transfers to 
-    US bank account, credit cards (<a href="http://www.visa.com">Visa</a>, 
-    <a href="http://www.mastercard.com">MasterCard</a>, 
+
+    <p>We accept different payment options: cashier checks, wire transfers to
+    US bank account, credit cards (<a href="http://www.visa.com">Visa</a>,
+    <a href="http://www.mastercard.com">MasterCard</a>,
     <a href="http://www.americanexpress.com">AmEx</a>).</p>
 
 </text>

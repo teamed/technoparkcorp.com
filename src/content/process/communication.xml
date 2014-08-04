@@ -49,21 +49,21 @@
     You are involved in the development process and provide feedback on project results
     on a daily basis.</p>
 
-    <p>The project manager sends <a href="${url:process/communication/dailyreport}">Daily Reports</a> to your 
+    <p>The project manager sends [Daily Reports]({% href process/communication/dailyreport %}) to your
     with all of the latest project activities,
-    <a href="${url:process/time/spi}">Earned Value</a> analysis data, 
-    and <a href="${url:process/risk}">Risk</a> monitoring results and other project performance metrics.</p>
+    [Earned Value]({% href process/time/spi %}) analysis data,
+    and [Risk]({% href process/risk %}) monitoring results and other project performance metrics.</p>
 
-    <p><a href="${url:process/warranty/deliverables}">Deliverables</a> are delivered in an
-    <a href="${url:process/communication/incremental}">incremental</a> manner, meaning that product functionality
-    is programmed, tested and shown to you as soon as new functional 
-    <a href="${url:process/scope/requirement}">Requirements</a> are ready.</p>
+    <p>[Deliverables]({% href process/warranty/deliverables %}) are delivered in an
+    [incremental]({% href process/communication/incremental %}) manner, meaning that product functionality
+    is programmed, tested and shown to you as soon as new functional
+    [Requirements]({% href process/scope/requirement %}) are ready.</p>
 
-    <p>By the end of each <a href="${url:process/time/iteration}">Iteration</a>, the project manager conducts an online 
-    <a href="${url:process/communication/iam}">Iteration Acceptance Meeting</a> with you and key project stakeholders. 
+    <p>By the end of each [Iteration]({% href process/time/iteration %}), the project manager conducts an online
+    [Iteration Acceptance Meeting]({% href process/communication/iam %}) with you and key project stakeholders.
     At this meeting, all project results are analyzed and evaluated.</p>
 
-    <p>The project team is <a href="${url:process/communication/available}">available</a> during 
+    <p>The project team is [available]({% href process/communication/available %}) during
     normal business hours five days a week.</p>
 
 </text>

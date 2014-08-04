@@ -9,18 +9,18 @@
 
 <text>
 
-    <p>The page you are looking for does not exist in our site. 
-    Maybe the URL you are using is obsolete. 
+    <p>The page you are looking for does not exist in our site.
+    Maybe the URL you are using is obsolete.
     Review the list of most popular topics on our site below and click onto one of them:</p>
 
     <ul>
-        <li>Project <a href="${url:process/cost/rom}">rough order of magnitude</a> estimation method;</li>
-        <li><a href="${url:process/scope/srs}">Software requirements specification</a> is a core document in software project;</li>
-        <li><a href="${url:about/why}">Why</a> customers work with TechnoPark Corp and stay with us;</li>
-        <li>Review <a href="${url:about/jobs}">the list of open positions</a> in our team.</li>
+        <li>Project [rough order of magnitude]({% href process/cost/rom %}) estimation method;</li>
+        <li>[Software requirements specification]({% href process/scope/srs %}) is a core document in software project;</li>
+        <li>[Why]({% href about/why %}) customers work with TechnoPark Corp and stay with us;</li>
+        <li>Review [the list of open positions]({% href about/jobs %}) in our team.</li>
     </ul>
 
-    <p><a href="${url:contacts}">Contact us</a> if you are going to order software development.</p>
+    <p>[Contact us]({% href contacts %}) if you are going to order software development.</p>
 
 </text>
 

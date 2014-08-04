@@ -44,16 +44,16 @@
 
 <text>
 
-    <p>A Risk List is created by the project manager during the <a href="${url:process/time/inception}">Inception Phase</a>
-    and presented to you prior to a <a href="${url:process/time/lco}">LCO Milestone</a>.</p>
-    
+    <p>A Risk List is created by the project manager during the [Inception Phase]({% href process/time/inception %})
+    and presented to you prior to a [LCO Milestone]({% href process/time/lco %}).</p>
+
     <p>The project team participate in the process of identifying possible Risks, and assist the project manager
     in answering the question, 'what could go wrong?'.
     A Risk List may include hundreds of Risks, but a maximum of 20 are presented
-    to you for <a href="${url:process/risk/strategy}">Risk Strategies</a> selection and 
+    to you for [Risk Strategies]({% href process/risk/strategy %}) selection and
     Risk response plans approval.</p>
-    
-    <p>You are responsible for choosing which Risk Strategy you wish to 
+
+    <p>You are responsible for choosing which Risk Strategy you wish to
     implement for each Risk. The following is an example of a Risk List:</p>
 
         <table>
@@ -64,10 +64,10 @@
         </tr>
 
         <tr>
-        <td>RISK1, Data provider changes the API on its own schedule, without prior 
-        notification. The next change may happen before the project 
+        <td>RISK1, Data provider changes the API on its own schedule, without prior
+        notification. The next change may happen before the project
         release Milestone, and the system won't work.</td>
-        <td>Develop a configurable XML-based integration module that will 
+        <td>Develop a configurable XML-based integration module that will
         allow dynamic API changes without code re-factoring (240 staff-hours)</td>
         <td>Integration module re-factoring  (180+ staff-hours, 10+ days)</td>
         </tr>
@@ -78,11 +78,11 @@
         <td>Perform module testing (70 staff-hours) and re-identify Risks</td>
         <td>Defect removal in the module (220+ staff-hours)</td>
         </tr>
-    </table>    
+    </table>
 
     <p>The Mitigation plan is what actions will be taken in advance to remove Risk responsibility from
     you. The Contingency Plan is what shall be done when the Risk occurs.</p>
-    
+
     <p>When a Risk List is presented, you select a Risk Strategy for
     each item listed.
     You can choose to accept the Risk, or select to implement the Mitigation Plan. For example:</p>
@@ -97,43 +97,43 @@
         <tr>
         <td>RISK1</td>
         <td>Mitigate</td>
-        <td>Extend budget for 240 staff-hours and develop a configurable 
-        XML-based integration module that will 
+        <td>Extend budget for 240 staff-hours and develop a configurable
+        XML-based integration module that will
         allow dynamic API changes without code-refactoring</td></tr>
 
         <tr>
         <td>RISK2</td>
         <td>Accept</td>
-        <td>Do nothing, but if defects are revealed, the budget will be extended for 
+        <td>Do nothing, but if defects are revealed, the budget will be extended for
         220 staff-hours in order to remove the defect.  If this does not help, the budget will be extended
         for 500+ staff-hours for the development of a custom video compressing module</td></tr>
-    </table>    
+    </table>
 
-    <p>If you accept the Risk, it means that you agree to take full responsibility for it.  
-    If the Risk happens, the Contingency Plan will be implemented, resulting in an extension of the project 
-    <a href="${url:process/time/schedule}">Schedule</a>, <a href="${url:process/scope/specification}">Specification</a>,
-    and <a href="${url:process/cost/budget}">Budget</a>. 
+    <p>If you accept the Risk, it means that you agree to take full responsibility for it.
+    If the Risk happens, the Contingency Plan will be implemented, resulting in an extension of the project
+    [Specification]({% href process/time/schedule}">Schedule</a>, <a href="${url:process/scope/specification %}),
+    and [Budget]({% href process/cost/budget %}).
     In the example above, the customer has chosen to accept RISK2.  As a result, the customer may have to pay
     for an additional 220 hours in the event that the Risk takes place, as detailed in the Contingency Plan.
     </p>
 
-    <p>If you choose to implement the Mitigation Plan, this means that the project team will attempt to prevent the 
+    <p>If you choose to implement the Mitigation Plan, this means that the project team will attempt to prevent the
     Risk from happening at all, and try to neutralize the Risk consequences. In any
-    case, you will not be held responsible for the impact to the project if the Risk should occur. 
+    case, you will not be held responsible for the impact to the project if the Risk should occur.
     In the example above, if the customer chose to use the Mitigation Plan for RISK1, the project team would add a XML-based integration
-    module to the Scope.  If the Risk happened to occur in spite of this measure, the team would then have to implement 
+    module to the Scope.  If the Risk happened to occur in spite of this measure, the team would then have to implement
     the Contingency Plan, however, the customer would not be responsible for additional staff hours.</p>
-    
-    <p>As shown in the examples above, each Risk has the probability to impact the <a href="${url:process/cost}">Cost</a>, 
-    <a href="${url:process/scope}">Scope</a> and <a href="${url:process/time}">Schedule</a>. 
+
+    <p>As shown in the examples above, each Risk has the probability to impact the [Cost]({% href process/cost %}),
+    [Schedule]({% href process/scope}">Scope</a> and <a href="${url:process/time %}).
     Qualitative and quantitative Risk analysis is done by the project manager in order to select
     the top 20 Risks.</p>
-    
+
     <p>As shown in the diagram, Risk management is an iterative process:</p>
 
     <p align="center"><tikz>
 \begin{tikzpicture}
-    [node distance = 2.5cm, 
+    [node distance = 2.5cm,
     auto, thick]
 
     \node [block, text width=2.7cm] (identified) {New Risks Identified};
@@ -147,16 +147,16 @@
     \path [line, fill=none] (changes.east) -| (4,2) -| (identified.north);
 \end{tikzpicture}
     </tikz></p>
-    
+
     <p>New Risks can possibly be revealed during the whole lifecycle of the project until the final Release Milestone
     is reached. A Risk List is only provided to you during the Inception Phase. You are
     not responsible for any Risks identified after the LCO Milestone, as long as subsequent Risks are not
     related to new Specifications.</p>
-    
+
     <p>The Risk List is a very important document in any software development project and
     is used by all project team members. The Risk List is not a part of the project
-    <a href="${url:process/warranty/deliverables}">Deliverables</a>, but you still can access it for review.</p>
-    
+    [Deliverables]({% href process/warranty/deliverables %}), but you still can access it for review.</p>
+
 
 </text>
 

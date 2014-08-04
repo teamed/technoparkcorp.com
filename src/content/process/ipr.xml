@@ -43,22 +43,22 @@
     created, managed, and transferred during project execution. We pay serious attention
     to such property, whether it is owned by you or by us.</p>
 
-    <p>A <a href="${url:process/ipr/nda}">Non-Disclosure Agreement (NDA)</a> is signed prior to any communication on the software project. 
-    The NDA states that any confidential information disclosed by you is to 
+    <p>A [Non-Disclosure Agreement (NDA)]({% href process/ipr/nda %}) is signed prior to any communication on the software project.
+    The NDA states that any confidential information disclosed by you is to
     be protected and we have no rights of republishing or redistributing any such information.</p>
 
     <p>Software development contracts limit our ability to transfer or disclose intellectual
     property created during project execution. We are incorporated in the United States and
-    work according to 
-    <a href="http://www.copyright.gov/title17/">Copyright Law of the United States of America</a> - 
+    work according to
+    <a href="http://www.copyright.gov/title17/">Copyright Law of the United States of America</a> -
     our services are titled in the contract as
-    <a href="${url:process/ipr/law}">"work made for hire"</a>.</p>
+    ["work made for hire"]({% href process/ipr/law %}).</p>
 
     <p>We protect Confidential Information in our offices and servers by means of a strict
-    internal <a href="${url:process/ipr/security}">Information Security Policy</a> designed in 
+    internal [Information Security Policy]({% href process/ipr/security %}) designed in
     compliance with ISO 27001.</p>
 
-    <!-- <p>We are a proud holder of <a href="${url:about/privacypolicy}">TRUSTe Online Privacy Seal</a>
+    <!-- <p>We are a proud holder of [TRUSTe Online Privacy Seal]({% href about/privacypolicy %})
     and a member of <a href="http://www.bbb.org">Better Business Bureau (BBB)</a>.</p> -->
 
 </text>

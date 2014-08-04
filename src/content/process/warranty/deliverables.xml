@@ -47,24 +47,24 @@
     <ul>
         <li>Commented Source Code with unit-tests;</li>
         <li>Compiled products (executables);</li>
-        <li>Specifications in original format (<a href="${url:process/scope/srs}">SRS</a>, <a href="${url:process/scope/vision}">Vision</a>);</li>
+        <li>Specifications in original format ([Vision]({% href process/scope/srs}">SRS</a>, <a href="${url:process/scope/vision %}));</li>
         <li>User manual</li>
     </ul>
 
     <p>Project documentation includes, but is not delivered under contract:</p>
 
     <ul>
-        <li><a href="${url:process/time/schedule}">Schedule</a></li>
+        <li>[Schedule]({% href process/time/schedule %})</li>
         <li>Software Architecture Document (SAD)</li>
         <li>Test Plan (w/ Test Cases)</li>
         <li>Software Development Plan (SDP)</li>
-        <li><a href="${url:process/time/iteration}">Iteration</a> Plans</li>
+        <li>[Iteration]({% href process/time/iteration %}) Plans</li>
         <li>Meeting Protocols</li>
-        <li><a href="${url:process/scope/matrix}">Traceability Matrix</a></li>
-        <li><a href="${url:process/risk/risklist}">Risk List</a></li>
+        <li>[Traceability Matrix]({% href process/scope/matrix %})</li>
+        <li>[Risk List]({% href process/risk/risklist %})</li>
     </ul>
 
-    <p>You have an access to all project documentation, but we are 
+    <p>You have an access to all project documentation, but we are
     not contractually obliged to deliver it.</p>
 
 

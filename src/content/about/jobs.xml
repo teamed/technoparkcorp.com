@@ -54,14 +54,14 @@
             of software development and system architecture.
             Strong leadership skills.
             Permission to work in the United States.
-            <a href="${url:about/jobs/CEO}">more...</a>
+            [more...]({% href about/jobs/CEO %})
         </li>
         <li>
             <b>Project Manager</b>.
             PMP certification is mandatory. 5+ years of project management
             of software development projects. Distributed development
             experience. Permission to work in the United States.
-            <a href="${url:about/jobs/PM}">more...</a>
+            [more...]({% href about/jobs/PM %})
         </li>
     </ul>
 
@@ -69,8 +69,8 @@
         Apply online with your personal information and short message
         and our HR Director will get
         back to you with an offer. You may join our team on a full-time or
-        <a href="${url:about/teams}">part-time basis</a>.
-        If you work <a href="${url:about/teams}">part-time</a> we pay you by bank
+        [part-time basis]({% href about/teams %}).
+        If you work [part-time]({% href about/teams %}) we pay you by bank
         transfer or cashier check, no matter what country you are from.
         We need your talent!
     </p>

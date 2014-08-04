@@ -30,7 +30,7 @@
 <description>
     Iterative and incremental process delivers full-scale project
     management methods and principles to your agile project, without
-    bureaucracy and burden. We make the project management 
+    bureaucracy and burden. We make the project management
     simple and easy-to-use by means of our automated instant metrics.
 </description>
 
@@ -48,22 +48,22 @@
 
     <p>We implement full-scale PMBOK-inspired project management and
     make its every last detail valuable and easy-to-understand by means
-    of instant automated metrics. Complex project management principles, 
+    of instant automated metrics. Complex project management principles,
     documents, processes and rules are transparent for you with our
     project management web panel.</p>
 
     <p>Our software development lifecycle is iterative and incremental. We deliver software product
-    by independent builds at the end of each <a href="${url:process/time/iteration}">Iteration</a>. 
-    You approve <a href="${url:process/time/schedule}">Schedule</a> at the
-    <a href="${url:process/time/lco}">LCO milestone</a> in the first weeks of a project, and then track it by 
-    <a href="${url:process/time/spi}">Earned Value</a> data.</p>
+    by independent builds at the end of each [Iteration]({% href process/time/iteration %}).
+    You approve [Schedule]({% href process/time/schedule %}) at the
+    [LCO milestone]({% href process/time/lco %}) in the first weeks of a project, and then track it by
+    [Earned Value]({% href process/time/spi %}) data.</p>
 
-    <p>The diagram shows how your informal request is transferred to Deliverables, 
+    <p>The diagram shows how your informal request is transferred to Deliverables,
     which you accept at the end of the project:</p>
 
     <p style="text-align: center"><tikz>
 \begin{tikzpicture}
-    [node distance = 2.5cm, 
+    [node distance = 2.5cm,
     auto, thick]
 
     \node [cloud, draw=tpcRed, cloud ignores aspect, fill=tpcRed!40] (request) {Informal Request};
@@ -93,45 +93,45 @@
 \end{tikzpicture}
     </tikz></p>
 
-    <p>We work only with fixed-price projects that are estimated in two steps: 1) 
-    <a href="${url:process/cost/rom}">ROM Estimate</a>
-    defines the range of effort and time required, 2) 
-    <a href="${url:process/cost/budget}">Budget</a> gives an exact amount of staff-hours required to complete the project.
+    <p>We work only with fixed-price projects that are estimated in two steps: 1)
+    [ROM Estimate]({% href process/cost/rom %})
+    defines the range of effort and time required, 2)
+    [Budget]({% href process/cost/budget %}) gives an exact amount of staff-hours required to complete the project.
     Such an approach optimizes costs of both parties.</p>
 
-    <p>Software is developed according to Functional and Non-functional <a href="${url:process/scope/requirement}">Requirements</a>
-    specified in <a href="${url:process/scope/specification}">Specification</a>, in form of a 
-    <a href="${url:process/scope/srs}">SRS</a> document. Requirements are maintained in a
-    <a href="${url:process/scope/matrix}">Traceability Matrix</a>
-    that gives you and the project team the ability to bi-directionaly trace changes. 
-    We tend to be flexible, however, project Specification can only be altered through 
-    <a href="${url:process/scope/}">Change Requests</a>.</p>
+    <p>Software is developed according to Functional and Non-functional [Requirements]({% href process/scope/requirement %})
+    specified in [Specification]({% href process/scope/specification %}), in form of a
+    [SRS]({% href process/scope/srs %}) document. Requirements are maintained in a
+    [Traceability Matrix]({% href process/scope/matrix %})
+    that gives you and the project team the ability to bi-directionaly trace changes.
+    We tend to be flexible, however, project Specification can only be altered through
+    [Change Requests]({% href process/scope/ %}).</p>
 
-    <p>Our process is risk-driven, meaning that <a href="${url:process/risk/risk}">Risks</a> and 
-    <a href="${url:process/risk/strategy}">Risk Strategies</a> affect the
-    project Schedule and Specification. 
+    <p>Our process is risk-driven, meaning that [Risks]({% href process/risk/risk %}) and
+    [Risk Strategies]({% href process/risk/strategy %}) affect the
+    project Schedule and Specification.
     During the entire project lifecycle, the project team reviews the
-    <a href="${url:process/risk/risklist}">Risk List</a> containing the most critical Risks, 
+    [Risk List]({% href process/risk/risklist %}) containing the most critical Risks,
     and conducts Risk mitigation plans.</p>
 
-    <p><a href="${url:process/quality}">Quality</a> of <a href="${url:process/warranty/deliverables}">Deliverables</a> is assured by 
-    <a href="${url:process/quality/unit}">unit-testing</a>,
-    <a href="${url:process/quality/peerreview}">peer reviews</a>,
-    <a href="${url:process/quality/manual}">manual testing</a>, and
-    <a href="${url:process/quality/system}">system testing</a>.</p>
+    <p>[Deliverables]({% href process/quality}">Quality</a> of <a href="${url:process/warranty/deliverables %}) is assured by
+    [unit-testing]({% href process/quality/unit %}),
+    [peer reviews]({% href process/quality/peerreview %}),
+    [manual testing]({% href process/quality/manual %}), and
+    [system testing]({% href process/quality/system %}).</p>
 
-    <p>Project <a href="${url:process/communication}">communications</a> are iterative and customer-focused.  They 
-    include <a href="${url:process/communication/dailyreport}">Daily Reports</a>,
-    <a href="${url:process/communication/incremental}">incremental delivery</a> of software product, 
-    regular <a href="${url:process/communication/iam}">acceptance meetings</a> with project status
+    <p>Project [communications]({% href process/communication %}) are iterative and customer-focused.  They
+    include [Daily Reports]({% href process/communication/dailyreport %}),
+    [incremental delivery]({% href process/communication/incremental %}) of software product,
+    regular [acceptance meetings]({% href process/communication/iam %}) with project status
     reporting and monitoring.</p>
 
-    <p>We proactively protect <a href="${url:process/ipr}">intellectual property rights</a> of software by means of 
-    <a href="${url:process/ipr/nda}">Non-Disclosure Agreements</a> and 
-    <a href="${url:process/ipr/security}">information security</a> internal policies and rules.</p>
+    <p>We proactively protect [intellectual property rights]({% href process/ipr %}) of software by means of
+    [Non-Disclosure Agreements]({% href process/ipr/nda %}) and
+    [information security]({% href process/ipr/security %}) internal policies and rules.</p>
 
-    <p>When a project is closed, we continue to provide warranty <a href="${url:process/warranty/defectremoval}">defect removal</a> services for 
-    <a href="${url:process/warranty/deliverables}">Deliverables</a>.</p>
+    <p>When a project is closed, we continue to provide warranty [defect removal]({% href process/warranty/defectremoval %}) services for
+    [Deliverables]({% href process/warranty/deliverables %}).</p>
 
 </text>
 

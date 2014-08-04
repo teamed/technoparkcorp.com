@@ -45,7 +45,7 @@
 
 <text>
 
-    <p>We calculate, communicate and define the Budget in <a href="${url:process/cost/prices}">staff-hours</a>. 
+    <p>We calculate, communicate and define the Budget in [staff-hours]({% href process/cost/prices %}).
     The actual monetary size of a
     project is a multiple of staff-hours and price per hour.</p>
 
@@ -53,29 +53,29 @@
     estimation and calculation.</p>
 
     <p>The Budget covers all costs, including:</p>
-    
+
     <ul>
         <li>Programming</li>
-        <li><a href="${url:process/scope}">Requirements Development</a></li>
+        <li>[Requirements Development]({% href process/scope %})</li>
         <li>Project Management</li>
         <li>Architecture and Design</li>
-        <li><a href="${url:process/quality}">Testing</a> and Quality Assurance</li>
+        <li>[Testing]({% href process/quality %}) and Quality Assurance</li>
         <li>Deployment</li>
-        <li><a href="${url:process/warranty/defectremoval}">Defect-removal</a></li>
+        <li>[Defect-removal]({% href process/warranty/defectremoval %})</li>
     </ul>
 
-    <p>The Budget is paid only for <a href="${url:process/warranty/deliverables}">Deliverables</a>, not for 
+    <p>The Budget is paid only for [Deliverables]({% href process/warranty/deliverables %}), not for
     the time spent. It does not include
-    <a href="${url:process/warranty/support}">support</a> and other <a href="${url:process/warranty/support}">maintenance</a> services.</p>
+    [maintenance]({% href process/warranty/support}">support</a> and other <a href="${url:process/warranty/support %}) services.</p>
 
-    <p>The Budget is calculated by the project team using Functional 
-    <a href="${url:process/scope/requirement}">Requirements</a>. Each Requirement
+    <p>The Budget is calculated by the project team using Functional
+    [Requirements]({% href process/scope/requirement %}). Each Requirement
     is estimated by programmers and then the total
-    project programming effort can be calculated. 
+    project programming effort can be calculated.
     Efforts for other project disciplines are
     calculated using the amount of hours for programming.</p>
 
-    <p>The Budget is changed only when changes are made to scope by <a href="${url:process/scope/changerequest}">Change Requests</a>.</p>
+    <p>The Budget is changed only when changes are made to scope by [Change Requests]({% href process/scope/changerequest %}).</p>
 
 </text>
 

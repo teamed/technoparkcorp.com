@@ -38,11 +38,11 @@
 
 <text>
 
-    <p>For each new project we build and manage a dedicated distributed team of 
+    <p>For each new project we build and manage a dedicated distributed team of
     narrow-skilled technicians. Each role in a project is being filled by
-    the best suitable talent (<a href="${url:contacts/sup}">tell us about your uniqueness</a> and we will invite
+    the best suitable talent ([tell us about your uniqueness]({% href contacts/sup %}) and we will invite
     you to one of our projects), the company or an individual.</p>
-    
+
     <p>The project team includes individuals and companies' engineers from
     different countries across the globe. With our project management toolkit you
     interact with documents, project manager and the team effectively
@@ -69,7 +69,7 @@
         </tikz>
     </p>
 
-    <p>Our typical projects require system analysts, 
+    <p>Our typical projects require system analysts,
     software architects, software designers, programmers, test analysts,
     testers, technical/management reviewers, graphic artists, and system administators.</p>
 

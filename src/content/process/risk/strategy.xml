@@ -35,9 +35,9 @@
 
 <text>
 
-    <p><a href="${url:process/risk/risk}">Risks</a> are defined in a <a href="${url:process/risk/risklist}">Risk List</a> 
-    during the <a href="${url:process/time/inception}">Inception Phase</a> 
-    and are presented to you prior to the <a href="${url:process/time/lco}">LCO Milestone</a>.  
+    <p>[Risk List]({% href process/risk/risk}">Risks</a> are defined in a <a href="${url:process/risk/risklist %})
+    during the [Inception Phase]({% href process/time/inception %})
+    and are presented to you prior to the [LCO Milestone]({% href process/time/lco %}).
     You have to choose a strategy for each Risk that appears on the list.</p>
 
     <p>You have two options - either to pay for the implementation of a pro-active Mitigation Plan and eliminate the Risk, or
@@ -53,14 +53,14 @@
         </tr>
 
         <tr>
-        <td>Data provider changes the API on its own schedule, without prior 
-        notification. The next change may happen before the project 
+        <td>Data provider changes the API on its own schedule, without prior
+        notification. The next change may happen before the project
         release Milestone, and the system won't work</td>
-        <td>Develop a configurable XML-based integration module that will 
+        <td>Develop a configurable XML-based integration module that will
         allow dynamic API changes without code re-factoring</td>
         <td>Integration module re-factoring</td>
         </tr>
-    </table>    
+    </table>
 
     <p>The numbers for these different plans include:</p>
 
@@ -73,17 +73,17 @@
 
         <tr><td>Mitigation Plan</td><td>140</td><td>7</td></tr>
         <tr><td>Contingency Plan</td><td>280+</td><td>10+</td></tr>
-    </table>    
+    </table>
 
-    <p>All of these numbers are provided to you prior to the commencement of the project. 
-    Thus, there is a choice of spending 140 staff-hours immediately to remove the Risk, 
-    or to do nothing, with the understanding the 280 or more hours may be required later 
+    <p>All of these numbers are provided to you prior to the commencement of the project.
+    Thus, there is a choice of spending 140 staff-hours immediately to remove the Risk,
+    or to do nothing, with the understanding the 280 or more hours may be required later
     at your expense.</p>
 
     <p>The first option is called <i>mitigation</i> and means that you are ready to
     spend time and money pro-actively in order to guarantee that the Risk will be removed.</p>
 
-    <p>The second option is called <i>acceptance</i>, and means that you do not take any action, 
+    <p>The second option is called <i>acceptance</i>, and means that you do not take any action,
     but is ready to pay later if the Risk does in fact happen. If the Risk never happens, you
     will never pay for it.</p>
 

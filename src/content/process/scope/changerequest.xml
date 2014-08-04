@@ -26,7 +26,7 @@
 <next>process/time</next>
 
 <description>
-    Change control procedure is a very important component of 
+    Change control procedure is a very important component of
     scope management. Change Request is the only document that can
     make changes to the baselined SRS.
 </description>
@@ -48,9 +48,9 @@
 <text>
 
     <p>Changes are inevitable in software development projects and we recognize that
-    change and the resulting uncertainty are inherent aspects of the IT life cycle. 
+    change and the resulting uncertainty are inherent aspects of the IT life cycle.
     A change has potential to ruin the project, or it
-    can creatively increase the value of the business. The outcome depends 
+    can creatively increase the value of the business. The outcome depends
     on an established change control procedure
     created during the project.</p>
 
@@ -59,7 +59,7 @@
 
     <p align="center"><tikz>
 \begin{tikzpicture}
-    [node distance = 2.5cm, 
+    [node distance = 2.5cm,
     auto, thick]
 
     \node [block, text width=2.5cm] (request) {Request Change};
@@ -81,24 +81,24 @@
     \draw [line] (approve) -- node[near start] {no} +(0:4cm) node[right, text width=4cm] {Rollback to existing Baseline};
 \end{tikzpicture}
     </tikz></p>
-    
+
     <p>There are several consecutive steps in a change control procedure:</p>
 
     <ol>
         <li>Requested change comes from you or project team (in any form).</li>
 
         <li>Project manager, with the help of system analyst and project team, analyzes the impact.
-        The impact is estimated in staff-hours (<a href="${url:process/cost}">Cost</a>) and business days 
-        (<a href="${url:process/time/schedule}">Schedule</a>).</li>
+        The impact is estimated in staff-hours ([Cost]({% href process/cost %})) and business days
+        ([Schedule]({% href process/time/schedule %})).</li>
 
         <li>You approve or reject the estimation.</li>
 
-        <li>New <a href="${url:process/scope/specification}">Specification</a> is developed by the project team.</li>
+        <li>New [Specification]({% href process/scope/specification %}) is developed by the project team.</li>
 
-        <li>Changes to Schedule, <a href="${url:process/risk}">Risks</a>, 
-        and <a href="${url:process/cost/budget}">Budget</a> and 
+        <li>Changes to Schedule, [Risks]({% href process/risk %}),
+        and [Budget]({% href process/cost/budget %}) and
         are estimated and presented.</li>
-    
+
         <li>You approve or reject the changes.</li>
     </ol>
 

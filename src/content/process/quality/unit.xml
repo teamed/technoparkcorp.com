@@ -37,7 +37,7 @@
 
     <p>Unit testing means that software includes special modules in automatic
     mode test, other modules, and components. Unit tests play an adhesive role between
-    software modules and <a href="${url:process/scope/requirement}">Requirements</a>. Unit tests guarantee that in any moment
+    software modules and [Requirements]({% href process/scope/requirement %}). Unit tests guarantee that in any moment
     all software modules work as they worked before, when the unit tests were created and executed.</p>
 
     <p>We exploit this powerful technology in all projects, no matter what platform or
@@ -51,7 +51,7 @@
     </ul>
 
     <p>While the technology is very useful for any project, it requires additional
-    time for design and development during early <a href="${url:process/time/iteration}">Iterations</a>.</p>
+    time for design and development during early [Iterations]({% href process/time/iteration %}).</p>
 
 </text>
 

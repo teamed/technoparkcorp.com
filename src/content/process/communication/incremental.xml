@@ -44,19 +44,19 @@
 
     <p>Incremental delivery of software means that software product is specified, designed,
     implemented, tested and deployed in a number of builds. Each build has a new portion of
-    functionality. All builds together constitute the project <a href="${url:process/scope}">scope</a>.</p>
+    functionality. All builds together constitute the project [scope]({% href process/scope %}).</p>
 
-    <p>Consider the example development steps in a sample software project. 
+    <p>Consider the example development steps in a sample software project.
     Project statement is:</p>
 
 <pre>
-System is an online database management tool where 
-end-users can find information about real estate 
+System is an online database management tool where
+end-users can find information about real estate
 objects and post new ads.
 </pre>
 
-    <p>This is a list of <a href="${url:process/scope/requirement}">functional requirements</a> 
-    in the <a href="${url:process/scope/srs}">SRS</a>:</p>
+    <p>This is a list of [functional requirements]({% href process/scope/requirement %})
+    in the [SRS]({% href process/scope/srs %}):</p>
 
     <table>
         <tr>
@@ -73,7 +73,7 @@ objects and post new ads.
         <tr><td>R4.1</td><td>Administrator can sort list of users, System shall sort according to selected sorting criteria</td><td>#3</td><td>implemented</td></tr>
     </table>
 
-    <p>This is an example of the <a href="${url:process/time/schedule}">Schedule</a> for the sample project:</p>
+    <p>This is an example of the [Schedule]({% href process/time/schedule %}) for the sample project:</p>
 
     <table>
         <tr>
@@ -92,7 +92,7 @@ objects and post new ads.
         <tr><td>M</td><td>Project finished (Release Milestone)</td><td>3-Apr</td><td></td></tr>
     </table>
 
-    <p>Imagine that the project is in <a href="${url:process/time/iteration}">Iteration</a> #3 
+    <p>Imagine that the project is in [Iteration]({% href process/time/iteration %}) #3
     and right now the project team is
     performing user acceptance testing with you for build #3.</p>
 

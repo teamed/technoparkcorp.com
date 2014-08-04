@@ -54,21 +54,21 @@
     who manages time properly. Nowadays in the software industry this happens during the course of many projects.
     We pay great attention to planning, monitoring, and controlling of time in our projects.</p>
 
-    <p>Right after a <a href="${url:process/cost/rom}">ROM Estimate</a> is approved and the project is started, 
-    we plan the <a href="${url:process/time/inception}">Inception Phase</a>. 
-    Usually, when the project is started, there is a lack of details about system requirements. 
-    Accurate planning can be done only after the scope definition and risk analysis are completed, that's why we need to conduct the 
-    Inception Phase before <a href="${url:process/time/schedule}">Schedule</a> development.</p>
-    
-    <p>The main goal of our Inception Phase is to create <a href="${url:process/scope/specification}">Specification</a>, 
-    identify <a href="${url:process/risks}">Risks</a>, 
-    calculate <a href="${url:process/cost/budget}">Budget</a>, and build a
+    <p>Right after a [ROM Estimate]({% href process/cost/rom %}) is approved and the project is started,
+    we plan the [Inception Phase]({% href process/time/inception %}).
+    Usually, when the project is started, there is a lack of details about system requirements.
+    Accurate planning can be done only after the scope definition and risk analysis are completed, that's why we need to conduct the
+    Inception Phase before [Schedule]({% href process/time/schedule %}) development.</p>
+
+    <p>The main goal of our Inception Phase is to create [Specification]({% href process/scope/specification %}),
+    identify [Risks]({% href process/risks %}),
+    calculate [Budget]({% href process/cost/budget %}), and build a
     Schedule. Sometimes, in order to define the Schedule, it's necessary to develop a baseline of key architectural software concepts
     during the Inception Phase.</p>
 
-    <p><a href="${url:process/time/lco}">LCO Milestone</a> happens following the end of Inception Phase, when
+    <p>[LCO Milestone]({% href process/time/lco %}) happens following the end of Inception Phase, when
     the Specification is ready and a Schedule is defined. The Schedule is a one-page table that lists the
-    <a href="${url:process/time/iteration}">Iterations</a> and Milestones. 
+    [Iterations]({% href process/time/iteration %}) and Milestones.
     As soon as the customer signs the Schedule, it obtains the status of a contractual provision
     and can't be missed.</p>
 
@@ -79,8 +79,8 @@
     \newcommand{\thewidth}{2.2cm}
     \newcommand{\theheight}{1cm}
 
-    \tikzstyle{iteration} = [block, 
-        text width=\thewidth, 
+    \tikzstyle{iteration} = [block,
+        text width=\thewidth,
         anchor=north west,
         minimum height=\theheight]
 
@@ -116,8 +116,8 @@
     WBS and Network Diagram methods for planning.</p>
 
     <p>By the end of each Iteration, we conduct an Iteration Acceptance Meeting, where a
-    <a href="${url:process/time/spi}">SPI</a> is presented to you in conjunction with the risk monitoring results. 
-    The project is transparently 
+    [SPI]({% href process/time/spi %}) is presented to you in conjunction with the risk monitoring results.
+    The project is transparently
     monitored and tracked with an SPI, which is based on the functional requirements and their status of completion.</p>
 
     <p>Any changes to the Milestones will produce a new version of the Schedule, which you shall

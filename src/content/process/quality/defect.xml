@@ -35,14 +35,14 @@
 
 <text>
 
-    <p>A Defect is a non-conformance of <a href="${url:process/warranty/deliverables}">Deliverables</a> 
-    to <a href="${url:process/scope/specification}">Specification</a>. Defects can be found by
-    testers, project team members or you. No matter who identifies a Defect, it has to be removed.</p>    
+    <p>A Defect is a non-conformance of [Deliverables]({% href process/warranty/deliverables %})
+    to [Specification]({% href process/scope/specification %}). Defects can be found by
+    testers, project team members or you. No matter who identifies a Defect, it has to be removed.</p>
 
-    <p>Defects are stored in Defect Tracking System. Every customer will have access 
-    to this online system.</p>    
+    <p>Defects are stored in Defect Tracking System. Every customer will have access
+    to this online system.</p>
 
-    <p>This is an example of properly reported Defect:</p>    
+    <p>This is an example of properly reported Defect:</p>
 
 <pre>
 Visibility: high
@@ -52,10 +52,10 @@ Platform: Windows XP
 Browser:  MS IE 7.0
 Defect:   Being a registered user, I'm trying to
       change my personal avatar in my account.
-      However, I can not upload TIFF file as 
-      avatar. Browser waits for 30 seconds then 
-      says that there is no reply from server. 
-      The same function works properly in 
+      However, I can not upload TIFF file as
+      avatar. Browser waits for 30 seconds then
+      says that there is no reply from server.
+      The same function works properly in
       FireFox and Opera.
 Reported: by Alex
 Date:     8-Jul
@@ -63,7 +63,7 @@ Date:     8-Jul
 
     <p>Properly reported Defects are easy to track, monitor and remove.</p>
 
-    <p>For each <a href="${url:process/time/iteration}">Iteration</a> we plan certain amount of Defects that may be found,
+    <p>For each [Iteration]({% href process/time/iteration %}) we plan certain amount of Defects that may be found,
     and testers perform all necessary procedures to prepare for that amount of Defects.
     Test Plan is created by a test analyst at the beginning of each Iteration in the form of guidance
     for testers. Test Plan leads testers through product functionality and helps them to

@@ -39,13 +39,13 @@
 
 <pre>
 169. Parties shall deem all Deliverables created by
-TPC as "works made for hire" as defined under the 
+TPC as "works made for hire" as defined under the
 Copyright Law of the United States of America
 (edition of June 2003)
 </pre>
 
-    <p>Reference to <a href="http://www.copyright.gov/title17/">Copyright Law of the United States of America</a> 
-    means that <a href="${url:process/warranty/deliverables}">Deliverables</a>
+    <p>Reference to <a href="http://www.copyright.gov/title17/">Copyright Law of the United States of America</a>
+    means that [Deliverables]({% href process/warranty/deliverables %})
     created for you by TPC are "Works Made For Hire" as defined in the Law:</p>
 
 <pre>
@@ -60,8 +60,8 @@ in the copyright.
 </pre>
 
     <p>Thus, Deliverables and the Intellectual Propery Rights (IPR) for them are transferred
-    to you when the project is closed, plus the Acceptance Statement is signed and 
-    the final <a href="${url:process/cost/model}">payment</a> is
+    to you when the project is closed, plus the Acceptance Statement is signed and
+    the final [payment]({% href process/cost/model %}) is
     processed.</p>
 
 </text>

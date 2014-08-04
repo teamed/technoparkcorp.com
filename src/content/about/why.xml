@@ -55,16 +55,16 @@
     </p>
 
     <ul>
-        <li>No hidden costs due to the <a href="${url:process/cost/budget}">fixed-price</a></li>
-        <li><a href="${url:process/communication/incremental}">Incremental</a> delivery of product</li>
-        <li><a href="${url:about/facts}">ISO 9001</a> Certified Quality Management System</li>
+        <li>No hidden costs due to the [fixed-price]({% href process/cost/budget %})</li>
+        <li>[Incremental]({% href process/communication/incremental %}) delivery of product</li>
+        <li>[ISO 9001]({% href about/facts %}) Certified Quality Management System</li>
         <li>Adherence to UML in software architecture and design</li>
         <li>Continuous Delivery</li>
-        <li>Pro-active <a href="${url:process/risk}">risk</a> identification and planning</li>
-        <li>Two-step "win-win" <a href="${url:process/cost}">project quotation</a> process</li>
+        <li>Pro-active [risk]({% href process/risk %}) identification and planning</li>
+        <li>Two-step "win-win" [project quotation]({% href process/cost %}) process</li>
         <li>Detailed and precise software development contract</li>
-        <li><a href="${url:process/quality/unit}">Unit testing</a> as a rule</li>
-        <li>Plan-driven <a href="${url:process/quality/manual}">manual</a> and <a href="${url:process/quality/system}">system</a> testing</li>
+        <li>[Unit testing]({% href process/quality/unit %}) as a rule</li>
+        <li>Plan-driven [system]({% href process/quality/manual}">manual</a> and <a href="${url:process/quality/system %}) testing</li>
         <li>Information security processes compliant with ISO 27001</li>
     </ul>
 

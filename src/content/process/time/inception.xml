@@ -47,15 +47,15 @@
 
 <text>
 
-    <p>When a <a href="${url:process/cost/rom}">ROM Estimate</a> is approved and the project 
-    is started, the project team has documentation that you provided to us - we call it 
-    an informal request (also called stakeholder request in 
+    <p>When a [ROM Estimate]({% href process/cost/rom %}) is approved and the project
+    is started, the project team has documentation that you provided to us - we call it
+    an informal request (also called stakeholder request in
     <a href="http://www.ibm.com/rational">RUP</a>).</p>
 
     <p>Your informal requests may include diagrams, specifications, spreadsheets, and other forms.
-    All of this information is very important to the project team. 
+    All of this information is very important to the project team.
     This information shall
-    be converted to <a href="${url:process/scope/specification}">Specification</a>, as required by our process. 
+    be converted to [Specification]({% href process/scope/specification %}), as required by our process.
     This is the goal of the Inception Phase - to
     convert your informal requests into very detailed and well-structured Specifications.</p>
 
@@ -66,16 +66,16 @@
         <li>Project planning</li>
         <li>Risk identification and analysis</li>
         <li>Preparing the project environment</li>
-        <li>Estimating the <a href="${url:process/cost}">Budget</a></li>
+        <li>Estimating the [Budget]({% href process/cost %})</li>
     </ul>
 
-    <p>The Inception Phase is finished when Specification, <a href="${url:process/time/schedule}">Schedule</a>,
-    <a href="${url:process/risk}">Risks</a>, and <a href="${url:process/cost}">Budget</a> are prepared and you reviewed them.
-    Approval of these documents means a green light for the continuation of the project. 
+    <p>The Inception Phase is finished when Specification, [Schedule]({% href process/time/schedule %}),
+    [Budget]({% href process/risk}">Risks</a>, and <a href="${url:process/cost %}) are prepared and you reviewed them.
+    Approval of these documents means a green light for the continuation of the project.
     The Inception Phase is finished
-    with an <a href="${url:process/time/lco}">LCO Milestone</a>.</p>
+    with an [LCO Milestone]({% href process/time/lco %}).</p>
 
-    <p>10-15% of the ROM Estimate average (time and effort) is usually spent on the Inception Phase 
+    <p>10-15% of the ROM Estimate average (time and effort) is usually spent on the Inception Phase
     by the project manager and system analyst.</p>
 
 </text>

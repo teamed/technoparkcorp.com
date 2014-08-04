@@ -22,48 +22,48 @@
 
 <date>1/11/08</date>
 
-<title>TechnoPark Corp. Provides Proof of Privacy</title>     
+<title>TechnoPark Corp. Provides Proof of Privacy</title>
 
 <description>TechnoPark Corp. displays the TRUSTe  Seal of privacy and works toward ISO 27001 certification.</description>
 
 <text>
 
-    <p>Naples, FL, January 11, 2008 -  TechnoPark Corp. (TPC) has enlisted a third 
-    party verification for their security and privacy practices.  By displaying the 
-    TRUSTe seal, along with the TPC privacy policy, TechnoPark Corp. verifies that 
-    they meet industry standards for protecting their customer's rights and their customer's 
+    <p>Naples, FL, January 11, 2008 -  TechnoPark Corp. (TPC) has enlisted a third
+    party verification for their security and privacy practices.  By displaying the
+    TRUSTe seal, along with the TPC privacy policy, TechnoPark Corp. verifies that
+    they meet industry standards for protecting their customer's rights and their customer's
     personal information.</p>
 
-    <p>A privacy policy states the legal ways a company collects and distributes personal 
-    information.  For their provider of a Privacy Seal, TechnoPark Corp. chose TRUSTe, 
-    an internationally recognized non-profit organization that verifies a company's 
-    privacy standards.  Along with verifying TechnoPark Corp.'s privacy statement, 
-    TRUSTe provides dispute resolution programs and they regularly review their customer's 
+    <p>A privacy policy states the legal ways a company collects and distributes personal
+    information.  For their provider of a Privacy Seal, TechnoPark Corp. chose TRUSTe,
+    an internationally recognized non-profit organization that verifies a company's
+    privacy standards.  Along with verifying TechnoPark Corp.'s privacy statement,
+    TRUSTe provides dispute resolution programs and they regularly review their customer's
     websites for continued compliance.</p>
 
-    <p>"TechnoPark Corp always strives for transparency," says Arthur Petrenko, 
-    Marketing Director for TechnoPark Corp.  "We want to be sure that when a 
-    prospective customer considers using our services they are absolutely confident 
+    <p>"TechnoPark Corp always strives for transparency," says Arthur Petrenko,
+    Marketing Director for TechnoPark Corp.  "We want to be sure that when a
+    prospective customer considers using our services they are absolutely confident
     that their personal data will never be compromised."</p>
 
-    <p>In order to receive a privacy seal, TPC had to show that their customers can 
-    opt out of direct marketing and the selling of their information to third parties.  
-    The privacy policy explains such things as why TPC collects personal information, 
-    how they use the information they collect, and how to unsubscribe from email 
-    notifications. The complete privacy policy and seal can be found at 
-    <a href="${url:about/privacypolicy}">http://www.technoparkcorp.com/about/privacypolicy</a>.</p>
+    <p>In order to receive a privacy seal, TPC had to show that their customers can
+    opt out of direct marketing and the selling of their information to third parties.
+    The privacy policy explains such things as why TPC collects personal information,
+    how they use the information they collect, and how to unsubscribe from email
+    notifications. The complete privacy policy and seal can be found at
+    [http://www.technoparkcorp.com/about/privacypolicy]({% href about/privacypolicy %}).</p>
 
-    <p>To take their privacy assurances even further, TechnoPark Corp. is 
-    also now preparing for ISO 27001 certification.  This is a three-step process that 
-    verifies security procedures, audits information security controls, and then 
-    provides a follow-up inspection to assure that a company maintains compliance.  
-    TechnoPark Corp. expects to be certified in the next eight to ten months.  This 
-    process follows on the heels of their successful ISO 9001:2000 certification 
+    <p>To take their privacy assurances even further, TechnoPark Corp. is
+    also now preparing for ISO 27001 certification.  This is a three-step process that
+    verifies security procedures, audits information security controls, and then
+    provides a follow-up inspection to assure that a company maintains compliance.
+    TechnoPark Corp. expects to be certified in the next eight to ten months.  This
+    process follows on the heels of their successful ISO 9001:2000 certification
     in November of 2007.</p>
 
-    <p>More information about TRUSTe can be found on their website, 
-    <ahref name="http://www.truste.org">www.truste.org</ahref>.  TechnoPark Corp. is 
-    a US-based outsourcing software development company with a development center in 
+    <p>More information about TRUSTe can be found on their website,
+    <ahref name="http://www.truste.org">www.truste.org</ahref>.  TechnoPark Corp. is
+    a US-based outsourcing software development company with a development center in
     the Ukraine.</p>
 
 </text>

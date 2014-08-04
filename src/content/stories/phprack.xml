@@ -40,33 +40,33 @@
 <text>
 
     <a href="http://www.phprack.com">
-        <img src='data:image/png;base64,${base64:/stories/phprack-logo.png}' 
-            alt='phpRack' 
+        <img src='data:image/png;base64,${base64:/stories/phprack-logo.png}'
+            alt='phpRack'
             style="float:right; "
         />
-    </a>    
-    
+    </a>
+
     <p>
         The design and development of <b><a href="http://phprack.com">phpRack</a></b> took almost 3 months
         for a team of 5 people, working in parallel and absolutely
         distributed (they never met each other face-to-face and never
         communicated online). There were engineers from Poland, Belarus, Czech Republic,
         and United States. The team communicated only through
-        Trac and Subversion, using <a href="http://www.fazend.com">FaZend.com</a> 
+        Trac and Subversion, using <a href="http://www.fazend.com">FaZend.com</a>
         Continuous Integration platform.
     </p>
-    
+
     <p>
-        The product is developed in PHP, with an extensive use of XML and JavaScript. 
+        The product is developed in PHP, with an extensive use of XML and JavaScript.
         We've used a number of frameworks and third-party tools, like PHPUnit,
         jQuery, JSLint, QUnit, Phing.
     </p>
-    
+
     <p>
         The biggest challenge in the project was a necessity to invent the
         product, design it and develop at the same time. There were a number
         of risks related to this challenge. What helped us to mitigate the
-        majority of risks is a <a href="${url:innovations/pdd}">Puzzle Driven Development</a> 
+        majority of risks is a [Puzzle Driven Development]({% href innovations/pdd %})
         concept, which was
         invented during that time and applied for USPTO patent.
         The project helped us to invent the PDD concept and to

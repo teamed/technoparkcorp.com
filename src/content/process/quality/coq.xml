@@ -35,26 +35,26 @@
 
 <text>
 
-    <p><a href="${url:process/quality}">Quality</a> is what costs us money and what you pay for. Quality is measured
+    <p>[Quality]({% href process/quality %}) is what costs us money and what you pay for. Quality is measured
     as amount of defect-free functionality related to defective functionality. Quality
     is measured in percentages. Our contract says that 95% is acceptable Quality.</p>
 
-    <p>A <a href="${url:process/quality/defect}">Defect</a> is a non-conformity of 
-    <a href="${url:process/warranty/deliverables}">Deliverables</a> 
-    to <a href="${url:process/scope/specification}">Specification</a>. In other words, the
+    <p>A [Defect]({% href process/quality/defect %}) is a non-conformity of
+    [Deliverables]({% href process/warranty/deliverables %})
+    to [Specification]({% href process/scope/specification %}). In other words, the
     software product does not work as specified. Defects shall be revealed by the project
     team before software product is delivered to you.</p>
 
     <p>While you and end-users perceive Defects through software interfaces, the majority
-    of Defects do not reside in software itself. This is where Defects normally lie (in order of 
+    of Defects do not reside in software itself. This is where Defects normally lie (in order of
     severity):</p>
 
     <ol>
         <li>Software development contract</li>
-        <li><a href="${url:process/scope/vision}">Vision</a></li>
-        <li><a href="${url:process/scope/srs}">SRS</a></li>
-        <li><a href="${url:process/risk/risklist}">Risk List</a></li>
-        <li><a href="${url:process/time/schedule}">Schedule</a> and <a href="${url:process/time/iteration}">Iteration</a> Plans</li>
+        <li>[Vision]({% href process/scope/vision %})</li>
+        <li>[SRS]({% href process/scope/srs %})</li>
+        <li>[Risk List]({% href process/risk/risklist %})</li>
+        <li>[Iteration]({% href process/time/schedule}">Schedule</a> and <a href="${url:process/time/iteration %}) Plans</li>
         <li>Architecture</li>
         <li>Design</li>
         <li>Software code</li>
@@ -68,16 +68,16 @@
     become critical or fatal.</p>
 
     <ul>
-        <li><a href="${url:process/quality/peerreview}">Peer reviews</a> of SRS, Schedule, Risk List and architecture</li>
+        <li>[Peer reviews]({% href process/quality/peerreview %}) of SRS, Schedule, Risk List and architecture</li>
         <li>Prototyping on early Iterations</li>
         <li>Strict guidelines and manuals for analysts and architects</li>
         <li>Industry standards and formats (UML, IEEE, ISO, RUP, XML, etc.)</li>
         <li>Periodical Quality Assurance (QA) audits</li>
     </ul>
 
-    <p>All prevention methods are used before <a href="${url:process/quality/unit}">unit-testing</a>, 
-    <a href="${url:process/quality/system}">system testing</a> and 
-    <a href="${url:process/quality/manual}">manual testing</a>.  
+    <p>All prevention methods are used before [unit-testing]({% href process/quality/unit %}),
+    [system testing]({% href process/quality/system %}) and
+    [manual testing]({% href process/quality/manual %}).
     Prevention methods are performed by programmers and testers when software is being implemented.</p>
 
 </text>
