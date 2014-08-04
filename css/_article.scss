@@ -57,6 +57,13 @@
   .crumbs {
     padding: 5px 5px 5px 210px;
     color: $lightgray;
+    a {
+      text-decoration: none;
+      color: inherit;
+      &:hover {
+        color: $black;
+      }
+    }
   }
   .wl {
     padding: 5px 37px;
