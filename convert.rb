@@ -6,9 +6,16 @@ require 'nokogiri'
 Dir.glob('src/content/**/*.xml') do |file|
   puts file
   xml = Nokogiri::XML(File.read(file))
+  name = File.basename(file,'.xml')
   md = "---\n"
+  md += "layout: article\n"
+  md += "date: 2014-08-08\n"
+  md += "permalink: #{File.dirname(file)[12,200]}/#{File.basename(file,'.xml')}\n"
   if xml.xpath('/article/label/text()').length > 0
     md += "label: " + xml.xpath('/article/label/text()')[0] + "\n"
+  end
+  if xml.xpath('/article/term/text()').length > 0
+    md += "term: " + xml.xpath('/article/term/text()')[0] + "\n"
   end
   md += "title: \"" + xml.xpath('/article/title/text()')[0] \
     .to_s.split.map(&:capitalize)*' ' + "\"\n"
@@ -36,14 +43,14 @@ Dir.glob('src/content/**/*.xml') do |file|
     md += "\n"
     if par.name == 'p'
       txt = par.xpath('text()').to_s.strip.gsub(/\s+/, ' ') \
-        .gsub(/(.{1,60})(\s+|\Z)/, "\n\\1")
+        .gsub(/(.{1,100})(\s+|\Z)/, "\n\\1")
     else
       txt = "\n" + par.to_s
     end
     md += txt
   }
 
-  output = "output/#{File.dirname(file)}/#{File.basename(file,'.xml')}.md"
+  output = "output/#{File.dirname(file)}/2014-08-08-#{File.basename(file,'.xml')}.md"
   FileUtils.mkdir_p(File.dirname(output))
   File.write(output, md)
   puts output
