@@ -35,10 +35,17 @@ second:
 news: /about/news/yegor2014/teamed
 ---
 
-<a href="/" title="quality control">
-  <img class="frontimg" src="//img.technoparkcorp.com/front/quality.jpg"
-    alt="TechnoParkCorp.com is a Software Development General Contractor" />
-</a>
+<div class="picture">
+  <a href="/">
+    <img src="//img.technoparkcorp.com/front/horses.jpg"
+      alt="TechnoParkCorp.com is a Software Development General Contractor" />
+  </a>
+  <div class="question">
+    <div>Your programmers</div>
+    <div>avoid writing unit tests?</div>
+  </div>
+  <div class="blue">Hire us and see how TDD can be a mandatory practice</div>
+</div>
 <div class="home">
   <table>
     <tr>
@@ -61,8 +68,8 @@ news: /about/news/yegor2014/teamed
           </a>
         {% endfor %}
       </td>
-      <td style='padding-right: 10px; width: 220px;'>
-        <a href="<?=$this->staticUrl($front->right->news)?>"><?=$this->escape($newsline)?></a>
+      <td>
+        <a href="/">some news...</a>
       </td>
     </tr>
   </table>

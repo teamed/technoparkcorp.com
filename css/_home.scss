@@ -19,9 +19,37 @@
 @import 'defs';
 
 /* central image */
-.frontimg {
-  width: 800px;
-  height: 238px;
+.picture {
+  position: relative;
+  img {
+    display: block;
+    width: 800px;
+    height: 250px;
+  }
+  .question {
+    color: white;
+    position: absolute;
+    top: 25px;
+    left: 37px;
+    div {
+      font-size: 3 * $em;
+      letter-spacing: -0.1 * $em;
+      &:first-child {
+        font-size: 2.2 * $em;
+      }
+    }
+  }
+  .blue {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background-color: $blue;
+    padding: 15px 0 5px 37px;
+    font-size: 1.6 * $em;
+    color: white;
+    opacity: 0.4;
+  }
 }
 
 .home {
@@ -45,6 +73,9 @@
         text-decoration: none;
         display: block;
         color: #9cacb6;
+        &:hover {
+          color: white;
+        }
       }
     }
   }

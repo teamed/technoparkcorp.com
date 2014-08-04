@@ -17,7 +17,9 @@ layout: default
     </div>
   </div>
   <div class="crumbs" role="navigation">
-    {{ page | breadcrumbs }}
+    {% if page.permalink %}
+      {{ page | breadcrumbs }}
+    {% endif %}
   </div>
   <article itemscope itemtype="http://schema.org/Article" class="white">
     <ul class="steps">
@@ -38,9 +40,11 @@ layout: default
     <li>Contacts</li>
   </ul>
   <div class="wl">
-    Last update on
-    <time itemprop="datePublished" datetime="{{ page.date | date_to_xmlschema }}">
-      {{ page.date | date: "%-d %b %Y" }}
-    </time>
+    {% if page.date %}
+      Last update on
+      <time itemprop="datePublished" datetime="{{ page.date | date_to_xmlschema }}">
+        {{ page.date | date: "%-d %b %Y" }}
+      </time>
+    {% endif %}
   </div>
 </section>

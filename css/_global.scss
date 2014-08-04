@@ -83,6 +83,9 @@ body {
       &:hover {
         color: inherit;
       }
+      .selected {
+        color: $blue;
+      }
     }
   }
 }

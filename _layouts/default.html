@@ -1,3 +1,32 @@
+---
+top:
+  about:
+    label: About us
+    title: Facts, history, key achievements or TechnoPark Corp.
+  process:
+    label: Process
+    title: Our approach to time/cost/scope and risk management
+  stories:
+    label: Success Stories
+    title: List of the latest projects with technical and management details
+  innovations:
+    label: Innovations
+    title: Our strength is in our inventions
+  contacts:
+    label: Contacts
+    title: Email, phone, fax and online contacts
+bottom:
+  sitemap:
+    label: Site Map
+    title: Full list of site pages in hierarchical order
+  legalnotes:
+    label: Legal Notes
+    title: Legal terms of use of the site
+  privacy:
+    label: Privacy Policy
+    title: Privacy policy for Personally Identifiable Information(PII)
+---
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
   <head>
@@ -24,41 +53,23 @@
       <div class="box">
         <div>&nbsp;</div>
         <ul class="tl">
-          <li>
-            <a title="Facts, history, key achievements or TechnoPark Corp."
-              href="/about">About us</a>
-          </li>
-          <li>
-            <a title="Our approach to time/cost/scope and risk management"
-              href="/process">Process</a>
-          </li>
-          <li>
-            <a title="List of the latest projects with technical and management details"
-              href="/stories">Success stories</a>
-          </li>
-          <li>
-            <a title="Our strength is in our inventions"
-              href="/innovations">Innovations</a>
-          </li>
-          <li>
-            <a title="Email, phone, fax and online contacts"
-              href="/contacts">Contacts</a>
-          </li>
+          {% for link in page.top %}
+            <li>
+              <a href="/{{ link[0] }}" title="{{ link[1]['title'] }}">
+                {{ link[1]['label'] }}
+              </a>
+            </li>
+          {% endfor %}
         </ul>
         {{ content }}
         <ul class="bl">
-          <li>
-            <a title="Full list of site pages in hierarchical order"
-              href="">Site Map</a>
-          </li>
-          <li>
-            <a title="Legal terms of use of the site"
-              href="">Legal Notes</a>
-          </li>
-          <li>
-            <a title="Privacy policy for Personally Identifiable Information(PII)"
-              href="">Privacy Policy</a>
-          </li>
+          {% for link in page.bottom %}
+            <li>
+              <a href="/{{ link[0] }}" title="{{ link[1]['title'] }}">
+                {{ link[1]['label'] }}
+              </a>
+            </li>
+          {% endfor %}
         </ul>
       </div>
       <div class="sub">
