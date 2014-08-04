@@ -1,0 +1,50 @@
+---
+layout: default
+title: "Software Development General Contractor"
+description:
+  TechnoPark is a specialized project management firm providing quality development
+  services to companies all over the world
+keywords:
+  - custom software development
+  - software development
+  - project management
+  - quality management
+  - puzzle driven development
+  - XDSD
+  - eXtremely Distributed Software Development
+---
+
+<a href="/" title="quality control">
+  <img class="frontimg" src="//img.technoparkcorp.com/front/quality.jpg"
+    alt="TechnoParkCorp.com is a Software Development General Contractor" />
+</a>
+<div class="home">
+  <table>
+    <tr>
+      <th>Services</th>
+      <th>About Us</th>
+      <th>Latest News</th>
+    </tr>
+    <tr>
+      <td>
+        <a href="<?=$this->staticUrl($front->left->item1->attributes()->name)?>"
+            ><?=$this->escape($front->left->item1)?></a><br/>
+        <a href="<?=$this->staticUrl($front->left->item2->attributes()->name)?>"
+            ><?=$this->escape($front->left->item2)?></a><br/>
+        <a href="<?=$this->staticUrl($front->left->item3->attributes()->name)?>"
+            ><?=$this->escape($front->left->item3)?></a><br/>
+      </td>
+      <td>
+        <a href="<?=$this->staticUrl($front->middle->item1->attributes()->name)?>"
+            ><?=$this->escape($front->middle->item1)?></a><br/>
+        <a href="<?=$this->staticUrl($front->middle->item2->attributes()->name)?>"
+            ><?=$this->escape($front->middle->item2)?></a><br/>
+        <a href="<?=$this->staticUrl($front->middle->item3->attributes()->name)?>"
+            ><?=$this->escape($front->middle->item3)?></a><br/>
+      </td>
+      <td style='padding-right: 10px; width: 220px;'>
+        <a href="<?=$this->staticUrl($front->right->news)?>"><?=$this->escape($newsline)?></a>
+      </td>
+    </tr>
+  </table>
+</div>

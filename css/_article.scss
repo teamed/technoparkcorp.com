@@ -1,0 +1,93 @@
+/**
+ * thePanel v2.0, Project Management Software Toolkit
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are PROHIBITED without prior written permission from
+ * the author. This product may NOT be used anywhere and on any computer
+ * except the server platform of TechnoPark Corp. located at
+ * www.technoparkcorp.com. If you received this code occasionally and
+ * without intent to use it, please report this incident to the author
+ * by email: privacy@technoparkcorp.com or by mail:
+ * 568 Ninth Street South 202, Naples, Florida 34102, USA
+ * tel. +1 (239) 935 5429
+ *
+ * @copyright Copyright (c) TechnoPark Corp., 2001-2009
+ * @version $Id$
+ *
+ */
+
+.main {
+  background-color: $gray;
+  position: relative;
+  .sl {
+    background-color: $blue;
+    text-align: right;
+    padding: 5px 37px;
+    z-index: 100;
+  }
+  .crumbs {
+    padding: 5px 5px 5px 210px;
+    color: $lightgray;
+  }
+  .wl {
+    padding: 5px 37px;
+    text-align: right;
+    color: $lightgray;
+  }
+  .menu {
+    z-index: 50;
+    position: absolute;
+    top: 30px;
+    left: 0;
+    background-color: $gray;
+    list-style: none;
+    border-radius: 10px;
+    width: 180px;
+    min-width: 180px;
+    min-height: 100px;
+    padding: 30px 5px 5px 37px;
+  }
+  .white {
+    background-color: white;
+    padding-left: 190px;
+    min-height: 400px;
+    .page {
+      padding: 20px;
+      h1 {
+        font-size: 2.4em;
+        font-weight: normal;
+        color: $blue;
+        letter-spacing: -0.05em;
+        line-height: 1.2em;
+      }
+      p {
+        padding-top: 12px;
+        line-height: 1.9em;
+      }
+    }
+    .steps {
+      width: 157px;
+      min-width: 157px;
+      list-style: none;
+      float: right;
+      border-left: 1px solid $lightgray;
+      padding: 15px;
+      li {
+        border-top: 1px solid $lightgray;
+        padding: 15px 0;
+        &:first-child {
+          border-top: none;
+        }
+        a {
+          font-size: 0.9em;
+          text-decoration: none;
+          color: $darkgray;
+          &:hover {
+            color: $black;
+          }
+        }
+      }
+    }
+  }
+}
+

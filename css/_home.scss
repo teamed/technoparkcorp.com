@@ -1,0 +1,48 @@
+/**
+ * thePanel v2.0, Project Management Software Toolkit
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are PROHIBITED without prior written permission from
+ * the author. This product may NOT be used anywhere and on any computer
+ * except the server platform of TechnoPark Corp. located at
+ * www.technoparkcorp.com. If you received this code occasionally and
+ * without intent to use it, please report this incident to the author
+ * by email: privacy@technoparkcorp.com or by mail:
+ * 568 Ninth Street South 202, Naples, Florida 34102, USA
+ * tel. +1 (239) 935 5429
+ *
+ * @copyright Copyright (c) TechnoPark Corp., 2001-2009
+ * @version $Id$
+ *
+ */
+
+/* central image */
+.frontimg {
+  width: 800px;
+  height: 238px;
+}
+
+.home {
+  color: white;
+  table {
+    margin: 5px 0 15px 37px;
+    border-spacing: 0;
+    border-collapse: separate;
+    th {
+      color: $blue;
+      font-weight: bold;
+      padding: 11px 0;
+      text-align: left;
+    }
+    td {
+      line-height: 1.3em;
+      width: 33%;
+      vertical-align: top;
+      padding-right: 70px;
+      a {
+        text-decoration: none;
+        color: #9cacb6;
+      }
+    }
+  }
+}

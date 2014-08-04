@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="description" content="{{ page | description | escape }}" />
+    <meta name="keywords" content="{{ page | keywords | join:', ' | escape }}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="icon" type="image/png" href="//img.technoparkcorp.com/favicon.ico">
+    <link rel="shortcut icon" type="image/png" href="//img.technoparkcorp.com/favicon.ico" />
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ site.url }}/rss.xml"/>
+    <link rel="author" href="//plus.google.com/u/0/114792568016408327418?rel=author" />
+    <link rel="stylesheet" href="/css/style.css?{{ site.data['hash'] }}"/>
+    <link rel="canonical" href="{{ site.url }}{{ page.url }}" />
+    <script src="/js/search.min.js?{{ site.data['hash'] }}"></script>
+    <script src="/js/all.js?{{ site.data['hash'] }}"></script>
+    <title>{{ page.title }}</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="banner">Software Development General Contractor</div>
+      <a title="Home page of TechnoParkCorp.com" href="/" class="logo">
+        <img src="//img.technoparkcorp.com/logo.svg"/>
+      </a>
+      <div class="box">
+        <div>&nbsp;</div>
+        <ul class="tl">
+          <li>
+            <a title="Facts, history, key achievements or TechnoPark Corp."
+              href="">About us</a>
+          </li>
+          <li>
+            <a title="Our approach to time/cost/scope and risk management"
+              href="">Process</a>
+          </li>
+          <li>
+            <a title="List of the latest projects with technical and management details"
+              href="">Success stories</a>
+          </li>
+          <li>
+            <a title="Our strength is in our inventions"
+              href="">Innovations</a>
+          </li>
+          <li>
+            <a title="Email, phone, fax and online contacts"
+              href="{% post_url 2014-08-04-contacts %}">Contacts</a>
+          </li>
+        </ul>
+        {{ content }}
+        {% raw %}
+        <script id="search-results-template" type="text/mustache">
+          {{#entries}}
+            <div>
+              <a href="{{url}}">{{title}}</a>
+            </div>
+          {{/entries}}
+        </script>
+        {% endraw %}
+        <ul class="bl">
+          <li>
+            <a title="Full list of site pages in hierarchical order"
+              href="">Site Map</a>
+          </li>
+          <li>
+            <a title="Legal terms of use of the site"
+              href="">Legal Notes</a>
+          </li>
+          <li>
+            <a title="Privacy policy for Personally Identifiable Information(PII)"
+              href="">Privacy Policy</a>
+          </li>
+        </ul>
+      </div>
+      <div class="sub">
+        &copy; TechnoPark Corp., 2000-2014
+        <a title="Read more about ISO 9001:2000 certification that was obtained by TechnoPark Corp."
+          href="" class="iso">
+          <img src=""/>
+        </a>
+      </div>
+    </div>
+  </body>
+</html>

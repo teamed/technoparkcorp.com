@@ -1,0 +1,122 @@
+/**
+ * thePanel v2.0, Project Management Software Toolkit
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are PROHIBITED without prior written permission from
+ * the author. This product may NOT be used anywhere and on any computer
+ * except the server platform of TechnoPark Corp. located at
+ * www.technoparkcorp.com. If you received this code occasionally and
+ * without intent to use it, please report this incident to the author
+ * by email: privacy@technoparkcorp.com or by mail:
+ * 568 Ninth Street South 202, Naples, Florida 34102, USA
+ * tel. +1 (239) 935 5429
+ *
+ * @copyright Copyright (c) TechnoPark Corp., 2001-2009
+ * @version $Id$
+ *
+ */
+
+@import 'colors';
+
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 12px;
+  font-family: 'Verdana', sans-serif;
+  color: $black;
+  background-color: $gray;
+  margin: 5px;
+}
+
+/* global wrapper of content */
+.wrapper {
+  position: relative;
+  clear: both;
+  margin-left: auto;
+  margin-right: auto;
+  width: 800px;
+}
+
+/* top left banner with a title of our company */
+.banner {
+  position: absolute;
+  left: 38px;
+  top: -25px;
+}
+
+/* top right logo */
+.logo {
+  position: absolute;
+  top: -70px;
+  right: 38px;
+  img {
+    width: 80px;
+    height: 58px;
+  }
+}
+
+.box {
+  position: relative;
+  background-color: $black;
+  border-radius: 10px;
+  margin-top: 80px;
+}
+
+/* top line with links */
+.tl, .bl {
+  list-style: none;
+  li {
+    display: inline;
+    margin-right: 37px;
+    color: $gray;
+    &:first-child {
+      margin-left: 37px;
+    }
+    a {
+      text-decoration: none;
+      color: $lightgray;
+      &:hover {
+        color: inherit;
+      }
+    }
+  }
+}
+.tl {
+  margin-top: 20px;
+  padding: 5px 0;
+  background-color: #455560;
+  border-bottom: 1px solid $lightgray;
+}
+.bl {
+  border-top: 1px solid $lightgray;
+  padding: 18px 0;
+}
+
+/* bottom line with links */
+.bl {
+  .rev {
+    color: white;
+    background-color: inherit;
+    position: absolute;
+    right: 30px;
+    top: 26px;
+  }
+}
+
+/* bottom sub text */
+.sub {
+  font-size: 90%;
+  margin-left: 39px;
+  margin-top: 4px;
+  .iso {
+    position: absolute;
+    top: 5px;
+    right: 36px;
+  }
+}
+
