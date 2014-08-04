@@ -43,15 +43,17 @@ Dir.glob('src/content/**/*.xml') do |file|
     md += "\n"
     if par.name == 'p'
       txt = par.xpath('text()').to_s.strip.gsub(/\s+/, ' ') \
-        .gsub(/(.{1,100})(\s+|\Z)/, "\n\\1")
+        .gsub(/(.{1,100} )/, "\n\\1")
     else
       txt = "\n" + par.to_s
     end
     md += txt
   }
 
-  output = "output/#{File.dirname(file)}/2014-08-08-#{File.basename(file,'.xml')}.md"
+  md += "\n\n" + xml.xpath('/article/text/text()').to_s.strip
+
+  output = "_posts/#{File.dirname(file)}/2014-08-08-#{File.basename(file,'.xml')}.md"
   FileUtils.mkdir_p(File.dirname(output))
-  File.write(output, md)
+  File.write(output, md.strip + "\n")
   puts output
 end
