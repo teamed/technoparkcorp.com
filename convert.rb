@@ -2,6 +2,7 @@
 
 require 'fileutils'
 require 'nokogiri'
+require 'reverse_markdown'
 
 Dir.glob('src/content/**/*.xml') do |file|
   puts file
@@ -42,8 +43,11 @@ Dir.glob('src/content/**/*.xml') do |file|
   xml.xpath('/article/text/*').each { |par|
     md += "\n"
     if par.name == 'p'
-      txt = par.xpath('text()').to_s.strip.gsub(/\s+/, ' ') \
+      txt = ReverseMarkdown.convert(par.xpath('text()').to_s) \
+        .strip.gsub(/\s+/, ' ') \
         .gsub(/(.{1,100} )/, "\n\\1")
+    elsif par.name == 'ul'
+      txt = "\n * " + par.xpath('li/text()').map(&:to_s).join("\n * ")
     else
       txt = "\n" + par.to_s
     end
