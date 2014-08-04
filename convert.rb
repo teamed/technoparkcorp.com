@@ -24,16 +24,22 @@ Dir.glob('src/content/**/*.xml') do |file|
     md += "intro: \"" + xml.xpath('/article/intro/text()')[0] \
       .to_s.strip.gsub(/\s+/, ' ') + "\"\n"
   end
+  md += "description:"
   if xml.xpath('/article/description/text()').length > 0
-    md += "description: |" \
+    md += " |" \
       + xml.xpath('/article/description/text()')[0] \
         .to_s.strip.gsub(/\s+/, ' ') \
         .gsub(/(.{1,60})(\s+|\Z)/, "\n  \\1") + "\n"
+  else
+    md += " no description\n"
   end
+  md += "keywords:\n"
   if xml.xpath('/article/keywords/text()').length > 0
-    md += "keywords:\n  - " \
+    md += "  - " \
       + xml.xpath('/article/keywords/text()')[0] \
         .to_s.strip.split(",").map(&:strip).join("\n  - ") + "\n"
+  else
+    md += "  - software development\n"
   end
   if xml.xpath('/article/next/text()').length > 0
     md += "next: " + xml.xpath('/article/next/text()')[0].to_s.strip + "\n"
