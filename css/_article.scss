@@ -96,14 +96,30 @@
         letter-spacing: -0.05 * $em;
         line-height: 2.6 * $em;
       }
-      p {
+      p, table, ul, ol {
         padding-top: 12px;
         line-height: 1.9 * $em;
+      }
+      ul, ol {
+        margin-left: 30px;
       }
       a {
         color: inherit;
         &:hover {
           color: $blue;
+        }
+      }
+      table {
+        width: 100%;
+        line-height: 1.4 * $em;
+        th {
+          text-align: left;
+          background-color: $blue;
+          color: white;
+        }
+        td, th {
+          vertical-align: top;
+          padding: 2px;
         }
       }
     }
