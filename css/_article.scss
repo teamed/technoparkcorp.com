@@ -29,6 +29,7 @@
     input {
       font-size: $em;
       padding: 2px 5px;
+      border-radius: 3px;
     }
     #search-results {
       display: none;
@@ -69,6 +70,10 @@
     padding: 5px 37px;
     text-align: right;
     color: $lightgray;
+    font-size: 0.9 * $em;
+    time {
+      color: $blue;
+    }
   }
   .menu {
     z-index: 50;
@@ -81,7 +86,21 @@
     width: 180px;
     min-width: 180px;
     min-height: 100px;
-    padding: 30px 5px 5px 37px;
+    padding: 30px 5px 5px 5px;
+    border: 1px solid $lightgray;
+    ul {
+      list-style: none;
+      margin-left: 10px;
+    }
+    li {
+      a {
+        text-decoration: none;
+        color: $black;
+        &.active, &:hover {
+          color: $blue;
+        }
+      }
+    }
   }
   .white {
     background-color: white;
