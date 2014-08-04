@@ -12,6 +12,27 @@ keywords:
   - puzzle driven development
   - XDSD
   - eXtremely Distributed Software Development
+first:
+  cost:
+    label: Our prices and estimations
+    href: /process/cost
+  scope:
+    label: Requirements management
+    href: /process/scope
+  risk:
+    label: How we manage project risks
+    href: /process/risk
+second:
+  why:
+    label: Why customers stay with us
+    href: /about/why
+  history:
+    label: History of our company
+    href: /about/history
+  jobs:
+    label: Job Openings
+    href: /about/jobs
+news: /about/news/yegor2014/teamed
 ---
 
 <a href="/" title="quality control">
@@ -27,20 +48,18 @@ keywords:
     </tr>
     <tr>
       <td>
-        <a href="<?=$this->staticUrl($front->left->item1->attributes()->name)?>"
-            ><?=$this->escape($front->left->item1)?></a><br/>
-        <a href="<?=$this->staticUrl($front->left->item2->attributes()->name)?>"
-            ><?=$this->escape($front->left->item2)?></a><br/>
-        <a href="<?=$this->staticUrl($front->left->item3->attributes()->name)?>"
-            ><?=$this->escape($front->left->item3)?></a><br/>
+        {% for link in page.first %}
+          <a href="{{ link[1]['href'] }}">
+            {{ link[1]['label'] }}
+          </a>
+        {% endfor %}
       </td>
       <td>
-        <a href="<?=$this->staticUrl($front->middle->item1->attributes()->name)?>"
-            ><?=$this->escape($front->middle->item1)?></a><br/>
-        <a href="<?=$this->staticUrl($front->middle->item2->attributes()->name)?>"
-            ><?=$this->escape($front->middle->item2)?></a><br/>
-        <a href="<?=$this->staticUrl($front->middle->item3->attributes()->name)?>"
-            ><?=$this->escape($front->middle->item3)?></a><br/>
+        {% for link in page.second %}
+          <a href="{{ link[1]['href'] }}">
+            {{ link[1]['label'] }}
+          </a>
+        {% endfor %}
       </td>
       <td style='padding-right: 10px; width: 220px;'>
         <a href="<?=$this->staticUrl($front->right->news)?>"><?=$this->escape($newsline)?></a>
