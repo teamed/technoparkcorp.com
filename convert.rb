@@ -7,11 +7,12 @@ require 'reverse_markdown'
 Dir.glob('src/content/**/*.xml') do |file|
   puts file
   xml = Nokogiri::XML(File.read(file))
+  path = "#{File.dirname(file)[12,200]}/#{File.basename(file,'.xml')}"
   name = File.basename(file,'.xml')
   md = "---\n"
   md += "layout: article\n"
   md += "date: 2014-08-08\n"
-  md += "permalink: #{File.dirname(file)[12,200]}/#{File.basename(file,'.xml')}\n"
+  md += "permalink: #{path}\n"
   if xml.xpath('/article/label/text()').length > 0
     md += "label: " + xml.xpath('/article/label/text()')[0] + "\n"
   end
@@ -62,7 +63,7 @@ Dir.glob('src/content/**/*.xml') do |file|
 
   md += "\n\n" + xml.xpath('/article/text/text()').to_s.strip
 
-  output = "_posts/#{File.dirname(file)}/2014-08-08-#{File.basename(file,'.xml')}.md"
+  output = "_posts/#{File.dirname(file)[12,200]}/2014-08-08-#{File.basename(file,'.xml')}.md"
   FileUtils.mkdir_p(File.dirname(output))
   File.write(output, md.strip + "\n")
   puts output

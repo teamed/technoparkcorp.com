@@ -6,10 +6,10 @@ layout: default
   <div class="sl">
     <input/>
   </div>
-  <div class="crumbs">
+  <div class="crumbs" role="navigation">
     bread
   </div>
-  <article class="white">
+  <article itemscope itemtype="http://schema.org/Article" class="white">
     <ul class="steps">
       <li>
         <a href="">Read about Quality Management and cost of quality we suggest</a>
@@ -18,12 +18,12 @@ layout: default
         <a href="">Read how projects are quoted, estimated, and paid</a>
       </li>
     </ul>
-    <div class="page">
+    <div class="page" itemprop="articleBody">
       <h1>{{ page.title }}</h1>
       {{ page.content }}
     </div>
   </article>
-  <ul class="menu">
+  <ul class="menu" role="navigation">
     <li>About us</li>
     <li>Contacts</li>
   </ul>
