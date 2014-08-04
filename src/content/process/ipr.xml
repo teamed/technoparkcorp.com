@@ -50,7 +50,7 @@
     <p>Software development contracts limit our ability to transfer or disclose intellectual
     property created during project execution. We are incorporated in the United States and
     work according to
-    <a href="http://www.copyright.gov/title17/">Copyright Law of the United States of America</a> -
+    [Copyright Law of the United States of America](http://www.copyright.gov/title17/) -
     our services are titled in the contract as
     ["work made for hire"]({% href process/ipr/law %}).</p>
 
@@ -59,7 +59,7 @@
     compliance with ISO 27001.</p>
 
     <!-- <p>We are a proud holder of [TRUSTe Online Privacy Seal]({% href about/privacypolicy %})
-    and a member of <a href="http://www.bbb.org">Better Business Bureau (BBB)</a>.</p> -->
+    and a member of [Better Business Bureau (BBB)](http://www.bbb.org).</p> -->
 
 </text>
 

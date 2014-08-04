@@ -26,7 +26,7 @@
 <label>PDD</label>
 <title>
     Puzzle Driven Development (PDD) to help in distributed projects
-</title>     
+</title>
 
 <keywords>
     puzzle driven development,
@@ -45,7 +45,7 @@
 <text>
 
     <p>Read more on this topic
-        in <a href="http://www.phparch.com/magazine/2010/august/">php|Architect, August 2010</a> 
+        in [php|Architect, August 2010](http://www.phparch.com/magazine/2010/august/)
         article "<b>Prevent Conflicts in Distributed Agile PHP Projects</b>", by Yegor Bugayenko.</p>
 
     <p>Parallel programming in a distributed team is a tricky
@@ -66,7 +66,7 @@
         fail to merge their results with similar contributions made by
         others. Puzzle Driven Development (PDD) solves the problems, by means
         of using so called "puzzles" inside source code.</p>
-        
+
     <p>More on this topic to be revealed later, when patent application
         is published by USPTO.</p>
 

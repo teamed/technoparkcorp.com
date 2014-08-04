@@ -48,7 +48,7 @@
 
     <p>
         We are one of the authors of a new open methodology called
-        <b>eXtremely Distributed Software Development (<a href="http://www.xdsd.org">XDSD</a>)</b>.
+        <b>eXtremely Distributed Software Development ([XDSD](http://www.xdsd.org))</b>.
         We are the only company who provides a proprietary implementation
         of it, combining together tools, technologies, and talents.
         Application of XDSD in your project guarantees you:
@@ -69,8 +69,8 @@
     </ul>
 
     <p>
-        Interested to know more about <a href="http://www.xdsd.org">XDSD</a>?
-        <a href="${mailto:sales}">Email us</a> to get a white paper.
+        Interested to know more about [XDSD](http://www.xdsd.org)?
+        [Email us](${mailto:sales}) to get a white paper.
     </p>
 
 </text>

@@ -48,7 +48,7 @@
     </ul>
 
     <p>
-        Email directly to <a href="${mailto:hr}">HR Director</a> to setup
+        Email directly to [HR Director](${mailto:hr}) to setup
         a phone interview. Please, don't call us directly, just send
         your resume for review. We promise to reply to ALL emails. Thanks!
     </p>

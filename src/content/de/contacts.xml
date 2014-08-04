@@ -26,7 +26,7 @@
 <next>de/quality</next>
 
 <description>
-    Individuelle Software-Entwicklung, 
+    Individuelle Software-Entwicklung,
     Contacts of TechnoPark Corp. in Germany, Europe and USA
 </description>
 
@@ -42,11 +42,11 @@
 
 <text>
 
-    <p>Am bequemsten ist es, Kontakte per E-mail auszutauschen und 
-    sich anschließend zu Gesprächen zu treffen: <a href="${mailto:sales}">email</a></p>
+    <p>Am bequemsten ist es, Kontakte per E-mail auszutauschen und
+    sich anschließend zu Gesprächen zu treffen: [email](${mailto:sales})</p>
 
-    <p> Wahrscheinlich arbeiten Sie schon mit Auftragnehmern oder hatten bereits Arbeitserfahrungen mit entfernt arbeitenden Teams. 
-    Möglicherweise ist diese Erfahrung negativ. Wir werden Ihnen vorschlagen, wie es am besten ist, die Arbeit mit uns 
+    <p> Wahrscheinlich arbeiten Sie schon mit Auftragnehmern oder hatten bereits Arbeitserfahrungen mit entfernt arbeitenden Teams.
+    Möglicherweise ist diese Erfahrung negativ. Wir werden Ihnen vorschlagen, wie es am besten ist, die Arbeit mit uns
     aufzubauen, damit die Projekte für Sie und uns erfolgreich sind. </p>
 
     <p>Naples, Florida<br/>

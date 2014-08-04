@@ -47,7 +47,7 @@
 
     <p>When a project is started and Requirements are not specified in great detail,
     the exact project [Budget]({% href process/cost/budget %})
-    can not be calculated without mistakes (due to the well-known <a href="http://www.construx.com/Page.aspx?hid=1648">Cone of Uncertainty</a>).
+    can not be calculated without mistakes (due to the well-known [Cone of Uncertainty](http://www.construx.com/Page.aspx?hid=1648)).
     Concrete numbers in this stage will lead to an ineffective
     situation in which you or us may experience loss.</p>
 
@@ -113,9 +113,9 @@
 
     <p>In order to calculate the numbers above, we use our own patent-pending estimation method,
     that is based on
-    <a href="http://sunset.usc.edu/research/COCOMOII/">COCOMO-II Software Cost Estimation Technology</a>,
-    <a href="http://en.wikipedia.org/wiki/Program_Evaluation_and_Review_Technique">PERT (Program Evaluation and Review Technique)</a> and
-    <a href="http://en.wikipedia.org/wiki/Wideband_delphi">Wideband Delphi</a>.</p>
+    [COCOMO-II Software Cost Estimation Technology](http://sunset.usc.edu/research/COCOMOII/),
+    [PERT (Program Evaluation and Review Technique)](http://en.wikipedia.org/wiki/Program_Evaluation_and_Review_Technique) and
+    [Wideband Delphi](http://en.wikipedia.org/wiki/Wideband_delphi).</p>
 
     <p>Completion of the ROM Estimate takes up to 48 hours.</p>
 

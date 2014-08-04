@@ -30,13 +30,13 @@
     <p>We're always looking for new talents and skills.</p>
 
     <p>
-        <embed src="http://blip.tv/play/AYH88AsA" type="application/x-shockwave-flash" 
-            width="398" height="329" allowscriptaccess="always" 
+        <embed src="http://blip.tv/play/AYH88AsA" type="application/x-shockwave-flash"
+            width="398" height="329" allowscriptaccess="always"
             allowfullscreen="true">
         </embed>
     </p>
 
-    <p>Email our <a href="${mailto:hr}">HR director</a>.</p>
+    <p>Email our [HR director](${mailto:hr}).</p>
 
 </text>
 

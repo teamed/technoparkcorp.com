@@ -59,12 +59,12 @@
         style="float: left; padding-right: 20px; border: none;" alt="TRUSTe.org"><png>//images/truste</png></a>
 
     <p>TechnoPark Corp is a licensee of the <ahref name="http://www.truste.org">TRUSTe</ahref> Web Privacy Seal Program.
-    <a href="http://www.truste.org">TRUSTe</a> is an independent, non-profit organization whose mission is to
+    [TRUSTe](http://www.truste.org) is an independent, non-profit organization whose mission is to
     build user's trust and confidence in the Internet by promoting the use
     of fair information practices.  This privacy statement covers the Web site
     www.technoparkcorp.com.  Because this Web site wants to demonstrate its commitment
     to your privacy, it has agreed to disclose its information practices and
-    have its privacy practices reviewed for compliance by <a href="http://www.truste.org">TRUSTe</a>.</p>
+    have its privacy practices reviewed for compliance by [TRUSTe](http://www.truste.org).</p>
 
     <a href="http://www.bbbonline.org/cks.asp?id=10805219819"
         style="float: left; padding-right: 20px; border: none;" alt="Click to verify BBB accreditation and to see a BBB report">
@@ -78,10 +78,10 @@
 
     <p>If you have questions or concerns regarding this statement, you should first contact
     Arthur Petrenko at 568 Ninth Street South 202, Naples, Florida, 34102,
-    <a href="${mailto:privacy}">${mailto:privacy}</a>.  If you do not
+    [${mailto:privacy}](${mailto:privacy}).  If you do not
     receive acknowledgement of your inquiry or your inquiry has not been satisfactorily
     addressed, you should contact TRUSTe at
-    <a href="http://www.truste.org/consumers/watchdog_complaint.php">http://www.truste.org/consumers/watchdog_complaint.php</a>.
+    [http://www.truste.org/consumers/watchdog_complaint.php](http://www.truste.org/consumers/watchdog_complaint.php).
     TRUSTe will then serve as a liaison with us to resolve your concerns.</p>
 
 
@@ -133,13 +133,13 @@
     up to date. Please notify us of any changes to your PII.</p>
 
     <p>Our sites DOES NOT allow you to make these updates yourself online. In order
-    to update your PII you shall <a href="${mailto:privacy}">email us</a>
+    to update your PII you shall [email us](${mailto:privacy})
     or call at +1 (239) 243 0206.</p>
 
 
     <h1>Unsubscribing</h1>
 
-    <p>Subscriptions to our newsletters can be managed ONLY by direct request sent to us <a href="${mailto:privacy}">by email</a>.
+    <p>Subscriptions to our newsletters can be managed ONLY by direct request sent to us [by email](${mailto:privacy}).
     In addition, each email newsletter includes instructions on how you can un-subscribe from that particular mailing.</p>
 
     <p>You may also unsubscribe from TPC's newsletters by sending a letter, including your
@@ -203,7 +203,7 @@
 
     <p>When we transfer sensitive personal data (for example, credit card
     information) over the Internet, we protect it using Secure Sockets Layer (SSL)
-    encryption technology. To learn more about SSL, follow <a href="http://en.wikipedia.org/wiki/Secure_Sockets_Layer">this link</a>.</p>
+    encryption technology. To learn more about SSL, follow [this link](http://en.wikipedia.org/wiki/Secure_Sockets_Layer).</p>
 
     <p>While we strive to protect your PII, we cannot ensure the security of the
     information you transmit.</p>
@@ -212,7 +212,7 @@
     the Internet. For example, change your passwords often, use a combination of
     letters and numbers when creating passwords, and make sure you use a secure browser.</p>
 
-    <p>If you have any questions about security on our website, you can <a href="${mailto:privacy}">email us</a>.</p>
+    <p>If you have any questions about security on our website, you can [email us](${mailto:privacy}).</p>
 
 
     <h1>Cookies</h1>
@@ -229,7 +229,7 @@
     your browser. A persistent cookie remains on your hard drive for an extended period
     of time. You can remove persistent cookies by following directions provided in
     your Internet browser's help file. To learn more about cookies, follow the
-    <a href="http://en.wikipedia.org/wiki/HTTP_cookie">link</a>.</p>
+    [link](http://en.wikipedia.org/wiki/HTTP_cookie).</p>
 
     <p>We store the identified of your latest login in cookie in order to avoid
     mutliple login requests when there are delays in site usage. We set a persistent
@@ -280,7 +280,7 @@
 
     <p>If you have any questions or comments about this Privacy Policy, the practices of this site,
     or your interaction with TPC by means of this site, please [contact us]({% href contacts %}) or
-    send us <a href="${mailto:privacy}">an email</a>.</p>
+    send us [an email](${mailto:privacy}).</p>
 
 </text>
 

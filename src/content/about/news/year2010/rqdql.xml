@@ -26,7 +26,7 @@
 <label>RQDQL</label>
 <title>
     Formal and Easy to Understand Software Requirements
-</title>     
+</title>
 
 <keywords>
     requirements definition,
@@ -50,15 +50,15 @@
 <text>
 
     <p>Read more on this topic
-        at <a href="http://www.rqdql.com/rqdql.html">RQDQL website</a>.</p>
+        at [RQDQL website](http://www.rqdql.com/rqdql.html).</p>
 
-    <p>TechnoPark Corp. started a new initiative, called 
+    <p>TechnoPark Corp. started a new initiative, called
         Requirements Definition and Query Language (RQDQL), which
         is going to design a method and software for automated
         specification of software requirements in formal way
         at the same time easy to understand for non-professional
         reader (project sponsor).</p>
-        
+
     <p>The project is still in development and preliminary
         results will be published before the end of this year.</p>
 

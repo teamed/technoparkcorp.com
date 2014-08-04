@@ -76,7 +76,7 @@
     </p>
 
     <p>
-        <a href="${mailto:hr}">HR Director</a> is available by email.
+        [HR Director](${mailto:hr}) is available by email.
     </p>
 
 </text>

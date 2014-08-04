@@ -32,8 +32,8 @@
 <next>innovations/metrics</next>
 
 <description>
-    We invented a method of software cost estimating using a 
-    limited number of functional requirements, called Scope Champions. 
+    We invented a method of software cost estimating using a
+    limited number of functional requirements, called Scope Champions.
     The method reduces the costs of estimating and increases accuracy.
     Full presentation of the method will be given on PROFES-09 conference in Oulu, Finland, on the 16th of June.
 </description>
@@ -59,29 +59,29 @@
         \textbf{Disclaimer:} This web page contains just an abstract of a research
         report that was presented on \href{http://www.profes2009.org/}{PROFES 2009} conference
         in Oulu, Finland, on 16th of June, 2009. Materials of the conference are
-        published by Springer Verlag. The method is pending USPTO patent: 
-        <a href="http://www.google.com/patents/about?id=QjDNAAAAEBAJ">12/193,010</a>.
-        
-        Any project needs estimates (cost, time and resource) as key artifacts, 
+        published by Springer Verlag. The method is pending USPTO patent:
+        [12/193,010](http://www.google.com/patents/about?id=QjDNAAAAEBAJ).
+
+        Any project needs estimates (cost, time and resource) as key artifacts,
         which are based on scope definition.
-        There are many well-established and proven methods of software size and 
-        cost estimating, which are based on software specifications and 
+        There are many well-established and proven methods of software size and
+        cost estimating, which are based on software specifications and
         organizational assets, e.g. historical data. In a general case, any
         method includes
-                 (i) requirements analysis, 
-                 (ii) numbers deriving and 
+                 (i) requirements analysis,
+                 (ii) numbers deriving and
                  (iii) final calculation.
 
         These three steps could be repeated several times iteratively, e.g. like in
-        \href{http://en.wikipedia.org/wiki/Wideband_delphi}{Wideband Delphi}. 
+        \href{http://en.wikipedia.org/wiki/Wideband_delphi}{Wideband Delphi}.
         Each step may be completed manually
         or with a special tool and/or algorithm, e.g. \href{http://en.wikipedia.org/wiki/Function_point_analysis}{function point analysis},
-        \href{http://sunset.usc.edu/csse/research/COCOMOII/cocomo_main.html}{COCOMO}, 
-        \href{http://en.wikipedia.org/wiki/Program_Evaluation_and_Review_Technique}{PERT}, 
+        \href{http://sunset.usc.edu/csse/research/COCOMOII/cocomo_main.html}{COCOMO},
+        \href{http://en.wikipedia.org/wiki/Program_Evaluation_and_Review_Technique}{PERT},
         \href{http://en.wikipedia.org/wiki/User_story}{XP user stories},
         \href{http://en.wikipedia.org/wiki/Source_lines_of_code}{SLOC} prediction, by analogies, with
-        \href{http://www.stsc.hill.af.mil/crosstalk/2006/02/0602Clemmons.pdf}{use case points}, 
-        class points, 
+        \href{http://www.stsc.hill.af.mil/crosstalk/2006/02/0602Clemmons.pdf}{use case points},
+        class points,
         neural networks, and others.
 
         No matter what tools and algorithms are used, the whole process has
@@ -89,7 +89,7 @@
         to achieve optimal results or even to finish the estimating in time.
 
         First, even a mid-size software project may contain hundreds of functional
-        and non-functional requirements. The time required by estimators 
+        and non-functional requirements. The time required by estimators
         for proper understanding and analysis of requirements almost always is much bigger than the budgeted
         time for the whole estimating process. The obvious outcome of this situation is
         a limited understanding of requirements by estimators, which leads to inaccuracy
@@ -106,22 +106,22 @@
 
     \section*{The Method of Scope Champions}
 
-                In properly managed software projects, product scope is defined by software requirements specification 
-                (SRS), that includes functional and non-functional requirements to the 
-                product. A numbered list of requirements defines the boundary 
-                of the product scope, while non-functional requirements supplement them 
-                with quality attributes. 
+                In properly managed software projects, product scope is defined by software requirements specification
+                (SRS), that includes functional and non-functional requirements to the
+                product. A numbered list of requirements defines the boundary
+                of the product scope, while non-functional requirements supplement them
+                with quality attributes.
 
                 The method consists of three steps:
-                         1) select \textbf{Scope Champions}, 
+                         1) select \textbf{Scope Champions},
                          2) estimate Scope Champions, and
                          3) calculate the product scope estimate.
 
             Scope Champion is a selected functional requirement,
-            the biggest and the most complex element of scope, according to 
+            the biggest and the most complex element of scope, according to
             the estimators' expert judgement. Scope Champions are picked up from
             a complete set of requirements on the same level of abstraction.
-                
+
                 When Scope Champions are selected, isolated estimates for them
             are made by estimators. Using the estimates and the formula, proposed as part of this
             method, the final product scope estimate is calculated. The formula is:
@@ -139,7 +139,7 @@
                 Accuracy of the final estimate is improved because:
 
                 \begin{itemize}
-            \item the estimators judgement is based on more detailed analysis, and 
+            \item the estimators judgement is based on more detailed analysis, and
             \item the final estimate is much easier to validate and review.
                 \end{itemize}
 

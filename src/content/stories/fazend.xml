@@ -46,11 +46,11 @@
     </a>
 
     <p>
-        The development of <b><a href="http://fazend.com">FaZend.com</a></b>
+        The development of <b>[FaZend.com](http://fazend.com)</b>
         started in July 2009, when an open source PHP framework
-        (<a href="http://code.google.com/p/fazend/">FaZend Framework</a>) was
+        ([FaZend Framework](http://code.google.com/p/fazend/)) was
         created and hosted at Google Code. The FaZend Framework was designed
-        on top of <a href="http://framework.zend.com">Zend Framework</a>,
+        on top of [Zend Framework](http://framework.zend.com),
         a very famous open-source web development toolkit, in order to
         make it more suitable for continuously delivered web systems.
     </p>
@@ -59,7 +59,7 @@
         FaZend Framework proved its success with a number of open source
         and commercial web products. At the end of 2009 a group of
         engineers managed by our staff started the development of
-        <a href="http://www.fazend.com">fazend.com</a>,
+        [fazend.com](http://www.fazend.com),
         a free hosted solution for continuous integration of
         PHP, Java, Python, and Ruby projects (this list is not exhaustive).
     </p>

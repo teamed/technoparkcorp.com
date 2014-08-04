@@ -57,14 +57,14 @@
         company completed over a hundred successful projects. Yegor
         possesses Master's Degree in Computer Science, and is
         a proud holder of most valuable industry certifications, including
-        <a href="http://en.wikipedia.org/wiki/Project_Management_Professional">PMP&#174;</a>,
-        <a href="http://en.wikipedia.org/wiki/Sun_Certified_Enterprise_Architect#Sun_Certified_Enterprise_Architect_.28SCEA.29">OCMJEA</a>,
-        <a href="http://www-03.ibm.com/certify/certs/38008003.shtml">IBM RUP</a>,
-        <a href="http://www.omg.org/uml-certification/">OCUP</a>,
-        <a href="http://www.prince2.com/">PRINCE2</a>,
-        <a href="http://www.microsoft.com/learning/mcp/mcp/">MCP</a>,
+        [PMP&#174;](http://en.wikipedia.org/wiki/Project_Management_Professional),
+        [OCMJEA](http://en.wikipedia.org/wiki/Sun_Certified_Enterprise_Architect#Sun_Certified_Enterprise_Architect_.28SCEA.29),
+        [IBM RUP](http://www-03.ibm.com/certify/certs/38008003.shtml),
+        [OCUP](http://www.omg.org/uml-certification/),
+        [PRINCE2](http://www.prince2.com/),
+        [MCP](http://www.microsoft.com/learning/mcp/mcp/),
         and
-        <a href="http://www.zend.com/en/services/certification/">ZCE</a>/<a href="http://www.zend.com/en/services/certification/">ZFCE</a>.
+        [ZFCE](http://www.zend.com/en/services/certification/">ZCE</a>/<a href="http://www.zend.com/en/services/certification/).
     </p>
 
     <p>
@@ -72,9 +72,9 @@
         software methodologies designed to improve quality. He is a regular academic
         writer and an author of almost all proprietary patent-pending
         and open source innovations of the company, including
-        <a href="${about/news/year2010/xdsd}">eXtremely Distributed Software Development (XDSD)</a>.
-        <a href="${innovations/pdd}">Puzzle Driven Development (PDD)</a>, and
-        <a href="${stories}/fazend">FaZend Hosted CI Platform</a>.
+        [eXtremely Distributed Software Development (XDSD)](${about/news/year2010/xdsd}).
+        [Puzzle Driven Development (PDD)](${innovations/pdd}), and
+        [FaZend Hosted CI Platform](${stories}/fazend).
     </p>
 
     <img src='data:image/png;base64,${base64:/about/noah.png}'

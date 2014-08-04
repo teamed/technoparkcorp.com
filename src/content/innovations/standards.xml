@@ -46,24 +46,24 @@
         <li>Software Engineering Institute,
         <b>CMMI for Development Version 1.2</b>, CMMI-DEV, v1.2,
         Pittsburg, PA, USA, 2006,
-        <a href="http://www.sei.cmu.edu/publications/documents/06.reports/06tr008.html">download</a>.</li>
+        [download](http://www.sei.cmu.edu/publications/documents/06.reports/06tr008.html).</li>
 
-        <li>Michael S.V. Turner, <b>Microsoft Solutions Framework Essentials</b>, 
+        <li>Michael S.V. Turner, <b>Microsoft Solutions Framework Essentials</b>,
         Building Successful Technology Solutions,
         Microsoft Press, Redmond, WA, USA, 2006,
-        <a href="http://www.amazon.com/Microsoft-Solutions-Framework-Essentials-Michael/dp/0735623538">buy online</a>.</li>
+        [buy online](http://www.amazon.com/Microsoft-Solutions-Framework-Essentials-Michael/dp/0735623538).</li>
 
         <li>A Guide to the Project Management Body of Knowledge 3rd Edition (<b>PMBOK Guide</b>),
         Project Management Institute (PMI), USA, 2004,
-        <a href="http://www.pmi.org">buy online</a>.</li>
+        [buy online](http://www.pmi.org).</li>
 
         <li><b>Managing Successful Projects with PRINCE2</b>, 2005 edition,
-        Office of Government Commerce, London, 
-        <a href="http://www.tsoshop.co.uk">buy online</a>.</li>
+        Office of Government Commerce, London,
+        [buy online](http://www.tsoshop.co.uk).</li>
 
         <li><b>Rational Unified Process v7</b>,
         Rational Method Composer, IBM Corp.,
-        <a href="http://www.ibm.com">download</a>.</li>
+        [download](http://www.ibm.com).</li>
     </ul>
 
     <p>The information is only for educational purposes. The information may not
@@ -83,7 +83,7 @@
         <th>PMBOK 3rd Guide</th>
         <th>PRINCE2</th>
         <th>RUP v7</th>
-    </tr>    
+    </tr>
 
     <tr>
         <!-- artifacts -->
@@ -297,7 +297,7 @@
                         Workspace    <br/>
                         total: 88
         </td>
-    </tr>    
+    </tr>
 
     <tr>
         <!-- Roles -->
@@ -363,7 +363,7 @@
                         User-Interface Designer    <br/>
                         total: 29
         </td>
-    </tr>    
+    </tr>
 
     <tr>
         <!-- Processes -->
@@ -376,7 +376,7 @@
                 Implement the Action Proposals<br/>
                 Evaluate the Effect of Changes<br/>
                 Record Data<br/>
-            </div>    
+            </div>
             Configuration Management
             <div style="padding-left: 10px;">
                 Identify Configuration Items<br/>
@@ -386,7 +386,7 @@
                 Control Configuration Items<br/>
                 Establish Configuration Management Records<br/>
                 Perform Configuration Audits<br/>
-            </div>    
+            </div>
             Decision Analysis and Resolution
             <div style="padding-left: 10px;">
                 Establish Guidelines for Decision Analysis<br/>
@@ -395,7 +395,7 @@
                 Select Evaluation Methods<br/>
                 Evaluate Alternatives<br/>
                 Select Solutions<br/>
-            </div>    
+            </div>
             Integrated Project Management
             <div style="padding-left: 10px;">
                                 Establish the Project's Defined Process<br/>
@@ -408,7 +408,7 @@
                                 Manage Dependencies<br/>
                                 Resolve Coordination Issues<br/>
 
-            </div>    
+            </div>
             Measurement and Analysis
             <div style="padding-left: 10px;">
                                 Establish Measurement Objectives<br/>
@@ -419,7 +419,7 @@
                                 Analyze Measurement Data<br/>
                                 Store Data and Results<br/>
                                 Communicate Results<br/>
-            </div>    
+            </div>
             Product Integration
             <div style="padding-left: 10px;">
                                 Determine Integration Sequence<br/>
@@ -431,7 +431,7 @@
                                 Assemble Product Components<br/>
                                 Evaluate Assembled Product Components<br/>
                                 Package and Deliver the Product or Product Component<br/>
-            </div>    
+            </div>
             Project Monitoring and Control
             <div style="padding-left: 10px;">
                                 Monitor Project Planning Parameters<br/>
@@ -444,7 +444,7 @@
                                 Analyze Issues<br/>
                                 Take Corrective Action<br/>
                                 Manage Corrective Action<br/>
-            </div>    
+            </div>
             Project Planning
             <div style="padding-left: 10px;">
                                 Estimate the Scope of the Project<br/>
@@ -461,14 +461,14 @@
                                 Review Plans That Affect the Project<br/>
                                 Reconcile Work and Resource Levels<br/>
                                 Obtain Plan Commitment
-            </div>    
+            </div>
             Process and Product Quality Assurance
             <div style="padding-left: 10px;">
                                 Objectively Evaluate Processes<br/>
                                 Objectively Evaluate Work Products and Services<br/>
                                 Communicate and Ensure Resolution of Noncompliance Issues<br/>
                                 Establish Records
-            </div>    
+            </div>
             Quantitative Project Management
             <div style="padding-left: 10px;">
                                 Establish the Project's Objectives<br/>
@@ -479,7 +479,7 @@
                                 Apply Statistical Methods to Understand Variation<br/>
                                 Monitor Performance of the Selected Subprocesses<br/>
                                 Record Statistical Management Data<br/>
-            </div>    
+            </div>
             Requirements Development
             <div style="padding-left: 10px;">
                                 Elicit Needs
@@ -492,7 +492,7 @@
                                 Analyze Requirements<br/>
                                 Analyze Requirements to Achieve Balance<br/>
                                 Validate Requirements<br/>
-            </div>    
+            </div>
             Requirements Management
             <div style="padding-left: 10px;">
                                 Obtain an Understanding of Requirements<br/>
@@ -500,7 +500,7 @@
                                 Manage Requirements Changes<br/>
                                 Maintain Bidirectional Traceability of Requirements<br/>
                                 Identify Inconsistencies Between Project Work and Requirements<br/>
-            </div>    
+            </div>
             Risk Management
             <div style="padding-left: 10px;">
                                 Determine Risk Sources and Categories<br/>
@@ -510,7 +510,7 @@
                                 Evaluate, Categorize, and Prioritize Risks<br/>
                                 Develop Risk Mitigation Plans<br/>
                                 Implement Risk Mitigation Plans<br/>
-            </div>    
+            </div>
             Supplier Agreement Management
             <div style="padding-left: 10px;">
                                 Determine Acquisition Type<br/>
@@ -521,7 +521,7 @@
                                 Evaluate Selected Supplier Work Products<br/>
                                 Accept the Acquired Product<br/>
                                 Transition Products<br/>
-            </div>    
+            </div>
             Technical Solution
             <div style="padding-left: 10px;">
                                 Develop Alternative Solutions and Selection Criteria<br/>
@@ -532,7 +532,7 @@
                                 Perform Make, Buy, or Reuse Analyses<br/>
                                 Implement the Design<br/>
                                 Develop Product Support Documentation<br/>
-            </div>    
+            </div>
             Validation
             <div style="padding-left: 10px;">
                                 Select Products for Validation<br/>
@@ -540,7 +540,7 @@
                                 Establish Validation Procedures and Criteria<br/>
                                 Perform Validation<br/>
                                 Analyze Validation Results<br/>
-            </div>    
+            </div>
             Verification
             <div style="padding-left: 10px;">
                                 Select Work Products for Verification<br/>
@@ -551,7 +551,7 @@
                                 Analyze Peer Review Data<br/>
                                 Perform Verification<br/>
                                 Analyze Verification Results<br/>
-            </div>    
+            </div>
             total: 131
         </td>
         <td> <!-- MSF -->
@@ -573,7 +573,7 @@
                 Monitor and Control Project Work<br/>
                 Integrated Change Control<br/>
                 Close Project<br/>
-            </div>    
+            </div>
             Project Scope Management
             <div style="padding-left: 10px;">
                 Scope Planning<br/>
@@ -581,7 +581,7 @@
                 Create WBS<br/>
                 Scope Verification<br/>
                 Scope Control<br/>
-            </div>    
+            </div>
             Project Time Management
             <div style="padding-left: 10px;">
                 Activity Definition<br/>
@@ -590,33 +590,33 @@
                 Activity Duration Estimating<br/>
                 Schedule Development<br/>
                 Schedule Control<br/>
-            </div>    
+            </div>
             Project Cost Management
             <div style="padding-left: 10px;">
                 Cost Estimating<br/>
                 Cost Budgeting<br/>
                 Cost Control<br/>
-            </div>    
+            </div>
             Project Quality Management
             <div style="padding-left: 10px;">
                 Quality Planning<br/>
                 Perform Quality Assurance<br/>
                 Perform Quality Control<br/>
-            </div>    
+            </div>
             Project Human Resource Management
             <div style="padding-left: 10px;">
                 Human Resource Planning<br/>
                 Acquire Project Team<br/>
                 Develop Project Team<br/>
                 Manage Project Team<br/>
-            </div>    
+            </div>
             Project Communications Management
             <div style="padding-left: 10px;">
                 Communications Planning<br/>
                 Information Distribution<br/>
                 Performance Reporting<br/>
                 Manage Stakeholders<br/>
-            </div>    
+            </div>
             Project Risk Management
             <div style="padding-left: 10px;">
                 Risk Management Planning<br/>
@@ -625,7 +625,7 @@
                 Quantitative Risk Analysis<br/>
                 Risk Response Planning<br/>
                 Risk Monitoring and Control<br/>
-            </div>    
+            </div>
             Project Procurement Management
             <div style="padding-left: 10px;">
                 Plan Purchases and Acquisitions<br/>
@@ -634,7 +634,7 @@
                 Select Sellers<br/>
                 Contract Administration<br/>
                 Contract Closure<br/>
-            </div>    
+            </div>
             total: 44
         </td>
         <td> <!-- PRINCE2 -->
@@ -646,7 +646,7 @@
                 Preparing a Project Brief<br/>
                 Defining Project Approach<br/>
                 Planning an Initiation Stage<br/>
-            </div>    
+            </div>
             (IP) Initiating a Project
             <div style="padding-left: 10px;">
                 Planning Quality<br/>
@@ -655,7 +655,7 @@
                 Setting up Project Controls<br/>
                 Setting up Project Files<br/>
                 Assembling a Project Initiation Document<br/>
-            </div>    
+            </div>
             (DP) Directing a Project
             <div style="padding-left: 10px;">
                 Authorising Initiation<br/>
@@ -663,7 +663,7 @@
                 Authorising a Stage or Exception Plan<br/>
                 Confirming Project Closure<br/>
                 Giving Ad Hoc Direction<br/>
-            </div>    
+            </div>
             (CS) Controlling a Stage
             <div style="padding-left: 10px;">
                 Authorising Work Package<br/>
@@ -675,13 +675,13 @@
                 Taking Corrective Actions<br/>
                 Escalating Project Issues<br/>
                 Receiving Completed Work Package<br/>
-            </div>    
+            </div>
             (MP) Managing Product Delivery
             <div style="padding-left: 10px;">
                 Accepting a Work Package<br/>
                 Executing a Work Package<br/>
                 Delivering a Work Package<br/>
-            </div>    
+            </div>
             (SB) Managing Stage Boundaries
             <div style="padding-left: 10px;">
                 Planning a Stage<br/>
@@ -690,13 +690,13 @@
                 Updating the Risk Log<br/>
                 Reporting Stage End<br/>
                 Producing an Exception Plan<br/>
-            </div>    
+            </div>
             (CP) Closing a Project
             <div style="padding-left: 10px;">
                 Decomissioning a Project<br/>
                 Identifying Follow-on Actions<br/>
                 Evaluating a Project<br/>
-            </div>    
+            </div>
             (PL) Planning
             <div style="padding-left: 10px;">
                 Designing a Plan<br/>
@@ -706,7 +706,7 @@
                 Scheduling<br/>
                 Analysing Risks<br/>
                 Completing a Plan<br/>
-            </div>    
+            </div>
             total: 45
         </td>
         <td> <!-- RUP -->
@@ -795,7 +795,7 @@
                         </div>
                 total: 56
         </td>
-    </tr>    
+    </tr>
     </table>
 
 </text>

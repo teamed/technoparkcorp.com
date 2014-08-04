@@ -65,7 +65,7 @@
         <li>You are afraid to change key programmers since each of
         them possesses some unique knowledge about your product;</li>
 
-        <li>You can only hope that your code is of good <a href="http://en.wikipedia.org/wiki/Software_quality">quality</a> because
+        <li>You can only hope that your code is of good [quality](http://en.wikipedia.org/wiki/Software_quality) because
         your coders say it is;</li>
 
         <li>You can't add new features freely since the product becomes unstable after every new change;</li>
@@ -108,19 +108,19 @@
         the benefits for programmers will be higher, like salary and recognition.</p>
 
         <p>We use two metrics:
-        <a href="http://en.wikipedia.org/wiki/Code_coverage">Code Coverage</a>
-        and <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity">Cyclomatic Complexity</a>.
+        [Code Coverage](http://en.wikipedia.org/wiki/Code_coverage)
+        and [Cyclomatic Complexity](http://en.wikipedia.org/wiki/Cyclomatic_complexity).
         Each of them are calculated automatically at each round of
-        <a href="http://en.wikipedia.org/wiki/Continuous_Integration">continuous integration</a>.</p>
+        [continuous integration](http://en.wikipedia.org/wiki/Continuous_Integration).</p>
 
         <p><b>Low cyclomatic complexity</b> tells you that the code is clear and simple
         and could be easily understood by new programmers (This means no more "tricks").
         Cyclomatic complexity is one of the most important
-        <a href="http://en.wikipedia.org/wiki/Software_metric">software metrics</a> used in
-        <a href="http://en.wikipedia.org/wiki/Static_code_analysis">static code analysis</a>.</p>
+        [software metrics](http://en.wikipedia.org/wiki/Software_metric) used in
+        [static code analysis](http://en.wikipedia.org/wiki/Static_code_analysis).</p>
 
         <p><b>High code coverage</b> tells you that for each block of code there exists
-        a <a href="http://en.wikipedia.org/wiki/Unit_testing">unit test</a> that validates it.
+        a [unit test](http://en.wikipedia.org/wiki/Unit_testing) that validates it.
         The biggest benefit of unit tests is that once the code is tested it
         stays workable when its author forgets how it works.</p>
 
@@ -160,9 +160,9 @@
     <h2>How we do this technically</h2>
 
         <p>There are five components of the whole process:
-        <a href="http://subversion.tigris.org">SVN</a>,
-        <a href="http://continuum.apache.org">Continuum</a>,
-        <a href="http://maven.apache.org">Maven2</a>,
+        [SVN](http://subversion.tigris.org),
+        [Continuum](http://continuum.apache.org),
+        [Maven2](http://maven.apache.org),
         Gist and thePanel.
         Coders as usualy commit their changes to SVN, and you monitor
         quality-of-code in our online project management system (thePanel):</p>
@@ -205,15 +205,15 @@
         </tikz></p>
 
         <p>The cycle is repeated every day and is initiated by Continuum,
-        an open-source continuous integration software by <a href="http://www.apache.org">Apache Group</a>:</p>
+        an open-source continuous integration software by [Apache Group](http://www.apache.org):</p>
 
         <ol>
             <li>Coders commit changes to the SVN repository</li>
             <li>Continuum checks out the changes and starts the builder (Maven2)</li>
             <li>Maven2 compiles the code and runs unit tests</li>
-            <li><a href="http://www.junit.org">JUnit</a>-like framework produces a code coverage report</li>
+            <li>[JUnit](http://www.junit.org)-like framework produces a code coverage report</li>
             <li>A language-specific tool calculates cyclomatic complexity</li>
-            <li>The transmitter (Gist) sends <a href="http://www.w3.org/XML">XML</a> report to thePanel</li>
+            <li>The transmitter (Gist) sends [XML](http://www.w3.org/XML) report to thePanel</li>
             <li>thePanel converts metrics into <b>bonuses</b>, for coders</li>
             <li>You get the quality-of-code instantly</li>
         </ol>
@@ -224,12 +224,12 @@
         You monitor the values of metrics.</p>
 
         <p>We use our own simple cyclomatic complexity calculator
-        based on <a href="http://www.mccabe.com">Thomas McCabe's</a> principles.
+        based on [Thomas McCabe's](http://www.mccabe.com) principles.
         Code coverage is calculated by
-            <a href="http://www.junit.org">JUnit</a>,
-            <a href="http://www.phpunit.de">phpUnit</a> (in combination with <a href="http://www.xdebug.org">xdebug</a>),
-            <a href="http://www.nunit.org">NUnit</a> or
-            <a href="http://cppunit.sourceforge.net">CPPUnit</a>.</p>
+            [JUnit](http://www.junit.org),
+            [xdebug](http://www.phpunit.de">phpUnit</a> (in combination with <a href="http://www.xdebug.org)),
+            [NUnit](http://www.nunit.org) or
+            [CPPUnit](http://cppunit.sourceforge.net).</p>
 
     <h2>What are the pros and cons?</h2>
 

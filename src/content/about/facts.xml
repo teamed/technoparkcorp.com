@@ -46,9 +46,9 @@
         TechnoPark Corp. is a custom software development
         company equipped with a unique proprietary implementation
         of eXtremely Distributed Software Development
-        (<a href="http://www.xdsd.org">XDSD</a>), a
+        ([XDSD](http://www.xdsd.org)), a
         unique project management methodology, provided through
-        <a href="http://www.teamed.io">teamed.io</a>.
+        [teamed.io](http://www.teamed.io).
     </p>
 
     <p>Key facts about TechnoPark Corp.:</p>
@@ -59,8 +59,8 @@
             <th>Value</th>
         </tr>
         <tr><td>Business name:</td><td>TECHNOPARK CORPORATION</td></tr>
-        <tr><td>DUNS<a href="https://smallbusiness.dnb.com/">?</a> Number:</td><td>62-773-2535</td></tr>
-        <tr><td>NAICS<a href="http://www.census.gov/naics/">?</a> code:</td><td>541511</td></tr>
+        <tr><td>DUNS[?](https://smallbusiness.dnb.com/) Number:</td><td>62-773-2535</td></tr>
+        <tr><td>NAICS[?](http://www.census.gov/naics/) code:</td><td>541511</td></tr>
         <tr><td>Incorporated on:</td><td>20-Feb-2006</td></tr>
         <tr><td>Incorporated in:</td><td>State of Florida, USA</td></tr>
         <tr><td>Legal status:</td><td>Corporation</td></tr>
@@ -74,8 +74,8 @@
         <tr><td>Profile:</td><td>Custom software development company</td></tr>
 
         <tr><td>Patents (including pending ones):</td><td>
-            <a href="http://www.freepatentsonline.com/20100042968.pdf">12/193,010</a>,
-            <a href="http://www.freepatentsonline.com/20100114638.pdf">12/264,370</a>,
+            [12/193,010](http://www.freepatentsonline.com/20100042968.pdf),
+            [12/264,370](http://www.freepatentsonline.com/20100114638.pdf),
             12/703,202,
             12/840,306,
             12/943,022
@@ -90,14 +90,14 @@
         <tr><td>Copyrights:</td><td>
 
             TPC Logo with a slogan "Plan Your Success"
-            <a href="http://tarr.uspto.gov/servlet/tarr?regser=serial&amp;entry=77438094">registered</a>
+            [registered](http://tarr.uspto.gov/servlet/tarr?regser=serial&amp;entry=77438094)
             on 11-Nov-08 in US Patent and Trademark Office (USPTO)<br/><br/>
 
             Copyright for online project management materials
             [is registered in Ukraine]({% href about/news/uacopyright %})<br/><br/>
 
             Text of our software development contract is registered
-            with <a href="http://www.copyright.gov">US Copyright Office</a>.
+            with [US Copyright Office](http://www.copyright.gov).
 
             </td></tr>
     </table>

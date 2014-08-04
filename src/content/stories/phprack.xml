@@ -47,12 +47,12 @@
     </a>
 
     <p>
-        The design and development of <b><a href="http://phprack.com">phpRack</a></b> took almost 3 months
+        The design and development of <b>[phpRack](http://phprack.com)</b> took almost 3 months
         for a team of 5 people, working in parallel and absolutely
         distributed (they never met each other face-to-face and never
         communicated online). There were engineers from Poland, Belarus, Czech Republic,
         and United States. The team communicated only through
-        Trac and Subversion, using <a href="http://www.fazend.com">FaZend.com</a>
+        Trac and Subversion, using [FaZend.com](http://www.fazend.com)
         Continuous Integration platform.
     </p>
 
