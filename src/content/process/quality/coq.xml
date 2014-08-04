@@ -35,13 +35,13 @@
 
 <text>
 
-    <p>[Quality]({% href process/quality %}) is what costs us money and what you pay for. Quality is measured
+    <p>[Quality](/process/quality) is what costs us money and what you pay for. Quality is measured
     as amount of defect-free functionality related to defective functionality. Quality
     is measured in percentages. Our contract says that 95% is acceptable Quality.</p>
 
-    <p>A [Defect]({% href process/quality/defect %}) is a non-conformity of
-    [Deliverables]({% href process/warranty/deliverables %})
-    to [Specification]({% href process/scope/specification %}). In other words, the
+    <p>A [Defect](/process/quality/defect) is a non-conformity of
+    [Deliverables](/process/warranty/deliverables)
+    to [Specification](/process/scope/specification). In other words, the
     software product does not work as specified. Defects shall be revealed by the project
     team before software product is delivered to you.</p>
 
@@ -51,10 +51,10 @@
 
     <ol>
         <li>Software development contract</li>
-        <li>[Vision]({% href process/scope/vision %})</li>
-        <li>[SRS]({% href process/scope/srs %})</li>
-        <li>[Risk List]({% href process/risk/risklist %})</li>
-        <li>[Iteration]({% href process/time/schedule}">Schedule</a> and <a href="${url:process/time/iteration %}) Plans</li>
+        <li>[Vision](/process/scope/vision)</li>
+        <li>[SRS](/process/scope/srs)</li>
+        <li>[Risk List](/process/risk/risklist)</li>
+        <li>[Iteration](/process/time/schedule}">Schedule</a> and <a href="${url:process/time/iteration) Plans</li>
         <li>Architecture</li>
         <li>Design</li>
         <li>Software code</li>
@@ -68,16 +68,16 @@
     become critical or fatal.</p>
 
     <ul>
-        <li>[Peer reviews]({% href process/quality/peerreview %}) of SRS, Schedule, Risk List and architecture</li>
+        <li>[Peer reviews](/process/quality/peerreview) of SRS, Schedule, Risk List and architecture</li>
         <li>Prototyping on early Iterations</li>
         <li>Strict guidelines and manuals for analysts and architects</li>
         <li>Industry standards and formats (UML, IEEE, ISO, RUP, XML, etc.)</li>
         <li>Periodical Quality Assurance (QA) audits</li>
     </ul>
 
-    <p>All prevention methods are used before [unit-testing]({% href process/quality/unit %}),
-    [system testing]({% href process/quality/system %}) and
-    [manual testing]({% href process/quality/manual %}).
+    <p>All prevention methods are used before [unit-testing](/process/quality/unit),
+    [system testing](/process/quality/system) and
+    [manual testing](/process/quality/manual).
     Prevention methods are performed by programmers and testers when software is being implemented.</p>
 
 </text>

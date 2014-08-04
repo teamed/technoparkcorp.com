@@ -53,7 +53,7 @@
 
 <text>
 
-    <p>Boundaries of software products are defined by a set of [Requirements]({% href process/scope/requirement %}).
+    <p>Boundaries of software products are defined by a set of [Requirements](/process/scope/requirement).
     The software development team designs, implements,
     tests, and delivers these Requirements to you.
     A Requirement is an atomic unit of a software product from
@@ -61,22 +61,22 @@
     As a rule, Requirements are always correct, unambiguous, verifiable, and traceable.
     Requirements are numbered and prioritized.</p>
 
-    <p>High-level user Requirements are called [Features]({% href process/scope/feature %}).
+    <p>High-level user Requirements are called [Features](/process/scope/feature).
     Up to 10 Features can be defined in any software project,
     regardless of the project size.
     Features are defined in the
-    [Vision]({% href process/scope/vision %}) document.
+    [Vision](/process/scope/vision) document.
     The Vision is created before the
-    project commences, and is the basis for the [ROM Estimate]({% href process/cost/rom %}).</p>
+    project commences, and is the basis for the [ROM Estimate](/process/cost/rom).</p>
 
     <p>The Vision is developed right after you submit an informal request.
     Up to 5 hours are spent for developing the Vision by a system analyst, regardless of the project size.</p>
 
     <p>When a ROM Estimate is approved, an Alpha-Specification is created.
     Upon your approval, the Alpha-Specification becomes a Beta-Specification.
-    When the project begins and the [Budget]({% href process/cost/budget %}) is approved
-    (following a [LCO Milestone]({% href process/time/lco %})), the Beta-Specification becomes
-    an effective [Specification]({% href process/scope/specification %}).</p>
+    When the project begins and the [Budget](/process/cost/budget) is approved
+    (following a [LCO Milestone](/process/time/lco)), the Beta-Specification becomes
+    an effective [Specification](/process/scope/specification).</p>
 
     <p align="center"><tikz>
 \usepgflibrary{shapes.symbols}
@@ -100,11 +100,11 @@
 \end{tikzpicture}
     </tikz></p>
 
-    <p>A fully-dressed Specification is called a [SRS]({% href process/scope/srs %}) (Software Requirements Specification) and is
+    <p>A fully-dressed Specification is called a [SRS](/process/scope/srs) (Software Requirements Specification) and is
     compliant with <a href="http://standards.ieee.org/reading/ieee/std_public/description/se/830-1998_desc.html">IEEE
     830-1998</a> 'Recommended Practices for Software Requirements Specifications'.</p>
 
-    <p>The SRS includes a [Glossary]({% href process/scope/glossary %}),
+    <p>The SRS includes a [Glossary](/process/scope/glossary),
     <ahref name="http://en.wikipedia.org/wiki/Use_case">Use Cases</ahref>,
     Functional Requirements, and Non-Functional Requirements.</p>
 
@@ -112,10 +112,10 @@
     where all necessary attributes for each Requirement are maintained.</p>
 
     <p>Changes to the project scope can be made only by issuing new Specifications through a process called
-    [Change Requests]({% href process/scope/changerequest %}).
+    [Change Requests](/process/scope/changerequest).
     Each Change Request implies that changes will be made to the Budget,
-    [Schedule]({% href process/time/schedule %}), and
-    [Risks]({% href process/risk %}).</p>
+    [Schedule](/process/time/schedule), and
+    [Risks](/process/risk).</p>
 
 </text>
 

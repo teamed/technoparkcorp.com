@@ -40,10 +40,10 @@
 
 <text>
 
-    <p>[Incremental delivery]({% href process/communication/incremental %}) means
-    that a software product is created, [tested]({% href process/quality %}) and delivered to you
+    <p>[Incremental delivery](/process/communication/incremental) means
+    that a software product is created, [tested](/process/quality) and delivered to you
     in a number of builds. Each build has a new portion of functionality. A new build
-    is delivered by the end of each [Iteration]({% href process/time/iteration %}).</p>
+    is delivered by the end of each [Iteration](/process/time/iteration).</p>
 
     <p>The Iteration Acceptance Meeting is an online meeting (20-40 minutes) where the project manager
     presents Iteration results and explains them. You review the results,
@@ -55,8 +55,8 @@
         <li>What was the plan for Iteration</li>
         <li>What was completed and accepted by the customer</li>
         <li>What failed and why</li>
-        <li>Current project [mitigation plans]({% href process/risk}">risks</a> and <a href="${url:process/risk/strategy %})</li>
-        <li>Earned Value Analysis data ([SPI]({% href process/time/spi %}), etc.)</li>
+        <li>Current project [mitigation plans](/process/risk}">risks</a> and <a href="${url:process/risk/strategy)</li>
+        <li>Earned Value Analysis data ([SPI](/process/time/spi), etc.)</li>
     </ul>
 
     <p>The Iteration Acceptance Meeting is the most important activity because the project team

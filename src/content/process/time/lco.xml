@@ -48,8 +48,8 @@
 
 <text>
 
-    <p>The Lifecycle Objectives (LCO) Milestone is a moment when the [Specification]({% href process/scope/specification %}),
-    [Schedule]({% href process/cost/budget}">Budget,</a> and the <a href="${url:process/time/schedule %}) are ready
+    <p>The Lifecycle Objectives (LCO) Milestone is a moment when the [Specification](/process/scope/specification),
+    [Schedule](/process/cost/budget}">Budget,</a> and the <a href="${url:process/time/schedule) are ready
     and presented to you for approval.</p>
 
     <p>At this point, you examine the Lifecycle Objectives of the project, and decide either
@@ -58,7 +58,7 @@
     <p>If the project is approved at this moment, we continue to work.</p>
 
     <p>If project is not approved for any reason, project is closed and you pay only the
-    [Retainer]({% href process/cost/retainer %}) for the work done on Specification development.</p>
+    [Retainer](/process/cost/retainer) for the work done on Specification development.</p>
 
 </text>
 

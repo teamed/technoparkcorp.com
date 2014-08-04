@@ -50,7 +50,7 @@
 
     <p>TechnoPark Corp. is a software development <a href='http://en.wikipedia.org/wiki/General_contractor'>general contractor</a>
     with an innovative approach to project management in
-    [distributed software development teams]({% href about/teams %}).
+    [distributed software development teams](/about/teams).
     Like nowhere else, when you hire us as a general contractor
     you stay actively involved in every last detail of a project internal affairs.
     You control your business success by means of our
@@ -61,14 +61,14 @@
     [ISO 9001](http://en.wikipedia.org/wiki/ISO_9001).</p>
 
     <p>We work only with fixed-price projects, where
-    [Scope]({% href process/scope %}),
-    [Cost]({% href process/cost %}) and
-    [Schedule]({% href process/time %}) are always baselined.
+    [Scope](/process/scope),
+    [Cost](/process/cost) and
+    [Schedule](/process/time) are always baselined.
     You do not pay salaries or any other indirect costs, only a fixed price of
-    [Deliverables]({% href process/warranty/deliverables %}).</p>
+    [Deliverables](/process/warranty/deliverables).</p>
 
     <p>A project is organized as a
-    [distributed team]({% href about/teams %}) of narrow-skilled
+    [distributed team](/about/teams) of narrow-skilled
     engineers when you can pick-up the best suitable talents through
     just one contractor. There are 70+ professional software
     groups and individuals in our database

@@ -30,20 +30,20 @@
     <p>Contact us to get a quotation for your software project. The process is simple:</p>
 
     <ol>
-        <li>You contact us [online]({% href contacts %})</li>
+        <li>You contact us [online](/contacts)</li>
         <li>One of our Project Managers gets back to you</li>
-        <li>We solicit your requirements ([Informal Request]({% href process/scope/specification %}))</li>
-        <li>We develop [Vision]({% href process/scope/vision %})</li>
-        <li>You confirm that the Vision covers the whole [scope]({% href process/scope %})</li>
-        <li>We estimate the project, you get [ROM Estimate]({% href process/cost/rom %})</li>
-        <li>We give you [Schedule]({% href process/time/schedule %}), and Staffing estimates</li>
+        <li>We solicit your requirements ([Informal Request](/process/scope/specification))</li>
+        <li>We develop [Vision](/process/scope/vision)</li>
+        <li>You confirm that the Vision covers the whole [scope](/process/scope)</li>
+        <li>We estimate the project, you get [ROM Estimate](/process/cost/rom)</li>
+        <li>We give you [Schedule](/process/time/schedule), and Staffing estimates</li>
         <li>We together sign a Contract</li>
-        <li>You make a first payment ([Retainer]({% href process/cost/model %}))</li>
-        <li>We start the Project and finish it [in time]({% href process/time %}),
-            according to the [SRS]({% href process/scope/srs %})</li>
+        <li>You make a first payment ([Retainer](/process/cost/model))</li>
+        <li>We start the Project and finish it [in time](/process/time),
+            according to the [SRS](/process/scope/srs)</li>
     </ol>
 
-    <p>Start with  [online contact form]({% href contacts %}).</p>
+    <p>Start with  [online contact form](/contacts).</p>
 
 </text>
 

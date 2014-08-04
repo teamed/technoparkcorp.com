@@ -64,7 +64,7 @@
     A 'Request' is a formal interaction between the user and system through one of its external interfaces.
     A 'Reply' is the term for how the system reacts after receiving a Request from the user.
     Functional Requirements are supported with Non-functional
-    Requirements, which are supplementary specifications in a [SRS]({% href process/scope/srs %}).</p>
+    Requirements, which are supplementary specifications in a [SRS](/process/scope/srs).</p>
 
     <p>Examples of Functional Requirements and their supplementary specifications include the following:</p>
 

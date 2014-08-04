@@ -43,7 +43,7 @@
     created, managed, and transferred during project execution. We pay serious attention
     to such property, whether it is owned by you or by us.</p>
 
-    <p>A [Non-Disclosure Agreement (NDA)]({% href process/ipr/nda %}) is signed prior to any communication on the software project.
+    <p>A [Non-Disclosure Agreement (NDA)](/process/ipr/nda) is signed prior to any communication on the software project.
     The NDA states that any confidential information disclosed by you is to
     be protected and we have no rights of republishing or redistributing any such information.</p>
 
@@ -52,13 +52,13 @@
     work according to
     [Copyright Law of the United States of America](http://www.copyright.gov/title17/) -
     our services are titled in the contract as
-    ["work made for hire"]({% href process/ipr/law %}).</p>
+    ["work made for hire"](/process/ipr/law).</p>
 
     <p>We protect Confidential Information in our offices and servers by means of a strict
-    internal [Information Security Policy]({% href process/ipr/security %}) designed in
+    internal [Information Security Policy](/process/ipr/security) designed in
     compliance with ISO 27001.</p>
 
-    <!-- <p>We are a proud holder of [TRUSTe Online Privacy Seal]({% href about/privacypolicy %})
+    <!-- <p>We are a proud holder of [TRUSTe Online Privacy Seal](/about/privacypolicy)
     and a member of [Better Business Bureau (BBB)](http://www.bbb.org).</p> -->
 
 </text>

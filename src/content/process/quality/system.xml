@@ -36,7 +36,7 @@
 <text>
 
     <p>System testing is performed by testers through special tools and testability
-    elements in order to reveal system [Defects]({% href process/quality/defect %}).</p>
+    elements in order to reveal system [Defects](/process/quality/defect).</p>
 
     <p>System testing includes:</p>
 

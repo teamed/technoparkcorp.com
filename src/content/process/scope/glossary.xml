@@ -45,11 +45,11 @@
 
 <text>
 
-    <p>There are hundreds of [Requirements]({% href process/scope/requirement %}) in mid-size and small software
+    <p>There are hundreds of [Requirements](/process/scope/requirement) in mid-size and small software
     products.
     All Requirements are defined in a textual format based on the terms from the Glossary.
     A Glossary is used in order to avoid misinterpretation
-    of key terms and definitions inside the [Specification]({% href process/scope/specification %}).</p>
+    of key terms and definitions inside the [Specification](/process/scope/specification).</p>
 
     <p>Key terms, data units, and concepts are taken from Requirements and entered in the Glossary.
     This is a proven method to avoid ambiguity.</p>
@@ -96,7 +96,7 @@
     system scope and work with it independently of the Requirements.</p>
 
     <p>A Glossary is created for all projects, regardless of the project size.
-    The Glossary is a section of the [SRS]({% href process/scope/srs %}).</p>
+    The Glossary is a section of the [SRS](/process/scope/srs).</p>
 
 </text>
 

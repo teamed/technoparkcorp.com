@@ -78,11 +78,11 @@
     [RUP](http://en.wikipedia.org/wiki/IBM_Rational_Unified_Process) and
     [ISO 9001](http://en.wikipedia.org/wiki/ISO_9001) gefällig ist.</p>
 
-    <p>Wir arbeiten nur mit Örtlich festgelegtpreis Projekten, wo [Kosten]({% href process/scope %})
-    und [Zeitplan]({% href process/schedule %}) festgelegt sein. Sie bezahlen kein Lohngehälter oder
-    irgendwelche anderen Gemeinkosten, nur ein Festpreis von den [Leistungen]({% href process/warranty/deliverables %}).</p>
+    <p>Wir arbeiten nur mit Örtlich festgelegtpreis Projekten, wo [Kosten](/process/scope)
+    und [Zeitplan](/process/schedule) festgelegt sein. Sie bezahlen kein Lohngehälter oder
+    irgendwelche anderen Gemeinkosten, nur ein Festpreis von den [Leistungen](/process/warranty/deliverables).</p>
 
-    <p>Ein Projekt wird als [virtuelle Mannschaft]({% href about/teams %}) der schmal-erfahrenen Techniker
+    <p>Ein Projekt wird als [virtuelle Mannschaft](/about/teams) der schmal-erfahrenen Techniker
     organisiert, wenn Sie die besten verwendbaren Talente durch gerade
     eine Fremdfirma aufnehmen können - uns. Es gibt Berufs-Gruppen der
     Software 40+ und Einzelpersonen in unserer Datenbank, die zu

@@ -54,21 +54,21 @@
     who manages time properly. Nowadays in the software industry this happens during the course of many projects.
     We pay great attention to planning, monitoring, and controlling of time in our projects.</p>
 
-    <p>Right after a [ROM Estimate]({% href process/cost/rom %}) is approved and the project is started,
-    we plan the [Inception Phase]({% href process/time/inception %}).
+    <p>Right after a [ROM Estimate](/process/cost/rom) is approved and the project is started,
+    we plan the [Inception Phase](/process/time/inception).
     Usually, when the project is started, there is a lack of details about system requirements.
     Accurate planning can be done only after the scope definition and risk analysis are completed, that's why we need to conduct the
-    Inception Phase before [Schedule]({% href process/time/schedule %}) development.</p>
+    Inception Phase before [Schedule](/process/time/schedule) development.</p>
 
-    <p>The main goal of our Inception Phase is to create [Specification]({% href process/scope/specification %}),
-    identify [Risks]({% href process/risks %}),
-    calculate [Budget]({% href process/cost/budget %}), and build a
+    <p>The main goal of our Inception Phase is to create [Specification](/process/scope/specification),
+    identify [Risks](/process/risks),
+    calculate [Budget](/process/cost/budget), and build a
     Schedule. Sometimes, in order to define the Schedule, it's necessary to develop a baseline of key architectural software concepts
     during the Inception Phase.</p>
 
-    <p>[LCO Milestone]({% href process/time/lco %}) happens following the end of Inception Phase, when
+    <p>[LCO Milestone](/process/time/lco) happens following the end of Inception Phase, when
     the Specification is ready and a Schedule is defined. The Schedule is a one-page table that lists the
-    [Iterations]({% href process/time/iteration %}) and Milestones.
+    [Iterations](/process/time/iteration) and Milestones.
     As soon as the customer signs the Schedule, it obtains the status of a contractual provision
     and can't be missed.</p>
 
@@ -116,7 +116,7 @@
     WBS and Network Diagram methods for planning.</p>
 
     <p>By the end of each Iteration, we conduct an Iteration Acceptance Meeting, where a
-    [SPI]({% href process/time/spi %}) is presented to you in conjunction with the risk monitoring results.
+    [SPI](/process/time/spi) is presented to you in conjunction with the risk monitoring results.
     The project is transparently
     monitored and tracked with an SPI, which is based on the functional requirements and their status of completion.</p>
 

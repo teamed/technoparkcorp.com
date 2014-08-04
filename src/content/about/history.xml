@@ -122,7 +122,7 @@
     <tr>
         <td>June, 2008</td>
         <td>TechnoPark Corp. registered copyright for online project management
-        materials published on the corporate site, [read more]({% href about/news/uacopyright %})</td>
+        materials published on the corporate site, [read more](/about/news/uacopyright)</td>
     </tr>
 
     <tr>
@@ -132,26 +132,26 @@
 
     <tr>
         <td>January, 2008</td>
-        <td>TechnoPark Corp. successfully announced their ISO 9001:2000 certification, [read more]({% href about/news/year2008/iso9001 %})</td>
+        <td>TechnoPark Corp. successfully announced their ISO 9001:2000 certification, [read more](/about/news/year2008/iso9001)</td>
     </tr>
 
     <tr>
         <td>January, 2008</td>
         <td>TechnoPark Corp. receives Online Privacy Seal from TRUSTe.org, that confirms our intention to protect
-        personally identifiable information provided to us by our customers, [read more]({% href about/news/truste %})</td>
+        personally identifiable information provided to us by our customers, [read more](/about/news/truste)</td>
     </tr>
 
     <tr>
         <td>March, 2007</td>
         <td>TechnoPark Corp. becomes a member of
         [RUSSOFT.org](http://www.russoft.org/russoft/?members),
-        [read more]({% href about/news/news11 %})</td>
+        [read more](/about/news/news11)</td>
     </tr>
 
     <tr>
         <td>November, 2006</td>
         <td>Mobile payment processing software, developed by TechnoPark Corp., is certified by Visa/Mastercard as
-        compliant to PCI DSS Level 1, [read more]({% href about/news/year2006/news16 %})</td>
+        compliant to PCI DSS Level 1, [read more](/about/news/year2006/news16)</td>
     </tr>
 
     <tr>
@@ -173,7 +173,7 @@
 
     </table>
 
-    <p>Read about our [latest news]({% href about/facts}">key facts</a> and <a href="${url:about/news %}).</p>
+    <p>Read about our [latest news](/about/facts}">key facts</a> and <a href="${url:about/news).</p>
 
 </text>
 

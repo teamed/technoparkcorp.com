@@ -45,7 +45,7 @@
 
 <text>
 
-    <p>We calculate, communicate and define the Budget in [staff-hours]({% href process/cost/prices %}).
+    <p>We calculate, communicate and define the Budget in [staff-hours](/process/cost/prices).
     The actual monetary size of a
     project is a multiple of staff-hours and price per hour.</p>
 
@@ -56,26 +56,26 @@
 
     <ul>
         <li>Programming</li>
-        <li>[Requirements Development]({% href process/scope %})</li>
+        <li>[Requirements Development](/process/scope)</li>
         <li>Project Management</li>
         <li>Architecture and Design</li>
-        <li>[Testing]({% href process/quality %}) and Quality Assurance</li>
+        <li>[Testing](/process/quality) and Quality Assurance</li>
         <li>Deployment</li>
-        <li>[Defect-removal]({% href process/warranty/defectremoval %})</li>
+        <li>[Defect-removal](/process/warranty/defectremoval)</li>
     </ul>
 
-    <p>The Budget is paid only for [Deliverables]({% href process/warranty/deliverables %}), not for
+    <p>The Budget is paid only for [Deliverables](/process/warranty/deliverables), not for
     the time spent. It does not include
-    [maintenance]({% href process/warranty/support}">support</a> and other <a href="${url:process/warranty/support %}) services.</p>
+    [maintenance](/process/warranty/support}">support</a> and other <a href="${url:process/warranty/support) services.</p>
 
     <p>The Budget is calculated by the project team using Functional
-    [Requirements]({% href process/scope/requirement %}). Each Requirement
+    [Requirements](/process/scope/requirement). Each Requirement
     is estimated by programmers and then the total
     project programming effort can be calculated.
     Efforts for other project disciplines are
     calculated using the amount of hours for programming.</p>
 
-    <p>The Budget is changed only when changes are made to scope by [Change Requests]({% href process/scope/changerequest %}).</p>
+    <p>The Budget is changed only when changes are made to scope by [Change Requests](/process/scope/changerequest).</p>
 
 </text>
 

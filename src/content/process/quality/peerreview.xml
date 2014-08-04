@@ -37,25 +37,25 @@
 
     <p>Peer Review is a collaborative event in the project team when an engineer or specialist
     from another team, author of the document, and project manager review certain
-    project artifacts and identify [Defects]({% href process/quality/defect %}).</p>
+    project artifacts and identify [Defects](/process/quality/defect).</p>
 
-    <p>We perform Peer Reviews at least once per [Iteration]({% href process/time/iteration %}).</p>
+    <p>We perform Peer Reviews at least once per [Iteration](/process/time/iteration).</p>
 
     <p>The benefits and advantages of Peer Reviews when compared to other methods
     of Defects revealing are:</p>
 
     <ul>
         <li>High team morale and motivation</li>
-        <li>Improved [Quality]({% href process/quality %}) of document content</li>
+        <li>Improved [Quality](/process/quality) of document content</li>
         <li>Early defect identification and removal</li>
         <li>Glass-box testing of code</li>
         <li>Commented and clear code</li>
-        <li>Optimized [quality cost]({% href process/quality/coq %})</li>
+        <li>Optimized [quality cost](/process/quality/coq)</li>
     </ul>
 
-    <p>[SRS]({% href process/scope/srs %}),
-    [Vision]({% href process/scope/vision %}),
-    [Schedule]({% href process/time/schedule %}),
+    <p>[SRS](/process/scope/srs),
+    [Vision](/process/scope/vision),
+    [Schedule](/process/time/schedule),
     architecture, design, and software code are subject to Peer Reviews.</p>
 
 </text>

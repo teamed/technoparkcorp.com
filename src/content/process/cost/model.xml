@@ -35,7 +35,7 @@
 
 <text>
 
-    <p>Payments are done according to an approved [Schedule]({% href process/time/schedule %}).
+    <p>Payments are done according to an approved [Schedule](/process/time/schedule).
     Each payment is connected
     to a certain Milestone, and is paid when all of the acceptance criteria is met by
     the project team.</p>

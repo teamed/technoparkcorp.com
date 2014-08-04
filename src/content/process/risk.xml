@@ -50,8 +50,8 @@
 
     <p>A Risk is a possible event that may impact the outcome of a project.</p>
 
-    <p>All Risks are identified during the [Inception Phase]({% href process/time/inception %}) and a
-    [Risk List]({% href process/risk/risklist %}) is developed which includes mitigations and contingencies
+    <p>All Risks are identified during the [Inception Phase](/process/time/inception) and a
+    [Risk List](/process/risk/risklist) is developed which includes mitigations and contingencies
     plans for each Risk.
     Usually, a Risk List identifies up to 20 areas of concern.</p>
 
@@ -78,12 +78,12 @@
 \end{tikzpicture}
     </tikz></p>
 
-    <p>You select a strategy for addressing each Risk and the [Scope]({% href process/scope %}),
-    [Cost]({% href process/cost %}),
-    and [Schedule]({% href process/time/schedule %}) are adapted according to Risk response plans.</p>
+    <p>You select a strategy for addressing each Risk and the [Scope](/process/scope),
+    [Cost](/process/cost),
+    and [Schedule](/process/time/schedule) are adapted according to Risk response plans.</p>
 
     <p>Besides this formal procedure of Risk Strategies acceptance we
-    conduct a full-scale risk management in each [Iteration]({% href process/time/iteration %}), including
+    conduct a full-scale risk management in each [Iteration](/process/time/iteration), including
     risk identification, analysis, and response planning.</p>
 
 </text>

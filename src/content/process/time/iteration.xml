@@ -50,7 +50,7 @@
 
 <text>
 
-    <p>[Schedule]({% href process/time/schedule %}) consists of Iterations.
+    <p>[Schedule](/process/time/schedule) consists of Iterations.
     Each Iteration is a simple and atomic piece of time spent on
     project activities by the project team.</p>
 
@@ -80,10 +80,10 @@
     <p>An Iteration Acceptance Meeting finishes the Iteration and is conducted online with your participation.
     The key purpose of this meeting is to present you the project status and risk monitoring results.
     Earned Value technique is used to evaluate and indicate the project status.
-    [CPI]({% href process/time/spi}">SPI</a> and <a href="${url:process/cost %}) numbers
+    [CPI](/process/time/spi}">SPI</a> and <a href="${url:process/cost) numbers
     will help all parties involved to understand the actual project status.</p>
 
-    <p>During Iteration execution, the project manager sends you [daily reports]({% href process/communication/dailyreport %})
+    <p>During Iteration execution, the project manager sends you [daily reports](/process/communication/dailyreport)
     with a list of activities completed during the day.</p>
 
 </text>

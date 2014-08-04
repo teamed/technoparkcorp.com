@@ -53,10 +53,10 @@
     project management web panel.</p>
 
     <p>Our software development lifecycle is iterative and incremental. We deliver software product
-    by independent builds at the end of each [Iteration]({% href process/time/iteration %}).
-    You approve [Schedule]({% href process/time/schedule %}) at the
-    [LCO milestone]({% href process/time/lco %}) in the first weeks of a project, and then track it by
-    [Earned Value]({% href process/time/spi %}) data.</p>
+    by independent builds at the end of each [Iteration](/process/time/iteration).
+    You approve [Schedule](/process/time/schedule) at the
+    [LCO milestone](/process/time/lco) in the first weeks of a project, and then track it by
+    [Earned Value](/process/time/spi) data.</p>
 
     <p>The diagram shows how your informal request is transferred to Deliverables,
     which you accept at the end of the project:</p>
@@ -94,44 +94,44 @@
     </tikz></p>
 
     <p>We work only with fixed-price projects that are estimated in two steps: 1)
-    [ROM Estimate]({% href process/cost/rom %})
+    [ROM Estimate](/process/cost/rom)
     defines the range of effort and time required, 2)
-    [Budget]({% href process/cost/budget %}) gives an exact amount of staff-hours required to complete the project.
+    [Budget](/process/cost/budget) gives an exact amount of staff-hours required to complete the project.
     Such an approach optimizes costs of both parties.</p>
 
-    <p>Software is developed according to Functional and Non-functional [Requirements]({% href process/scope/requirement %})
-    specified in [Specification]({% href process/scope/specification %}), in form of a
-    [SRS]({% href process/scope/srs %}) document. Requirements are maintained in a
-    [Traceability Matrix]({% href process/scope/matrix %})
+    <p>Software is developed according to Functional and Non-functional [Requirements](/process/scope/requirement)
+    specified in [Specification](/process/scope/specification), in form of a
+    [SRS](/process/scope/srs) document. Requirements are maintained in a
+    [Traceability Matrix](/process/scope/matrix)
     that gives you and the project team the ability to bi-directionaly trace changes.
     We tend to be flexible, however, project Specification can only be altered through
-    [Change Requests]({% href process/scope/ %}).</p>
+    [Change Requests](/process/scope/).</p>
 
-    <p>Our process is risk-driven, meaning that [Risks]({% href process/risk/risk %}) and
-    [Risk Strategies]({% href process/risk/strategy %}) affect the
+    <p>Our process is risk-driven, meaning that [Risks](/process/risk/risk) and
+    [Risk Strategies](/process/risk/strategy) affect the
     project Schedule and Specification.
     During the entire project lifecycle, the project team reviews the
-    [Risk List]({% href process/risk/risklist %}) containing the most critical Risks,
+    [Risk List](/process/risk/risklist) containing the most critical Risks,
     and conducts Risk mitigation plans.</p>
 
-    <p>[Deliverables]({% href process/quality}">Quality</a> of <a href="${url:process/warranty/deliverables %}) is assured by
-    [unit-testing]({% href process/quality/unit %}),
-    [peer reviews]({% href process/quality/peerreview %}),
-    [manual testing]({% href process/quality/manual %}), and
-    [system testing]({% href process/quality/system %}).</p>
+    <p>[Deliverables](/process/quality}">Quality</a> of <a href="${url:process/warranty/deliverables) is assured by
+    [unit-testing](/process/quality/unit),
+    [peer reviews](/process/quality/peerreview),
+    [manual testing](/process/quality/manual), and
+    [system testing](/process/quality/system).</p>
 
-    <p>Project [communications]({% href process/communication %}) are iterative and customer-focused.  They
-    include [Daily Reports]({% href process/communication/dailyreport %}),
-    [incremental delivery]({% href process/communication/incremental %}) of software product,
-    regular [acceptance meetings]({% href process/communication/iam %}) with project status
+    <p>Project [communications](/process/communication) are iterative and customer-focused.  They
+    include [Daily Reports](/process/communication/dailyreport),
+    [incremental delivery](/process/communication/incremental) of software product,
+    regular [acceptance meetings](/process/communication/iam) with project status
     reporting and monitoring.</p>
 
-    <p>We proactively protect [intellectual property rights]({% href process/ipr %}) of software by means of
-    [Non-Disclosure Agreements]({% href process/ipr/nda %}) and
-    [information security]({% href process/ipr/security %}) internal policies and rules.</p>
+    <p>We proactively protect [intellectual property rights](/process/ipr) of software by means of
+    [Non-Disclosure Agreements](/process/ipr/nda) and
+    [information security](/process/ipr/security) internal policies and rules.</p>
 
-    <p>When a project is closed, we continue to provide warranty [defect removal]({% href process/warranty/defectremoval %}) services for
-    [Deliverables]({% href process/warranty/deliverables %}).</p>
+    <p>When a project is closed, we continue to provide warranty [defect removal](/process/warranty/defectremoval) services for
+    [Deliverables](/process/warranty/deliverables).</p>
 
 </text>
 

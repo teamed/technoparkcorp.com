@@ -88,15 +88,15 @@
         <li>Requested change comes from you or project team (in any form).</li>
 
         <li>Project manager, with the help of system analyst and project team, analyzes the impact.
-        The impact is estimated in staff-hours ([Cost]({% href process/cost %})) and business days
-        ([Schedule]({% href process/time/schedule %})).</li>
+        The impact is estimated in staff-hours ([Cost](/process/cost)) and business days
+        ([Schedule](/process/time/schedule)).</li>
 
         <li>You approve or reject the estimation.</li>
 
-        <li>New [Specification]({% href process/scope/specification %}) is developed by the project team.</li>
+        <li>New [Specification](/process/scope/specification) is developed by the project team.</li>
 
-        <li>Changes to Schedule, [Risks]({% href process/risk %}),
-        and [Budget]({% href process/cost/budget %}) and
+        <li>Changes to Schedule, [Risks](/process/risk),
+        and [Budget](/process/cost/budget) and
         are estimated and presented.</li>
 
         <li>You approve or reject the changes.</li>

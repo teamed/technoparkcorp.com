@@ -46,12 +46,12 @@
 
 <text>
 
-    <p>A system boundary is defined by [Requirements]({% href process/scope/requirement %}).
+    <p>A system boundary is defined by [Requirements](/process/scope/requirement).
     A Feature is a type of high-level
     user Requirement that explains what the user wants to do with the system
     in order to satisfy their needs.</p>
 
-    <p>A Feature describes what the user can do with the system. Features are listed in the [Vision]({% href process/scope/vision %}).</p>
+    <p>A Feature describes what the user can do with the system. Features are listed in the [Vision](/process/scope/vision).</p>
 
     <p>Examples of Features include:</p>
 
@@ -72,7 +72,7 @@
     a Functional Requirement resembles a strict and unambiguous formula.</p>
 
     <p>Each Functional Requirement is traced back to a Feature in the
-    [Traceability Matrix]({% href process/scope/matrix %}).</p>
+    [Traceability Matrix](/process/scope/matrix).</p>
 
 </text>
 

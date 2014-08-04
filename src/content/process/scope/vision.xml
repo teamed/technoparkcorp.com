@@ -52,11 +52,11 @@
     definition. It is short, simple, and very clear - we call it the Vision.</p>
 
     <p>The Vision document is a two page file that includes a description of the project,
-    list of [Features]({% href process/scope/feature %}), key risks, assumptions, and architectural concepts.
+    list of [Features](/process/scope/feature), key risks, assumptions, and architectural concepts.
     It is possible to present any product scope in this simple format,
     even if the product is very large.</p>
 
-    <p>The Vision document is not a fully-dressed [Specification]({% href process/scope/specification %}) and cannot be used by
+    <p>The Vision document is not a fully-dressed [Specification](/process/scope/specification) and cannot be used by
     developers for the purpose of programming. The Vision is used by the system analyst, project manager,
     customer, and other stakeholders for the following reasons:</p>
 

@@ -53,17 +53,17 @@
     requires your significant attention to read and understand it.</p>
 
     <p>The SRS is a format of the
-    [Specification]({% href process/scope/specification %}).
-    The SRS is based on the [Vision]({% href process/scope/vision %}) and provides
-    details for each [Feature]({% href process/scope/feature %}) from it.</p>
+    [Specification](/process/scope/specification).
+    The SRS is based on the [Vision](/process/scope/vision) and provides
+    details for each [Feature](/process/scope/feature) from it.</p>
 
     <p>The SRS is created by a system analyst according to details provided by
     the requirements specifier (your representative). The SRS includes four sections:</p>
 
     <ul>
-        <li>[Glossary]({% href process/scope/glossary %})</li>
+        <li>[Glossary](/process/scope/glossary)</li>
         <li>Use Cases</li>
-        <li>Functional [Requirements]({% href process/scope/requirement %})</li>
+        <li>Functional [Requirements](/process/scope/requirement)</li>
         <li>Non-Functional Requirements</li>
     </ul>
 
@@ -72,7 +72,7 @@
     is used to structure, define and maintain the SRS.</p>
 
     <p>The amount of effort contributed to SRS development and maintenance depends on the project size and complexity.
-    However, average numbers (in correlation with the project [Budget]({% href process/cost/budget %})) are as follows:</p>
+    However, average numbers (in correlation with the project [Budget](/process/cost/budget)) are as follows:</p>
 
     <table>
         <tr>
@@ -88,7 +88,7 @@
     </table>
 
     <p>Functional Requirements for the SRS are uniquely identified and
-    used in a [Traceability Matrix]({% href process/scope/matrix %})
+    used in a [Traceability Matrix](/process/scope/matrix)
     in order to provide backward traceability for Features.</p>
 
 </text>

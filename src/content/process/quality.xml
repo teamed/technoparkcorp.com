@@ -42,8 +42,8 @@
 
 <text>
 
-    <p>Quality is the degree of conformance of [Deliverables]({% href process/warranty/deliverables %}) to
-    [Specification]({% href process/scope/specification %}). The goal of a project is
+    <p>Quality is the degree of conformance of [Deliverables](/process/warranty/deliverables) to
+    [Specification](/process/scope/specification). The goal of a project is
     to deliver software products with an acceptable level of Quality on time. Acceptable, according to our
     software development contract, means that Quality
     is 95% or greater.</p>
@@ -58,9 +58,9 @@
 
     <p>Any type of software has an unlimited number of Defects.  Some of these
     are critical and some are minor. In the iterative and
-    [incremental]({% href process/communication/incremental %}) delivery process we use to
+    [incremental](/process/communication/incremental) delivery process we use to
     find the planned amount of Defects, we provide an optimal service
-    in the limited amount of [time]({% href process/time %}) given. Regardless, all critical Defects are
+    in the limited amount of [time](/process/time) given. Regardless, all critical Defects are
     to be found and removed.</p>
 
     <p>Defects are tracked in a Defects Tracking System, which you have an access to. During

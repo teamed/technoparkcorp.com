@@ -35,9 +35,9 @@
 
 <text>
 
-    <p>[Risk List]({% href process/risk/risk}">Risks</a> are defined in a <a href="${url:process/risk/risklist %})
-    during the [Inception Phase]({% href process/time/inception %})
-    and are presented to you prior to the [LCO Milestone]({% href process/time/lco %}).
+    <p>[Risk List](/process/risk/risk}">Risks</a> are defined in a <a href="${url:process/risk/risklist)
+    during the [Inception Phase](/process/time/inception)
+    and are presented to you prior to the [LCO Milestone](/process/time/lco).
     You have to choose a strategy for each Risk that appears on the list.</p>
 
     <p>You have two options - either to pay for the implementation of a pro-active Mitigation Plan and eliminate the Risk, or

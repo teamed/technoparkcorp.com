@@ -45,11 +45,11 @@
 
 <text>
 
-    <p>As soon as Functional [Requirements]({% href process/scope/requirement %}) are specified in the
-    [SRS]({% href process/scope/srs %}) and you approved them,
+    <p>As soon as Functional [Requirements](/process/scope/requirement) are specified in the
+    [SRS](/process/scope/srs) and you approved them,
     they are listed in a Traceability Matrix.
-    Design Elements, [Risks]({% href process/risk/risk %}),
-    [Features]({% href process/scope/feature %}), and test cases are traced to Functional
+    Design Elements, [Risks](/process/risk/risk),
+    [Features](/process/scope/feature), and test cases are traced to Functional
     Requirements and vise versa.</p>
 
     <p>Bi-directional traceability between key elements of project scope (artifacts) gives
@@ -62,8 +62,8 @@
         <li>Status reporting and analysis</li>
     </ul>
 
-    <p>The Traceability Matrix is a very powerful instrument of [time]({% href process/time %}),
-    [scope management]({% href process/cost}">cost</a> and <a href="${url:process/scope %}).</p>
+    <p>The Traceability Matrix is a very powerful instrument of [time](/process/time),
+    [scope management](/process/cost}">cost</a> and <a href="${url:process/scope).</p>
 
 </text>
 

@@ -44,7 +44,7 @@
 
     <p>We only work with fixed-price contracts.
     Staff-hours are used to calculate the price.
-    The [Budget]({% href process/cost/budget %}) is the amount of required staff-hours multiplied by the price of one staff-hour.</p>
+    The [Budget](/process/cost/budget) is the amount of required staff-hours multiplied by the price of one staff-hour.</p>
 
     <p>The price per staff-hour includes direct expenses, indirect expenses, and our profit.
     Depending on the size of the project and cost of technical specialists' efforts

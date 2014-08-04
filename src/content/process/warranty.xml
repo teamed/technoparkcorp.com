@@ -43,12 +43,12 @@
 <text>
 
     <p>As stated in our software development contract, a software project is closed when
-    [Quality]({% href process/quality %}) is acceptable. That means that 95% of functional
-    [SRS]({% href process/scope/requirement}">Requirements</a> from <a href="${url:process/scope/srs %}) do not
-    have any [Defects]({% href process/quality/defect %}).</p>
+    [Quality](/process/quality) is acceptable. That means that 95% of functional
+    [SRS](/process/scope/requirement}">Requirements</a> from <a href="${url:process/scope/srs) do not
+    have any [Defects](/process/quality/defect).</p>
 
-    <p>Since 100% Quality is not attainable, [Deliverables]({% href process/warranty/deliverables %}) have many more
-    Defects than you or our testers can reveal in a limited amount of [time]({% href process/time %}). Project
+    <p>Since 100% Quality is not attainable, [Deliverables](/process/warranty/deliverables) have many more
+    Defects than you or our testers can reveal in a limited amount of [time](/process/time). Project
     acceptance criteria is a situation when Deliverables do not have critical Defects that
     block product release.</p>
 
@@ -56,8 +56,8 @@
     after project completion. Such service includes removal of any Defects you find
     in Deliverables.</p>
 
-    <p>There is a difference between Defect removal and [support services]({% href process/warranty/support %}).
-    We do not provide [support services]({% href process/warranty/support %}), which include
+    <p>There is a difference between Defect removal and [support services](/process/warranty/support).
+    We do not provide [support services](/process/warranty/support), which include
     server administration, end-user support, search engine optimization, etc.</p>
 
 </text>

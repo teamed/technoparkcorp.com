@@ -48,13 +48,13 @@
     is a method of tracking the status of a project.
     It is based on numeric
     parameters and provides a transparent and un-biased snapshot of the project situation.
-    [ The Schedule]({% href process/time/schedule %})
+    [ The Schedule](/process/time/schedule)
     is tracked by means of Earned Value (EV) and Planned Value (PV) parameters.</p>
 
     <p>EV is calculated as the total amount of required planned staff-hours for those requirements that you
     already accepted.</p>
 
-    <p>PV is calculated as a piece of the project [Budget]({% href process/cost/budget %}).
+    <p>PV is calculated as a piece of the project [Budget](/process/cost/budget).
     The amount is shown in staff-hours that were planned
     to be spent by today (staff-hours are divided evenly across the completed requirements.)</p>
 
@@ -92,7 +92,7 @@
     <p>This example shows how the project can be tracked
     without excess technical details.
     This information (EV, PV and SPI) is presented to you
-    at each Iteration Acceptance Meeting (by the end of each [Iteration]({% href process/time/iteration %}))
+    at each Iteration Acceptance Meeting (by the end of each [Iteration](/process/time/iteration))
     and is available instantly online in our management software.</p>
 
     <p>The SPI should always be equal to or greater than 1.0.
@@ -109,9 +109,9 @@
     <p>The numbers presented by an Earned Value analysis help you, the project team, and project manager
     to stay on the same page during the course of the whole project.</p>
 
-    <p>Earned Value data is not meaningful during the [Inception Phase]({% href process/time/inception %}), when
-    [Specification]({% href process/scope/specification %}) is not yet approved. Following the
-    [LCO Milestone]({% href process/time/lco %}) is consensus, the project manager will start to calculate the SPI.</p>
+    <p>Earned Value data is not meaningful during the [Inception Phase](/process/time/inception), when
+    [Specification](/process/scope/specification) is not yet approved. Following the
+    [LCO Milestone](/process/time/lco) is consensus, the project manager will start to calculate the SPI.</p>
 
 </text>
 

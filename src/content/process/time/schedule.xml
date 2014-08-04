@@ -56,19 +56,19 @@
 <text>
 
     <p>The Schedule is a coarse-grained project scenario, which splits the
-    whole project into [Iterations]({% href process/time/iteration %}).
+    whole project into [Iterations](/process/time/iteration).
     Each Iteration delivers  a certain product functionality.
-    The Schedule is created during the [Inception Phase]({% href process/time/inception %})
-    and is approved on an [LCO Milestone]({% href process/time/lco %}).</p>
+    The Schedule is created during the [Inception Phase](/process/time/inception)
+    and is approved on an [LCO Milestone](/process/time/lco).</p>
 
     <p>The Schedule is kept current during the whole project.
     By having this document, you know
     when and what results or functions to expect.</p>
 
     <p>The Schedule is created by the project manager,
-    right after you approve the [Specification]({% href process/scope/specification %}).
+    right after you approve the [Specification](/process/scope/specification).
     Together, all Iterations cover the whole project scope as defined in the Specification.
-    Overall, the Schedule is a central document in the project [time management]({% href process/time %}).</p>
+    Overall, the Schedule is a central document in the project [time management](/process/time).</p>
 
     <p>We utilize the best practices of
     [Rational Unified Process (RUP)](http://www.ibm.com/rational) for the product lifecycle.
@@ -106,7 +106,7 @@
         <tr><td>M4</td><td>Project finished (Release Milestone)</td><td>3-Apr</td><td></td></tr>
     </table>
 
-    <p>The Schedule is tracked with a [Schedule Performance Index (SPI)]({% href process/time/spi %}),
+    <p>The Schedule is tracked with a [Schedule Performance Index (SPI)](/process/time/spi),
     which shows you and the project team what progress has been made. The SPI
     is presented to you on each Iteration Acceptance Meeting.</p>
 
