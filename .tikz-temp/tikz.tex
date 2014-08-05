@@ -1,0 +1,35 @@
+
+\begin{tikzpicture}
+    [auto, thick]
+
+    \newcommand{\thewidth}{2.2cm}
+    \newcommand{\theheight}{1cm}
+
+    \tikzstyle{iteration} = [block,
+        text width=\thewidth,
+        anchor=north west,
+        minimum height=\theheight]
+
+    \tikzstyle{vline} = [dashed, draw=tpcBlue]
+
+    \foreach \x/\title in {0/{Inception Phase}, 1/{Interation 2}, 2/{Interation 3}, 3/{Interation 4}, 4/{Last Iteration}} {
+        \node [iteration] (Iteration\x) at (\x*\thewidth,-\x*\theheight) {\title};
+        \draw [vline] (\x*\thewidth,\theheight) -- (\x*\thewidth,-6*\theheight);
+    }
+
+    \draw [line, triangle 60-triangle 60] (0, -6*\theheight) -- node [above, fill=white, above=-0.3cm] {project lifecycle} (5*\thewidth, -6*\theheight);
+
+    \node [fill=white, above left=of Iteration0.north] (note1) {Project start};
+    \node [fill=white, above=2cm of Iteration2, text width=4cm] (note2) {Specification, Schedule, Budget, and Risks are approved};
+    \node [fill=white, above=2cm of Iteration4, text width=4cm] (note3) {Iteration Acceptance Meeting with new Build and project tracking data};
+    \node [fill=white, below=1.3cm of Iteration4, text width=4cm] (note4) {Acceptance Statement is signed, project is closed};
+
+    \draw [-angle 90] (note1) -- (Iteration0.west);
+    \draw [-angle 90] (note2) -- (Iteration0.east);
+    \draw [-angle 90] (note3) -- (Iteration1.east);
+    \draw [-angle 90] (note3) -- (Iteration2.east);
+    \draw [-angle 90] (note3) -- (Iteration3.east);
+    \draw [-angle 90] (note4) -- (Iteration4.south east);
+
+\end{tikzpicture}
+    
