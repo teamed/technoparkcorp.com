@@ -7,36 +7,48 @@ title: "Executive Team"
 intro: "Our executive team of software development professionals"
 description: |
   TechnoPark Corp. was founded by Yegor Bugayenko and Noah
-  Lieske
+  Lieske in 2006 to provide custom software development services
 keywords:
   - software development experts
+  - software experts
+  - expert programming
+  - software development outsourcing
+  - yegor bugayenko
+  - noah lieske
 next_step: about/facts
 ---
 
-<img src="data:image/png;base64,${base64:/about/yegor.png}" alt="Yegor Bugayenko" style="float:left; margin-right: 1em; margin-bottom: 1em;             width: 110px; height: 110px;"/>
+<img src="//img.technoparkcorp.com/about/yegor-bugayenko.png"
+    alt="Yegor Bugayenko photo"
+    style="float:left; margin-right: 1em; margin-bottom: 1em; width: 110px; height: 110px;"/>
 
-is a co-founder and CTO of the company, its lead software architect, and project management guru.
+**Yegor Bugayenko** is a co-founder and CTO of the company, its lead software architect, and project management guru.
 
 Yegor began his career in Ukraine, as a C++/Java software developer, in a private hardware
 engineering company, owned by his father. Yegor founded the company when he was 23 years old, in
 order to deliver custom software development services to North American and European clients. Since
 that time, under Yegor's management, the company completed over a hundred successful projects. Yegor
 possesses Master's Degree in Computer Science, and is a proud holder of most valuable industry
-certifications, including [PMP®](http://en.wikipedia.org/wiki/Project\_Management\_Professional), [OCMJEA](http://en.wikipedi
-a.org/wiki/Sun\_Certified\_Enterprise\_Architect#Sun\_Certified\_Enterprise\_Architect\_.28SCEA.29),
+certifications, including
+[PMP®](http://en.wikipedia.org/wiki/Project_Management_Professional),
+[OCMJEA](http://en.wikipedia.org/wiki/Sun_Certified_Enterprise_Architect#Sun_Certified_Enterprise_Architect_.28SCEA.29),
 [IBM RUP](http://www-03.ibm.com/certify/certs/38008003.shtml),
-[OCUP](http://www.omg.org/uml-certification/), [PRINCE2](http://www.prince2.com/),
-[MCP](http://www.microsoft.com/learning/mcp/mcp/), and [ZFCE](http://www.zend.com/en/services/certification/)/[ZCE](http://www.zend.com/en/services/certification/).
+[OCUP](http://www.omg.org/uml-certification/),
+[PRINCE2](http://www.prince2.com/),
+[MCP](http://www.microsoft.com/learning/mcp/mcp/), and
+[ZFCE](http://www.zend.com/en/services/certification/)/[ZCE](http://www.zend.com/en/services/certification/).
 
 Yegor has been dedicating recent years of his career to the research and development of software
 methodologies designed to improve quality. He is a regular academic writer and an author of almost
 all proprietary patent-pending and open source innovations of the company, including [eXtremely
-Distributed Software Development (XDSD)](/about/news/year2010/xdsd). [Puzzle Driven Development
-(PDD)](/innovations/pdd), and [FaZend Hosted CI Platform](${stories}/fazend).
+Distributed Software Development (XDSD)](/about/news/year2010/xdsd),
+[Puzzle Driven Development (PDD)](/innovations/pdd), and [Rultor.com](http://www.rultor.com).
 
-<img src="data:image/png;base64,${base64:/about/noah.png}" alt="Noah Lieske" style="float:left; margin-right: 1em; margin-bottom: 1em;             width: 110px; height: 110px;"/>
+<img src="//img.technoparkcorp.com/about/noah-lieske.png"
+    alt="Noah Lieske photo"
+    style="float:left; margin-right: 1em; margin-bottom: 1em; width: 110px; height: 110px;"/>
 
-is a co-founder, early angel investor, and strategic advisor of the company.
+**Noah Lieske** is a co-founder, early angel investor, and strategic advisor of the company.
 
 Noah is an accomplished business executive, having over twenty-five years of entrepreneurial
 experience with a strong focus on telecommunications, finance, domain registration, and

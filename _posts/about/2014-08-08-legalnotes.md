@@ -32,7 +32,7 @@ information contained in this web-site by updating this posting.
 TechnoPark Corp. may also make improvements or changes in the products, services, or programs
 described in this web-site at any time without notice.
 
-<h1>General Notes</h1>
+## General Notes
 
 This web-site contains proprietary notices and copyright information, the terms of which must be
 observed and followed. Please see the section entitled 'Trademarks' for related information.
@@ -60,7 +60,7 @@ any express or implied rights or licenses under any patents, trademarks, copyrig
 proprietary or intellectual property rights. You may not mirror any of the content from this
 web-site on another web-site or in any other media.
 
-<h1>Disclaimers</h1>
+## Disclaimers
 
 Information on this web-site is not promised or guaranteed to be correct, current, or complete, and
 this web-site may contain technical inaccuracies or typographical errors. TechnoPark Corp. assumes
@@ -73,20 +73,20 @@ making any decision related to any services, products, or other matters describe
 TechnoPark Corp. provides no assurances that any reported problems will be resolved by TechnoPark
 Corp., even if TechnoPark Corp. elects to provide information with the goal of addressing a problem.
 
-<h1>Trademarks</h1>
+## Trademarks
 
-<png style="float: left;">//images/logo</png>
+<img style="width:80px;height:58px;" src="//img.technoparkcorp.com/logo.svg"/>
 
 The trademark (nine-circles logo and "" slogan) is a trademark of TechnoPark Corp., registered on
 4-Nov-08 in United States Patent and Trademark Office ([USPTO](http://www.uspto.gov)), [see
 details](http://tarr.uspto.gov/servlet/tarr?regser=serial&entry=77438094). Any oppositions you may
 send directly to USPTO or to [copyright](mailto:pr@technoparkcorp.com) department of TechnoPark Corp
-by email. You can download our logo in [SVG format](/def:Site::BuildImage(false, '/logo.svg')).
+by email. You can download our logo in [SVG format](http://img.technoparkcorp.com/logo.svg).
 
 The product names used in this website are for identification purposes only. All trademarks and
 registered trademarks are the property of their respective owners.
 
-<h1>Third-Parties</h1>
+## Third-Parties
 
 This web-site may provide links or references to non-TechnoPark Corp. web-sites and resources.
 TechnoPark Corp. makes no representations, warranties, or other commitments whatsoever about any
@@ -111,7 +111,7 @@ not control the content on that web-site.
 It is up to you to take precautions to protect yourself from viruses, worms, trojan horses, and
 other potentially destructive programs, and to protect your information as you deem appropriate.
 
-<h1>Linking to this web-site</h1>
+## Linking to this web-site
 
 All links to this web-site must be approved in writing by TechnoPark Corp., except that TechnoPark
 Corp. consents to links in which the link and the pages that are activated by the link do not: (a)
@@ -127,7 +127,7 @@ may at any time, in its sole discretion, terminate permission to link to this we
 In such event, you agree to immediately remove all links to this web-site and to cease using any
 TechnoPark Corp. trademark.
 
-<h1>Translations</h1>
+## Translations
 
 Certain text in this web-site may be made available in languages other than English. Text may be
 translated by a person or solely by computer software with no human intervention or review.
@@ -137,7 +137,7 @@ representations or commitments regarding the accuracy or completeness of the tra
 not computer-generated or performed by a person. Please see the below Disclaimer of Warranty for
 additional conditions.
 
-<h1>Disclaimer of Warranty</h1>
+## Disclaimer of Warranty
 
 Use of this web-site is at your sole risk. All materials, information, products, software, programs,
 and services are provided "as is," with no warranties or guarantees whatsoever. TechnoPark Corp.
@@ -157,7 +157,7 @@ computer system.
 Some jurisdictions do not allow the exclusion of warranties, so the above exclusions may not apply
 to you.
 
-<h1>Limitation of Liability</h1>
+## Limitation of Liability
 
 In no event will TechnoPark Corp. be liable to any party for any direct, indirect, incidental,
 special, exemplary or consequential damages of any type whatsoever related to or arising from this

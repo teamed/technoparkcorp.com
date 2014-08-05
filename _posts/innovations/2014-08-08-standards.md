@@ -8,40 +8,37 @@ description: |
   PRINCE2, PMBOK and CMMI. Summary report for educational
   purposes.
 keywords:
-  - 
+  - software development standards
+  - PMI standard
+  -
 ---
 
 The information you see in this page was taken from the following sources:
 
- * Software Engineering Institute,
-        
- * , CMMI-DEV, v1.2,
-        Pittsburg, PA, USA, 2006,
-        [download](http://www.sei.cmu.edu/publications/documents/06.reports/06tr008.html).
- * Michael S.V. Turner, 
- * ,
-        Building Successful Technology Solutions,
-        Microsoft Press, Redmond, WA, USA, 2006,
-        [buy online](http://www.amazon.com/Microsoft-Solutions-Framework-Essentials-Michael/dp/0735623538).
- * A Guide to the Project Management Body of Knowledge 3rd Edition (
- * ),
-        Project Management Institute (PMI), USA, 2004,
-        [buy online](http://www.pmi.org).
- * , 2005 edition,
-        Office of Government Commerce, London,
-        [buy online](http://www.tsoshop.co.uk).
- * ,
-        Rational Method Composer, IBM Corp.,
-        [download](http://www.ibm.com).
+ * Software Engineering Institute, CMMI-DEV, v1.2, Pittsburg, PA, USA, 2006,
+   [download](http://www.sei.cmu.edu/publications/documents/06.reports/06tr008.html).
 
-The information is only for educational purposes. The information may not be correct at the moment 
+ * Michael S.V. Turner, Building Successful Technology Solutions,
+   Microsoft Press, Redmond, WA, USA, 2006,
+   [buy online](http://www.amazon.com/Microsoft-Solutions-Framework-Essentials-Michael/dp/0735623538).
+
+ * A Guide to the Project Management Body of Knowledge 3rd Edition,
+   Project Management Institute (PMI), USA, 2004,
+   [buy online](http://www.pmi.org).
+
+ * PRINCE2, 2005 edition, Office of Government Commerce, London,
+   [buy online](http://www.tsoshop.co.uk).
+
+ * RUP, Rational Method Composer, IBM Corp., [download](http://www.ibm.com).
+
+The information is only for educational purposes. The information may not be correct at the moment
 of reading.
 
 <style>
-        table.local td {
-            background: white;
-        }
-    </style>
+  table.local td {
+    background: white;
+  }
+</style>
 
 <table style="width: 1200px; padding-top: 0px; background: ${def:Colors::GRAY};" class="local">
     <tr>

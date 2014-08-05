@@ -91,8 +91,14 @@
         letter-spacing: -0.05 * $em;
         line-height: 2.6 * $em;
       }
-      p, table, ul, ol {
-        padding-top: 12px;
+      h2 {
+        font-size: 1.8 * $em;
+        font-weight: normal;
+        color: $blue;
+        line-height: 1.6 * $em;
+      }
+      p, table, ul, ol, h2 {
+        margin-top: 12px;
         line-height: 1.9 * $em;
       }
       ul, ol {
@@ -156,6 +162,7 @@
       border-left: 1px solid $lightgray;
       padding: 15px;
       margin-left: 15px;
+      margin-bottom: 30px;
       li {
         border-top: 1px solid $lightgray;
         padding: 15px 0;

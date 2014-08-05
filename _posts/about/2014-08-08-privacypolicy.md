@@ -33,10 +33,10 @@ If you have questions or concerns regarding this statement, you should first con
 at 568 Ninth Street South 202, Naples, Florida, 34102,
 [${mailto:privacy}](mailto:privacy@technoparkcorp.com). If you do not receive acknowledgement of
 your inquiry or your inquiry has not been satisfactorily addressed, you should contact TRUSTe at [http://www.tru
-ste.org/consumers/watchdog\_complaint.php](http://www.truste.org/consumers/watchdog\_complaint.php).
+ste.org/consumers/watchdog_complaint.php](http://www.truste.org/consumers/watchdog_complaint.php).
 TRUSTe will then serve as a liaison with us to resolve your concerns.
 
-<h1>Collection of PII</h1>
+## Collection of PII
 
 When TPC collects any Personally Identifiable Information (PII) on our corporate website, we will
 express our need for the personal data at the point of collection.
@@ -53,7 +53,7 @@ Some of the reasons we collect your personal information include:
  * Newsletters;
  * Online payments by credit card, and others.
 
-<h1>Usage of PII</h1>
+## Usage of PII
 
 We will only use PII in the way we specified when it was collected. We will not subsequently change
 the way PII is used without your consent. Some of the ways we may use PII include:
@@ -70,7 +70,7 @@ the way PII is used without your consent. Some of the ways we may use PII includ
  * To help diagnose problems with the server and to administer the website;
  * To meet contract obligations.
 
-<h1>Updating of PII</h1>
+## Updating of PII
 
 We need your help in keeping the PII you have shared with us accurate and up to date. Please notify
 us of any changes to your PII.
@@ -78,7 +78,7 @@ us of any changes to your PII.
 Our sites DOES NOT allow you to make these updates yourself online. In order to update your PII you
 shall [email us](mailto:privacy@technoparkcorp.com) or call at +1 (239) 243 0206.
 
-<h1>Unsubscribing</h1>
+## Unsubscribing
 
 Subscriptions to our newsletters can be managed ONLY by direct request sent to us [by
 email](mailto:privacy@technoparkcorp.com). In addition, each email newsletter includes instructions
@@ -89,13 +89,13 @@ address and the title of the marketing material you wish to unsubscribe from to:
 
 TechnoPark Corp. Unsubscribe/Privacy 568 Ninth Street South 202, Naples, Florida, 34102
 
-<h1>Non-personal information collection</h1>
+## Non-personal information collection
 
 In some instances, TPC may collect non-personal (aggregate or demographic) data through cookies, web
 logs, and web beacons. This information is used to better understand and improve the usability,
 performance and effectiveness of our website.
 
-<h1>Sharing and Disclosure of PII</h1>
+## Sharing and Disclosure of PII
 
 We do not sell or rent your PII to third-parties for marketing purposes unless you have granted us
 permission to do so.
@@ -126,7 +126,7 @@ to handle information in a manner consistent with TPC's privacy and security pol
 
 We will ask you for your opt-in consent to share your PII with a third party for any other reason.
 
-<h1>Storage and Security of PII</h1>
+## Storage and Security of PII
 
 TPC is committed to protecting the PII you share with us. We utilize a combination of security
 technologies, procedures, and organizational measures to help protect your PII from unauthorized
@@ -134,7 +134,7 @@ access, use or disclosure.
 
 When we transfer sensitive personal data (for example, credit card information) over the Internet,
 we protect it using Secure Sockets Layer (SSL) encryption technology. To learn more about SSL,
-follow [this link](http://en.wikipedia.org/wiki/Secure\_Sockets\_Layer).
+follow [this link](http://en.wikipedia.org/wiki/Secure_Sockets_Layer).
 
 While we strive to protect your PII, we cannot ensure the security of the information you transmit.
 
@@ -144,7 +144,7 @@ passwords, and make sure you use a secure browser.
 
 If you have any questions about security on our website, you can [email us](mailto:privacy@technoparkcorp.com).
 
-<h1>Cookies</h1>
+## Cookies
 
 Cookie is a small text file that is stored on a user's computer for record-keeping purposes. TPC
 websites utilize cookies, although you can still access most of them even if you choose to disable
@@ -157,7 +157,7 @@ We use both session ID cookies and persistent cookies. We use session cookies to
 you to navigate our site. A session ID cookie expires when you close your browser. A persistent
 cookie remains on your hard drive for an extended period of time. You can remove persistent cookies
 by following directions provided in your Internet browser's help file. To learn more about cookies,
-follow the [link](http://en.wikipedia.org/wiki/HTTP\_cookie).
+follow the [link](http://en.wikipedia.org/wiki/HTTP_cookie).
 
 We store the identified of your latest login in cookie in order to avoid mutliple login requests
 when there are delays in site usage. We set a persistent cookie to store your passwords, so you
@@ -173,7 +173,7 @@ Current versions of web browsers offer enhanced user controls regarding the plac
 of both first and third party cookies. Search for "cookies" under your web browser's Help menu for
 more information on cookie management features available to you.
 
-<h1>Linked websites</h1>
+## Linked websites
 
 Our websites may provide links to other third-party websites which are outside our control and not
 covered by this policy. We encourage you to review the privacy policies posted on these (and all) sites.
@@ -182,7 +182,7 @@ TPC classifies your PII as confidential information. Confidential information is
 stored on secure servers that only select TechnoPark Corp. personnel have access to. The PII is
 encrypted to prevent unauthorized access.
 
-<h1>Changes to Privacy Policy</h1>
+## Changes to Privacy Policy
 
 If we decide to change our Privacy Policy, we will post those changes to this privacy statement, the
 home page, and other places we deem appropriate so that you are aware of what information we
@@ -195,7 +195,7 @@ notice on our home page.
 Your continued use of this site means you fully accept those changes. Last update of the Privacy
 Policy was made on .
 
-<h1>Questions or Comments?</h1>
+## Questions or Comments?
 
 If you have any questions or comments about this Privacy Policy, the practices of this site, or your
 interaction with TPC by means of this site, please [contact us](/contacts) or send us [an email](mailto:privacy@technoparkcorp.com).
