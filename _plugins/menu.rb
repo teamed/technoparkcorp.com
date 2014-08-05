@@ -3,7 +3,7 @@ module Tpc
     class Menu < Liquid::Tag
       def render(context)
         html = ''
-        map(context).each do |key, items|
+        map(context).sort.each do |key, items|
           html += draw(nil, key, items.sort, context)
         end
         html
@@ -29,9 +29,11 @@ module Tpc
       end
 
       def map(context)
+        excludes = ['about/legalnotes', 'about/privacypolicy', 'about/sitemap']
         site = context.registers[:site]
         map = Hash.new
         site.posts.each do |post|
+          next if excludes.include?(post.permalink)
           node = map
           post.permalink.split('/').each do |path|
             if !node.include? path

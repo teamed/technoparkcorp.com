@@ -11,3 +11,8 @@ keywords:
 
 Our innovations bridge the gap between you and your programming team. We enable success in your
 projects making complex things simple and transparent. Talk to us to see how we can do it in your project.
+
+{% for post in site.tags['innovations'] %}
+  [{{ post.title }}]({{ post.url }}). {{ post.description }}<br/>
+  <span class="gray">published on {{ post.date | date: "%-d %b %Y" }}</span>
+{% endfor %}

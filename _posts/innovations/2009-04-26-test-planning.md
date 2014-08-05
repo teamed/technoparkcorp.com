@@ -1,10 +1,11 @@
 ---
 layout: article
-date: 2014-08-08
+date: 2009-04-26
 permalink: innovations/test-planning
 label: Bugs Planning
 title: "Planning Of Software Bugs"
 intro: "Learn how we plan software bugs to improve the overal quality of product"
+tags: innovations
 description: |
   One of the most common mistake in software development is a
   negative attitute towards bugs. In the article we explain

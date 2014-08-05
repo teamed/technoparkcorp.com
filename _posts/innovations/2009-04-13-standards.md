@@ -1,8 +1,9 @@
 ---
 layout: article
-date: 2014-08-08
+date: 2009-04-13
 permalink: innovations/standards
 title: "Most Popular Software Development And Project Management Industry De-facto Standards (summary)"
+tags: innovations
 description: |
   Lists of roles, processes and artifacts for RUP, MSF,
   PRINCE2, PMBOK and CMMI. Summary report for educational
@@ -10,7 +11,8 @@ description: |
 keywords:
   - software development standards
   - PMI standard
-  -
+  - PMBOK
+  - PRINCE2
 ---
 
 The information you see in this page was taken from the following sources:

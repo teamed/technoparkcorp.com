@@ -31,9 +31,9 @@ policy covers the TPC corporate website (www.technoparkcorp.com) and is applicab
 
 If you have questions or concerns regarding this statement, you should first contact Arthur Petrenko
 at 568 Ninth Street South 202, Naples, Florida, 34102,
-[${mailto:privacy}](mailto:privacy@technoparkcorp.com). If you do not receive acknowledgement of
-your inquiry or your inquiry has not been satisfactorily addressed, you should contact TRUSTe at [http://www.tru
-ste.org/consumers/watchdog_complaint.php](http://www.truste.org/consumers/watchdog_complaint.php).
+[privacy@technoparkcorp.com](mailto:privacy@technoparkcorp.com). If you do not receive acknowledgement of
+your inquiry or your inquiry has not been satisfactorily addressed, you should contact TRUSTe at
+[http://www.truste.org/consumers/watchdog_complaint.php](http://www.truste.org/consumers/watchdog_complaint.php).
 TRUSTe will then serve as a liaison with us to resolve your concerns.
 
 ## Collection of PII
@@ -80,8 +80,9 @@ shall [email us](mailto:privacy@technoparkcorp.com) or call at +1 (239) 243 0206
 
 ## Unsubscribing
 
-Subscriptions to our newsletters can be managed ONLY by direct request sent to us [by
-email](mailto:privacy@technoparkcorp.com). In addition, each email newsletter includes instructions
+Subscriptions to our newsletters can be managed ONLY by direct request sent to us
+[by email](mailto:privacy@technoparkcorp.com).
+In addition, each email newsletter includes instructions
 on how you can un-subscribe from that particular mailing.
 
 You may also unsubscribe from TPC's newsletters by sending a letter, including your name, email
@@ -142,7 +143,8 @@ We recommend you to take every precaution in protecting your PII when you are on
 example, change your passwords often, use a combination of letters and numbers when creating
 passwords, and make sure you use a secure browser.
 
-If you have any questions about security on our website, you can [email us](mailto:privacy@technoparkcorp.com).
+If you have any questions about security on our website, you can
+[email us](mailto:privacy@technoparkcorp.com).
 
 ## Cookies
 
@@ -198,4 +200,5 @@ Policy was made on .
 ## Questions or Comments?
 
 If you have any questions or comments about this Privacy Policy, the practices of this site, or your
-interaction with TPC by means of this site, please [contact us](/contacts) or send us [an email](mailto:privacy@technoparkcorp.com).
+interaction with TPC by means of this site, please
+[contact us](/contacts) or send us [an email](mailto:privacy@technoparkcorp.com).

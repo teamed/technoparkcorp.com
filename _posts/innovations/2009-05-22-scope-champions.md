@@ -1,10 +1,11 @@
 ---
 layout: article
-date: 2014-08-08
+date: 2009-05-22
 permalink: innovations/scope-champions
 label: Scope Champions
 title: "Revolutionary Method Of Cost Estimating"
 intro: "Learn how we optimize project cost estimating process using Scope Champions (our patent-pending invention)"
+tags: innovations
 description: |
   We invented a method of software cost estimating using a
   limited number of functional requirements, called Scope
