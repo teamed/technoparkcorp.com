@@ -29,11 +29,11 @@ module Tpc
       end
 
       def map(context)
-        excludes = ['about/legalnotes', 'about/privacypolicy', 'about/sitemap']
+        excludes = ['about/legalnotes', 'about/privacypolicy', 'about/sitemap', 'about/news/.*']
         site = context.registers[:site]
         map = Hash.new
         site.posts.each do |post|
-          next if excludes.include?(post.permalink)
+          next if !excludes.select {|re| post.permalink.match re }.empty?
           node = map
           post.permalink.split('/').each do |path|
             if !node.include? path
