@@ -4,19 +4,24 @@ module Tpc
       def render(context)
         html = ''
         map(context).each do |key, items|
-          html += draw(nil, key, items, context)
+          html += draw(nil, key, items.sort, context)
         end
         html
       end
 
       def draw(parent, key, items, context)
+        page = context['page']
         name = parent.nil? ? key : parent + '/' + key
         post = find(name, context)
-        html = "<li><a href='/#{post.permalink}' title='#{post['intro']}'>#{post['label']}</a>"
-        if items.length > 0 and !context['page']['permalink'].nil? and context['page']['permalink'].start_with?(name)
+        html = "<li><a href='/#{post.permalink}' title='#{post['intro']}'"
+        if !page['permalink'].nil? and page['permalink'] == name
+          html += " class='active'"
+        end
+        html += ">#{post['label']}</a>"
+        if items.length > 0 and !page['permalink'].nil? and page['permalink'].start_with?(name)
           html += '<ul>'
           items.each do |k,v|
-            html += draw(name, k, v, context)
+            html += draw(name, k, v.sort, context)
           end
           html += '</ul>'
         end

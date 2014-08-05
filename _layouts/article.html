@@ -25,20 +25,20 @@ layout: default
     <ul class="steps">
       {% steps %}
     </ul>
+    <ul class="menu" role="navigation">
+      {% menu %}
+    </ul>
     <div class="page" itemprop="articleBody">
       <h1>{{ page.title }}</h1>
       {{ page.content }}
     </div>
+    <div class="wl">
+      {% if page.date %}
+        Last update on
+        <time itemprop="datePublished" datetime="{{ page.date | date_to_xmlschema }}">
+          {{ page.date | date: "%-d %b %Y" }}
+        </time>
+      {% endif %}
+    </div>
   </article>
-  <ul class="menu" role="navigation">
-    {% menu %}
-  </ul>
-  <div class="wl">
-    {% if page.date %}
-      Last update on
-      <time itemprop="datePublished" datetime="{{ page.date | date_to_xmlschema }}">
-        {{ page.date | date: "%-d %b %Y" }}
-      </time>
-    {% endif %}
-  </div>
 </section>
