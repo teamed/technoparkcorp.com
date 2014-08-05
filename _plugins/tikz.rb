@@ -19,7 +19,7 @@ module Tpc
               "cat ../_latex/header.tex > doc.tex",
               "cat tikz.tex >> doc.tex",
               "echo '\\end{document}' >> doc.tex",
-              "latex -halt-on-error -interaction=nonstopmode doc.tex >/dev/null",
+              "latex -halt-on-error -interaction=nonstopmode doc.tex",
               "dvips -o doc.ps doc.dvi",
               [
                 "echo quit",
@@ -31,11 +31,14 @@ module Tpc
               "mv doc.png ../tikz/#{name}.png"
             ].join(' && ')
           )
+          if $?.exitstatus != 0
+            raise 'failed to compile Tikz'
+          end
         end
         site.static_files << Jekyll::StaticFile.new(
           site, site.source, 'tikz', "#{name}.png"
         )
-        "<p class='tikz'><img src='/tikz/#{name}.png' alt='tikz'/></p>"
+        "<p class='tikz'><img src='/tikz/#{name}.png' alt='tikz' width='80%'/></p>"
       end
     end
   end
