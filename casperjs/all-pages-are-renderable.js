@@ -1,11 +1,9 @@
 /*globals casper:false */
 [
-    '/about-me.html',
-    '/unsubscribe.html',
+    '/index.html',
     '/rss.xml',
     '/sitemap.xml',
-    '/index.html',
-    '/css/layout.css',
+    '/css/style.css',
     '/robots.txt',
     '/js/all.js',
 ].forEach(
