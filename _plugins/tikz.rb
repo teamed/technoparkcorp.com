@@ -8,15 +8,17 @@ module Tpc
         site = context.registers[:site]
         name = Digest::MD5.hexdigest(super)
         if !File.exists?(File.join(site.dest, "tikz/#{name}.png"))
-          temp = File.join(site.source, ".tikz-temp")
+          temp = File.join(site.dest, ".tikz-temp")
           FileUtils.mkdir_p(temp)
           File.open(File.join(temp, "#{name}.tex"), 'w') { |f|
             f.write(super)
           }
           system(
             [
+              "cd #{site.dest}",
+              "mkdir -p tikz",
               "cd .tikz-temp",
-              "cat ../_latex/header.tex > doc.tex",
+              "cat #{site.source}/_latex/header.tex > doc.tex",
               "cat #{name}.tex >> doc.tex",
               "echo '\\end{document}' >> doc.tex",
               "latex -halt-on-error -interaction=nonstopmode doc.tex",
