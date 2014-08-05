@@ -16,7 +16,28 @@
  *
  */
 
-@import 'global';
-@import 'home';
-@import 'sitemap';
-@import 'article';
+@import 'defs';
+
+.sitemap {
+  list-style: none;
+  & > li {
+    margin-top: 15px;
+    & > a {
+      font-weight: bold;
+    }
+  }
+  ul {
+    list-style: none;
+    margin-left: 10px;
+    margin-top: 0 !important;
+  }
+  li {
+    a {
+      text-decoration: none;
+      color: $black;
+      &.active, &:hover {
+        color: $blue;
+      }
+    }
+  }
+}
