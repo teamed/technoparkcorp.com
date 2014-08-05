@@ -28,7 +28,8 @@ module Tpc
                 "pnmcrop -white",
                 "pnmtopng -interlace > doc.png"
               ].join(' | '),
-              "mv doc.png ../tikz/#{name}.png"
+              "mv doc.png ../tikz/#{name}.png",
+              "cd .."
             ].join(' && ')
           )
           if $?.exitstatus != 0
