@@ -13,26 +13,13 @@ keywords:
   - XDSD
   - eXtremely Distributed Software Development
 first:
-  cost:
-    label: Our prices and estimations
-    href: /process/cost
-  scope:
-    label: Requirements management
-    href: /process/scope
-  risk:
-    label: How we manage project risks
-    href: /process/risk
+  /process/cost: Our prices and estimations
+  /process/scope: Requirements management
+  /process/risk: How we manage project risks
 second:
-  why:
-    label: Why customers stay with us
-    href: /about/why
-  history:
-    label: History of our company
-    href: /about/history
-  jobs:
-    label: Job Openings
-    href: /about/jobs
-news: /about/news/yegor2014/teamed
+  /about/why: Why customers stay with us
+  /about/history: History of our company
+  /about/jobs: Job Openings
 ---
 
 <div class="picture">
@@ -56,20 +43,20 @@ news: /about/news/yegor2014/teamed
     <tr>
       <td>
         {% for link in page.first %}
-          <a href="{{ link[1]['href'] }}">
-            {{ link[1]['label'] }}
+          <a href="{{ link[0] }}">
+            {{ link[1] }}
           </a>
         {% endfor %}
       </td>
       <td>
         {% for link in page.second %}
-          <a href="{{ link[1]['href'] }}">
-            {{ link[1]['label'] }}
+          <a href="{{ link[0] }}">
+            {{ link[1] }}
           </a>
         {% endfor %}
       </td>
       <td>
-        <a href="/">some news...</a>
+        {% recent_news %}
       </td>
     </tr>
   </table>
