@@ -19,7 +19,7 @@ module Tpc
               "cat ../_latex/header.tex > doc.tex",
               "cat tikz.tex >> doc.tex",
               "echo '\\end{document}' >> doc.tex",
-              "latex -halt-on-error -interaction=nonstopmode doc.tex",
+              "latex -halt-on-error -interaction=nonstopmode doc.tex >/dev/null",
               "dvips -o doc.ps doc.dvi",
               [
                 "echo quit",
