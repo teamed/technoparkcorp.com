@@ -48,10 +48,12 @@ Iteration starts with an Iteration Plan, which is a fine-grained plan, and inclu
 An Iteration Plan is created by the project manager and team. The Iteration Plan is then committed
 by the project team - such commitment is a must for all Iterations.
 
-An Iteration Acceptance Meeting finishes the Iteration and is conducted online with your
-participation. The key purpose of this meeting is to present you the project status and risk
-monitoring results. Earned Value technique is used to evaluate and indicate the project status. [CPI](/process/time/spi}">SPI
+An Iteration Acceptance Meeting finishes the Iteration and is conducted online with your participation.
+The key purpose of this meeting is to present you the project status and risk monitoring results.
+Earned Value technique is used to evaluate and indicate the project status.
+[SPI](/process/time/spi)
+and [CPI](/process/cost) numbers
+will help all parties involved to understand the actual project status.
 
-<a href="${url:process/cost) numbers     will help all parties involved to understand the actual project status."/>
-
-and
+During Iteration execution, the project manager sends you [daily reports](/process/communication/dailyreport)
+with a list of activities completed during the day.

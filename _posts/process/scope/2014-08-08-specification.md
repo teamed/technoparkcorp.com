@@ -77,10 +77,12 @@ The effective Specification is used by the project team. All Requirements are
 Specification. Communicating any changes ensures that you will be aware of the project status and
 the activities of the project team at all times.
 
-The Specification can be changed at any time during project lifecycle. All changes to the effective
-Specification are implemented as new Specifications through a process called [Change
-Requests](/process/scope/changerequest}">Change Requests
+The Specification can be changed at any time during project lifecycle. All changes to the
+effective Specification are implemented as new Specifications through a process
+called [Change Requests](/process/scope/changerequest).
+[Change Requests](/process/scope/changerequest)
+are small documents (1-2 pages) created by a system analyst in response to concerns about the project from you
+and other stakeholders.
 
-<a href="${url:process/scope/changerequest)     are small documents (1-2 pages) created by a system analyst in response to concerns about the project from you     and other stakeholders."/>
+Specification is part of contractual [Deliverables](/process/warranty/deliverables).
 
-.

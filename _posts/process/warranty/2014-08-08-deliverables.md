@@ -22,6 +22,19 @@ You receive the following:
 
  * Commented Source Code with unit-tests;
  * Compiled products (executables);
- * Specifications in original format ([Vision](/process/scope/srs}"&gt;SRS
+ * Specifications in original format ([SRS](/process/scope/srs), [Vision](/process/scope/vision))
+ * User manual
 
-<li>User manual</li>
+Project documentation includes, but is not delivered under contract:
+
+ * [Schedule](/process/time/schedule)
+ * Software Architecture Document (SAD)
+ * Test Plan (w/ Test Cases)
+ * Software Development Plan (SDP)
+ * [Iteration](/process/time/iteration) Plans
+ * Meeting Protocols
+ * [Traceability Matrix](/process/scope/matrix)
+ * [Risk List](/process/risk/risklist)
+
+You have an access to all project documentation, but we are
+not contractually obliged to deliver it.

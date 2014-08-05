@@ -42,8 +42,12 @@ Inception Phase includes:
  * Preparing the project environment
  * Estimating the [Budget](/process/cost)
 
-The Inception Phase is finished when Specification, [Schedule](/process/time/schedule), [Budget](/process/risk}">Risks
+The Inception Phase is finished when Specification, [Schedule](/process/time/schedule),
+[Risks](/process/risk),
+and [Budget](/process/cost) are prepared and you reviewed them.
+Approval of these documents means a green light for the continuation of the project.
+The Inception Phase is finished
+with an [LCO Milestone](/process/time/lco).
 
-<a href="${url:process/cost) are prepared and you reviewed them.     Approval of these documents means a green light for the continuation of the project.     The Inception Phase is finished     with an [LCO Milestone](/process/time/lco)."/>
-
-, and
+10-15% of the ROM Estimate average (time and effort) is usually spent on the Inception Phase
+by the project manager and system analyst.
