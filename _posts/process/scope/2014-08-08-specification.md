@@ -35,7 +35,7 @@ The following advantages are brought to the project by a properly defined Specif
  * Team morale is high since all parties involved know the project objectives
  * [Support](/process/warranty/support) and enhancements are easy, even if the team experiences changes
 
-<tikz>
+{% tikz %}
 \begin{tikzpicture}
     [node distance = 2.5cm,
     auto, thick]
@@ -58,7 +58,7 @@ The following advantages are brought to the project by a properly defined Specif
     \node [below=0.3cm of group.south east, anchor=east] {Inception Phase};
 
 \end{tikzpicture}
-    </tikz>
+{% endtikz %}
 
 Requirements are gathered from your informal customer. A preliminary Specification, called the
 [Vision](/process/scope/vision), is then created. Utilizing more defined details, an

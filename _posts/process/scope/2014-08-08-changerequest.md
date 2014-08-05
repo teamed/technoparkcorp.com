@@ -31,7 +31,7 @@ established change control procedure created during the project.
 We advocate a strict approach to change management. Each new change is formally reviewed, estimated,
 and approved prior to being implemented.
 
-<tikz>
+{% tikz %}
 \begin{tikzpicture}
     [node distance = 2.5cm,
     auto, thick]
@@ -54,7 +54,7 @@ and approved prior to being implemented.
     \draw [line] (accept) -- node[near start] {no} +(0:4cm) node[right] {No changes};
     \draw [line] (approve) -- node[near start] {no} +(0:4cm) node[right, text width=4cm] {Rollback to existing Baseline};
 \end{tikzpicture}
-    </tikz>
+    {% endtikz %}
 
 There are several consecutive steps in a change control procedure:
 

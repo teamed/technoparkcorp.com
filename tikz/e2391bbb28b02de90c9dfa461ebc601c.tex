@@ -1,0 +1,30 @@
+\documentclass[letterpaper,dvips]{article}
+\begin{document}
+
+
+\begin{tikzpicture}[font=\small]
+          \draw [very thin, color=tpcGrey] (0,0) grid [step=0.57] (14,8);
+        \draw [-triangle 60, semithick, draw=tpcBlack] (0,0) -- coordinate (x axis mid) (14.85,0) node[right] {$t$};
+        \draw [-triangle 60, semithick, draw=tpcBlack] (0,0) -- coordinate (y axis mid) (0,8.4) node[above] {Code Coverage};
+        \draw [*-*, draw=tpcBlue, very thick, smooth, tension=0.2] plot coordinates {
+    (0, 0.00)
+    (1, 1.0)
+    (2, 3.93)
+    (3, 5.29)
+    (4, 3.97)
+    (5, 4.77)
+     (6, 6.37)
+     (7, 6.40)
+     (8, 6.40)
+     (9, 8.00)
+     (10, 8.00)
+    (11, 6.64)
+    (12.39, 6.53)};
+\draw [draw=tpcRed] (12.39,8) -- (12.39,0) node [below] {today};
+\draw [draw=tpcBlack] (0.2,8) -- (-0.2,8) node [left] {78\%};
+\draw [draw=tpcBlack] (0.2,0) -- (-0.2,0) node [left] {0\%};
+\draw [draw=tpcBlack] (0,0.2) -- (0,-0.2) node [below] {02/05/08};
+\draw [draw=tpcBlack] (14,0.2) -- (14,-0.2) node [below] {02/27/09};
+\end{tikzpicture}
+        
+\end{document}

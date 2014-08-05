@@ -1,3 +1,5 @@
+.tikz-temp/
+_latex/
 reports/
 .sass-cache/
 _site/
