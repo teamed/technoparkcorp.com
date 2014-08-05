@@ -54,27 +54,24 @@ and approved prior to being implemented.
     \draw [line] (accept) -- node[near start] {no} +(0:4cm) node[right] {No changes};
     \draw [line] (approve) -- node[near start] {no} +(0:4cm) node[right, text width=4cm] {Rollback to existing Baseline};
 \end{tikzpicture}
-    {% endtikz %}
+{% endtikz %}
 
 There are several consecutive steps in a change control procedure:
 
-<ol>
-        <li>Requested change comes from you or project team (in any form).</li>
+ * Requested change comes from you or project team (in any form).
 
-        <li>Project manager, with the help of system analyst and project team, analyzes the impact.
-        The impact is estimated in staff-hours ([Cost](/process/cost)) and business days
-        ([Schedule](/process/time/schedule)).</li>
+ * Project manager, with the help of system analyst and project team, analyzes the impact.
+   The impact is estimated in staff-hours ([Cost](/process/cost)) and business days
+   ([Schedule](/process/time/schedule)).
 
-        <li>You approve or reject the estimation.</li>
+ * You approve or reject the estimation.
 
-        <li>New [Specification](/process/scope/specification) is developed by the project team.</li>
+ * New [Specification](/process/scope/specification) is developed by the project team.
 
-        <li>Changes to Schedule, [Risks](/process/risk),
-        and [Budget](/process/cost/budget) and
-        are estimated and presented.</li>
+ * Changes to Schedule, [Risks](/process/risk),
+   and [Budget](/process/cost/budget) and are estimated and presented.
 
-        <li>You approve or reject the changes.</li>
-    </ol>
+ * You approve or reject the changes.
 
 When the above procedure is finished, the changes become effective and the project team works with
 the new Schedule, Budget and Risks.
