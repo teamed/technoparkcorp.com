@@ -35,7 +35,7 @@ module Tpc
         site.static_files << Jekyll::StaticFile.new(
           site, site.source, 'tikz', "#{name}.png"
         )
-        "<p><img src='/tikz/#{name}.png' alt='tikz' class='tikz'/></p>"
+        "<p class='tikz'><img src='/tikz/#{name}.png' alt='tikz'/></p>"
       end
     end
   end
