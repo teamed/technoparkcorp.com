@@ -110,6 +110,10 @@
           color: $blue;
         }
       }
+      img.tikz {
+        width: 50%;
+        height: 50%;
+      }
       table {
         width: 100%;
         line-height: 1.4 * $em;

@@ -1,0 +1,76 @@
+\documentclass[11pt]{article}
+\pagestyle{empty}
+\setlength{\textheight}{297mm}
+\setlength{\textwidth}{210mm}
+\setlength{\hoffset}{-1.5in}
+\setlength{\voffset}{-1in}
+\DeclareMathSizes{10}{18}{14}{11}
+
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{setspace}
+\usepackage{colortbl}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{paralist}
+\usepackage{amsmath}
+\usepackage{xtab}
+\usepackage{chngpage}
+\usepackage{tocloft}
+\usepackage{eurosym} % EUR symbol to enable, use \euro{}
+\usepackage{enumitem} % for better definition of \item...
+\usepackage{tikz}
+    \usetikzlibrary{shapes,arrows,shadows,trees,fit,positioning}
+    \usetikzlibrary{decorations.pathmorphing}
+
+\definecolor{tpcBlue}{rgb}{0,0.5765,0.8196}
+\definecolor{tpcBlack}{rgb}{0.0863,0.1608,0.2039}
+\definecolor{tpcGrey}{rgb}{0.2706,0.3333,0.3765}
+\definecolor{tpcLightGrey}{rgb}{0.6784,0.7255,0.7529}
+\definecolor{tpcGreen}{rgb}{0.3294,0.7255,0.2824}
+\definecolor{tpcRed}{rgb}{0.8902,0.1059,0.1373}
+\definecolor{tpcYellow}{rgb}{1,0.9569,0.3294}
+\definecolor{tpcRUPBody}{rgb}{1,1,0.8}
+\definecolor{tpcRUPBorder}{rgb}{0.6039,0,0.2}
+
+\color{tpcBlack}
+
+\begin{document}
+\fontfamily{phv}\selectfont
+\fontsize{10pt}{13.6pt}\selectfont
+
+\tikzstyle{block} = [rectangle,
+    draw=tpcBlue, thick,
+    text width=3cm, text centered,
+    fill=tpcBlue!20,
+    inner sep=1.2mm,
+    minimum height=1cm]
+
+\tikzstyle{storage} = [cylinder,
+    shape border rotate=90,
+    draw=tpcBlue, thick,
+    text width=3cm, text centered,
+    fill=tpcBlue!20,
+    inner sep=1mm,
+    minimum height=1.5cm,
+    shape aspect=.2]
+
+\tikzstyle{document} = [tape,
+    draw=red!50, thick,
+    text width=2cm, text centered,
+    fill=red!20,
+    inner sep=1mm,
+    minimum height=1cm,
+    tape bend top=none]
+
+\tikzstyle{choice} = [diamond,
+    draw=tpcBlue, thick,
+    text width=2.5cm, text centered,
+    inner sep=0mm,
+    fill=tpcBlue!20,
+    minimum height=1cm]
+
+\tikzstyle{line} = [draw=tpcBlue,
+    -triangle 60,
+    fill=tpcBlue,
+    ultra thick]
