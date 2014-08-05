@@ -1,0 +1,1638 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+  xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>technoparkcorp.com</title>
+    <link>http://www.technoparkcorp.com</link>
+    <description>RSS feed for technoparkcorp.com</description>
+    <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+    <item>
+      <title>Why Customers Stay With Us?</title>
+      <link>http://www.technoparkcorp.com/about/why</link>
+      <description>&lt;p&gt;We are one of the authors of a new open methodology called
+&lt;a href=&quot;http://www.xdsd.org&quot;&gt;eXtremely Distributed Software Development&lt;/a&gt;.
+We are the only company who provides a
+proprietary implementation of it, combining together tools, technologies, and talents. Application
+of XDSD in your project guarantees you:&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/why</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Project Is Closed, Software Life Cycle Is Not</title>
+      <link>http://www.technoparkcorp.com/process/warranty</link>
+      <description>&lt;p&gt;As stated in our software development contract, a software project is closed when
+&lt;a href=&quot;/process/quality&quot;&gt;Quality&lt;/a&gt; is acceptable. That means that 95% of functional [SRS](/process/scope/requirement}&amp;quot;&amp;gt;Requirements&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/process/warranty</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Vision Document Is A Preliminary Specification Of Scope</title>
+      <link>http://www.technoparkcorp.com/process/scope/vision</link>
+      <description>&lt;p&gt;Each customer has their own understanding of task definition. Customers also use their own format
+for documentation. Sometimes, such documentation is properly formatted and presented, and sometimes
+it is not. We use a uniform and standard format for the preliminary scope definition. It is short,
+simple, and very clear - we call it the Vision.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/process/scope/vision</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Test Driven Development</title>
+      <link>http://www.technoparkcorp.com/process/quality/unit</link>
+      <description>&lt;p&gt;Unit testing means that software includes special modules in automatic mode test, other modules, and
+components. Unit tests play an adhesive role between software modules and
+&lt;a href=&quot;/process/scope/requirement&quot;&gt;Requirements&lt;/a&gt;. Unit tests guarantee that in any moment all software
+modules work as they worked before, when the unit tests were created and executed.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/process/quality/unit</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>How In-time Delivery Is Assured</title>
+      <link>http://www.technoparkcorp.com/process/time</link>
+      <description>&lt;p&gt;Talented and motivated engineers, programmers, designers and architects may fail to complete a
+project and miss important milestones if they don&amp;#39;t have a project manager who manages time
+properly. Nowadays in the software industry this happens during the course of many projects. We pay
+great attention to planning, monitoring, and controlling of time in our projects.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/process/time</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Talents Work Here</title>
+      <link>http://www.technoparkcorp.com/about/teams</link>
+      <description>&lt;p&gt;For each new project we build and manage a dedicated distributed team of narrow-skilled technicians.
+Each role in a project is being filled by the best suitable talent (&lt;a href=&quot;/contacts/sup&quot;&gt;tell us about your
+uniqueness&lt;/a&gt; and we will invite you to one of our projects), the company or an individual.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/teams</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>System Testing</title>
+      <link>http://www.technoparkcorp.com/process/quality/system</link>
+      <description>&lt;p&gt;System testing is performed by testers through special tools and testability elements in order to
+reveal system &lt;a href=&quot;/process/quality/defect&quot;&gt;Defects&lt;/a&gt;.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/process/quality/system</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Support Services When Project Is Finished</title>
+      <link>http://www.technoparkcorp.com/process/warranty/support</link>
+      <description>&lt;p&gt;This following is a list of services that we DO NOT provide, but are usually required for web
+projects and software systems. We recommend considering other companies to get quality services of
+this kind:&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/process/warranty/support</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Suppliers Wanted</title>
+      <link>http://www.technoparkcorp.com/contacts/sup</link>
+      <description>&lt;p&gt;We&amp;#39;re always looking for new talents and skills.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/contacts/sup</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Who Is Responsible For Risk Consequencies</title>
+      <link>http://www.technoparkcorp.com/process/risk/strategy</link>
+      <description>&lt;p&gt;[Risk List](/process/risk/risk}&amp;quot;&amp;gt;Risks&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/process/risk/strategy</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Success Stories</title>
+      <link>http://www.technoparkcorp.com/stories</link>
+      <description>&lt;p&gt;Select a category from the lists below and read relevant Success Stories. Click on one of the tags
+below. This list is updated regularly as we complete new projects. Some of the Stories you see here
+are the re-worked Lessons Learned we collect by the end of each project Iteration.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/stories</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Standardized Requirements In One Document</title>
+      <link>http://www.technoparkcorp.com/process/scope/srs</link>
+      <description>&lt;p&gt;A Software Requirements Specification (SRS) document is one of the central artifacts in the course
+of a software development project. It defines what shall be developed in great detail. The SRS is a
+rather technical document and usualy requires your significant attention to read and understand it.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/process/scope/srs</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Schedule Performance And Variance Indicator</title>
+      <link>http://www.technoparkcorp.com/process/time/spi</link>
+      <description>&lt;p&gt;&lt;a href=&quot;http://en.wikipedia.org/wiki/Earned_value_management&quot;&gt;Earned Value Analysis&lt;/a&gt; is a method of
+tracking the status of a project. It is based on numeric parameters and provides a transparent and
+un-biased snapshot of the project situation. &lt;a href=&quot;/process/time/schedule&quot;&gt;The Schedule&lt;/a&gt; is tracked by
+means of Earned Value (EV) and Planned Value (PV) parameters.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/process/time/spi</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Top Level User Requirement</title>
+      <link>http://www.technoparkcorp.com/process/scope/specification</link>
+      <description>&lt;p&gt;Specifications define the boundaries of a system. A Specification is the core document in any
+software project, and is so important that its value cannot be overestimated.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/process/scope/specification</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Site Map</title>
+      <link>http://www.technoparkcorp.com/about/sitemap</link>
+      <description>&lt;p&gt;This site is constantly changing and updating. Bookmark it for your convenience. Find your desired
+point in the following site map:&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/sitemap</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Methods Of Information Protection</title>
+      <link>http://www.technoparkcorp.com/process/ipr/security</link>
+      <description>&lt;p&gt;&amp;quot;Information is an asset that, like other important business assets, is essential to an
+organization&amp;#39;s business and consequently needs to be suitably protected. This is especially
+important in the increasingly interconnected business environment. As a result of this increasing
+interconnectivity, information is now exposed to a growing number and a wider variety of threats and
+vulnerabilities,&amp;quot; states ISO/IEC 17799-2005 &amp;quot;Information Technology, Security Techniques, Code of
+Practice for Information Security Management&amp;quot;.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/process/ipr/security</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Scope Is Defined By Specifications</title>
+      <link>http://www.technoparkcorp.com/process/scope</link>
+      <description>&lt;p&gt;Boundaries of software products are defined by a set of &lt;a href=&quot;/process/scope/requirement&quot;&gt;Requirements&lt;/a&gt;.
+The software development team designs, implements, tests, and delivers these Requirements to you. A
+Requirement is an atomic unit of a software product from the viewpoint of the user. As a rule,
+Requirements are always correct, unambiguous, verifiable, and traceable. Requirements are numbered
+and prioritized.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/process/scope</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Schedule Development And Baseline</title>
+      <link>http://www.technoparkcorp.com/process/time/schedule</link>
+      <description>&lt;p&gt;The Schedule is a coarse-grained project scenario, which splits the whole project into
+&lt;a href=&quot;/process/time/iteration&quot;&gt;Iterations&lt;/a&gt;. Each Iteration delivers a certain product functionality. The
+Schedule is created during the &lt;a href=&quot;/process/time/inception&quot;&gt;Inception Phase&lt;/a&gt; and is approved on an &lt;a href=&quot;/process/time/lco&quot;&gt;LCO Milestone&lt;/a&gt;.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/process/time/schedule</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Rss</title>
+      <link>http://www.technoparkcorp.com/about/rss</link>
+      <description></description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/rss</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Rough Order Of Magnitude Estimate</title>
+      <link>http://www.technoparkcorp.com/process/cost/rom</link>
+      <description>&lt;p&gt;When a project is started and Requirements are not specified in great detail, the exact project
+&lt;a href=&quot;/process/cost/budget&quot;&gt;Budget&lt;/a&gt; can not be calculated without mistakes (due to the well-known &lt;a href=&quot;http://www.construx.com/Page.aspx?hid=1648&quot;&gt;Cone
+of Uncertainty&lt;/a&gt;). Concrete numbers in this stage will
+lead to an ineffective situation in which you or us may experience loss.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/process/cost/rom</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Risk Identification And Response Planning</title>
+      <link>http://www.technoparkcorp.com/process/risk/risklist</link>
+      <description>&lt;p&gt;A Risk List is created by the project manager during the &lt;a href=&quot;/process/time/inception&quot;&gt;Inception Phase&lt;/a&gt;
+and presented to you prior to a &lt;a href=&quot;/process/time/lco&quot;&gt;LCO Milestone&lt;/a&gt;.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/process/risk/risklist</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Cause, Risk, Effect</title>
+      <link>http://www.technoparkcorp.com/process/risk/risk</link>
+      <description>&lt;p&gt;A Risk in software development project is an event that may have an impact on the outcome of the
+project. Risk differs from problems or issues because a risk refers to the future potential of
+loss/benefit. Problems or issues, however, are conditions or states of affairs that exist in a
+project at present time.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/process/risk/risk</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Risks Are Identified, Prioritized And Managed</title>
+      <link>http://www.technoparkcorp.com/process/risk</link>
+      <description>&lt;p&gt;A Risk is a possible event that may impact the outcome of a project.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/process/risk</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Requirement Is An Atomic Unit Of Product Scope</title>
+      <link>http://www.technoparkcorp.com/process/scope/requirement</link>
+      <description>&lt;p&gt;A Requirement is a type of contractual clause between the user and their system. A Requirement
+states exactly what each user can do with the system. It is important to note that a system will not
+perform any functions outside of those stated in the Requirements.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/process/scope/requirement</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Quality Is Planned, Assured And Controlled</title>
+      <link>http://www.technoparkcorp.com/process/quality</link>
+      <description>&lt;p&gt;Quality is the degree of conformance of &lt;a href=&quot;/process/warranty/deliverables&quot;&gt;Deliverables&lt;/a&gt; to
+&lt;a href=&quot;/process/scope/specification&quot;&gt;Specification&lt;/a&gt;. The goal of a project is to deliver software products
+with an acceptable level of Quality on time. Acceptable, according to our software development
+contract, means that Quality is 95% or greater.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/process/quality</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Iterative And Incremental Software Development Process</title>
+      <link>http://www.technoparkcorp.com/process</link>
+      <description>&lt;p&gt;We implement full-scale PMBOK-inspired project management and make its every last detail valuable
+and easy-to-understand by means of instant automated metrics. Complex project management principles,
+documents, processes and rules are transparent for you with our project management web panel.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/process</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Privacy Policy</title>
+      <link>http://www.technoparkcorp.com/about/privacypolicy</link>
+      <description>&lt;p&gt;TechnoPark Corp., referred to as &amp;quot;TPC&amp;quot;, is committed to protecting your privacy and ensuring you
+have a positive experience on our website(s). This policy outlines our personal information handling
+practices for both online and offline data. If you give us personal information, we will treat it
+according to this policy.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/privacypolicy</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>What Our Price Includes</title>
+      <link>http://www.technoparkcorp.com/process/cost/prices</link>
+      <description>&lt;p&gt;We only work with fixed-price contracts. Staff-hours are used to calculate the price. The
+&lt;a href=&quot;/process/cost/budget&quot;&gt;Budget&lt;/a&gt; is the amount of required staff-hours multiplied by the price of one staff-hour.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/process/cost/prices</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Automated Deployment Environment For Multi-parts Project</title>
+      <link>http://www.technoparkcorp.com/stories/poker</link>
+      <description>&lt;p&gt;Poker-room is a multi player system for playing in different kinds of poker
+throughout the Internet. Poker-room is third-party software for us and
+additionally has very complex undocumented architecture with
+approximately 100 classes and 100 000 strings of source code. So it is
+a type of &amp;quot;black box&amp;quot; for us. Every new customizing order for poker
+room software needed 50-60 hours to change, recompile and
+integrate the multi-parts poker room project with the great risk of failure
+and unexpected errors. The customizing procedure was also worsened by long
+and undocumented deployment activity for each project component.  All
+of the aforementioned problems led to great risk of failed customizing and lost money and time.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/stories/poker</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>User Acceptance Testing Instead Of Manual Testing, Sometimes It Works</title>
+      <link>http://www.technoparkcorp.com/stories/pluzit</link>
+      <description>&lt;p&gt;After deep analysis two main risks for the project appeared -- normal completion of
+the whole project itself and elaboration of clear SRS.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/stories/pluzit</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Integration Testing Framework</title>
+      <link>http://www.technoparkcorp.com/stories/phprack</link>
+      <description>&lt;p&gt;&lt;a href=&quot;http://www.phprack.com&quot;&gt;
+  &lt;img src=&quot;//img.technoparkcorp.com/stories/phprack-logo.png&quot;
+  alt=&quot;phpRack&quot; style=&quot;float:right; width:228px; height:60px;&quot;/&gt;
+&lt;/a&gt;&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/stories/phprack</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Peer Reviews Of Documentation</title>
+      <link>http://www.technoparkcorp.com/process/quality/peerreview</link>
+      <description>&lt;p&gt;Peer Review is a collaborative event in the project team when an engineer or specialist from another
+team, author of the document, and project manager review certain project artifacts and identify &lt;a href=&quot;/process/quality/defect&quot;&gt;Defects&lt;/a&gt;.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/process/quality/peerreview</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Online Order</title>
+      <link>http://www.technoparkcorp.com/contacts/order</link>
+      <description>&lt;p&gt;Contact us to get a quotation for your software project. The process is simple:&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/contacts/order</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Latest News</title>
+      <link>http://www.technoparkcorp.com/about/news</link>
+      <description>&lt;p&gt;The latest news about our company, events, conferences, and achievements:&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Non-disclosure Of Information</title>
+      <link>http://www.technoparkcorp.com/process/ipr/nda</link>
+      <description>&lt;p&gt;During the project execution our project manager, project team, executive management and partners
+may need to have an access to the project information or information provided by you for the project purposes.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/process/ipr/nda</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Risk Mitigation Approach</title>
+      <link>http://www.technoparkcorp.com/stories/msg</link>
+      <description>&lt;p&gt;The project objectives were to implement additional functionality to
+the existing internet application. The new application features were:
+bulk sms, sms subscriptions, a free sms sending feature with advertising
+rotation, mobile content sharing and premium sms billing. The estimated
+project cost was 1180 staff-hours, the schedule -- 4 months. The main
+technologies were Java, Flex and PHP.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/stories/msg</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>In-time Payments Guarantee In-time Deliveries</title>
+      <link>http://www.technoparkcorp.com/process/cost/model</link>
+      <description>&lt;p&gt;Payments are done according to an approved &lt;a href=&quot;/process/time/schedule&quot;&gt;Schedule&lt;/a&gt;. Each payment is
+connected to a certain Milestone, and is paid when all of the acceptance criteria is met by the
+project team.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/process/cost/model</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Bi-directional Traceability Of Scope Elements</title>
+      <link>http://www.technoparkcorp.com/process/scope/matrix</link>
+      <description>&lt;p&gt;As soon as Functional &lt;a href=&quot;/process/scope/requirement&quot;&gt;Requirements&lt;/a&gt; are specified in the
+&lt;a href=&quot;/process/scope/srs&quot;&gt;SRS&lt;/a&gt; and you approved them, they are listed in a Traceability Matrix. Design
+Elements, &lt;a href=&quot;/process/risk/risk&quot;&gt;Risks&lt;/a&gt;, &lt;a href=&quot;/process/scope/feature&quot;&gt;Features&lt;/a&gt;, and test cases are traced
+to Functional Requirements and vise versa.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/process/scope/matrix</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Quantitative Quality Control</title>
+      <link>http://www.technoparkcorp.com/stories/mastor</link>
+      <description>&lt;p&gt;The objectives of this Project were to develop the company&amp;#39;s
+corporate system with file storage, data analysis and visualization,
+news RSS import, email feedback and a 3rd party PHPBB forum.
+The project cost was 1302 s/h, the schedule -- 5 months.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/stories/mastor</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Manual Testing</title>
+      <link>http://www.technoparkcorp.com/process/quality/manual</link>
+      <description>&lt;p&gt;Manual testing is done by testers through performing operations that will later be done by
+end-users. This type of testing is necessary to simulate normal and stress modes of operations.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/process/quality/manual</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Software License Agreement</title>
+      <link>http://www.technoparkcorp.com/process/ipr/license</link>
+      <description>&lt;p&gt;Under construction&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/process/ipr/license</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Legal Notes And Terms Of Use</title>
+      <link>http://www.technoparkcorp.com/about/legalnotes</link>
+      <description>&lt;p&gt;The following are terms of a legal agreement between you and TechnoPark Corp. By accessing,
+browsing, or using this web-site, you acknowledge that you have read, understood, and agree to be
+bound by these terms and to comply with all applicable laws and regulations, including export and
+re-export control laws and regulations.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/legalnotes</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Schedule Approval Moment</title>
+      <link>http://www.technoparkcorp.com/process/time/lco</link>
+      <description>&lt;p&gt;The Lifecycle Objectives (LCO) Milestone is a moment when the
+&lt;a href=&quot;/process/scope/specification&quot;&gt;Specification&lt;/a&gt;, [Schedule](/process/cost/budget}&amp;quot;&amp;gt;Budget,&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/process/time/lco</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Works Made For Hire</title>
+      <link>http://www.technoparkcorp.com/process/ipr/law</link>
+      <description>&lt;p&gt;Prior to beginning a project, a software development contract is signed between us stating:&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/process/ipr/law</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Clarification Of Vague Scope Definition In Messq Project</title>
+      <link>http://www.technoparkcorp.com/stories/kip</link>
+      <description>&lt;p&gt;MESSQ project is an information corporate portal with the functions of project
+management and corporate document circulation. It is a long-lasting
+project with a wide scope of work. At the initial phase of the MESSQ
+project, scope was fixed by a document called &amp;quot;Project Task&amp;quot;. This document
+had 80 pages and consisted of vague and unclear definitions.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/stories/kip</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Current Open Positions</title>
+      <link>http://www.technoparkcorp.com/about/jobs</link>
+      <description>&lt;p&gt;There are a number of full-time positions available in our team. Please apply online if you have
+necessary skills and experience.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/jobs</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Smallest Unit Of Time In Schedule</title>
+      <link>http://www.technoparkcorp.com/process/time/iteration</link>
+      <description>&lt;p&gt;&lt;a href=&quot;/process/time/schedule&quot;&gt;Schedule&lt;/a&gt; consists of Iterations. Each Iteration is a simple and atomic
+piece of time spent on project activities by the project team.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/process/time/iteration</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Information Is A High Valuable Product</title>
+      <link>http://www.technoparkcorp.com/process/ipr</link>
+      <description>&lt;p&gt;Software development is very tightly connected with intellectual property that is created, managed,
+and transferred during project execution. We pay serious attention to such property, whether it is
+owned by you or by us.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/process/ipr</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Our Strength Is In Our Innovations</title>
+      <link>http://www.technoparkcorp.com/innovations</link>
+      <description>&lt;p&gt;Our innovations bridge the gap between you and your programming team. We enable success in your
+projects making complex things simple and transparent. Talk to us to see how we can do it in your project.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/innovations</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Delivery Of Increments</title>
+      <link>http://www.technoparkcorp.com/process/communication/incremental</link>
+      <description>&lt;p&gt;Incremental delivery of software means that software product is specified, designed, implemented,
+tested and deployed in a number of builds. Each build has a new portion of functionality. All builds
+together constitute the project &lt;a href=&quot;/process/scope&quot;&gt;scope&lt;/a&gt;.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/process/communication/incremental</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Requirements Gathering And Analysis Phase</title>
+      <link>http://www.technoparkcorp.com/process/time/inception</link>
+      <description>&lt;p&gt;When a &lt;a href=&quot;/process/cost/rom&quot;&gt;ROM Estimate&lt;/a&gt; is approved and the project is started, the project team
+has documentation that you provided to us - we call it an informal request (also called stakeholder
+request in &lt;a href=&quot;http://www.ibm.com/rational&quot;&gt;RUP&lt;/a&gt;).&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/process/time/inception</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Acceptance Of Increments</title>
+      <link>http://www.technoparkcorp.com/process/communication/iam</link>
+      <description>&lt;p&gt;&lt;a href=&quot;/process/communication/incremental&quot;&gt;Incremental delivery&lt;/a&gt; means that a software product is created,
+&lt;a href=&quot;/process/quality&quot;&gt;tested&lt;/a&gt; and delivered to you in a number of builds. Each build has a new portion
+of functionality. A new build is delivered by the end of each &lt;a href=&quot;/process/time/iteration&quot;&gt;Iteration&lt;/a&gt;.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/process/communication/iam</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>History Of Growth</title>
+      <link>http://www.technoparkcorp.com/about/history</link>
+      <description>&lt;p&gt;We are doing custom software development since 2001, here is a list of key facts and events:&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/history</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Shared Vision Of The System</title>
+      <link>http://www.technoparkcorp.com/process/scope/glossary</link>
+      <description>&lt;p&gt;There are hundreds of &lt;a href=&quot;/process/scope/requirement&quot;&gt;Requirements&lt;/a&gt; in mid-size and small software
+products. All Requirements are defined in a textual format based on the terms from the Glossary. A
+Glossary is used in order to avoid misinterpretation of key terms and definitions inside the &lt;a href=&quot;/process/scope/specification&quot;&gt;Specification&lt;/a&gt;.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/process/scope/glossary</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Top Level User Requirement</title>
+      <link>http://www.technoparkcorp.com/process/scope/feature</link>
+      <description>&lt;p&gt;A system boundary is defined by &lt;a href=&quot;/process/scope/requirement&quot;&gt;Requirements&lt;/a&gt;. A Feature is a type of
+high-level user Requirement that explains what the user wants to do with the system in order to
+satisfy their needs.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/process/scope/feature</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Free Hosted Continuous Integration Platform</title>
+      <link>http://www.technoparkcorp.com/stories/fazend</link>
+      <description>&lt;p&gt;&lt;a href=&quot;http://www.fazend.com&quot;&gt;
+  &lt;img src=&quot;//img.technoparkcorp.com/stories/fazend-logo.png&quot;
+  alt=&quot;FaZend Logo&quot; style=&quot;float:right; margin-left: 2em; margin-bottom: 2em;&quot;/&gt;
+&lt;/a&gt;&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/stories/fazend</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Facts About Us</title>
+      <link>http://www.technoparkcorp.com/about/facts</link>
+      <description>&lt;p&gt;TechnoPark Corp. is a custom software development company equipped with a unique proprietary
+implementation of eXtremely Distributed Software Development (&lt;a href=&quot;http://www.xdsd.org&quot;&gt;XDSD&lt;/a&gt;), a unique
+project management methodology, provided through &lt;a href=&quot;http://www.teamed.io&quot;&gt;teamed.io&lt;/a&gt;.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/facts</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Executive Team</title>
+      <link>http://www.technoparkcorp.com/about/executives</link>
+      <description>&lt;p&gt;&lt;img src=&quot;//img.technoparkcorp.com/about/yegor-bugayenko.png&quot;
+    alt=&quot;Yegor Bugayenko photo&quot;
+    style=&quot;float:left; margin-right: 1em; margin-bottom: 1em; width: 110px; height: 110px;&quot;/&gt;&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/executives</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Work Products, Artifacts, Documents, Code, Etc.</title>
+      <link>http://www.technoparkcorp.com/process/warranty/deliverables</link>
+      <description>&lt;p&gt;Deliverables are what you pay for and what the project team produces. There is nothing more
+important in a project than the Deliverables.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/process/warranty/deliverables</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Bug Fixing</title>
+      <link>http://www.technoparkcorp.com/process/warranty/defectremoval</link>
+      <description>&lt;p&gt;All software has &lt;a href=&quot;/process/quality/defect&quot;&gt;Defects&lt;/a&gt; due to the nature of the development process.
+Some defects are revealed during &lt;a href=&quot;/process/quality/coq&quot;&gt;testing&lt;/a&gt;, some of them stay hidden until the
+end-users start to utilize the product.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/process/warranty/defectremoval</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Defect Reporting And Tracking</title>
+      <link>http://www.technoparkcorp.com/process/quality/defect</link>
+      <description>&lt;p&gt;A Defect is a non-conformance of &lt;a href=&quot;/process/warranty/deliverables&quot;&gt;Deliverables&lt;/a&gt; to
+&lt;a href=&quot;/process/scope/specification&quot;&gt;Specification&lt;/a&gt;. Defects can be found by testers, project team members
+or you. No matter who identifies a Defect, it has to be removed.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/process/quality/defect</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Daily Status Reporting</title>
+      <link>http://www.technoparkcorp.com/process/communication/dailyreport</link>
+      <description>&lt;p&gt;The Project manager reports to you on a daily basis by the conclusion of each &lt;a href=&quot;/process/communication/availability&quot;&gt;business
+day&lt;/a&gt;. No matter what was done during a day by the project team,
+and what results were obtained, a Daily Report is sent by email to you.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/process/communication/dailyreport</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Two-step Quotation Process</title>
+      <link>http://www.technoparkcorp.com/process/cost</link>
+      <description>&lt;p&gt;We do projects in fixed-price contracts, meaning that the price is defined according to
+&lt;a href=&quot;/process/scope&quot;&gt;scope&lt;/a&gt; definition and is not changed unless there are changes to
+&lt;a href=&quot;/process/scope/specification&quot;&gt;Specification&lt;/a&gt;. We take all risks of cost overrun so that you pay
+only the price defined in project &lt;a href=&quot;/process/cost/budget&quot;&gt;Budget&lt;/a&gt;.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/process/cost</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>How Much We Pay For Quality</title>
+      <link>http://www.technoparkcorp.com/process/quality/coq</link>
+      <description>&lt;p&gt;&lt;a href=&quot;/process/quality&quot;&gt;Quality&lt;/a&gt; is what costs us money and what you pay for. Quality is measured as
+amount of defect-free functionality related to defective functionality. Quality is measured in
+percentages. Our contract says that 95% is acceptable Quality.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/process/quality/coq</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Contact Us Today</title>
+      <link>http://www.technoparkcorp.com/contacts</link>
+      <description>&lt;p&gt;Call now and get immediate consultation for your software project.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/contacts</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>We Advocate Open Communications</title>
+      <link>http://www.technoparkcorp.com/process/communication</link>
+      <description>&lt;p&gt;The project team communicates with you from the first day of project execution. You are involved in
+the development process and provide feedback on project results on a daily basis.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/process/communication</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Changes Happen And We Manage Them</title>
+      <link>http://www.technoparkcorp.com/process/scope/changerequest</link>
+      <description>&lt;p&gt;Changes are inevitable in software development projects and we recognize that change and the
+resulting uncertainty are inherent aspects of the IT life cycle. A change has potential to ruin the
+project, or it can creatively increase the value of the business. The outcome depends on an
+established change control procedure created during the project.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/process/scope/changerequest</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Exact Project Estimation And Quotation</title>
+      <link>http://www.technoparkcorp.com/process/cost/budget</link>
+      <description>&lt;p&gt;We calculate, communicate and define the Budget in &lt;a href=&quot;/process/cost/prices&quot;&gt;staff-hours&lt;/a&gt;. The actual 
+monetary size of a project is a multiple of staff-hours and price per hour.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/process/cost/budget</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Not Our Problem</title>
+      <link>http://www.technoparkcorp.com/stories/avivo</link>
+      <description>&lt;p&gt;The objective of the project was to create the system that would allow
+  the web-surfers to get support by clicking the banner. But the
+  most important objective of the project for the customer was to get the
+  ability to sell such services.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/stories/avivo</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Remote Communications Work</title>
+      <link>http://www.technoparkcorp.com/process/communication/availability</link>
+      <description>&lt;p&gt;During the project execution, you communicate with project manager and project team by email, phone
+or an instant messaging tool (Skype, YahooIM, MSN or GoogleTalk).&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/process/communication/availability</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Early Architecture Decomposition</title>
+      <link>http://www.technoparkcorp.com/stories/adnet</link>
+      <description>&lt;p&gt;The main project&amp;#39;s outcome was an on-line ad serving program for
+Advertisers and Publishers, which would give them the ability to manage
+ads and financial statistics.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/stories/adnet</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Software Development General Contracting</title>
+      <link>http://www.technoparkcorp.com/about</link>
+      <description>&lt;p&gt;TechnoPark Corp. is a software development with an innovative approach to project management in
+&lt;a href=&quot;/about/teams&quot;&gt;distributed software development teams&lt;/a&gt;. Like nowhere else, when you hire us as a
+general contractor you stay actively involved in every last detail of a project internal affairs.
+You control your business success by means of our automated instant metrics, compliant with
+&lt;a href=&quot;http://en.wikipedia.org/wiki/Project_Management_Body_of_Knowledge&quot;&gt;PMBOK&lt;/a&gt;,
+&lt;a href=&quot;http://www.sei.cmu.edu/cmmi/general/&quot;&gt;CMMI&lt;/a&gt;,
+&lt;a href=&quot;http://en.wikipedia.org/wiki/IBM_Rational_Unified_Process&quot;&gt;RUP&lt;/a&gt; and &lt;a href=&quot;http://en.wikipedia.org/wiki/ISO_9001&quot;&gt;ISO 9001&lt;/a&gt;.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Project Manager</title>
+      <link>http://www.technoparkcorp.com/about/jobs/PM</link>
+      <description>&lt;p&gt;TechnoPark Corp., an angel-funded Florida-based custom software development company, has an
+opportunity for a full-time Project Manager. This is a great position for a talented and
+self-motivated individual, located in Naples, Florida (relocation sponsorship is negotiable). We pay
+$90K salary, usual benefits, and a great cash bonus on every successful project.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/jobs/PM</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Ceo Wanted</title>
+      <link>http://www.technoparkcorp.com/about/jobs/CEO</link>
+      <description>&lt;p&gt;TechnoPark Corp., an angel-funded Florida-based custom software development company, has an
+opportunity for a Chief Executive Officer (CEO). This is a great position for a talented and
+self-motivated individual, located in Naples, Florida (relocation sponsorship is negotiable). We pay
+$120K salary, usual benefits, and a great cash + equity bonus on every successful milestone.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/jobs/CEO</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Teamed.io Started To Offer Team As A Service</title>
+      <link>http://www.technoparkcorp.com/about/news/year2014/teamed</link>
+      <description>&lt;p&gt;TechnoPark Corp. started a new brand &lt;a href=&quot;http://www.teamed.io&quot;&gt;teamed.io&lt;/a&gt;, which will deliver Team as a
+Service to project sponsors and team members.&lt;/p&gt;
+</description>
+      <pubDate>Mon, 14 Apr 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2014/teamed</guid>
+      <dc:date>2014-04-14T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Open Source Java Project Jcabi.com Sponsored By Us</title>
+      <link>http://www.technoparkcorp.com/about/news/year2013/jcabi</link>
+      <description>&lt;p&gt;TechnoPark Corp. started to sponsor a new open source project JCabi.com, which is a collection of
+small Java components and utilities.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 05 Jul 2013 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2013/jcabi</guid>
+      <dc:date>2013-07-05T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Technopark Corp. Is An Official Apn Partner</title>
+      <link>http://www.technoparkcorp.com/about/news/year2012/apn</link>
+      <description>&lt;p&gt;&lt;a href=&quot;http://www.tpc2.com&quot;&gt;
+            &lt;img src=&quot;data:image/png;base64,${base64:/about/news/year2012/aws-logo.png}&quot; alt=&quot;APN Standard Technology Partner&quot; style=&quot;float:right; margin-left: 2em; margin-bottom: 2em; width: 200px;&quot;/&gt;
+        &lt;/a&gt;&lt;/p&gt;
+</description>
+      <pubDate>Fri, 16 Nov 2012 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2012/apn</guid>
+      <dc:date>2012-11-16T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>S3auth.com, A Free Http Auth Gateway In Front Of Amazon S3 Bucket</title>
+      <link>http://www.technoparkcorp.com/about/news/year2012/s3auth</link>
+      <description>&lt;p&gt;&lt;img src=&quot;http://img.s3auth.com/logo.png&quot; alt=&quot;s3auth.com&quot; style=&quot;float:right; margin-left: 2em; margin-bottom: 2em;&quot;/&gt;&lt;/p&gt;
+</description>
+      <pubDate>Sat, 22 Sep 2012 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2012/s3auth</guid>
+      <dc:date>2012-09-22T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Team As A Service&amp;#x2122;</title>
+      <link>http://www.technoparkcorp.com/about/news/year2011/taas</link>
+      <description>&lt;p&gt;All details about Team as a Service business model are explained in &lt;a href=&quot;http://www.tpc2.com/&quot;&gt;tpc2.com&lt;/a&gt; website.&lt;/p&gt;
+</description>
+      <pubDate>Thu, 20 Jan 2011 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2011/taas</guid>
+      <dc:date>2011-01-20T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Extremely Distributed Software Development</title>
+      <link>http://www.technoparkcorp.com/about/news/year2010/xdsd</link>
+      <description>&lt;p&gt;&lt;a href=&quot;http://www.xdsd.org&quot;&gt;XDSD&lt;/a&gt; is a collection of principles of software development widely used in
+open source world, but very rarely applied to commercial projects. When these ground rules (there
+are four) are properly implemented in a project they guarantee higher quality of code and
+significantly reduce risks of failure.&lt;/p&gt;
+</description>
+      <pubDate>Wed, 03 Nov 2010 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2010/xdsd</guid>
+      <dc:date>2010-11-03T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Puzzle Driven Development (pdd) To Help In Distributed Projects</title>
+      <link>http://www.technoparkcorp.com/about/news/year2010/pdd</link>
+      <description>&lt;p&gt;Read more on this topic in &lt;a href=&quot;http://www.phparch.com/magazine/2010/august/&quot;&gt;php|Architect, August
+2010&lt;/a&gt; article &amp;quot;&amp;quot;, by Yegor Bugayenko.&lt;/p&gt;
+</description>
+      <pubDate>Sun, 29 Aug 2010 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2010/pdd</guid>
+      <dc:date>2010-08-29T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Pdd, Patent Application No. 12/840,306</title>
+      <link>http://www.technoparkcorp.com/about/news/year2010/pdd-patent</link>
+      <description>&lt;p&gt;Patent application no. 12/840,306 has been submitted to United States Patent and Trademark Office on
+21st of July by Yegor Bugayenko, lead architect of TechnoPark Corp.&lt;/p&gt;
+</description>
+      <pubDate>Wed, 21 Jul 2010 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2010/pdd-patent</guid>
+      <dc:date>2010-07-21T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Puzzle Driven Development (pdd)</title>
+      <link>http://www.technoparkcorp.com/innovations/pdd</link>
+      <description>&lt;p&gt;The innovation is pending patent in United States
+Patent and Trademark Office (USPTO), patent application
+&lt;strong&gt;no. 12/840,306&lt;/strong&gt;.&lt;/p&gt;
+</description>
+      <pubDate>Wed, 21 Jul 2010 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/innovations/pdd</guid>
+      <dc:date>2010-07-21T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>A Unique Open-source Integration Testing Framework Developed</title>
+      <link>http://www.technoparkcorp.com/about/news/year2010/phprack</link>
+      <description>&lt;p&gt;Read more in &lt;a href=&quot;http://www.phparch.com/magazine/2010/june/&quot;&gt;php|Architect, June 2010&lt;/a&gt; article &amp;quot;&amp;quot;, by
+Yegor Bugayenko.&lt;/p&gt;
+</description>
+      <pubDate>Tue, 25 May 2010 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2010/phprack</guid>
+      <dc:date>2010-05-25T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Formal And Easy To Understand Software Requirements</title>
+      <link>http://www.technoparkcorp.com/about/news/year2010/rqdql</link>
+      <description>&lt;p&gt;Read more on this topic at &lt;a href=&quot;http://www.rqdql.com/rqdql.html&quot;&gt;RQDQL website&lt;/a&gt;.&lt;/p&gt;
+</description>
+      <pubDate>Thu, 15 Apr 2010 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2010/rqdql</guid>
+      <dc:date>2010-04-15T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Tools Europe 2009 Attendees To Discover How Work Can Be A Game In Risk Identification</title>
+      <link>http://www.technoparkcorp.com/about/news/year2009/tools</link>
+      <description>&lt;p&gt;Naples, FL, June 23, 2009 - On July 3, 2009, attendees at the &lt;a href=&quot;http://tools.ethz.ch/&quot;&gt;TOOLS EUROPE
+2009&lt;/a&gt;-hosted event &lt;a href=&quot;http://seafood.ethz.ch/2009/&quot;&gt;SEAFOOD &amp;#39;09&lt;/a&gt; (the Third
+International Conference on Software Engineering Approaches for Offshore and Outsourced
+Development), which will be held at ETH Zurich, Switzerland on July 2-3, 2009, will learn how
+TechnoPark Corp.&amp;#39;s CEO, Yegor Bougaenko, has developed and identified a game as a superior choice
+for certain risk identification scenarios for software projects.&lt;/p&gt;
+</description>
+      <pubDate>Tue, 23 Jun 2009 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2009/tools</guid>
+      <dc:date>2009-06-23T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Risk Game</title>
+      <link>http://www.technoparkcorp.com/innovations/risk-game</link>
+      <description>&lt;p&gt;&lt;strong&gt;Disclaimer&lt;/strong&gt;: This web page contains just an abstract of a research
+report that will be presented on &lt;a href=&quot;http://seafood.inf.ethz.ch/2009/&quot;&gt;SEAFOOD 2009&lt;/a&gt; conference
+in Zurich, Switzerland, on 3rd of July, 2009. Materials of the conference will be
+published by Springer Verlag.&lt;/p&gt;
+</description>
+      <pubDate>Tue, 23 Jun 2009 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/innovations/risk-game</guid>
+      <dc:date>2009-06-23T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Revolutionary Method Of Cost Estimating</title>
+      <link>http://www.technoparkcorp.com/innovations/scope-champions</link>
+      <description>&lt;p&gt;&lt;strong&gt;Disclaimer&lt;/strong&gt;: This web page contains just an abstract of a research
+report that was presented on &lt;a href=&quot;http://www.profes2009.org/&quot;&gt;PROFES 2009&lt;/a&gt; conference
+in Oulu, Finland, on 16th of June, 2009. Materials of the conference are
+published by Springer Verlag. The method is pending USPTO patent:
+&lt;a href=&quot;http://www.google.com/patents/about?id=QjDNAAAAEBAJ&quot;&gt;12/193,010&lt;/a&gt;.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 22 May 2009 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/innovations/scope-champions</guid>
+      <dc:date>2009-05-22T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Profes 2009 Attendees Glimpse Method Behind Superior Cost Estimating Accuracy</title>
+      <link>http://www.technoparkcorp.com/about/news/year2009/profes</link>
+      <description>&lt;p&gt;Naples, FL (PRWEB) May 22, 2009 - On June 16, 2009, Yegor Bougaenko, CEO of TechnoPark Corp., will
+present a paper on a &amp;quot;Method for Software Cost Estimating Using Scope Champions&amp;quot; at &lt;a href=&quot;http://www.profes2009.org&quot;&gt;PROFES
+2009&lt;/a&gt;, the 10th International Conference on Product Focused Software
+Development and Process Improvement, in Oulu, Finland from June 15-17, 2009.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 22 May 2009 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2009/profes</guid>
+      <dc:date>2009-05-22T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Planning Of Software Bugs</title>
+      <link>http://www.technoparkcorp.com/innovations/test-planning</link>
+      <description>&lt;p&gt;You won&amp;#39;t build a quality software product if your mindset is as follows:&lt;/p&gt;
+</description>
+      <pubDate>Sun, 26 Apr 2009 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/innovations/test-planning</guid>
+      <dc:date>2009-04-26T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Software Bugs Should Be Anticipated In Advance</title>
+      <link>http://www.technoparkcorp.com/about/news/year2009/testing</link>
+      <description>&lt;p&gt;The most common and the most damaging assumption in software development is that &amp;quot;quality software
+has no bugs.&amp;quot; In an article published on their website, TechnoPark Corp. explains that quality of
+software consists of the anticipation, discovery, and resolution of bugs. These three measures lead
+to a high quality of software products, and were successfully implemented in seven software projects
+completed by TechnoPark Corp. during the last year.&lt;/p&gt;
+</description>
+      <pubDate>Thu, 23 Apr 2009 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2009/testing</guid>
+      <dc:date>2009-04-23T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Most Popular Software Development And Project Management Industry De-facto Standards (summary)</title>
+      <link>http://www.technoparkcorp.com/innovations/standards</link>
+      <description>&lt;p&gt;The information you see in this page was taken from the following sources:&lt;/p&gt;
+</description>
+      <pubDate>Mon, 13 Apr 2009 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/innovations/standards</guid>
+      <dc:date>2009-04-13T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Patent-pending Invention Enabled Success In A Project By Technoparkcorp.com For Stadtlist.de</title>
+      <link>http://www.technoparkcorp.com/about/news/year2009/plz</link>
+      <description>&lt;p&gt;During 2008 TechnoPark Corp. successfully applied a proprietary method of automated
+quality-of-process control to the web2.0 software project, made for StadtList.de. The application of
+the method enabled in-time delivery and effective usage of customer&amp;#39;s money.&lt;/p&gt;
+</description>
+      <pubDate>Sat, 21 Mar 2009 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2009/plz</guid>
+      <dc:date>2009-03-21T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Four Most Severe Symptoms Of Lost Quality Control</title>
+      <link>http://www.technoparkcorp.com/about/news/year2009/metrics</link>
+      <description>&lt;p&gt;Almost every software outsourcing programming contract experiences the same problems with quality of
+software code produced by remote programmers. Customers don&amp;#39;t have enough programming skills and
+spare time to check the quality-of-code regularly. Programmers don&amp;#39;t think too much about quality
+since the customer is far away.&lt;/p&gt;
+</description>
+      <pubDate>Thu, 12 Feb 2009 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2009/metrics</guid>
+      <dc:date>2009-02-12T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>A Good Way For Non-programmer Managers To Improve Quality-of-code</title>
+      <link>http://www.technoparkcorp.com/innovations/metrics</link>
+      <description>&lt;p&gt;The problem explained here is very common for distributed teams, where the product is created for ,
+not for the team itself. Being a customer in such a project, how do you monitor and control the
+without programming skills? If the answer is &amp;quot;I trust my programmers&amp;quot; you may suffer from some of
+the following problems:&lt;/p&gt;
+</description>
+      <pubDate>Tue, 03 Feb 2009 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/innovations/metrics</guid>
+      <dc:date>2009-02-03T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Technopark Reveals Quality Of Process For Software Development</title>
+      <link>http://www.technoparkcorp.com/about/news/year2008/patent2</link>
+      <description>&lt;p&gt;Naples, FL, December 18, 2008: TechnoPark Corporation (TPC) announces they have filed for a patent
+with the United States Patent and Trademark Office (USPTO). To ensure the quality of their process,
+TPC created an original procedure that includes a quality requirements definition, quality metrics
+collection, numeric calculations and methods for team motivation.&lt;/p&gt;
+</description>
+      <pubDate>Tue, 23 Dec 2008 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2008/patent2</guid>
+      <dc:date>2008-12-23T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Estimates Are More Reliable With Technopark Corp., New Patent-pending Invention</title>
+      <link>http://www.technoparkcorp.com/about/news/year2008/patent1</link>
+      <description>&lt;p&gt;Naples, Florida October 7, 2008 - TechnoPark Corp. has registered an estimating method for software
+project completion with the United States Patent Trademark Office (&lt;a href=&quot;http://www.uspto.gov&quot;&gt;USPTO&lt;/a&gt;).
+This invention greatly reduces the time it takes to provide an estimate to a client. The estimates
+are more accurate, which in turn helps clients plan for the on-deadline completion of a project.&lt;/p&gt;
+</description>
+      <pubDate>Thu, 09 Oct 2008 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2008/patent1</guid>
+      <dc:date>2008-10-09T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Technopark Corp. Stays On Track With Continuous Integration</title>
+      <link>http://www.technoparkcorp.com/about/news/year2008/continuum</link>
+      <description>&lt;p&gt;Naples, FL, September 10, 2008 - TechnoPark Corp. uses one of the best available Open-Source
+solutions for their continuous integration needs. Apache Continuum version 1.2 allows TechnoPark
+Corp. to keep an eye on the details of intricate coding within the projects TechnoPark Corp. manages.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 12 Sep 2008 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2008/continuum</guid>
+      <dc:date>2008-09-12T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Technopark Corp. Helps Gaming Community Reach A United States Market</title>
+      <link>http://www.technoparkcorp.com/about/news/year2008/poker</link>
+      <description>&lt;p&gt;Naples, FL, July 16, 2008 - TechnoPark Corp. manages the development of GS-Poker software that will
+allow the online gaming industry to charge membership fees to citizens in the United States. It is
+illegal for a U.S. citizen to transfer funds to pay for online poker, and this includes the use of
+credit cards online. Poker providers have had to change their business model to conform to these laws.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 18 Jul 2008 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2008/poker</guid>
+      <dc:date>2008-07-18T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Copyright Approval Is Announced For Technopark Corp.'s Online Project Management Materials</title>
+      <link>http://www.technoparkcorp.com/about/news/year2008/uacopyright</link>
+      <description>&lt;p&gt;&lt;img name=&quot;/about/uacopyright.jpg&quot; style=&quot;border: solid 1px #7d8f9b; float: left; padding: 0px;         margin-right: 15px; margin-top: 15px; margin-bottom: 10px&quot;&gt;Ukraine Copyright Certificate&lt;/img&gt;&lt;/p&gt;
+</description>
+      <pubDate>Fri, 20 Jun 2008 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2008/uacopyright</guid>
+      <dc:date>2008-06-20T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Technopark Corp. Displays The Better Business Bureau Online Seal</title>
+      <link>http://www.technoparkcorp.com/about/news/year2008/bbb</link>
+      <description>&lt;p&gt;&lt;img name=&quot;/about/bbbseal1.gif&quot; ahref=&quot;http://www.bbbonline.org/cks.asp?id=10805219819&quot; style=&quot;float: left; padding-right: 20px;&quot;&gt;Click to verify BBB accreditation and to see a BBB report.&lt;/img&gt;&lt;/p&gt;
+</description>
+      <pubDate>Wed, 18 Jun 2008 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2008/bbb</guid>
+      <dc:date>2008-06-18T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Technopark Corp Develops Their First Personalized Search Engine For A Niche Market</title>
+      <link>http://www.technoparkcorp.com/about/news/year2008/zumber</link>
+      <description>&lt;p&gt;TechnoPark Corp., a custom software development company from Florida, finished the creation of the
+configurable and personalized search engine. The product is available at &lt;a href=&quot;http://www.zumber.com&quot;&gt;www.zumber.com&lt;/a&gt; domain.&lt;/p&gt;
+</description>
+      <pubDate>Mon, 02 Jun 2008 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2008/zumber</guid>
+      <dc:date>2008-06-02T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>A New Platform For The Premium Sms Market Has Reached Its Second Release</title>
+      <link>http://www.technoparkcorp.com/about/news/year2008/sms</link>
+      <description>&lt;p&gt;Premium SMS (also called reverse billed SMS or Mobile Terminated Billing) is a payment method, which
+allows the Customer to pay with his mobile phone bill, but without usage of a Credit card. In order
+to pay for some service, the Customer sends SMS to the Provider&amp;#39;s number and receives a digital
+access code to his phone. At this moment, the Customer&amp;#39;s phone bill is charged and the money is
+transferred to the Provider&amp;#39;s account. This payment style is ideal for so-called &amp;quot;micro-payments&amp;quot;.&lt;/p&gt;
+</description>
+      <pubDate>Tue, 08 Apr 2008 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2008/sms</guid>
+      <dc:date>2008-04-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Technopark Corp. Helps Deliver &quot;Video On Demand&quot; Over The Internet.</title>
+      <link>http://www.technoparkcorp.com/about/news/year2008/iptv</link>
+      <description>&lt;p&gt;Naples, FL, March 19, 2008 - TechnoPark Corp. announces it will create customizable platform
+software for IPTV translations. This software will allow their South American client to deliver
+video over the Internet.&lt;/p&gt;
+</description>
+      <pubDate>Thu, 20 Mar 2008 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2008/iptv</guid>
+      <dc:date>2008-03-20T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Technopark Corp. Announces Iso 9001:2000 Certification</title>
+      <link>http://www.technoparkcorp.com/about/news/year2008/iso9001</link>
+      <description>&lt;p&gt;Naples, FL, January 28, 2008 - On January 28, 2008, TechnoPark Corp. successfully announced their
+ISO 9001:2000 certification.&lt;/p&gt;
+</description>
+      <pubDate>Mon, 28 Jan 2008 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2008/iso9001</guid>
+      <dc:date>2008-01-28T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Technopark Corp. Provides Proof Of Privacy</title>
+      <link>http://www.technoparkcorp.com/about/news/year2008/truste</link>
+      <description>&lt;p&gt;Naples, FL, January 11, 2008 - TechnoPark Corp. (TPC) has enlisted a third party verification for
+their security and privacy practices. By displaying the TRUSTe seal, along with the TPC privacy
+policy, TechnoPark Corp. verifies that they meet industry standards for protecting their customer&amp;#39;s
+rights and their customer&amp;#39;s personal information.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 11 Jan 2008 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2008/truste</guid>
+      <dc:date>2008-01-11T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Technopark Corp. Hires Taleo For Talent Solutions</title>
+      <link>http://www.technoparkcorp.com/about/news/year2007/taleo</link>
+      <description>&lt;p&gt;Naples, FL, December 20, 2007 - TechnoPark Corp. now has an easy to use employee recruitment system
+featured on their website at &lt;a href=&quot;http://www.technoparkcorp.com&quot;&gt;www.technoparkcorp.com&lt;/a&gt;. TechnoPark Corp. has hired Taleo to streamline
+their recruitment process.&lt;/p&gt;
+</description>
+      <pubDate>Thu, 20 Dec 2007 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2007/taleo</guid>
+      <dc:date>2007-12-20T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Partnership Yields Profits For Technopark Corp.</title>
+      <link>http://www.technoparkcorp.com/about/news/year2007/sf</link>
+      <description>&lt;p&gt;Naples, FL, October 26, 2007 - Ukranian software development company TechnoPark Corp. announces
+significant improvements in its sales processes after a successful partnership with Salesforce.com.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 26 Oct 2007 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2007/sf</guid>
+      <dc:date>2007-10-26T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Technopark Corp. Collaborates With Extraget.biz On A Ppc Optimizer</title>
+      <link>http://www.technoparkcorp.com/about/news/year2007/egz</link>
+      <description>&lt;p&gt;TechnoPark Corp. has improved online marketing technology. By building specialized software tools
+for ExtraGet.biz, TechnoPark Corp. meets the needs of a growing Internet business community.&lt;/p&gt;
+</description>
+      <pubDate>Thu, 11 Oct 2007 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2007/egz</guid>
+      <dc:date>2007-10-11T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Technopark Corp. To Attend Cgo Conference</title>
+      <link>http://www.technoparkcorp.com/about/news/year2007/cgo-conference</link>
+      <description>&lt;p&gt;By attending the Smart-Sourcing Conference, TechnoPark&amp;#39;s management intends to gain additional
+knowledge and experience in providing outsourcing services. TechnoPark will also use this CGO event
+as an opportunity to introduce itself to IT outsourcing customers.&lt;/p&gt;
+</description>
+      <pubDate>Mon, 03 Sep 2007 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2007/cgo-conference</guid>
+      <dc:date>2007-09-03T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>A New Website For The Concord Group Corporation Just Released</title>
+      <link>http://www.technoparkcorp.com/about/news/year2007/news1</link>
+      <description>&lt;p&gt;A Russian-English bilingual website for the Concord Group is now live at .&lt;/p&gt;
+</description>
+      <pubDate>Mon, 13 Aug 2007 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2007/news1</guid>
+      <dc:date>2007-08-13T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Technopark Corp. Hosted It Meeting</title>
+      <link>http://www.technoparkcorp.com/about/news/year2007/news2</link>
+      <description>&lt;p&gt;The meeting attracted representatives from the largest IT companies in the area.&lt;/p&gt;
+</description>
+      <pubDate>Thu, 02 Aug 2007 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2007/news2</guid>
+      <dc:date>2007-08-02T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Mysellerspace Project Finished By Technopark Corp.</title>
+      <link>http://www.technoparkcorp.com/about/news/year2007/news3</link>
+      <description>&lt;p&gt;As a Flash and PHP-based web service, MySellerSpace.com enables the web community to offer their
+items for sale through Seller Space Widgets. Users can create a widget for each item for sale in
+their profile. The number of widgets per profile is unlimited.&lt;/p&gt;
+</description>
+      <pubDate>Mon, 30 Jul 2007 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2007/news3</guid>
+      <dc:date>2007-07-30T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Tpc's Management Certified With Pmp</title>
+      <link>http://www.technoparkcorp.com/about/news/year2007/news4</link>
+      <description>&lt;p&gt;This month TechnoPark Corp.&amp;#39;s executive management was certified by PMI (Project Management
+Institute) and received the most recognized certificate of project management competency, the .&lt;/p&gt;
+</description>
+      <pubDate>Fri, 27 Jul 2007 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2007/news4</guid>
+      <dc:date>2007-07-27T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Technopark Corp. Introduces German Version Of Corporate Web Site</title>
+      <link>http://www.technoparkcorp.com/about/news/year2007/news5</link>
+      <description>&lt;p&gt;TechnoPark Corp. introduced its new . The company already had web resources in English and Russian.&lt;/p&gt;
+</description>
+      <pubDate>Thu, 07 Jun 2007 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2007/news5</guid>
+      <dc:date>2007-06-07T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Wikifox Project Finished</title>
+      <link>http://www.technoparkcorp.com/about/news/year2007/news6</link>
+      <description>&lt;p&gt;WikiFox, located at , gathers information about websites all overthe Web. Information collected
+includes website titles, descriptions,keywords, logos, page ranks, site owner&amp;#39;s details, etc.
+WikiFox users areable to search this goldmine of data in seconds just by entering in a webaddress.&lt;/p&gt;
+</description>
+      <pubDate>Mon, 04 Jun 2007 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2007/news6</guid>
+      <dc:date>2007-06-04T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Technopark Corp. Prepares For Iso Certification</title>
+      <link>http://www.technoparkcorp.com/about/news/year2007/news7</link>
+      <description>&lt;p&gt;To obtain certification, TPC must demonstrate that its policies are in compliance with ISO standards
+and provide proof of a successful internal and third-party audit. ISO 9001 is one of the standards
+of the ISO 9000 family, introduced by .&lt;/p&gt;
+</description>
+      <pubDate>Thu, 24 May 2007 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2007/news7</guid>
+      <dc:date>2007-05-24T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Technopark Corp. Adopts A New Model Of Software Development Estimation, Delivers Accuracy</title>
+      <link>http://www.technoparkcorp.com/about/news/year2007/news8</link>
+      <description>&lt;p&gt;In March 2007, a modified Cocomo II model went into operation at TechnoPark Corp. Read on to learn
+more on the secrets of effective project estimation as revealed by this successful U.S.-based
+outsourcing software development firm.&lt;/p&gt;
+</description>
+      <pubDate>Mon, 14 May 2007 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2007/news8</guid>
+      <dc:date>2007-05-14T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Technopark Corp. Launches Social Web Project</title>
+      <link>http://www.technoparkcorp.com/about/news/year2007/news9</link>
+      <description>&lt;p&gt;The site will connect users seeking social and political interaction using state-of-the-art video
+blogging and conferencing technologies. With this product, TechnoPark seeks to change the landscape
+of online politicking by giving a powerful new platform where candidates, proponents, and opponents
+can meet &amp;quot;face to face&amp;quot; through near real time and archived video.&lt;/p&gt;
+</description>
+      <pubDate>Wed, 25 Apr 2007 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2007/news9</guid>
+      <dc:date>2007-04-25T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Technopark Corp. Becomes Member Of Russoft</title>
+      <link>http://www.technoparkcorp.com/about/news/year2007/news11</link>
+      <description>&lt;p&gt;It is the major software association in the region uniting leading outsourcing software development
+companies. The Association&amp;#39;s website provides software market studies and information about software
+development companies from the Ukraine, Belarus and Russia.&lt;/p&gt;
+</description>
+      <pubDate>Wed, 21 Mar 2007 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2007/news11</guid>
+      <dc:date>2007-03-21T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Technopark Corp. Visits Mobile Monday</title>
+      <link>http://www.technoparkcorp.com/about/news/year2007/news10</link>
+      <description>&lt;p&gt;It is the global meeting and marketplace for those interested in mobile technology including mobile
+and IT companies, investors, press, and many more.&lt;/p&gt;
+</description>
+      <pubDate>Mon, 19 Feb 2007 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2007/news10</guid>
+      <dc:date>2007-02-19T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Outsourcing To Ukraine: 2006 Results And 2007 Expectations</title>
+      <link>http://www.technoparkcorp.com/about/news/year2007/news12</link>
+      <description>&lt;p&gt;The Information Technology market in the Ukraine has been growing stably during the last five years.
+Although internal customers still cannot afford to order large IT projects, Ukrainian IT products
+are progressively more desired in western countries. The United States and western Europe are
+unalterably the well-established importers of software development services from the Ukraine.&lt;/p&gt;
+</description>
+      <pubDate>Thu, 18 Jan 2007 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2007/news12</guid>
+      <dc:date>2007-01-18T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Voipx: In Voip Traffic Exchange Software Talks</title>
+      <link>http://www.technoparkcorp.com/about/news/year2006/news13</link>
+      <description>&lt;p&gt;The introduction of new VoIP exchange platform is a desired event. Demand for high-quality IP
+Telephony Exchanges is stimulated by the fast growth of the industry.&lt;/p&gt;
+</description>
+      <pubDate>Wed, 13 Dec 2006 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2006/news13</guid>
+      <dc:date>2006-12-13T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Coaching Gets Easy With New Basketball Software</title>
+      <link>http://www.technoparkcorp.com/about/news/year2006/news14</link>
+      <description>&lt;p&gt;Realistic graphics and a wide variety of available actions, directions and models make the new
+software &amp;quot;Basketball Blueprint&amp;quot; a great solution for coaches looking for a fun, easy way to teach
+basketball drills and plays. The product is a .NET application providing a virtual basketball game
+with a great number of variants.&lt;/p&gt;
+</description>
+      <pubDate>Mon, 11 Dec 2006 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2006/news14</guid>
+      <dc:date>2006-12-11T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Technopark Corp. Visited Sec(r) 2006</title>
+      <link>http://www.technoparkcorp.com/about/news/year2006/news15</link>
+      <description>&lt;p&gt;This year SEC(R)&amp;#39;s audience gathered companies from eastern and western Europe, with the majority of
+attendees from CIS countries. offered keynote talks byleaders in the field, invited presentations
+along specialized themes, workshops, round table discussions and presentations of technical papers
+on software research, the cutting edge of practice, and new developments in software engineering.&lt;/p&gt;
+</description>
+      <pubDate>Sat, 18 Nov 2006 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2006/news15</guid>
+      <dc:date>2006-11-18T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Technopark Corp.'s Product Certified By Visa</title>
+      <link>http://www.technoparkcorp.com/about/news/year2006/news16</link>
+      <description>&lt;p&gt;The importance of the introduction of this list of requirements is obvious because of the
+ever-growing number of thefts and illegal accesses to confidential data of cardholders. In fact, PCI
+DSS is a list of requirements for handling and keeping personal information of payment system
+clients. Without a doubt, the standard can never fight off the problem back and edge, but the
+results prove that it really works: according to statistics, no PCI DSS compliant system has been
+compromised yet.&lt;/p&gt;
+</description>
+      <pubDate>Thu, 16 Nov 2006 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2006/news16</guid>
+      <dc:date>2006-11-16T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Makenewmedia.com Releases New Smart Pay Per Click System Clickfather</title>
+      <link>http://www.technoparkcorp.com/about/news/year2006/news17</link>
+      <description>&lt;p&gt;This fall, MakeNewMedia.com released new Pay Per Click search engine system. The software was
+developed by the Ukrainian outsourcing software development company TechnoPark Corp.&lt;/p&gt;
+</description>
+      <pubDate>Wed, 15 Nov 2006 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2006/news17</guid>
+      <dc:date>2006-11-15T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Outsourcing It Projects To Ukraine: What To Expect?</title>
+      <link>http://www.technoparkcorp.com/about/news/year2006/news18</link>
+      <description>&lt;p&gt;While eastern Europe gathers speed as venue for IT outsourcing, the Ukraine is becoming an important
+industry&amp;#39;s player. The country&amp;#39;s outsourcing turnover grows by 200-300% annually. Progressively more
+foreign customers choose to outsource their IT projects to Ukrainian companies. Still, both
+customers and outsourcing service providers realize that a number of problems are to be solved. At
+UOF - one of the most important outsourcing events in eastern Europe - the most burning problems
+were uncovered and discussed. Ukrainian outsourcing company TechnoPark Corp. made a presentation on
+the most urgent problems and suggested possible solutions.&lt;/p&gt;
+</description>
+      <pubDate>Wed, 01 Nov 2006 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2006/news18</guid>
+      <dc:date>2006-11-01T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Technopark Corp. Finished Modera Project</title>
+      <link>http://www.technoparkcorp.com/about/news/year2006/news19</link>
+      <description>&lt;p&gt;The plug-in enables sending SMS, ads, news, notifications and other content to visitors of user
+websites. The project was launched in September 2006. This week, the plug-in has been successfully
+tested and deployed by TechnoPark Corp.&amp;#39;s engineers.&lt;/p&gt;
+</description>
+      <pubDate>Thu, 26 Oct 2006 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2006/news19</guid>
+      <dc:date>2006-10-26T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Problems Of Regional It Companies To Be Studied At Uof</title>
+      <link>http://www.technoparkcorp.com/about/news/year2006/news20</link>
+      <description>&lt;p&gt;UOF is the most important event for the offshore IT outsourcing sector of Ukraine, and is one of the
+most popular forums in the former USSR countries. 2006 marks the third time the Forum has been held,
+and it gathers progressively more participants from Ukraine, CIS, and Europe. Once again, previous
+attendance records are going to be broken. The forum will be attended by companies from Ukraine,
+Russia, Belarus, Canada, USA, Denmark, Germany, Switzerland, Sweden, Italy, United Kingdom,
+Netherlands, India, Mexico, Saudi Arabia, Israel, South Africa, Egypt and Pakistan.&lt;/p&gt;
+</description>
+      <pubDate>Wed, 25 Oct 2006 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2006/news20</guid>
+      <dc:date>2006-10-25T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Technopark Corp. Is Attending T.r.a.f.f.i.c. 2006</title>
+      <link>http://www.technoparkcorp.com/about/news/year2006/news21</link>
+      <description>&lt;p&gt;These days, Miami hosts one of the most popular conferences for the domain industry, . There are
+about 500 attendees visiting the event devoted to targeted traffic. Noah Lieske represents
+TechnoPark Corp. at the conference.&lt;/p&gt;
+</description>
+      <pubDate>Tue, 24 Oct 2006 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2006/news21</guid>
+      <dc:date>2006-10-24T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Technopark Corp. To Make A Presentation At Ukrainian Outsourcing Forum</title>
+      <link>http://www.technoparkcorp.com/about/news/year2006/news22</link>
+      <description>&lt;p&gt;TechnoPark Corp. is invited to present a report on regional software development centers in Ukraine
+and their tendencies. The report will cover Dnepropetrovsk region. The presentation will be made
+during one of the scheduled Conferences of the devoted to regional outsourcing companies. TechnoPark
+Corp. will also take place in round-table discussion of the problems covered in the report.&lt;/p&gt;
+</description>
+      <pubDate>Mon, 16 Oct 2006 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2006/news22</guid>
+      <dc:date>2006-10-16T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Technopark Corp.'s Website Added To Yahoo Directory</title>
+      <link>http://www.technoparkcorp.com/about/news/year2006/news23</link>
+      <description>&lt;p&gt;The sound checking process of TechnoPark Corp.&amp;#39;s website, available at , resulted in the resource&amp;#39;s
+listing in one of the biggest and the most important web directories. On September 12, 2006
+TechnoParkcorp.com web site has been added to Yahoo global directory.&lt;/p&gt;
+</description>
+      <pubDate>Wed, 13 Sep 2006 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2006/news23</guid>
+      <dc:date>2006-09-13T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>New Generation Software For Voip</title>
+      <link>http://www.technoparkcorp.com/about/news/year2006/news24</link>
+      <description>&lt;p&gt;*&lt;/p&gt;
+</description>
+      <pubDate>Mon, 04 Sep 2006 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2006/news24</guid>
+      <dc:date>2006-09-04T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Cisp/sdp Cerfitication In September</title>
+      <link>http://www.technoparkcorp.com/about/news/year2006/news25</link>
+      <description>&lt;p&gt;*&lt;/p&gt;
+</description>
+      <pubDate>Sat, 19 Aug 2006 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2006/news25</guid>
+      <dc:date>2006-08-19T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Mobile Poker Platform Development Started</title>
+      <link>http://www.technoparkcorp.com/about/news/year2006/news26</link>
+      <description>&lt;p&gt;&lt;ahref name=&quot;http://www.prweb.com/releases/2006/7/prweb417866.htm&quot;&gt;
+&lt;img style=&quot;padding-right:30px;padding-top:15px;padding-bottom:15px;&quot; border=&quot;0&quot; align=&quot;left&quot; src=&quot;http://www.prweb.com/images_v4/'prw_logo.gif&quot; alt=&quot;prweb&quot;/&gt;&lt;/ahref&gt;&lt;/p&gt;
+</description>
+      <pubDate>Wed, 09 Aug 2006 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2006/news26</guid>
+      <dc:date>2006-08-09T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Ukrainian High-tech Initiative Announces The Outsourcing Forum</title>
+      <link>http://www.technoparkcorp.com/about/news/year2006/news28</link>
+      <description>&lt;p&gt;TechnoPark Corp. will participate in the Ukrainian Outsourcing Forum (UOF) which is scheduled on
+October 2006 ().&lt;/p&gt;
+</description>
+      <pubDate>Fri, 21 Jul 2006 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2006/news28</guid>
+      <dc:date>2006-07-21T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Mobile Credit Card Processing System Is Developed</title>
+      <link>http://www.technoparkcorp.com/about/news/year2006/news27</link>
+      <description>&lt;p&gt;The system&amp;#39;s main idea is to connect mobile phones with credit cards. It means that upon proper
+credit card verification, the sole mobile phone can be used for payments. The new mobile payment
+processing system will process transactions using the existing commercial accounts and processing
+networks. This feature makes the system stands out among other mobile payment systems.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 21 Jul 2006 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2006/news27</guid>
+      <dc:date>2006-07-21T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>New M-payment Provider, Mpps, Enters The Market</title>
+      <link>http://www.technoparkcorp.com/about/news/year2005/oldnews10</link>
+      <description>&lt;p&gt;Analysts forecast the mobile technologies will boom in the next few years. With the growth of the
+m-commerce market and the demand for mobile related offers, the new mobile payment service provider
+enters the market offering easy and secure payments through mobile phones.&lt;/p&gt;
+</description>
+      <pubDate>Wed, 21 Dec 2005 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2005/oldnews10</guid>
+      <dc:date>2005-12-21T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Interbill System Developed By Technopark Corp.</title>
+      <link>http://www.technoparkcorp.com/about/news/year2005/oldnews9</link>
+      <description>&lt;p&gt;The project consisted in software development for the phone billing system known as Interbill. The
+software was successfully released and deployed.&lt;/p&gt;
+</description>
+      <pubDate>Sun, 18 Sep 2005 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2005/oldnews9</guid>
+      <dc:date>2005-09-18T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Starwest 2004: Technopark Corp. Attended Testing Conference</title>
+      <link>http://www.technoparkcorp.com/about/news/year2004/oldnews7</link>
+      <description>&lt;p&gt;TechnoPark Corp. (TPC) visited the conference as an attendee. The attendance was aimed at enhancing
+company&amp;#39;s skills in testing process by exchanging experience with other software testing
+professionals. TPC&amp;#39;s team visited tutorials and keynote reports on different testing aspects.&lt;/p&gt;
+</description>
+      <pubDate>Mon, 22 Nov 2004 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2004/oldnews7</guid>
+      <dc:date>2004-11-22T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Www2004 Presented Latest Achievements In Web And Web Standardization</title>
+      <link>http://www.technoparkcorp.com/about/news/year2004/oldnews8</link>
+      <description>&lt;p&gt;TPC&amp;#39;s team attended the conference in order to learn more about new web standards worked out by W3C
+and study best practices in the world of web development.&lt;/p&gt;
+</description>
+      <pubDate>Tue, 25 May 2004 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2004/oldnews8</guid>
+      <dc:date>2004-05-25T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Rup-based Process: Next Step To High Quality Service</title>
+      <link>http://www.technoparkcorp.com/about/news/year2003/oldnews6</link>
+      <description>&lt;p&gt;This month, TechnoPark Corp. introduced RUP-based iterative software development process which
+unites the best practices of RUP, XP and Agile software development methodologies. With the
+introduction of this process, the software project lifecycle becomes clear for the customer. The
+Quality Assurance discipline was reestablished as the core of software development process.&lt;/p&gt;
+</description>
+      <pubDate>Wed, 05 Feb 2003 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2003/oldnews6</guid>
+      <dc:date>2003-02-05T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Technopark Corp. Is Attending Business Exhibition Wales</title>
+      <link>http://www.technoparkcorp.com/about/news/year2002/oldnews4</link>
+      <description>&lt;p&gt;Business Exhibition Wales is important B2B event. Its custom attendees are business decision makers
+in various business areas from all over the world. The event is attended not only by business
+service providers but also by clients searching for new suppliers or partners.&lt;/p&gt;
+</description>
+      <pubDate>Tue, 14 May 2002 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2002/oldnews4</guid>
+      <dc:date>2002-05-14T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Requirements-based Software Development Process Introduced In Technopark Corp.</title>
+      <link>http://www.technoparkcorp.com/about/news/year2002/oldnews3</link>
+      <description>&lt;p&gt;Now the company offers the new level of services to its customers.&lt;/p&gt;
+</description>
+      <pubDate>Tue, 15 Jan 2002 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2002/oldnews3</guid>
+      <dc:date>2002-01-15T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>A Group Of Tpc's Senior Developers Visits Asp.net Conference</title>
+      <link>http://www.technoparkcorp.com/about/news/year2002/oldnews5</link>
+      <description>&lt;p&gt;From TPC&amp;#39;s participants, the conference was a great educational event providing the unique
+opportunity to communicate face-to-face with the leading world&amp;#39;s ASP.NET professionals, and discuss
+many questions directly with them and many other ASP.NET developers. The conference&amp;#39;s key speakers
+included Rob Howard - the ASP.NET program manager from Microsoft and John Peterson - webmaster at
+ASP 101.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 04 Jan 2002 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2002/oldnews5</guid>
+      <dc:date>2002-01-04T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Technopark Corp. Visited Vienne Conference</title>
+      <link>http://www.technoparkcorp.com/about/news/year2001/oldnews1</link>
+      <description>&lt;p&gt;From September 10 to September 14, the Vienna University of Technology hosted thethird Vienne
+software conference, ESEC/FSE 2001.&lt;/p&gt;
+</description>
+      <pubDate>Sun, 16 Sep 2001 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2001/oldnews1</guid>
+      <dc:date>2001-09-16T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Technopark Corp. To Visit Ada-europe'2001</title>
+      <link>http://www.technoparkcorp.com/about/news/year2001/oldnews2</link>
+      <description>&lt;p&gt;TechnoPark Corp. is going to visit the Ada-Europe conference which will take place in Leuven,
+Belgium. TPC is planning a one day visit to the conference. On May 15, the most interesting topic of
+the conference will be presented. Belgium Professor Axel van Lamsweerde will speak on Requirements
+engineering (&amp;quot;Building Formal Models for Software Requirements&amp;quot;).&lt;/p&gt;
+</description>
+      <pubDate>Thu, 10 May 2001 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/year2001/oldnews2</guid>
+      <dc:date>2001-05-10T00:00:00+00:00</dc:date>
+    </item>
+    <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+  </channel>
+</rss>

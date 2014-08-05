@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="description" content="The software package we had as a legacy from previous coders
+didn&#39;t have a deployment mechanism. Manual deployment of
+every consecutive build could take hours. We saw this as the
+most critical risk. We had held a risk analysis meeting and
+decided to mitigate this risk by a continuous integration
+adjustment. The needed tools were found (Maven, nAnt) and
+integrated into the whole auto-deployment mechanism. It took
+just 5 minutes to build, test and deploy the system.
+Finally, this made the project successful.
+" />
+    <meta name="keywords" content="software development" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="icon" type="image/png" href="//img.technoparkcorp.com/favicon.ico">
+    <link rel="shortcut icon" type="image/png" href="//img.technoparkcorp.com/favicon.ico" />
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.technoparkcorp.com/rss.xml"/>
+    <link rel="author" href="//plus.google.com/u/0/114792568016408327418?rel=author" />
+    <link rel="stylesheet" href="/css/style.css?3e30833"/>
+    <link rel="canonical" href="http://www.technoparkcorp.com/stories/msg" />
+    <script src="/js/search.min.js?3e30833"></script>
+    <script src="/js/all.js?3e30833"></script>
+    <title>Risk Mitigation Approach</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="banner">Software Development General Contractor</div>
+      <a title="Home page of TechnoParkCorp.com" href="/" class="logo">
+        <img src="//img.technoparkcorp.com/logo.svg"/>
+      </a>
+      <div class="box">
+        <div>&nbsp;</div>
+        <ul class="tl">
+          
+            <li>
+              <a href="/about" title="Facts, history, key achievements or TechnoPark Corp.">
+                About us
+              </a>
+            </li>
+          
+            <li>
+              <a href="/process" title="Our approach to time/cost/scope and risk management">
+                Process
+              </a>
+            </li>
+          
+            <li>
+              <a href="/stories" title="List of the latest projects with technical and management details">
+                Success Stories
+              </a>
+            </li>
+          
+            <li>
+              <a href="/innovations" title="Our strength is in our inventions">
+                Innovations
+              </a>
+            </li>
+          
+            <li>
+              <a href="/contacts" title="Email, phone, fax and online contacts">
+                Contacts
+              </a>
+            </li>
+          
+        </ul>
+        <section class="main">
+  <div class="sl">
+    
+    <script id="search-results-template" type="text/mustache">
+      {{#entries}}
+        <li><a href="{{url}}">{{title}}</a></li>
+      {{/entries}}
+    </script>
+    
+    <input id="search-query" name="q" placeholder="Search..." autocomplete="off" size="35"/>
+    <div id="search-results">
+      <ul class="entries"></ul>
+    </div>
+  </div>
+  <div class="crumbs" role="navigation">
+    
+      <a href='/stories'>stories</a> &gt; <a href='/stories/msg'>msg</a>
+    
+  </div>
+  <article itemscope itemtype="http://schema.org/Article" class="white">
+    <ul class="steps">
+      <li><a href='/process/scope'>Learn how we specify Requirements and define product scope</a></li><li><a href='/process/risk'>Learn about Risk management and risky projects we have</a></li><li><a href='/process/communication'>Read about communications between the customer and project team</a></li><li><a href='/process/quality'>Read about Quality Management and cost of quality we suggest</a></li>
+    </ul>
+    <ul class="menu" role="navigation">
+      <li><a href='/about' title='Read about our company, strategy, our achievements'>About us</a></li><li><a href='/contacts' title='Contact us now instead of later'>Contacts</a></li><li><a href='/innovations' title=''>Innovations</a></li><li><a href='/process' title='Learn about our key project management processes'>Process</a></li><li><a href='/stories' title=''>Stories</a><ul><li><a href='/stories/adnet' title=''>Architecture decomposition</a></li><li><a href='/stories/avivo' title=''>Not our problem</a></li><li><a href='/stories/fazend' title=''>FaZend.com</a></li><li><a href='/stories/kip' title=''>Vague scope definition</a></li><li><a href='/stories/mastor' title=''>Quality control</a></li><li><a href='/stories/msg' title='' class='active'>Risk mitigation</a></li><li><a href='/stories/phprack' title=''>phpRack</a></li><li><a href='/stories/pluzit' title=''>UAT vs. Manual</a></li><li><a href='/stories/poker' title=''>Automated environment</a></li></ul></li>
+    </ul>
+    <div class="page" itemprop="articleBody">
+      <h1>Risk Mitigation Approach</h1>
+      <p>The project objectives were to implement additional functionality to
+the existing internet application. The new application features were:
+bulk sms, sms subscriptions, a free sms sending feature with advertising
+rotation, mobile content sharing and premium sms billing. The estimated
+project cost was 1180 staff-hours, the schedule -- 4 months. The main
+technologies were Java, Flex and PHP.</p>
+
+<p>One of the first steps at the project start was deep risk analysis. More
+than 100 project risks were identified and assessed. Mitigation
+and contingency plans were created for the top 20 risks. One of the
+most interesting risk mitigation plans is described below.</p>
+
+<p class='tikz'><img src='/tikz/9cf601bdb1ff3fd293f78c630ae1b5ed.png' alt='tikz' width='80%'/></p>
+
+<p>Existing software was delivered to us &quot;as is&quot;, with no deployment process.
+There was a risk that manual deployment of every new build would cause great cost and schedule losses.</p>
+
+<p>The mitigation plan was to investigate used technologies and adjust the continuous
+integration process for the whole project. We found appropriable
+tools (NAnt and Maven) and completed the solution.</p>
+
+<p>As a result, our team members just had to commit source code
+to the repository. And in some minutes the compiled build was unit tested,
+auto-deployed and auto tested. This was a very efficient tool to
+develop this project on.</p>
+
+    </div>
+    <div class="wl">
+      
+        Last update on
+        <time itemprop="datePublished" datetime="2014-08-08T00:00:00+00:00">
+          8 Aug 2014
+        </time>
+      
+    </div>
+  </article>
+</section>
+
+        <ul class="bl">
+          
+            <li>
+              <a href="/about/sitemap" title="Full list of site pages in hierarchical order">
+                Site Map
+              </a>
+            </li>
+          
+            <li>
+              <a href="/about/legalnotes" title="Legal terms of use of the site">
+                Legal Notes
+              </a>
+            </li>
+          
+            <li>
+              <a href="/about/privacy" title="Privacy policy for Personally Identifiable Information(PII)">
+                Privacy Policy
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+      <div class="sub">
+        &copy; TechnoPark Corp., 2000-2014
+        <a title="Read more about ISO 9001:2000 certification that was obtained by TechnoPark Corp."
+          href="" class="iso">
+          <img src=""/>
+        </a>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="description" content="One of the most common mistake in software development is a
+negative attitute towards bugs. In the article we explain
+that software bugs should be planned the same way as you
+plan new features and releases of your product.
+" />
+    <meta name="keywords" content="bugs planning, defective software, quality control, software bugs, software defects, software quality, software testing, test planning" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="icon" type="image/png" href="//img.technoparkcorp.com/favicon.ico">
+    <link rel="shortcut icon" type="image/png" href="//img.technoparkcorp.com/favicon.ico" />
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.technoparkcorp.com/rss.xml"/>
+    <link rel="author" href="//plus.google.com/u/0/114792568016408327418?rel=author" />
+    <link rel="stylesheet" href="/css/style.css?3e30833"/>
+    <link rel="canonical" href="http://www.technoparkcorp.com/innovations/test-planning" />
+    <script src="/js/search.min.js?3e30833"></script>
+    <script src="/js/all.js?3e30833"></script>
+    <title>Planning Of Software Bugs</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="banner">Software Development General Contractor</div>
+      <a title="Home page of TechnoParkCorp.com" href="/" class="logo">
+        <img src="//img.technoparkcorp.com/logo.svg"/>
+      </a>
+      <div class="box">
+        <div>&nbsp;</div>
+        <ul class="tl">
+          
+            <li>
+              <a href="/about" title="Facts, history, key achievements or TechnoPark Corp.">
+                About us
+              </a>
+            </li>
+          
+            <li>
+              <a href="/process" title="Our approach to time/cost/scope and risk management">
+                Process
+              </a>
+            </li>
+          
+            <li>
+              <a href="/stories" title="List of the latest projects with technical and management details">
+                Success Stories
+              </a>
+            </li>
+          
+            <li>
+              <a href="/innovations" title="Our strength is in our inventions">
+                Innovations
+              </a>
+            </li>
+          
+            <li>
+              <a href="/contacts" title="Email, phone, fax and online contacts">
+                Contacts
+              </a>
+            </li>
+          
+        </ul>
+        <section class="main">
+  <div class="sl">
+    
+    <script id="search-results-template" type="text/mustache">
+      {{#entries}}
+        <li><a href="{{url}}">{{title}}</a></li>
+      {{/entries}}
+    </script>
+    
+    <input id="search-query" name="q" placeholder="Search..." autocomplete="off" size="35"/>
+    <div id="search-results">
+      <ul class="entries"></ul>
+    </div>
+  </div>
+  <div class="crumbs" role="navigation">
+    
+      <a href='/innovations'>innovations</a> &gt; <a href='/innovations/test-planning'>test-planning</a>
+    
+  </div>
+  <article itemscope itemtype="http://schema.org/Article" class="white">
+    <ul class="steps">
+      <li><a href='/innovations/metrics'>Learn how we optimize and automate Quality of Code improvement in our projects</a></li><li><a href='/innovations/risk-game'>Learn how we optimize risk identification process using our unique Risk Game approach</a></li><li><a href='/innovations/metrics'>Learn how we optimize and automate Quality of Code improvement in our projects</a></li><li><a href='/innovations/risk-game'>Learn how we optimize risk identification process using our unique Risk Game approach</a></li>
+    </ul>
+    <ul class="menu" role="navigation">
+      <li><a href='/about' title='Read about our company, strategy, our achievements'>About us</a></li><li><a href='/contacts' title='Contact us now instead of later'>Contacts</a></li><li><a href='/innovations' title=''>Innovations</a><ul><li><a href='/innovations/metrics' title='Learn how we optimize and automate Quality of Code improvement in our projects'>Quality of Code</a></li><li><a href='/innovations/pdd' title='One of the biggest problems in parallel distributed programming has been solved with a patent-pending method called Puzzle Driven Development (PDD).'>PDD</a></li><li><a href='/innovations/risk-game' title='Learn how we optimize risk identification process using our unique Risk Game approach'>Risk Game</a></li><li><a href='/innovations/scope-champions' title='Learn how we optimize project cost estimating process using Scope Champions (our patent-pending invention)'>Scope Champions</a></li><li><a href='/innovations/standards' title=''></a></li><li><a href='/innovations/test-planning' title='Learn how we plan software bugs to improve the overal quality of product' class='active'>Bugs Planning</a></li></ul></li><li><a href='/process' title='Learn about our key project management processes'>Process</a></li><li><a href='/stories' title=''>Stories</a></li>
+    </ul>
+    <div class="page" itemprop="articleBody">
+      <h1>Planning Of Software Bugs</h1>
+      <p>You won&#39;t build a quality software product if your mindset is as follows:</p>
+
+<ul>
+<li>I release the product when quality testers give the okay</li>
+<li>The software quality is validated by testers</li>
+<li>High quality means complete lack of bugs</li>
+</ul>
+
+<p>The above statements are common for
+testers, programmers and project sponsors.
+During the last 40 years, software books have told us that
+the assumptions above are the biggest software problems themselves, but
+software teams still operate under these assumptions.</p>
+
+<h2 id="iterative-testing-is-different,-upside-down">Iterative Testing is Different, Upside Down</h2>
+
+<p>First, there are a number of critical axioms that you as
+a project sponsor or project manager must remember:</p>
+
+<p><strong>Axiom 1</strong>: Any software product has an unlimited
+number of bugs not discovered yet</p>
+
+<p>In other words you can&#39;t control number of bugs
+in the software they are unlimited. You can only control the
+number of bugs you discover, which is dependant on the limit of your time and resources.</p>
+
+<p><strong>Axiom 2</strong>: Quality is the degree to which
+a set of characteristics fulfills requirements</p>
+
+<p>Quality shows how <em>good</em> your product is compared to
+your initial expectations. In combining these two axioms we can say
+that the software product will be &quot;better&quot; when you
+find and fix more bugs.
+The characteristics are the number of fixed bugs, while
+requirements are the number of bugs anticipated.</p>
+
+<p>Formally, Quality of Implementation (<strong>QoI</strong>) is a relation between
+the number of fixed bugs (<strong>F</strong>) and number of bugs anticipated (<strong>P</strong>):</p>
+
+<p class='tikz'><img src='/tikz/71ee9a297a5e0684fade39c5f291f7ed.png' alt='tikz' width='80%'/></p>
+
+<p>Quality of Product (<strong>QoP</strong>) is a relationship between the number
+of bugs anticipated to be discovered (<strong>P</strong>) and the product size (<strong>S</strong>)
+multiplied by a nominal number of bugs per size unit (<strong>k</strong>).</p>
+
+<p class='tikz'><img src='/tikz/b0c5aabc2781db1ce02831857cdcb366.png' alt='tikz' width='80%'/></p>
+
+<p>The more bugs you anticipate you will discover, the larger
+your testing budget, the more time you need, and the higher you Quality of Product.</p>
+
+<p>When you say &quot;<em>I want to create a quality product</em>&quot; it means that
+you are planning to develop the software and to find/fix more
+bugs than usual leading to a QoP higher than usual. For example
+the product specification will have 100 functional requirements.
+Usually, your testers find 5 bugs per one functional requirement,
+spending 0.5 man-hours per one bug (250 totall man-hours).
+&quot;Software of higher quality&quot; will mean, for example, 10 bugs per one requirement, and 1000
+bugs in the entire product. This will require additional budget and may
+increase the average cost of one bug, this will honestly
+mean that you&#39;re planning to create &quot;a product of higher quality&quot;.</p>
+
+<p>When you say &quot;<em>the software is properly tested</em>&quot; it means that
+your testers discovered all the bugs you anticipated discovering
+and that programmers fixed the majority of them. If you anticipated
+finding 1000 bugs, and you found 900 while 100 of them remained
+unfixed, then the Quality of Implementation is 80\%.</p>
+
+<p>Now let&#39;s review the assumptions listed above.</p>
+
+<p><strong>I release the product when my quality testers give the okay</strong> (wrong).
+Testers are not performing quality control, they are discovering bugs.
+Testers don&#39;t know how this process affects your
+judgment about product release. You release the product to the
+market when you think the QoI/QoP is sufficient.</p>
+
+<p><strong>The software quality is validated by testers</strong> (wrong).
+The testers&#39;s job is to discover bugs. They don&#39;t control
+the QoI or QoP &mdash; a project manager plans Quality of Product (QoP)
+and programmers reach Quality of Implementation (QoI). Testers
+create inputs (bugs) for programmers.</p>
+
+<p><strong>High quality means a complete lack of bugs</strong> (wrong).
+The more bugs you are anticipating to discover,
+the higher the Quality of Product you are going to achieve. The more bugs you
+discover and fix, the higher the Quality of Implementation.
+When the team reports to you that there have been no bugs found,
+you know that the project has been
+poorly planned and testing poorly performed.</p>
+
+<h2 id="how-to-estimate-number-of-bugs?">How to Estimate Number of Bugs?</h2>
+
+<p>The most common question is <em>how can we estimate
+the number of bugs to be found in the product?</em>
+The answers are expert judgment, historical information,
+and prototyping.</p>
+
+<p>Remember, that you may always change this number during
+the course of project. After all, we do this iteratively, don&#39;t we? You
+anticipate the number of bugs according to your own judgment. It&#39;s
+good to start with something like (this is <strong>k</strong> in the formula above):</p>
+
+<ul>
+<li>bugs per line of code</li>
+<li>bugs per functional requirement</li>
+<li>bugs per class/method/module</li>
+<li>bugs per web page</li>
+</ul>
+
+<p>You can create your own metrics. Your first priority is to anticipate
+the number of bugs and your second priority is to anticipate it correctly.</p>
+
+<h2 id="how-to-estimate-discovery-time-for-bugs?">How to Estimate Discovery Time for Bugs?</h2>
+
+<p>Do this in the same manner in which your programmers estimate their time.
+Testing is the same process as programming
+and any other engineering task.</p>
+
+<p>Before the next iteration quality tester receives the SRS,
+the list of functional requirements to be tested in a particular
+iteration, the required numbers of bugs to be detected should be decided and
+a time estimate &mdash; how much time will it take him/her to discover the required number of bugs
+&mdash; to be produced.</p>
+
+<p>If the answer is <em>I don&#39;t know how many bugs this functionality has</em>,
+refer him/her to Axiom 1.</p>
+
+<h2 id="conclusion-or-what-do-you-do-next">Conclusion or What Do You Do Next</h2>
+
+<p>Bugs have to be anticipated the same way as you plan new
+features and new releases. You have to plan your quality
+and control it during the entire project. Your plan may
+fall wide of the mark in the beginning of the project,
+you may underestimate testing efforts,
+and your important assumptions may be incorrect.
+But the biggest mistake you could make is not to anticipate bugs at all.</p>
+
+<h2 id="bibliography">Bibliography</h2>
+
+<p>Brooks, Frederick P.,
+The mythical man-month: essays on software engineering,
+Addison Wesley Longman, Inc., USA (1995)</p>
+
+<p>Kaner Cem, Falk Jack, Nguyen Hung Quoc,
+Testing computer software, Second Edition,
+John Wiley and Sons, Inc, New York, USA (1999)</p>
+
+<p>Nguyen Hung Quoc, Johnson Bob, Hackett Michael,
+Testing applications on the Web, Second Edition,
+John Wiley and Sons, New York, USA (2003)</p>
+
+<p>Myers, Glenford J.,
+The art of software testing, 2nd edition,
+John Wiley and Sons, New Jersey, USA (2004)</p>
+
+<p>A Guide to the Project Management Body of Knowledge (PMBOK Guide), Third Edition (2004)
+Project Management Institute (PMI),
+PMI Press, USA (2004)</p>
+
+    </div>
+    <div class="wl">
+      
+        Last update on
+        <time itemprop="datePublished" datetime="2009-04-26T00:00:00+00:00">
+          26 Apr 2009
+        </time>
+      
+    </div>
+  </article>
+</section>
+
+        <ul class="bl">
+          
+            <li>
+              <a href="/about/sitemap" title="Full list of site pages in hierarchical order">
+                Site Map
+              </a>
+            </li>
+          
+            <li>
+              <a href="/about/legalnotes" title="Legal terms of use of the site">
+                Legal Notes
+              </a>
+            </li>
+          
+            <li>
+              <a href="/about/privacy" title="Privacy policy for Personally Identifiable Information(PII)">
+                Privacy Policy
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+      <div class="sub">
+        &copy; TechnoPark Corp., 2000-2014
+        <a title="Read more about ISO 9001:2000 certification that was obtained by TechnoPark Corp."
+          href="" class="iso">
+          <img src=""/>
+        </a>
+      </div>
+    </div>
+  </body>
+</html>

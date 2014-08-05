@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="description" content="We invented a method of software cost estimating using a
+limited number of functional requirements, called Scope
+Champions. The method reduces the costs of estimating and
+increases accuracy. Full presentation of the method will be
+given on PROFES-09 conference in Oulu, Finland, on the 16th
+of June.
+" />
+    <meta name="keywords" content="COCOMO, class points, cost estimate, cost estimating, cost estimating software, cost estimator, function point estimate, funtion point analysis, project cost, project cost estimating, software cost estimation, three-point estimate, use case points" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="icon" type="image/png" href="//img.technoparkcorp.com/favicon.ico">
+    <link rel="shortcut icon" type="image/png" href="//img.technoparkcorp.com/favicon.ico" />
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.technoparkcorp.com/rss.xml"/>
+    <link rel="author" href="//plus.google.com/u/0/114792568016408327418?rel=author" />
+    <link rel="stylesheet" href="/css/style.css?3e30833"/>
+    <link rel="canonical" href="http://www.technoparkcorp.com/innovations/scope-champions" />
+    <script src="/js/search.min.js?3e30833"></script>
+    <script src="/js/all.js?3e30833"></script>
+    <title>Revolutionary Method Of Cost Estimating</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="banner">Software Development General Contractor</div>
+      <a title="Home page of TechnoParkCorp.com" href="/" class="logo">
+        <img src="//img.technoparkcorp.com/logo.svg"/>
+      </a>
+      <div class="box">
+        <div>&nbsp;</div>
+        <ul class="tl">
+          
+            <li>
+              <a href="/about" title="Facts, history, key achievements or TechnoPark Corp.">
+                About us
+              </a>
+            </li>
+          
+            <li>
+              <a href="/process" title="Our approach to time/cost/scope and risk management">
+                Process
+              </a>
+            </li>
+          
+            <li>
+              <a href="/stories" title="List of the latest projects with technical and management details">
+                Success Stories
+              </a>
+            </li>
+          
+            <li>
+              <a href="/innovations" title="Our strength is in our inventions">
+                Innovations
+              </a>
+            </li>
+          
+            <li>
+              <a href="/contacts" title="Email, phone, fax and online contacts">
+                Contacts
+              </a>
+            </li>
+          
+        </ul>
+        <section class="main">
+  <div class="sl">
+    
+    <script id="search-results-template" type="text/mustache">
+      {{#entries}}
+        <li><a href="{{url}}">{{title}}</a></li>
+      {{/entries}}
+    </script>
+    
+    <input id="search-query" name="q" placeholder="Search..." autocomplete="off" size="35"/>
+    <div id="search-results">
+      <ul class="entries"></ul>
+    </div>
+  </div>
+  <div class="crumbs" role="navigation">
+    
+      <a href='/innovations'>innovations</a> &gt; <a href='/innovations/scope-champions'>scope-champions</a>
+    
+  </div>
+  <article itemscope itemtype="http://schema.org/Article" class="white">
+    <ul class="steps">
+      <li><a href='/innovations/metrics'>Learn how we optimize and automate Quality of Code improvement in our projects</a></li><li><a href='/innovations/risk-game'>Learn how we optimize risk identification process using our unique Risk Game approach</a></li><li><a href='/innovations/metrics'>Learn how we optimize and automate Quality of Code improvement in our projects</a></li><li><a href='/innovations/risk-game'>Learn how we optimize risk identification process using our unique Risk Game approach</a></li>
+    </ul>
+    <ul class="menu" role="navigation">
+      <li><a href='/about' title='Read about our company, strategy, our achievements'>About us</a></li><li><a href='/contacts' title='Contact us now instead of later'>Contacts</a></li><li><a href='/innovations' title=''>Innovations</a><ul><li><a href='/innovations/metrics' title='Learn how we optimize and automate Quality of Code improvement in our projects'>Quality of Code</a></li><li><a href='/innovations/pdd' title='One of the biggest problems in parallel distributed programming has been solved with a patent-pending method called Puzzle Driven Development (PDD).'>PDD</a></li><li><a href='/innovations/risk-game' title='Learn how we optimize risk identification process using our unique Risk Game approach'>Risk Game</a></li><li><a href='/innovations/scope-champions' title='Learn how we optimize project cost estimating process using Scope Champions (our patent-pending invention)' class='active'>Scope Champions</a></li><li><a href='/innovations/standards' title=''></a></li><li><a href='/innovations/test-planning' title='Learn how we plan software bugs to improve the overal quality of product'>Bugs Planning</a></li></ul></li><li><a href='/process' title='Learn about our key project management processes'>Process</a></li><li><a href='/stories' title=''>Stories</a></li>
+    </ul>
+    <div class="page" itemprop="articleBody">
+      <h1>Revolutionary Method Of Cost Estimating</h1>
+      <p><strong>Disclaimer</strong>: This web page contains just an abstract of a research
+report that was presented on <a href="http://www.profes2009.org/">PROFES 2009</a> conference
+in Oulu, Finland, on 16th of June, 2009. Materials of the conference are
+published by Springer Verlag. The method is pending USPTO patent:
+<a href="http://www.google.com/patents/about?id=QjDNAAAAEBAJ">12/193,010</a>.</p>
+
+<p>Any project needs estimates (cost, time and resource) as key artifacts,
+which are based on scope definition.
+There are many well-established and proven methods of software size and
+cost estimating, which are based on software specifications and
+organizational assets, e.g. historical data. In a general case, any
+method includes
+(i) requirements analysis,
+(ii) numbers deriving and
+(iii) final calculation.</p>
+
+<p>These three steps could be repeated several times iteratively, e.g. like in
+<a href="http://en.wikipedia.org/wiki/Wideband_delphi">Wideband Delphi</a>.
+Each step may be completed manually
+or with a special tool and/or algorithm, e.g.
+<a href="http://en.wikipedia.org/wiki/Function_point_analysis">function point analysis</a>,
+<a href="http://sunset.usc.edu/csse/research/COCOMOII/cocomo_main.html">COCOMO</a>,
+<a href="http://en.wikipedia.org/wiki/Program_Evaluation_and_Review_Technique">PERT</a>,
+<a href="http://en.wikipedia.org/wiki/User_story">XP user stories</a>,
+<a href="http://en.wikipedia.org/wiki/Source_lines_of_code">SLOC</a> prediction, by analogies, with
+<a href="http://www.stsc.hill.af.mil/crosstalk/2006/02/0602Clemmons.pdf">use case points</a>,
+class points, neural networks, and others.</p>
+
+<p>No matter what tools and algorithms are used, the whole process has
+two significant disadvantages, which very often make it difficult
+to achieve optimal results or even to finish the estimating in time.</p>
+
+<p>First, even a mid-size software project may contain hundreds of functional
+and non-functional requirements. The time required by estimators
+for proper understanding and analysis of requirements almost always is much bigger than the budgeted
+time for the whole estimating process. The obvious outcome of this situation is
+a limited understanding of requirements by estimators, which leads to inaccuracy
+in the estimators&#39; judgement.</p>
+
+<p>Second, estimators tend to approximate the numbers. With a big amount of
+small estimates, this leads to a certain deviation in the final calculation (either
+to the higher or to the lower boundary of the approximation). The
+deviation grows much faster than the amount of the estimates does.</p>
+
+<p>A good solution to the outlined problems is our innovative method that decreases
+the amount of efforts required for deriving numbers, at the same time improving
+the accuracy of the estimate.</p>
+
+<h2 id="the-method-of-scope-champions">The Method of Scope Champions</h2>
+
+<p>In properly managed software projects, product scope is defined by software requirements specification
+(SRS), that includes functional and non-functional requirements to the
+product. A numbered list of requirements defines the boundary
+of the product scope, while non-functional requirements supplement them
+with quality attributes.</p>
+
+<p>The method consists of three steps:
+     1) select <strong>Scope Champions</strong>,
+     2) estimate Scope Champions, and
+     3) calculate the product scope estimate.</p>
+
+<p>Scope Champion is a selected functional requirement,
+the biggest and the most complex element of scope, according to
+the estimators&#39; expert judgement. Scope Champions are picked up from
+a complete set of requirements on the same level of abstraction.</p>
+
+<p>When Scope Champions are selected, isolated estimates for them
+are made by estimators. Using the estimates and the formula, proposed as part of this
+method, the final product scope estimate is calculated. The formula is:</p>
+
+<p class='tikz'><img src='/tikz/d04188077f26ee127b21cbee7fc5a00d.png' alt='tikz' width='80%'/></p>
+
+<p>Where <strong>Y</strong> are estimates of Scope Champions, <strong>m</strong> is
+a total amount of Scope Champions, and <strong>n</strong> is the total amount of functional requirements
+in SRS. <strong>Y</strong> is a final product scope estimate.</p>
+
+<p>Accuracy of the final estimate is improved because:</p>
+
+<ul>
+<li>the estimators judgement is based on more detailed analysis, and</li>
+<li>the final estimate is much easier to validate and review.</li>
+</ul>
+
+<p>The method can be used with other scope-defining artifacts, i.e. use case models, software
+architecture, design model, test plan, and others.
+The results obtained should be applied together, which will give higher accuracy
+for the total.</p>
+
+    </div>
+    <div class="wl">
+      
+        Last update on
+        <time itemprop="datePublished" datetime="2009-05-22T00:00:00+00:00">
+          22 May 2009
+        </time>
+      
+    </div>
+  </article>
+</section>
+
+        <ul class="bl">
+          
+            <li>
+              <a href="/about/sitemap" title="Full list of site pages in hierarchical order">
+                Site Map
+              </a>
+            </li>
+          
+            <li>
+              <a href="/about/legalnotes" title="Legal terms of use of the site">
+                Legal Notes
+              </a>
+            </li>
+          
+            <li>
+              <a href="/about/privacy" title="Privacy policy for Personally Identifiable Information(PII)">
+                Privacy Policy
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+      <div class="sub">
+        &copy; TechnoPark Corp., 2000-2014
+        <a title="Read more about ISO 9001:2000 certification that was obtained by TechnoPark Corp."
+          href="" class="iso">
+          <img src=""/>
+        </a>
+      </div>
+    </div>
+  </body>
+</html>

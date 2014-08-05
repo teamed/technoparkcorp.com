@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="description" content="Patent for Puzzle Driven Development (PDD) mechanism that
+helps distributed software development teams to keep changes
+under control has been submitted to USPTO.
+" />
+    <meta name="keywords" content="continuous integration, distributed programming, puzzle driven development, quality control, remote team" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="icon" type="image/png" href="//img.technoparkcorp.com/favicon.ico">
+    <link rel="shortcut icon" type="image/png" href="//img.technoparkcorp.com/favicon.ico" />
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.technoparkcorp.com/rss.xml"/>
+    <link rel="author" href="//plus.google.com/u/0/114792568016408327418?rel=author" />
+    <link rel="stylesheet" href="/css/style.css?3e30833"/>
+    <link rel="canonical" href="http://www.technoparkcorp.com/about/news/year2010/pdd-patent" />
+    <script src="/js/search.min.js?3e30833"></script>
+    <script src="/js/all.js?3e30833"></script>
+    <title>Pdd, Patent Application No. 12/840,306</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="banner">Software Development General Contractor</div>
+      <a title="Home page of TechnoParkCorp.com" href="/" class="logo">
+        <img src="//img.technoparkcorp.com/logo.svg"/>
+      </a>
+      <div class="box">
+        <div>&nbsp;</div>
+        <ul class="tl">
+          
+            <li>
+              <a href="/about" title="Facts, history, key achievements or TechnoPark Corp.">
+                About us
+              </a>
+            </li>
+          
+            <li>
+              <a href="/process" title="Our approach to time/cost/scope and risk management">
+                Process
+              </a>
+            </li>
+          
+            <li>
+              <a href="/stories" title="List of the latest projects with technical and management details">
+                Success Stories
+              </a>
+            </li>
+          
+            <li>
+              <a href="/innovations" title="Our strength is in our inventions">
+                Innovations
+              </a>
+            </li>
+          
+            <li>
+              <a href="/contacts" title="Email, phone, fax and online contacts">
+                Contacts
+              </a>
+            </li>
+          
+        </ul>
+        <section class="main">
+  <div class="sl">
+    
+    <script id="search-results-template" type="text/mustache">
+      {{#entries}}
+        <li><a href="{{url}}">{{title}}</a></li>
+      {{/entries}}
+    </script>
+    
+    <input id="search-query" name="q" placeholder="Search..." autocomplete="off" size="35"/>
+    <div id="search-results">
+      <ul class="entries"></ul>
+    </div>
+  </div>
+  <div class="crumbs" role="navigation">
+    
+      <a href='/about'>about</a> &gt; <a href='/about/news'>news</a> &gt; <a href='/about/news/year2010'>year2010</a> &gt; <a href='/about/news/year2010/pdd-patent'>pdd-patent</a>
+    
+  </div>
+  <article itemscope itemtype="http://schema.org/Article" class="white">
+    <ul class="steps">
+      <li><a href='/process/scope'>Learn how we specify Requirements and define product scope</a></li><li><a href='/process/risk'>Learn about Risk management and risky projects we have</a></li><li><a href='/process/communication'>Read about communications between the customer and project team</a></li><li><a href='/process/quality'>Read about Quality Management and cost of quality we suggest</a></li>
+    </ul>
+    <ul class="menu" role="navigation">
+      <li><a href='/about' title='Read about our company, strategy, our achievements'>About us</a><ul><li><a href='/about/executives' title='Our executive team of software development professionals'>Executive Team</a></li><li><a href='/about/facts' title='Review key facts about TPC, shareholders, offices and legal status'>Facts Sheet</a></li><li><a href='/about/history' title='Review our latest history with key events, achievements and awards'>History of growth</a></li><li><a href='/about/jobs' title='Read how you can join our team'>Job Positions</a></li><li><a href='/about/news' title='Read the latest news about TPC and the software industry'>News and events</a></li><li><a href='/about/rss' title=''></a></li><li><a href='/about/teams' title='Read about our Virtual Team approach and become a member of one of them'>Virtual Teams</a></li><li><a href='/about/why' title='Why TPC? Consider the advantages in this one-page overview'>Why TPC?</a></li></ul></li><li><a href='/contacts' title='Contact us now instead of later'>Contacts</a></li><li><a href='/innovations' title=''>Innovations</a></li><li><a href='/process' title='Learn about our key project management processes'>Process</a></li><li><a href='/stories' title=''>Stories</a></li>
+    </ul>
+    <div class="page" itemprop="articleBody">
+      <h1>Pdd, Patent Application No. 12/840,306</h1>
+      <p>Patent application no. 12/840,306 has been submitted to United States Patent and Trademark Office on
+21st of July by Yegor Bugayenko, lead architect of TechnoPark Corp.</p>
+
+<p>The invention includes a specific method and software that resolves the problem of &quot;delayed
+branches&quot; conflict in concurrent distributed software development, and in many other types of
+software development projects.</p>
+
+<p>Every time a developer is working with a branch and sees a problem or a question that needs the
+participation of another programmer, he implements a temporary solution that keeps the code
+compilable. He marks the place in the code with tag (called &quot;&quot;) and merges the branch into . The &quot;&quot;
+includes the identifier of a task he was working with. As long as the &quot;&quot; stays in source code, a
+project manager considers the task as incomplete and pending resolution. The project manager assigns
+&quot;&quot; resolution to other team members. When all &quot;&quot; are resolved, the project manager returns the task
+back to the programmer, asking him to continue with development.</p>
+
+<p>The key advantage of the PDD method, comparing with all other known approaches, is the absence of
+long branches. Implementation of every task, no matter how difficult it is, takes a few hours in one
+iteration. Then the task is set to pending state and new &quot;&quot; are merged into . Project planning
+becomes more predictable and simple, since the project manager is dealing with a large amount of
+small isolated tasks, instead of long and risky activities. With this method, cost and scope control
+also becomes more effective.</p>
+
+<p>Properly used &quot;&quot; becomes the main management and communication mechanism in a distributed software
+project, replacing e-mails, online discussions and phone calls. Moreover, the PDD software collects
+&quot;&quot; from source code and builds short-term plans of key development tasks.</p>
+
+    </div>
+    <div class="wl">
+      
+        Last update on
+        <time itemprop="datePublished" datetime="2010-07-21T00:00:00+00:00">
+          21 Jul 2010
+        </time>
+      
+    </div>
+  </article>
+</section>
+
+        <ul class="bl">
+          
+            <li>
+              <a href="/about/sitemap" title="Full list of site pages in hierarchical order">
+                Site Map
+              </a>
+            </li>
+          
+            <li>
+              <a href="/about/legalnotes" title="Legal terms of use of the site">
+                Legal Notes
+              </a>
+            </li>
+          
+            <li>
+              <a href="/about/privacy" title="Privacy policy for Personally Identifiable Information(PII)">
+                Privacy Policy
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+      <div class="sub">
+        &copy; TechnoPark Corp., 2000-2014
+        <a title="Read more about ISO 9001:2000 certification that was obtained by TechnoPark Corp."
+          href="" class="iso">
+          <img src=""/>
+        </a>
+      </div>
+    </div>
+  </body>
+</html>

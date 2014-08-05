@@ -1,0 +1,15 @@
+language: ruby
+branches:
+  only:
+    - master
+install:
+  - bundle install
+  - npm install phantomjs -g
+  - npm install casperjs -g
+env:
+  global:
+    - secure: "YRF2hq6GI07WDf8uzPgRZ72MF0/m+KRLXOvLFApzliPGav86wMdMBnUlb2TnbneOIjnZsFnivVTi0nOmhBJu/tOTnLdXUn96smKg60hHuQOqZYohv0Kbzl5SU0uDfN50q2inXxgd7xSH3D0zCMge8TacWzrp233NcjncArsYyoU="
+script:
+  - _test/run.sh
+  - jgd -u https://yegor256:$PASSWORD@github.com/teamed/technoparkcorp.git
+
