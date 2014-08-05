@@ -3,6 +3,7 @@
 require 'fileutils'
 require 'nokogiri'
 require 'reverse_markdown'
+require 'date'
 
 Dir.glob('src/content/**/*.xml') do |file|
   puts file
@@ -11,7 +12,16 @@ Dir.glob('src/content/**/*.xml') do |file|
   name = File.basename(file,'.xml')
   md = "---\n"
   md += "layout: article\n"
-  md += "date: 2014-08-08\n"
+  if xml.xpath('/article/date/text()').length > 0
+    time = Date.strptime(xml.xpath('/article/date/text()')[0], '%m/%d/%Y').to_time
+    if time.year < 2000
+      time = Time.new(time.year + 2000, time.month, time.day)
+    end
+    date = time.strftime('%Y-%m-%d')
+  else
+    date = '2014-08-08'
+  end
+  md += "date: #{date}\n"
   md += "permalink: #{path}\n"
   if xml.xpath('/article/label/text()').length > 0
     md += "label: " + xml.xpath('/article/label/text()')[0] + "\n"
@@ -63,7 +73,7 @@ Dir.glob('src/content/**/*.xml') do |file|
 
   md += "\n\n" + xml.xpath('/article/text/text()').to_s.strip
 
-  output = "_posts/#{File.dirname(file)[12,200]}/2014-08-08-#{File.basename(file,'.xml')}.md"
+  output = "_posts/#{File.dirname(file)[12,200]}/#{date}-#{File.basename(file,'.xml')}.md"
   FileUtils.mkdir_p(File.dirname(output))
   File.write(output, md.strip + "\n")
   puts output
