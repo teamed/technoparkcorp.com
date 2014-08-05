@@ -2,7 +2,7 @@
 # Just run "bundle"
 #
 source 'https://rubygems.org'
-gem 'jekyll'
+gem 'jekyll', '2.0.3'
 gem 'sass'
 gem 'jekyll-sass'
 gem 'jekyll-plantuml'
