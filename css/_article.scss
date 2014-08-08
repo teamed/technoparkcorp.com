@@ -144,8 +144,11 @@
         list-style: none;
         margin-left: 10px;
       }
-      & > li > a {
-        font-weight: bold;
+      & > li {
+        margin-top: 5px;
+        & > a {
+          font-weight: bold;
+        }
       }
       li {
         a {
