@@ -29,7 +29,8 @@ The Daily Report includes:
 
 This is an example of Daily Report:
 
-<pre>
+{% highlight text %}
+
 John,
 
 According to the Iteration Plan we committed, today
@@ -53,7 +54,7 @@ project release milestone
 The closest Milestone is on 12-Jan (end of the day).
 
 Liza Peterson, PM
-</pre>
+{% endhighlight %}
 
 Since we do [incremental delivery](/process/communication/incremental) of
 [Deliverables](/process/warranty/deliverables), each Daily Report may include new functionality
