@@ -248,15 +248,6 @@ and presented to you prior to a &lt;a href=&quot;/process/time/lco&quot;&gt;LCO 
       <dc:date>2014-08-08T00:00:00+00:00</dc:date>
     </item>
     <item>
-      <title>Risks Are Identified, Prioritized And Managed</title>
-      <link>http://www.technoparkcorp.com/process/risk</link>
-      <description>&lt;p&gt;A Risk is a possible event that may impact the outcome of a project.&lt;/p&gt;
-</description>
-      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
-      <guid>http://www.technoparkcorp.com/process/risk</guid>
-      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
-    </item>
-    <item>
       <title>Cause, Risk, Effect</title>
       <link>http://www.technoparkcorp.com/process/risk/risk</link>
       <description>&lt;p&gt;A Risk in software development project is an event that may have an impact on the outcome of the
@@ -266,6 +257,15 @@ project at present time.&lt;/p&gt;
 </description>
       <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
       <guid>http://www.technoparkcorp.com/process/risk/risk</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
+      <title>Risks Are Identified, Prioritized And Managed</title>
+      <link>http://www.technoparkcorp.com/process/risk</link>
+      <description>&lt;p&gt;A Risk is a possible event that may impact the outcome of a project.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/process/risk</guid>
       <dc:date>2014-08-08T00:00:00+00:00</dc:date>
     </item>
     <item>
@@ -903,7 +903,7 @@ significantly reduce risks of failure.&lt;/p&gt;
       <dc:date>2010-11-03T00:00:00+00:00</dc:date>
     </item>
     <item>
-      <title>Puzzle Driven Development (pdd) To Help In Distributed Projects</title>
+      <title>Puzzle Driven Development (PDD) To Help In Distributed Projects</title>
       <link>http://www.technoparkcorp.com/about/news/year2010/pdd</link>
       <description>&lt;p&gt;Read more on this topic in
 &lt;a href=&quot;http://www.phparch.com/magazine/2010/august/&quot;&gt;php|Architect, August 2010&lt;/a&gt;
@@ -925,7 +925,7 @@ article
       <dc:date>2010-07-21T00:00:00+00:00</dc:date>
     </item>
     <item>
-      <title>Puzzle Driven Development (pdd)</title>
+      <title>Puzzle Driven Development (PDD)</title>
       <link>http://www.technoparkcorp.com/innovations/pdd</link>
       <description>&lt;p&gt;The innovation is pending patent in United States
 Patent and Trademark Office (USPTO), patent application
