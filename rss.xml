@@ -248,6 +248,15 @@ and presented to you prior to a &lt;a href=&quot;/process/time/lco&quot;&gt;LCO 
       <dc:date>2014-08-08T00:00:00+00:00</dc:date>
     </item>
     <item>
+      <title>Risks Are Identified, Prioritized And Managed</title>
+      <link>http://www.technoparkcorp.com/process/risk</link>
+      <description>&lt;p&gt;A Risk is a possible event that may impact the outcome of a project.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/process/risk</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
       <title>Cause, Risk, Effect</title>
       <link>http://www.technoparkcorp.com/process/risk/risk</link>
       <description>&lt;p&gt;A Risk in software development project is an event that may have an impact on the outcome of the
@@ -257,15 +266,6 @@ project at present time.&lt;/p&gt;
 </description>
       <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
       <guid>http://www.technoparkcorp.com/process/risk/risk</guid>
-      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
-    </item>
-    <item>
-      <title>Risks Are Identified, Prioritized And Managed</title>
-      <link>http://www.technoparkcorp.com/process/risk</link>
-      <description>&lt;p&gt;A Risk is a possible event that may impact the outcome of a project.&lt;/p&gt;
-</description>
-      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
-      <guid>http://www.technoparkcorp.com/process/risk</guid>
       <dc:date>2014-08-08T00:00:00+00:00</dc:date>
     </item>
     <item>
@@ -848,8 +848,11 @@ Service to project sponsors and team members.&lt;/p&gt;
     <item>
       <title>Open Source Java Project Jcabi.com Sponsored By Us</title>
       <link>http://www.technoparkcorp.com/about/news/year2013/jcabi</link>
-      <description>&lt;p&gt;TechnoPark Corp. started to sponsor a new open source project JCabi.com, which is a collection of
-small Java components and utilities.&lt;/p&gt;
+      <description>&lt;p&gt;&lt;a href=&quot;http://www.jcabi.com&quot;&gt;
+  &lt;img src=&quot;http://img.jcabi.com/logo-square.svg&quot;
+    alt=&quot;jcabi.com logo&quot;
+    style=&quot;width: 64px; height: 64px; float:right; margin-left: 2em; margin-bottom: 2em;&quot;/&gt;
+&lt;/a&gt;&lt;/p&gt;
 </description>
       <pubDate>Fri, 05 Jul 2013 00:00:00 +0000</pubDate>
       <guid>http://www.technoparkcorp.com/about/news/year2013/jcabi</guid>
