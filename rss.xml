@@ -859,8 +859,10 @@ small Java components and utilities.&lt;/p&gt;
       <title>Technopark Corp. Is An Official Apn Partner</title>
       <link>http://www.technoparkcorp.com/about/news/year2012/apn</link>
       <description>&lt;p&gt;&lt;a href=&quot;http://www.tpc2.com&quot;&gt;
-            &lt;img src=&quot;data:image/png;base64,${base64:/about/news/year2012/aws-logo.png}&quot; alt=&quot;APN Standard Technology Partner&quot; style=&quot;float:right; margin-left: 2em; margin-bottom: 2em; width: 200px;&quot;/&gt;
-        &lt;/a&gt;&lt;/p&gt;
+  &lt;img src=&quot;//img.technoparkcorp.com/news/2012/aws-logo.png&quot;
+    alt=&quot;APN Standard Technology Partner&quot;
+    style=&quot;float:right; margin-left: 2em; margin-bottom: 2em; width: 200px;&quot;/&gt;
+&lt;/a&gt;&lt;/p&gt;
 </description>
       <pubDate>Fri, 16 Nov 2012 00:00:00 +0000</pubDate>
       <guid>http://www.technoparkcorp.com/about/news/year2012/apn</guid>
@@ -869,7 +871,11 @@ small Java components and utilities.&lt;/p&gt;
     <item>
       <title>S3auth.com, A Free Http Auth Gateway In Front Of Amazon S3 Bucket</title>
       <link>http://www.technoparkcorp.com/about/news/year2012/s3auth</link>
-      <description>&lt;p&gt;&lt;img src=&quot;http://img.s3auth.com/logo.png&quot; alt=&quot;s3auth.com&quot; style=&quot;float:right; margin-left: 2em; margin-bottom: 2em;&quot;/&gt;&lt;/p&gt;
+      <description>&lt;p&gt;&lt;a href=&quot;http://www.s3auth.com&quot;&gt;
+  &lt;img src=&quot;http://img.s3auth.com/logo.svg&quot;
+    alt=&quot;s3auth.com&quot;
+    style=&quot;width: 313px; height: 55px; float:right; margin-left: 2em; margin-bottom: 2em;&quot;/&gt;
+&lt;/a&gt;&lt;/p&gt;
 </description>
       <pubDate>Sat, 22 Sep 2012 00:00:00 +0000</pubDate>
       <guid>http://www.technoparkcorp.com/about/news/year2012/s3auth</guid>
@@ -899,8 +905,10 @@ significantly reduce risks of failure.&lt;/p&gt;
     <item>
       <title>Puzzle Driven Development (pdd) To Help In Distributed Projects</title>
       <link>http://www.technoparkcorp.com/about/news/year2010/pdd</link>
-      <description>&lt;p&gt;Read more on this topic in &lt;a href=&quot;http://www.phparch.com/magazine/2010/august/&quot;&gt;php|Architect, August
-2010&lt;/a&gt; article &amp;quot;&amp;quot;, by Yegor Bugayenko.&lt;/p&gt;
+      <description>&lt;p&gt;Read more on this topic in
+&lt;a href=&quot;http://www.phparch.com/magazine/2010/august/&quot;&gt;php|Architect, August 2010&lt;/a&gt;
+article
+&lt;a href=&quot;http://img.rultor.com/guard-article.pdf&quot;&gt;&amp;quot;Prevent Conflicts in Distributed Agile PHP Projects&amp;quot;&lt;/a&gt;, by Yegor Bugayenko.&lt;/p&gt;
 </description>
       <pubDate>Sun, 29 Aug 2010 00:00:00 +0000</pubDate>
       <guid>http://www.technoparkcorp.com/about/news/year2010/pdd</guid>
