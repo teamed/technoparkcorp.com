@@ -77,7 +77,7 @@ Corp., even if TechnoPark Corp. elects to provide information with the goal of a
 
 <img style="width:80px;height:58px;" src="//img.technoparkcorp.com/logo.svg"/>
 
-The trademark (nine-circles logo and "" slogan) is a trademark of TechnoPark Corp., registered on
+The trademark (nine-circles logo and "Plan Your Success" slogan) is a trademark of TechnoPark Corp., registered on
 4-Nov-08 in United States Patent and Trademark Office ([USPTO](http://www.uspto.gov)), [see
 details](http://tarr.uspto.gov/servlet/tarr?regser=serial&entry=77438094). Any oppositions you may
 send directly to USPTO or to [copyright](mailto:pr@technoparkcorp.com) department of TechnoPark Corp
