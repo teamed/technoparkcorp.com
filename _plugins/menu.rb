@@ -9,6 +9,8 @@ module Tpc
         html
       end
 
+      private
+
       def draw(parent, key, items, context)
         page = context['page']
         name = parent.nil? ? key : parent + '/' + key

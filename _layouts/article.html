@@ -18,7 +18,7 @@ layout: default
   </div>
   <div class="crumbs" role="navigation">
     {% if page.permalink %}
-      {{ page | breadcrumbs }}
+      {% breadcrumbs %}
     {% endif %}
   </div>
   <article itemscope itemtype="http://schema.org/Article" class="white">
