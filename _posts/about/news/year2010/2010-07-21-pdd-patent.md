@@ -17,7 +17,9 @@ keywords:
   - continuous integration
 ---
 
-Patent application no. 12/840,306 has been submitted to United States Patent and Trademark Office on
+Patent application
+[no. 12/840,306](https://www.google.com/patents/US20120023476)
+has been submitted to United States Patent and Trademark Office on
 21st of July by Yegor Bugayenko, lead architect of TechnoPark Corp.
 
 The invention includes a specific method and software that resolves the problem of "delayed
