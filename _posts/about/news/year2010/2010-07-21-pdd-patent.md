@@ -4,10 +4,10 @@ date: 2010-07-21
 permalink: about/news/year2010/pdd-patent
 tags: news
 label: PDD Patent
-title: "Pdd, Patent Application No. 12/840,306"
+title: "Pdd Patent Application No. 12/840,306"
 description: |
   Patent for Puzzle Driven Development (PDD) mechanism that
-  helps distributed software development teams to keep changes
+  helps distributed software development teams keep changes
   under control has been submitted to USPTO.
 keywords:
   - puzzle driven development
@@ -19,11 +19,11 @@ keywords:
 
 Patent application
 [no. 12/840,306](https://www.google.com/patents/US20120023476)
-has been submitted to United States Patent and Trademark Office on
+has been submitted to the United States Patent and Trademark Office on
 21st of July by Yegor Bugayenko, lead architect of TechnoPark Corp.
 
 The invention includes a specific method and software that resolves the problem of "delayed
-branches" conflict in concurrent distributed software development, and in many other types of
+branches" conflict in concurrent distributed software development and in many other types of
 software development projects.
 
 Every time a developer is working with a branch and sees a problem
@@ -42,12 +42,12 @@ The key advantage of the PDD method, comparing with all other known approaches,
 is the absence of long branches. Implementation of every task, no matter
 how difficult it is, takes a few hours in one iteration. Then the task
 is set to pending state and new "**puzzles**" are merged into `trunk`. Project
-planning becomes more predictable and simple, since the project manager is
-dealing with a large amount of small isolated tasks, instead of long and risky
+planning becomes more predictable and simple since the project manager is
+dealing with a large amount of small, isolated tasks, instead of long and risky
 activities. With this method, cost and scope control also becomes more effective.
 
-Properly used "**puzzles**" becomes the main management and communication
+Properly used "**puzzles**" become the main management and communication
 mechanism in a distributed software project, replacing e-mails, online
-discussions and phone calls. Moreover, the PDD software
+discussions, and phone calls. Moreover; the PDD software
 collects "**puzzles**" from source code and builds short-term
 plans of key development tasks.
