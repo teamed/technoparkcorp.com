@@ -76,7 +76,7 @@ We need your help in keeping the PII you have shared with us accurate and up to 
 us of any changes to your PII.
 
 Our sites DOES NOT allow you to make these updates yourself online. In order to update your PII you
-shall [email us](mailto:privacy@technoparkcorp.com) or call at +1 (239) 243 0206.
+shall [email us](mailto:privacy@technoparkcorp.com) or call at +1 (860) 506 5536.
 
 ## Unsubscribing
 
