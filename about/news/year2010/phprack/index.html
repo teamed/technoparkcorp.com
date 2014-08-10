@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8"/>
     <meta name="description" content="phpRack, a new open-source framework has been introduced to
-web developers by a dedicated distributed team of PHP
+web developers by a dedicated, distributed team of PHP
 programmers managed by TechnoPark Corp.
 " />
     <meta name="keywords" content="PHP, continuous integration, integration testing, phpRack, quality control" />
@@ -12,11 +12,11 @@ programmers managed by TechnoPark Corp.
     <link rel="shortcut icon" type="image/png" href="//img.technoparkcorp.com/favicon.ico" />
     <link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.technoparkcorp.com/rss.xml"/>
     <link rel="author" href="//plus.google.com/u/0/114792568016408327418?rel=author" />
-    <link rel="stylesheet" href="/css/style.css?b69f412"/>
+    <link rel="stylesheet" href="/css/style.css?d18544e"/>
     <link rel="canonical" href="http://www.technoparkcorp.com/about/news/year2010/phprack" />
-    <script src="/js/search.min.js?b69f412"></script>
-    <script src="/js/all.js?b69f412"></script>
-    <title>A Unique Open-source Integration Testing Framework Developed</title>
+    <script src="/js/search.min.js?d18544e"></script>
+    <script src="/js/all.js?d18544e"></script>
+    <title>A Unique Open-Source Integration Testing Framework Developed</title>
   </head>
   <body>
     <div class="wrapper">
@@ -92,32 +92,32 @@ programmers managed by TechnoPark Corp.
       <li><a href='/about' title='Read about our company, strategy, our achievements'>About us</a><ul><li><a href='/about/executives' title='Our executive team of software development professionals'>Executive Team</a></li><li><a href='/about/facts' title='Review key facts about TPC, shareholders, offices and legal status'>Facts Sheet</a></li><li><a href='/about/history' title='Review our latest history with key events, achievements and awards'>History of growth</a></li><li><a href='/about/jobs' title='Read how you can join our team'>Job Positions</a></li><li><a href='/about/news' title='Read the latest news about TPC and the software industry'>News and events</a></li><li><a href='/about/rss' title=''></a></li><li><a href='/about/teams' title='Read about our Virtual Team approach and become a member of one of them'>Virtual Teams</a></li><li><a href='/about/why' title='Why TPC? Consider the advantages in this one-page overview'>Why TPC?</a></li></ul></li><li><a href='/contacts' title='Contact us now instead of later'>Contacts</a></li><li><a href='/innovations' title=''>Innovations</a></li><li><a href='/process' title='Learn about our key project management processes'>Process</a></li><li><a href='/stories' title=''>Stories</a></li>
     </ul>
     <div class="page" itemprop="articleBody">
-      <h1>A Unique Open-source Integration Testing Framework Developed</h1>
+      <h1>A Unique Open-Source Integration Testing Framework Developed</h1>
       <p>Read more in <a href="http://www.phparch.com/magazine/2010/june/">php|Architect, June 2010</a>
-article &quot;Integration Testing with phpRack Framework&quot;, by
+article &quot;Integration Testing with phpRack Framework&quot; by
 Yegor Bugayenko.</p>
 
-<p>Unit tests plus continuous integration give you a guarantee that most of your source code defects
+<p>Unit tests plus continuous integration gives you a guarantee that most of your source code defects
 will be caught before they reach end users. Unit tests verify the code beforehand and a continuous
-integration server informs you if a defect is found, right before deployment. It&#39;s a proven
-mechanism used in the majority of products striving for quality. But who can guarantee that if a
-defect is found after deployment it is reported immediately before disappointed end users find it?
+integration server informs you if a defect is found right before deployment. It&#39;s a proven
+mechanism used in the majority of products striving for quality, but who can guarantee that if a
+defect is found after deployment, it is reported immediately before disappointed end users find it?
 Integration tests can effectively do this.</p>
 
-<p>To be short, &quot;Integration Testing&quot; is similar to unit testing, however the testing subject is not
+<p>To be short, &quot;Integration Testing&quot; is similar to unit testing; however, the testing subject is not
 the software itself, but its deployment environment. With integration tests, you&#39;re verifying
 whether your product is located in a comfortable place and is ready for end users. Unit tests verify
 your product one-by-one, where integration tests verify you one-by-one. Sound weird? This article
-explains the concept and its implementation in phpRack, the open-source framework. phpRack framework is written in
+explains the concept and its implementation in phpRack; the open-source framework. phpRack framework is written in
 PHP, but can be used for the integration testing of products written in any other web-oriented
-language, including Java, Python, Ruby, etc.</p>
+language including Java, Python, Ruby, etc.</p>
 
-<p>Let&#39;s start with a simple example. Imagine you developed a web-system and prepared it for delivery
+<p>Let&#39;s start with a simple example. Imagine that you developed a web-system and prepared it for delivery
 to your customer. You created complete and detailed installation instructions where you explained
 the requirements to the server-side system software configuration. Despite your efforts, very soon
 you receive a complaint from the customer: &quot;The system is full of bugs and we can&#39;t make it work!&quot;
 But you know for sure that the product is properly tested and works on your local machine. You
-understand that the problem is in the installation, within the customer&#39;s server environment. How do
+understand that the problem is in the installation within the customer&#39;s server environment. How do
 you explain to the customer where the problem is and how to fix it?</p>
 
 <p>One option is to do the work yourself. Ask the customer for root access to the server, debug the
@@ -128,18 +128,18 @@ Third, you will become responsible for the server and this installation forever.
 of possible problems is endless. The bottom line is that this manual approach, although very common,
 is the worst option.</p>
 
-<p>Integration tests are a great alternative. You create small supplementary software modules (called
+<p>Integration tests are a great alternative. You create small, supplementary software modules (called
 &quot;integration tests&quot;) that are executed on the production server and validate critical environment parameters. For
-example: version of PHP, availability of PHP extensions, version of MySQL, database access
+example, version of PHP, availability of PHP extensions, version of MySQL, database access
 permissions, accessibility of network ports, read/write access permissions of log files and
 directories, etc. (Some of my products have 50 or more different integration tests). In addition to
 the integration tests, you need software that will start all of them together and report a summary
 result in a user-friendly format. Then, you can show this report to the customer, indicating the
 problems with the server. Once they are fixed, your product works as if it is being installed on
-your local machine. Easy!</p>
+your local machine; easy!</p>
 
-<p>phpRack simplifies this work, and lets you write integration tests fast and easy. is the first unique
-product of its kind. phpRack is a free open-source product.</p>
+<p>phpRack simplifies this work and lets you write integration tests fast and easy. It is the first unique
+product of its kind. phpRack is a free, open-source product.</p>
 
     </div>
     <div class="wl">
