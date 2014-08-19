@@ -8,7 +8,19 @@
     <title>technoparkcorp.com</title>
     <link>http://www.technoparkcorp.com</link>
     <description>RSS feed for technoparkcorp.com</description>
-    <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+    <pubDate>Tue, 19 Aug 2014 00:00:00 +0000</pubDate>
+    <item>
+      <title>Rultor.com Automates Routine DevOps Operations</title>
+      <link>http://www.technoparkcorp.com/about/news/2014/rultor-devops-automator</link>
+      <description>&lt;p&gt;&lt;a href=&quot;http://www.rultor.com&quot;&gt;Rultor.com&lt;/a&gt;, a new cloud service for DevOps automation,
+was recently launched by TechnoPark Corp. It is unique in that it is the only
+service that interactively enables the smooth integration of programming
+teams with DevOps processes.&lt;/p&gt;
+</description>
+      <pubDate>Tue, 19 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/about/news/2014/rultor-devops-automator</guid>
+      <dc:date>2014-08-19T00:00:00+00:00</dc:date>
+    </item>
     <item>
       <title>Why Customers Stay With Us?</title>
       <link>http://www.technoparkcorp.com/about/why</link>
@@ -248,6 +260,15 @@ and presented to you prior to a &lt;a href=&quot;/process/time/lco&quot;&gt;LCO 
       <dc:date>2014-08-08T00:00:00+00:00</dc:date>
     </item>
     <item>
+      <title>Risks Are Identified, Prioritized And Managed</title>
+      <link>http://www.technoparkcorp.com/process/risk</link>
+      <description>&lt;p&gt;A Risk is a possible event that may impact the outcome of a project.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>http://www.technoparkcorp.com/process/risk</guid>
+      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    </item>
+    <item>
       <title>Cause, Risk, Effect</title>
       <link>http://www.technoparkcorp.com/process/risk/risk</link>
       <description>&lt;p&gt;A Risk in software development project is an event that may have an impact on the outcome of the
@@ -257,15 +278,6 @@ project at present time.&lt;/p&gt;
 </description>
       <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
       <guid>http://www.technoparkcorp.com/process/risk/risk</guid>
-      <dc:date>2014-08-08T00:00:00+00:00</dc:date>
-    </item>
-    <item>
-      <title>Risks Are Identified, Prioritized And Managed</title>
-      <link>http://www.technoparkcorp.com/process/risk</link>
-      <description>&lt;p&gt;A Risk is a possible event that may impact the outcome of a project.&lt;/p&gt;
-</description>
-      <pubDate>Fri, 08 Aug 2014 00:00:00 +0000</pubDate>
-      <guid>http://www.technoparkcorp.com/process/risk</guid>
       <dc:date>2014-08-08T00:00:00+00:00</dc:date>
     </item>
     <item>
@@ -1660,6 +1672,6 @@ engineering (&amp;quot;Building Formal Models for Software Requirements&amp;quot
       <guid>http://www.technoparkcorp.com/about/news/year2001/oldnews2</guid>
       <dc:date>2001-05-10T00:00:00+00:00</dc:date>
     </item>
-    <dc:date>2014-08-08T00:00:00+00:00</dc:date>
+    <dc:date>2014-08-19T00:00:00+00:00</dc:date>
   </channel>
 </rss>
