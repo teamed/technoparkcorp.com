@@ -12,6 +12,9 @@
       padding-right: 5px;
     }
     #menu {
+      @media all and (min-width: $width) {
+        display: none;
+      }
       position: absolute;
       left: 5px;
       top: 5px;
