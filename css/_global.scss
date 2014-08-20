@@ -12,6 +12,8 @@ body {
   font-family: 'Verdana', sans-serif;
   color: $black;
   background-color: $gray;
+  height: 100%;
+  width: 100%;
 }
 
 .wrapper {
@@ -26,14 +28,14 @@ body {
 }
 
 .top {
-  @media all and (max-width: $width) {
-    display: none;
-  }
   position: relative;
   height: 70px;
   vertical-align: bottom;
   margin-bottom: 7px;
   .banner {
+    @media all and (max-width: $width) {
+      display: none;
+    }
     position: absolute;
     bottom: 0;
     left: 37px;

@@ -3,6 +3,9 @@
 /* central image */
 .picture {
   position: relative;
+  @media all and (max-width: $width) {
+    display: none;
+  }
   img {
     display: block;
     width: 800px;
@@ -58,6 +61,16 @@
         &:hover {
           color: white;
         }
+      }
+    }
+    @media all and (max-width: $width) {
+      th {
+        display: none;
+      }
+      td {
+        width: 100%;
+        display: block;
+        margin-bottom: 2 * $em;
       }
     }
   }
