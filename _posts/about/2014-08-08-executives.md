@@ -22,7 +22,8 @@ next_step: about/facts
     alt="Yegor Bugayenko photo"
     style="float:left; margin-right: 1em; margin-bottom: 1em; width: 110px; height: 110px;"/>
 
-**Yegor Bugayenko** is a co-founder and CTO of the company, its lead software architect, and project management guru.
+**Yegor Bugayenko** is a co-founder and CTO of the company, its lead software architect, and project management guru
+[read his blog](http://www.yegor256.com).
 
 Yegor began his career in Ukraine, as a C++/Java software developer, in a private hardware
 engineering company, owned by his father. Yegor founded the company when he was 23 years old, in
