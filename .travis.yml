@@ -9,8 +9,10 @@ install:
   - npm install casperjs -g
 env:
   global:
-    - secure: "Dt3EYJ78c5ku9mnCwhqja6LF0ShZm51YYivOLXrVv6IlLjkt3iyTPyWI9IP50LqFq0ckEOPHRPU513QZUAZdU1idGJYPQGFdXr/6TgzN8Tfp2R+OEi9FxtvkIxAJjWHN4TqdMjgwTfY75BKmuCgZBZu1Yt4trX1EGY1Dn6vCpVo="
+    - secure: "d3OvGe1OUFcfcBVQq7uEUMAhTQQN2/e5Ex27hS631kSXJ/nR5+Vo1Ub+PctEgmJ7FC1kksDTYcNZLTaunNKCPc3iqVvuFPF2KXBoFESswb7WnrIdSyL+fpgsdcetMEgbzHo97l8JV65k02GDtXd5mZ3m/WoE2KZl8RwNGJxwvXY="
 script:
+  - set -x
+  - set -e
   - _test/run.sh
   - git config --global user.email "travis@teamed.io"
   - git config --global user.name "travis"
