@@ -9,10 +9,10 @@
     <link rel="shortcut icon" type="image/png" href="//img.technoparkcorp.com/favicon.ico" />
     <link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.technoparkcorp.com/rss.xml"/>
     <link rel="author" href="//plus.google.com/u/0/114792568016408327418?rel=author" />
-    <link rel="stylesheet" href="/css/style.css?bbb7ff3"/>
+    <link rel="stylesheet" href="/css/style.css?55037e2"/>
     <link rel="canonical" href="http://www.technoparkcorp.com/contacts" />
-    <script src="/js/search.min.js?bbb7ff3"></script>
-    <script src="/js/all.js?bbb7ff3"></script>
+    <script src="/js/search.min.js?55037e2"></script>
+    <script src="/js/all.js?55037e2"></script>
     <title>Contact Us Today</title>
   </head>
   <body>
@@ -101,6 +101,30 @@ tel. (860) 506-5536</p>
 
 <p>We respond to email inquiries in 24 hours or less.</p>
 
+<style>
+#map-canvas {
+  width: 500px;
+  height: 400px;
+}
+</style>
+
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+
+<script>
+function initialize() {
+  var mapCanvas = document.getElementById('map-canvas');
+  var mapOptions = {
+    center: new google.maps.LatLng(37.383525, -122.012997),
+    zoom: 8,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  }
+  var map = new google.maps.Map(mapCanvas, mapOptions)
+}
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
+<div id="map-canvas"></div>
+
     </div>
     <div class="wl">
       
@@ -136,7 +160,7 @@ tel. (860) 506-5536</p>
         </ul>
       </div>
       <div class="sub">
-        &copy; TechnoPark Corp., 2000-2014
+        &copy; TechnoPark Corp., 2000-2015
         <a title="Read more about ISO 9001:2000 certification that was obtained by TechnoPark Corp."
           href="/about/news/year2008/iso9001" class="iso">
           <img src="//img.technoparkcorp.com/iso.svg" alt="ISO logo"/>
