@@ -9,10 +9,10 @@
     <link rel="shortcut icon" type="image/png" href="//img.technoparkcorp.com/favicon.ico" />
     <link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.technoparkcorp.com/rss.xml"/>
     <link rel="author" href="//plus.google.com/u/0/114792568016408327418?rel=author" />
-    <link rel="stylesheet" href="/css/style.css?55037e2"/>
+    <link rel="stylesheet" href="/css/style.css?9314d87"/>
     <link rel="canonical" href="http://www.technoparkcorp.com/contacts" />
-    <script src="/js/search.min.js?55037e2"></script>
-    <script src="/js/all.js?55037e2"></script>
+    <script src="/js/search.min.js?9314d87"></script>
+    <script src="/js/all.js?9314d87"></script>
     <title>Contact Us Today</title>
   </head>
   <body>
@@ -103,8 +103,8 @@ tel. (860) 506-5536</p>
 
 <style>
 #map-canvas {
-  width: 500px;
-  height: 400px;
+  width: 410px;
+  height: 220px;
 }
 </style>
 
@@ -113,12 +113,20 @@ tel. (860) 506-5536</p>
 <script>
 function initialize() {
   var mapCanvas = document.getElementById('map-canvas');
+  var coords = new google.maps.LatLng(37.383525, -122.012997);
   var mapOptions = {
-    center: new google.maps.LatLng(37.383525, -122.012997),
+    center: coords,
     zoom: 8,
     mapTypeId: google.maps.MapTypeId.ROADMAP
-  }
-  var map = new google.maps.Map(mapCanvas, mapOptions)
+  };
+  var map = new google.maps.Map(mapCanvas, mapOptions);
+  var marker = new google.maps.Marker(
+    {
+      position: coords,
+      map: map,
+      title: 'our office'
+    }
+  );
 }
 google.maps.event.addDomListener(window, 'load', initialize);
 </script>
