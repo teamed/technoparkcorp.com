@@ -2,6 +2,7 @@
 # Just run "bundle"
 #
 source 'https://rubygems.org'
+
 gem 'jekyll', '2.0.3'
 gem 'sass', '3.4.5'
 gem 'jekyll-sass', '1.2.2'
