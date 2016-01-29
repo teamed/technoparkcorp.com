@@ -24,6 +24,11 @@ before_install:
 - chmod 600 ~/.ssh/id_rsa
 script:
 - set -e
+- latex --version
+- dvips --version
+- pnmalias --version
+- pnmcrop --version
+- pnmtopng --version
 - _test/run.sh
 - git config --global user.email "travis@teamed.io"
 - git config --global user.name "travis"
