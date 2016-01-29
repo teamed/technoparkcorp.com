@@ -1,12 +1,18 @@
 language: ruby
+sudo: false
 branches:
   only:
   - master
+addons:
+  apt:
+    packages:
+    - netpbm
+    - texlive
+    - texlive-latex-extra
 install:
-- sudo apt-get install -y netpbm texlive texlive-latex-extra
-- bundle install
-- npm install phantomjs -g
-- npm install casperjs -g
+- travis_retry bundle install
+- travis_retry npm install phantomjs -g
+- travis_retry npm install casperjs -g
 env:
   global:
   - secure: d3OvGe1OUFcfcBVQq7uEUMAhTQQN2/e5Ex27hS631kSXJ/nR5+Vo1Ub+PctEgmJ7FC1kksDTYcNZLTaunNKCPc3iqVvuFPF2KXBoFESswb7WnrIdSyL+fpgsdcetMEgbzHo97l8JV65k02GDtXd5mZ3m/WoE2KZl8RwNGJxwvXY=
