@@ -24,6 +24,7 @@ module Tpc
           File.open(tex, 'w') { |f| f.write(super) }
           puts %x[
             set -e
+            set -x
             cd #{site.source}
             mkdir -p tikz
             cd .tikz-temp
