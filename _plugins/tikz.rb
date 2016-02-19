@@ -38,6 +38,7 @@ module Tpc
               pnmcrop -white | \\
               pnmtopng -interlace > doc.png
             mv doc.png ../tikz/#{name}.png
+            echo $(pwd) $(ls -al ../tikz/#{name}.png)
             cd ..
           ]
           raise 'failed to compile Tikz' if !$?.exitstatus
