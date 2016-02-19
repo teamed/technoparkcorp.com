@@ -1,4 +1,15 @@
 module Tpc
+  class TikzFile < Jekyll::StaticFile
+    def write(dest)
+      target = File.join(dest, @dir, @name)
+      FileUtils.copy_file(
+        File.join(dest, "#{@dir}/#{@name}"),
+        target
+      )
+      puts "#{target} created (#{File.size(target)} bytes)"
+      true
+    end
+  end
   module Blocks
     class Tikz < Liquid::Block
       def initialize(tag_name, markup, tokens)
@@ -15,7 +26,6 @@ module Tpc
             set -e
             cd #{site.source}
             mkdir -p tikz
-            mkdir -p .tikz-temp
             cd .tikz-temp
             cat ../_latex/header.tex > doc.tex
             cat tikz.tex >> doc.tex
@@ -32,7 +42,7 @@ module Tpc
           ]
           raise 'failed to compile Tikz' if !$?.exitstatus
         end
-        site.static_files << Jekyll::StaticFile.new(
+        site.static_files << Tpc::TikzFile.new(
           site, site.source, 'tikz', "#{name}.png"
         )
         "<p class='tikz'><img src='/tikz/#{name}.png' alt='tikz' width='80%'/></p>"
