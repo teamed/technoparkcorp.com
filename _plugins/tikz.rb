@@ -31,7 +31,7 @@ module Tpc
             cat ../_latex/header.tex > doc.tex
             cat tikz.tex >> doc.tex
             echo '\\end{document}' >> doc.tex
-            latex -halt-on-error -interaction=nonstopmode doc.tex >/dev/null
+            latex -halt-on-error -interaction=nonstopmode doc.tex
             dvips -o doc.ps doc.dvi
             echo quit | \\
               gs -q -dNOPAUSE -sDEVICE=ppmraw -sOutputFile=- -r300 doc.ps | \\
