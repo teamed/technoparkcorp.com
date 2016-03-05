@@ -9,6 +9,7 @@ addons:
     - netpbm
     - texlive
     - texlive-latex-extra
+    - xzdec
 install:
 - travis_retry bundle install
 - travis_retry npm install phantomjs -g
