@@ -14,7 +14,7 @@ install:
 - travis_retry bundle install
 - travis_retry npm install phantomjs -g
 - travis_retry npm install casperjs -g
-- sudo -i tlmgr init-usertree
+- sudo -i /usr/bin/tlmgr init-usertree
 env:
   global:
   - secure: d3OvGe1OUFcfcBVQq7uEUMAhTQQN2/e5Ex27hS631kSXJ/nR5+Vo1Ub+PctEgmJ7FC1kksDTYcNZLTaunNKCPc3iqVvuFPF2KXBoFESswb7WnrIdSyL+fpgsdcetMEgbzHo97l8JV65k02GDtXd5mZ3m/WoE2KZl8RwNGJxwvXY=
